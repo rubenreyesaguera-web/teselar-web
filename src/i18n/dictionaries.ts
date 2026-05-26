@@ -1,0 +1,826 @@
+export type Locale = 'es' | 'ca' | 'en';
+
+export const dictionaries = {
+  es: {
+    nav: {
+      services: 'Servicios',
+      pricing: 'Precios',
+      values: '¿Por qué TESELAR?',
+      process: 'Proceso',
+      contact: 'Agendar Cita'
+    },
+    hero: {
+      tagline: 'Teselar Software',
+      title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
+      subtitle: 'Transformamos tu negocio con tecnología accesible y a medida. Desde presencia digital hasta sistemas ERP/CRM nativos e integraciones de IA.',
+      cta: 'Solicitar información',
+      cta_alt: 'Agendar cita'
+    },
+    concept: {
+      title: 'La Pieza que Encaja',
+      text1: 'Nuestra identidad visual se inspira en la teselación: el arte de ensamblar piezas de forma que encajen a la perfección, sin dejar huecos ni generar fricciones.',
+      text2: 'En el mundo digital, representamos esa pieza exacta de software a medida que tu negocio necesita para completar su engranaje y funcionar con total fluidez.'
+    },
+    services: {
+      title: 'Catálogo de Servicios',
+      subtitle: 'Soluciones modulares y de alto rendimiento adaptadas a tu tamaño y presupuesto. Sin costes ocultos.',
+      ideal: 'Ideal para:',
+      pricing: 'Precio',
+      features: 'Lo que incluye:',
+      live_adjustments: 'Todos nuestros proyectos de desarrollo web y de software incluyen 1 semana de ajustes en vivo sin coste adicional tras el lanzamiento.',
+      interest: 'Me interesa este servicio',
+      categories: {
+        web: 'Desarrollo Web',
+        automation: 'Automatización e IA',
+        systems: 'Sistemas y ERP'
+      },
+      s1: {
+        title: '01. Auditoría y Consultoría Digital',
+        ideal: 'Negocios que quieren mejorar su presencia digital, detectar oportunidades de crecimiento o evaluar su situación antes de invertir.',
+        price: '150€ (Pago único)',
+        tag: 'Auditoría SEO & UX',
+        f1: 'Análisis completo de presencia digital (web, redes, SEO)',
+        f2: 'Revisión de velocidad, usabilidad y experiencia de usuario (UX)',
+        f3: 'Informe de competencia y benchmarking del sector',
+        f4: 'Identificación de puntos de mejora y oportunidades',
+        f5: 'Hoja de ruta personalizada con prioridades y estimaciones',
+        f6: 'Sesión de presentación de resultados (1h online o presencial)',
+        f7: 'Entrega de informe en PDF profesional'
+      },
+      s2: {
+        title: '02. Automatizaciones Específicas',
+        ideal: 'Empresas que necesitan resolver un problema concreto de eficiencia con automatización inteligente.',
+        price: '350€ — 900€',
+        tag: 'Apps Script + APIs + Make',
+        f1: 'Generador automático de presupuestos en PDF desde un formulario',
+        f2: 'Envío automático de facturas por email con datos de tu CRM',
+        f3: 'Extractor automatizado de datos de correos a Google Sheets',
+        f4: 'Chatbot automatizado para canales de WhatsApp o Telegram',
+        f5: 'Sincronizador de base de datos bidireccional entre plataformas',
+        f6: 'Sistema inteligente de recordatorios y alertas automáticas',
+        f7: 'Reportes diarios/semanales automáticos por email'
+      },
+      s3: {
+        title: '03. Landing Page / Presencia Web Profesional',
+        ideal: 'Freelancers, pequeñas empresas, profesionales independientes y nuevos emprendedores.',
+        price: '600€ — 800€',
+        tag: 'React + Vite + Tailwind CSS',
+        f1: 'Página única de alto impacto o 3-4 secciones estructuradas',
+        f2: 'Diseño web moderno, responsive y optimizado para móvil',
+        f3: 'Formulario de contacto funcional con notificación automática',
+        f4: 'Integración completa con perfiles de redes sociales',
+        f5: 'SEO técnico básico (meta tags, estructura HTML limpia)',
+        f6: 'Optimización extrema de velocidad de carga y rendimiento',
+        f7: '1 semana de ajustes en vivo durante el despliegue'
+      },
+      s4: {
+        title: '04. Integración de Inteligencia Artificial',
+        ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente.',
+        price: '800€ — 3.000€',
+        tag: 'OpenAI / Anthropic APIs',
+        f1: 'Asistente virtual con IA entrenado con tu documentación interna',
+        f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram',
+        f3: 'Generación automática de contenidos o respuestas predefinidas',
+        f4: 'Análisis, clasificación y resumen automático de documentos',
+        f5: 'Automatización avanzada con procesamiento de lenguaje natural',
+        f6: 'Integración directa con modelos GPT, Claude u homólogos',
+        f7: 'Costes operativos de la IA contratados directamente sin intermediarios'
+      },
+      s5: {
+        title: '05. Web Empresarial Completa',
+        ideal: 'Pequeñas y medianas empresas que necesitan catálogo, portfolio interactivo o blog.',
+        price: '1.200€ — 1.800€',
+        tag: 'React + Vite + Headless CMS',
+        f1: 'Estructura modular de 5 a 8 secciones bien definidas',
+        f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
+        f3: 'Sección autogestionable de blog, artículos o noticias',
+        f4: 'Panel de administración intuitivo para gestionar contenidos',
+        f5: 'SEO técnico mejorado (sitemap, robots.txt, jerarquía de tags)',
+        f6: 'Configuración inicial y vinculación con Google Search Console',
+        f7: '1 semana de ajustes en vivo y formación de uso'
+      },
+      s6: {
+        title: '06. Tienda Online / E-commerce',
+        ideal: 'Comercios locales o marcas que venden productos o servicios directamente online.',
+        price: '2.000€ — 3.000€',
+        tag: 'React + BD + Pasarelas de Pago',
+        f1: 'Carrito de compra interactivo, fluido y de carga ultrarrápida',
+        f2: 'Proceso de checkout seguro y simplificado (One-Step)',
+        f3: 'Integración completa con Stripe, PayPal y Bizum',
+        f4: 'Gestió de productes i existències des de panell d\'administració',
+        f5: 'Notificaciones automáticas de pedidos al email de clientes y gestor',
+        f6: 'Módulo de cupones de descuento, impuestos y costes de envío',
+        f7: 'Historial de transacciones de clientes y facturación básica'
+      },
+      s7: {
+        title: '07. Web Multiidioma Profesional',
+        ideal: 'Negocios con proyección internacional o ubicados en zonas altamente turísticas.',
+        price: '1.800€ — 2.800€',
+        tag: 'React + i18n + SEO Multiidioma',
+        f1: 'Soporte completo desde 2 hasta 7 idiomas integrados',
+        f2: 'Detección inteligente automática del idioma del navegador del usuario',
+        f3: 'Arquitectura de URLs amigables por idioma y etiquetas hreflang',
+        f4: 'Metadatos SEO y títulos optimizados en todos los idiomas configurados',
+        f5: 'Implementación de Schema markup (JSON-LD) multilingüe',
+        f6: 'SEO internacional avanzado para captar tráfico extranjero',
+        f7: 'Traducciones de base aportadas por el cliente o gestionadas aparte'
+      },
+      s8: {
+        title: '08. Sistema ERP/CRM (App Nativa)',
+        ideal: 'Negocios que buscan centralizar clientes, proyectos y facturas sin depender del navegador.',
+        price: '2.500€ — 5.000€',
+        tag: 'Electron + React + Base de Datos',
+        f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
+        f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
+        f3: 'Módulo integral de gestión de clientes (CRM) y base de contactos',
+        f4: 'Generación automática y descarga directa de facturas y presupuestos en PDF',
+        f5: 'Planificador interno de proyectos, tareas de equipo y control de tiempos',
+        f6: 'Roles de usuario avanzados con niveles de acceso seguros',
+        f7: 'Formación integral del equipo + 1 semana de soporte prioritario'
+      }
+    },
+    pricing: {
+      title: 'Mantenimiento y Soporte',
+      subtitle: 'Tranquilidad absoluta para tu negocio. Cuidamos de tu tecnología para que te enfoques en crecer.',
+      basic: {
+        title: 'Plan Básico',
+        price: '60€',
+        period: '/ mes',
+        desc: 'Perfecto para mantener presencia web estable.',
+        f1: 'Actualizaciones periódicas de librerías y seguridad',
+        f2: 'Monitoreo continuo de caídas de servidor 24/7',
+        f3: 'Resolución rápida de errores técnicos',
+        f4: 'Pequeños cambios de contenidos incluidos (hasta 1h/mes)'
+      },
+      plus: {
+        title: 'Plan Plus',
+        price: '150€',
+        period: '/ mes',
+        desc: 'Ideal para e-commerce o webs con actualizaciones constantes.',
+        f1: 'Todo lo incluido en el Plan Básico',
+        f2: 'Soporte de desarrollo prioritario (hasta 5h/mes)',
+        f3: 'Análisis de velocidad mensual y optimización SEO',
+        f4: 'Atención prioritaria inmediata ante incidencias críticas'
+      },
+      not_included: {
+        title: 'Lo que NO está incluido',
+        desc: 'Costes directos a cargo del cliente: Dominio, hosting, traducción profesional de contenidos, comisiones de pasarelas de pago (Stripe/PayPal), correo empresarial, herramientas de email marketing y consumo directo de APIs de Inteligencia Artificial.'
+      },
+      payment: {
+        title: 'Métodos de Pago & Condiciones',
+        methods: 'Métodos aceptados: Transferencia bancaria o efectivo en mano (con cita previa).',
+        conditions: 'Condiciones: Posibilidad de fraccionar el pago del proyecto sin intereses en hasta 3 meses. Siempre se requerirá un pago de entrada del 50% del coste total presupuestado para comenzar a trabajar.'
+      }
+    },
+    values: {
+      title: '¿Por qué elegirnos?',
+      subtitle: 'La ventaja competitiva de trabajar con artesanos de software especializados en lugar de grandes consultoras lentas o freelancers inestables.',
+      v1: {
+        title: 'Contacto Directo sin Intermediarios',
+        desc: 'Hablamos tu mismo idioma. Tratas directamente con el desarrollador que escribe cada línea de código de tu aplicación, eliminando esperas y malentendidos.'
+      },
+      v2: {
+        title: 'Desarrollo Nativo a Medida',
+        desc: 'Huimos de las plantillas de WordPress pesadas e inseguras. Creamos webs a mano con React y Tailwind, garantizando una velocidad insuperable y un SEO excelente.'
+      },
+      v3: {
+        title: 'Cercanía y Entendimiento Local',
+        desc: 'Con sede en Lloret de Mar. Nos encanta conocer tu negocio de cerca, reunirnos en persona y diseñar la solución que encaje perfectamente con tus objetivos locales.'
+      },
+      v4: {
+        title: 'Estabilidad y Soporte Garantizado',
+        desc: 'Cada desarrollo se entrega con garantía de estabilidad, formación integral y soporte técnico comprometido para asegurar el éxito continuo de tu negocio.'
+      }
+    },
+    process: {
+      title: 'Nuestro Proceso de Trabajo',
+      subtitle: 'Una hoja de ruta clara para dar forma a tu solución digital de principio a fin.',
+      p1: {
+        title: '01. Primer Contacto',
+        desc: 'Analizamos tus necesidades actuales en detalle. Definimos los objetivos estratégicos y te asesoramos sobre el módulo que mejor se adapta.'
+      },
+      p2: {
+        title: '02. Propuesta Clara',
+        desc: 'Trazamos la arquitectura exacta del software, establecemos plazos y te entregamos un presupuesto detallado y cerrado sin sorpresas.'
+      },
+      p3: {
+        title: '03. Desarrollo Ágil',
+        desc: 'Programamos la web o software utilizando las mejores prácticas de la industria. Tendrás acceso privado para ver el progreso real paso a paso.'
+      },
+      p4: {
+        title: '04. Ajustes en Vivo',
+        desc: 'Desplegamos la web. Durante la primera semana realizamos ajustes e implementamos mejoras en caliente en producción basándonos en tu feedback real.'
+      }
+    },
+    contact: {
+      title: '¿Hacemos encajar las piezas?',
+      subtitle: 'Escríbenos sobre tu proyecto para agendar una cita o solicitar información técnica sin compromisos.',
+      name: 'Nombre o Empresa',
+      email: 'Tu Correo Electrónico',
+      message: 'Cuéntanos brevemente qué necesitas...',
+      reason: '¿Qué deseas hacer?',
+      reason_opt1: 'Solicitar información general',
+      reason_opt2: 'Agendar una cita / reunión',
+      reason_opt3: 'Solicitar presupuesto a medida',
+      budget: 'Presupuesto orientativo',
+      budget_opt1: 'Menos de 1.000€',
+      budget_opt2: '1.000€ - 3.000€',
+      budget_opt3: 'Más de 3.000€',
+      urgency: 'Urgencia del proyecto',
+      urgency_opt1: 'Inmediata',
+      urgency_opt2: 'En 1 mes',
+      urgency_opt3: 'Más de 3 meses',
+      gdpr: 'He leído y acepto los términos de la política de privacidad de datos para el tratamiento de mi solicitud de contacto.',
+      send: 'Enviar Solicitud',
+      sending: 'Enviando...',
+      success: '¡Solicitud enviada con éxito! Nos pondremos en contacto contigo a la brevedad para agendar la cita o enviarte los detalles.',
+      error: 'Error al enviar el mensaje. Por favor, reinténtalo o escríbenos directamente a: teselarsoftware@icloud.es'
+    },
+    hud: {
+      title: 'Next.js vs. WordPress / No-Code',
+      subtitle: 'La diferencia técnica que decide el éxito de tu negocio. Por qué programamos a medida.',
+      platform_nextjs: 'Nuestra Solución (Next.js)',
+      platform_wp: 'Solución Tradicional (WordPress)',
+      metric_perf: 'Rendimiento (Lighthouse)',
+      metric_speed: 'Tiempo de Carga Móvil',
+      metric_sec: 'Nivel de Seguridad',
+      metric_plug: 'Dependencia de Plugins',
+      metric_scale: 'Escalabilidad de Visitas',
+      nextjs_perf_desc: '99% — Carga instantánea y fluidez máxima',
+      wp_perf_desc: '42% — Pesado, lento y frustrante para el usuario',
+      nextjs_speed_desc: '0.2s — Interactivo al instante',
+      wp_speed_desc: '4.8s — Pérdida del 35% de posibles clientes',
+      nextjs_sec_desc: '100% — Inmune a ataques web por arquitectura estática',
+      wp_sec_desc: 'Baja — Constantes hackeos y parches de plugins',
+      nextjs_plug_desc: '0 plugins — Código nativo limpio, ligero y optimizado',
+      wp_plug_desc: '25+ plugins — Fugas de velocidad y cuelgues constantes',
+      nextjs_scale_desc: 'Ilimitada — Soporta millones de visitas con coste 0€',
+      wp_scale_desc: 'Limitada — El servidor cae al acumular tráfico'
+    },
+    simulator: {
+      title: 'Simulador de Retorno de Inversión (ROI)',
+      subtitle: 'Descubre cuánto tiempo y dinero estás perdiendo por no automatizar las tareas repetitivas de tu negocio.',
+      label_hours: 'Horas semanales desperdiciadas en tareas repetitivas',
+      label_employees: 'Número de empleados haciendo estas tareas',
+      label_cost: 'Coste medio por hora del empleado',
+      result_monthly: 'Ahorro Mensual Estimado',
+      result_yearly: 'Ahorro Anual Estimado',
+      result_hours: 'Tiempo Anual Recuperado',
+      rec_title: 'Propuesta de Solución Sugerida',
+      rec_badge: 'RECOMENDADO',
+      btn_apply: 'Vincular presupuesto y continuar al formulario',
+      notif_linked: '¡Simulación vinculada con éxito en el formulario!',
+      opt_s2: '02. Automatizaciones Específicas',
+      opt_s4: '04. Integración de Inteligencia Artificial',
+      opt_s8: '08. Sistema ERP/CRM (App Nativa)'
+    }
+  },
+  ca: {
+    nav: {
+      services: 'Serveis',
+      pricing: 'Preus',
+      values: 'Per què TESELAR?',
+      process: 'Procés',
+      contact: 'Agendar Cita'
+    },
+    hero: {
+      tagline: 'Teselar Software',
+      title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
+      subtitle: 'Transformem el teu negoci amb tecnologia accessible i a mida. Des de presència digital fins a sistemes ERP/CRM natius i integracions d\'IA.',
+      cta: 'Sol·licitar informació',
+      cta_alt: 'Agendar cita'
+    },
+    concept: {
+      title: 'La Peça que Encaixa',
+      text1: 'La nostra identitat visual s\'inspira en la tessel·lació: l\'art d\'acoblar peces de manera que encaixin perfectament, sense deixar buits ni generar friccions.',
+      text2: 'En el món digital, representem aquesta peça exacta de programari a mida que el teu negoci necessita per completar el seu engranatge i funcionar amb fluïdesa total.'
+    },
+    services: {
+      title: 'Catàleg de Serveis',
+      subtitle: 'Solucions modulars i d\'alt rendiment adaptades a la teva mida i pressupost. Sense costos ocults.',
+      ideal: 'Ideal per a:',
+      pricing: 'Preu',
+      features: 'Què inclou:',
+      live_adjustments: 'Tots els nostres projectes de desenvolupament web i de programari inclouen 1 setmana d\'ajustaments en viu sense cost addicional després del llançament.',
+      interest: 'M\'interessa aquest servei',
+      categories: {
+        web: 'Desenvolupament Web',
+        automation: 'Automatització i IA',
+        systems: 'Sistemes i ERP'
+      },
+      s1: {
+        title: '01. Auditoria i Consultoria Digital',
+        ideal: 'Negocis que volen millorar la seva presència digital, detectar oportunitats de creixement o avaluar la seva situació abans d\'invertir.',
+        price: '150€ (Pagament únic)',
+        tag: 'Auditoria SEO & UX',
+        f1: 'Anàlisi complet de presència digital (web, xarxes socials, SEO)',
+        f2: 'Revisió de velocitat, usabilitat i experiència d\'usuari (UX)',
+        f3: 'Informe de competència i benchmarking del sector',
+        f4: 'Identificació de punts de millora i oportunitats crítiques',
+        f5: 'Full de ruta personalitzat amb prioritats i estimacions de cost',
+        f6: 'Sessió de presentació de resultats (1h online o presencial)',
+        f7: 'Lliurament d\'informe professional en PDF d\'alta qualitat'
+      },
+      s2: {
+        title: '02. Automatitzacions Específiques',
+        ideal: 'Empreses que necessiten resoldre un problema operatiu concret amb automatització intel·ligent.',
+        price: '350€ — 900€',
+        tag: 'Apps Script + APIs + Make',
+        f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
+        f2: 'Enviament automàtic de factures por email con datos del teu CRM',
+        f3: 'Extractor automatitzat de dades de correus a Google Sheets',
+        f4: 'Xatbot automatitzat per a canals de WhatsApp o Telegram',
+        f5: 'Sincronizador de base de dades bidireccional entre plataformes',
+        f6: 'Sistema intel·ligent de recordatoris i alertes automàtiques',
+        f7: 'Informes diaris o setmanals automàtics per correu electrònic'
+      },
+      s3: {
+        title: '03. Landing Page / Presència Web Professional',
+        ideal: 'Freelancers, petites empreses, professionals independents i nous emprenedors.',
+        price: '600€ — 800€',
+        tag: 'React + Vite + Tailwind CSS',
+        f1: 'Pàgina única d\'alt impacte o 3-4 seccions ben estructurades',
+        f2: 'Disseny web modern, responsive i optimizat per a mòbil',
+        f3: 'Formulari de contacte funcional amb notificació automàtica',
+        f4: 'Integració completa amb perfils de xarxes socials',
+        f5: 'SEO tècnic bàsic (etiquetes meta, estructura HTML neta)',
+        f6: 'Optimització extrema de la velocitat de càrrega i rendiment',
+        f7: '1 setmana d\'ajustaments en viu durant el desplegament'
+      },
+      s4: {
+        title: '04. Integració d\'Intel·ligència Artificial',
+        ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client.',
+        price: '800€ — 3.000€',
+        tag: 'OpenAI / Anthropic APIs',
+        f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
+        f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram',
+        f3: 'Generació automàtica de continguts o respostes predefinides',
+        f4: 'Anàlisi, classificació i resum automàtic de documents',
+        f5: 'Automatització avançada amb processament de llenguatge natural',
+        f6: 'Integració directa amb models GPT, Claude o homòlegs',
+        f7: 'Costos operatius de la IA contractats directament sense intermediaris'
+      },
+      s5: {
+        title: '05. Web Empresarial Completa',
+        ideal: 'Petites i mitjanes empreses que necessiten catàleg, portfoli interactiu o blog.',
+        price: '1.200€ — 1.800€',
+        tag: 'React + Vite + Headless CMS',
+        f1: 'Estructura modular de 5 a 8 seccions ben definides',
+        f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
+        f3: 'Secció autogestionable de blog, articles o notícies',
+        f4: 'Panell d\'administració intuïtiu per gestionar continguts',
+        f5: 'SEO tècnic millorat (sitemap, robots.txt, jerarquia de tags)',
+        f6: 'Configuració inicial i vinculació amb Google Search Console',
+        f7: '1 setmana d\'ajustaments en viu i formació d\'ús inclosa'
+      },
+      s6: {
+        title: '06. Botiga Online / E-commerce',
+        ideal: 'Comerços locals o marques que volen vendre productes o serveis directament online.',
+        price: '2.000€ — 3.000€',
+        tag: 'React + BD + Passarel·les de Pagament',
+        f1: 'Carret de compra interactiu, fluid i de càrrega ultraràpida',
+        f2: 'Procés de checkout segur i simplificat (One-Step)',
+        f3: 'Integració completa amb Stripe, PayPal i Bizum',
+        f4: 'Gestió integral de productes i existències des de panell d\'admin',
+        f5: 'Notificacions automàtiques de comandes al client i gestor',
+        f6: 'Mòdul de cupons de descompte, impostos i despeses d\'enviament',
+        f7: 'Historial de transaccions de clients i facturació bàsica'
+      },
+      s7: {
+        title: '07. Web Multidioma Professional',
+        ideal: 'Negocis amb projecció internacional o ubicats en zones altament turístiques.',
+        price: '1.800€ — 2.800€',
+        tag: 'React + i18next + SEO Multidioma',
+        f1: 'Suport complet des de 2 fins a 7 idiomes integrats',
+        f2: 'Detecció intel·ligent automàtica de l\'idioma del navegador de l\'usuari',
+        f3: 'Arquitectura d\'URLs amigables per idioma i etiquetes hreflang',
+        f4: 'Metadades SEO i títols optimitzats de manera independent per idioma',
+        f5: 'Implementació de Schema markup (JSON-LD) multilingüe',
+        f6: 'SEO internacional avançat per captar trànsit estranger',
+        f7: 'Traduccions de base aportades pel client o gestionades a part'
+      },
+      s8: {
+        title: '08. Sistema ERP/CRM (App Nativa)',
+        ideal: 'Negocis que busquen centralitzar clients, projectes i factures sense dependre del navegador.',
+        price: '2.500€ — 5.000€',
+        tag: 'Electron + React + Base de Dades',
+        f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
+        f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
+        f3: 'Mòdul integral de gestió de clients (CRM) i base de contactes',
+        f4: 'Generació automàtica i descàrrega directa de factures i pressupostos en PDF',
+        f5: 'Planificador intern de projectes, tasques d\'equip i control de temps',
+        f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
+        f7: 'Formació integral de l\'equip + 1 setmana de suport prioritari'
+      }
+    },
+    pricing: {
+      title: 'Manteniment i Suport',
+      subtitle: 'Tranquil·litat absoluta per al teu negoci. Cuidem de la teva tecnologia perquè t\'enfoquis a créixer.',
+      basic: {
+        title: 'Plan Bàsic',
+        price: '60€',
+        period: '/ mes',
+        desc: 'Perfecte per mantenir presència web estable.',
+        f1: 'Actualitzacions periòdiques de llibreries i seguretat',
+        f2: 'Monitoratge continu de caigudes de servidor 24/7',
+        f3: 'Resolució ràpida d\'errors tècnics',
+        f4: 'Petits canvis de continguts inclosos (fins a 1h/mes)'
+      },
+      plus: {
+        title: 'Plan Plus',
+        price: '150€',
+        period: '/ mes',
+        desc: 'Ideal per a e-commerce o webs amb actualitzacions constants.',
+        f1: 'Tot l\'inclòs al Plan Bàsic',
+        f2: 'Suport de desenvolupament prioritari (fins a 5h/mes)',
+        f3: 'Anàlisi de velocitat mensual i optimització SEO',
+        f4: 'Atenció prioritària immediata davant incidències crítiques'
+      },
+      not_included: {
+        title: 'El que NO està inclòs',
+        desc: 'Costos directes a càrrec del client: Domini, allotjament (hosting), traducció professional de continguts, comissions de passarel·les de pagament (Stripe/PayPal), correu empresarial, eines de màrqueting per email i consum directe d\'APIs d\'Intel·ligència Artificial.'
+      },
+      payment: {
+        title: 'Mètodes de Pagament i Condicions',
+        methods: 'Mètodes acceptats: Transferència bancària o efectiu a la mà (amb cita prèvia).',
+        conditions: 'Condicions: Possibilitat de fraccionar el pagament del projecte sense interessos fins a 3 mesos. Sempre es requerirà un pagament inicial del 50% del cost total pressupostat per començar a treballar.'
+      }
+    },
+    values: {
+      title: 'Per què escollir-nos?',
+      subtitle: 'L\'avantatge competitiu de treballar amb artesans del programari especialitzats en lloc de grans consultores lentes o freelancers inestables.',
+      v1: {
+        title: 'Contacte Directe sense Intermediaris',
+        desc: 'Parlem el teu mateix idioma. Tractes directament amb el desenvolupador que escriu cada línia de codi de la teva aplicació, eliminant esperes i malentesos.'
+      },
+      v2: {
+        title: 'Desenvolupament Natiu a Mida',
+        desc: 'Fugim de les plantilles de WordPress pesades i insegures. Creem webs a mà amb React i Tailwind, garantint una velocitat insuperable i un SEO excel·lent.'
+      },
+      v3: {
+        title: 'Proximitat i Comprensió Local',
+        desc: 'Amb seu a Lloret de Mar. Ens encanta conèixer el teu negoci de prop, reunir-nos en persona i dissenyar la tecnologia que encaixi perfectament amb els teus objectius locals.'
+      },
+      v4: {
+        title: 'Estabilitat i Suport Garantit',
+        desc: 'Cada desenvolupament es lliura amb garantia d\'estabilitat, formació integral i suport tècnic compromès per assegurar l\'èxit continu del teu negoci.'
+      }
+    },
+    process: {
+      title: 'El Nostre Procés de Treball',
+      subtitle: 'Un full de ruta clar per donar forma a la teva solució digital de principi a fi.',
+      p1: {
+        title: '01. Primer Contacto',
+        desc: 'Analitzem les teves necessitats actuals en detall. Definim els objectius estratègics i t\'assessorem sobre el mòdul que millor s\'adapta.'
+      },
+      p2: {
+        title: '02. Proposta Clara',
+        desc: 'Tracem l\'arquitectura exacta del programari, establim terminis i et lliurem un pressupost detallat i tancat sense sorpreses.'
+      },
+      p3: {
+        title: '03. Desenvolupament Àgil',
+        desc: 'Programem la web o programari utilitzant les millors pràctiques de la indústria. Tindràs accés privat per veure el progrés real pas a pas.'
+      },
+      p4: {
+        title: '04. Ajustos en Viu',
+        desc: 'Despleguem el projecte. Durant la primera setmana realitzem ajustos i implementem millores en calent en producció basant-nos en el teu feedback real.'
+      }
+    },
+    contact: {
+      title: 'Fem encaixar les peces?',
+      subtitle: 'Escriu-nos sobre el teu projecte per agendar una cita o sol·licitar informació tècnica sense compromisos.',
+      name: 'Nom o Empresa',
+      email: 'El Teu Correu Electrònic',
+      message: 'Explica\'ns breument què necessites...',
+      reason: 'Què vols fer?',
+      reason_opt1: 'Sol·licitar informació general',
+      reason_opt2: 'Agendar una cita / reunió',
+      reason_opt3: 'Sol·licitar pressupost a mida',
+      budget: 'Pressupost orientatiu',
+      budget_opt1: 'Menys de 1.000€',
+      budget_opt2: '1.000€ - 3.000€',
+      budget_opt3: 'Més de 3.000€',
+      urgency: 'Urgència del projecte',
+      urgency_opt1: 'Immediata',
+      urgency_opt2: 'En 1 mes',
+      urgency_opt3: 'Més de 3 mesos',
+      gdpr: 'He llegit i accepto els termes de la política de privacitat de dades per al tractament de la meva sol·licitud de contacte.',
+      send: 'Enviar Sol·licitud',
+      sending: 'Enviant...',
+      success: 'Sol·licitud enviada amb èxit! Ens posarem en contacte amb tu molt aviat per agendar la cita o enviar-te els detalls.',
+      error: 'Error en enviar el missatge. Per favor, torna a provar o escriu-nos directament a: teselarsoftware@icloud.es'
+    },
+    hud: {
+      title: 'Next.js vs. WordPress / No-Code',
+      subtitle: 'La diferència tècnica que decideix l\'èxit del teu negoci. Per què programem a mida.',
+      platform_nextjs: 'La Nostra Solució (Next.js)',
+      platform_wp: 'Solució Tradicional (WordPress)',
+      metric_perf: 'Rendiment (Lighthouse)',
+      metric_speed: 'Temps de Càrrega Mòbil',
+      metric_sec: 'Nivell de Seguretat',
+      metric_plug: 'Dependència de Plugins',
+      metric_scale: 'Escalabilitat de Visites',
+      nextjs_perf_desc: '99% — Càrrega instantània i fluïdesa màxima',
+      wp_perf_desc: '42% — Pesat, lent i frustrant per a l\'usuari',
+      nextjs_speed_desc: '0.2s — Interactiu a l\'instant',
+      wp_speed_desc: '4.8s — Pèrdua del 35% de possibles clients',
+      nextjs_sec_desc: '100% — Inmune a atacs web per arquitectura estàtica',
+      wp_sec_desc: 'Baixa — Constants hackejos i parxes de plugins',
+      nextjs_plug_desc: '0 plugins — Codi natiu net, lleuger i optimitzat',
+      wp_plug_desc: '25+ plugins — Fugides de velocitat i penjades constants',
+      nextjs_scale_desc: 'Ilimitada — Suporta milions de visites amb cost 0€',
+      wp_scale_desc: 'Limitada — El servidor cau en acumular trànsit'
+    },
+    simulator: {
+      title: 'Simulador de Retorn de la Inversió (ROI)',
+      subtitle: 'Descobreix quant temps i diners estàs perdent per no automatitzar les tasques repetitives del teu negoci.',
+      label_hours: 'Hores setmanals malgastades en tasques repetitives',
+      label_employees: 'Nombre d\'empleats fent aquestes tasques',
+      label_cost: 'Cost mitjà per hora de l\'empleat',
+      result_monthly: 'Estalvi Mensual Estimat',
+      result_yearly: 'Estalvi Anual Estimat',
+      result_hours: 'Temps Anual Recuperat',
+      rec_title: 'Proposta de Solució Suggerida',
+      rec_badge: 'RECOMANAT',
+      btn_apply: 'Vincular pressupost i continuar al formulari',
+      notif_linked: '¡Simulació vinculada amb èxit al formulari!',
+      opt_s2: '02. Automatitzacions Específiques',
+      opt_s4: '04. Integració d\'Intel·ligència Artificial',
+      opt_s8: '08. Sistema ERP/CRM (App Nativa)'
+    }
+  },
+  en: {
+    nav: {
+      services: 'Services',
+      pricing: 'Pricing',
+      values: 'Why TESELAR?',
+      process: 'Process',
+      contact: 'Book Meeting'
+    },
+    hero: {
+      tagline: 'Teselar Software',
+      title: 'The exact piece where technology and your business fit perfectly',
+      subtitle: 'We transform your business with accessible and custom technology. From professional web presence to native ERP/CRM systems and custom AI integrations.',
+      cta: 'Request information',
+      cta_alt: 'Book meeting'
+    },
+    concept: {
+      title: 'The Fitting Piece',
+      text1: 'Our visual identity is inspired by tessellation: the art of assembling pieces so they fit together perfectly, leaving no gaps and creating no friction.',
+      text2: 'In the digital world, we represent that exact piece of custom software that your business needs to complete its gears and run with total fluidity.'
+    },
+    services: {
+      title: 'Our Services Catalog',
+      subtitle: 'Modular and high-performance solutions tailored to your size and budget. No hidden costs.',
+      ideal: 'Ideal for:',
+      pricing: 'Price',
+      features: 'What is included:',
+      live_adjustments: 'All our web and software development projects include 1 week of live adjustments and improvements at no additional cost after launch.',
+      interest: 'Interested in this service',
+      categories: {
+        web: 'Web Development',
+        automation: 'Automation & AI',
+        systems: 'Systems & ERP'
+      },
+      s1: {
+        title: '01. Digital Audit & Consulting',
+        ideal: 'Businesses looking to improve their digital presence, detect growth opportunities, or assess their situation before investing.',
+        price: '150€ (One-time payment)',
+        tag: 'SEO & UX Audit',
+        f1: 'Complete analysis of digital presence (web, social networks, SEO)',
+        f2: 'Review of speed, usability, and user experience (UX)',
+        f3: 'Competitor analysis and industry benchmarking',
+        f4: 'Identification of improvements and critical opportunities',
+        f5: 'Custom roadmap with priorities and budget estimates',
+        f6: 'Results presentation session (1h online or in-person)',
+        f7: 'Delivery of a professional high-quality PDF report'
+      },
+      s2: {
+        title: '02. Specific Automations',
+        ideal: 'Companies looking to solve a specific operational efficiency issue with smart automation.',
+        price: '350€ — 900€',
+        tag: 'Apps Script + APIs + Make',
+        f1: 'Automatic generation of PDF quotes/budgets from a web form',
+        f2: 'Automatic invoice mailing connecting directly with your CRM',
+        f3: 'Automated data extraction from emails directly into Google Sheets',
+        f4: 'Functional automated chatbots for WhatsApp or Telegram channels',
+        f5: 'Two-way database synchronization between different platforms',
+        f6: 'Smart automated alert and notification system',
+        f7: 'Daily or weekly automated email reporting'
+      },
+      s3: {
+        title: '03. Landing Page / Professional Web Presence',
+        ideal: 'Freelancers, small businesses, independent professionals, and new entrepreneurs.',
+        price: '600€ — 800€',
+        tag: 'React + Vite + Tailwind CSS',
+        f1: 'High-impact single landing page or 3-4 structured sections',
+        f2: 'Modern, responsive, and mobile-first web design',
+        f3: 'Functional contact form with automated email notification',
+        f4: 'Complete integration with your social media profiles',
+        f5: 'Basic technical SEO (optimized meta tags, clean HTML structure)',
+        f6: 'Extreme load speed and performance optimization',
+        f7: '1 week of live adjustments during deployment'
+      },
+      s4: {
+        title: '04. Artificial Intelligence Integration',
+        ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service.',
+        price: '800€ — 3,000€',
+        tag: 'OpenAI / Anthropic APIs',
+        f1: 'Custom virtual AI assistant trained with your internal company documentation',
+        f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram',
+        f3: 'Automated generation of text content or custom email templates',
+        f4: 'Automated analysis, classification, and summary of documents',
+        f5: 'Advanced automation using Natural Language Processing (NLP)',
+        f6: 'Direct integration with models like GPT-4, Claude 3.5, and others',
+        f7: 'Direct AI operational costs (APIs, tokens) charged directly without extra fees'
+      },
+      s5: {
+        title: '05. Complete Corporate Web',
+        ideal: 'Small and medium enterprises requiring a product catalog, interactive portfolio, or active blog.',
+        price: '1,200€ — 1,800€',
+        tag: 'React + Vite + Headless CMS',
+        f1: 'Modular structure with 5 to 8 well-defined sections',
+        f2: 'Project gallery or interactive portfolio with dynamic filters',
+        f3: 'Self-managed section for blog, articles, or news',
+        f4: 'Intuitive admin panel to manage all contents easily',
+        f5: 'Enhanced technical SEO (sitemap, robots.txt, heading hierarchy)',
+        f6: 'Initial setup and linking with Google Search Console',
+        f7: '1 week of live support and comprehensive training included'
+      },
+      s6: {
+        title: '06. E-commerce / Online Store',
+        ideal: 'Local businesses or brands that want to sell products or services directly online.',
+        price: '2,000€ — 3,000€',
+        tag: 'React + DB + Payment Gateways',
+        f1: 'Interactive, fluid, and ultra-fast loading shopping cart',
+        f2: 'Secure and simplified one-step checkout process',
+        f3: 'Full integration with Stripe, PayPal, and credit cards',
+        f4: 'Complete product and stock management from an admin panel',
+        f5: 'Automated email notifications to clients and the store administrator',
+        f6: 'Discount coupon module, tax config, and shipping rules',
+        f7: 'Client order history and basic automated billing'
+      },
+      s7: {
+        title: '07. Professional Multilingual Web',
+        ideal: 'Businesses targeting international audiences or located in highly touristy areas.',
+        price: '1,800€ — 2,800€',
+        tag: 'React + i18next + Multilingual SEO',
+        f1: 'Complete support for 2 to 7 integrated languages',
+        f2: 'Smart auto-detection of browser language with manual selector',
+        f3: 'Friendly URLs per language and hreflang tag configuration',
+        f4: 'SEO metadata and titles optimized independently per language',
+        f5: 'Implementation of multilingual Schema markup (JSON-LD)',
+        f6: 'Advanced international SEO to attract foreign search traffic',
+        f7: 'Base translation texts provided by the client or quoted separately'
+      },
+      s8: {
+        title: '08. ERP/CRM System (Native Desktop App)',
+        ideal: 'Businesses seeking to centralize clients, projects, and billing without using a web browser.',
+        price: '2,500€ — 5,000€',
+        tag: 'Electron + React + Database',
+        f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
+        f2: 'Interactive dashboard with financial charts and live metrics',
+        f3: 'Complete client management (CRM) and contact database module',
+        f4: 'Automated generation and direct PDF download of quotes and invoices',
+        f5: 'Internal planner for projects, team tasks, and time-tracking',
+        f6: 'Advanced user roles with secure permission levels',
+        f7: 'Team training included + 1 week of priority development support'
+      }
+    },
+    pricing: {
+      title: 'Maintenance & Support',
+      subtitle: 'Absolute peace of mind. We take care of your technology so you can focus on growth.',
+      basic: {
+        title: 'Basic Plan',
+        price: '60€',
+        period: '/ month',
+        desc: 'Perfect for maintaining a stable corporate presence.',
+        f1: 'Periodic library updates and security patches',
+        f2: 'Continuous 24/7 server uptime monitoring',
+        f3: 'Rapid resolution of any technical errors',
+        f4: 'Small content modifications included (up to 1h/month)'
+      },
+      plus: {
+        title: 'Plus Plan',
+        price: '150€',
+        period: '/ month',
+        desc: 'Ideal for active e-commerce or dynamic business websites.',
+        f1: 'Everything included in the Basic Plan',
+        f2: 'Priority developer support (up to 5 hours/month)',
+        f3: 'Monthly performance audit and SEO optimizations',
+        f4: 'Immediate response priority for critical issues'
+      },
+      not_included: {
+        title: 'What is NOT included',
+        desc: 'Direct third-party costs charged to the client: Domain purchase, hosting, professional translation services, payment gateway commissions (Stripe/PayPal), corporate email hosting, email marketing platforms, and direct AI API usage costs.'
+      },
+      payment: {
+        title: 'Payment Terms & Methods',
+        methods: 'Accepted methods: Bank transfer or cash in hand (by appointment).',
+        conditions: 'Terms: Interest-free payment split available up to 3 months. An initial payment of 50% of the total approved budget is always required to start any development.'
+      }
+    },
+    values: {
+      title: 'Why Choose Us?',
+      subtitle: 'The competitive advantage of working with specialized software craftsmen instead of slow corporate agencies or unstable freelancers.',
+      v1: {
+        title: 'Direct Contact, No Intermediaries',
+        desc: 'We speak your language. You deal directly with the developer writing every line of your software, eliminating delay and misunderstandings.'
+      },
+      v2: {
+        title: 'Custom Native Development',
+        desc: 'We avoid heavy, slow, and insecure WordPress templates. We hand-craft websites using React and Tailwind, ensuring unrivaled speed and outstanding SEO.'
+      },
+      v3: {
+        title: 'Local Proximity & Understanding',
+        desc: 'Based in Lloret de Mar. We love visiting your business, meeting in person, and designing the technology that fits your local strategic goals.'
+      },
+      v4: {
+        title: 'Stability & Uptime Guarantee',
+        desc: 'Every project is delivered with a stability guarantee, extensive user training, and dedicated support to ensure your long-term success.'
+      }
+    },
+    process: {
+      title: 'Our Working Method',
+      subtitle: 'A clear roadmap to shape your digital solution from start to finish.',
+      p1: {
+        title: '01. First Contact',
+        desc: 'We analyze your current business needs in detail. We outline goals and recommend the modular solutions that fit your budget.'
+      },
+      p2: {
+        title: '02. Clear Proposal',
+        desc: 'We define the exact software architecture, delivery schedule, and present a transparent, closed budget with no surprises.'
+      },
+      p3: {
+        title: '03. Agile Development',
+        desc: 'We program using industry-leading stack. You will have private access to preview the real progress step by step.'
+      },
+      p4: {
+        title: '04. Live Adjustments',
+        desc: 'We deploy the project. During the first week, we make live tweaks and hotfixes directly based on your real-world feedback.'
+      }
+    },
+    contact: {
+      title: 'Shall we fit the pieces?',
+      subtitle: 'Tell us about your project to book a meeting or request technical details without compromises.',
+      name: 'Name or Company Name',
+      email: 'Your Contact Email',
+      message: 'Briefly tell us what you need...',
+      reason: 'What would you like to do?',
+      reason_opt1: 'Request general information',
+      reason_opt2: 'Book an appointment / meeting',
+      reason_opt3: 'Request a custom quote',
+      budget: 'Approximate budget',
+      budget_opt1: 'Less than 1.000€',
+      budget_opt2: '1.000€ - 3.000€',
+      budget_opt3: 'More than 3.000€',
+      urgency: 'Project urgency',
+      urgency_opt1: 'Immediate',
+      urgency_opt2: 'Within 1 month',
+      urgency_opt3: 'More than 3 months',
+      gdpr: 'I have read and accept the terms of the data privacy policy for the processing of my contact request.',
+      send: 'Send Request',
+      sending: 'Sending...',
+      success: 'Request submitted successfully! We will get in touch with you shortly to book the appointment or send details.',
+      error: 'Error sending message. Please try again or write us directly at: teselarsoftware@icloud.es'
+    },
+    hud: {
+      title: 'Next.js vs. WordPress / No-Code',
+      subtitle: 'The technical difference deciding your business success. Why we code from scratch.',
+      platform_nextjs: 'Our Solution (Next.js)',
+      platform_wp: 'Traditional Solution (WordPress)',
+      metric_perf: 'Performance (Lighthouse)',
+      metric_speed: 'Mobile Load Time',
+      metric_sec: 'Security Level',
+      metric_plug: 'Plugin Dependency',
+      metric_scale: 'Traffic Scalability',
+      nextjs_perf_desc: '99% — Instant load and maximum fluidity',
+      wp_perf_desc: '42% — Heavy, slow, and frustrating user experience',
+      nextjs_speed_desc: '0.2s — Interactive instantly',
+      wp_speed_desc: '4.8s — Loss of 35% of potential clients',
+      nextjs_sec_desc: '100% — Immune to web attacks due to static architecture',
+      wp_sec_desc: 'Low — Constant hacking and plugin vulnerability issues',
+      nextjs_plug_desc: '0 plugins — Clean, lightweight, and optimized native code',
+      wp_plug_desc: '25+ plugins — Speed leaks and constant crashes',
+      nextjs_scale_desc: 'Unlimited — Supports millions of visits with €0 cost',
+      wp_scale_desc: 'Limited — Server crashes when traffic accumulates'
+    },
+    simulator: {
+      title: 'Return on Investment (ROI) Simulator',
+      subtitle: 'Discover how much time and money you are losing by not automating your business tasks.',
+      label_hours: 'Weekly hours wasted on repetitive tasks',
+      label_employees: 'Number of employees doing these tasks',
+      label_cost: 'Average hourly cost per employee',
+      result_monthly: 'Estimated Monthly Savings',
+      result_yearly: 'Estimated Yearly Savings',
+      result_hours: 'Annual Recovered Time',
+      rec_title: 'Suggested Solution Proposal',
+      rec_badge: 'RECOMMENDED',
+      btn_apply: 'Link budget and continue to form',
+      notif_linked: 'Simulation successfully linked to the form!',
+      opt_s2: '02. Specific Automations',
+      opt_s4: '04. Artificial Intelligence Integration',
+      opt_s8: '08. ERP/CRM System (Native Desktop App)'
+    }
+  }
+};
