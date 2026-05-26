@@ -19,11 +19,58 @@ interface Props {
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
   const t = dictionaries[lng as 'es' | 'ca' | 'en'] || dictionaries.en;
+  const baseUrl = 'https://teselarsoftware.com';
+  
+  // Custom metadata based on current language
+  const keywordsMap = {
+    es: ['desarrollo de software', 'software a medida', 'desarrollo web', 'consultoría tecnológica', 'Teselar Software', 'automatización', 'IA'],
+    ca: ['desenvolupament de programari', 'programari a mida', 'desenvolupament web', 'consultoria tecnològica', 'Teselar Software', 'automatització', 'IA'],
+    en: ['custom software development', 'software engineering', 'web development', 'tech consulting', 'Teselar Software', 'automation', 'AI']
+  };
+
+  const currentKeywords = keywordsMap[lng as 'es' | 'ca' | 'en'] || keywordsMap.en;
+
   return {
+    metadataBase: new URL(baseUrl),
     title: `Teselar Software | ${t.hero.title}`,
     description: t.hero.subtitle,
+    keywords: currentKeywords,
+    authors: [{ name: 'Teselar Software' }],
+    creator: 'Teselar Software',
+    publisher: 'Teselar Software',
+    alternates: {
+      canonical: `${baseUrl}/${lng}`,
+      languages: {
+        'es-ES': `${baseUrl}/es`,
+        'ca-ES': `${baseUrl}/ca`,
+        'en-US': `${baseUrl}/en`,
+      },
+    },
+    openGraph: {
+      type: 'website',
+      locale: lng === 'ca' ? 'ca_ES' : lng === 'es' ? 'es_ES' : 'en_US',
+      url: `${baseUrl}/${lng}`,
+      title: `Teselar Software | ${t.hero.title}`,
+      description: t.hero.subtitle,
+      siteName: 'Teselar Software',
+      images: [
+        {
+          url: '/logo_1526x1224.jpeg', // Using the existing high-res logo in the repository
+          width: 1526,
+          height: 1224,
+          alt: 'Teselar Software Logo',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Teselar Software | ${t.hero.title}`,
+      description: t.hero.subtitle,
+      images: ['/logo_1526x1224.jpeg'],
+    },
     icons: {
       icon: '/favicon.ico',
+      apple: '/logo_600x400.jpeg',
     },
   };
 }
