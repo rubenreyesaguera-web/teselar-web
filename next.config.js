@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
   transpilePackages: ['three', '@react-three/fiber', '@react-three/drei', 'framer-motion'],
   reactStrictMode: true,
-  outputFileTracingRoot: path.join(__dirname, '../'),
 };
 
 export default nextConfig;
