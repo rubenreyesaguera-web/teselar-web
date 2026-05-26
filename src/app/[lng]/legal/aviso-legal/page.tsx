@@ -20,7 +20,7 @@ export default function LegalNoticePage({ params }: Props) {
     es: {
       title: 'Aviso Legal',
       sec1_title: '1. Información Identificativa',
-      sec1_text: 'En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se detallan los siguientes datos del titular del sitio web:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: teselarsoftware@icloud.es\n• Teléfono de contacto: +34 653 232 735',
+      sec1_text: 'En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se detallan los siguientes datos del titular del sitio web:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: info@teselarsoftware.com\n• Teléfono de contacto: +34 653 232 735',
       sec2_title: '2. Condiciones de Uso',
       sec2_text: 'El acceso y uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas. El sitio web de Teselar Software proporciona el acceso a multitud de informaciones, servicios, programas o datos en Internet pertenecientes a Teselar Software. El USUARIO asume la responsabilidad del uso del portal.',
       sec3_title: '3. Propiedad Intelectual e Industrial',
@@ -31,7 +31,7 @@ export default function LegalNoticePage({ params }: Props) {
     ca: {
       title: 'Avís Legal',
       sec1_title: '1. Informació Identificativa',
-      sec1_text: 'En compliment de l\'article 10 de la Llei 34/2002, de 11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, es detallen les següents dades del titular del lloc web:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: teselarsoftware@icloud.es\n• Telèfon de contacte: +34 653 232 735',
+      sec1_text: 'En compliment de l\'article 10 de la Llei 34/2002, de 11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, es detallen les següents dades del titular del lloc web:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: info@teselarsoftware.com\n• Telèfon de contacte: +34 653 232 735',
       sec2_title: '2. Condicions d\'Ús',
       sec2_text: 'L\'accés i ús d\'aquest portal atribueix la condició d\'USUARI, que accepta, des d\'aquest accés i/o ús, les Condicions Generals d\'Ús aquí reflectides. El lloc web de Teselar Software proporciona l\'accés a multitud d\'informacions, serveis, programes o dades a Internet pertanyents a Teselar Software. L\'USUARI assumeix la responsabilitat de l\'ús del portal.',
       sec3_title: '3. Propietat Intel·lectual i Industrial',
@@ -42,7 +42,7 @@ export default function LegalNoticePage({ params }: Props) {
     en: {
       title: 'Legal Notice',
       sec1_title: '1. Identification Information',
-      sec1_text: 'In compliance with Article 10 of Law 34/2002, of July 11, on Services of the Information Society and Electronic Commerce, the following details of the owner of the website are detailed:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: teselarsoftware@icloud.es\n• Contact Phone: +34 653 232 735',
+      sec1_text: 'In compliance with Article 10 of Law 34/2002, of July 11, on Services of the Information Society and Electronic Commerce, the following details of the owner of the website are detailed:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: info@teselarsoftware.com\n• Contact Phone: +34 653 232 735',
       sec2_title: '2. Terms of Use',
       sec2_text: 'Access to and/or use of this portal attributes the condition of USER, who accepts, from said access and/or use, the General Conditions of Use reflected here. The website of Teselar Software provides access to information, services, programs, or data on the Internet belonging to Teselar Software. The USER assumes responsibility for the use of the portal.',
       sec3_title: '3. Intellectual and Industrial Property',

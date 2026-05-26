@@ -2029,7 +2029,7 @@ export default function Page({ params }: PageProps) {
                     : lng === 'ca'
                       ? 'Prefereixes escriure\'ns directament? També atenem a: '
                       : 'Prefer to write directly? Contact us at: '}
-                  <span className="text-innovacion font-semibold">teselarsoftware@icloud.es</span>
+                  <span className="text-innovacion font-semibold">info@teselarsoftware.com</span>
                 </p>
               </div>
 
@@ -2078,7 +2078,7 @@ export default function Page({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-innovacion" />
-                <span>teselarsoftware@icloud.es</span>
+                <span>info@teselarsoftware.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-innovacion" />
@@ -2186,7 +2186,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Información Identificativa',
-          text: 'En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se detallan los siguientes datos del titular del sitio web:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: teselarsoftware@icloud.es\n• Teléfono de contacto: +34 653 232 735'
+          text: 'En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico, se detallan los siguientes datos del titular del sitio web:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: info@teselarsoftware.com\n• Teléfono de contacto: +34 653 232 735'
         },
         {
           title: '2. Condiciones de Uso',
@@ -2207,7 +2207,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Responsable del Tratamiento',
-          text: 'El Responsable del Tratamiento de los datos de carácter personal que se recaben a través de este sitio web es:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: teselarsoftware@icloud.es'
+          text: 'El Responsable del Tratamiento de los datos de carácter personal que se recaben a través de este sitio web es:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: info@teselarsoftware.com'
         },
         {
           title: '2. Finalidad del Tratamiento de Datos',
@@ -2223,7 +2223,7 @@ const legalTexts = {
         },
         {
           title: '5. Derechos del Usuario',
-          text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: teselarsoftware@icloud.es.'
+          text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com.'
         }
       ]
     },
@@ -2251,7 +2251,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Informació Identificativa',
-          text: 'En compliment de l\'article 10 de la Llei 34/2002, de 11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, es detallen les següents dades del titular del lloc web:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: teselarsoftware@icloud.es\n• Telèfon de contacte: +34 653 232 735'
+          text: 'En compliment de l\'article 10 de la Llei 34/2002, de 11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic, es detallen les següents dades del titular del lloc web:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: info@teselarsoftware.com\n• Telèfon de contacte: +34 653 232 735'
         },
         {
           title: '2. Condicions d\'Ús',
@@ -2259,10 +2259,10 @@ const legalTexts = {
         },
         {
           title: '3. Propietat Intel·lectual i Industrial',
-          text: 'Teselar Software per si o com a cessionària, és titular de tots els drets de propietat intel·lectual i industrial de la seva pàgina web, així com dels elements continguts en la mateixa (a títol enunciatiu: imatges, so, àudio, vídeo, programari o textos; marques o logotips, combinacions de colors, estructura i disseny, selecció de materials usats, etc.), titularitat de Teselar Software o bé dels seus llicenciants.'
+          text: 'Teselar Software per si o com a cessionària, és titular de tots els drets de propietat intel·lectual i industrial de la seva pàgina web, així com dels elements continguts en la mateixa (a títol enunciatiu: imatges, so, àudio, vídeo, programari o textos; marques o logotips, combinaciones de colors, estructura i disseny, selecció de materials usats, etc.), titularitat de Teselar Software o bé dels seus llicenciants.'
         },
         {
-          title: '4. Exclusió de Garanties i Responsabilitat',
+          title: '4. Exclusió de Garanties i Responsabilidad',
           text: 'Teselar Software no es fa responsable, en cap cas, dels danys i perjudicis de qualsevol naturalesa que poguessin ocasionar, a títol enunciatiu: errors o omissions en els continguts, falta de disponibilitat del portal o la transmissió de virus o programes maliciosos o lesius en els continguts, a pesar d\'haver adoptat totes les mesures tecnològiques necessàries per evitar-ho.'
         }
       ]
@@ -2272,7 +2272,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Responsable del Tractament',
-          text: 'El Responsable del Tractament de les dades de caràcter personal que es recullin a través d\'aquest lloc web és:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: teselarsoftware@icloud.es'
+          text: 'El Responsable del Tractament de les dades de caràcter personal que es recullin a través d\'aquest lloc web és:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: info@teselarsoftware.com'
         },
         {
           title: '2. Finalitat del Tractament de Dades',
@@ -2288,7 +2288,7 @@ const legalTexts = {
         },
         {
           title: '5. Drets de l\'Usuari',
-          text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: teselarsoftware@icloud.es.'
+          text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com.'
         }
       ]
     },
@@ -2316,7 +2316,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Identification Information',
-          text: 'In compliance with Article 10 of Law 34/2002, of July 11, on Services of the Information Society and Electronic Commerce, the following details of the owner of the website are detailed:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: teselarsoftware@icloud.es\n• Contact Phone: +34 653 232 735'
+          text: 'In compliance with Article 10 of Law 34/2002, of July 11, on Services of the Information Society and Electronic Commerce, the following details of the owner of the website are detailed:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: info@teselarsoftware.com\n• Contact Phone: +34 653 232 735'
         },
         {
           title: '2. Terms of Use',
@@ -2337,7 +2337,7 @@ const legalTexts = {
       sections: [
         {
           title: '1. Data Controller',
-          text: 'The Data Controller for the personal data collected through this website is:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: teselarsoftware@icloud.es'
+          text: 'The Data Controller for the personal data collected through this website is:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: info@teselarsoftware.com'
         },
         {
           title: '2. Purpose of Data Processing',
@@ -2345,7 +2345,7 @@ const legalTexts = {
         },
         {
           title: '3. Legal Basis for Processing',
-          text: 'The legal basis that legitimizes the processing of data is the CONSENT of the user. To submit a request through the web contact form, it is mandatory to manually accept the privacy policy by explicitly and unequivocally checking the checkbox enabled for this purpose (General Data Protection Regulation - GDPR).'
+          text: 'The legal basis that legitimize the processing of data is the CONSENT of the user. To submit a request through the web contact form, it is mandatory to manually accept the privacy policy by explicitly and unequivocally checking the checkbox enabled for this purpose (General Data Protection Regulation - GDPR).'
         },
         {
           title: '4. Data Retention',
@@ -2353,7 +2353,7 @@ const legalTexts = {
         },
         {
           title: '5. Rights of the User',
-          text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: teselarsoftware@icloud.es.'
+          text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com.'
         }
       ]
     },

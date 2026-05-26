@@ -234,7 +234,7 @@ export const dictionaries = {
       send: 'Enviar Solicitud',
       sending: 'Enviando...',
       success: '¡Solicitud enviada con éxito! Nos pondremos en contacto contigo a la brevedad para agendar la cita o enviarte los detalles.',
-      error: 'Error al enviar el mensaje. Por favor, reinténtalo o escríbenos directamente a: teselarsoftware@icloud.es'
+      error: 'Error al enviar el mensaje. Por favor, reinténtalo o escríbenos directamente a: info@teselarsoftware.com'
     },
     hud: {
       title: 'Next.js vs. WordPress / No-Code',
@@ -508,7 +508,7 @@ export const dictionaries = {
       send: 'Enviar Sol·licitud',
       sending: 'Enviant...',
       success: 'Sol·licitud enviada amb èxit! Ens posarem en contacte amb tu molt aviat per agendar la cita o enviar-te els detalls.',
-      error: 'Error en enviar el missatge. Per favor, torna a provar o escriu-nos directament a: teselarsoftware@icloud.es'
+      error: 'Error en enviar el missatge. Per favor, torna a provar o escriu-nos directament a: info@teselarsoftware.com'
     },
     hud: {
       title: 'Next.js vs. WordPress / No-Code',
@@ -782,7 +782,7 @@ export const dictionaries = {
       send: 'Send Request',
       sending: 'Sending...',
       success: 'Request submitted successfully! We will get in touch with you shortly to book the appointment or send details.',
-      error: 'Error sending message. Please try again or write us directly at: teselarsoftware@icloud.es'
+      error: 'Error sending message. Please try again or write us directly at: info@teselarsoftware.com'
     },
     hud: {
       title: 'Next.js vs. WordPress / No-Code',

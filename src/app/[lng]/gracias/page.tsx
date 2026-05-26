@@ -85,7 +85,7 @@ export default function GraciasPage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <span>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
           <div className="flex gap-4 text-claridad/60 font-semibold">
-            <span>teselarsoftware@icloud.es</span>
+            <span>info@teselarsoftware.com</span>
             <span>|</span>
             <span>+34 653 232 735</span>
           </div>
