@@ -8,7 +8,8 @@ import { dictionaries } from '../../i18n/dictionaries';
 import { 
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, 
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin, 
-  Check, ShieldCheck, CreditCard, ChevronRight, Calendar, Sparkles
+  Check, ShieldCheck, CreditCard, ChevronRight, Calendar, Sparkles,
+  Gift, Star, Users, Clock, Send
 } from 'lucide-react';
 
 interface PageProps {
@@ -142,6 +143,16 @@ export default function Page({ params }: PageProps) {
   const [hourlyCost, setHourlyCost] = useState(20);
   const [showSimulatorNotif, setShowSimulatorNotif] = useState(false);
 
+  // Lead Capture System states
+  const [showExitPopup, setShowExitPopup] = useState(false);
+  const [exitPopupShown, setExitPopupShown] = useState(false);
+  const [showScrollToast, setShowScrollToast] = useState(false);
+  const [scrollToastShown, setScrollToastShown] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const [exitFormSubmitting, setExitFormSubmitting] = useState(false);
+  const [exitFormSuccess, setExitFormSuccess] = useState(false);
+  const contactSectionRef = useRef<HTMLElement>(null);
+
   // Sticky Scroll Container tracking for cinematic morphing
   const heroContainerRef = useRef<HTMLDivElement>(null);
   
@@ -191,6 +202,107 @@ export default function Page({ params }: PageProps) {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // Lead Capture: Exit-Intent Detection (Desktop only)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    // Check if exit popup was already shown this session
+    if (sessionStorage.getItem('teselar_exit_shown') === 'true') {
+      setExitPopupShown(true);
+    }
+    
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !exitPopupShown && sessionStorage.getItem('teselar_exit_shown') !== 'true') {
+        setShowExitPopup(true);
+        setExitPopupShown(true);
+        sessionStorage.setItem('teselar_exit_shown', 'true');
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+    return () => document.removeEventListener('mouseleave', handleMouseLeave);
+  }, [exitPopupShown]);
+
+  // Lead Capture: Scroll Progress Tracking (Sticky Bar + Toast)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Check if scroll toast was already shown this session
+    if (sessionStorage.getItem('teselar_toast_shown') === 'true') {
+      setScrollToastShown(true);
+    }
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+
+      // Show sticky bar after scrolling past hero (> 500px)
+      if (scrollTop > 500) {
+        setShowStickyBar(true);
+      } else {
+        setShowStickyBar(false);
+      }
+
+      // Show scroll toast at 60% scroll depth (once per session)
+      if (scrollPercent > 60 && !scrollToastShown && sessionStorage.getItem('teselar_toast_shown') !== 'true') {
+        setShowScrollToast(true);
+        setScrollToastShown(true);
+        sessionStorage.setItem('teselar_toast_shown', 'true');
+        // Auto-hide after 8 seconds
+        setTimeout(() => setShowScrollToast(false), 8000);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrollToastShown]);
+
+  // Lead Capture: Hide sticky bar when contact section is visible
+  useEffect(() => {
+    const el = contactSectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowStickyBar(false);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Exit-intent mini form handler
+  const handleExitFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setExitFormSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append('access_key', '5c1024f8-ccf6-408d-926f-553dd013526a');
+    formData.append('subject', `Lead Rápido Exit-Intent: ${formData.get('name')}`);
+    formData.append('from_name', 'Teselar Web Exit-Intent');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      if (data.success) {
+        setExitFormSuccess(true);
+        setTimeout(() => {
+          setShowExitPopup(false);
+          setExitFormSuccess(false);
+        }, 3000);
+      }
+    } catch {
+      // If there's an error, just close the popup
+      setShowExitPopup(false);
+    }
+    setExitFormSubmitting(false);
+  };
 
   // 1. Center Massive Title Transforms (0px to 140px - fades out quickly to prevent overlap)
   const centerTitleOpacity = useTransform(smoothScrollY, [0, 140], [1, 0]);
@@ -477,31 +589,38 @@ export default function Page({ params }: PageProps) {
         )}
       </AnimatePresence>
 
-      {/* 1. SCROLL-DRIVEN CINEMATIC HERO TRACK */}
-      <section ref={heroContainerRef} className="relative h-[160vh] w-full z-10">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+      {/* 1. SCROLL-DRIVEN CINEMATIC HERO TRACK (Desktop: scroll-driven | Mobile: auto-reveal) */}
+      <section ref={heroContainerRef} className={`relative w-full z-10 ${isMobile ? 'min-h-screen-dynamic' : 'h-[160vh]'}`}>
+        <div className={`${isMobile ? 'relative min-h-screen-dynamic' : 'sticky top-0 h-screen'} w-full flex items-center justify-center overflow-hidden`}>
           {/* Scoped High-Tech Cyber Dotted Grid (Subtle and ultra-premium) */}
           <div className="hero-grid opacity-15" />
 
-          {/* Colorful cinematic neon glow balls behind the Hero for stunning visual depth */}
-          <div className="absolute top-[18%] left-[8%] w-[40vw] h-[40vw] rounded-full bg-innovacion/8 blur-[130px] pointer-events-none z-0" />
-          <div className="absolute bottom-[10%] right-[10%] w-[45vw] h-[45vw] rounded-full bg-teselar/25 blur-[160px] pointer-events-none z-0 animate-pulse" style={{ animationDuration: '9s' }} />
+          {/* Colorful cinematic neon glow balls (reduced on mobile) */}
+          <div className={`absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[80px]' : 'w-[40vw] h-[40vw] blur-[130px]'}`} />
+          <div className={`absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 animate-pulse ${isMobile ? 'w-[60vw] h-[60vw] blur-[100px]' : 'w-[45vw] h-[45vw] blur-[160px]'}`} style={{ animationDuration: '9s' }} />
 
-          {/* Widescreen Hollywood Anamorphic Lens Flare Background accents */}
-          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[1px] bg-gradient-to-r from-transparent via-innovacion/70 to-transparent blur-[2px] pointer-events-none z-0" />
-          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[6px] bg-gradient-to-r from-transparent via-innovacion to-transparent blur-[6px] pointer-events-none z-0 cinematic-flare-pulse" />
-          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-innovacion/20 blur-2xl pointer-events-none z-0 cinematic-flare-pulse" />
-          <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[120px] bg-gradient-to-r from-transparent via-teselar/25 to-transparent blur-[80px] pointer-events-none z-0" />
+          {/* Widescreen Hollywood Anamorphic Lens Flare Background accents (hidden on mobile for perf) */}
+          {!isMobile && (
+            <>
+              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[1px] bg-gradient-to-r from-transparent via-innovacion/70 to-transparent blur-[2px] pointer-events-none z-0" />
+              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[6px] bg-gradient-to-r from-transparent via-innovacion to-transparent blur-[6px] pointer-events-none z-0 cinematic-flare-pulse" />
+              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-innovacion/20 blur-2xl pointer-events-none z-0 cinematic-flare-pulse" />
+              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[120px] bg-gradient-to-r from-transparent via-teselar/25 to-transparent blur-[80px] pointer-events-none z-0" />
+            </>
+          )}
 
-          {/* Centered Massive branding logo card (Visually stunning theatrical entry, morphs on scroll) */}
+          {/* Centered Massive branding logo card — Desktop: scroll-driven fade | Mobile: auto-fade splash */}
           <motion.div 
             ref={heroTitleRef}
-            style={{ 
+            style={isMobile ? undefined : { 
               opacity: heroBuilt ? 0 : centerTitleOpacity, 
               scale: heroBuilt ? 0.7 : centerTitleScale, 
               y: heroBuilt ? -50 : centerTitleY 
             }}
-            className="absolute z-40 flex flex-col items-center justify-center pointer-events-none select-none text-center px-4"
+            initial={isMobile ? { opacity: 1, scale: 1 } : undefined}
+            animate={isMobile ? { opacity: 0, scale: 0.7, y: -30 } : undefined}
+            transition={isMobile ? { duration: 0.8, delay: 1.2, ease: 'easeInOut' } : undefined}
+            className={`absolute z-40 flex flex-col items-center justify-center pointer-events-none select-none text-center px-4 ${isMobile ? '' : ''}`}
           >
             <div className="w-16 h-px bg-innovacion/35 mb-6" />
             <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.06em] text-claridad drop-shadow-[0_0_30px_rgba(0,191,165,0.3)] uppercase leading-none">
@@ -511,102 +630,164 @@ export default function Page({ params }: PageProps) {
               SOFTWARE
             </h2>
             <div className="w-16 h-px bg-innovacion/35 mt-8" />
-            <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
-              [ SCROLL_TO_INITIALIZE ]
-            </p>
+            {!isMobile && (
+              <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
+                [ SCROLL_TO_INITIALIZE ]
+              </p>
+            )}
           </motion.div>
 
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 px-4 md:px-8 pt-24 md:pt-28 lg:pt-20">
             
-            {/* Hero Left Content floats elegantly and openly, revealing staggered elements on scroll */}
+            {/* Hero Left Content — Desktop: scroll-reveal | Mobile: staggered auto fade-in */}
             <div className="lg:col-span-7 flex flex-col items-start text-left relative z-10 pr-0 lg:pr-6">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase flex flex-wrap">
-                {activeWords.map((wordObj, idx) => (
-                  <AnimatedWord 
-                    key={idx}
-                    word={wordObj.text}
-                    index={idx}
-                    totalWords={activeWords.length}
-                    isGradient={wordObj.isGradient}
-                    scrollY={smoothScrollY}
-                    heroBuilt={heroBuilt}
-                  />
-                ))}
-              </h1>
-              
-              <motion.p 
-                style={{ 
-                  opacity: heroBuilt ? 1 : subtitleOpacity, 
-                  y: heroBuilt ? 0 : subtitleY 
-                }}
-                className="text-xl md:text-2xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
-              >
-                {t.hero.subtitle}
-              </motion.p>
-              
-              <motion.div 
-                style={{ 
-                  opacity: heroBuilt ? 1 : ctaOpacity, 
-                  y: heroBuilt ? 0 : ctaY 
-                }}
-                className="w-full sm:w-auto flex flex-col sm:flex-row gap-4"
-              >
-                <button 
-                  onClick={() => handleScrollToContact('meeting')}
-                  className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+              {isMobile ? (
+                /* MOBILE: Simple staggered fade-in title (no scroll dependency) */
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.6 }}
+                  className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase"
                 >
-                  <Calendar size={18} />
-                  {t.hero.cta_alt}
-                </button>
-                <button 
-                  onClick={() => handleScrollToContact('info')}
-                  className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  {activeWords.map((wordObj, idx) => (
+                    <span 
+                      key={idx}
+                      className={`inline-block mr-[0.22em] ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
+                    >
+                      {wordObj.text}
+                    </span>
+                  ))}
+                </motion.h1>
+              ) : (
+                /* DESKTOP: Scroll-driven word-by-word reveal */
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase flex flex-wrap">
+                  {activeWords.map((wordObj, idx) => (
+                    <AnimatedWord 
+                      key={idx}
+                      word={wordObj.text}
+                      index={idx}
+                      totalWords={activeWords.length}
+                      isGradient={wordObj.isGradient}
+                      scrollY={smoothScrollY}
+                      heroBuilt={heroBuilt}
+                    />
+                  ))}
+                </h1>
+              )}
+              
+              {isMobile ? (
+                <motion.p 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 2.0 }}
+                  className="text-xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
                 >
-                  <Info size={18} />
-                  {t.hero.cta}
-                </button>
-              </motion.div>
+                  {t.hero.subtitle}
+                </motion.p>
+              ) : (
+                <motion.p 
+                  style={{ 
+                    opacity: heroBuilt ? 1 : subtitleOpacity, 
+                    y: heroBuilt ? 0 : subtitleY 
+                  }}
+                  className="text-xl md:text-2xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
+                >
+                  {t.hero.subtitle}
+                </motion.p>
+              )}
+              
+              {isMobile ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 2.3 }}
+                  className="w-full flex flex-col gap-4"
+                >
+                  <button 
+                    onClick={() => handleScrollToContact('meeting')}
+                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Calendar size={18} />
+                    {t.hero.cta_alt}
+                  </button>
+                  <button 
+                    onClick={() => handleScrollToContact('info')}
+                    className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Info size={18} />
+                    {t.hero.cta}
+                  </button>
+                </motion.div>
+              ) : (
+                <motion.div 
+                  style={{ 
+                    opacity: heroBuilt ? 1 : ctaOpacity, 
+                    y: heroBuilt ? 0 : ctaY 
+                  }}
+                  className="w-full sm:w-auto flex flex-col sm:flex-row gap-4"
+                >
+                  <button 
+                    onClick={() => handleScrollToContact('meeting')}
+                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Calendar size={18} />
+                    {t.hero.cta_alt}
+                  </button>
+                  <button 
+                    onClick={() => handleScrollToContact('info')}
+                    className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Info size={18} />
+                    {t.hero.cta}
+                  </button>
+                </motion.div>
+              )}
             </div>
 
-            {/* Hero Right Content (Floating Interactive Glass Mosaic illustration with monospaced micro-holograms, reveals on scroll) */}
+            {/* Hero Right Content (hidden on mobile for clean hero, visible on lg+) */}
             <motion.div 
-              style={{ 
+              style={isMobile ? undefined : { 
                 opacity: heroBuilt ? 1 : rightOpacity, 
                 scale: heroBuilt ? 1 : rightScale 
               }}
-              className="lg:col-span-5 flex justify-center items-center relative min-h-[350px]"
+              initial={isMobile ? { opacity: 0, scale: 0.9 } : undefined}
+              animate={isMobile ? { opacity: 1, scale: 1 } : undefined}
+              transition={isMobile ? { duration: 0.8, delay: 2.5 } : undefined}
+              className="lg:col-span-5 flex justify-center items-center relative min-h-[280px] md:min-h-[350px]"
             >
-              <div className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
+              <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
                 {/* Glassmorphic puzzle elements floating with custom animations & rich cyber HUD details */}
-                <div className="absolute w-44 h-44 bg-teselar/30 backdrop-blur-md border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-claridad/50">
+                <div className={`absolute bg-teselar/30 backdrop-blur-md border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-claridad/50 ${isMobile ? 'w-32 h-32 p-3 text-[8px]' : 'w-44 h-44'}`}>
                   <div className="flex justify-between items-center">
                     <span>[ MODULE.01 ]</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-innovacion" />
                   </div>
-                  <div className="text-[9px] tracking-widest text-innovacion/70 uppercase font-bold">INTEGRITY_OK</div>
+                  <div className={`tracking-widest text-innovacion/70 uppercase font-bold ${isMobile ? 'text-[7px]' : 'text-[9px]'}`}>INTEGRITY_OK</div>
                 </div>
                 
-                <div className="absolute w-36 h-36 bg-innovacion/20 backdrop-blur-md border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-innovacion" style={{ animationDelay: '-2s' }}>
+                <div className={`absolute bg-innovacion/20 backdrop-blur-md border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-innovacion ${isMobile ? 'w-28 h-28 p-3 text-[8px]' : 'w-36 h-36'}`} style={{ animationDelay: '-2s' }}>
                   <div className="flex justify-between items-center">
                     <span>[ CORE.SYS ]</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-innovacion animate-ping" />
                   </div>
-                  <div className="text-[9px] tracking-widest text-claridad/85 uppercase font-black">PERF: 99.2%</div>
+                  <div className={`tracking-widest text-claridad/85 uppercase font-black ${isMobile ? 'text-[7px]' : 'text-[9px]'}`}>PERF: 99.2%</div>
                 </div>
                 
-                <div className="absolute w-24 h-24 bg-teselar-light/50 backdrop-blur-lg border border-claridad/10 rounded-2xl rotate-45 translate-x-6 -translate-y-20 animate-float shadow-xl flex flex-col justify-between p-4 text-[8px] font-mono text-claridad/45" style={{ animationDelay: '-4s' }}>
-                  <span>[ DB.NODE ]</span>
-                  <span className="text-[7px] tracking-widest text-innovacion/80 uppercase font-bold">SYNC_ACTIVE</span>
-                </div>
+                {!isMobile && (
+                  <div className="absolute w-24 h-24 bg-teselar-light/50 backdrop-blur-lg border border-claridad/10 rounded-2xl rotate-45 translate-x-6 -translate-y-20 animate-float shadow-xl flex flex-col justify-between p-4 text-[8px] font-mono text-claridad/45" style={{ animationDelay: '-4s' }}>
+                    <span>[ DB.NODE ]</span>
+                    <span className="text-[7px] tracking-widest text-innovacion/80 uppercase font-bold">SYNC_ACTIVE</span>
+                  </div>
+                )}
                 
                 {/* Central Glowing Active Core representing Teselar Logo concept */}
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                  className="w-48 h-48 rounded-full border border-dashed border-innovacion/30 flex items-center justify-center absolute p-4"
+                  className={`rounded-full border border-dashed border-innovacion/30 flex items-center justify-center absolute p-4 ${isMobile ? 'w-36 h-36' : 'w-48 h-48'}`}
                 >
-                  <div className="w-36 h-36 rounded-full border border-innovacion/15 flex items-center justify-center">
-                    <img src="/logo.jpeg" alt="Teselar core" className="w-24 h-24 rounded-full border-2 border-innovacion/60 shadow-lg shadow-innovacion/20 object-cover" />
+                  <div className={`rounded-full border border-innovacion/15 flex items-center justify-center ${isMobile ? 'w-28 h-28' : 'w-36 h-36'}`}>
+                    <img src="/logo.jpeg" alt="Teselar core" className={`rounded-full border-2 border-innovacion/60 shadow-lg shadow-innovacion/20 object-cover ${isMobile ? 'w-20 h-20' : 'w-24 h-24'}`} />
                   </div>
                 </motion.div>
               </div>
@@ -847,6 +1028,38 @@ export default function Page({ params }: PageProps) {
           </div>
 
         </div>
+      </section>
+
+      {/* INLINE LEAD MAGNET CTA BANNER (Between Values and HUD) */}
+      <section className="relative py-16 px-4 md:px-8 z-10 overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-4xl mx-auto inline-cta-banner glass-card p-10 md:p-14 rounded-[2.5rem] text-center relative"
+        >
+          <div className="absolute -top-20 -right-20 w-40 h-40 bg-innovacion/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 bg-innovacion/15 border border-innovacion/30 px-4 py-2 rounded-full text-innovacion text-xs font-mono font-bold tracking-wider uppercase mb-6">
+              <Gift size={14} />
+              <span>{lng === 'es' ? 'SIN COMPROMISO' : lng === 'ca' ? 'SENSE COMPROMÍS' : 'NO COMMITMENT'}</span>
+            </div>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-glow-cyan">
+              {t.leads.inline_title}
+            </h3>
+            <p className="text-base md:text-lg text-claridad/80 font-light max-w-2xl mx-auto mb-8 leading-relaxed">
+              {t.leads.inline_subtitle}
+            </p>
+            <button
+              onClick={() => handleScrollToContact('info')}
+              className="bg-innovacion text-teselar-dark font-black tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer text-base flex items-center justify-center gap-2 mx-auto"
+            >
+              <Star size={18} />
+              {t.leads.inline_btn}
+            </button>
+          </div>
+        </motion.div>
       </section>
 
       {/* 3.5. HUD COMPARATIVO TÉCNICO (Next.js vs. WordPress / No-Code) */}
@@ -1295,6 +1508,27 @@ export default function Page({ params }: PageProps) {
         </div>
       </section>
 
+      {/* POST-SERVICES URGENCY STRIP */}
+      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+              <Users size={22} />
+            </div>
+            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+              {t.leads.post_services}
+            </p>
+          </div>
+          <button
+            onClick={() => handleScrollToContact('meeting')}
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+          >
+            <Calendar size={14} />
+            {t.leads.post_services_btn}
+          </button>
+        </div>
+      </div>
+
       {/* 4.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
       <section id="roi-simulator" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden bg-teselar-dark/10 backdrop-blur-sm border-b border-claridad/5 content-visibility-auto">
         <div className="max-w-6xl mx-auto">
@@ -1567,6 +1801,27 @@ export default function Page({ params }: PageProps) {
       </AnimatePresence>
 
       {/* 4. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
+      {/* POST-ROI URGENCY STRIP */}
+      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+              <Clock size={22} />
+            </div>
+            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+              {t.leads.post_roi}
+            </p>
+          </div>
+          <button
+            onClick={() => handleScrollToContact('meeting')}
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+          >
+            <Calendar size={14} />
+            {t.leads.post_roi_btn}
+          </button>
+        </div>
+      </div>
+
       <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
         <div className="max-w-7xl mx-auto">
           
@@ -1679,7 +1934,26 @@ export default function Page({ params }: PageProps) {
         </div>
       </section>
 
-
+      {/* POST-PRICING URGENCY STRIP */}
+      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+              <Star size={22} />
+            </div>
+            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+              {t.leads.post_pricing}
+            </p>
+          </div>
+          <button
+            onClick={() => handleScrollToContact('quote')}
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+          >
+            <Send size={14} />
+            {t.leads.post_pricing_btn}
+          </button>
+        </div>
+      </div>
 
       {/* 6. EL PROCESO: TIMELINE INTERACTIVO */}
       <section id="process" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden content-visibility-auto">
@@ -1875,7 +2149,7 @@ export default function Page({ params }: PageProps) {
       </section>
 
       {/* 7. FORMULARIO DE CONVERSION: SOPORTE, AGENDA & CONTACTO */}
-      <section id="contact" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
+      <section id="contact" ref={contactSectionRef} className="relative py-28 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center max-w-4xl mx-auto mb-20">
@@ -2173,6 +2447,166 @@ export default function Page({ params }: PageProps) {
             </motion.div>
           );
         })()}
+      </AnimatePresence>
+
+
+
+      {/* LEAD CAPTURE: Sticky Bottom CTA Bar (Mobile only) */}
+      <AnimatePresence>
+        {showStickyBar && isMobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ duration: 0.4, type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed bottom-6 left-0 right-0 z-50 px-4 pointer-events-none"
+          >
+            <div className="max-w-sm mx-auto pointer-events-auto">
+              <button
+                onClick={() => handleScrollToContact('meeting')}
+                className="w-full bg-innovacion text-teselar-dark font-black tracking-widest uppercase py-4 rounded-2xl sticky-cta-bar flex items-center justify-center gap-3 shadow-2xl"
+              >
+                <Calendar size={18} />
+                <span>{t.leads.sticky_cta_long}</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* LEAD CAPTURE: Exit-Intent Popup (Desktop only) */}
+      <AnimatePresence>
+        {showExitPopup && !isMobile && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[999999] exit-popup-overlay flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="max-w-md w-full glass-card p-8 rounded-[2rem] border-2 border-innovacion/30 shadow-2xl relative"
+            >
+              <button
+                onClick={() => setShowExitPopup(false)}
+                className="absolute top-4 right-4 p-2 rounded-full bg-claridad/5 hover:bg-innovacion/25 text-claridad hover:text-innovacion transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+              
+              <div className="text-center mb-6 mt-2">
+                <div className="w-16 h-16 rounded-full bg-innovacion/15 border border-innovacion/30 flex items-center justify-center mx-auto mb-4 text-innovacion">
+                  <Gift size={32} />
+                </div>
+                <h3 className="text-2xl font-black text-glow-cyan mb-2">
+                  {t.leads.exit_title}
+                </h3>
+                <p className="text-sm text-claridad/80 font-light leading-relaxed">
+                  {t.leads.exit_subtitle}
+                </p>
+              </div>
+
+              {!exitFormSuccess ? (
+                <form onSubmit={handleExitFormSubmit} className="space-y-4">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    required 
+                    className="mini-form-input" 
+                    placeholder={t.leads.exit_name} 
+                  />
+                  <input 
+                    type="email" 
+                    name="email" 
+                    required 
+                    className="mini-form-input" 
+                    placeholder={t.leads.exit_email} 
+                  />
+                  <div className="flex items-start gap-2 pt-1">
+                    <input type="checkbox" id="exit-gdpr" required className="mt-1" />
+                    <label htmlFor="exit-gdpr" className="text-[10px] text-claridad/50 leading-tight">
+                      {t.leads.exit_gdpr}
+                    </label>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={exitFormSubmitting}
+                    className="w-full bg-innovacion text-teselar-dark font-black tracking-wider uppercase py-4 rounded-xl shadow-lg hover:bg-claridad transition-all duration-300 flex items-center justify-center gap-2 mt-4"
+                  >
+                    {exitFormSubmitting ? (
+                      <div className="w-5 h-5 border-2 border-teselar-dark border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        {t.leads.exit_btn}
+                      </>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowExitPopup(false)}
+                    className="w-full text-center text-xs text-claridad/40 hover:text-claridad transition-colors mt-2"
+                  >
+                    {t.leads.exit_close}
+                  </button>
+                </form>
+              ) : (
+                <div className="text-center py-6">
+                  <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <p className="text-lg font-bold text-claridad">
+                    {t.contact.success}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* LEAD CAPTURE: Scroll-Triggered Toast (Bottom Left) */}
+      <AnimatePresence>
+        {showScrollToast && (
+          <motion.div
+            initial={{ opacity: 0, x: -50, y: 20 }}
+            animate={{ opacity: 1, x: 0, y: 0 }}
+            exit={{ opacity: 0, x: -50, y: 20 }}
+            className="fixed bottom-6 left-6 z-40 max-w-sm"
+          >
+            <div className="glass-card p-5 rounded-2xl border border-innovacion/40 shadow-[0_8px_32px_rgba(0,191,165,0.2)] flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-innovacion/20 flex items-center justify-center text-innovacion flex-shrink-0 mt-1">
+                <Info size={20} />
+              </div>
+              <div className="flex-1 pr-4">
+                <h4 className="font-bold text-sm text-claridad mb-1">
+                  {t.leads.toast_title}
+                </h4>
+                <p className="text-xs text-claridad/70 leading-relaxed mb-3">
+                  {t.leads.toast_text}
+                </p>
+                <button
+                  onClick={() => {
+                    setShowScrollToast(false);
+                    handleScrollToContact('info');
+                  }}
+                  className="text-xs font-bold text-innovacion hover:text-claridad transition-colors flex items-center gap-1"
+                >
+                  {t.leads.toast_btn}
+                  <ArrowRight size={12} />
+                </button>
+              </div>
+              <button
+                onClick={() => setShowScrollToast(false)}
+                className="absolute top-3 right-3 text-claridad/40 hover:text-claridad transition-colors"
+              >
+                <X size={14} />
+              </button>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
     </div>

@@ -273,6 +273,29 @@ export const dictionaries = {
       opt_s2: '02. Automatizaciones Específicas',
       opt_s4: '04. Integración de Inteligencia Artificial',
       opt_s8: '08. Sistema ERP/CRM (App Nativa)'
+    },
+    leads: {
+      sticky_cta: 'Consulta gratuita',
+      sticky_cta_long: 'Reserva tu consulta gratuita',
+      exit_title: '¡Espera! Tu primera consulta es GRATIS',
+      exit_subtitle: 'Déjanos tu contacto y te llamamos sin compromiso para analizar tu proyecto.',
+      exit_name: 'Tu nombre',
+      exit_email: 'Tu email',
+      exit_btn: 'Quiero mi consulta gratis',
+      exit_close: 'No, gracias',
+      exit_gdpr: 'Acepto la política de privacidad',
+      toast_title: '¿Necesitas ayuda para decidir?',
+      toast_text: 'Háblanos sin compromiso. Te asesoramos sobre la mejor solución para tu negocio.',
+      toast_btn: 'Hablar con un experto',
+      inline_title: '¿Tienes un proyecto en mente?',
+      inline_subtitle: 'Cuéntanos tu idea y te asesoramos sin compromiso. Cada negocio es único.',
+      inline_btn: 'Solicitar análisis gratuito',
+      post_services: 'Trabajamos con un número reducido de clientes para garantizar la máxima calidad en cada proyecto.',
+      post_services_btn: 'Reserva tu plaza',
+      post_roi: 'Tu proyecto merece atención personalizada. Reserva tu consulta y descubre cómo podemos ayudarte.',
+      post_roi_btn: 'Agendar consulta personalizada',
+      post_pricing: 'Cada solución que creamos es única, como tu negocio. Hablemos sobre lo que necesitas.',
+      post_pricing_btn: 'Solicitar presupuesto a medida'
     }
   },
   ca: {
@@ -547,6 +570,29 @@ export const dictionaries = {
       opt_s2: '02. Automatitzacions Específiques',
       opt_s4: '04. Integració d\'Intel·ligència Artificial',
       opt_s8: '08. Sistema ERP/CRM (App Nativa)'
+    },
+    leads: {
+      sticky_cta: 'Consulta gratuïta',
+      sticky_cta_long: 'Reserva la teva consulta gratuïta',
+      exit_title: 'Espera! La teva primera consulta és GRATIS',
+      exit_subtitle: 'Deixa\'ns el teu contacte i et truquem sense compromís per analitzar el teu projecte.',
+      exit_name: 'El teu nom',
+      exit_email: 'El teu email',
+      exit_btn: 'Vull la meva consulta gratis',
+      exit_close: 'No, gràcies',
+      exit_gdpr: 'Accepto la política de privacitat',
+      toast_title: 'Necessites ajuda per decidir?',
+      toast_text: 'Parla\'ns sense compromís. T\'assessorem sobre la millor solució per al teu negoci.',
+      toast_btn: 'Parlar amb un expert',
+      inline_title: 'Tens un projecte en ment?',
+      inline_subtitle: 'Explica\'ns la teva idea i t\'assessorem sense compromís. Cada negoci és únic.',
+      inline_btn: 'Sol·licitar anàlisi gratuït',
+      post_services: 'Treballem amb un nombre reduït de clients per garantir la màxima qualitat a cada projecte.',
+      post_services_btn: 'Reserva la teva plaça',
+      post_roi: 'El teu projecte mereix atenció personalitzada. Reserva la teva consulta i descobreix com podem ajudar-te.',
+      post_roi_btn: 'Agendar consulta personalitzada',
+      post_pricing: 'Cada solució que creem és única, com el teu negoci. Parlem sobre el que necessites.',
+      post_pricing_btn: 'Sol·licitar pressupost a mida'
     }
   },
   en: {
@@ -821,6 +867,29 @@ export const dictionaries = {
       opt_s2: '02. Specific Automations',
       opt_s4: '04. Artificial Intelligence Integration',
       opt_s8: '08. ERP/CRM System (Native Desktop App)'
+    },
+    leads: {
+      sticky_cta: 'Free consultation',
+      sticky_cta_long: 'Book your free consultation',
+      exit_title: 'Wait! Your first consultation is FREE',
+      exit_subtitle: 'Leave us your contact details and we\'ll call you with no commitment to analyze your project.',
+      exit_name: 'Your name',
+      exit_email: 'Your email',
+      exit_btn: 'I want my free consultation',
+      exit_close: 'No, thanks',
+      exit_gdpr: 'I accept the privacy policy',
+      toast_title: 'Need help deciding?',
+      toast_text: 'Talk to us with no commitment. We\'ll advise you on the best solution for your business.',
+      toast_btn: 'Talk to an expert',
+      inline_title: 'Have a project in mind?',
+      inline_subtitle: 'Tell us your idea and we\'ll advise you at no cost. Every business is unique.',
+      inline_btn: 'Request free analysis',
+      post_services: 'We work with a limited number of clients to guarantee maximum quality on every project.',
+      post_services_btn: 'Reserve your spot',
+      post_roi: 'Your project deserves personalized attention. Book your consultation and discover how we can help.',
+      post_roi_btn: 'Book personalized consultation',
+      post_pricing: 'Every solution we create is unique, just like your business. Let\'s talk about what you need.',
+      post_pricing_btn: 'Request a custom quote'
     }
   }
 };
