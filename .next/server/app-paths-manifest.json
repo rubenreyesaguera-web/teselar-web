@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/[lng]/legal/cookies/page": "app/[lng]/legal/cookies/page.js",
-  "/[lng]/gracias/page": "app/[lng]/gracias/page.js",
-  "/[lng]/legal/privacidad/page": "app/[lng]/legal/privacidad/page.js",
-  "/[lng]/legal/aviso-legal/page": "app/[lng]/legal/aviso-legal/page.js",
-  "/[lng]/page": "app/[lng]/page.js"
-}
