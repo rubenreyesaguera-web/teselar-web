@@ -19,6 +19,7 @@ CATÁLOGO OFICIAL TESELAR (precios cerrados, PROHIBIDO inventar otros):
 - Sistema de Gestión a Medida (ERP/CRM): 4.000€–6.000€, mantenimiento incluido el primer año.
 - Mantenimiento: Plan Básico 60€/mes, Plan Plus 150€/mes.
 - Condiciones: 50% por adelantado, 1 semana de ajustes en vivo gratis tras el lanzamiento.
+- Proyecto combinado: si se contratan varios servicios a la vez, el de mayor importe va al 100% y cada adicional lleva un 15% de descuento (el análisis y la puesta en marcha se hacen una sola vez). Los mantenimientos mensuales no se descuentan.
 `;
 
 function construirSystemPrompt(leadCaptured: boolean): string {
