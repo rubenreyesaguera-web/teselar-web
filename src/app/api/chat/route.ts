@@ -14,10 +14,10 @@ CATÁLOGO OFICIAL TESELAR (precios cerrados, PROHIBIDO inventar otros):
 - Web Esencial: 600€–800€, 1 idioma incluido, cada idioma adicional +150€. Incluye WhatsApp y formulario.
 - Integración de IA (chatbots, asistentes): 800€–3.000€ + supervisión mensual con el Plan Básico de mantenimiento (60€/mes). Las claves de API son del cliente.
 - Web Completa: desde 1.500€ con 2 idiomas incluidos, cada idioma adicional +250€. Blog, panel de gestión.
-- Tienda Online / E-commerce: desde 4.000€, mantenimiento incluido el primer año.
-- Web Inmobiliaria: desde 3.000€. Buscador con filtros, panel de propiedades, 2 idiomas, exportación XML Kyero para Idealista/Habitaclia/Fotocasa. Mantenimiento incluido el primer año.
-- Sistema de Gestión a Medida (ERP/CRM): 4.000€–6.000€, mantenimiento incluido el primer año.
-- Mantenimiento: Plan Básico 60€/mes, Plan Plus 150€/mes.
+- Tienda Online / E-commerce: desde 4.000€, Plan Básico de mantenimiento incluido el primer año.
+- Web Inmobiliaria: desde 3.000€. Buscador con filtros, panel de propiedades, 2 idiomas, exportación XML Kyero para Idealista/Habitaclia/Fotocasa. Plan Básico incluido el primer año.
+- Sistema de Gestión a Medida (ERP/CRM): 4.000€–6.000€, Plan Básico incluido el primer año.
+- Mantenimiento (sin permanencia): Plan Básico 60€/mes — monitorización automática 24/7, copias de seguridad semanales, actualizaciones y corrección de errores, 1h/mes de cambios, supervisión del asistente IA si aplica, respuesta en 24-48h laborables, informe trimestral. Plan Plus 150€/mes — todo lo del Básico con copias diarias, 5h/mes de desarrollo (no acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable (4h en incidencia crítica), informe mensual. Para e-commerce e inmobiliarias recomienda el Plus.
 - Condiciones: 50% por adelantado, 1 semana de ajustes en vivo gratis tras el lanzamiento.
 - Proyecto combinado: si se contratan varios servicios a la vez, el de mayor importe va al 100% y cada adicional lleva un 15% de descuento (el análisis y la puesta en marcha se hacen una sola vez). Los mantenimientos mensuales no se descuentan.
 `;

@@ -146,21 +146,21 @@ export const dictionaries = {
         title: 'Plan Básico',
         price: '60€',
         period: '/ mes',
-        desc: 'Perfecto para mantener presencia web estable.',
-        f1: 'Actualizaciones periódicas de librerías y seguridad',
-        f2: 'Monitoreo continuo de caídas de servidor 24/7',
-        f3: 'Resolución rápida de errores técnicos',
-        f4: 'Pequeños cambios de contenidos incluidos (hasta 1h/mes)'
+        desc: 'Tu web vigilada y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y Sistemas a Medida.',
+        f1: 'Monitorización automática 24/7 y copias de seguridad semanales',
+        f2: 'Actualizaciones de seguridad y corrección de errores',
+        f3: '1h/mes de cambios de contenido y supervisión del asistente IA (si aplica)',
+        f4: 'Respuesta en 24-48h laborables e informe trimestral de estado'
       },
       plus: {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Ideal para e-commerce o webs con actualizaciones constantes.',
-        f1: 'Todo lo incluido en el Plan Básico',
-        f2: 'Soporte de desarrollo prioritario (hasta 5h/mes)',
-        f3: 'Análisis de velocidad mensual y optimización SEO',
-        f4: 'Atención prioritaria inmediata ante incidencias críticas'
+        desc: 'Para e-commerce, inmobiliarias y webs que cambian mucho. Sin permanencia.',
+        f1: 'Todo lo del Básico, con copias de seguridad diarias',
+        f2: '5h/mes de desarrollo y mejoras (no acumulables)',
+        f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
+        f4: 'Respuesta el mismo día laborable (4h en incidencia crítica) e informe mensual'
       },
       not_included: {
         title: 'Lo que NO está incluido',
@@ -443,21 +443,21 @@ export const dictionaries = {
         title: 'Plan Bàsic',
         price: '60€',
         period: '/ mes',
-        desc: 'Perfecte per mantenir presència web estable.',
-        f1: 'Actualitzacions periòdiques de llibreries i seguretat',
-        f2: 'Monitoratge continu de caigudes de servidor 24/7',
-        f3: 'Resolució ràpida d\'errors tècnics',
-        f4: 'Petits canvis de continguts inclosos (fins a 1h/mes)'
+        desc: 'La teva web vigilada i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i Sistemes a Mida.',
+        f1: 'Monitorització automàtica 24/7 i còpies de seguretat setmanals',
+        f2: 'Actualitzacions de seguretat i correcció d\'errors',
+        f3: '1h/mes de canvis de contingut i supervisió de l\'assistent IA (si aplica)',
+        f4: 'Resposta en 24-48h laborables i informe trimestral d\'estat'
       },
       plus: {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Ideal per a e-commerce o webs amb actualitzacions constants.',
-        f1: 'Tot l\'inclòs al Plan Bàsic',
-        f2: 'Suport de desenvolupament prioritari (fins a 5h/mes)',
-        f3: 'Anàlisi de velocitat mensual i optimització SEO',
-        f4: 'Atenció prioritària immediata davant incidències crítiques'
+        desc: 'Per a e-commerce, immobiliàries i webs que canvien molt. Sense permanència.',
+        f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
+        f2: '5h/mes de desenvolupament i millores (no acumulables)',
+        f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
+        f4: 'Resposta el mateix dia laborable (4h en incidència crítica) i informe mensual'
       },
       not_included: {
         title: 'El que NO està inclòs',
@@ -740,21 +740,21 @@ export const dictionaries = {
         title: 'Basic Plan',
         price: '60€',
         period: '/ month',
-        desc: 'Perfect for maintaining a stable corporate presence.',
-        f1: 'Periodic library updates and security patches',
-        f2: 'Continuous 24/7 server uptime monitoring',
-        f3: 'Rapid resolution of any technical errors',
-        f4: 'Small content modifications included (up to 1h/month)'
+        desc: 'Your website watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites, and Custom Systems.',
+        f1: 'Automatic 24/7 monitoring and weekly backups',
+        f2: 'Security updates and error fixing',
+        f3: '1h/month of content changes and AI assistant supervision (if applicable)',
+        f4: 'Response within 24-48 business hours and quarterly status report'
       },
       plus: {
         title: 'Plus Plan',
         price: '150€',
         period: '/ month',
-        desc: 'Ideal for active e-commerce or dynamic business websites.',
-        f1: 'Everything included in the Basic Plan',
-        f2: 'Priority developer support (up to 5 hours/month)',
-        f3: 'Monthly performance audit and SEO optimizations',
-        f4: 'Immediate response priority for critical issues'
+        desc: 'For e-commerce, real estate agencies, and fast-changing websites. No lock-in.',
+        f1: 'Everything in Basic, with daily backups',
+        f2: '5h/month of development and improvements (non-cumulative)',
+        f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
+        f4: 'Same business day response (4h for critical issues) and monthly report'
       },
       not_included: {
         title: 'What is NOT included',
