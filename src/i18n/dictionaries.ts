@@ -76,7 +76,7 @@ export const dictionaries = {
       s4: {
         title: '04. Integración de Inteligencia Artificial',
         ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente.',
-        price: '800€ — 3.000€ + 50€/mes',
+        price: '800€ — 3.000€ + 60€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Asistente virtual con IA entrenado con tu documentación interna',
         f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram',
@@ -84,7 +84,7 @@ export const dictionaries = {
         f4: 'Análisis, clasificación y resumen automático de documentos',
         f5: 'Automatización avanzada con procesamiento de lenguaje natural',
         f6: 'Integración directa con modelos GPT, Claude u homólogos',
-        f7: 'Supervisión mensual desde 50€/mes; costes de API en tu propia cuenta, sin intermediarios'
+        f7: 'Supervisión mensual (Plan Básico, 60€/mes); costes de API en tu propia cuenta, sin intermediarios'
       },
       s5: {
         title: '05. Web Completa',
@@ -373,7 +373,7 @@ export const dictionaries = {
       s4: {
         title: '04. Integració d\'Intel·ligència Artificial',
         ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client.',
-        price: '800€ — 3.000€ + 50€/mes',
+        price: '800€ — 3.000€ + 60€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
         f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram',
@@ -381,7 +381,7 @@ export const dictionaries = {
         f4: 'Anàlisi, classificació i resum automàtic de documents',
         f5: 'Automatització avançada amb processament de llenguatge natural',
         f6: 'Integració directa amb models GPT, Claude o homòlegs',
-        f7: 'Supervisió mensual des de 50€/mes; costos d\'API al teu propi compte, sense intermediaris'
+        f7: 'Supervisió mensual (Pla Bàsic, 60€/mes); costos d\'API al teu propi compte, sense intermediaris'
       },
       s5: {
         title: '05. Web Completa',
@@ -670,7 +670,7 @@ export const dictionaries = {
       s4: {
         title: '04. Artificial Intelligence Integration',
         ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service.',
-        price: '800€ — 3,000€ + 50€/mo',
+        price: '800€ — 3,000€ + 60€/mo',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Custom virtual AI assistant trained with your internal company documentation',
         f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram',
@@ -678,7 +678,7 @@ export const dictionaries = {
         f4: 'Automated analysis, classification, and summary of documents',
         f5: 'Advanced automation using Natural Language Processing (NLP)',
         f6: 'Direct integration with models like GPT-4, Claude 3.5, and others',
-        f7: 'Monthly supervision from 50€/mo; AI API costs billed to your own account, no middlemen'
+        f7: 'Monthly supervision (Basic Plan, 60€/mo); AI API costs billed to your own account, no middlemen'
       },
       s5: {
         title: '05. Complete Web',

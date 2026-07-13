@@ -8,27 +8,30 @@ interface Msg {
   text: string;
 }
 
-const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; placeholder: string; error: string }> = {
+const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; placeholder: string; error: string; teaser: string }> = {
   es: {
     titulo: 'Asistente Teselar',
     badge: 'IA en vivo — esto es lo que construimos',
     saludo: '¡Hola! Soy el asistente de Teselar 🤖 Y sí, soy una demo en vivo de lo que hacemos: asistentes como yo desde 800€. ¿Qué necesita tu negocio? ¿Una web, una automatización, un sistema a medida?',
     placeholder: 'Escribe tu mensaje...',
-    error: 'Algo ha fallado. Prueba de nuevo o escríbenos por WhatsApp: +34 653 232 735.'
+    error: 'Algo ha fallado. Prueba de nuevo o escríbenos por WhatsApp: +34 653 232 735.',
+    teaser: '¿Tienes 1 minuto? Pregúntame precios o cuéntame tu proyecto — soy la IA de Teselar 🤖'
   },
   ca: {
     titulo: 'Assistent Teselar',
     badge: 'IA en viu — això és el que construïm',
     saludo: 'Hola! Sóc l\'assistent de Teselar 🤖 I sí, sóc una demo en viu del que fem: assistents com jo des de 800€. Què necessita el teu negoci? Una web, una automatització, un sistema a mida?',
     placeholder: 'Escriu el teu missatge...',
-    error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-nos per WhatsApp: +34 653 232 735.'
+    error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-nos per WhatsApp: +34 653 232 735.',
+    teaser: 'Tens 1 minut? Pregunta\'m preus o explica\'m el teu projecte — sóc la IA de Teselar 🤖'
   },
   en: {
     titulo: 'Teselar Assistant',
     badge: 'Live AI — this is what we build',
     saludo: 'Hi! I\'m the Teselar assistant 🤖 And yes, I\'m a live demo of what we build: assistants like me from 800€. What does your business need? A website, an automation, a custom system?',
     placeholder: 'Type your message...',
-    error: 'Something went wrong. Try again or message us on WhatsApp: +34 653 232 735.'
+    error: 'Something went wrong. Try again or message us on WhatsApp: +34 653 232 735.',
+    teaser: 'Got 1 minute? Ask me about pricing or tell me about your project — I\'m Teselar\'s AI 🤖'
   }
 };
 
@@ -39,11 +42,29 @@ export function ChatWidget({ lng }: { lng: string }) {
   const [input, setInput] = useState('');
   const [cargando, setCargando] = useState(false);
   const [leadCaptured, setLeadCaptured] = useState(false);
+  const [teaser, setTeaser] = useState(false);
   const finRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (abierto) finRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [mensajes, cargando, abierto]);
+
+  // Invitación automática: aparece a los 5s, una vez por sesión, sin abrir el panel
+  useEffect(() => {
+    if (sessionStorage.getItem('chat_teaser_visto')) return;
+    const t = setTimeout(() => setTeaser(true), 5000);
+    return () => clearTimeout(t);
+  }, []);
+
+  const cerrarTeaser = () => {
+    setTeaser(false);
+    sessionStorage.setItem('chat_teaser_visto', '1');
+  };
+
+  const abrirChat = () => {
+    cerrarTeaser();
+    setAbierto(v => !v);
+  };
 
   const enviar = async () => {
     const texto = input.trim();
@@ -71,13 +92,24 @@ export function ChatWidget({ lng }: { lng: string }) {
 
   return (
     <>
+      {/* Burbuja de invitación */}
+      {teaser && !abierto && (
+        <div className="fixed bottom-24 right-5 z-[99998] max-w-[280px] bg-teselar-dark border border-innovacion/40 rounded-2xl rounded-br-md shadow-[0_8px_30px_rgba(0,191,165,0.25)] p-4 animate-[fadeIn_.4s_ease]">
+          <button onClick={cerrarTeaser} aria-label="Cerrar" className="absolute top-2 right-2 text-claridad/40 hover:text-claridad cursor-pointer">
+            <X size={14} />
+          </button>
+          <p onClick={abrirChat} className="text-claridad/90 text-[13px] leading-relaxed pr-4 cursor-pointer">{t.teaser}</p>
+        </div>
+      )}
+
       {/* Botón flotante */}
       <button
-        onClick={() => setAbierto(v => !v)}
+        onClick={abrirChat}
         aria-label={t.titulo}
-        className="fixed bottom-5 right-5 z-[99998] w-14 h-14 rounded-full bg-innovacion text-teselar-dark shadow-[0_0_25px_rgba(0,191,165,0.45)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+        className="fixed bottom-5 right-5 z-[99998] w-16 h-16 rounded-full bg-innovacion text-teselar-dark shadow-[0_0_30px_rgba(0,191,165,0.55)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
       >
-        {abierto ? <X size={24} /> : <Bot size={26} />}
+        {!abierto && <span className="absolute inset-0 rounded-full bg-innovacion/50 animate-ping" style={{ animationDuration: '2.5s' }} />}
+        <span className="relative">{abierto ? <X size={26} /> : <Bot size={30} />}</span>
       </button>
 
       {/* Panel */}
