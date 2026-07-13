@@ -37,7 +37,7 @@ export const dictionaries = {
       s1: {
         title: '01. Auditoría y Consultoría Digital',
         ideal: 'Negocios que quieren mejorar su presencia digital, detectar oportunidades de crecimiento o evaluar su situación antes de invertir.',
-        price: '150€ (Pago único)',
+        price: '150€ (Descontable de tu proyecto)',
         tag: 'Auditoría SEO & UX',
         f1: 'Análisis completo de presencia digital (web, redes, SEO)',
         f2: 'Revisión de velocidad, usabilidad y experiencia de usuario (UX)',
@@ -76,7 +76,7 @@ export const dictionaries = {
       s4: {
         title: '04. Integración de Inteligencia Artificial',
         ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente.',
-        price: '800€ — 3.000€',
+        price: '800€ — 3.000€ + 50€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Asistente virtual con IA entrenado con tu documentación interna',
         f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram',
@@ -84,7 +84,7 @@ export const dictionaries = {
         f4: 'Análisis, clasificación y resumen automático de documentos',
         f5: 'Automatización avanzada con procesamiento de lenguaje natural',
         f6: 'Integración directa con modelos GPT, Claude u homólogos',
-        f7: 'Costes operativos de la IA contratados directamente sin intermediarios'
+        f7: 'Supervisión mensual desde 50€/mes; costes de API en tu propia cuenta, sin intermediarios'
       },
       s5: {
         title: '05. Web Empresarial Completa',
@@ -102,12 +102,12 @@ export const dictionaries = {
       s6: {
         title: '06. Tienda Online / E-commerce',
         ideal: 'Comercios locales o marcas que venden productos o servicios directamente online.',
-        price: '2.000€ — 3.000€',
+        price: 'Desde 4.000€',
         tag: 'React + BD + Pasarelas de Pago',
         f1: 'Carrito de compra interactivo, fluido y de carga ultrarrápida',
         f2: 'Proceso de checkout seguro y simplificado (One-Step)',
         f3: 'Integración completa con Stripe, PayPal y Bizum',
-        f4: 'Gestió de productes i existències des de panell d\'administració',
+        f4: 'Gestión de productos y stock desde el panel de administración',
         f5: 'Notificaciones automáticas de pedidos al email de clientes y gestor',
         f6: 'Módulo de cupones de descuento, impuestos y costes de envío',
         f7: 'Historial de transacciones de clientes y facturación básica'
@@ -126,9 +126,9 @@ export const dictionaries = {
         f7: 'Traducciones de base aportadas por el cliente o gestionadas aparte'
       },
       s8: {
-        title: '08. Sistema ERP/CRM (App Nativa)',
-        ideal: 'Negocios que buscan centralizar clientes, proyectos y facturas sin depender del navegador.',
-        price: '2.500€ — 5.000€',
+        title: '08. Sistema de Gestión a Medida (ERP/CRM)',
+        ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos) con una herramienta hecha exactamente a su medida.',
+        price: '4.000€ — 6.000€',
         tag: 'Electron + React + Base de Datos',
         f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
         f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
@@ -334,7 +334,7 @@ export const dictionaries = {
       s1: {
         title: '01. Auditoria i Consultoria Digital',
         ideal: 'Negocis que volen millorar la seva presència digital, detectar oportunitats de creixement o avaluar la seva situació abans d\'invertir.',
-        price: '150€ (Pagament únic)',
+        price: '150€ (Descomptable del teu projecte)',
         tag: 'Auditoria SEO & UX',
         f1: 'Anàlisi complet de presència digital (web, xarxes socials, SEO)',
         f2: 'Revisió de velocitat, usabilitat i experiència d\'usuari (UX)',
@@ -350,7 +350,7 @@ export const dictionaries = {
         price: '350€ — 900€',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
-        f2: 'Enviament automàtic de factures por email con datos del teu CRM',
+        f2: 'Enviament automàtic de factures per correu amb dades del teu CRM',
         f3: 'Extractor automatitzat de dades de correus a Google Sheets',
         f4: 'Xatbot automatitzat per a canals de WhatsApp o Telegram',
         f5: 'Sincronizador de base de dades bidireccional entre plataformes',
@@ -373,7 +373,7 @@ export const dictionaries = {
       s4: {
         title: '04. Integració d\'Intel·ligència Artificial',
         ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client.',
-        price: '800€ — 3.000€',
+        price: '800€ — 3.000€ + 50€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
         f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram',
@@ -381,7 +381,7 @@ export const dictionaries = {
         f4: 'Anàlisi, classificació i resum automàtic de documents',
         f5: 'Automatització avançada amb processament de llenguatge natural',
         f6: 'Integració directa amb models GPT, Claude o homòlegs',
-        f7: 'Costos operatius de la IA contractats directament sense intermediaris'
+        f7: 'Supervisió mensual des de 50€/mes; costos d\'API al teu propi compte, sense intermediaris'
       },
       s5: {
         title: '05. Web Empresarial Completa',
@@ -399,7 +399,7 @@ export const dictionaries = {
       s6: {
         title: '06. Botiga Online / E-commerce',
         ideal: 'Comerços locals o marques que volen vendre productes o serveis directament online.',
-        price: '2.000€ — 3.000€',
+        price: 'Des de 4.000€',
         tag: 'React + BD + Passarel·les de Pagament',
         f1: 'Carret de compra interactiu, fluid i de càrrega ultraràpida',
         f2: 'Procés de checkout segur i simplificat (One-Step)',
@@ -423,9 +423,9 @@ export const dictionaries = {
         f7: 'Traduccions de base aportades pel client o gestionades a part'
       },
       s8: {
-        title: '08. Sistema ERP/CRM (App Nativa)',
-        ideal: 'Negocis que busquen centralitzar clients, projectes i factures sense dependre del navegador.',
-        price: '2.500€ — 5.000€',
+        title: '08. Sistema de Gestió a Mida (ERP/CRM)',
+        ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes) amb una eina feta exactament a mida.',
+        price: '4.000€ — 6.000€',
         tag: 'Electron + React + Base de Dades',
         f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
         f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
@@ -631,7 +631,7 @@ export const dictionaries = {
       s1: {
         title: '01. Digital Audit & Consulting',
         ideal: 'Businesses looking to improve their digital presence, detect growth opportunities, or assess their situation before investing.',
-        price: '150€ (One-time payment)',
+        price: '150€ (Deducted from your first project)',
         tag: 'SEO & UX Audit',
         f1: 'Complete analysis of digital presence (web, social networks, SEO)',
         f2: 'Review of speed, usability, and user experience (UX)',
@@ -670,7 +670,7 @@ export const dictionaries = {
       s4: {
         title: '04. Artificial Intelligence Integration',
         ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service.',
-        price: '800€ — 3,000€',
+        price: '800€ — 3,000€ + 50€/mo',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Custom virtual AI assistant trained with your internal company documentation',
         f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram',
@@ -678,7 +678,7 @@ export const dictionaries = {
         f4: 'Automated analysis, classification, and summary of documents',
         f5: 'Advanced automation using Natural Language Processing (NLP)',
         f6: 'Direct integration with models like GPT-4, Claude 3.5, and others',
-        f7: 'Direct AI operational costs (APIs, tokens) charged directly without extra fees'
+        f7: 'Monthly supervision from 50€/mo; AI API costs billed to your own account, no middlemen'
       },
       s5: {
         title: '05. Complete Corporate Web',
@@ -696,7 +696,7 @@ export const dictionaries = {
       s6: {
         title: '06. E-commerce / Online Store',
         ideal: 'Local businesses or brands that want to sell products or services directly online.',
-        price: '2,000€ — 3,000€',
+        price: 'From 4,000€',
         tag: 'React + DB + Payment Gateways',
         f1: 'Interactive, fluid, and ultra-fast loading shopping cart',
         f2: 'Secure and simplified one-step checkout process',
@@ -720,9 +720,9 @@ export const dictionaries = {
         f7: 'Base translation texts provided by the client or quoted separately'
       },
       s8: {
-        title: '08. ERP/CRM System (Native Desktop App)',
-        ideal: 'Businesses seeking to centralize clients, projects, and billing without using a web browser.',
-        price: '2,500€ — 5,000€',
+        title: '08. Custom Management System (ERP/CRM)',
+        ideal: 'Businesses that want to digitalize a key process (billing, clients, projects) with a tool built exactly for them.',
+        price: '4,000€ — 6,000€',
         tag: 'Electron + React + Database',
         f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
         f2: 'Interactive dashboard with financial charts and live metrics',
