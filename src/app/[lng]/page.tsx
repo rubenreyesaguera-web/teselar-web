@@ -4,12 +4,13 @@ import React, { useState, useEffect, use, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { Background3D } from '../../components/Background3D';
+import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
 import { 
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin, 
   Check, ShieldCheck, CreditCard, ChevronRight, Calendar, Sparkles,
-  Gift, Star, Users, Clock, Send
+  Gift, Star, Users, Clock, Send, MessageCircle
 } from 'lucide-react';
 
 interface PageProps {
@@ -623,12 +624,12 @@ export default function Page({ params }: PageProps) {
             className={`absolute z-40 flex flex-col items-center justify-center pointer-events-none select-none text-center px-4 ${isMobile ? '' : ''}`}
           >
             <div className="w-16 h-px bg-innovacion/35 mb-6" />
-            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.06em] text-claridad drop-shadow-[0_0_30px_rgba(0,191,165,0.3)] uppercase leading-none">
+            <div className="text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.06em] text-claridad drop-shadow-[0_0_30px_rgba(0,191,165,0.3)] uppercase leading-none">
               TESELAR
-            </h1>
-            <h2 className="text-lg sm:text-xl md:text-2xl font-light tracking-[0.32em] text-innovacion/85 uppercase mt-4">
+            </div>
+            <div className="text-lg sm:text-xl md:text-2xl font-light tracking-[0.32em] text-innovacion/85 uppercase mt-4">
               SOFTWARE
-            </h2>
+            </div>
             <div className="w-16 h-px bg-innovacion/35 mt-8" />
             {!isMobile && (
               <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
@@ -2352,11 +2353,15 @@ export default function Page({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} className="text-innovacion" />
-                <span>info@teselarsoftware.com</span>
+                <a href="mailto:info@teselarsoftware.com" className="hover:text-innovacion transition-colors">info@teselarsoftware.com</a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-innovacion" />
-                <span>+34 653 232 735</span>
+                <a href="tel:+34653232735" className="hover:text-innovacion transition-colors">+34 653 232 735</a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MessageCircle size={16} className="text-innovacion" />
+                <a href="https://wa.me/34653232735" target="_blank" rel="noopener noreferrer" className="hover:text-innovacion transition-colors">WhatsApp</a>
               </div>
             </div>
           </div>
@@ -2393,6 +2398,9 @@ export default function Page({ params }: PageProps) {
           </div>
         </div>
       </footer>
+
+      {/* Asistente IA — demo en vivo del servicio de Integración de IA */}
+      <ChatWidget lng={currentLng} />
 
       {/* Dynamic Glassmorphic Legal Modal Popup */}
       <AnimatePresence>
