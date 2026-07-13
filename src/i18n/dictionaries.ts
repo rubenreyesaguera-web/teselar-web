@@ -61,14 +61,14 @@ export const dictionaries = {
         f7: 'Reportes diarios/semanales automáticos por email'
       },
       s3: {
-        title: '03. Landing Page / Presencia Web Profesional',
+        title: '03. Web Esencial',
         ideal: 'Freelancers, pequeñas empresas, profesionales independientes y nuevos emprendedores.',
         price: '600€ — 800€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'Página única de alto impacto o 3-4 secciones estructuradas',
         f2: 'Diseño web moderno, responsive y optimizado para móvil',
-        f3: 'Formulario de contacto funcional con notificación automática',
-        f4: 'Integración completa con perfiles de redes sociales',
+        f3: 'Formulario de contacto y botón de WhatsApp con notificación automática',
+        f4: '1 idioma incluido — cada idioma adicional +150€',
         f5: 'SEO técnico básico (meta tags, estructura HTML limpia)',
         f6: 'Optimización extrema de velocidad de carga y rendimiento',
         f7: '1 semana de ajustes en vivo durante el despliegue'
@@ -87,16 +87,16 @@ export const dictionaries = {
         f7: 'Supervisión mensual desde 50€/mes; costes de API en tu propia cuenta, sin intermediarios'
       },
       s5: {
-        title: '05. Web Empresarial Completa',
-        ideal: 'Pequeñas y medianas empresas que necesitan catálogo, portfolio interactivo o blog.',
-        price: '1.200€ — 1.800€',
+        title: '05. Web Completa',
+        ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
+        price: 'Desde 1.500€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Estructura modular de 5 a 8 secciones bien definidas',
         f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
         f3: 'Sección autogestionable de blog, artículos o noticias',
         f4: 'Panel de administración intuitivo para gestionar contenidos',
-        f5: 'SEO técnico mejorado (sitemap, robots.txt, jerarquía de tags)',
-        f6: 'Configuración inicial y vinculación con Google Search Console',
+        f5: '2 idiomas incluidos con detección automática — cada idioma adicional +250€',
+        f6: 'SEO técnico completo (sitemap, hreflang, Google Search Console)',
         f7: '1 semana de ajustes en vivo y formación de uso'
       },
       s6: {
@@ -113,17 +113,17 @@ export const dictionaries = {
         f7: 'Historial de transacciones de clientes y facturación básica'
       },
       s7: {
-        title: '07. Web Multiidioma Profesional',
-        ideal: 'Negocios con proyección internacional o ubicados en zonas altamente turísticas.',
-        price: '1.800€ — 2.800€',
-        tag: 'React + i18n + SEO Multiidioma',
-        f1: 'Soporte completo desde 2 hasta 7 idiomas integrados',
-        f2: 'Detección inteligente automática del idioma del navegador del usuario',
-        f3: 'Arquitectura de URLs amigables por idioma y etiquetas hreflang',
-        f4: 'Metadatos SEO y títulos optimizados en todos los idiomas configurados',
-        f5: 'Implementación de Schema markup (JSON-LD) multilingüe',
-        f6: 'SEO internacional avanzado para captar tráfico extranjero',
-        f7: 'Traducciones de base aportadas por el cliente o gestionadas aparte'
+        title: '07. Web Inmobiliaria',
+        ideal: 'Inmobiliarias que quieren destacar propiedades, captar compradores extranjeros y sincronizar con los portales.',
+        price: 'Desde 3.000€',
+        tag: 'React + BD + Kyero XML',
+        f1: 'Buscador de propiedades con filtros (zona, precio, tipo, habitaciones)',
+        f2: 'Fichas de propiedad con galería, mapa y sistema de destacados',
+        f3: 'Panel de control para publicar y gestionar propiedades sin tocar código',
+        f4: '2 idiomas incluidos para compradores extranjeros — adicional +250€',
+        f5: 'Exportación XML (formato Kyero) para sincronizar con Idealista, Habitaclia, Fotocasa y portales internacionales',
+        f6: 'Formulario de contacto por propiedad y botón de WhatsApp',
+        f7: 'SEO local, y mantenimiento incluido el primer año (los feeds a portales necesitan vigilancia)'
       },
       s8: {
         title: '08. Sistema de Gestión a Medida (ERP/CRM)',
@@ -358,14 +358,14 @@ export const dictionaries = {
         f7: 'Informes diaris o setmanals automàtics per correu electrònic'
       },
       s3: {
-        title: '03. Landing Page / Presència Web Professional',
+        title: '03. Web Essencial',
         ideal: 'Freelancers, petites empreses, professionals independents i nous emprenedors.',
         price: '600€ — 800€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'Pàgina única d\'alt impacte o 3-4 seccions ben estructurades',
         f2: 'Disseny web modern, responsive i optimizat per a mòbil',
-        f3: 'Formulari de contacte funcional amb notificació automàtica',
-        f4: 'Integració completa amb perfils de xarxes socials',
+        f3: 'Formulari de contacte i botó de WhatsApp amb notificació automàtica',
+        f4: '1 idioma inclòs — cada idioma addicional +150€',
         f5: 'SEO tècnic bàsic (etiquetes meta, estructura HTML neta)',
         f6: 'Optimització extrema de la velocitat de càrrega i rendiment',
         f7: '1 setmana d\'ajustaments en viu durant el desplegament'
@@ -384,16 +384,16 @@ export const dictionaries = {
         f7: 'Supervisió mensual des de 50€/mes; costos d\'API al teu propi compte, sense intermediaris'
       },
       s5: {
-        title: '05. Web Empresarial Completa',
-        ideal: 'Petites i mitjanes empreses que necessiten catàleg, portfoli interactiu o blog.',
-        price: '1.200€ — 1.800€',
+        title: '05. Web Completa',
+        ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
+        price: 'Des de 1.500€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Estructura modular de 5 a 8 seccions ben definides',
         f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
         f3: 'Secció autogestionable de blog, articles o notícies',
         f4: 'Panell d\'administració intuïtiu per gestionar continguts',
-        f5: 'SEO tècnic millorat (sitemap, robots.txt, jerarquia de tags)',
-        f6: 'Configuració inicial i vinculació amb Google Search Console',
+        f5: '2 idiomes inclosos amb detecció automàtica — cada idioma addicional +250€',
+        f6: 'SEO tècnic complet (sitemap, hreflang, Google Search Console)',
         f7: '1 setmana d\'ajustaments en viu i formació d\'ús inclosa'
       },
       s6: {
@@ -410,17 +410,17 @@ export const dictionaries = {
         f7: 'Historial de transaccions de clients i facturació bàsica'
       },
       s7: {
-        title: '07. Web Multidioma Professional',
-        ideal: 'Negocis amb projecció internacional o ubicats en zones altament turístiques.',
-        price: '1.800€ — 2.800€',
-        tag: 'React + i18next + SEO Multidioma',
-        f1: 'Suport complet des de 2 fins a 7 idiomes integrats',
-        f2: 'Detecció intel·ligent automàtica de l\'idioma del navegador de l\'usuari',
-        f3: 'Arquitectura d\'URLs amigables per idioma i etiquetes hreflang',
-        f4: 'Metadades SEO i títols optimitzats de manera independent per idioma',
-        f5: 'Implementació de Schema markup (JSON-LD) multilingüe',
-        f6: 'SEO internacional avançat per captar trànsit estranger',
-        f7: 'Traduccions de base aportades pel client o gestionades a part'
+        title: '07. Web Immobiliària',
+        ideal: 'Immobiliàries que volen destacar propietats, captar compradors estrangers i sincronitzar amb els portals.',
+        price: 'Des de 3.000€',
+        tag: 'React + BD + Kyero XML',
+        f1: 'Cercador de propietats amb filtres (zona, preu, tipus, habitacions)',
+        f2: 'Fitxes de propietat amb galeria, mapa i sistema de destacats',
+        f3: 'Panell de control per publicar i gestionar propietats sense tocar codi',
+        f4: '2 idiomes inclosos per a compradors estrangers — addicional +250€',
+        f5: 'Exportació XML (format Kyero) per sincronitzar amb Idealista, Habitaclia, Fotocasa i portals internacionals',
+        f6: 'Formulari de contacte per propietat i botó de WhatsApp',
+        f7: 'SEO local, i manteniment inclòs el primer any (els feeds a portals necessiten vigilància)'
       },
       s8: {
         title: '08. Sistema de Gestió a Mida (ERP/CRM)',
@@ -655,14 +655,14 @@ export const dictionaries = {
         f7: 'Daily or weekly automated email reporting'
       },
       s3: {
-        title: '03. Landing Page / Professional Web Presence',
+        title: '03. Essential Web',
         ideal: 'Freelancers, small businesses, independent professionals, and new entrepreneurs.',
         price: '600€ — 800€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'High-impact single landing page or 3-4 structured sections',
         f2: 'Modern, responsive, and mobile-first web design',
-        f3: 'Functional contact form with automated email notification',
-        f4: 'Complete integration with your social media profiles',
+        f3: 'Functional contact form and WhatsApp button with automated notification',
+        f4: '1 language included — each additional language +150€',
         f5: 'Basic technical SEO (optimized meta tags, clean HTML structure)',
         f6: 'Extreme load speed and performance optimization',
         f7: '1 week of live adjustments during deployment'
@@ -681,16 +681,16 @@ export const dictionaries = {
         f7: 'Monthly supervision from 50€/mo; AI API costs billed to your own account, no middlemen'
       },
       s5: {
-        title: '05. Complete Corporate Web',
-        ideal: 'Small and medium enterprises requiring a product catalog, interactive portfolio, or active blog.',
-        price: '1,200€ — 1,800€',
+        title: '05. Complete Web',
+        ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
+        price: 'From 1,500€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Modular structure with 5 to 8 well-defined sections',
         f2: 'Project gallery or interactive portfolio with dynamic filters',
         f3: 'Self-managed section for blog, articles, or news',
         f4: 'Intuitive admin panel to manage all contents easily',
-        f5: 'Enhanced technical SEO (sitemap, robots.txt, heading hierarchy)',
-        f6: 'Initial setup and linking with Google Search Console',
+        f5: '2 languages included with auto-detection — each additional language +250€',
+        f6: 'Complete technical SEO (sitemap, hreflang, Google Search Console)',
         f7: '1 week of live support and comprehensive training included'
       },
       s6: {
@@ -707,17 +707,17 @@ export const dictionaries = {
         f7: 'Client order history and basic automated billing'
       },
       s7: {
-        title: '07. Professional Multilingual Web',
-        ideal: 'Businesses targeting international audiences or located in highly touristy areas.',
-        price: '1,800€ — 2,800€',
-        tag: 'React + i18next + Multilingual SEO',
-        f1: 'Complete support for 2 to 7 integrated languages',
-        f2: 'Smart auto-detection of browser language with manual selector',
-        f3: 'Friendly URLs per language and hreflang tag configuration',
-        f4: 'SEO metadata and titles optimized independently per language',
-        f5: 'Implementation of multilingual Schema markup (JSON-LD)',
-        f6: 'Advanced international SEO to attract foreign search traffic',
-        f7: 'Base translation texts provided by the client or quoted separately'
+        title: '07. Real Estate Website',
+        ideal: 'Real estate agencies that want to showcase properties, reach foreign buyers, and sync with property portals.',
+        price: 'From 3,000€',
+        tag: 'React + DB + Kyero XML',
+        f1: 'Property search engine with filters (area, price, type, bedrooms)',
+        f2: 'Property pages with gallery, map, and featured listings system',
+        f3: 'Control panel to publish and manage properties without touching code',
+        f4: '2 languages included for foreign buyers — each additional +250€',
+        f5: 'XML export (Kyero format) to sync with Idealista, Habitaclia, Fotocasa, and international portals',
+        f6: 'Per-property contact form and WhatsApp button',
+        f7: 'Local SEO, and maintenance included for the first year (portal feeds need monitoring)'
       },
       s8: {
         title: '08. Custom Management System (ERP/CRM)',

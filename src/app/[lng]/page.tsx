@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Background3D } from '../../components/Background3D';
 import { dictionaries } from '../../i18n/dictionaries';
 import { 
-  Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, 
+  Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin, 
   Check, ShieldCheck, CreditCard, ChevronRight, Calendar, Sparkles,
   Gift, Star, Users, Clock, Send
@@ -400,7 +400,7 @@ export default function Page({ params }: PageProps) {
     }
   };
 
-  // Build the list of 8 services mapping to dictionary entries
+  // Build the list of 7 services mapping to dictionary entries
   const servicesList = [
     {
       id: 's1',
@@ -469,7 +469,7 @@ export default function Page({ params }: PageProps) {
       ideal: t.services.s7.ideal,
       price: t.services.s7.price,
       tag: t.services.s7.tag,
-      icon: Languages,
+      icon: Building2,
       features: [t.services.s7.f1, t.services.s7.f2, t.services.s7.f3, t.services.s7.f4, t.services.s7.f5, t.services.s7.f6, t.services.s7.f7]
     },
     {
