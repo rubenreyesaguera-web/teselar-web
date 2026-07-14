@@ -164,7 +164,7 @@ export const dictionaries = {
       },
       not_included: {
         title: 'Lo que NO está incluido',
-        desc: 'Costes directos a cargo del cliente: Dominio, hosting, traducción profesional de contenidos, comisiones de pasarelas de pago (Stripe/PayPal), correo empresarial, herramientas de email marketing y consumo directo de APIs de Inteligencia Artificial.'
+        desc: 'Costes de terceros a cargo del cliente — aunque te los gestionamos nosotros: dominio y hosting, comisiones de pasarelas de pago (Stripe/PayPal), correo empresarial, herramientas de email marketing y consumo de APIs de IA. Tampoco incluye: redacción de textos y fotografías (los aporta el cliente; redacción asistida por IA disponible como extra), traducción humana profesional o jurada (la traducción con IA revisada sí va incluida en los idiomas contratados), publicidad de pago (Google/Meta Ads), gestión de redes sociales, y funcionalidades nuevas fuera del alcance acordado, que se presupuestan aparte.'
       },
       payment: {
         title: 'Métodos de Pago & Condiciones',
@@ -461,7 +461,7 @@ export const dictionaries = {
       },
       not_included: {
         title: 'El que NO està inclòs',
-        desc: 'Costos directes a càrrec del client: Domini, allotjament (hosting), traducció professional de continguts, comissions de passarel·les de pagament (Stripe/PayPal), correu empresarial, eines de màrqueting per email i consum directe d\'APIs d\'Intel·ligència Artificial.'
+        desc: 'Costos de tercers a càrrec del client — tot i que te\'ls gestionem nosaltres: domini i allotjament (hosting), comissions de passarel·les de pagament (Stripe/PayPal), correu empresarial, eines de màrqueting per email i consum d\'APIs d\'IA. Tampoc inclou: redacció de textos i fotografies (els aporta el client; redacció assistida per IA disponible com a extra), traducció humana professional o jurada (la traducció amb IA revisada sí que va inclosa en els idiomes contractats), publicitat de pagament (Google/Meta Ads), gestió de xarxes socials, i funcionalitats noves fora de l\'abast acordat, que es pressuposten a part.'
       },
       payment: {
         title: 'Mètodes de Pagament i Condicions',
@@ -758,7 +758,7 @@ export const dictionaries = {
       },
       not_included: {
         title: 'What is NOT included',
-        desc: 'Direct third-party costs charged to the client: Domain purchase, hosting, professional translation services, payment gateway commissions (Stripe/PayPal), corporate email hosting, email marketing platforms, and direct AI API usage costs.'
+        desc: 'Third-party costs paid by the client — though we handle the setup for you: domain and hosting, payment gateway fees (Stripe/PayPal), business email, email marketing tools, and AI API usage. Also not included: copywriting and photography (provided by the client; AI-assisted copywriting available as an extra), professional or sworn human translation (reviewed AI translation IS included with contracted languages), paid advertising (Google/Meta Ads), social media management, and new features outside the agreed scope, which are quoted separately.'
       },
       payment: {
         title: 'Payment Terms & Methods',

@@ -20,6 +20,7 @@ CATÁLOGO OFICIAL TESELAR (precios cerrados, PROHIBIDO inventar otros):
 - Mantenimiento (sin permanencia): Plan Básico 60€/mes — monitorización automática 24/7, copias de seguridad semanales, actualizaciones y corrección de errores, 1h/mes de cambios, supervisión del asistente IA si aplica, respuesta en 24-48h laborables, informe trimestral. Plan Plus 150€/mes — todo lo del Básico con copias diarias, 5h/mes de desarrollo (no acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable (4h en incidencia crítica), informe mensual. Para e-commerce e inmobiliarias recomienda el Plus.
 - Condiciones: 50% por adelantado, 1 semana de ajustes en vivo gratis tras el lanzamiento.
 - Proyecto combinado: si se contratan varios servicios a la vez, el de mayor importe va al 100% y cada adicional lleva un 15% de descuento (el análisis y la puesta en marcha se hacen una sola vez). Los mantenimientos mensuales no se descuentan.
+- NO incluido (costes de terceros a cargo del cliente, aunque Teselar los gestiona): dominio, hosting, comisiones de pago, correo empresarial, email marketing, APIs de IA. Tampoco: redacción de textos y fotos (los aporta el cliente; redacción con IA como extra), traducción humana profesional o jurada (la traducción con IA revisada SÍ va incluida en los idiomas contratados), publicidad de pago (Google/Meta Ads), gestión de redes sociales, ni funcionalidades fuera del alcance acordado (se presupuestan aparte).
 `;
 
 function construirSystemPrompt(leadCaptured: boolean): string {
