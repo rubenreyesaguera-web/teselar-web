@@ -6,10 +6,10 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Background3D } from '../../components/Background3D';
 import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
-import { 
+import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
-  ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin, 
-  Check, ShieldCheck, CreditCard, ChevronRight, Calendar, Sparkles,
+  ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
+  Check, ShieldCheck, CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
   Gift, Star, Users, Clock, Send, MessageCircle
 } from 'lucide-react';
 
@@ -134,6 +134,7 @@ export default function Page({ params }: PageProps) {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [gdprAccepted, setGdprAccepted] = useState(false);
   const [activeLegalModal, setActiveLegalModal] = useState<'aviso' | 'privacidad' | 'cookies' | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   // States for interactive technical HUD comparison (Option 3)
   const [activeHudPlatform, setActiveHudPlatform] = useState<'nextjs' | 'wordpress'>('nextjs');
@@ -485,9 +486,15 @@ export default function Page({ params }: PageProps) {
     }
   ];
 
-  const filteredServices = activeCategory === 'all' 
-    ? servicesList 
+  const filteredServices = activeCategory === 'all'
+    ? servicesList
     : servicesList.filter(s => s.category === activeCategory);
+
+  // Build the list of FAQ entries mapping to dictionary entries (used for the visible
+  // accordion AND to feed the FAQPage JSON-LD generated in the layout)
+  const faqList = [
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9
+  ];
 
   return (
     <div className="relative min-h-screen">
@@ -516,6 +523,7 @@ export default function Page({ params }: PageProps) {
             <a href="#services" className="hover:text-innovacion transition-colors">{t.nav.services}</a>
             <a href="#pricing" className="hover:text-innovacion transition-colors">{t.nav.pricing}</a>
             <a href="#process" className="hover:text-innovacion transition-colors">{t.nav.process}</a>
+            <a href="#faq" className="hover:text-innovacion transition-colors">{t.nav.faq}</a>
           </div>
 
           {/* Navigation right controls (CTAs and Selector) */}
@@ -564,6 +572,7 @@ export default function Page({ params }: PageProps) {
               <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-innovacion transition-colors">{t.nav.services}</a>
               <a href="#pricing" onClick={() => setIsMenuOpen(false)} className="hover:text-innovacion transition-colors">{t.nav.pricing}</a>
               <a href="#process" onClick={() => setIsMenuOpen(false)} className="hover:text-innovacion transition-colors">{t.nav.process}</a>
+              <a href="#faq" onClick={() => setIsMenuOpen(false)} className="hover:text-innovacion transition-colors">{t.nav.faq}</a>
             </div>
             
             <div className="flex flex-col gap-4 mt-4">
@@ -2149,6 +2158,56 @@ export default function Page({ params }: PageProps) {
         </div>
       </section>
 
+      {/* 6.5. PREGUNTAS FRECUENTES (FAQ) — contenido citable por buscadores de IA (AEO), espejo del FAQPage schema */}
+      <section id="faq" className="relative py-24 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.faq}</span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.faq.title}</h2>
+            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.faq.subtitle}</p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {faqList.map((item, idx) => {
+              const isOpen = openFaqIndex === idx;
+              return (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.4, delay: idx * 0.03 }}
+                  className="glass-card rounded-2xl border border-claridad/5 overflow-hidden"
+                >
+                  <button
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 cursor-pointer group"
+                  >
+                    <span className="text-base md:text-lg font-bold text-claridad group-hover:text-innovacion transition-colors">{item.q}</span>
+                    <ChevronDown
+                      size={20}
+                      className={`flex-shrink-0 text-innovacion transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {/* Truco CSS-grid (0fr/1fr): la respuesta queda SIEMPRE montada en el DOM
+                      (visible en el HTML servido, sin necesitar JS) y el colapso es puramente
+                      visual — así los crawlers de IA que no ejecutan JS también la leen. */}
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                    style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="px-6 pb-6 text-sm md:text-base text-claridad/75 font-light leading-relaxed">{item.a}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* 7. FORMULARIO DE CONVERSION: SOPORTE, AGENDA & CONTACTO */}
       <section id="contact" ref={contactSectionRef} className="relative py-28 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
         <div className="max-w-4xl mx-auto">
@@ -2340,6 +2399,7 @@ export default function Page({ params }: PageProps) {
               <a href="#services" className="hover:text-innovacion transition-colors">{t.nav.services}</a>
               <a href="#pricing" className="hover:text-innovacion transition-colors">{t.nav.pricing}</a>
               <a href="#process" className="hover:text-innovacion transition-colors">{t.nav.process}</a>
+              <a href="#faq" className="hover:text-innovacion transition-colors">{t.nav.faq}</a>
             </div>
           </div>
 

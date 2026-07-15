@@ -1,0 +1,67 @@
+# Teselar Software
+
+> Estudio de diseño web y software a medida en Lloret de Mar (Girona, España), bajo el concepto
+> "La pieza que encaja": la pieza exacta de tecnología que necesita cada negocio, sin sobrecoste ni
+> componentes que no se usan. Sitio web: https://www.teselarsoftware.com (español, català, English).
+
+Contacto: info@teselarsoftware.com · WhatsApp/Tel: +34 653 232 735
+Zona servida: Lloret de Mar, Blanes, Tossa de Mar, Girona, Costa Brava (proyectos remotos en toda España).
+Idiomas de trabajo: español, català, English.
+
+## Catálogo de servicios (precios cerrados, sin costes ocultos)
+
+- **Auditoría y Consultoría Digital** — 150€ (se descuenta del proyecto si el cliente contrata después).
+  Análisis de presencia digital, velocidad, UX, competencia y hoja de ruta con informe en PDF.
+- **Automatizaciones Específicas** — 350€–900€. Presupuestos/facturas automáticas, chatbots de
+  WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
+- **Web Esencial** — 600€–800€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
+  adicional), formulario y WhatsApp, SEO técnico básico (React + Vite + Tailwind CSS).
+- **Integración de Inteligencia Artificial** — 800€–3.000€ + supervisión mensual (Plan Básico,
+  60€/mes). Asistentes/chatbots con IA (OpenAI/Anthropic), las claves de API son del cliente.
+  Ejemplo en vivo: el propio chatbot de esta web, "TesS".
+- **Web Completa** — desde 1.500€, 2 idiomas incluidos (+250€/idioma adicional). Blog, portfolio,
+  panel de gestión de contenidos, SEO técnico completo.
+- **Tienda Online / E-commerce** — desde 4.000€. Carrito, checkout, Stripe/PayPal/Bizum, gestión de
+  stock; Plan Básico de mantenimiento incluido el primer año.
+- **Web Inmobiliaria** — desde 3.000€. Buscador con filtros, panel de propiedades, 2 idiomas,
+  exportación XML formato Kyero para sincronizar con Idealista, Habitaclia y Fotocasa; Plan Básico
+  incluido el primer año.
+- **Sistema de Gestión a Medida (ERP/CRM)** — 4.000€–6.000€. Aplicación de escritorio nativa
+  (Windows/macOS/Linux) con CRM, facturación, planificación y roles de usuario; Plan Básico incluido
+  el primer año.
+
+## Mantenimiento (sin permanencia)
+
+- **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
+  corrección de errores, 1h/mes de cambios, respuesta en 24-48h laborables, informe trimestral.
+- **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
+  acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable
+  (4h en incidencia crítica), informe mensual. Recomendado para e-commerce e inmobiliarias.
+
+## Condiciones
+
+50% de pago por adelantado, resto fraccionable sin intereses hasta 3 meses. 1 semana de ajustes en
+vivo gratis tras el lanzamiento. Proyecto combinado (varios servicios a la vez): el de mayor importe
+va al 100% y cada adicional lleva un 15% de descuento (la auditoría queda excluida de este descuento).
+No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting, comisiones de pago,
+correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana profesional o jurada
+(la traducción con IA revisada sí va incluida), publicidad de pago y redes sociales.
+
+## Enlaces
+
+- Preguntas frecuentes: https://www.teselarsoftware.com/es/#faq
+- Servicios y precios: https://www.teselarsoftware.com/es/#services
+- Contacto: https://www.teselarsoftware.com/es/#contact
+- Chatbot de demo en vivo (TesS): disponible en cualquier página del sitio.
+
+---
+
+## Summary (English)
+
+Teselar Software is a custom software and web design studio based in Lloret de Mar (Girona, Spain),
+serving the Costa Brava area and remote clients across Spain, in Spanish, Catalan and English.
+Services: digital audits (150€), specific automations (350€–900€), essential websites (600€–800€),
+AI integrations/chatbots (800€–3,000€ + 60€/mo supervision), complete websites (from 1,500€),
+e-commerce (from 4,000€), real-estate websites with Kyero/Idealista sync (from 3,000€), and custom
+ERP/CRM desktop systems (4,000€–6,000€). No-lock-in maintenance plans from 60€/mo. Contact:
+info@teselarsoftware.com, WhatsApp +34 653 232 735.

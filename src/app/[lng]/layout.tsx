@@ -51,6 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
         'es-ES': `${baseUrl}/es`,
         'ca-ES': `${baseUrl}/ca`,
         'en-US': `${baseUrl}/en`,
+        'x-default': `${baseUrl}/en`,
       },
     },
     openGraph: {
@@ -62,10 +63,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       siteName: 'Teselar Software',
       images: [
         {
-          url: '/logo_1526x1224.jpeg', // Using the existing high-res logo in the repository
-          width: 1526,
-          height: 1224,
-          alt: 'Teselar Software Logo',
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'Teselar Software — La pieza que encaja',
         },
       ],
     },
@@ -73,10 +74,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       card: 'summary_large_image',
       title: currentTitle,
       description: t.hero.subtitle,
-      images: ['/logo_1526x1224.jpeg'],
+      images: ['/og-image.png'],
     },
     icons: {
-      icon: '/favicon.ico',
+      icon: '/favicon.svg',
       apple: '/logo_600x400.jpeg',
     },
   };
@@ -84,31 +85,124 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { lng } = await params;
-  const localBusinessSchema = {
+  const locale = (['es', 'ca', 'en'] as const).includes(lng as 'es' | 'ca' | 'en') ? (lng as 'es' | 'ca' | 'en') : 'en';
+  const t = dictionaries[locale];
+  const baseUrl = 'https://www.teselarsoftware.com';
+
+  // Identificadores estables del grafo (permiten referenciar entidades entre sí con @id,
+  // en vez de repetir los datos — así un LLM/crawler entiende que la Organization, el
+  // WebSite y el ProfessionalService son la misma empresa vista desde tres ángulos)
+  const organizationId = `${baseUrl}/#organization`;
+  const websiteId = `${baseUrl}/#website`;
+  const localBusinessId = `${baseUrl}/#localbusiness`;
+
+  const serviceIds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'] as const;
+  const faqIds = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'] as const;
+
+  // Grafo de datos estructurados (GEO/AEO): sustituye al único ProfessionalService previo.
+  // Fuente de verdad: la misma copia trilingüe de src/i18n/dictionaries.ts que ve el usuario
+  // en pantalla (servicios en #services, preguntas en #faq), así nunca se desincroniza.
+  const jsonLdGraph = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'Teselar Software',
-    description: 'Diseño web, software a medida, automatización e integración de IA para pymes.',
-    url: `https://www.teselarsoftware.com/${lng}`,
-    email: 'info@teselarsoftware.com',
-    telephone: '+34653232735',
-    priceRange: '150€ - 6.000€',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Lloret de Mar',
-      addressRegion: 'Girona',
-      addressCountry: 'ES'
-    },
-    areaServed: ['Lloret de Mar', 'Blanes', 'Tossa de Mar', 'Girona', 'Costa Brava'],
-    knowsLanguage: ['es', 'ca', 'en']
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': organizationId,
+        name: 'Teselar Software',
+        url: baseUrl,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${baseUrl}/logo_1526x1224.jpeg`,
+          width: 1526,
+          height: 1224,
+        },
+        image: `${baseUrl}/logo_1526x1224.jpeg`,
+        email: 'info@teselarsoftware.com',
+        telephone: '+34653232735',
+        founder: {
+          '@type': 'Person',
+          name: 'Rubén Reyes',
+        },
+        // TODO: añadir la ficha de Google Business en cuanto exista — ver ADR-009 del
+        // Segundo Cerebro. (GitHub no se incluye: la cuenta no tiene repos públicos.)
+        sameAs: [
+          'https://www.linkedin.com/company/teselarsoftware/',
+        ],
+        knowsLanguage: ['es', 'ca', 'en'],
+        areaServed: ['Lloret de Mar', 'Blanes', 'Tossa de Mar', 'Girona', 'Costa Brava'],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        url: baseUrl,
+        name: 'Teselar Software',
+        inLanguage: lng,
+        publisher: { '@id': organizationId },
+      },
+      {
+        '@type': 'ProfessionalService',
+        '@id': localBusinessId,
+        name: 'Teselar Software',
+        description: 'Diseño web, software a medida, automatización e integración de IA para pymes.',
+        url: `${baseUrl}/${lng}`,
+        parentOrganization: { '@id': organizationId },
+        email: 'info@teselarsoftware.com',
+        telephone: '+34653232735',
+        priceRange: '150€ - 6.000€',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Lloret de Mar',
+          addressRegion: 'Girona',
+          addressCountry: 'ES',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 41.6995,
+          longitude: 2.8458,
+        },
+        areaServed: ['Lloret de Mar', 'Blanes', 'Tossa de Mar', 'Girona', 'Costa Brava'],
+        knowsLanguage: ['es', 'ca', 'en'],
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'Catálogo de Servicios Teselar Software',
+          itemListElement: serviceIds.map((id, idx) => ({
+            '@type': 'Offer',
+            position: idx + 1,
+            itemOffered: {
+              '@type': 'Service',
+              name: t.services[id].title.replace(/^\d+\.\s*/, ''),
+              description: t.services[id].ideal,
+            },
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              price: t.services[id].price,
+              priceCurrency: 'EUR',
+            },
+          })),
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${baseUrl}/${lng}#faq`,
+        mainEntity: faqIds.map((id) => ({
+          '@type': 'Question',
+          name: t.faq[id].q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t.faq[id].a,
+          },
+        })),
+      },
+    ],
   };
+
   return (
     <html lang={lng} className={`${spaceGrotesk.variable} scroll-smooth`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
         />
         <script dangerouslySetInnerHTML={{__html: `
           try {

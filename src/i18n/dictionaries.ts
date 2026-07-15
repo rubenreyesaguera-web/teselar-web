@@ -7,6 +7,7 @@ export const dictionaries = {
       pricing: 'Precios',
       values: '¿Por qué TESELAR?',
       process: 'Proceso',
+      faq: 'Preguntas Frecuentes',
       contact: 'Agendar Cita'
     },
     hero: {
@@ -212,6 +213,46 @@ export const dictionaries = {
         desc: 'Desplegamos la web. Durante la primera semana realizamos ajustes e implementamos mejoras en caliente en producción basándonos en tu feedback real.'
       }
     },
+    faq: {
+      title: 'Preguntas Frecuentes',
+      subtitle: 'Lo que más nos preguntan antes de empezar un proyecto. Si tienes otra duda, escríbenos.',
+      q1: {
+        q: '¿Cuánto cuesta una página web?',
+        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 600€-800€, y una Web Completa (blog, panel de gestión, portfolio) desde 1.500€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. Te damos un precio cerrado tras la primera conversación, sin sorpresas.'
+      },
+      q2: {
+        q: '¿Trabajáis solo en Lloret de Mar o también fuera?',
+        a: 'Tenemos sede en Lloret de Mar y damos servicio presencial en toda la Costa Brava (Blanes, Tossa de Mar, Girona), pero trabajamos en remoto con clientes de cualquier punto de España sin ningún problema.'
+      },
+      q3: {
+        q: '¿Hacéis páginas web para inmobiliarias?',
+        a: 'Sí, es uno de nuestros nichos: Web Inmobiliaria desde 3.000€, con buscador de propiedades con filtros, panel de gestión sin tocar código y exportación XML en formato Kyero para sincronizar automáticamente con Idealista, Habitaclia y Fotocasa.'
+      },
+      q4: {
+        q: '¿Puedo tener un chatbot con inteligencia artificial en mi web, como el vuestro?',
+        a: 'Sí — de hecho el asistente TesS con el que puedes chatear ahora mismo en esta web es la demo en vivo de ese servicio. La Integración de IA cuesta entre 800€ y 3.000€ más 60€/mes de supervisión (Plan Básico); las claves de API quedan a tu nombre, sin intermediarios.'
+      },
+      q5: {
+        q: '¿En qué idiomas hacéis las webs?',
+        a: 'Trabajamos en español, català e inglés. La Web Esencial incluye 1 idioma (+150€ cada idioma adicional) y la Web Completa y la Web Inmobiliaria incluyen 2 idiomas (+250€ cada adicional). La traducción con IA revisada va incluida; la traducción humana profesional o jurada corre aparte.'
+      },
+      q6: {
+        q: '¿Qué incluye el mantenimiento mensual?',
+        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día e informe mensual.'
+      },
+      q7: {
+        q: '¿Cómo se paga un proyecto?',
+        a: 'Se pide un 50% por adelantado para empezar a trabajar y el resto se puede fraccionar sin intereses en hasta 3 meses. Aceptamos transferencia bancaria o efectivo en mano con cita previa.'
+      },
+      q8: {
+        q: '¿Qué es la Auditoría Digital y para qué sirve?',
+        a: 'Es un análisis completo de tu presencia digital actual (web, redes, SEO, velocidad, competencia) con una hoja de ruta de mejoras priorizadas, por 150€. Si después contratas cualquier proyecto con nosotros, ese importe se descuenta del total.'
+      },
+      q9: {
+        q: '¿Qué NO está incluido en el precio de un proyecto?',
+        a: 'Los costes de terceros van a cargo del cliente aunque nosotros los gestionamos: dominio, hosting, comisiones de pasarelas de pago, correo empresarial y consumo de APIs de IA. Tampoco incluye redacción de textos/fotos (las aporta el cliente), traducción jurada, publicidad de pago ni gestión de redes sociales.'
+      }
+    },
     contact: {
       title: '¿Hacemos encajar las piezas?',
       subtitle: 'Escríbenos sobre tu proyecto para agendar una cita o solicitar información técnica sin compromisos.',
@@ -304,6 +345,7 @@ export const dictionaries = {
       pricing: 'Preus',
       values: 'Per què TESELAR?',
       process: 'Procés',
+      faq: 'Preguntes Freqüents',
       contact: 'Agendar Cita'
     },
     hero: {
@@ -509,6 +551,46 @@ export const dictionaries = {
         desc: 'Despleguem el projecte. Durant la primera setmana realitzem ajustos i implementem millores en calent en producció basant-nos en el teu feedback real.'
       }
     },
+    faq: {
+      title: 'Preguntes Freqüents',
+      subtitle: 'El que més ens pregunten abans de començar un projecte. Si tens un altre dubte, escriu-nos.',
+      q1: {
+        q: 'Quant costa una pàgina web?',
+        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 600€-800€, i una Web Completa (blog, panell de gestió, portfoli) des de 1.500€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. Et donem un preu tancat després de la primera conversa, sense sorpreses.'
+      },
+      q2: {
+        q: 'Treballeu només a Lloret de Mar o també fora?',
+        a: 'Tenim seu a Lloret de Mar i donem servei presencial a tota la Costa Brava (Blanes, Tossa de Mar, Girona), però treballem en remot amb clients de qualsevol punt d\'Espanya sense cap problema.'
+      },
+      q3: {
+        q: 'Feu pàgines web per a immobiliàries?',
+        a: 'Sí, és un dels nostres nínxols: Web Immobiliària des de 3.000€, amb cercador de propietats amb filtres, panell de gestió sense tocar codi i exportació XML en format Kyero per sincronitzar automàticament amb Idealista, Habitaclia i Fotocasa.'
+      },
+      q4: {
+        q: 'Puc tenir un xatbot amb intel·ligència artificial a la meva web, com el vostre?',
+        a: 'Sí — de fet l\'assistent TesS amb qui pots xatejar ara mateix en aquesta web és la demo en viu d\'aquest servei. La Integració d\'IA costa entre 800€ i 3.000€ més 60€/mes de supervisió (Pla Bàsic); les claus d\'API queden al teu nom, sense intermediaris.'
+      },
+      q5: {
+        q: 'En quins idiomes feu les webs?',
+        a: 'Treballem en español, català i anglès. La Web Essencial inclou 1 idioma (+150€ cada idioma addicional) i la Web Completa i la Web Immobiliària inclouen 2 idiomes (+250€ cada addicional). La traducció amb IA revisada va inclosa; la traducció humana professional o jurada va a part.'
+      },
+      q6: {
+        q: 'Què inclou el manteniment mensual?',
+        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia i informe mensual.'
+      },
+      q7: {
+        q: 'Com es paga un projecte?',
+        a: 'Es demana un 50% per avançat per començar a treballar i la resta es pot fraccionar sense interessos fins a 3 mesos. Acceptem transferència bancària o efectiu a la mà amb cita prèvia.'
+      },
+      q8: {
+        q: 'Què és l\'Auditoria Digital i per a què serveix?',
+        a: 'És una anàlisi completa de la teva presència digital actual (web, xarxes, SEO, velocitat, competència) amb un full de ruta de millores prioritzades, per 150€. Si després contractes qualsevol projecte amb nosaltres, aquest import es descompta del total.'
+      },
+      q9: {
+        q: 'Què NO està inclòs en el preu d\'un projecte?',
+        a: 'Els costos de tercers van a càrrec del client tot i que nosaltres els gestionem: domini, hosting, comissions de passarel·les de pagament, correu empresarial i consum d\'APIs d\'IA. Tampoc inclou redacció de textos/fotos (les aporta el client), traducció jurada, publicitat de pagament ni gestió de xarxes socials.'
+      }
+    },
     contact: {
       title: 'Fem encaixar les peces?',
       subtitle: 'Escriu-nos sobre el teu projecte per agendar una cita o sol·licitar informació tècnica sense compromisos.',
@@ -601,6 +683,7 @@ export const dictionaries = {
       pricing: 'Pricing',
       values: 'Why TESELAR?',
       process: 'Process',
+      faq: 'FAQ',
       contact: 'Book Meeting'
     },
     hero: {
@@ -804,6 +887,46 @@ export const dictionaries = {
       p4: {
         title: '04. Live Adjustments',
         desc: 'We deploy the project. During the first week, we make live tweaks and hotfixes directly based on your real-world feedback.'
+      }
+    },
+    faq: {
+      title: 'Frequently Asked Questions',
+      subtitle: 'What people ask us most before starting a project. Got another question? Just write to us.',
+      q1: {
+        q: 'How much does a website cost?',
+        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 600€-800€, and a Complete Website (blog, admin panel, portfolio) starts at 1,500€. Both include 1 week of live adjustments after launch. We give you a closed price after the first conversation, no surprises.'
+      },
+      q2: {
+        q: 'Do you only work in Lloret de Mar, or also further afield?',
+        a: 'We are based in Lloret de Mar and serve the whole Costa Brava area in person (Blanes, Tossa de Mar, Girona), but we work remotely with clients anywhere in Spain without any issue.'
+      },
+      q3: {
+        q: 'Do you build websites for real estate agencies?',
+        a: 'Yes, it is one of our specialties: Real Estate Websites from 3,000€, with a property search engine with filters, a management panel with no coding required, and XML export in Kyero format to automatically sync with Idealista, Habitaclia, and Fotocasa.'
+      },
+      q4: {
+        q: 'Can I get an AI chatbot on my website, like yours?',
+        a: 'Yes — in fact the TesS assistant you can chat with right now on this site is the live demo of that exact service. AI Integration costs between 800€ and 3,000€ plus 60€/month of supervision (Basic Plan); the API keys stay under your own account, no middlemen.'
+      },
+      q5: {
+        q: 'What languages do you build websites in?',
+        a: 'We work in Spanish, Catalan, and English. The Essential Website includes 1 language (+150€ per extra language), and the Complete Website and Real Estate Website include 2 languages (+250€ per extra one). Reviewed AI translation is included; professional or sworn human translation is billed separately.'
+      },
+      q6: {
+        q: 'What does the monthly maintenance plan include?',
+        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, and a monthly report.'
+      },
+      q7: {
+        q: 'How do I pay for a project?',
+        a: 'We ask for 50% upfront to start work, and the rest can be split interest-free over up to 3 months. We accept bank transfer or cash in hand by appointment.'
+      },
+      q8: {
+        q: 'What is the Digital Audit and what is it for?',
+        a: 'It is a complete analysis of your current digital presence (website, social media, SEO, speed, competitors) with a prioritized improvement roadmap, for 150€. If you later hire any project with us, that amount is deducted from the total.'
+      },
+      q9: {
+        q: 'What is NOT included in a project price?',
+        a: 'Third-party costs are billed to the client, even though we handle the setup: domain, hosting, payment gateway fees, business email, and AI API usage. It also does not include copywriting/photography (provided by the client), sworn translation, paid advertising, or social media management.'
       }
     },
     contact: {
