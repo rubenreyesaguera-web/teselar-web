@@ -2275,6 +2275,7 @@ export default function Page({ params }: PageProps) {
                     <option value="low">{t.contact.budget_opt1}</option>
                     <option value="mid">{t.contact.budget_opt2}</option>
                     <option value="high">{t.contact.budget_opt3}</option>
+                    <option value="veryhigh">{t.contact.budget_opt4}</option>
                   </select>
                 </div>
 

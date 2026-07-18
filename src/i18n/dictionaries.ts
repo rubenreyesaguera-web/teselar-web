@@ -51,7 +51,7 @@ export const dictionaries = {
       s2: {
         title: '02. Automatizaciones Específicas',
         ideal: 'Empresas que necesitan resolver un problema concreto de eficiencia con automatización inteligente.',
-        price: '350€ — 900€',
+        price: '700€ — 1.800€',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automático de presupuestos en PDF desde un formulario',
         f2: 'Envío automático de facturas por email con datos de tu CRM',
@@ -64,7 +64,7 @@ export const dictionaries = {
       s3: {
         title: '03. Web Esencial',
         ideal: 'Freelancers, pequeñas empresas, profesionales independientes y nuevos emprendedores.',
-        price: '600€ — 800€',
+        price: '1.200€ — 1.600€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'Página única de alto impacto o 3-4 secciones estructuradas',
         f2: 'Diseño web moderno, responsive y optimizado para móvil',
@@ -76,8 +76,8 @@ export const dictionaries = {
       },
       s4: {
         title: '04. Integración de Inteligencia Artificial',
-        ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente.',
-        price: '800€ — 3.000€ + 60€/mes',
+        ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente. El precio final depende de la complejidad: un chatbot sencillo de un solo canal se sitúa en la parte baja del rango; un asistente avanzado con múltiples integraciones y canales (web, WhatsApp, Telegram), en la parte alta.',
+        price: '1.600€ — 6.000€ + 60€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Asistente virtual con IA entrenado con tu documentación interna',
         f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram',
@@ -90,7 +90,7 @@ export const dictionaries = {
       s5: {
         title: '05. Web Completa',
         ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
-        price: 'Desde 1.500€ (2 idiomas incluidos)',
+        price: 'Desde 3.000€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Estructura modular de 5 a 8 secciones bien definidas',
         f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
@@ -116,7 +116,7 @@ export const dictionaries = {
       s7: {
         title: '07. Web Inmobiliaria',
         ideal: 'Inmobiliarias que quieren destacar propiedades, captar compradores extranjeros y sincronizar con los portales.',
-        price: 'Desde 3.000€',
+        price: 'Desde 6.000€',
         tag: 'React + BD + Kyero XML',
         f1: 'Buscador de propiedades con filtros (zona, precio, tipo, habitaciones)',
         f2: 'Fichas de propiedad con galería, mapa y sistema de destacados',
@@ -129,7 +129,7 @@ export const dictionaries = {
       s8: {
         title: '08. Sistema de Gestión a Medida (ERP/CRM)',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos) con una herramienta hecha exactamente a su medida.',
-        price: '4.000€ — 6.000€',
+        price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
         f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
         f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
@@ -218,7 +218,7 @@ export const dictionaries = {
       subtitle: 'Lo que más nos preguntan antes de empezar un proyecto. Si tienes otra duda, escríbenos.',
       q1: {
         q: '¿Cuánto cuesta una página web?',
-        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 600€-800€, y una Web Completa (blog, panel de gestión, portfolio) desde 1.500€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. Te damos un precio cerrado tras la primera conversación, sin sorpresas.'
+        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. Te damos un precio cerrado tras la primera conversación, sin sorpresas.'
       },
       q2: {
         q: '¿Trabajáis solo en Lloret de Mar o también fuera?',
@@ -226,15 +226,15 @@ export const dictionaries = {
       },
       q3: {
         q: '¿Hacéis páginas web para inmobiliarias?',
-        a: 'Sí, es uno de nuestros nichos: Web Inmobiliaria desde 3.000€, con buscador de propiedades con filtros, panel de gestión sin tocar código y exportación XML en formato Kyero para sincronizar automáticamente con Idealista, Habitaclia y Fotocasa.'
+        a: 'Sí, es uno de nuestros nichos: Web Inmobiliaria desde 6.000€, con buscador de propiedades con filtros, panel de gestión sin tocar código y exportación XML en formato Kyero para sincronizar automáticamente con Idealista, Habitaclia y Fotocasa.'
       },
       q4: {
         q: '¿Puedo tener un chatbot con inteligencia artificial en mi web, como el vuestro?',
-        a: 'Sí — de hecho el asistente TesS con el que puedes chatear ahora mismo en esta web es la demo en vivo de ese servicio. La Integración de IA cuesta entre 800€ y 3.000€ más 60€/mes de supervisión (Plan Básico); las claves de API quedan a tu nombre, sin intermediarios.'
+        a: 'Sí — de hecho el asistente TesS con el que puedes chatear ahora mismo en esta web es la demo en vivo de ese servicio. La Integración de IA cuesta entre 1.600€ y 6.000€ más 60€/mes de supervisión (Plan Básico), según la complejidad (canales, integraciones); las claves de API quedan a tu nombre, sin intermediarios.'
       },
       q5: {
         q: '¿En qué idiomas hacéis las webs?',
-        a: 'Trabajamos en español, català e inglés. La Web Esencial incluye 1 idioma (+150€ cada idioma adicional) y la Web Completa y la Web Inmobiliaria incluyen 2 idiomas (+250€ cada adicional). La traducción con IA revisada va incluida; la traducción humana profesional o jurada corre aparte.'
+        a: 'Nos comunicamos y trabajamos en español, català e inglés, pero tu proyecto puede entregarse en cualquier idioma que necesites gracias a traducción asistida por IA — no estamos limitados a esos tres. La Web Esencial incluye 1 idioma (+150€ cada idioma adicional) y la Web Completa y la Web Inmobiliaria incluyen 2 idiomas (+250€ cada adicional). La traducción con IA revisada va incluida; la traducción humana profesional o jurada corre aparte.'
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
@@ -266,7 +266,8 @@ export const dictionaries = {
       budget: 'Presupuesto orientativo',
       budget_opt1: 'Menos de 1.000€',
       budget_opt2: '1.000€ - 4.000€',
-      budget_opt3: 'Más de 4.000€',
+      budget_opt3: '4.000€ - 10.000€',
+      budget_opt4: 'Más de 10.000€',
       urgency: 'Urgencia del proyecto',
       urgency_opt1: 'Inmediata',
       urgency_opt2: 'En 1 mes',
@@ -389,7 +390,7 @@ export const dictionaries = {
       s2: {
         title: '02. Automatitzacions Específiques',
         ideal: 'Empreses que necessiten resoldre un problema operatiu concret amb automatització intel·ligent.',
-        price: '350€ — 900€',
+        price: '700€ — 1.800€',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
         f2: 'Enviament automàtic de factures per correu amb dades del teu CRM',
@@ -402,7 +403,7 @@ export const dictionaries = {
       s3: {
         title: '03. Web Essencial',
         ideal: 'Freelancers, petites empreses, professionals independents i nous emprenedors.',
-        price: '600€ — 800€',
+        price: '1.200€ — 1.600€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'Pàgina única d\'alt impacte o 3-4 seccions ben estructurades',
         f2: 'Disseny web modern, responsive i optimizat per a mòbil',
@@ -414,8 +415,8 @@ export const dictionaries = {
       },
       s4: {
         title: '04. Integració d\'Intel·ligència Artificial',
-        ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client.',
-        price: '800€ — 3.000€ + 60€/mes',
+        ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client. El preu final depèn de la complexitat: un xatbot senzill d\'un sol canal se situa en la part baixa del rang; un assistent avançat amb múltiples integracions i canals (web, WhatsApp, Telegram), en la part alta.',
+        price: '1.600€ — 6.000€ + 60€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
         f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram',
@@ -428,7 +429,7 @@ export const dictionaries = {
       s5: {
         title: '05. Web Completa',
         ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
-        price: 'Des de 1.500€ (2 idiomes inclosos)',
+        price: 'Des de 3.000€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Estructura modular de 5 a 8 seccions ben definides',
         f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
@@ -454,7 +455,7 @@ export const dictionaries = {
       s7: {
         title: '07. Web Immobiliària',
         ideal: 'Immobiliàries que volen destacar propietats, captar compradors estrangers i sincronitzar amb els portals.',
-        price: 'Des de 3.000€',
+        price: 'Des de 6.000€',
         tag: 'React + BD + Kyero XML',
         f1: 'Cercador de propietats amb filtres (zona, preu, tipus, habitacions)',
         f2: 'Fitxes de propietat amb galeria, mapa i sistema de destacats',
@@ -467,7 +468,7 @@ export const dictionaries = {
       s8: {
         title: '08. Sistema de Gestió a Mida (ERP/CRM)',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes) amb una eina feta exactament a mida.',
-        price: '4.000€ — 6.000€',
+        price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
         f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
         f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
@@ -556,7 +557,7 @@ export const dictionaries = {
       subtitle: 'El que més ens pregunten abans de començar un projecte. Si tens un altre dubte, escriu-nos.',
       q1: {
         q: 'Quant costa una pàgina web?',
-        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 600€-800€, i una Web Completa (blog, panell de gestió, portfoli) des de 1.500€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. Et donem un preu tancat després de la primera conversa, sense sorpreses.'
+        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. Et donem un preu tancat després de la primera conversa, sense sorpreses.'
       },
       q2: {
         q: 'Treballeu només a Lloret de Mar o també fora?',
@@ -564,15 +565,15 @@ export const dictionaries = {
       },
       q3: {
         q: 'Feu pàgines web per a immobiliàries?',
-        a: 'Sí, és un dels nostres nínxols: Web Immobiliària des de 3.000€, amb cercador de propietats amb filtres, panell de gestió sense tocar codi i exportació XML en format Kyero per sincronitzar automàticament amb Idealista, Habitaclia i Fotocasa.'
+        a: 'Sí, és un dels nostres nínxols: Web Immobiliària des de 6.000€, amb cercador de propietats amb filtres, panell de gestió sense tocar codi i exportació XML en format Kyero per sincronitzar automàticament amb Idealista, Habitaclia i Fotocasa.'
       },
       q4: {
         q: 'Puc tenir un xatbot amb intel·ligència artificial a la meva web, com el vostre?',
-        a: 'Sí — de fet l\'assistent TesS amb qui pots xatejar ara mateix en aquesta web és la demo en viu d\'aquest servei. La Integració d\'IA costa entre 800€ i 3.000€ més 60€/mes de supervisió (Pla Bàsic); les claus d\'API queden al teu nom, sense intermediaris.'
+        a: 'Sí — de fet l\'assistent TesS amb qui pots xatejar ara mateix en aquesta web és la demo en viu d\'aquest servei. La Integració d\'IA costa entre 1.600€ i 6.000€ més 60€/mes de supervisió (Pla Bàsic), segons la complexitat (canals, integracions); les claus d\'API queden al teu nom, sense intermediaris.'
       },
       q5: {
         q: 'En quins idiomes feu les webs?',
-        a: 'Treballem en español, català i anglès. La Web Essencial inclou 1 idioma (+150€ cada idioma addicional) i la Web Completa i la Web Immobiliària inclouen 2 idiomes (+250€ cada addicional). La traducció amb IA revisada va inclosa; la traducció humana professional o jurada va a part.'
+        a: 'Ens comuniquem i treballem en español, català i anglès, però el teu projecte es pot lliurar en qualsevol idioma que necessitis gràcies a la traducció assistida per IA — no estem limitats a aquests tres. La Web Essencial inclou 1 idioma (+150€ cada idioma addicional) i la Web Completa i la Web Immobiliària inclouen 2 idiomes (+250€ cada addicional). La traducció amb IA revisada va inclosa; la traducció humana professional o jurada va a part.'
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
@@ -604,7 +605,8 @@ export const dictionaries = {
       budget: 'Pressupost orientatiu',
       budget_opt1: 'Menys de 1.000€',
       budget_opt2: '1.000€ - 4.000€',
-      budget_opt3: 'Més de 4.000€',
+      budget_opt3: '4.000€ - 10.000€',
+      budget_opt4: 'Més de 10.000€',
       urgency: 'Urgència del projecte',
       urgency_opt1: 'Immediata',
       urgency_opt2: 'En 1 mes',
@@ -727,7 +729,7 @@ export const dictionaries = {
       s2: {
         title: '02. Specific Automations',
         ideal: 'Companies looking to solve a specific operational efficiency issue with smart automation.',
-        price: '350€ — 900€',
+        price: '700€ — 1,800€',
         tag: 'Apps Script + APIs + Make',
         f1: 'Automatic generation of PDF quotes/budgets from a web form',
         f2: 'Automatic invoice mailing connecting directly with your CRM',
@@ -740,7 +742,7 @@ export const dictionaries = {
       s3: {
         title: '03. Essential Web',
         ideal: 'Freelancers, small businesses, independent professionals, and new entrepreneurs.',
-        price: '600€ — 800€',
+        price: '1,200€ — 1,600€',
         tag: 'React + Vite + Tailwind CSS',
         f1: 'High-impact single landing page or 3-4 structured sections',
         f2: 'Modern, responsive, and mobile-first web design',
@@ -752,8 +754,8 @@ export const dictionaries = {
       },
       s4: {
         title: '04. Artificial Intelligence Integration',
-        ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service.',
-        price: '800€ — 3,000€ + 60€/mo',
+        ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service. Final price depends on complexity: a simple single-channel chatbot sits at the low end of the range; an advanced assistant with multiple integrations and channels (web, WhatsApp, Telegram) sits at the high end.',
+        price: '1,600€ — 6,000€ + 60€/mo',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Custom virtual AI assistant trained with your internal company documentation',
         f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram',
@@ -766,7 +768,7 @@ export const dictionaries = {
       s5: {
         title: '05. Complete Web',
         ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
-        price: 'From 1,500€ (2 languages included)',
+        price: 'From 3,000€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
         f1: 'Modular structure with 5 to 8 well-defined sections',
         f2: 'Project gallery or interactive portfolio with dynamic filters',
@@ -792,7 +794,7 @@ export const dictionaries = {
       s7: {
         title: '07. Real Estate Website',
         ideal: 'Real estate agencies that want to showcase properties, reach foreign buyers, and sync with property portals.',
-        price: 'From 3,000€',
+        price: 'From 6,000€',
         tag: 'React + DB + Kyero XML',
         f1: 'Property search engine with filters (area, price, type, bedrooms)',
         f2: 'Property pages with gallery, map, and featured listings system',
@@ -805,7 +807,7 @@ export const dictionaries = {
       s8: {
         title: '08. Custom Management System (ERP/CRM)',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects) with a tool built exactly for them.',
-        price: '4,000€ — 6,000€',
+        price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
         f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
         f2: 'Interactive dashboard with financial charts and live metrics',
@@ -894,7 +896,7 @@ export const dictionaries = {
       subtitle: 'What people ask us most before starting a project. Got another question? Just write to us.',
       q1: {
         q: 'How much does a website cost?',
-        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 600€-800€, and a Complete Website (blog, admin panel, portfolio) starts at 1,500€. Both include 1 week of live adjustments after launch. We give you a closed price after the first conversation, no surprises.'
+        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. We give you a closed price after the first conversation, no surprises.'
       },
       q2: {
         q: 'Do you only work in Lloret de Mar, or also further afield?',
@@ -902,15 +904,15 @@ export const dictionaries = {
       },
       q3: {
         q: 'Do you build websites for real estate agencies?',
-        a: 'Yes, it is one of our specialties: Real Estate Websites from 3,000€, with a property search engine with filters, a management panel with no coding required, and XML export in Kyero format to automatically sync with Idealista, Habitaclia, and Fotocasa.'
+        a: 'Yes, it is one of our specialties: Real Estate Websites from 6,000€, with a property search engine with filters, a management panel with no coding required, and XML export in Kyero format to automatically sync with Idealista, Habitaclia, and Fotocasa.'
       },
       q4: {
         q: 'Can I get an AI chatbot on my website, like yours?',
-        a: 'Yes — in fact the TesS assistant you can chat with right now on this site is the live demo of that exact service. AI Integration costs between 800€ and 3,000€ plus 60€/month of supervision (Basic Plan); the API keys stay under your own account, no middlemen.'
+        a: 'Yes — in fact the TesS assistant you can chat with right now on this site is the live demo of that exact service. AI Integration costs between 1,600€ and 6,000€ plus 60€/month of supervision (Basic Plan), depending on complexity (channels, integrations); the API keys stay under your own account, no middlemen.'
       },
       q5: {
         q: 'What languages do you build websites in?',
-        a: 'We work in Spanish, Catalan, and English. The Essential Website includes 1 language (+150€ per extra language), and the Complete Website and Real Estate Website include 2 languages (+250€ per extra one). Reviewed AI translation is included; professional or sworn human translation is billed separately.'
+        a: 'We communicate and work in Spanish, Catalan, and English, but your project can be delivered in any language you need thanks to AI-assisted translation — we are not limited to those three. The Essential Website includes 1 language (+150€ per extra language), and the Complete Website and Real Estate Website include 2 languages (+250€ per extra one). Reviewed AI translation is included; professional or sworn human translation is billed separately.'
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
@@ -942,7 +944,8 @@ export const dictionaries = {
       budget: 'Approximate budget',
       budget_opt1: 'Less than 1.000€',
       budget_opt2: '1.000€ - 4.000€',
-      budget_opt3: 'More than 4.000€',
+      budget_opt3: '4.000€ - 10.000€',
+      budget_opt4: 'More than 10.000€',
       urgency: 'Project urgency',
       urgency_opt1: 'Immediate',
       urgency_opt2: 'Within 1 month',
