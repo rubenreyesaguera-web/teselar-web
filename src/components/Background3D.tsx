@@ -4,7 +4,7 @@ import React from 'react';
 
 export const Background3D = () => {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#031622] overflow-hidden pointer-events-none select-none">
+    <div className="fixed inset-0 -z-10 bg-[#031622] overflow-hidden pointer-events-none select-none" aria-hidden="true" role="presentation">
       {/* 
         High-Fidelity 2D SVG Cyber Node Network. 
         Completely static and CSS-driven, yielding absolute zero JavaScript CPU execution overhead 
@@ -57,6 +57,17 @@ export const Background3D = () => {
           }
           .spin-slow-ccw {
             animation: svg-spin-ccw 120s linear infinite;
+          }
+
+          /* Móvil: congela el fondo animado. El backdrop-filter de los elementos de cristal
+             encima (header, tarjetas HUD, franja #concept) solo se puede cachear si lo que hay
+             detrás es estable; con el fondo moviéndose sin parar, cada superficie de cristal se
+             re-difumina en cada frame. Los nodos/conectores/glow siguen presentes, solo dejan
+             de moverse a esta escala. */
+          @media (max-width: 767px) {
+            .pulse-dot-large,
+            .dash-flow, .dash-flow-fast,
+            .spin-slow-cw, .spin-slow-ccw { animation: none !important; }
           }
         `}} />
 

@@ -8,14 +8,15 @@ interface Msg {
   text: string;
 }
 
-const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; placeholder: string; error: string; teaser: string }> = {
+const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; placeholder: string; error: string; teaser: string; cerrar: string; enviar: string; abrirChat: string; cerrarChat: string }> = {
   es: {
     titulo: 'TesS · IA de Teselar',
     badge: 'IA en vivo — esto es lo que construimos',
     saludo: '¡Hola! Soy TesS, la IA de Teselar Software 🤖 Y sí, soy una demo en vivo de lo que hacemos: asistentes como yo desde 800€. ¿Qué necesita tu negocio? ¿Una web, una automatización, un sistema a medida?',
     placeholder: 'Escribe tu mensaje...',
     error: 'Algo ha fallado. Prueba de nuevo o escríbenos por WhatsApp: +34 653 232 735.',
-    teaser: '¿Tienes 1 minuto? Soy TesS, la IA de Teselar 🤖 Pregúntame precios o cuéntame tu proyecto.'
+    teaser: '¿Tienes 1 minuto? Soy TesS, la IA de Teselar 🤖 Pregúntame precios o cuéntame tu proyecto.',
+    cerrar: 'Cerrar', enviar: 'Enviar mensaje', abrirChat: 'Abrir chat con TesS', cerrarChat: 'Cerrar chat con TesS'
   },
   ca: {
     titulo: 'TesS · IA de Teselar',
@@ -23,7 +24,8 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
     saludo: 'Hola! Sóc TesS, la IA de Teselar Software 🤖 I sí, sóc una demo en viu del que fem: assistents com jo des de 800€. Què necessita el teu negoci? Una web, una automatització, un sistema a mida?',
     placeholder: 'Escriu el teu missatge...',
     error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-nos per WhatsApp: +34 653 232 735.',
-    teaser: 'Tens 1 minut? Sóc TesS, la IA de Teselar 🤖 Pregunta\'m preus o explica\'m el teu projecte.'
+    teaser: 'Tens 1 minut? Sóc TesS, la IA de Teselar 🤖 Pregunta\'m preus o explica\'m el teu projecte.',
+    cerrar: 'Tancar', enviar: 'Enviar missatge', abrirChat: 'Obrir xat amb TesS', cerrarChat: 'Tancar xat amb TesS'
   },
   en: {
     titulo: 'TesS · Teselar\'s AI',
@@ -31,7 +33,8 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
     saludo: 'Hi! I\'m TesS, the Teselar Software AI 🤖 And yes, I\'m a live demo of what we build: assistants like me from 800€. What does your business need? A website, an automation, a custom system?',
     placeholder: 'Type your message...',
     error: 'Something went wrong. Try again or message us on WhatsApp: +34 653 232 735.',
-    teaser: 'Got 1 minute? I\'m TesS, Teselar\'s AI 🤖 Ask me about pricing or tell me about your project.'
+    teaser: 'Got 1 minute? I\'m TesS, Teselar\'s AI 🤖 Ask me about pricing or tell me about your project.',
+    cerrar: 'Close', enviar: 'Send message', abrirChat: 'Open chat with TesS', cerrarChat: 'Close chat with TesS'
   }
 };
 
@@ -95,17 +98,24 @@ export function ChatWidget({ lng }: { lng: string }) {
       {/* Burbuja de invitación */}
       {teaser && !abierto && (
         <div className="fixed bottom-24 right-5 z-[99998] max-w-[280px] bg-teselar-dark border border-innovacion/40 rounded-2xl rounded-br-md shadow-[0_8px_30px_rgba(0,191,165,0.25)] p-4 animate-[fadeIn_.4s_ease]">
-          <button onClick={cerrarTeaser} aria-label="Cerrar" className="absolute top-2 right-2 text-claridad/40 hover:text-claridad cursor-pointer">
+          <button onClick={cerrarTeaser} aria-label={t.cerrar} className="absolute top-2 right-2 text-claridad/40 hover:text-claridad cursor-pointer">
             <X size={14} />
           </button>
-          <p onClick={abrirChat} className="text-claridad/90 text-[13px] leading-relaxed pr-4 cursor-pointer">{t.teaser}</p>
+          <p
+            onClick={abrirChat}
+            onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirChat(); } }}
+            role="button"
+            tabIndex={0}
+            className="text-claridad/90 text-[13px] leading-relaxed pr-4 cursor-pointer"
+          >{t.teaser}</p>
         </div>
       )}
 
       {/* Botón flotante */}
       <button
         onClick={abrirChat}
-        aria-label={t.titulo}
+        aria-label={abierto ? t.cerrarChat : t.abrirChat}
+        aria-expanded={abierto}
         className="fixed bottom-5 right-5 z-[99998] w-16 h-16 rounded-full bg-innovacion text-teselar-dark shadow-[0_0_30px_rgba(0,191,165,0.55)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
       >
         {!abierto && <span className="absolute inset-0 rounded-full bg-innovacion/50 animate-ping" style={{ animationDuration: '2.5s' }} />}
@@ -155,12 +165,13 @@ export function ChatWidget({ lng }: { lng: string }) {
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => { if (e.key === 'Enter') enviar(); }}
               placeholder={t.placeholder}
-              className="flex-1 bg-claridad/5 border border-claridad/15 rounded-xl px-4 py-2.5 text-[13px] text-claridad placeholder:text-claridad/35 focus:outline-none focus:border-innovacion/50"
+              aria-label={t.placeholder}
+              className="flex-1 bg-claridad/5 border border-claridad/15 rounded-xl px-4 py-2.5 text-[13px] text-claridad placeholder:text-claridad/50 focus:outline-none focus:border-innovacion/50"
             />
             <button
               onClick={enviar}
               disabled={cargando || !input.trim()}
-              aria-label="Enviar"
+              aria-label={t.enviar}
               className="w-11 h-11 rounded-xl bg-innovacion text-teselar-dark flex items-center justify-center disabled:opacity-40 hover:brightness-110 transition cursor-pointer"
             >
               <Send size={17} />

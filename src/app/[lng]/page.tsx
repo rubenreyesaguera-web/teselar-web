@@ -530,11 +530,11 @@ export default function Page({ params }: PageProps) {
           <div className="flex items-center gap-4">
             {/* Quick Language Selector */}
             <div className="relative group">
-              <button className="glass-panel text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 hover:border-innovacion hover:text-innovacion transition-all duration-300">
-                <Languages size={13} />
+              <button aria-label={t.a11y.cambiar_idioma} aria-haspopup="menu" className="glass-panel text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 hover:border-innovacion hover:text-innovacion transition-all duration-300">
+                <Languages size={13} aria-hidden="true" />
                 <span className="uppercase">{currentLng}</span>
               </button>
-              <div className="absolute right-0 mt-2 w-28 glass-panel rounded-2xl p-1.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 shadow-xl border border-claridad/10 backdrop-blur-md">
+              <div className="absolute right-0 mt-2 w-28 glass-panel rounded-2xl p-1.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:pointer-events-auto transition-all duration-300 shadow-xl border border-claridad/10 backdrop-blur-md">
                 <button onClick={() => handleLanguageChange('es')} className={`w-full text-left text-xs px-3 py-2 rounded-xl transition-colors ${currentLng === 'es' ? 'bg-innovacion/25 text-innovacion font-black' : 'hover:bg-claridad/10'}`}>Castellano</button>
                 <button onClick={() => handleLanguageChange('ca')} className={`w-full text-left text-xs px-3 py-2 rounded-xl transition-colors ${currentLng === 'ca' ? 'bg-innovacion/25 text-innovacion font-black' : 'hover:bg-claridad/10'}`}>Català</button>
                 <button onClick={() => handleLanguageChange('en')} className={`w-full text-left text-xs px-3 py-2 rounded-xl transition-colors ${currentLng === 'en' ? 'bg-innovacion/25 text-innovacion font-black' : 'hover:bg-claridad/10'}`}>English</button>
@@ -550,8 +550,14 @@ export default function Page({ params }: PageProps) {
             </button>
 
             {/* Mobile Menu Toggle Button */}
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-1 text-claridad hover:text-innovacion transition-colors cursor-pointer">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? t.a11y.cerrar_menu : t.a11y.abrir_menu}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav-overlay"
+              className="md:hidden p-1 text-claridad hover:text-innovacion transition-colors cursor-pointer"
+            >
+              {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
             </button>
           </div>
         </nav>
@@ -565,6 +571,7 @@ export default function Page({ params }: PageProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
+            id="mobile-nav-overlay"
             className="fixed inset-0 z-40 bg-teselar-dark/95 backdrop-blur-xl pt-28 px-8 flex flex-col gap-6 md:hidden"
           >
             <div className="flex flex-col gap-5 text-xl font-bold text-claridad/90 border-b border-claridad/10 pb-8">
@@ -599,6 +606,7 @@ export default function Page({ params }: PageProps) {
         )}
       </AnimatePresence>
 
+      <main>
       {/* 1. SCROLL-DRIVEN CINEMATIC HERO TRACK (Desktop: scroll-driven | Mobile: auto-reveal) */}
       <section ref={heroContainerRef} className={`relative w-full z-10 ${isMobile ? 'min-h-screen-dynamic' : 'h-[160vh]'}`}>
         <div className={`${isMobile ? 'relative min-h-screen-dynamic' : 'sticky top-0 h-screen'} w-full flex items-center justify-center overflow-hidden`}>
@@ -606,8 +614,8 @@ export default function Page({ params }: PageProps) {
           <div className="hero-grid opacity-15" />
 
           {/* Colorful cinematic neon glow balls (reduced on mobile) */}
-          <div className={`absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[80px]' : 'w-[40vw] h-[40vw] blur-[130px]'}`} />
-          <div className={`absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 animate-pulse ${isMobile ? 'w-[60vw] h-[60vw] blur-[100px]' : 'w-[45vw] h-[45vw] blur-[160px]'}`} style={{ animationDuration: '9s' }} />
+          <div className={`absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[56px]' : 'w-[40vw] h-[40vw] blur-[130px]'}`} />
+          <div className={`absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[64px]' : 'w-[45vw] h-[45vw] blur-[160px] animate-pulse'}`} style={{ animationDuration: '9s' }} />
 
           {/* Widescreen Hollywood Anamorphic Lens Flare Background accents (hidden on mobile for perf) */}
           {!isMobile && (
@@ -767,7 +775,7 @@ export default function Page({ params }: PageProps) {
             >
               <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
                 {/* Glassmorphic puzzle elements floating with custom animations & rich cyber HUD details */}
-                <div className={`absolute bg-teselar/30 backdrop-blur-md border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-claridad/50 ${isMobile ? 'w-32 h-32 p-3 text-[8px]' : 'w-44 h-44'}`}>
+                <div className={`absolute bg-teselar/30 backdrop-blur-md max-md:backdrop-blur-sm border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-claridad/50 ${isMobile ? 'w-32 h-32 p-3 text-[8px]' : 'w-44 h-44'}`}>
                   <div className="flex justify-between items-center">
                     <span>[ MODULE.01 ]</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-innovacion" />
@@ -775,7 +783,7 @@ export default function Page({ params }: PageProps) {
                   <div className={`tracking-widest text-innovacion/70 uppercase font-bold ${isMobile ? 'text-[7px]' : 'text-[9px]'}`}>INTEGRITY_OK</div>
                 </div>
                 
-                <div className={`absolute bg-innovacion/20 backdrop-blur-md border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-innovacion ${isMobile ? 'w-28 h-28 p-3 text-[8px]' : 'w-36 h-36'}`} style={{ animationDelay: '-2s' }}>
+                <div className={`absolute bg-innovacion/20 backdrop-blur-md max-md:backdrop-blur-sm border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-innovacion ${isMobile ? 'w-28 h-28 p-3 text-[8px]' : 'w-36 h-36'}`} style={{ animationDelay: '-2s' }}>
                   <div className="flex justify-between items-center">
                     <span>[ CORE.SYS ]</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-innovacion animate-ping" />
@@ -808,7 +816,7 @@ export default function Page({ params }: PageProps) {
       </section>
 
       {/* 2. EL CONCEPTO: LA PIEZA QUE ENCAJA (Scroll Experience) */}
-      <section className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden">
+      <section className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 md:backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative">
           
           <motion.div 
@@ -1800,11 +1808,12 @@ export default function Page({ params }: PageProps) {
                 {t.simulator.notif_linked}
               </p>
             </div>
-            <button 
-              onClick={() => setShowSimulatorNotif(false)} 
+            <button
+              onClick={() => setShowSimulatorNotif(false)}
+              aria-label={t.a11y.cerrar}
               className="text-claridad/40 hover:text-claridad transition-colors p-1 flex-shrink-0 cursor-pointer"
             >
-              <X size={15} />
+              <X size={15} aria-hidden="true" />
             </button>
           </motion.div>
         )}
@@ -2358,8 +2367,8 @@ export default function Page({ params }: PageProps) {
                   )}
                 </button>
 
-                <p className="text-xs md:text-sm text-claridad/50 font-light text-center">
-                  {lng === 'es' 
+                <p className="text-xs md:text-sm text-claridad/70 font-light text-center">
+                  {lng === 'es'
                     ? '¿Prefieres escribirnos directamente? También atendemos en: '
                     : lng === 'ca'
                       ? 'Prefereixes escriure\'ns directament? També atenem a: '
@@ -2372,6 +2381,7 @@ export default function Page({ params }: PageProps) {
           </motion.div>
         </div>
       </section>
+      </main>
 
       {/* FOOTER (Legal Links and Brand detail) */}
       <footer className="relative bg-teselar-dark/95 border-t border-claridad/10 pt-20 pb-10 px-4 md:px-8 z-10">
@@ -2409,19 +2419,19 @@ export default function Page({ params }: PageProps) {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{lng === 'es' ? 'Contacto y Sede' : lng === 'ca' ? 'Contacte i Seu' : 'Contact & Headquarters'}</h4>
             <div className="space-y-4 text-xs font-light text-claridad/75 leading-relaxed">
               <div className="flex items-center gap-3">
-                <MapPin size={16} className="text-innovacion" />
+                <MapPin size={16} className="text-innovacion" aria-hidden="true" />
                 <span>Lloret de Mar, Girona, {currentLng === 'es' ? 'España' : currentLng === 'ca' ? 'Espanya' : 'Spain'}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail size={16} className="text-innovacion" />
+                <Mail size={16} className="text-innovacion" aria-hidden="true" />
                 <a href="mailto:info@teselarsoftware.com" className="hover:text-innovacion transition-colors">info@teselarsoftware.com</a>
               </div>
               <div className="flex items-center gap-3">
-                <Phone size={16} className="text-innovacion" />
+                <Phone size={16} className="text-innovacion" aria-hidden="true" />
                 <a href="tel:+34653232735" className="hover:text-innovacion transition-colors">+34 653 232 735</a>
               </div>
               <div className="flex items-center gap-3">
-                <MessageCircle size={16} className="text-innovacion" />
+                <MessageCircle size={16} className="text-innovacion" aria-hidden="true" />
                 <a href="https://wa.me/34653232735" target="_blank" rel="noopener noreferrer" className="hover:text-innovacion transition-colors">WhatsApp</a>
               </div>
             </div>
@@ -2430,7 +2440,7 @@ export default function Page({ params }: PageProps) {
         </div>
 
         {/* Legal notice & subpath links */}
-        <div className="max-w-7xl mx-auto border-t border-claridad/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-light text-claridad/40 text-center">
+        <div className="max-w-7xl mx-auto border-t border-claridad/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-light text-claridad/70 text-center">
           <span>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
@@ -2486,9 +2496,10 @@ export default function Page({ params }: PageProps) {
                 {/* Close Button */}
                 <button
                   onClick={() => setActiveLegalModal(null)}
+                  aria-label={t.a11y.cerrar}
                   className="absolute top-6 right-6 p-2 rounded-full bg-claridad/5 hover:bg-innovacion/25 text-claridad hover:text-innovacion border border-claridad/10 hover:border-innovacion/40 transition-all duration-300 cursor-pointer"
                 >
-                  <X size={20} />
+                  <X size={20} aria-hidden="true" />
                 </button>
 
                 {/* Title */}
@@ -2560,9 +2571,10 @@ export default function Page({ params }: PageProps) {
             >
               <button
                 onClick={() => setShowExitPopup(false)}
+                aria-label={t.a11y.cerrar}
                 className="absolute top-4 right-4 p-2 rounded-full bg-claridad/5 hover:bg-innovacion/25 text-claridad hover:text-innovacion transition-all duration-300"
               >
-                <X size={20} />
+                <X size={20} aria-hidden="true" />
               </button>
               
               <div className="text-center mb-6 mt-2">
@@ -2595,7 +2607,7 @@ export default function Page({ params }: PageProps) {
                   />
                   <div className="flex items-start gap-2 pt-1">
                     <input type="checkbox" id="exit-gdpr" required className="mt-1" />
-                    <label htmlFor="exit-gdpr" className="text-[10px] text-claridad/50 leading-tight">
+                    <label htmlFor="exit-gdpr" className="text-[10px] text-claridad/75 leading-tight">
                       {t.leads.exit_gdpr}
                     </label>
                   </div>
@@ -2616,7 +2628,7 @@ export default function Page({ params }: PageProps) {
                   <button
                     type="button"
                     onClick={() => setShowExitPopup(false)}
-                    className="w-full text-center text-xs text-claridad/40 hover:text-claridad transition-colors mt-2"
+                    className="w-full text-center text-xs text-claridad/70 hover:text-claridad transition-colors mt-2"
                   >
                     {t.leads.exit_close}
                   </button>
@@ -2669,9 +2681,10 @@ export default function Page({ params }: PageProps) {
               </div>
               <button
                 onClick={() => setShowScrollToast(false)}
+                aria-label={t.a11y.cerrar}
                 className="absolute top-3 right-3 text-claridad/40 hover:text-claridad transition-colors"
               >
-                <X size={14} />
+                <X size={14} aria-hidden="true" />
               </button>
             </div>
           </motion.div>

@@ -27,7 +27,7 @@ export default function GraciasPage({ params }: PageProps) {
       <Background3D />
 
       {/* Main Content */}
-      <div className="flex-grow flex items-center justify-center px-4 py-20 relative z-10">
+      <main className="flex-grow flex items-center justify-center px-4 py-20 relative z-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -78,10 +78,10 @@ export default function GraciasPage({ params }: PageProps) {
             {lng === 'es' ? 'Volver al Inicio' : lng === 'ca' ? 'Tornar a l\'Inici' : 'Back to Home'}
           </motion.button>
         </motion.div>
-      </div>
+      </main>
 
       {/* Mini Footer */}
-      <footer className="py-6 border-t border-claridad/10 bg-teselar-dark/80 relative z-20 text-xs font-light text-claridad/40 text-center">
+      <footer className="py-6 border-t border-claridad/10 bg-teselar-dark/80 relative z-20 text-xs font-light text-claridad/70 text-center">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <span>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
           <div className="flex gap-4 text-claridad/60 font-semibold">

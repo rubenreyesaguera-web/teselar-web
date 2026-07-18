@@ -10,6 +10,12 @@ export const dictionaries = {
       faq: 'Preguntas Frecuentes',
       contact: 'Agendar Cita'
     },
+    a11y: {
+      abrir_menu: 'Abrir menú',
+      cerrar_menu: 'Cerrar menú',
+      cambiar_idioma: 'Cambiar idioma',
+      cerrar: 'Cerrar'
+    },
     hero: {
       tagline: 'Teselar Software',
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
@@ -349,6 +355,12 @@ export const dictionaries = {
       faq: 'Preguntes Freqüents',
       contact: 'Agendar Cita'
     },
+    a11y: {
+      abrir_menu: 'Obrir menú',
+      cerrar_menu: 'Tancar menú',
+      cambiar_idioma: 'Canviar idioma',
+      cerrar: 'Tancar'
+    },
     hero: {
       tagline: 'Teselar Software',
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
@@ -687,6 +699,12 @@ export const dictionaries = {
       process: 'Process',
       faq: 'FAQ',
       contact: 'Book Meeting'
+    },
+    a11y: {
+      abrir_menu: 'Open menu',
+      cerrar_menu: 'Close menu',
+      cambiar_idioma: 'Change language',
+      cerrar: 'Close'
     },
     hero: {
       tagline: 'Teselar Software',
