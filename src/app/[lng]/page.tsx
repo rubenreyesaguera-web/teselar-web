@@ -1237,7 +1237,7 @@ export default function Page({ params }: PageProps) {
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
                 <div>
-                  <h4 className="text-xs font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 01. {t.hud.metric_perf}</h4>
+                  <h3 className="text-xs font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 01. {t.hud.metric_perf}</h3>
                   <p className="text-base font-bold text-claridad">
                     {activeHudPlatform === 'nextjs' ? t.hud.nextjs_perf_desc : t.hud.wp_perf_desc}
                   </p>
@@ -1264,7 +1264,7 @@ export default function Page({ params }: PageProps) {
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
                 <div>
-                  <h4 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 02. {t.hud.metric_speed}</h4>
+                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 02. {t.hud.metric_speed}</h3>
                   <p className="text-base font-bold text-claridad">
                     {activeHudPlatform === 'nextjs' ? t.hud.nextjs_speed_desc : t.hud.wp_speed_desc}
                   </p>
@@ -1291,7 +1291,7 @@ export default function Page({ params }: PageProps) {
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
                 <div>
-                  <h4 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 03. {t.hud.metric_sec}</h4>
+                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 03. {t.hud.metric_sec}</h3>
                   <p className="text-base font-bold text-claridad">
                     {activeHudPlatform === 'nextjs' ? t.hud.nextjs_sec_desc : t.hud.wp_sec_desc}
                   </p>
@@ -1318,7 +1318,7 @@ export default function Page({ params }: PageProps) {
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
                 <div>
-                  <h4 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 04. {t.hud.metric_plug}</h4>
+                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 04. {t.hud.metric_plug}</h3>
                   <p className="text-base font-bold text-claridad">
                     {activeHudPlatform === 'nextjs' ? t.hud.nextjs_plug_desc : t.hud.wp_plug_desc}
                   </p>
@@ -1345,7 +1345,7 @@ export default function Page({ params }: PageProps) {
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
                 <div>
-                  <h4 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 05. {t.hud.metric_scale}</h4>
+                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 05. {t.hud.metric_scale}</h3>
                   <p className="text-base font-bold text-claridad">
                     {activeHudPlatform === 'nextjs' ? t.hud.nextjs_scale_desc : t.hud.wp_scale_desc}
                   </p>
@@ -1460,8 +1460,8 @@ export default function Page({ params }: PageProps) {
                       </div>
 
                       {/* List of features */}
-                      <ul className="space-y-3 mb-8 border-t border-claridad/5 pt-6">
-                        <strong className="text-claridad font-extrabold text-sm block mb-3">{t.services.features}</strong>
+                      <strong className="text-claridad font-extrabold text-sm block mb-3 border-t border-claridad/5 pt-6">{t.services.features}</strong>
+                      <ul className="space-y-3 mb-8">
                         {service.features.map((feature, fIndex) => (
                           <li key={fIndex} className="flex items-start gap-3 text-sm text-claridad/90 font-light leading-relaxed">
                             <CheckCircle2 size={15} className="text-innovacion flex-shrink-0 mt-0.5" />
@@ -2404,7 +2404,7 @@ export default function Page({ params }: PageProps) {
 
           {/* Column 2: Navigation shortcuts */}
           <div className="md:col-span-3">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{currentLng === 'es' ? 'Navegación' : currentLng === 'ca' ? 'Navegació' : 'Navigation'}</h4>
+            <h3 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{currentLng === 'es' ? 'Navegación' : currentLng === 'ca' ? 'Navegació' : 'Navigation'}</h3>
             <div className="flex flex-col gap-3.5 text-xs text-claridad/65 font-medium">
               <a href="#values" className="hover:text-innovacion transition-colors">{t.nav.values}</a>
               <a href="#services" className="hover:text-innovacion transition-colors">{t.nav.services}</a>
@@ -2416,7 +2416,7 @@ export default function Page({ params }: PageProps) {
 
           {/* Column 3: Contact information */}
           <div className="md:col-span-4">
-            <h4 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{lng === 'es' ? 'Contacto y Sede' : lng === 'ca' ? 'Contacte i Seu' : 'Contact & Headquarters'}</h4>
+            <h3 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{lng === 'es' ? 'Contacto y Sede' : lng === 'ca' ? 'Contacte i Seu' : 'Contact & Headquarters'}</h3>
             <div className="space-y-4 text-xs font-light text-claridad/75 leading-relaxed">
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-innovacion" aria-hidden="true" />
