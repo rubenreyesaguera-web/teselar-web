@@ -97,7 +97,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const localBusinessId = `${baseUrl}/#localbusiness`;
 
   const serviceIds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'] as const;
-  const faqIds = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'] as const;
+  const faqIds = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'] as const;
 
   // Grafo de datos estructurados (GEO/AEO): sustituye al único ProfessionalService previo.
   // Fuente de verdad: la misma copia trilingüe de src/i18n/dictionaries.ts que ve el usuario
@@ -149,7 +149,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         parentOrganization: { '@id': organizationId },
         email: 'info@teselarsoftware.com',
         telephone: '+34653232735',
-        priceRange: '150€ - 6.000€',
+        priceRange: '150€ - 12.000€',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Lloret de Mar',

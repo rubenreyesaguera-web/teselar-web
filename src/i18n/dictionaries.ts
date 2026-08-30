@@ -276,11 +276,15 @@ export const dictionaries = {
       },
       q8: {
         q: '¿Qué es la Auditoría Digital y para qué sirve?',
-        a: 'Es un análisis completo de tu presencia digital actual (web, redes, SEO, velocidad, competencia) con una hoja de ruta de mejoras priorizadas, por 150€. Si después contratas cualquier proyecto con nosotros, ese importe se descuenta del total.'
+        a: 'Es un análisis completo de tu presencia digital actual (web, redes, SEO, velocidad, competencia) con una hoja de ruta de mejoras priorizadas, por 150€. Si después contratas cualquier proyecto con nosotros, ese importe se descuenta del total. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
       },
       q9: {
         q: '¿Qué NO está incluido en el precio de un proyecto?',
         a: 'Los costes de terceros van a cargo del cliente aunque nosotros los gestionamos: dominio, hosting, comisiones de pasarelas de pago, correo empresarial y consumo de APIs de IA. Tampoco incluye redacción de textos/fotos (las aporta el cliente), traducción jurada, publicidad de pago ni gestión de redes sociales.'
+      },
+      q10: {
+        q: '¿Podéis hacer que mi negocio coja las citas por WhatsApp?',
+        a: 'Sí, es uno de nuestros servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes y el Completo 1.500€-1.800€ más 250€/mes. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devolvemos la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudamos) y que Meta verifique tu empresa, que lleva una o dos semanas. Si prefieres no depender de Meta, hay una versión sin API por 400€-700€ más 90€/mes.'
       }
     },
     contact: {
@@ -648,11 +652,15 @@ export const dictionaries = {
       },
       q8: {
         q: 'Què és l\'Auditoria Digital i per a què serveix?',
-        a: 'És una anàlisi completa de la teva presència digital actual (web, xarxes, SEO, velocitat, competència) amb un full de ruta de millores prioritzades, per 150€. Si després contractes qualsevol projecte amb nosaltres, aquest import es descompta del total.'
+        a: 'És una anàlisi completa de la teva presència digital actual (web, xarxes, SEO, velocitat, competència) amb un full de ruta de millores prioritzades, per 150€. Si després contractes qualsevol projecte amb nosaltres, aquest import es descompta del total. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
       },
       q9: {
         q: 'Què NO està inclòs en el preu d\'un projecte?',
         a: 'Els costos de tercers van a càrrec del client tot i que nosaltres els gestionem: domini, hosting, comissions de passarel·les de pagament, correu empresarial i consum d\'APIs d\'IA. Tampoc inclou redacció de textos/fotos (les aporta el client), traducció jurada, publicitat de pagament ni gestió de xarxes socials.'
+      },
+      q10: {
+        q: 'Podeu fer que el meu negoci agafi les cites per WhatsApp?',
+        a: 'Sí, és un dels nostres serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes i el Complet 1.500€-1.800€ més 250€/mes. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et tornem la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudem) i que Meta verifiqui la teva empresa, cosa que porta una o dues setmanes. Si prefereixes no dependre de Meta, hi ha una versió sense API per 400€-700€ més 90€/mes.'
       }
     },
     contact: {
@@ -1020,11 +1028,15 @@ export const dictionaries = {
       },
       q8: {
         q: 'What is the Digital Audit and what is it for?',
-        a: 'It is a complete analysis of your current digital presence (website, social media, SEO, speed, competitors) with a prioritized improvement roadmap, for 150€. If you later hire any project with us, that amount is deducted from the total.'
+        a: 'It is a complete analysis of your current digital presence (website, social media, SEO, speed, competitors) with a prioritized improvement roadmap, for 150€. If you later hire any project with us, that amount is deducted from the total. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
       },
       q9: {
         q: 'What is NOT included in a project price?',
         a: 'Third-party costs are billed to the client, even though we handle the setup: domain, hosting, payment gateway fees, business email, and AI API usage. It also does not include copywriting/photography (provided by the client), sworn translation, paid advertising, or social media management.'
+      },
+      q10: {
+        q: 'Can you get my business taking bookings over WhatsApp?',
+        a: 'Yes, it is one of our services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, and the Complete one 1,500€-1,800€ plus 250€/month. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and we help you do it) and Meta to verify your business, which takes one or two weeks. If you would rather not depend on Meta, there is a version without the API for 400€-700€ plus 90€/month.'
       }
     },
     contact: {
