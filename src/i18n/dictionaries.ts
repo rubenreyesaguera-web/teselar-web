@@ -21,7 +21,8 @@ export const dictionaries = {
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
       subtitle: 'Transformamos tu negocio con tecnología accesible y a medida. Desde presencia digital hasta sistemas ERP/CRM nativos e integraciones de IA.',
       cta: 'Solicitar información',
-      cta_alt: 'Agendar cita'
+      cta_alt: 'Diagnóstico gratis · 30 min',
+      cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.'
     },
     concept: {
       title: 'La Pieza que Encaja',
@@ -43,7 +44,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Auditoría y Consultoría Digital',
-        ideal: 'Negocios que quieren mejorar su presencia digital, detectar oportunidades de crecimiento o evaluar su situación antes de invertir.',
+        ideal: 'Negocios que quieren el informe escrito antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si después contratas.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Auditoría SEO & UX',
         f1: 'Análisis completo de presencia digital (web, redes, SEO)',
@@ -144,6 +145,19 @@ export const dictionaries = {
         f5: 'Planificador interno de proyectos, tareas de equipo y control de tiempos',
         f6: 'Roles de usuario avanzados con niveles de acceso seguros',
         f7: 'Formación integral del equipo + 1 semana de soporte prioritario'
+      },
+      s9: {
+        title: '09. Citas por WhatsApp',
+        ideal: 'Negocios que trabajan con cita previa y hoy las cogen a mano: peluquerías y barberías, estética, fisioterapia, clínicas, talleres o asesorías.',
+        price: '700€ — 1.800€ + 150-250€/mes',
+        tag: 'WhatsApp Cloud API + Agenda',
+        f1: 'Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres, reserva la cita y la confirma sin que tengas que contestar',
+        f2: 'Agenda sincronizada con la que ya usas — nunca dos citas en el mismo hueco',
+        f3: 'Recordatorio automático antes de la cita, que es lo que hace que la gente no falte',
+        f4: 'Cambios y cancelaciones por el mismo WhatsApp, sin llamadas ni huecos muertos',
+        f5: 'Panel con tus citas y el contador de las que entraron fuera de tu horario de atención',
+        f6: 'Garantía: si en los tres primeros meses no entra ni una cita fuera de tu horario, te devuelvo la puesta en marcha',
+        f7: 'Petición automática de reseñas en Google al terminar la cita, como complemento (+200€)'
       }
     },
     pricing: {
@@ -168,6 +182,16 @@ export const dictionaries = {
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
         f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
         f4: 'Respuesta el mismo día laborable (4h en incidencia crítica) e informe mensual'
+      },
+      citas: {
+        title: 'Citas por WhatsApp · cuota del servicio',
+        price: '150€ — 250€',
+        period: '/ mes',
+        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando — y se ajusta al tamaño de tu negocio.',
+        f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia',
+        f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
+        f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta (unos 12-17 céntimos por cita); lo que escriben tus clientes es gratis',
+        cta: 'Ver el producto de citas'
       },
       not_included: {
         title: 'Lo que NO está incluido',
@@ -262,6 +286,9 @@ export const dictionaries = {
     contact: {
       title: '¿Hacemos encajar las piezas?',
       subtitle: 'Escríbenos sobre tu proyecto para agendar una cita o solicitar información técnica sin compromisos.',
+      calendly_title: 'Reserva el diagnóstico gratuito de 30 minutos',
+      calendly_desc: 'Es la forma más rápida: eliges hueco y hablamos. Sin coste, sin compromiso y con tu negocio ya mirado por delante. Si prefieres escribir primero, tienes el formulario justo debajo.',
+      calendly_btn: 'Elegir hueco en el calendario',
       name: 'Nombre o Empresa',
       email: 'Tu Correo Electrónico',
       message: 'Cuéntanos brevemente qué necesitas...',
@@ -366,7 +393,8 @@ export const dictionaries = {
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
       subtitle: 'Transformem el teu negoci amb tecnologia accessible i a mida. Des de presència digital fins a sistemes ERP/CRM natius i integracions d\'IA.',
       cta: 'Sol·licitar informació',
-      cta_alt: 'Agendar cita'
+      cta_alt: 'Diagnòstic gratis · 30 min',
+      cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.'
     },
     concept: {
       title: 'La Peça que Encaixa',
@@ -388,7 +416,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Auditoria i Consultoria Digital',
-        ideal: 'Negocis que volen millorar la seva presència digital, detectar oportunitats de creixement o avaluar la seva situació abans d\'invertir.',
+        ideal: 'Negocis que volen l\'informe escrit abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si després contractes.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Auditoria SEO & UX',
         f1: 'Anàlisi complet de presència digital (web, xarxes socials, SEO)',
@@ -489,6 +517,19 @@ export const dictionaries = {
         f5: 'Planificador intern de projectes, tasques d\'equip i control de temps',
         f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
         f7: 'Formació integral de l\'equip + 1 setmana de suport prioritari'
+      },
+      s9: {
+        title: '09. Cites per WhatsApp',
+        ideal: 'Negocis que treballen amb cita prèvia i avui les agafen a mà: perruqueries i barberies, estètica, fisioteràpia, clíniques, tallers o assessories.',
+        price: '700€ — 1.800€ + 150-250€/mes',
+        tag: 'WhatsApp Cloud API + Agenda',
+        f1: 'Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures, reserva la cita i la confirma sense que hagis de contestar',
+        f2: 'Agenda sincronitzada amb la que ja fas servir — mai dues cites al mateix forat',
+        f3: 'Recordatori automàtic abans de la cita, que és el que fa que la gent no hi falti',
+        f4: 'Canvis i cancel·lacions pel mateix WhatsApp, sense trucades ni forats morts',
+        f5: 'Panell amb les teves cites i el comptador de les que van entrar fora del teu horari d\'atenció',
+        f6: 'Garantia: si en els tres primers mesos no entra ni una cita fora del teu horari, et torno la posada en marxa',
+        f7: 'Petició automàtica de ressenyes a Google en acabar la cita, com a complement (+200€)'
       }
     },
     pricing: {
@@ -513,6 +554,16 @@ export const dictionaries = {
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
         f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
         f4: 'Resposta el mateix dia laborable (4h en incidència crítica) i informe mensual'
+      },
+      citas: {
+        title: 'Cites per WhatsApp · quota del servei',
+        price: '150€ — 250€',
+        period: '/ mes',
+        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant — i s\'ajusta a la mida del teu negoci.',
+        f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia',
+        f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
+        f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte (uns 12-17 cèntims per cita); el que escriuen els teus clients és gratis',
+        cta: 'Veure el producte de cites'
       },
       not_included: {
         title: 'El que NO està inclòs',
@@ -607,6 +658,9 @@ export const dictionaries = {
     contact: {
       title: 'Fem encaixar les peces?',
       subtitle: 'Escriu-nos sobre el teu projecte per agendar una cita o sol·licitar informació tècnica sense compromisos.',
+      calendly_title: 'Reserva el diagnòstic gratuït de 30 minuts',
+      calendly_desc: 'És la manera més ràpida: tries forat i parlem. Sense cost, sense compromís i amb el teu negoci ja mirat per endavant. Si prefereixes escriure primer, tens el formulari just a sota.',
+      calendly_btn: 'Triar forat al calendari',
       name: 'Nom o Empresa',
       email: 'El Teu Correu Electrònic',
       message: 'Explica\'ns breument què necessites...',
@@ -711,7 +765,8 @@ export const dictionaries = {
       title: 'The exact piece where technology and your business fit perfectly',
       subtitle: 'We transform your business with accessible and custom technology. From professional web presence to native ERP/CRM systems and custom AI integrations.',
       cta: 'Request information',
-      cta_alt: 'Book meeting'
+      cta_alt: 'Free 30-min diagnosis',
+      cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.'
     },
     concept: {
       title: 'The Fitting Piece',
@@ -733,7 +788,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Digital Audit & Consulting',
-        ideal: 'Businesses looking to improve their digital presence, detect growth opportunities, or assess their situation before investing.',
+        ideal: 'Businesses that want the written report before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you go ahead with a project.',
         price: '150€ (Deducted from your first project)',
         tag: 'SEO & UX Audit',
         f1: 'Complete analysis of digital presence (web, social networks, SEO)',
@@ -834,6 +889,19 @@ export const dictionaries = {
         f5: 'Internal planner for projects, team tasks, and time-tracking',
         f6: 'Advanced user roles with secure permission levels',
         f7: 'Team training included + 1 week of priority development support'
+      },
+      s9: {
+        title: '09. WhatsApp Appointment Booking',
+        ideal: 'Appointment-based businesses still booking by hand: hair and barber shops, beauty salons, physiotherapy, clinics, workshops or consultancies.',
+        price: '700€ — 1,800€ + 150-250€/mo',
+        tag: 'WhatsApp Cloud API + Calendar',
+        f1: 'An assistant answers your WhatsApp around the clock: checks open slots, books the appointment and confirms it without you replying',
+        f2: 'Synced with the calendar you already use — never two bookings in the same slot',
+        f3: 'Automatic reminder before the appointment, which is what keeps people from missing it',
+        f4: 'Reschedules and cancellations over the same WhatsApp, no calls and no dead slots',
+        f5: 'Dashboard with your bookings and a counter of those that came in outside your opening hours',
+        f6: 'Guarantee: if not a single booking comes in outside your hours in the first three months, you get the setup fee back',
+        f7: 'Automatic Google review request once the appointment is over, as an add-on (+200€)'
       }
     },
     pricing: {
@@ -858,6 +926,16 @@ export const dictionaries = {
         f2: '5h/month of development and improvements (non-cumulative)',
         f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
         f4: 'Same business day response (4h for critical issues) and monthly report'
+      },
+      citas: {
+        title: 'WhatsApp Booking · service fee',
+        price: '150€ — 250€',
+        period: '/ month',
+        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running — and it scales with the size of your business.',
+        f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes',
+        f2: 'Changes to opening hours, services, prices and wording whenever you need them',
+        f3: 'The messages WhatsApp sends are billed by Meta straight to your own account (around 12-17 cents per booking); what your clients write is always free',
+        cta: 'See the booking product'
       },
       not_included: {
         title: 'What is NOT included',
@@ -952,6 +1030,9 @@ export const dictionaries = {
     contact: {
       title: 'Shall we fit the pieces?',
       subtitle: 'Tell us about your project to book a meeting or request technical details without compromises.',
+      calendly_title: 'Book the free 30-minute diagnosis',
+      calendly_desc: 'It is the fastest way: pick a slot and we talk. No cost, no strings attached, and with your business already looked at beforehand. If you would rather write first, the form is right below.',
+      calendly_btn: 'Pick a slot in the calendar',
       name: 'Name or Company Name',
       email: 'Your Contact Email',
       message: 'Briefly tell us what you need...',

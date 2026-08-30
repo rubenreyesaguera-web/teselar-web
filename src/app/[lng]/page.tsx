@@ -10,12 +10,15 @@ import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
   Check, ShieldCheck, CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
-  Gift, Star, Users, Clock, Send, MessageCircle
+  Gift, Star, Users, Clock, Send, MessageCircle, Linkedin, Instagram, CalendarCheck
 } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ lng: string }>;
 }
+
+// First step of the ladder: the free 30-minute diagnosis. The 150€ audit is the second one.
+const CALENDLY_URL = 'https://calendly.com/teselarsoftware-info/diagnostico30min';
 
 interface AnimatedWordProps {
   word: string;
@@ -402,7 +405,7 @@ export default function Page({ params }: PageProps) {
     }
   };
 
-  // Build the list of 7 services mapping to dictionary entries
+  // Build the list of 9 services mapping to dictionary entries
   const servicesList = [
     {
       id: 's1',
@@ -483,6 +486,16 @@ export default function Page({ params }: PageProps) {
       tag: t.services.s8.tag,
       icon: Monitor,
       features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7]
+    },
+    {
+      id: 's9',
+      category: 'automation',
+      title: t.services.s9.title,
+      ideal: t.services.s9.ideal,
+      price: t.services.s9.price,
+      tag: t.services.s9.tag,
+      icon: Calendar,
+      features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7]
     }
   ];
 
@@ -583,12 +596,15 @@ export default function Page({ params }: PageProps) {
             </div>
             
             <div className="flex flex-col gap-4 mt-4">
-              <button 
-                onClick={() => handleScrollToContact('meeting')}
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
                 className="w-full bg-innovacion text-teselar-dark text-center font-extrabold py-3.5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad"
               >
                 {t.hero.cta_alt}
-              </button>
+              </a>
               <button 
                 onClick={() => handleScrollToContact('info')}
                 className="w-full glass-panel text-center font-bold py-3.5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion"
@@ -721,13 +737,15 @@ export default function Page({ params }: PageProps) {
                   transition={{ duration: 0.7, delay: 2.3 }}
                   className="w-full flex flex-col gap-4"
                 >
-                  <button 
-                    onClick={() => handleScrollToContact('meeting')}
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     <Calendar size={18} />
                     {t.hero.cta_alt}
-                  </button>
+                  </a>
                   <button 
                     onClick={() => handleScrollToContact('info')}
                     className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
@@ -744,13 +762,15 @@ export default function Page({ params }: PageProps) {
                   }}
                   className="w-full sm:w-auto flex flex-col sm:flex-row gap-4"
                 >
-                  <button 
-                    onClick={() => handleScrollToContact('meeting')}
-                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase whitespace-nowrap px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
                     <Calendar size={18} />
                     {t.hero.cta_alt}
-                  </button>
+                  </a>
                   <button 
                     onClick={() => handleScrollToContact('info')}
                     className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
@@ -760,6 +780,10 @@ export default function Page({ params }: PageProps) {
                   </button>
                 </motion.div>
               )}
+
+              <p className="text-sm font-light text-claridad/60 leading-relaxed max-w-xl mt-6">
+                {t.hero.cta_note}
+              </p>
             </div>
 
             {/* Hero Right Content (hidden on mobile for clean hero, visible on lg+) */}
@@ -1948,7 +1972,54 @@ export default function Page({ params }: PageProps) {
 
           </div>
 
+          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Calendar size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
+              </div>
 
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.citas.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
 
         </div>
       </section>
@@ -2227,8 +2298,36 @@ export default function Page({ params }: PageProps) {
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.contact.subtitle}</p>
           </div>
 
+          {/* First step of the ladder: book the free diagnosis without filling in the form */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card p-8 sm:p-10 rounded-[2.5rem] border border-innovacion/25 mb-8 flex flex-col md:flex-row md:items-center gap-8"
+          >
+            <div className="flex-1">
+              <div className="flex items-center gap-3.5 mb-4">
+                <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                  <Calendar size={20} />
+                </div>
+                <h3 className="text-xl md:text-2xl font-black text-claridad leading-tight">{t.contact.calendly_title}</h3>
+              </div>
+              <p className="text-base font-light text-claridad/85 leading-relaxed">{t.contact.calendly_desc}</p>
+            </div>
+            <a
+              href={CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-innovacion text-teselar-dark text-center font-black text-sm tracking-wider uppercase px-8 py-5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 flex-shrink-0"
+            >
+              {t.contact.calendly_btn}
+              <ArrowRight size={16} />
+            </a>
+          </motion.div>
+
           {/* Contact form (Glassmorphism card) */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -2400,6 +2499,41 @@ export default function Page({ params }: PageProps) {
                   ? 'Desenvolupem solucions digitals a mida d\'alt rendiment i impacte visual. Artesania en programari, automatitzacions i intel·ligència artificial.'
                   : 'We hand-craft custom digital solutions with maximum performance and outstanding visual design. Software craftsmanship, automation, and custom artificial intelligence.'}
             </p>
+
+            {/* Social profiles and the booking link for the free diagnosis */}
+            <div className="flex items-center gap-3 mt-4">
+              <a
+                href="https://www.linkedin.com/company/teselarsoftware"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="w-10 h-10 rounded-xl glass-panel border border-claridad/10 flex items-center justify-center text-claridad/70 hover:text-innovacion hover:border-innovacion/40 transition-all duration-300"
+              >
+                <Linkedin size={17} aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.instagram.com/teselarsoftware/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                title="Instagram"
+                className="w-10 h-10 rounded-xl glass-panel border border-claridad/10 flex items-center justify-center text-claridad/70 hover:text-innovacion hover:border-innovacion/40 transition-all duration-300"
+              >
+                <Instagram size={17} aria-hidden="true" />
+              </a>
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.hero.cta_alt}
+                title={t.hero.cta_alt}
+                className="h-10 px-4 rounded-xl glass-panel border border-innovacion/30 flex items-center gap-2 text-[11px] font-black uppercase tracking-wider text-innovacion hover:bg-innovacion hover:text-teselar-dark transition-all duration-300"
+              >
+                <CalendarCheck size={15} aria-hidden="true" />
+                {t.hero.cta_alt}
+              </a>
+            </div>
           </div>
 
           {/* Column 2: Navigation shortcuts */}

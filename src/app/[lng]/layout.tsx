@@ -96,7 +96,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const websiteId = `${baseUrl}/#website`;
   const localBusinessId = `${baseUrl}/#localbusiness`;
 
-  const serviceIds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8'] as const;
+  const serviceIds = ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'] as const;
   const faqIds = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9'] as const;
 
   // Grafo de datos estructurados (GEO/AEO): sustituye al único ProfessionalService previo.
@@ -127,6 +127,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         // Segundo Cerebro. (GitHub no se incluye: la cuenta no tiene repos públicos.)
         sameAs: [
           'https://www.linkedin.com/company/teselarsoftware/',
+          'https://www.instagram.com/teselarsoftware/',
         ],
         knowsLanguage: ['es', 'ca', 'en'],
         areaServed: ['Lloret de Mar', 'Blanes', 'Tossa de Mar', 'Girona', 'Costa Brava'],
