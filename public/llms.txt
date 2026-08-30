@@ -72,7 +72,9 @@ va al 100% y cada adicional lleva un 15% de descuento (la auditoría queda exclu
 No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting, comisiones de pago,
 correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana profesional o jurada
 (la traducción con IA revisada sí va incluida), publicidad de pago y redes sociales. En el producto
-de citas, tampoco los mensajes de WhatsApp: desde el 1 de octubre de 2026 Meta cobra los mensajes
+de citas, el coste del modelo de IA SÍ va incluido en la cuota mensual (uso normal: hasta 500
+conversaciones al mes en el plan Esencial y 1.500 en el Completo), y el cliente no tiene que darse de
+alta en ningún servicio de IA. Lo que no se incluye son los mensajes de WhatsApp: desde el 1 de octubre de 2026 Meta cobra los mensajes
 enviados (unos 12–17 céntimos por cita reservada; ~15€/mes en un negocio de 100 reservas) y los
 factura directamente al cliente, porque la cuenta de WhatsApp es suya. Los mensajes que escriben sus
 clientes son gratis siempre.

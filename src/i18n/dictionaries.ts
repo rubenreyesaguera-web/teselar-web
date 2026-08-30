@@ -188,14 +188,14 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ mes',
         desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando — y se ajusta al tamaño de tu negocio.',
-        f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia',
+        f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta (unos 12-17 céntimos por cita); lo que escriben tus clientes es gratis',
         cta: 'Ver el producto de citas'
       },
       not_included: {
         title: 'Lo que NO está incluido',
-        desc: 'Costes de terceros a cargo del cliente — aunque te los gestionamos nosotros: dominio y hosting, comisiones de pasarelas de pago (Stripe/PayPal), correo empresarial, herramientas de email marketing y consumo de APIs de IA. Tampoco incluye: redacción de textos y fotografías (los aporta el cliente; redacción asistida por IA disponible como extra), traducción humana profesional o jurada (la traducción con IA revisada sí va incluida en los idiomas contratados), publicidad de pago (Google/Meta Ads), gestión de redes sociales, y funcionalidades nuevas fuera del alcance acordado, que se presupuestan aparte.'
+        desc: 'Costes de terceros a cargo del cliente — aunque te los gestionamos nosotros: dominio y hosting, comisiones de pasarelas de pago (Stripe/PayPal), correo empresarial, herramientas de email marketing y consumo de APIs de IA. Tampoco incluye: redacción de textos y fotografías (los aporta el cliente; redacción asistida por IA disponible como extra), traducción humana profesional o jurada (la traducción con IA revisada sí va incluida en los idiomas contratados), publicidad de pago (Google/Meta Ads), gestión de redes sociales, y funcionalidades nuevas fuera del alcance acordado, que se presupuestan aparte. En el producto de Citas por WhatsApp, tampoco los mensajes que envía WhatsApp: desde el 1 de octubre de 2026 Meta los cobra (unos 12-17 céntimos por cita reservada) y te los factura directamente a ti, porque la cuenta de WhatsApp es tuya; lo que escriben tus clientes es gratis siempre. El coste del modelo de IA sí va incluido en la cuota mensual, para un uso normal del negocio (hasta 500 conversaciones al mes en el plan Esencial y 1.500 en el Completo).'
       },
       payment: {
         title: 'Métodos de Pago & Condiciones',
@@ -564,14 +564,14 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ mes',
         desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant — i s\'ajusta a la mida del teu negoci.',
-        f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia',
+        f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte (uns 12-17 cèntims per cita); el que escriuen els teus clients és gratis',
         cta: 'Veure el producte de cites'
       },
       not_included: {
         title: 'El que NO està inclòs',
-        desc: 'Costos de tercers a càrrec del client — tot i que te\'ls gestionem nosaltres: domini i allotjament (hosting), comissions de passarel·les de pagament (Stripe/PayPal), correu empresarial, eines de màrqueting per email i consum d\'APIs d\'IA. Tampoc inclou: redacció de textos i fotografies (els aporta el client; redacció assistida per IA disponible com a extra), traducció humana professional o jurada (la traducció amb IA revisada sí que va inclosa en els idiomes contractats), publicitat de pagament (Google/Meta Ads), gestió de xarxes socials, i funcionalitats noves fora de l\'abast acordat, que es pressuposten a part.'
+        desc: 'Costos de tercers a càrrec del client — tot i que te\'ls gestionem nosaltres: domini i allotjament (hosting), comissions de passarel·les de pagament (Stripe/PayPal), correu empresarial, eines de màrqueting per email i consum d\'APIs d\'IA. Tampoc inclou: redacció de textos i fotografies (els aporta el client; redacció assistida per IA disponible com a extra), traducció humana professional o jurada (la traducció amb IA revisada sí que va inclosa en els idiomes contractats), publicitat de pagament (Google/Meta Ads), gestió de xarxes socials, i funcionalitats noves fora de l\'abast acordat, que es pressuposten a part. En el producte de Cites per WhatsApp, tampoc els missatges que envia WhatsApp: des de l\'1 d\'octubre de 2026 Meta els cobra (uns 12-17 cèntims per cita reservada) i te\'ls factura directament a tu, perquè el compte de WhatsApp és teu; el que escriuen els teus clients és gratis sempre. El cost del model d\'IA sí que va inclòs a la quota mensual, per a un ús normal del negoci (fins a 500 converses al mes en el pla Essencial i 1.500 en el Complet).'
       },
       payment: {
         title: 'Mètodes de Pagament i Condicions',
@@ -940,14 +940,14 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ month',
         desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running — and it scales with the size of your business.',
-        f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes',
+        f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account (around 12-17 cents per booking); what your clients write is always free',
         cta: 'See the booking product'
       },
       not_included: {
         title: 'What is NOT included',
-        desc: 'Third-party costs paid by the client — though we handle the setup for you: domain and hosting, payment gateway fees (Stripe/PayPal), business email, email marketing tools, and AI API usage. Also not included: copywriting and photography (provided by the client; AI-assisted copywriting available as an extra), professional or sworn human translation (reviewed AI translation IS included with contracted languages), paid advertising (Google/Meta Ads), social media management, and new features outside the agreed scope, which are quoted separately.'
+        desc: 'Third-party costs paid by the client — though we handle the setup for you: domain and hosting, payment gateway fees (Stripe/PayPal), business email, email marketing tools, and AI API usage. Also not included: copywriting and photography (provided by the client; AI-assisted copywriting available as an extra), professional or sworn human translation (reviewed AI translation IS included with contracted languages), paid advertising (Google/Meta Ads), social media management, and new features outside the agreed scope, which are quoted separately. For the WhatsApp Booking product, the messages WhatsApp sends are not included either: from 1 October 2026 Meta charges for them (around 12-17 cents per booking) and bills you directly, because the WhatsApp account is yours; what your clients write is always free. The cost of the AI model IS included in the monthly fee, for normal business use (up to 500 conversations a month on the Essential plan and 1,500 on the Complete one).'
       },
       payment: {
         title: 'Payment Terms & Methods',
