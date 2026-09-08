@@ -11,28 +11,28 @@ interface Msg {
 const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; placeholder: string; error: string; teaser: string; cerrar: string; enviar: string; abrirChat: string; cerrarChat: string }> = {
   es: {
     titulo: 'TesS · IA de Teselar',
-    badge: 'IA en vivo — esto es lo que construimos',
-    saludo: '¡Hola! Soy TesS, la IA de Teselar Software 🤖 Y sí, soy una demo en vivo de lo que hacemos: asistentes como yo desde 800€. ¿Qué necesita tu negocio? ¿Una web, una automatización, un sistema a medida?',
+    badge: 'IA en vivo — esto es lo que construyo',
+    saludo: '¡Hola! Soy TesS, la IA de Teselar Software 🤖 Y sí, soy una demo en vivo de lo que hace Rubén: asistentes como yo desde 1.600€. ¿Qué necesita tu negocio? ¿Una web, una automatización, un sistema a medida?',
     placeholder: 'Escribe tu mensaje...',
-    error: 'Algo ha fallado. Prueba de nuevo o escríbenos por WhatsApp: +34 653 232 735.',
+    error: 'Algo ha fallado. Prueba de nuevo o escríbeme por WhatsApp: +34 653 232 735.',
     teaser: '¿Tienes 1 minuto? Soy TesS, la IA de Teselar 🤖 Pregúntame precios o cuéntame tu proyecto.',
     cerrar: 'Cerrar', enviar: 'Enviar mensaje', abrirChat: 'Abrir chat con TesS', cerrarChat: 'Cerrar chat con TesS'
   },
   ca: {
     titulo: 'TesS · IA de Teselar',
-    badge: 'IA en viu — això és el que construïm',
-    saludo: 'Hola! Sóc TesS, la IA de Teselar Software 🤖 I sí, sóc una demo en viu del que fem: assistents com jo des de 800€. Què necessita el teu negoci? Una web, una automatització, un sistema a mida?',
+    badge: 'IA en viu — això és el que construeixo',
+    saludo: 'Hola! Sóc TesS, la IA de Teselar Software 🤖 I sí, sóc una demo en viu del que fa en Rubén: assistents com jo des de 1.600€. Què necessita el teu negoci? Una web, una automatització, un sistema a mida?',
     placeholder: 'Escriu el teu missatge...',
-    error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-nos per WhatsApp: +34 653 232 735.',
+    error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-me per WhatsApp: +34 653 232 735.',
     teaser: 'Tens 1 minut? Sóc TesS, la IA de Teselar 🤖 Pregunta\'m preus o explica\'m el teu projecte.',
     cerrar: 'Tancar', enviar: 'Enviar missatge', abrirChat: 'Obrir xat amb TesS', cerrarChat: 'Tancar xat amb TesS'
   },
   en: {
     titulo: 'TesS · Teselar\'s AI',
-    badge: 'Live AI — this is what we build',
-    saludo: 'Hi! I\'m TesS, the Teselar Software AI 🤖 And yes, I\'m a live demo of what we build: assistants like me from 800€. What does your business need? A website, an automation, a custom system?',
+    badge: 'Live AI — this is what I build',
+    saludo: 'Hi! I\'m TesS, the Teselar Software AI 🤖 And yes, I\'m a live demo of what Rubén builds: assistants like me from 1,600€. What does your business need? A website, an automation, a custom system?',
     placeholder: 'Type your message...',
-    error: 'Something went wrong. Try again or message us on WhatsApp: +34 653 232 735.',
+    error: 'Something went wrong. Try again or message me on WhatsApp: +34 653 232 735.',
     teaser: 'Got 1 minute? I\'m TesS, Teselar\'s AI 🤖 Ask me about pricing or tell me about your project.',
     cerrar: 'Close', enviar: 'Send message', abrirChat: 'Open chat with TesS', cerrarChat: 'Close chat with TesS'
   }

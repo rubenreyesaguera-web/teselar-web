@@ -21,7 +21,7 @@ export const RECURSOS: Record<string, Recurso> = {
   'guia-metodologia': {
     slug: 'guia-metodologia',
     titulo: 'De la Idea al Código',
-    subtitulo: 'Cómo construimos la pieza exacta para tu negocio: las 5 fases de nuestra metodología, sin sorpresas ni cajas negras.',
+    subtitulo: 'Cómo construyo la pieza exacta para tu negocio: las 5 fases de mi metodología, sin sorpresas ni cajas negras.',
     bullets: [
       'Auditoría de fricciones y mapeo de procesos',
       'Diseño del engranaje: arquitectura y prototipos antes de programar',
