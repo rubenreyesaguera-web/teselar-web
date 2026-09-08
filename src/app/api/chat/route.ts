@@ -16,7 +16,7 @@ CATÁLOGO OFICIAL TESELAR (precios cerrados, PROHIBIDO inventar otros):
 - Garantía del producto de citas (SOLO de este producto, no de los demás): si en los tres primeros meses no ha entrado ni una sola cita fuera del horario de atención del negocio, Teselar devuelve el importe de la puesta en marcha y el servicio se da por terminado. Lo cuenta el propio sistema y el número lo ve el cliente en su panel.
 - Requisitos del producto de citas por WhatsApp (dependen del cliente, díselo pronto y sin rodeos): el número tiene que estar en la app WhatsApp Business (migrar desde WhatsApp normal es gratis, 10 minutos, y conserva número e historial; Rubén ayuda a hacerlo), y Meta tiene que verificar la empresa antes de empezar a desarrollar (tarda 1–2 semanas y no depende de Teselar). Si el WhatsApp del negocio es el número personal de toda la vida, compartido con familia y amigos, dilo claro: eso hay que hablarlo con Rubén antes de nada.
 - Web Esencial: 1.200€–1.600€, 1 idioma incluido, cada idioma adicional +150€. Incluye WhatsApp y formulario.
-- Integración de IA (chatbots, asistentes): 1.600€–6.000€ + cuota mensual del asistente, obligatoria: 90€/mes si atiende un solo canal y 150€/mes si son varios o lleva integraciones. Esa cuota cubre revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde. El precio del proyecto depende de la complejidad (canales, integraciones). Las claves de API son del cliente y su consumo lo paga él, a diferencia del producto de citas, donde el modelo va incluido.
+- Integración de IA (chatbots, asistentes): 1.600€–6.000€ + cuota mensual del asistente, obligatoria y en tres tramos: 90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y ademas se integra con los sistemas del cliente. El tramo se elige por lo que se fabrico: cuanto mas hay montado, mas hay que vigilar. Esa cuota cubre revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde. El precio del proyecto depende de la complejidad (canales, integraciones). Las claves de API son del cliente y su consumo lo paga él, a diferencia del producto de citas, donde el modelo va incluido.
 - Web Completa: desde 3.000€ con 2 idiomas incluidos, cada idioma adicional +250€. Blog, panel de gestión.
 - Tienda Online / E-commerce: desde 4.000€, Plan Básico de mantenimiento incluido el primer año.
 - Web Inmobiliaria: desde 6.000€. Buscador con filtros, panel de propiedades, 2 idiomas, exportación XML Kyero para Idealista/Habitaclia/Fotocasa. Plan Básico incluido el primer año.
@@ -33,8 +33,10 @@ Te llamas TesS (así escrito: "Tes" de Teselar + "S" de Software) y eres la asis
 REGLA DE IDENTIDAD: preséntate como TesS cuando venga a cuento y NUNCA finjas ser una persona: eres una IA y lo dices con naturalidad y orgullo. Si te preguntan por tu nombre, explica el juego: Tes de Teselar, la S de Software.
 REGLA DE VOZ: detrás de Teselar no hay una agencia ni un equipo, está Rubén y punto. Habla de él en singular ("Rubén lo revisa", "te lo monta él") y NUNCA digas "somos", "nuestro equipo" ni "nosotros". Tú eres su asistente, no su plantilla. Si te preguntan si sois una agencia o cuánta gente hay detrás, dilo claro y como una ventaja: es Rubén solo, y por eso hablas siempre con quien escribe el código, sin comerciales ni intermediarios.
 REGLA 1: Mimetiza el idioma del usuario al instante y mantenlo siempre.
+REGLA DE FORMATO: el chat pinta tu texto tal cual, sin formato. No uses NUNCA markdown: ni asteriscos para negrita, ni almohadillas, ni tablas, ni guiones de lista al principio de linea. Escribe frases seguidas y separa con puntos; si tienes que enumerar dos o tres cosas, hazlo dentro de la frase.
+REGLA DE PRECIOS: casi todos los precios del catalogo son RANGOS, no cifras cerradas. Da SIEMPRE el rango entero ("entre 700 y 900 euros de puesta en marcha") y di de que depende; tienes PROHIBIDO decir "precio fijo", "precio cerrado" o soltar un solo numero cuando el catalogo da un rango. Cifras cerradas hay solo cuatro: la Auditoria (150€), el complemento de resenas (+200€), los planes de mantenimiento (60€ y 150€) y cada tramo de las cuotas mensuales. El precio cerrado de verdad se lo da Ruben despues del diagnostico, y eso es lo que debes decir.
 REGLA HONESTIDAD: PROHIBIDO inventar descuentos, plazos, servicios o promesas que no estén en el catálogo. Si te preguntan algo fuera del catálogo o un detalle de alcance, responde que eso te lo confirma Rubén en una llamada, y captura el contacto.
-REGLA DEMO: Tú mismo eres la demostración en vivo del servicio "Integración de IA". Si te preguntan si pueden tener un asistente como tú en su web, responde con orgullo que sí: desde 1.600€ + la cuota del asistente (90€/mes un canal, 150€/mes multicanal).
+REGLA DEMO: Tú mismo eres la demostración en vivo del servicio "Integración de IA". Si te preguntan si pueden tener un asistente como tú en su web, responde con orgullo que sí: desde 1.600€ + la cuota del asistente (90€/mes un canal, 150€/mes multicanal o con integraciones, 250€/mes multicanal e integrado con sus sistemas).
 REGLA ESCALERA: la puerta de entrada es SIEMPRE el diagnóstico gratuito de 30 minutos, nunca la auditoría de 150€. Cuando alguien dude, pregunte precios o no sepa qué necesita, ofrece el diagnóstico: es gratis y no compromete a nada. La auditoría de 150€ solo se menciona como el segundo paso, para quien quiere el informe escrito, y recuérdale que se descuentan si contrata.
 REGLA DE LOS TRES QUE SE CONFUNDEN: hay tres servicios que 'hablan' y la gente los mezcla. Distínguelos SIEMPRE que salga el tema, y con esta misma lógica: (a) CHATBOT GUIADO, dentro de Automatizaciones Específicas — sigue un guion de botones y respuestas previstas; barato y suficiente si las preguntas son siempre las mismas, pero en cuanto se salen del guion se atasca. (b) ASISTENTE DE IA, que es la Integración de IA y es lo que TÚ eres — entiende el lenguaje normal y responde con la información del negocio: informa, orienta y recoge el contacto, pero NO toca la agenda de nadie. (c) CITAS POR WHATSAPP — un asistente de IA que además ACTÚA: consulta los huecos reales de la agenda, reserva, confirma y manda el recordatorio. La frase que lo resume: los dos primeros cuentan cosas, el tercero hace el trabajo. OJO A LA OBJECION QUE VIENE DETRAS: si el de citas hace mas, por que es mas barato que la Integracion de IA. La respuesta es que el de citas YA ESTA CONSTRUIDO Y PROBADO y solo hay que configurarlo con los servicios, los horarios y la agenda del negocio, mientras que la Integracion de IA se fabrica desde cero sobre la documentacion, los canales y los sistemas de cada cliente, y no hay dos iguales. Se paga la fabricacion, no el numero de funciones. Dilo como ventaja: si lo que pierde son citas, que no pague un desarrollo a medida. Y la pregunta para que el cliente elija: ¿lo que pierde son consultas sin responder, o citas sin coger? Si dice citas, es (c) aunque él pida 'un chatbot'.
 REGLA COSTES DE META: si sale el coste de los mensajes de WhatsApp, di siempre "unos 8-10 céntimos POR CITA", nunca "por mensaje": la cifra ya incluye los 3 o 4 mensajes que hacen falta para cerrar esa cita. Y añade que es una estimación, porque Meta aún no ha publicado la lista de precios oficial que entra en vigor el 1 de octubre de 2026.
@@ -132,9 +134,66 @@ const FALLBACK: Record<string, string> = {
   en: 'I can\'t answer right now (even AI assistants need a break!). Message me on WhatsApp at +34 653 232 735 or use the contact form and I\'ll get back to you shortly.'
 };
 
+// --- Limite de peticiones -------------------------------------------------
+// El endpoint es publico y detras hay una cuota de modelo que se agota. Sin esto,
+// un bucle desde una sola IP deja a TesS muda, que es justo la demo con la que se
+// vende la Integracion de IA. El contador vive en memoria de la instancia: en
+// serverless eso no es una garantia global, pero corta en seco el caso real (una
+// sola fuente insistiendo) sin montar un Redis para un chat de una web.
+const VENTANA_MS = 10 * 60 * 1000;
+const MAX_POR_IP = 15;
+const MAX_GLOBAL = 250;
+const MAX_CARACTERES = 1000;
+const MAX_HISTORIAL = 14;
+
+const visitasPorIp = new Map<string, number[]>();
+let visitasGlobales: number[] = [];
+
+const recientes = (marcas: number[], ahora: number) => marcas.filter(t => ahora - t < VENTANA_MS);
+
+function registrarVisita(ip: string): 'ok' | 'ip' | 'global' {
+  const ahora = Date.now();
+  visitasGlobales = recientes(visitasGlobales, ahora);
+  if (visitasGlobales.length >= MAX_GLOBAL) return 'global';
+
+  const propias = recientes(visitasPorIp.get(ip) ?? [], ahora);
+  if (propias.length >= MAX_POR_IP) {
+    visitasPorIp.set(ip, propias);
+    return 'ip';
+  }
+  propias.push(ahora);
+  visitasPorIp.set(ip, propias);
+  visitasGlobales.push(ahora);
+
+  // Purga perezosa: que el Map no crezca sin fin en una instancia de larga vida
+  if (visitasPorIp.size > 500) {
+    for (const [clave, marcas] of visitasPorIp) {
+      const vivas = recientes(marcas, ahora);
+      if (vivas.length === 0) visitasPorIp.delete(clave);
+      else visitasPorIp.set(clave, vivas);
+    }
+  }
+  return 'ok';
+}
+
+const LIMITE: Record<string, string> = {
+  es: 'Has escrito bastante en poco rato y prefiero no hacerte esperar con respuestas a medias. Sigamos por WhatsApp al +34 653 232 735, o reserva el diagnóstico gratuito de 30 minutos: https://calendly.com/teselarsoftware-info/diagnostico30min',
+  ca: 'Has escrit bastant en poca estona i prefereixo no fer-te esperar amb respostes a mitges. Continuem per WhatsApp al +34 653 232 735, o reserva el diagnòstic gratuït de 30 minuts: https://calendly.com/teselarsoftware-info/diagnostico30min',
+  en: 'You have written quite a lot in a short while, and I would rather not keep you waiting with half answers. Let us carry on over WhatsApp at +34 653 232 735, or book the free 30-minute diagnosis: https://calendly.com/teselarsoftware-info/diagnostico30min',
+};
+
 export async function POST(req: Request) {
   const { messages = [], newMsgText, leadCaptured = false, lng = 'es' } = await req.json();
   if (!newMsgText) return NextResponse.json({ error: 'Falta el mensaje' }, { status: 400 });
+
+  const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || 'desconocida';
+  if (registrarVisita(ip) !== 'ok') {
+    return NextResponse.json({ response: LIMITE[lng] || LIMITE.es, rateLimited: true });
+  }
+
+  // Ni mensajes kilometricos ni conversaciones infinitas: los dos inflan la factura
+  const textoUsuario = String(newMsgText).slice(0, MAX_CARACTERES);
+  const historial = Array.isArray(messages) ? messages.slice(-MAX_HISTORIAL) : [];
 
   const system = construirSystemPrompt(leadCaptured);
   const geminiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
@@ -142,9 +201,9 @@ export async function POST(req: Request) {
   const openRouterKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY;
 
   let botResponse: string | null = null;
-  if (geminiKey) botResponse = await intentarGemini(geminiKey, system, messages, newMsgText);
-  if (!botResponse && groqKey) botResponse = await intentarOpenAICompatible('https://api.groq.com/openai/v1/chat/completions', groqKey, 'openai/gpt-oss-20b', system, messages, newMsgText);
-  if (!botResponse && openRouterKey) botResponse = await intentarOpenAICompatible('https://openrouter.ai/api/v1/chat/completions', openRouterKey, 'openrouter/auto', system, messages, newMsgText, { 'HTTP-Referer': 'https://www.teselarsoftware.com', 'X-Title': 'Teselar Software' });
+  if (geminiKey) botResponse = await intentarGemini(geminiKey, system, historial, textoUsuario);
+  if (!botResponse && groqKey) botResponse = await intentarOpenAICompatible('https://api.groq.com/openai/v1/chat/completions', groqKey, 'openai/gpt-oss-20b', system, historial, textoUsuario);
+  if (!botResponse && openRouterKey) botResponse = await intentarOpenAICompatible('https://openrouter.ai/api/v1/chat/completions', openRouterKey, 'openrouter/auto', system, historial, textoUsuario, { 'HTTP-Referer': 'https://www.teselarsoftware.com', 'X-Title': 'Teselar Software' });
 
   if (!botResponse) {
     return NextResponse.json({ response: FALLBACK[lng] || FALLBACK.es, offline: true });
