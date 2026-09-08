@@ -45,7 +45,8 @@ Tres peldaños, en este orden:
 - **Web Esencial** — 1.200€–1.600€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
   adicional), formulario y WhatsApp, SEO técnico básico (React + Vite + Tailwind CSS).
 - **Integración de Inteligencia Artificial** — 1.600€–6.000€ + cuota mensual del asistente,
-  obligatoria: 90€/mes con un solo canal y 150€/mes multicanal o con integraciones. El precio depende de la complejidad (canales, integraciones). Asistentes/chatbots con IA
+  obligatoria y en tres tramos: 90€/mes con un solo canal, 150€/mes multicanal o con integraciones,
+  y 250€/mes multicanal e integrado con los sistemas del cliente. El precio depende de la complejidad (canales, integraciones). Asistentes/chatbots con IA
   (OpenAI/Anthropic), las claves de API son del cliente. Ejemplo en vivo: el propio chatbot de esta
   web, "TesS".
 - **Web Completa** — desde 3.000€, 2 idiomas incluidos (+250€/idioma adicional). Blog, portfolio,
@@ -85,7 +86,7 @@ fabricación, no el número de funciones.
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
   corrección de errores, 1h/mes de cambios, respuesta en 24-48h laborables, informe trimestral.
   Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
-  Integración de IA (90-150€/mes) y las Citas por WhatsApp (150-250€/mes).
+  Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
   acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable
   (4h en incidencia crítica), informe mensual. Recomendado para e-commerce e inmobiliarias.
@@ -126,7 +127,7 @@ diagnosis call** (booked at https://calendly.com/teselarsoftware-info/diagnostic
 audit is the second step, the written report. Services: digital audits (150€), specific automations
 (700€–1,800€ + 60€/mo required maintenance), WhatsApp appointment booking (700€–900€ + 150€/mo, or 1,500€–1,800€ + 250€/mo, with a
 three-month guarantee), essential websites (1,200€–1,600€),
-AI integrations/chatbots (1,600€–6,000€ + a 90-150€/mo assistant fee, depending on complexity), complete
+AI integrations/chatbots (1,600€–6,000€ + a 90-250€/mo assistant fee, depending on complexity), complete
 websites (from 3,000€), e-commerce (from 4,000€), real-estate websites with Kyero/Idealista sync
 (from 6,000€), and custom ERP/CRM desktop systems (8,000€–12,000€). No-lock-in maintenance plans
 from 60€/mo. Contact:

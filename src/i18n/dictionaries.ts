@@ -95,7 +95,7 @@ export const dictionaries = {
       s4: {
         title: '05. Integración de Inteligencia Artificial',
         ideal: 'Negocios que reciben muchas preguntas repetidas y las contestan a mano: horarios, precios, cómo funciona algo, si haces tal cosa. El asistente responde por ti con la información de tu negocio, pero no gestiona tu agenda — si lo que se te escapan son citas, el servicio es el 03. El precio final depende de la complejidad: un chatbot sencillo de un solo canal se sitúa en la parte baja del rango; un asistente avanzado con múltiples integraciones y canales (web, WhatsApp, Telegram), en la parte alta.',
-        price: '1.600€ — 6.000€ + 90-150€/mes',
+        price: '1.600€ — 6.000€ + 90-250€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Asistente virtual con IA entrenado con tu documentación interna',
         f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram: informa y orienta con tus datos, sin gestionar tu agenda (para eso está Citas por WhatsApp)',
@@ -103,7 +103,7 @@ export const dictionaries = {
         f4: 'Análisis, clasificación y resumen automático de documentos',
         f5: 'Automatización avanzada con procesamiento de lenguaje natural',
         f6: 'Integración directa con modelos GPT, Claude u homólogos',
-        f7: 'Cuota mensual del asistente, obligatoria: 90€/mes si atiende un solo canal y 150€/mes si son varios o lleva integraciones. Incluye revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde. El consumo de las APIs de IA va en tu propia cuenta, a tu nombre'
+        f7: 'Cuota mensual del asistente, obligatoria y en tres tramos: 90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y además se integra con tus sistemas. Incluye revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde. El consumo de las APIs de IA va en tu propia cuenta, a tu nombre'
       },
       s5: {
         title: '06. Web Completa',
@@ -208,9 +208,9 @@ export const dictionaries = {
       },
       ia: {
         title: 'Integración de IA · cuota del asistente',
-        price: '90€ — 150€',
+        price: '90€ — 250€',
         period: '/ mes',
-        desc: 'Un asistente de IA no se entrega y se olvida: hay que mirarlo cada mes. La cuota es de 90€/mes si atiende un solo canal y de 150€/mes si son varios o lleva integraciones. Va aparte del mantenimiento de la web, igual que la del producto de citas.',
+        desc: 'Un asistente de IA no se entrega y se olvida: hay que mirarlo cada mes, y cuanto más se fabricó, más hay que mirar. Tres tramos: 90€/mes con un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y además está conectado a tus sistemas. Va aparte del mantenimiento de la web, igual que la del producto de citas.',
         f1: 'Reviso las conversaciones y corrijo lo que se haya contestado mal o a medias',
         f2: 'Mantengo al día la información con la que responde: precios, servicios, horarios y textos',
         f3: 'Aquí el consumo de las APIs de IA lo pagas tú, en tu propia cuenta y a tu nombre — al contrario que en el producto de Citas, donde va incluido en la cuota',
@@ -283,7 +283,7 @@ export const dictionaries = {
       },
       q4: {
         q: '¿Puedo tener un chatbot con inteligencia artificial en mi web, como el tuyo?',
-        a: 'Sí — de hecho el asistente TesS con el que puedes chatear ahora mismo en esta web es la demo en vivo de ese servicio. La Integración de IA cuesta entre 1.600€ y 6.000€ más la cuota del asistente (90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones), según esa misma complejidad; las claves de API quedan a tu nombre, sin intermediarios.'
+        a: 'Sí — de hecho el asistente TesS con el que puedes chatear ahora mismo en esta web es la demo en vivo de ese servicio. La Integración de IA cuesta entre 1.600€ y 6.000€ más la cuota del asistente (90€/mes con un solo canal, 150€/mes si son varios o lleva integraciones y 250€/mes si es multicanal y conectado a tus sistemas), según esa misma complejidad; las claves de API quedan a tu nombre, sin intermediarios.'
       },
       q5: {
         q: '¿En qué idiomas haces las webs?',
@@ -291,7 +291,7 @@ export const dictionaries = {
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
-        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-150€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
+        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
@@ -498,7 +498,7 @@ export const dictionaries = {
       s4: {
         title: '05. Integració d\'Intel·ligència Artificial',
         ideal: 'Negocis que reben moltes preguntes repetides i les contesten a mà: horaris, preus, com funciona una cosa, si fas tal servei. L\'assistent respon per tu amb la informació del teu negoci, però no gestiona la teva agenda — si el que se t\'escapa són cites, el servei és el 03. El preu final depèn de la complexitat: un xatbot senzill d\'un sol canal se situa en la part baixa del rang; un assistent avançat amb múltiples integracions i canals (web, WhatsApp, Telegram), en la part alta.',
-        price: '1.600€ — 6.000€ + 90-150€/mes',
+        price: '1.600€ — 6.000€ + 90-250€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
         f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram: informa i orienta amb les teves dades, sense gestionar la teva agenda (per això hi ha Cites per WhatsApp)',
@@ -506,7 +506,7 @@ export const dictionaries = {
         f4: 'Anàlisi, classificació i resum automàtic de documents',
         f5: 'Automatització avançada amb processament de llenguatge natural',
         f6: 'Integració directa amb models GPT, Claude o homòlegs',
-        f7: 'Quota mensual de l\'assistent, obligatòria: 90€/mes si atén un sol canal i 150€/mes si en són diversos o porta integracions. Inclou revisar les converses, corregir el que es respongui malament i mantenir al dia la informació amb què respon. El consum de les APIs d\'IA va al teu propi compte, al teu nom'
+        f7: 'Quota mensual de l\'assistent, obligatòria i en tres trams: 90€/mes si atén un sol canal, 150€/mes si en són diversos o porta integracions, i 250€/mes si és multicanal i a més s\'integra amb els teus sistemes. Inclou revisar les converses, corregir el que es respongui malament i mantenir al dia la informació amb què respon. El consum de les APIs d\'IA va al teu propi compte, al teu nom'
       },
       s5: {
         title: '06. Web Completa',
@@ -611,9 +611,9 @@ export const dictionaries = {
       },
       ia: {
         title: 'Integració d\'IA · quota de l\'assistent',
-        price: '90€ — 150€',
+        price: '90€ — 250€',
         period: '/ mes',
-        desc: 'Un assistent d\'IA no es lliura i s\'oblida: cal mirar-lo cada mes. La quota és de 90€/mes si atén un sol canal i de 150€/mes si en són diversos o porta integracions. Va a part del manteniment de la web, igual que la del producte de cites.',
+        desc: 'Un assistent d\'IA no es lliura i s\'oblida: cal mirar-lo cada mes, i com més se n\'ha fabricat, més cal mirar. Tres trams: 90€/mes amb un sol canal, 150€/mes si en són diversos o porta integracions, i 250€/mes si és multicanal i a més està connectat als teus sistemes. Va a part del manteniment de la web, igual que la del producte de cites.',
         f1: 'Reviso les converses i corregeixo el que s\'hagi respost malament o a mitges',
         f2: 'Mantinc al dia la informació amb què respon: preus, serveis, horaris i textos',
         f3: 'Aquí el consum de les APIs d\'IA el pagues tu, al teu propi compte i al teu nom — al contrari que al producte de Cites, on va inclòs a la quota',
@@ -686,7 +686,7 @@ export const dictionaries = {
       },
       q4: {
         q: 'Puc tenir un xatbot amb intel·ligència artificial a la meva web, com el teu?',
-        a: 'Sí — de fet l\'assistent TesS amb qui pots xatejar ara mateix en aquesta web és la demo en viu d\'aquest servei. La Integració d\'IA costa entre 1.600€ i 6.000€ més la quota de l\'assistent (90€/mes si atén un sol canal, 150€/mes si en són diversos o porta integracions), segons aquesta mateixa complexitat; les claus d\'API queden al teu nom, sense intermediaris.'
+        a: 'Sí — de fet l\'assistent TesS amb qui pots xatejar ara mateix en aquesta web és la demo en viu d\'aquest servei. La Integració d\'IA costa entre 1.600€ i 6.000€ més la quota de l\'assistent (90€/mes amb un sol canal, 150€/mes si en són diversos o porta integracions i 250€/mes si és multicanal i connectat als teus sistemes), segons aquesta mateixa complexitat; les claus d\'API queden al teu nom, sense intermediaris.'
       },
       q5: {
         q: 'En quins idiomes fas les webs?',
@@ -694,7 +694,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
-        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-150€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
+        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
       },
       q7: {
         q: 'Com es paga un projecte?',
@@ -901,7 +901,7 @@ export const dictionaries = {
       s4: {
         title: '05. Artificial Intelligence Integration',
         ideal: 'Businesses fielding the same questions over and over by hand: opening hours, prices, how something works, whether you offer a given service. The assistant answers for you using your business information, but it does not manage your calendar — if what you are losing is bookings, the service you want is 03. Final price depends on complexity: a simple single-channel chatbot sits at the low end of the range; an advanced assistant with multiple integrations and channels (web, WhatsApp, Telegram) sits at the high end.',
-        price: '1,600€ — 6,000€ + 90-150€/mo',
+        price: '1,600€ — 6,000€ + 90-250€/mo',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Custom virtual AI assistant trained with your internal company documentation',
         f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram: it informs and guides using your data, without managing your calendar (that is what WhatsApp Booking is for)',
@@ -909,7 +909,7 @@ export const dictionaries = {
         f4: 'Automated analysis, classification, and summary of documents',
         f5: 'Advanced automation using Natural Language Processing (NLP)',
         f6: 'Direct integration with models like GPT-4, Claude 3.5, and others',
-        f7: 'Monthly assistant fee, required: 90€/mo for a single channel and 150€/mo for several channels or with integrations. It covers reviewing the conversations, correcting whatever gets answered wrong, and keeping the information it answers with up to date. AI API usage is billed to your own account, in your name'
+        f7: 'Monthly assistant fee, required, in three tiers: 90€/mo for a single channel, 150€/mo for several channels or with integrations, and 250€/mo when it is multichannel and also wired into your systems. It covers reviewing the conversations, correcting whatever gets answered wrong, and keeping the information it answers with up to date. AI API usage is billed to your own account, in your name'
       },
       s5: {
         title: '06. Complete Web',
@@ -1014,9 +1014,9 @@ export const dictionaries = {
       },
       ia: {
         title: 'AI Integration · assistant fee',
-        price: '90€ — 150€',
+        price: '90€ — 250€',
         period: '/ month',
-        desc: 'An AI assistant is not something you hand over and forget: it needs looking at every month. The fee is 90€/month for a single channel and 150€/month for several channels or with integrations. It is separate from website maintenance, just like the booking product fee.',
+        desc: 'An AI assistant is not something you hand over and forget: it needs looking at every month, and the more that was built, the more there is to watch. Three tiers: 90€/month for a single channel, 150€/month for several channels or with integrations, and 250€/month when it is multichannel and wired into your systems. It is separate from website maintenance, just like the booking product fee.',
         f1: 'I review the conversations and fix anything answered wrongly or halfway',
         f2: 'I keep the information it answers with up to date: prices, services, opening hours and copy',
         f3: 'Here the AI API usage is paid by you, in your own account and in your name — unlike the Booking product, where it is included in the fee',
@@ -1089,7 +1089,7 @@ export const dictionaries = {
       },
       q4: {
         q: 'Can I get an AI chatbot on my website, like yours?',
-        a: 'Yes — in fact the TesS assistant you can chat with right now on this site is the live demo of that exact service. AI Integration costs between 1,600€ and 6,000€ plus the assistant fee (90€/month for a single channel, 150€/month for several channels or with integrations), depending on that same complexity; the API keys stay under your own account, no middlemen.'
+        a: 'Yes — in fact the TesS assistant you can chat with right now on this site is the live demo of that exact service. AI Integration costs between 1,600€ and 6,000€ plus the assistant fee (90€/month for a single channel, 150€/month for several channels or with integrations, and 250€/month when it is multichannel and wired into your systems), depending on that same complexity; the API keys stay under your own account, no middlemen.'
       },
       q5: {
         q: 'What languages do you build websites in?',
@@ -1097,7 +1097,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
-        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-150€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
+        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
       },
       q7: {
         q: 'How do I pay for a project?',
