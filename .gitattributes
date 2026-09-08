@@ -1,0 +1,3 @@
+# Normaliza los finales de linea: el repo guarda LF, el disco usaba CRLF en Windows.
+# Sin esto, git marcaba archivos generados como modificados sin ningun cambio real.
+* text=auto
