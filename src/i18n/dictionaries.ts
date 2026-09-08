@@ -37,6 +37,16 @@ export const dictionaries = {
       features: 'Lo que incluye:',
       live_adjustments: 'Todos mis proyectos de desarrollo web y de software incluyen 1 semana de ajustes en vivo sin coste adicional tras el lanzamiento.',
       interest: 'Me interesa este servicio',
+      tres_ia: {
+        title: 'Tres servicios hablan por WhatsApp y no son lo mismo',
+        c1_title: 'Chatbot guiado · dentro del 02',
+        c1_desc: 'Sigue un guion de botones y respuestas previstas. Barato y suficiente si las preguntas son siempre las mismas; en cuanto se salen del guion, se atasca.',
+        c2_title: 'Asistente de IA · el 05',
+        c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Es lo que estás usando aquí: TesS.',
+        c3_title: 'Citas por WhatsApp · el 03',
+        c3_desc: 'Un asistente de IA que además actúa: mira los huecos que tienes libres de verdad, reserva la cita, la confirma y manda el recordatorio.',
+        nota: 'La pregunta para elegir es sencilla: ¿lo que pierdes son consultas sin responder, o citas sin coger?'
+      },
       categories: {
         web: 'Desarrollo Web',
         automation: 'Automatización e IA',
@@ -57,13 +67,13 @@ export const dictionaries = {
       },
       s2: {
         title: '02. Automatizaciones Específicas',
-        ideal: 'Empresas que necesitan resolver un problema concreto de eficiencia con automatización inteligente.',
+        ideal: 'Empresas con una tarea repetitiva concreta que quieren quitarse de encima: un proceso que hoy alguien hace a mano, todas las semanas, siempre igual.',
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automático de presupuestos en PDF desde un formulario',
         f2: 'Envío automático de facturas por email con datos de tu CRM',
         f3: 'Extractor automatizado de datos de correos a Google Sheets',
-        f4: 'Chatbot automatizado para canales de WhatsApp o Telegram',
+        f4: 'Chatbot de respuestas guiadas para WhatsApp o Telegram (sigue un guion; si necesitas que entienda lenguaje libre, eso es la Integración de IA)',
         f5: 'Sincronizador de base de datos bidireccional entre plataformas',
         f6: 'Sistema inteligente de recordatorios y alertas automáticas',
         f7: 'Reportes diarios/semanales automáticos por email',
@@ -84,11 +94,11 @@ export const dictionaries = {
       },
       s4: {
         title: '05. Integración de Inteligencia Artificial',
-        ideal: 'Empresas que quieren incorporar IA avanzada en sus procesos o atención al cliente. El precio final depende de la complejidad: un chatbot sencillo de un solo canal se sitúa en la parte baja del rango; un asistente avanzado con múltiples integraciones y canales (web, WhatsApp, Telegram), en la parte alta.',
+        ideal: 'Negocios que reciben muchas preguntas repetidas y las contestan a mano: horarios, precios, cómo funciona algo, si haces tal cosa. El asistente responde por ti con la información de tu negocio, pero no gestiona tu agenda — si lo que se te escapan son citas, el servicio es el 03. El precio final depende de la complejidad: un chatbot sencillo de un solo canal se sitúa en la parte baja del rango; un asistente avanzado con múltiples integraciones y canales (web, WhatsApp, Telegram), en la parte alta.',
         price: '1.600€ — 6.000€ + 90-150€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Asistente virtual con IA entrenado con tu documentación interna',
-        f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram',
+        f2: 'Chatbot inteligente de atención para web, WhatsApp o Telegram: informa y orienta con tus datos, sin gestionar tu agenda (para eso está Citas por WhatsApp)',
         f3: 'Generación automática de contenidos o respuestas predefinidas',
         f4: 'Análisis, clasificación y resumen automático de documentos',
         f5: 'Automatización avanzada con procesamiento de lenguaje natural',
@@ -151,7 +161,7 @@ export const dictionaries = {
       },
       s9: {
         title: '03. Citas por WhatsApp',
-        ideal: 'Negocios que trabajan con cita previa y hoy las cogen a mano: peluquerías y barberías, estética, fisioterapia, clínicas, talleres o asesorías.',
+        ideal: 'Negocios que trabajan con cita previa y hoy las cogen a mano: peluquerías y barberías, estética, fisioterapia, clínicas, talleres o asesorías. Es el único servicio que entra en tu agenda y reserva de verdad, no solo informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres, reserva la cita y la confirma sin que tengas que contestar',
@@ -298,6 +308,10 @@ export const dictionaries = {
       q10: {
         q: '¿Puedes hacer que mi negocio coja las citas por WhatsApp?',
         a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes y el Completo 1.500€-1.800€ más 250€/mes. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo) y que Meta verifique tu empresa, que lleva una o dos semanas. Si prefieres no depender de Meta, hay una versión sin API por 400€-700€ más 90€/mes.'
+      },
+      q11: {
+        q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
+        a: 'Por fuera se parecen y por dentro hacen cosas muy distintas, así que vale la pena aclararlo antes de pagar por lo que no necesitas. Un chatbot de respuestas guiadas (dentro de Automatizaciones Específicas) sigue un guion: botones y respuestas previstas, y en cuanto le preguntan algo que no estaba escrito, se atasca. Un asistente de IA, como TesS —con el que estás chateando en esta web—, entiende lo que le escriben con palabras normales y responde con la información de tu negocio: informa, orienta y recoge el contacto, pero no toca nada por dentro. Y el sistema de Citas por WhatsApp es un asistente de IA que además actúa: mira los huecos de verdad que tienes libres en tu agenda, reserva la cita, la confirma y manda el recordatorio. Esa es la diferencia que importa: los dos primeros cuentan cosas, el tercero hace el trabajo. Por eso solo el de citas lleva garantía, cuota propia y el coste del modelo de IA incluido, mientras que en la Integración de IA las claves de API son tuyas. Si dudas cuál te toca, la pregunta es sencilla: ¿lo que pierdes son consultas sin responder, o citas sin coger?'
       }
     },
     contact: {
@@ -426,6 +440,16 @@ export const dictionaries = {
       features: 'Què inclou:',
       live_adjustments: 'Tots els meus projectes de desenvolupament web i de programari inclouen 1 setmana d\'ajustaments en viu sense cost addicional després del llançament.',
       interest: 'M\'interessa aquest servei',
+      tres_ia: {
+        title: 'Tres serveis parlen per WhatsApp i no són el mateix',
+        c1_title: 'Xatbot guiat · dins del 02',
+        c1_desc: 'Segueix un guió de botons i respostes previstes. Barat i suficient si les preguntes són sempre les mateixes; així que se surten del guió, s\'encalla.',
+        c2_title: 'Assistent d\'IA · el 05',
+        c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. És el que estàs fent servir aquí: la TesS.',
+        c3_title: 'Cites per WhatsApp · el 03',
+        c3_desc: 'Un assistent d\'IA que a més actua: mira els forats que tens lliures de debò, reserva la cita, la confirma i envia el recordatori.',
+        nota: 'La pregunta per triar és senzilla: el que perds són consultes sense respondre, o cites sense agafar?'
+      },
       categories: {
         web: 'Desenvolupament Web',
         automation: 'Automatització i IA',
@@ -446,13 +470,13 @@ export const dictionaries = {
       },
       s2: {
         title: '02. Automatitzacions Específiques',
-        ideal: 'Empreses que necessiten resoldre un problema operatiu concret amb automatització intel·ligent.',
+        ideal: 'Empreses amb una tasca repetitiva concreta que es volen treure del damunt: un procés que avui algú fa a mà, cada setmana, sempre igual.',
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
         f2: 'Enviament automàtic de factures per correu amb dades del teu CRM',
         f3: 'Extractor automatitzat de dades de correus a Google Sheets',
-        f4: 'Xatbot automatitzat per a canals de WhatsApp o Telegram',
+        f4: 'Xatbot de respostes guiades per a WhatsApp o Telegram (segueix un guió; si necessites que entengui llenguatge lliure, això és la Integració d\'IA)',
         f5: 'Sincronizador de base de dades bidireccional entre plataformes',
         f6: 'Sistema intel·ligent de recordatoris i alertes automàtiques',
         f7: 'Informes diaris o setmanals automàtics per correu electrònic',
@@ -473,11 +497,11 @@ export const dictionaries = {
       },
       s4: {
         title: '05. Integració d\'Intel·ligència Artificial',
-        ideal: 'Empreses que volen incorporar IA avançada en els seus processos o atenció al client. El preu final depèn de la complexitat: un xatbot senzill d\'un sol canal se situa en la part baixa del rang; un assistent avançat amb múltiples integracions i canals (web, WhatsApp, Telegram), en la part alta.',
+        ideal: 'Negocis que reben moltes preguntes repetides i les contesten a mà: horaris, preus, com funciona una cosa, si fas tal servei. L\'assistent respon per tu amb la informació del teu negoci, però no gestiona la teva agenda — si el que se t\'escapa són cites, el servei és el 03. El preu final depèn de la complexitat: un xatbot senzill d\'un sol canal se situa en la part baixa del rang; un assistent avançat amb múltiples integracions i canals (web, WhatsApp, Telegram), en la part alta.',
         price: '1.600€ — 6.000€ + 90-150€/mes',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Assistent virtual amb IA entrenat amb la teva documentació interna',
-        f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram',
+        f2: 'Xatbot intel·ligent d\'atenció per a web, WhatsApp o Telegram: informa i orienta amb les teves dades, sense gestionar la teva agenda (per això hi ha Cites per WhatsApp)',
         f3: 'Generació automàtica de continguts o respostes predefinides',
         f4: 'Anàlisi, classificació i resum automàtic de documents',
         f5: 'Automatització avançada amb processament de llenguatge natural',
@@ -540,7 +564,7 @@ export const dictionaries = {
       },
       s9: {
         title: '03. Cites per WhatsApp',
-        ideal: 'Negocis que treballen amb cita prèvia i avui les agafen a mà: perruqueries i barberies, estètica, fisioteràpia, clíniques, tallers o assessories.',
+        ideal: 'Negocis que treballen amb cita prèvia i avui les agafen a mà: perruqueries i barberies, estètica, fisioteràpia, clíniques, tallers o assessories. És l\'únic servei que entra a la teva agenda i reserva de debò, no només informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures, reserva la cita i la confirma sense que hagis de contestar',
@@ -687,6 +711,10 @@ export const dictionaries = {
       q10: {
         q: 'Pots fer que el meu negoci agafi les cites per WhatsApp?',
         a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes i el Complet 1.500€-1.800€ més 250€/mes. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho) i que Meta verifiqui la teva empresa, cosa que porta una o dues setmanes. Si prefereixes no dependre de Meta, hi ha una versió sense API per 400€-700€ més 90€/mes.'
+      },
+      q11: {
+        q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
+        a: 'Per fora s\'assemblen i per dins fan coses molt diferents, així que val la pena aclarir-ho abans de pagar pel que no necessites. Un xatbot de respostes guiades (dins d\'Automatitzacions Específiques) segueix un guió: botons i respostes previstes, i així que li pregunten alguna cosa que no estava escrita, s\'encalla. Un assistent d\'IA, com la TesS —amb qui estàs xatejant en aquesta web—, entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci: informa, orienta i recull el contacte, però no toca res per dins. I el sistema de Cites per WhatsApp és un assistent d\'IA que a més actua: mira els forats que tens lliures de debò a la teva agenda, reserva la cita, la confirma i envia el recordatori. Aquesta és la diferència que importa: els dos primers expliquen coses, el tercer fa la feina. Per això només el de cites porta garantia, quota pròpia i el cost del model d\'IA inclòs, mentre que a la Integració d\'IA les claus d\'API són teves. Si dubtes quin et toca, la pregunta és senzilla: el que perds són consultes sense respondre, o cites sense agafar?'
       }
     },
     contact: {
@@ -815,6 +843,16 @@ export const dictionaries = {
       features: 'What is included:',
       live_adjustments: 'All my web and software development projects include 1 week of live adjustments and improvements at no additional cost after launch.',
       interest: 'Interested in this service',
+      tres_ia: {
+        title: 'Three services talk over WhatsApp, and they are not the same thing',
+        c1_title: 'Guided chatbot · part of 02',
+        c1_desc: 'Follows a script of buttons and pre-written answers. Cheap and enough when the questions are always the same; step off the script and it gets stuck.',
+        c2_title: 'AI assistant · service 05',
+        c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is what you are using here: TesS.',
+        c3_title: 'WhatsApp Booking · service 03',
+        c3_desc: 'An AI assistant that also acts: it checks the slots you actually have free, books the appointment, confirms it and sends the reminder.',
+        nota: 'The question to choose is simple: are you losing unanswered enquiries, or uncaught bookings?'
+      },
       categories: {
         web: 'Web Development',
         automation: 'Automation & AI',
@@ -835,13 +873,13 @@ export const dictionaries = {
       },
       s2: {
         title: '02. Specific Automations',
-        ideal: 'Companies looking to solve a specific operational efficiency issue with smart automation.',
+        ideal: 'Companies with one specific repetitive task to get off their plate: a process someone does by hand today, every week, always the same way.',
         price: '700€ — 1,800€ + 60€/mo',
         tag: 'Apps Script + APIs + Make',
         f1: 'Automatic generation of PDF quotes/budgets from a web form',
         f2: 'Automatic invoice mailing connecting directly with your CRM',
         f3: 'Automated data extraction from emails directly into Google Sheets',
-        f4: 'Functional automated chatbots for WhatsApp or Telegram channels',
+        f4: 'Guided-reply chatbots for WhatsApp or Telegram (they follow a script; if you need it to understand free language, that is AI Integration)',
         f5: 'Two-way database synchronization between different platforms',
         f6: 'Smart automated alert and notification system',
         f7: 'Daily or weekly automated email reporting',
@@ -862,11 +900,11 @@ export const dictionaries = {
       },
       s4: {
         title: '05. Artificial Intelligence Integration',
-        ideal: 'Companies that want to incorporate advanced AI models into their workflow or customer service. Final price depends on complexity: a simple single-channel chatbot sits at the low end of the range; an advanced assistant with multiple integrations and channels (web, WhatsApp, Telegram) sits at the high end.',
+        ideal: 'Businesses fielding the same questions over and over by hand: opening hours, prices, how something works, whether you offer a given service. The assistant answers for you using your business information, but it does not manage your calendar — if what you are losing is bookings, the service you want is 03. Final price depends on complexity: a simple single-channel chatbot sits at the low end of the range; an advanced assistant with multiple integrations and channels (web, WhatsApp, Telegram) sits at the high end.',
         price: '1,600€ — 6,000€ + 90-150€/mo',
         tag: 'OpenAI / Anthropic APIs',
         f1: 'Custom virtual AI assistant trained with your internal company documentation',
-        f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram',
+        f2: 'Smart customer service chatbot for web, WhatsApp, or Telegram: it informs and guides using your data, without managing your calendar (that is what WhatsApp Booking is for)',
         f3: 'Automated generation of text content or custom email templates',
         f4: 'Automated analysis, classification, and summary of documents',
         f5: 'Advanced automation using Natural Language Processing (NLP)',
@@ -1076,6 +1114,10 @@ export const dictionaries = {
       q10: {
         q: 'Can you get my business taking bookings over WhatsApp?',
         a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, and the Complete one 1,500€-1,800€ plus 250€/month. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it) and Meta to verify your business, which takes one or two weeks. If you would rather not depend on Meta, there is a version without the API for 400€-700€ plus 90€/month.'
+      },
+      q11: {
+        q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',
+        a: 'They look alike from the outside and do very different things inside, so it is worth clearing up before you pay for something you do not need. A guided-reply chatbot (part of Specific Automations) follows a script: buttons and pre-written answers, and the moment someone asks something that was not scripted, it gets stuck. An AI assistant, like TesS —the one you are chatting with on this site—, understands what people write in plain words and answers with your business information: it informs, guides and captures the contact, but it does not touch anything inside. And the WhatsApp Booking system is an AI assistant that also acts: it looks at the slots you actually have free in your calendar, books the appointment, confirms it and sends the reminder. That is the difference that matters: the first two tell people things, the third one does the work. That is why only the booking product carries a guarantee, its own fee and the AI model cost included, while with AI Integration the API keys are yours. If you are unsure which one you need, the question is simple: are you losing unanswered enquiries, or uncaught bookings?'
       }
     },
     contact: {

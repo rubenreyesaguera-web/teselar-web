@@ -506,7 +506,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11
   ];
 
   return (
@@ -1407,6 +1407,35 @@ export default function Page({ params }: PageProps) {
             <div className="mt-10 inline-flex items-center gap-4 bg-innovacion/10 border border-innovacion/35 px-7 py-4.5 rounded-[1.5rem] text-innovacion text-sm font-extrabold text-left max-w-3xl shadow-xl shadow-innovacion/10">
               <Info size={24} className="flex-shrink-0" />
               <span>{t.services.live_adjustments}</span>
+            </div>
+
+            {/* Los tres servicios que hablan por WhatsApp y se confunden entre si */}
+            <div className="mt-12 glass-panel rounded-[2rem] border border-claridad/10 p-8 md:p-10 text-left">
+              <h3 className="text-lg md:text-xl font-black text-claridad mb-8 text-center tracking-tight">{t.services.tres_ia.title}</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Zap size={20} className="text-innovacion flex-shrink-0" />
+                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c1_title}</span>
+                  </div>
+                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c1_desc}</p>
+                </div>
+                <div className="md:border-l md:border-claridad/10 md:pl-8">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Brain size={20} className="text-innovacion flex-shrink-0" />
+                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c2_title}</span>
+                  </div>
+                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c2_desc}</p>
+                </div>
+                <div className="md:border-l md:border-claridad/10 md:pl-8">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Calendar size={20} className="text-innovacion flex-shrink-0" />
+                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c3_title}</span>
+                  </div>
+                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c3_desc}</p>
+                </div>
+              </div>
+              <p className="mt-8 pt-6 border-t border-claridad/10 text-sm md:text-base text-claridad font-semibold text-center">{t.services.tres_ia.nota}</p>
             </div>
           </div>
 

@@ -59,6 +59,21 @@ Tres peldaños, en este orden:
   (Windows/macOS/Linux) con CRM, facturación, planificación y roles de usuario; Plan Básico incluido
   el primer año.
 
+## Tres servicios que se confunden entre sí
+
+Los tres "hablan" y la gente los mezcla, así que conviene distinguirlos:
+
+- **Chatbot guiado** (dentro de Automatizaciones Específicas): sigue un guion de botones y respuestas
+  previstas. Basta cuando las preguntas son siempre las mismas; fuera del guion se atasca.
+- **Asistente de IA** (Integración de IA): entiende el lenguaje normal y responde con la información
+  del negocio. Informa, orienta y recoge el contacto, pero **no gestiona ninguna agenda**. TesS, el
+  chat de la web, es exactamente esto.
+- **Citas por WhatsApp**: un asistente de IA que además **actúa** — consulta los huecos reales de la
+  agenda, reserva la cita, la confirma y envía el recordatorio.
+
+Los dos primeros cuentan cosas; el tercero hace el trabajo. La pregunta para elegir: ¿lo que se
+pierde son consultas sin responder, o citas sin coger?
+
 ## Mantenimiento (sin permanencia)
 
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
