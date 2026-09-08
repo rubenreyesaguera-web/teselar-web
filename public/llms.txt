@@ -74,6 +74,12 @@ Los tres "hablan" y la gente los mezcla, así que conviene distinguirlos:
 Los dos primeros cuentan cosas; el tercero hace el trabajo. La pregunta para elegir: ¿lo que se
 pierde son consultas sin responder, o citas sin coger?
 
+**Por qué el que más hace es el más barato:** Citas por WhatsApp (700€–1.800€) cuesta menos que una
+Integración de IA (1.600€–6.000€) porque **ya está construido y probado** y el trabajo es configurarlo
+con los servicios, los horarios y la agenda del negocio. La Integración de IA se fabrica desde cero
+sobre la documentación, los canales y los sistemas de cada cliente, y no hay dos iguales. Se paga la
+fabricación, no el número de funciones.
+
 ## Mantenimiento (sin permanencia)
 
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
