@@ -425,7 +425,17 @@ export default function Page({ params }: PageProps) {
       price: t.services.s2.price,
       tag: t.services.s2.tag,
       icon: Zap,
-      features: [t.services.s2.f1, t.services.s2.f2, t.services.s2.f3, t.services.s2.f4, t.services.s2.f5, t.services.s2.f6, t.services.s2.f7]
+      features: [t.services.s2.f1, t.services.s2.f2, t.services.s2.f3, t.services.s2.f4, t.services.s2.f5, t.services.s2.f6, t.services.s2.f7, t.services.s2.f8]
+    },
+    {
+      id: 's9',
+      category: 'automation',
+      title: t.services.s9.title,
+      ideal: t.services.s9.ideal,
+      price: t.services.s9.price,
+      tag: t.services.s9.tag,
+      icon: Calendar,
+      features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7]
     },
     {
       id: 's3',
@@ -465,7 +475,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s6.price,
       tag: t.services.s6.tag,
       icon: ShoppingCart,
-      features: [t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7]
+      features: [t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
     },
     {
       id: 's7',
@@ -485,17 +495,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s8.price,
       tag: t.services.s8.tag,
       icon: Monitor,
-      features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7]
-    },
-    {
-      id: 's9',
-      category: 'automation',
-      title: t.services.s9.title,
-      ideal: t.services.s9.ideal,
-      price: t.services.s9.price,
-      tag: t.services.s9.tag,
-      icon: Calendar,
-      features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7]
+      features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8]
     }
   ];
 
@@ -2015,6 +2015,55 @@ export default function Page({ params }: PageProps) {
                   className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
                 >
                   {t.pricing.citas.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Brain size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
+              </div>
+
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.ia.cta}
                   <ArrowRight size={16} />
                 </a>
               </div>
