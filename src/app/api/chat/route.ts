@@ -109,10 +109,16 @@ async function intentarOpenAICompatible(url: string, apiKey: string, model: stri
 }
 
 // Si el bot cerró un lead, lo mandamos al mismo buzón que el formulario de la web
-async function enviarLead(marcador: string, tipo: string) {
+// Devuelve si el lead quedó ENTREGADO de verdad. Antes hacía `await fetch(...)` y
+// nada más: fetch no lanza con un 4xx, así que un rechazo del proveedor no llegaba
+// ni al catch. Web3Forms responde 403 a toda llamada de servidor en el plan gratuito
+// ("Use our API in client side... Pro plan is required"), o sea que TesS llevaba
+// desde el primer día prometiendo llamadas por leads que no salían de aquí.
+// Descubierto el 2026-09-10 probando la respuesta, no el envío.
+async function enviarLead(marcador: string, tipo: string): Promise<boolean> {
   try {
     const [nombre, servicio, telefono] = marcador.split('|').map(s => s.trim());
-    await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -124,8 +130,15 @@ async function enviarLead(marcador: string, tipo: string) {
         telefono
       })
     });
+    if (!res.ok) {
+      const cuerpo = await res.text().catch(() => '(sin cuerpo)');
+      console.error(`[LEAD PERDIDO] Web3Forms ${res.status}: ${cuerpo.slice(0, 300)} — lead: ${marcador}`);
+      return false;
+    }
+    return true;
   } catch (e) {
-    console.error('Web3Forms falló:', e);
+    console.error(`[LEAD PERDIDO] Web3Forms no respondió — lead: ${marcador}`, e);
+    return false;
   }
 }
 
@@ -213,6 +226,12 @@ const FUGA: Record<string, string> = {
   en: 'I keep my internal setup to myself, but I am happy to tell you anything about what Ruben does. What does your business need: a website, some automation, or someone taking your bookings?',
 };
 
+const SIN_ENTREGA: Record<string, string> = {
+  es: 'Prefiero no dejarte esperando una llamada que quizá no salga: escríbele directamente por WhatsApp al +34 653 232 735 y te contesta él, o coge hueco para el diagnóstico gratuito de 30 minutos aquí: https://calendly.com/teselarsoftware-info/diagnostico30min',
+  ca: 'Prefereixo no deixar-te esperant una trucada que potser no surt: escriu-li directament per WhatsApp al +34 653 232 735 i et contesta ell, o agafa hora per al diagnòstic gratuït de 30 minuts aquí: https://calendly.com/teselarsoftware-info/diagnostico30min',
+  en: 'I would rather not leave you waiting for a call that might not happen: message him directly on WhatsApp at +34 653 232 735, or book the free 30-minute diagnosis here: https://calendly.com/teselarsoftware-info/diagnostico30min',
+};
+
 export async function POST(req: Request) {
   const { messages = [], newMsgText, leadCaptured = false, lng = 'es' } = await req.json();
   if (!newMsgText) return NextResponse.json({ error: 'Falta el mensaje' }, { status: 400 });
@@ -249,8 +268,11 @@ export async function POST(req: Request) {
   const match = botResponse.match(/\[LEAD_(CLOSED|UPDATED):([^\]]+)\]/);
   if (match) {
     leadClosed = match[1] === 'CLOSED';
-    await enviarLead(match[2], match[1]);
+    const entregado = await enviarLead(match[2], match[1]);
     botResponse = botResponse.replace(/\[LEAD_(CLOSED|UPDATED):[^\]]+\]/g, '').trim();
+    // Si no se entregó, TesS no puede quedarse diciendo "Rubén te llamará": nadie
+    // tiene esos datos. Se le da la vía directa, que no depende de ningún proveedor.
+    if (!entregado) botResponse = SIN_ENTREGA[lng] || SIN_ENTREGA.es;
   }
 
   return NextResponse.json({ response: botResponse, leadClosed });
