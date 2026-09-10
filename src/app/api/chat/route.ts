@@ -109,38 +109,51 @@ async function intentarOpenAICompatible(url: string, apiKey: string, model: stri
 }
 
 // Si el bot cerró un lead, lo mandamos al mismo buzón que el formulario de la web
-// Devuelve si el lead quedó ENTREGADO de verdad. Antes hacía `await fetch(...)` y
-// nada más: fetch no lanza con un 4xx, así que un rechazo del proveedor no llegaba
-// ni al catch. Web3Forms responde 403 a toda llamada de servidor en el plan gratuito
-// ("Use our API in client side... Pro plan is required"), o sea que TesS llevaba
-// desde el primer día prometiendo llamadas por leads que no salían de aquí.
-// Descubierto el 2026-09-10 probando la respuesta, no el envío.
+// Devuelve si el lead quedo REGISTRADO de verdad.
+//
+// Antes iba a Web3Forms, que responde 403 a toda llamada de servidor en el plan
+// gratuito, y ademas hacia `await fetch(...)` sin mirar la respuesta: fetch no lanza
+// con un 4xx, asi que nadie podia enterarse. Resultado: TesS llevaba desde el primer
+// dia prometiendo llamadas por leads que no salian de aqui (ADR-050).
+//
+// Ahora va al mismo webhook de Make que los demas leads, que los escribe en la hoja
+// ANTES de intentar avisar de nada. Server-to-server, sin Cloudflare de por medio.
 async function enviarLead(marcador: string, tipo: string): Promise<boolean> {
+  const webhookUrl = process.env.MAKE_LEADS_WEBHOOK_URL;
+  if (!webhookUrl) {
+    console.error(`[LEAD PERDIDO] MAKE_LEADS_WEBHOOK_URL sin configurar - lead: ${marcador}`);
+    return false;
+  }
   try {
     const [nombre, servicio, telefono] = marcador.split('|').map(s => s.trim());
-    const res = await fetch('https://api.web3forms.com/submit', {
+    const res = await fetch(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        access_key: '5c1024f8-ccf6-408d-926f-553dd013526a',
-        subject: `🤖 Lead del chatbot (${tipo}): ${nombre}`,
-        from_name: 'Chatbot Teselar',
+        tipo: 'lead',
+        origen: 'tess',
         nombre,
-        servicio_interes: servicio,
-        telefono
+        telefono,
+        email: '',
+        negocio: '',
+        quePedia: servicio,
+        slug: '',
+        titulo: '',
+        consentimiento: `chat ${tipo.toLowerCase()}`,
       })
     });
     if (!res.ok) {
-      const cuerpo = await res.text().catch(() => '(sin cuerpo)');
-      console.error(`[LEAD PERDIDO] Web3Forms ${res.status}: ${cuerpo.slice(0, 300)} — lead: ${marcador}`);
+      const c = await res.text().catch(() => '(sin cuerpo)');
+      console.error(`[LEAD PERDIDO] Make ${res.status}: ${c.slice(0, 200)} - lead: ${marcador}`);
       return false;
     }
     return true;
   } catch (e) {
-    console.error(`[LEAD PERDIDO] Web3Forms no respondió — lead: ${marcador}`, e);
+    console.error(`[LEAD PERDIDO] Make no respondio - lead: ${marcador}`, e);
     return false;
   }
 }
+
 
 const FALLBACK: Record<string, string> = {
   es: 'Ahora mismo no puedo responder (¡hasta los asistentes de IA descansan!). Escríbeme por WhatsApp al +34 653 232 735 o usa el formulario de contacto y te respondo enseguida.',

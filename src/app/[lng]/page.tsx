@@ -382,21 +382,33 @@ export default function Page({ params }: PageProps) {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    // Va al mismo sitio que los demas leads: /api/lead -> webhook de Make -> hoja.
+    // Antes iba a Web3Forms, que respondia success y el correo no llegaba nunca, sin
+    // dejar rastro en ninguna parte. Registrar primero, avisar despues (ADR-050).
     const formData = new FormData(e.currentTarget);
-    formData.append('access_key', '5c1024f8-ccf6-408d-926f-553dd013526a');
-    formData.append('subject', `Nuevo Lead Teselar (${contactReason.toUpperCase()}): ${formData.get('name')}`);
-    
+    const campo = (k: string) => String(formData.get(k) ?? '').trim();
+
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          origen: 'formulario',
+          nombre: campo('name'),
+          email: campo('email'),
+          telefono: campo('phone'),
+          negocio: campo('company'),
+          quePedia: [contactReason, campo('budget'), campo('urgency'), campo('message')]
+            .filter(Boolean).join(' · '),
+          consentimiento: 'si',
+        })
       });
 
-      const data = await response.json();
-      if (data.success) {
+      const data = await response.json().catch(() => ({ success: response.ok }));
+      if (response.ok && data.error === undefined) {
         window.location.href = `/${currentLng}/gracias`;
       } else {
-        setSubmitError(data.message || t.contact.error);
+        setSubmitError(t.contact.error);
         setIsSubmitting(false);
       }
     } catch (err) {
