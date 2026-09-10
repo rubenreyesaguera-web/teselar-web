@@ -20,6 +20,7 @@ export const dictionaries = {
       tagline: 'Teselar Software',
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
       subtitle: 'La pieza exacta donde tu negocio y la tecnología encajan: desde tu presencia digital hasta sistemas ERP/CRM e integraciones de IA. Los hago yo, de principio a fin, aquí en Lloret de Mar.',
+      meta_description: 'Webs, automatizaciones y software a medida en Lloret de Mar. De tu presencia digital a sistemas ERP/CRM e integraciones de IA. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
       cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.'
@@ -433,6 +434,7 @@ export const dictionaries = {
       tagline: 'Teselar Software',
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
       subtitle: 'La peça exacta on el teu negoci i la tecnologia encaixen: des de la teva presència digital fins a sistemes ERP/CRM i integracions d\'IA. Els faig jo, de principi a fi, aquí a Lloret de Mar.',
+      meta_description: 'Webs, automatitzacions i programari a mida a Lloret de Mar. De la presència digital als sistemes ERP/CRM i integracions d\'IA. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
       cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.'
@@ -846,6 +848,7 @@ export const dictionaries = {
       tagline: 'Teselar Software',
       title: 'The exact piece where technology and your business fit perfectly',
       subtitle: 'The exact piece where your business and technology fit together: from your web presence to native ERP/CRM systems and AI integrations. I build them myself, end to end, here in Lloret de Mar.',
+      meta_description: 'Websites, automations and custom software in Lloret de Mar. From your web presence to ERP/CRM systems and AI integrations. I build them myself, end to end.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
       cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.'

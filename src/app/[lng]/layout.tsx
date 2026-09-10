@@ -34,13 +34,16 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
     en: 'Web Design & Custom Software in Lloret de Mar | Teselar Software'
   };
 
+  const META_DESC = (t.hero as { meta_description?: string }).meta_description ?? t.hero.subtitle;
   const currentKeywords = keywordsMap[lng as 'es' | 'ca' | 'en'] || keywordsMap.en;
   const currentTitle = titlesMap[lng as 'es' | 'ca' | 'en'] || titlesMap.en;
 
   return {
     metadataBase: new URL(baseUrl),
     title: currentTitle,
-    description: t.hero.subtitle,
+    // Separada del subtitulo a proposito: el subtitulo puede explayarse, pero Google
+    // corta la descripcion sobre los 155-160 caracteres.
+    description: META_DESC,
     keywords: currentKeywords,
     authors: [{ name: 'Teselar Software' }],
     creator: 'Teselar Software',
@@ -59,7 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
       locale: lng === 'ca' ? 'ca_ES' : lng === 'es' ? 'es_ES' : 'en_US',
       url: `${baseUrl}/${lng}`,
       title: currentTitle,
-      description: t.hero.subtitle,
+      description: META_DESC,
       siteName: 'Teselar Software',
       images: [
         {
@@ -73,7 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
     twitter: {
       card: 'summary_large_image',
       title: currentTitle,
-      description: t.hero.subtitle,
+      description: META_DESC,
       images: ['/og-image.png'],
     },
     icons: {
