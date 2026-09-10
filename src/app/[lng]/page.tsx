@@ -19,6 +19,14 @@ interface PageProps {
 
 // First step of the ladder: the free 30-minute diagnosis. The 150€ audit is the second one.
 const CALENDLY_URL = 'https://calendly.com/teselarsoftware-info/diagnostico30min';
+const WHATSAPP_NUM = '34653232735';
+
+// Tres acciones para tres momentos, y solo tres (2026-09-10): TesS para quien mira y
+// tiene una duda, WhatsApp para quien ya sabe y quiere una persona, y el Calendly de
+// 30 minutos como puerta de la escalera de ADR-021. El formulario deja de ser un boton
+// suelto en cada seccion y vuelve a ser el sitio donde se cuenta el caso con calma.
+// El mensaje previo dice de que seccion viene, para saberlo sin preguntarlo.
+const waLink = (mensaje: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(mensaje)}`;
 
 interface AnimatedWordProps {
   word: string;
@@ -765,13 +773,15 @@ export default function Page({ params }: PageProps) {
                     <Calendar size={18} />
                     {t.hero.cta_alt}
                   </a>
-                  <button 
-                    onClick={() => handleScrollToContact('info')}
+                  <a
+                    href={waLink(t.leads.wa_generico)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <Info size={18} />
-                    {t.hero.cta}
-                  </button>
+                    <MessageCircle size={18} />
+                    {t.leads.cta_whatsapp}
+                  </a>
                 </motion.div>
               ) : (
                 <motion.div 
@@ -790,13 +800,15 @@ export default function Page({ params }: PageProps) {
                     <Calendar size={18} />
                     {t.hero.cta_alt}
                   </a>
-                  <button 
-                    onClick={() => handleScrollToContact('info')}
+                  <a
+                    href={waLink(t.leads.wa_generico)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                   >
-                    <Info size={18} />
-                    {t.hero.cta}
-                  </button>
+                    <MessageCircle size={18} />
+                    {t.leads.cta_whatsapp}
+                  </a>
                 </motion.div>
               )}
 
@@ -1609,13 +1621,15 @@ export default function Page({ params }: PageProps) {
               {t.leads.post_services}
             </p>
           </div>
-          <button
-            onClick={() => handleScrollToContact('meeting')}
+          <a
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
             <Calendar size={14} />
-            {t.leads.post_services_btn}
-          </button>
+            {t.hero.cta_alt}
+          </a>
         </div>
       </div>
 
@@ -1903,13 +1917,15 @@ export default function Page({ params }: PageProps) {
               {t.leads.post_roi}
             </p>
           </div>
-          <button
-            onClick={() => handleScrollToContact('meeting')}
+          <a
+            href={waLink(t.leads.wa_roi)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
-            <Calendar size={14} />
-            {t.leads.post_roi_btn}
-          </button>
+            <MessageCircle size={14} />
+            {t.leads.cta_whatsapp}
+          </a>
         </div>
       </div>
 
@@ -2132,13 +2148,15 @@ export default function Page({ params }: PageProps) {
               {t.leads.post_pricing}
             </p>
           </div>
-          <button
-            onClick={() => handleScrollToContact('quote')}
+          <a
+            href={waLink(t.leads.wa_precios)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
-            <Send size={14} />
-            {t.leads.post_pricing_btn}
-          </button>
+            <MessageCircle size={14} />
+            {t.leads.cta_whatsapp}
+          </a>
         </div>
       </div>
 
@@ -2219,13 +2237,15 @@ export default function Page({ params }: PageProps) {
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-innovacion to-transparent" />
                   <h3 className="text-lg md:text-xl font-black text-innovacion mb-3.5">{t.process.p1.title}</h3>
                   <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed mb-5">{t.process.p1.desc}</p>
-                  <button
-                    onClick={() => handleScrollToContact('meeting')}
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-innovacion text-teselar-dark text-xs font-black tracking-wider uppercase px-5 py-2.5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer"
                   >
                     <Calendar size={14} />
-                    {lng === 'es' ? 'Agendar cita' : lng === 'ca' ? 'Agendar cita' : 'Book a meeting'}
-                  </button>
+                    {t.hero.cta_alt}
+                  </a>
                 </motion.div>
               </div>
             </div>
@@ -2672,7 +2692,7 @@ export default function Page({ params }: PageProps) {
               </div>
               <div className="flex items-center gap-3">
                 <MessageCircle size={16} className="text-innovacion" aria-hidden="true" />
-                <a href="https://wa.me/34653232735" target="_blank" rel="noopener noreferrer" className="hover:text-innovacion transition-colors">WhatsApp</a>
+                <a href={waLink(t.leads.wa_generico)} target="_blank" rel="noopener noreferrer" className="hover:text-innovacion transition-colors">WhatsApp</a>
               </div>
             </div>
           </div>
@@ -2782,13 +2802,15 @@ export default function Page({ params }: PageProps) {
             className="fixed bottom-6 left-0 right-0 z-50 px-4 pointer-events-none"
           >
             <div className="max-w-sm mx-auto pointer-events-auto">
-              <button
-                onClick={() => handleScrollToContact('meeting')}
+              <a
+                href={CALENDLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-innovacion text-teselar-dark font-black tracking-widest uppercase py-4 rounded-2xl sticky-cta-bar flex items-center justify-center gap-3 shadow-2xl"
               >
                 <Calendar size={18} />
                 <span>{t.leads.sticky_cta_long}</span>
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -2908,16 +2930,16 @@ export default function Page({ params }: PageProps) {
                 <p className="text-xs text-claridad/70 leading-relaxed mb-3">
                   {t.leads.toast_text}
                 </p>
-                <button
-                  onClick={() => {
-                    setShowScrollToast(false);
-                    handleScrollToContact('info');
-                  }}
+                <a
+                  href={waLink(t.leads.wa_generico)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setShowScrollToast(false)}
                   className="text-xs font-bold text-innovacion hover:text-claridad transition-colors flex items-center gap-1"
                 >
                   {t.leads.toast_btn}
                   <ArrowRight size={12} />
-                </button>
+                </a>
               </div>
               <button
                 onClick={() => setShowScrollToast(false)}
