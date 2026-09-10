@@ -112,6 +112,13 @@ export default function Page({ params }: PageProps) {
   ];
 
   const activeWords = currentLng === 'es' ? esWords : currentLng === 'ca' ? caWords : enWords;
+
+  // Los numeros del simulador se formateaban con toLocaleString() SIN idioma, asi que
+  // cada lado usaba el suyo: el servidor de Vercel escribia "20,784" y el navegador
+  // espanol "20.784". Eso rompia la hidratacion de React (error #418) en produccion,
+  // y no se veia en local porque alli servidor y navegador comparten idioma.
+  const LOCALES: Record<string, string> = { es: 'es-ES', ca: 'ca-ES', en: 'en-US' };
+  const fmt = (n: number) => n.toLocaleString(LOCALES[currentLng] ?? 'es-ES');
   
   const router = useRouter();
   const pathname = usePathname();
@@ -1784,7 +1791,7 @@ export default function Page({ params }: PageProps) {
                   <div className="border-b border-claridad/5 pb-5">
                     <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_monthly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-innovacion text-glow-cyan">
-                      {Math.round(wastedHours * employeeCount * hourlyCost * 4.33).toLocaleString()}€
+                      {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33))}€
                     </span>
                     <span className="text-xs text-claridad/50 font-light block mt-1">
                       {lng === 'es' ? 'ahorrados cada mes' : lng === 'ca' ? 'estalviats cada mes' : 'saved each month'}
@@ -1795,7 +1802,7 @@ export default function Page({ params }: PageProps) {
                   <div className="border-b border-claridad/5 pb-5">
                     <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_yearly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-claridad">
-                      {Math.round(wastedHours * employeeCount * hourlyCost * 4.33 * 12).toLocaleString()}€
+                      {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33 * 12))}€
                     </span>
                     <span className="text-xs text-claridad/50 font-light block mt-1">
                       {lng === 'es' ? 'pérdidas anuales recuperadas' : lng === 'ca' ? 'pèrdues anuals recuperades' : 'annual losses recovered'}
@@ -1806,7 +1813,7 @@ export default function Page({ params }: PageProps) {
                   <div>
                     <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_hours} ]</span>
                     <span className="font-mono text-3xl font-black text-claridad/85 block">
-                      {(wastedHours * employeeCount * 52).toLocaleString()}h
+                      {fmt(wastedHours * employeeCount * 52)}h
                     </span>
                     <span className="text-xs text-claridad/50 font-light block mt-1">
                       {lng === 'es' ? 'de trabajo redirigidas a tareas productivas' : lng === 'ca' ? 'de treball redirigides a tasques productives' : 'of work redirected to productive tasks'}
@@ -1846,10 +1853,10 @@ export default function Page({ params }: PageProps) {
                   
                   // 2. Autofill details into the textarea
                   const customizedText = lng === 'es'
-                    ? `Hola Teselar Software, he utilizado el simulador interactivo de vuestra web y he calculado unas pérdidas anuales estimadas de ${yearlyVal.toLocaleString()}€ por tareas manuales repetitivas (${yearlyHours.toLocaleString()}h recuperables/año). Me interesa vuestra propuesta de "${suggestedService}" para automatizar estos procesos e incrementar la rentabilidad de mi negocio.`
+                    ? `Hola Teselar Software, he utilizado el simulador interactivo de vuestra web y he calculado unas pérdidas anuales estimadas de ${fmt(yearlyVal)}€ por tareas manuales repetitivas (${fmt(yearlyHours)}h recuperables/año). Me interesa vuestra propuesta de "${suggestedService}" para automatizar estos procesos e incrementar la rentabilidad de mi negocio.`
                     : lng === 'ca'
-                      ? `Hola Teselar Software, he utilitzat el simulador interactiu de la vostra web i he calculat unes pèrdues anuales estimades de ${yearlyVal.toLocaleString()}€ per tasques manuals repetitives (${yearlyHours.toLocaleString()}h recuperables/any). M'interessa la vostra proposta de "${suggestedService}" per automatitzar aquests processos i incrementar la rendibilitat del meu negoci.`
-                      : `Hello Teselar Software, I have used the interactive simulator on your website and calculated an estimated annual loss of ${yearlyVal.toLocaleString()}€ due to repetitive manual tasks (${yearlyHours.toLocaleString()} recoverable hours/year). I am interested in your proposal for "${suggestedService}" to automate these processes and increase our operational profitability.`;
+                      ? `Hola Teselar Software, he utilitzat el simulador interactiu de la vostra web i he calculat unes pèrdues anuales estimades de ${fmt(yearlyVal)}€ per tasques manuals repetitives (${fmt(yearlyHours)}h recuperables/any). M'interessa la vostra proposta de "${suggestedService}" per automatitzar aquests processos i incrementar la rendibilitat del meu negoci.`
+                      : `Hello Teselar Software, I have used the interactive simulator on your website and calculated an estimated annual loss of ${fmt(yearlyVal)}€ due to repetitive manual tasks (${fmt(yearlyHours)} recoverable hours/year). I am interested in your proposal for "${suggestedService}" to automate these processes and increase our operational profitability.`;
                   
                   setContactMessage(customizedText);
 
