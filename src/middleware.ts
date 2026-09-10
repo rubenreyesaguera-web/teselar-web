@@ -2,7 +2,13 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const locales = ['es', 'ca', 'en'];
-const defaultLocale = 'en';
+
+// Castellano por defecto. Lo era 'en', y con navegador real no se notaba -el idioma
+// del visitante se respeta-, pero WhatsApp, Facebook, LinkedIn y Twitter NO mandan
+// Accept-Language al generar la tarjeta de un enlace: la vista previa salia en ingles.
+// Justo en el gesto del puerta a puerta, que es pegarle el enlace a un negocio de
+// Tossa por WhatsApp. Comprobado con los cuatro agentes el 2026-09-10.
+const defaultLocale = 'es';
 
 function getLocale(request: NextRequest): string {
   const acceptLanguage = request.headers.get('accept-language');

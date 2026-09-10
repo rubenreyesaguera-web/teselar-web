@@ -19,7 +19,7 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
-      subtitle: 'Transformo tu negocio con tecnología accesible y a medida. Desde presencia digital hasta sistemas ERP/CRM nativos e integraciones de IA.',
+      subtitle: 'La pieza exacta donde tu negocio y la tecnología encajan: desde tu presencia digital hasta sistemas ERP/CRM e integraciones de IA. Los hago yo, de principio a fin, aquí en Lloret de Mar.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
       cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.'
@@ -432,7 +432,7 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
-      subtitle: 'Transformo el teu negoci amb tecnologia accessible i a mida. Des de presència digital fins a sistemes ERP/CRM natius i integracions d\'IA.',
+      subtitle: 'La peça exacta on el teu negoci i la tecnologia encaixen: des de la teva presència digital fins a sistemes ERP/CRM i integracions d\'IA. Els faig jo, de principi a fi, aquí a Lloret de Mar.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
       cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.'
@@ -845,7 +845,7 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'The exact piece where technology and your business fit perfectly',
-      subtitle: 'I transform your business with accessible and custom technology. From professional web presence to native ERP/CRM systems and custom AI integrations.',
+      subtitle: 'The exact piece where your business and technology fit together: from your web presence to native ERP/CRM systems and AI integrations. I build them myself, end to end, here in Lloret de Mar.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
       cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.'

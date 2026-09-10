@@ -51,7 +51,12 @@ const AnimatedWord = ({ word, index, totalWords, isGradient, scrollY, heroBuilt 
   const yVal = useTransform(scrollY, [wordStart, wordEnd], [18, 0]);
   const scaleVal = useTransform(scrollY, [wordStart, wordEnd], [0.94, 1]);
   
+  // El espacio va FUERA del span. La separacion entre palabras la daba solo un margen
+  // de CSS, asi que el titulo salia pegado -"Lapiezaexacta..."- tanto para un lector
+  // de pantalla como para un extractor de texto. Dentro del inline-block no vale: ahi
+  // el espacio final se colapsa al renderizar. Lo compensa word-spacing en el h1.
   return (
+    <>
     <motion.span
       style={{ 
         opacity: heroBuilt ? 1 : opacityVal, 
@@ -59,10 +64,12 @@ const AnimatedWord = ({ word, index, totalWords, isGradient, scrollY, heroBuilt 
         scale: heroBuilt ? 1 : scaleVal, 
         display: 'inline-block' 
       }}
-      className={`mr-[0.22em] select-none ${isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
+      className={`select-none ${isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
     >
       {word}
     </motion.span>
+      {index < totalWords - 1 ? ' ' : ''}
+    </>
   );
 };
 
@@ -79,45 +86,29 @@ export default function Page({ params }: PageProps) {
 
   // Word arrays for staggered title construction (Apple-style cinematic reveal)
   const esWords = [
-    { text: "La", isGradient: false },
-    { text: "pieza", isGradient: false },
-    { text: "exacta", isGradient: false },
-    { text: "donde", isGradient: false },
-    { text: "la", isGradient: false },
-    { text: "tecnología", isGradient: false },
+    { text: "Webs,", isGradient: false },
+    { text: "automatizaciones", isGradient: false },
     { text: "y", isGradient: false },
-    { text: "tu", isGradient: false },
-    { text: "negocio", isGradient: false },
-    { text: "encajan", isGradient: true },
-    { text: "perfectamente", isGradient: true }
+    { text: "software", isGradient: false },
+    { text: "a", isGradient: true },
+    { text: "medida", isGradient: true }
   ];
 
   const caWords = [
-    { text: "La", isGradient: false },
-    { text: "peça", isGradient: false },
-    { text: "exacta", isGradient: false },
-    { text: "on", isGradient: false },
-    { text: "la", isGradient: false },
-    { text: "tecnologia", isGradient: false },
+    { text: "Webs,", isGradient: false },
+    { text: "automatitzacions", isGradient: false },
     { text: "i", isGradient: false },
-    { text: "el", isGradient: false },
-    { text: "teu", isGradient: false },
-    { text: "negoci", isGradient: false },
-    { text: "encaixen", isGradient: true },
-    { text: "perfectament", isGradient: true }
+    { text: "programari", isGradient: false },
+    { text: "a", isGradient: true },
+    { text: "mida", isGradient: true }
   ];
 
   const enWords = [
-    { text: "The", isGradient: false },
-    { text: "exact", isGradient: false },
-    { text: "piece", isGradient: false },
-    { text: "where", isGradient: false },
-    { text: "technology", isGradient: false },
+    { text: "Websites,", isGradient: false },
+    { text: "automations", isGradient: false },
     { text: "and", isGradient: false },
-    { text: "your", isGradient: false },
-    { text: "business", isGradient: false },
-    { text: "fit", isGradient: true },
-    { text: "perfectly", isGradient: true }
+    { text: "custom", isGradient: true },
+    { text: "software", isGradient: true }
   ];
 
   const activeWords = currentLng === 'es' ? esWords : currentLng === 'ca' ? caWords : enWords;
@@ -708,20 +699,22 @@ export default function Page({ params }: PageProps) {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.6 }}
-                  className="text-5xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase"
+                  className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]"
                 >
                   {activeWords.map((wordObj, idx) => (
-                    <span 
-                      key={idx}
-                      className={`inline-block mr-[0.22em] ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
-                    >
-                      {wordObj.text}
-                    </span>
+                    <React.Fragment key={idx}>
+                      <span
+                        className={`inline-block ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
+                      >
+                        {wordObj.text}
+                      </span>
+                      {idx < activeWords.length - 1 ? ' ' : ''}
+                    </React.Fragment>
                   ))}
                 </motion.h1>
               ) : (
                 /* DESKTOP: Scroll-driven word-by-word reveal */
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase flex flex-wrap">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]">
                   {activeWords.map((wordObj, idx) => (
                     <AnimatedWord 
                       key={idx}
@@ -735,7 +728,15 @@ export default function Page({ params }: PageProps) {
                   ))}
                 </h1>
               )}
-              
+
+              {/* Sin JavaScript no habia titular: las palabras se sirven a opacity 0 y las
+                  revela la animacion. Esto lo pinta igual para quien no ejecuta JS. */}
+              <noscript>
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad uppercase">
+                  {activeWords.map(w => w.text).join(' ')}
+                </h1>
+              </noscript>
+
               {isMobile ? (
                 <motion.p 
                   initial={{ opacity: 0, y: 15 }}
@@ -812,7 +813,10 @@ export default function Page({ params }: PageProps) {
                 </motion.div>
               )}
 
-              <p className="text-sm font-light text-claridad/60 leading-relaxed max-w-xl mt-6">
+              {/* pr-20 en movil: el boton flotante de TesS se comia el final de esta frase,
+                  que es justo la que quita el miedo ("sin coste y sin compromiso").
+                  text-claridad/75, que a /60 quedaba por debajo del contraste comodo. */}
+              <p className="text-sm font-light text-claridad/75 leading-relaxed max-w-xl mt-6 pr-20 sm:pr-0">
                 {t.hero.cta_note}
               </p>
             </div>
@@ -985,7 +989,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v1.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/80 font-light leading-relaxed">{t.values.v1.desc}</p>
+                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v1.desc}</p>
                 </div>
               </motion.div>
             </div>
@@ -1021,7 +1025,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v2.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/80 font-light leading-relaxed">{t.values.v2.desc}</p>
+                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v2.desc}</p>
                 </div>
               </motion.div>
             </div>
@@ -1057,7 +1061,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v3.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/80 font-light leading-relaxed">{t.values.v3.desc}</p>
+                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v3.desc}</p>
                 </div>
               </motion.div>
             </div>
@@ -1093,7 +1097,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v4.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/80 font-light leading-relaxed">{t.values.v4.desc}</p>
+                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v4.desc}</p>
                 </div>
               </motion.div>
             </div>
@@ -1466,7 +1470,7 @@ export default function Page({ params }: PageProps) {
                   <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c3_desc}</p>
                 </div>
               </div>
-              <p className="mt-8 pt-6 border-t border-claridad/10 text-sm md:text-base text-claridad font-semibold text-center">{t.services.tres_ia.nota}</p>
+              <p className="mt-8 pt-6 border-t border-claridad/10 text-base text-claridad font-semibold text-center">{t.services.tres_ia.nota}</p>
             </div>
           </div>
 
@@ -1617,7 +1621,7 @@ export default function Page({ params }: PageProps) {
             <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
               <Users size={22} />
             </div>
-            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
               {t.leads.post_services}
             </p>
           </div>
@@ -1913,7 +1917,7 @@ export default function Page({ params }: PageProps) {
             <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
               <Clock size={22} />
             </div>
-            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
               {t.leads.post_roi}
             </p>
           </div>
@@ -1958,19 +1962,19 @@ export default function Page({ params }: PageProps) {
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
                 
                 <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.basic.f1}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.basic.f2}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.basic.f3}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.basic.f4}</span>
                   </li>
@@ -2007,19 +2011,19 @@ export default function Page({ params }: PageProps) {
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
                 
                 <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.plus.f1}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.plus.f2}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.plus.f3}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.plus.f4}</span>
                   </li>
@@ -2061,15 +2065,15 @@ export default function Page({ params }: PageProps) {
 
               <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
                 <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.citas.f1}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.citas.f2}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
                     <span className="text-claridad/70">{t.pricing.citas.f3}</span>
                   </li>
@@ -2110,15 +2114,15 @@ export default function Page({ params }: PageProps) {
 
               <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
                 <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.ia.f1}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
                     <span>{t.pricing.ia.f2}</span>
                   </li>
-                  <li className="flex items-start gap-3.5 text-sm md:text-base text-claridad/95 font-light leading-relaxed">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
                     <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
                     <span className="text-claridad/70">{t.pricing.ia.f3}</span>
                   </li>
@@ -2144,7 +2148,7 @@ export default function Page({ params }: PageProps) {
             <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
               <Star size={22} />
             </div>
-            <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
               {t.leads.post_pricing}
             </p>
           </div>
@@ -2236,7 +2240,7 @@ export default function Page({ params }: PageProps) {
                   {/* Glowing edge accent */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-innovacion to-transparent" />
                   <h3 className="text-lg md:text-xl font-black text-innovacion mb-3.5">{t.process.p1.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/85 font-light leading-relaxed mb-5">{t.process.p1.desc}</p>
+                  <p className="text-base text-claridad/85 font-light leading-relaxed mb-5">{t.process.p1.desc}</p>
                   <a
                     href={CALENDLY_URL}
                     target="_blank"
@@ -2275,7 +2279,7 @@ export default function Page({ params }: PageProps) {
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
                   <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p2.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/60 font-light leading-relaxed">{t.process.p2.desc}</p>
+                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p2.desc}</p>
                 </motion.div>
               </div>
               <div className="hidden md:block self-center pl-10">
@@ -2311,7 +2315,7 @@ export default function Page({ params }: PageProps) {
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
                   <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p3.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/60 font-light leading-relaxed">{t.process.p3.desc}</p>
+                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p3.desc}</p>
                 </motion.div>
               </div>
             </div>
@@ -2341,8 +2345,8 @@ export default function Page({ params }: PageProps) {
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
                   <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p4.title}</h3>
-                  <p className="text-sm md:text-base text-claridad/50 font-bold mb-1.5">{lng === 'es' ? '¡Semana de Ajustes Gratis!' : lng === 'ca' ? 'Setmana d\'Ajustaments Gratis!' : 'Free Adjustments Week!'}</p>
-                  <p className="text-sm md:text-base text-claridad/60 font-light leading-relaxed">{t.process.p4.desc}</p>
+                  <p className="text-base text-claridad/50 font-bold mb-1.5">{lng === 'es' ? '¡Semana de Ajustes Gratis!' : lng === 'ca' ? 'Setmana d\'Ajustaments Gratis!' : 'Free Adjustments Week!'}</p>
+                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p4.desc}</p>
                 </motion.div>
               </div>
               <div className="hidden md:block self-center pl-10">
@@ -2395,7 +2399,7 @@ export default function Page({ params }: PageProps) {
                     style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-sm md:text-base text-claridad/75 font-light leading-relaxed">{item.a}</p>
+                      <p className="px-6 pb-6 text-base text-claridad/75 font-light leading-relaxed">{item.a}</p>
                     </div>
                   </div>
                 </motion.div>
