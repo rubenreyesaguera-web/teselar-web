@@ -2504,8 +2504,12 @@ export default function Page({ params }: PageProps) {
 
                 {/* Budget Range qualifier */}
                 <div className="flex flex-col gap-3">
-                  <label htmlFor="budget" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.budget} *</label>
-                  <select id="budget" name="budget" required className="form-input cursor-pointer">
+                  <label htmlFor="budget" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.budget}</label>
+                  {/* Sin required, y con una primera opcion vacia SELECCIONADA: quitar el
+                      required a secas no cambiaba nada -la primera opcion ya venia elegida-
+                      y ademas mandaba un presupuesto que el visitante no habia dicho. */}
+                  <select id="budget" name="budget" defaultValue="" className="form-input cursor-pointer">
+                    <option value="">{t.contact.budget_opt0}</option>
                     <option value="low">{t.contact.budget_opt1}</option>
                     <option value="mid">{t.contact.budget_opt2}</option>
                     <option value="high">{t.contact.budget_opt3}</option>
@@ -2515,8 +2519,9 @@ export default function Page({ params }: PageProps) {
 
                 {/* Urgency qualifier */}
                 <div className="flex flex-col gap-3">
-                  <label htmlFor="urgency" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.urgency} *</label>
-                  <select id="urgency" name="urgency" required className="form-input cursor-pointer">
+                  <label htmlFor="urgency" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.urgency}</label>
+                  <select id="urgency" name="urgency" defaultValue="" className="form-input cursor-pointer">
+                    <option value="">{t.contact.urgency_opt0}</option>
                     <option value="immediate">{t.contact.urgency_opt1}</option>
                     <option value="medium">{t.contact.urgency_opt2}</option>
                     <option value="low">{t.contact.urgency_opt3}</option>
