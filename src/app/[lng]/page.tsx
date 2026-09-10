@@ -284,18 +284,25 @@ export default function Page({ params }: PageProps) {
     e.preventDefault();
     setExitFormSubmitting(true);
 
+    // Mismo destino que los demas leads. Iba a Web3Forms, que no entrega desde
+    // servidor y aqui respondia success sin dejar rastro en ninguna parte (ADR-050).
     const formData = new FormData(e.currentTarget);
-    formData.append('access_key', '5c1024f8-ccf6-408d-926f-553dd013526a');
-    formData.append('subject', `Lead Rápido Exit-Intent: ${formData.get('name')}`);
-    formData.append('from_name', 'Teselar Web Exit-Intent');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          origen: 'exit-intent',
+          nombre: String(formData.get('name') ?? '').trim(),
+          email: String(formData.get('email') ?? '').trim(),
+          telefono: String(formData.get('phone') ?? '').trim(),
+          quePedia: 'salio por el popup de salida',
+          consentimiento: 'si',
+        })
       });
-      const data = await response.json();
-      if (data.success) {
+      const data = await response.json().catch(() => ({}));
+      if (response.ok && data.error === undefined) {
         setExitFormSuccess(true);
         setTimeout(() => {
           setShowExitPopup(false);
@@ -2444,6 +2451,15 @@ export default function Page({ params }: PageProps) {
                 <div className="flex flex-col gap-3">
                   <label htmlFor="email" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.email} *</label>
                   <input type="email" id="email" name="email" required className="form-input" placeholder="correo@ejemplo.com" />
+                </div>
+
+                {/* Telefono: opcional a proposito. El canal real de Teselar es WhatsApp
+                    -TesS captura telefono, el puerta a puerta va por ahi- y este
+                    formulario era el unico sitio que solo devolvia un correo. */}
+                <div className="flex flex-col gap-3 md:col-span-2">
+                  <label htmlFor="phone" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.phone}</label>
+                  <input type="tel" id="phone" name="phone" inputMode="tel" autoComplete="tel" className="form-input" placeholder="+34 600 000 000" />
+                  <span className="text-xs font-light text-claridad/60 pl-1.5">{t.contact.phone_hint}</span>
                 </div>
               </div>
 
