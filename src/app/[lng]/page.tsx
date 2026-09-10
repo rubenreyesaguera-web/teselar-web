@@ -327,7 +327,6 @@ export default function Page({ params }: PageProps) {
   const subtitleY = useTransform(smoothScrollY, [400, 520], [20, 0]);
 
   // 5. CTA Buttons Reveal (460px to 560px - final interactive elements arrival)
-  const ctaOpacity = useTransform(smoothScrollY, [460, 560], [0, 1]);
   const ctaY = useTransform(smoothScrollY, [460, 560], [15, 0]);
 
   // 6. Right Content Reveal (Floating Holographic Glass Shapes & Core) (340px to 480px)
@@ -759,9 +758,14 @@ export default function Page({ params }: PageProps) {
               )}
               
               {isMobile ? (
+                /* Entra deslizando, SIN animar la opacidad. Lighthouse audita mientras la
+                   pagina se pinta, y con el boton a medio aparecer medio 1,39:1 de
+                   contraste sobre un color que no existe: el turquesa mezclado con el
+                   fondo. Asentado da 7,88:1. El fallo no era real, pero lo ve cualquiera
+                   que pase PageSpeed a esta web, que es la carta de presentacion. */
                 <motion.div 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ y: 15 }}
+                  animate={{ y: 0 }}
                   transition={{ duration: 0.7, delay: 2.3 }}
                   className="w-full flex flex-col gap-4"
                 >
@@ -786,10 +790,7 @@ export default function Page({ params }: PageProps) {
                 </motion.div>
               ) : (
                 <motion.div 
-                  style={{ 
-                    opacity: heroBuilt ? 1 : ctaOpacity, 
-                    y: heroBuilt ? 0 : ctaY 
-                  }}
+                  style={{ y: heroBuilt ? 0 : ctaY }}
                   className="w-full sm:w-auto flex flex-col sm:flex-row gap-4"
                 >
                   <a
