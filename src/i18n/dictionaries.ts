@@ -54,17 +54,17 @@ export const dictionaries = {
         systems: 'Sistemas y ERP'
       },
       s1: {
-        title: '01. Auditoría y Consultoría Digital',
-        ideal: 'Negocios que quieren el informe escrito antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si después contratas.',
+        title: '01. Auditoría de Procesos',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si contratas en los 60 días siguientes.',
         price: '150€ (Descontable de tu proyecto)',
-        tag: 'Auditoría SEO & UX',
-        f1: 'Análisis completo de presencia digital (web, redes, SEO)',
-        f2: 'Revisión de velocidad, usabilidad y experiencia de usuario (UX)',
-        f3: 'Informe de competencia y benchmarking del sector',
-        f4: 'Identificación de puntos de mejora y oportunidades',
-        f5: 'Hoja de ruta personalizada con prioridades y estimaciones',
-        f6: 'Sesión de presentación de resultados (1h online o presencial)',
-        f7: 'Entrega de informe en PDF profesional'
+        tag: 'Procesos y costes',
+        f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante',
+        f2: 'Mapeo de hasta tres procesos: quién hace qué, cuándo y con qué herramienta',
+        f3: 'Dónde se generan esperas, errores o trabajo repetido',
+        f4: 'Coste real de tres trabajos ya cerrados: cuáles te dieron dinero y cuáles no',
+        f5: 'Qué se puede automatizar, qué no, y en qué orden',
+        f6: 'Informe escrito de 2-3 páginas con prioridades',
+        f7: 'El prediagnóstico digital de tu web y tus redes, incluido'
       },
       s2: {
         title: '02. Automatizaciones Específicas',
@@ -299,8 +299,8 @@ export const dictionaries = {
         a: 'Se pide un 50% por adelantado para empezar a trabajar y el resto se puede fraccionar sin intereses en hasta 3 meses. Acepto transferencia bancaria o efectivo en mano con cita previa.'
       },
       q8: {
-        q: '¿Qué es la Auditoría Digital y para qué sirve?',
-        a: 'Es un análisis completo de tu presencia digital actual (web, redes, SEO, velocidad, competencia) con una hoja de ruta de mejoras priorizadas, por 150€. Si después contratas cualquier proyecto conmigo, ese importe se descuenta del total. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
+        q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
+        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, el coste real de tres trabajos ya cerrados, y qué se puede automatizar y en qué orden. Cuesta 150€ y se descuentan del total si contratas en los 60 días siguientes. Incluye también el prediagnóstico digital de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
       },
       q9: {
         q: '¿Qué NO está incluido en el precio de un proyecto?',
@@ -468,17 +468,17 @@ export const dictionaries = {
         systems: 'Sistemes i ERP'
       },
       s1: {
-        title: '01. Auditoria i Consultoria Digital',
-        ideal: 'Negocis que volen l\'informe escrit abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si després contractes.',
+        title: '01. Auditoria de Processos',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si contractes en els 60 dies següents.',
         price: '150€ (Descomptable del teu projecte)',
-        tag: 'Auditoria SEO & UX',
-        f1: 'Anàlisi complet de presència digital (web, xarxes socials, SEO)',
-        f2: 'Revisió de velocitat, usabilitat i experiència d\'usuari (UX)',
-        f3: 'Informe de competència i benchmarking del sector',
-        f4: 'Identificació de punts de millora i oportunitats crítiques',
-        f5: 'Full de ruta personalitzat amb prioritats i estimacions de cost',
-        f6: 'Sessió de presentació de resultats (1h online o presencial)',
-        f7: 'Lliurament d\'informe professional en PDF d\'alta qualitat'
+        tag: 'Processos i costos',
+        f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant',
+        f2: 'Mapatge de fins a tres processos: qui fa què, quan i amb quina eina',
+        f3: 'On es generen esperes, errors o feina repetida',
+        f4: 'Cost real de tres treballs ja tancats: quins t\'han donat diners i quins no',
+        f5: 'Què es pot automatitzar, què no, i en quin ordre',
+        f6: 'Informe escrit de 2-3 pàgines amb prioritats',
+        f7: 'El prediagnòstic digital del teu web i les teves xarxes, inclòs'
       },
       s2: {
         title: '02. Automatitzacions Específiques',
@@ -713,8 +713,8 @@ export const dictionaries = {
         a: 'Es demana un 50% per avançat per començar a treballar i la resta es pot fraccionar sense interessos fins a 3 mesos. Accepto transferència bancària o efectiu a la mà amb cita prèvia.'
       },
       q8: {
-        q: 'Què és l\'Auditoria Digital i per a què serveix?',
-        a: 'És una anàlisi completa de la teva presència digital actual (web, xarxes, SEO, velocitat, competència) amb un full de ruta de millores prioritzades, per 150€. Si després contractes qualsevol projecte amb mi, aquest import es descompta del total. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
+        q: 'Què és l\'Auditoria de Processos i per a què serveix?',
+        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, el cost real de tres treballs ja tancats, i què es pot automatitzar i en quin ordre. Costa 150€ i es descompten del total si contractes en els 60 dies següents. Inclou també el prediagnòstic digital del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
       },
       q9: {
         q: 'Què NO està inclòs en el preu d\'un projecte?',
@@ -882,17 +882,17 @@ export const dictionaries = {
         systems: 'Systems & ERP'
       },
       s1: {
-        title: '01. Digital Audit & Consulting',
-        ideal: 'Businesses that want the written report before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you go ahead with a project.',
+        title: '01. Process Audit',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you go ahead within the following 60 days.',
         price: '150€ (Deducted from your first project)',
-        tag: 'SEO & UX Audit',
-        f1: 'Complete analysis of digital presence (web, social networks, SEO)',
-        f2: 'Review of speed, usability, and user experience (UX)',
-        f3: 'Competitor analysis and industry benchmarking',
-        f4: 'Identification of improvements and critical opportunities',
-        f5: 'Custom roadmap with priorities and budget estimates',
-        f6: 'Results presentation session (1h online or in-person)',
-        f7: 'Delivery of a professional high-quality PDF report'
+        tag: 'Processes and costs',
+        f1: '60-90 minute session going through your operations with your own figures in front of us',
+        f2: 'Mapping of up to three processes: who does what, when, and with which tool',
+        f3: 'Where waiting, errors, or repeated work are created',
+        f4: 'Real cost of three jobs already closed: which ones made you money and which did not',
+        f5: 'What can be automated, what cannot, and in what order',
+        f6: 'A written 2-3 page report with priorities',
+        f7: 'The digital pre-diagnosis of your website and social media, included'
       },
       s2: {
         title: '02. Specific Automations',
@@ -1127,8 +1127,8 @@ export const dictionaries = {
         a: 'I ask for 50% upfront to start work, and the rest can be split interest-free over up to 3 months. I accept bank transfer or cash in hand by appointment.'
       },
       q8: {
-        q: 'What is the Digital Audit and what is it for?',
-        a: 'It is a complete analysis of your current digital presence (website, social media, SEO, speed, competitors) with a prioritized improvement roadmap, for 150€. If you later hire any project with me, that amount is deducted from the total. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
+        q: 'What is the Process Audit and what is it for?',
+        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us, plus a written 2-3 page report: which processes are costing you time or money, the real cost of three jobs you have already closed, and what can be automated and in what order. It costs 150€, deducted from the total if you hire within the following 60 days. It also includes the digital pre-diagnosis of your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
       },
       q9: {
         q: 'What is NOT included in a project price?',
