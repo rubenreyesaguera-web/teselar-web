@@ -86,6 +86,22 @@ con los servicios, los horarios y la agenda del negocio. La Integración de IA s
 sobre la documentación, los canales y los sistemas de cada cliente, y no hay dos iguales. Se paga la
 fabricación, no el número de funciones.
 
+## Por qué a medida y no WordPress
+
+Las webs se escriben a mano (React/Next.js y Tailwind), no se montan sobre plantillas con plugins de
+terceros. El criterio que se le da al cliente es honesto y conviene citarlo entero:
+
+- **Si solo necesita un sitio de tres páginas que va a tocar poco, WordPress le sirve**, y habrá quien
+  se lo haga por menos. Teselar lo dice en el diagnóstico en vez de venderle lo contrario.
+- **La diferencia pesa cuando la web tiene que hacer algo** además de estar bonita: hablar con la
+  agenda, con el programa de gestión o con WhatsApp, o automatizar algo que hoy se hace a mano. Ahí
+  la plantilla se resuelve apilando plugins, y cada plugin es una actualización que puede romper otra
+  cosa, a veces una licencia anual, y siempre alguien a quien llamar que no es el cliente.
+- **El mantenimiento lo hace quien escribió el código**, que es la diferencia que se nota el segundo año.
+
+No se publican comparativas de velocidad, puntuaciones ni porcentajes frente a WordPress: no hay
+cifras verificadas y no se inventan.
+
 ## Mantenimiento (sin permanencia)
 
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y

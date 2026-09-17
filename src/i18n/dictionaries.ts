@@ -313,6 +313,10 @@ export const dictionaries = {
       q11: {
         q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
         a: 'Por fuera se parecen y por dentro hacen cosas muy distintas, así que vale la pena aclararlo antes de pagar por lo que no necesitas. Un chatbot de respuestas guiadas (dentro de Automatizaciones Específicas) sigue un guion: botones y respuestas previstas, y en cuanto le preguntan algo que no estaba escrito, se atasca. Un asistente de IA, como TesS —con el que estás chateando en esta web—, entiende lo que le escriben con palabras normales y responde con la información de tu negocio: informa, orienta y recoge el contacto, pero no toca nada por dentro. Y el sistema de Citas por WhatsApp es un asistente de IA que además actúa: mira los huecos de verdad que tienes libres en tu agenda, reserva la cita, la confirma y manda el recordatorio. Esa es la diferencia que importa: los dos primeros cuentan cosas, el tercero hace el trabajo. Por eso solo el de citas lleva garantía, cuota propia y el coste del modelo de IA incluido, mientras que en la Integración de IA las claves de API son tuyas. Y aquí viene lo que suele extrañar: el de citas, que es el que más hace, es el más barato de los dos. No es una errata — es que ya está construido y probado, y lo que se hace es configurarlo con tus servicios, tus horarios y tu agenda; la Integración de IA se fabrica desde cero sobre tu documentación, tus canales y tus sistemas, y no hay dos iguales. Lo que pagas es la fabricación, no el número de funciones. Si dudas cuál te toca, la pregunta es sencilla: ¿lo que pierdes son consultas sin responder, o citas sin coger? Y si son citas, no pagues un desarrollo a medida: eso ya está hecho.'
+      },
+      q12: {
+        q: '¿Por qué no me haces la web en WordPress, que sale más barata?',
+        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Yo escribo el código, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
       }
     },
     contact: {
@@ -346,27 +350,6 @@ export const dictionaries = {
       sending: 'Enviando...',
       success: '¡Solicitud enviada! Me pondré en contacto contigo lo antes posible para agendar la cita o enviarte los detalles.',
       error: 'Error al enviar el mensaje. Inténtalo otra vez o escríbeme directamente a: info@teselarsoftware.com'
-    },
-    hud: {
-      title: 'Next.js vs. WordPress / No-Code',
-      subtitle: 'La diferencia técnica que decide el éxito de tu negocio. Por qué programo a medida.',
-      platform_nextjs: 'Mi Solución (Next.js)',
-      platform_wp: 'Solución Tradicional (WordPress)',
-      metric_perf: 'Rendimiento (Lighthouse)',
-      metric_speed: 'Tiempo de Carga Móvil',
-      metric_sec: 'Nivel de Seguridad',
-      metric_plug: 'Dependencia de Plugins',
-      metric_scale: 'Escalabilidad de Visitas',
-      nextjs_perf_desc: '99% — Carga instantánea y fluidez máxima',
-      wp_perf_desc: '42% — Pesado, lento y frustrante para el usuario',
-      nextjs_speed_desc: '0.2s — Interactivo al instante',
-      wp_speed_desc: '4.8s — Pérdida del 35% de posibles clientes',
-      nextjs_sec_desc: '100% — Inmune a ataques web por arquitectura estática',
-      wp_sec_desc: 'Baja — Constantes hackeos y parches de plugins',
-      nextjs_plug_desc: '0 plugins — Código nativo limpio, ligero y optimizado',
-      wp_plug_desc: '25+ plugins — Fugas de velocidad y cuelgues constantes',
-      nextjs_scale_desc: 'Ilimitada — Soporta millones de visitas con coste 0€',
-      wp_scale_desc: 'Limitada — El servidor cae al acumular tráfico'
     },
     simulator: {
       title: 'Simulador de Retorno de Inversión (ROI)',
@@ -727,6 +710,10 @@ export const dictionaries = {
       q11: {
         q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
         a: 'Per fora s\'assemblen i per dins fan coses molt diferents, així que val la pena aclarir-ho abans de pagar pel que no necessites. Un xatbot de respostes guiades (dins d\'Automatitzacions Específiques) segueix un guió: botons i respostes previstes, i així que li pregunten alguna cosa que no estava escrita, s\'encalla. Un assistent d\'IA, com la TesS —amb qui estàs xatejant en aquesta web—, entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci: informa, orienta i recull el contacte, però no toca res per dins. I el sistema de Cites per WhatsApp és un assistent d\'IA que a més actua: mira els forats que tens lliures de debò a la teva agenda, reserva la cita, la confirma i envia el recordatori. Aquesta és la diferència que importa: els dos primers expliquen coses, el tercer fa la feina. Per això només el de cites porta garantia, quota pròpia i el cost del model d\'IA inclòs, mentre que a la Integració d\'IA les claus d\'API són teves. I aquí ve el que sol estranyar: el de cites, que és el que més fa, és el més barat dels dos. No és una errada — és que ja està construït i provat, i el que es fa és configurar-lo amb els teus serveis, els teus horaris i la teva agenda; la Integració d\'IA es fabrica de zero sobre la teva documentació, els teus canals i els teus sistemes, i no n\'hi ha dues d\'iguals. El que pagues és la fabricació, no el nombre de funcions. Si dubtes quin et toca, la pregunta és senzilla: el que perds són consultes sense respondre, o cites sense agafar? I si són cites, no paguis un desenvolupament a mida: això ja està fet.'
+      },
+      q12: {
+        q: 'Per què no em fas el web en WordPress, que surt més barat?',
+        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Jo escric el codi, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
       }
     },
     contact: {
@@ -760,27 +747,6 @@ export const dictionaries = {
       sending: 'Enviant...',
       success: 'Sol·licitud enviada! Em posaré en contacte amb tu molt aviat per agendar la cita o enviar-te els detalls.',
       error: 'Error en enviar el missatge. Torna-ho a provar o escriu-me directament a: info@teselarsoftware.com'
-    },
-    hud: {
-      title: 'Next.js vs. WordPress / No-Code',
-      subtitle: 'La diferència tècnica que decideix l\'èxit del teu negoci. Per què programo a mida.',
-      platform_nextjs: 'La Meva Solució (Next.js)',
-      platform_wp: 'Solució Tradicional (WordPress)',
-      metric_perf: 'Rendiment (Lighthouse)',
-      metric_speed: 'Temps de Càrrega Mòbil',
-      metric_sec: 'Nivell de Seguretat',
-      metric_plug: 'Dependència de Plugins',
-      metric_scale: 'Escalabilitat de Visites',
-      nextjs_perf_desc: '99% — Càrrega instantània i fluïdesa màxima',
-      wp_perf_desc: '42% — Pesat, lent i frustrant per a l\'usuari',
-      nextjs_speed_desc: '0.2s — Interactiu a l\'instant',
-      wp_speed_desc: '4.8s — Pèrdua del 35% de possibles clients',
-      nextjs_sec_desc: '100% — Inmune a atacs web per arquitectura estàtica',
-      wp_sec_desc: 'Baixa — Constants hackejos i parxes de plugins',
-      nextjs_plug_desc: '0 plugins — Codi natiu net, lleuger i optimitzat',
-      wp_plug_desc: '25+ plugins — Fugides de velocitat i penjades constants',
-      nextjs_scale_desc: 'Ilimitada — Suporta milions de visites amb cost 0€',
-      wp_scale_desc: 'Limitada — El servidor cau en acumular trànsit'
     },
     simulator: {
       title: 'Simulador de Retorn de la Inversió (ROI)',
@@ -1141,6 +1107,10 @@ export const dictionaries = {
       q11: {
         q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',
         a: 'They look alike from the outside and do very different things inside, so it is worth clearing up before you pay for something you do not need. A guided-reply chatbot (part of Specific Automations) follows a script: buttons and pre-written answers, and the moment someone asks something that was not scripted, it gets stuck. An AI assistant, like TesS —the one you are chatting with on this site—, understands what people write in plain words and answers with your business information: it informs, guides and captures the contact, but it does not touch anything inside. And the WhatsApp Booking system is an AI assistant that also acts: it looks at the slots you actually have free in your calendar, books the appointment, confirms it and sends the reminder. That is the difference that matters: the first two tell people things, the third one does the work. That is why only the booking product carries a guarantee, its own fee and the AI model cost included, while with AI Integration the API keys are yours. And here is the part that usually raises an eyebrow: the booking product, the one that does the most, is the cheaper of the two. That is not a typo — it is already built and proven, and the work is configuring it with your services, your opening hours and your calendar, whereas AI Integration is built from scratch around your documentation, your channels and your systems, and no two are alike. What you pay for is the building, not the number of features. If you are unsure which one you need, the question is simple: are you losing unanswered enquiries, or uncaught bookings? And if it is bookings, do not pay for bespoke work: that one is already built.'
+      },
+      q12: {
+        q: 'Why not build my site in WordPress? It is cheaper.',
+        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I write the code myself, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
       }
     },
     contact: {
@@ -1174,27 +1144,6 @@ export const dictionaries = {
       sending: 'Sending...',
       success: 'Request sent! I will get in touch with you shortly to book the appointment or send you the details.',
       error: 'Error sending message. Please try again or write to me directly at: info@teselarsoftware.com'
-    },
-    hud: {
-      title: 'Next.js vs. WordPress / No-Code',
-      subtitle: 'The technical difference deciding your business success. Why I code from scratch.',
-      platform_nextjs: 'My Solution (Next.js)',
-      platform_wp: 'Traditional Solution (WordPress)',
-      metric_perf: 'Performance (Lighthouse)',
-      metric_speed: 'Mobile Load Time',
-      metric_sec: 'Security Level',
-      metric_plug: 'Plugin Dependency',
-      metric_scale: 'Traffic Scalability',
-      nextjs_perf_desc: '99% — Instant load and maximum fluidity',
-      wp_perf_desc: '42% — Heavy, slow, and frustrating user experience',
-      nextjs_speed_desc: '0.2s — Interactive instantly',
-      wp_speed_desc: '4.8s — Loss of 35% of potential clients',
-      nextjs_sec_desc: '100% — Immune to web attacks due to static architecture',
-      wp_sec_desc: 'Low — Constant hacking and plugin vulnerability issues',
-      nextjs_plug_desc: '0 plugins — Clean, lightweight, and optimized native code',
-      wp_plug_desc: '25+ plugins — Speed leaks and constant crashes',
-      nextjs_scale_desc: 'Unlimited — Supports millions of visits with €0 cost',
-      wp_scale_desc: 'Limited — Server crashes when traffic accumulates'
     },
     simulator: {
       title: 'Return on Investment (ROI) Simulator',

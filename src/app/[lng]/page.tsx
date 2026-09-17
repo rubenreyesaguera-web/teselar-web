@@ -145,8 +145,6 @@ export default function Page({ params }: PageProps) {
   const [activeLegalModal, setActiveLegalModal] = useState<'aviso' | 'privacidad' | 'cookies' | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  // States for interactive technical HUD comparison (Option 3)
-  const [activeHudPlatform, setActiveHudPlatform] = useState<'nextjs' | 'wordpress'>('nextjs');
 
   // States for interactive financial ROI simulator (Option 1)
   const [wastedHours, setWastedHours] = useState(10);
@@ -577,7 +575,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12
   ];
 
   return (
@@ -1133,7 +1131,7 @@ export default function Page({ params }: PageProps) {
         </div>
       </section>
 
-      {/* INLINE LEAD MAGNET CTA BANNER (Between Values and HUD) */}
+      {/* INLINE LEAD MAGNET CTA BANNER (entre Valores y el catalogo) */}
       <section className="relative py-16 px-4 md:px-8 z-10 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1163,295 +1161,6 @@ export default function Page({ params }: PageProps) {
             </button>
           </div>
         </motion.div>
-      </section>
-
-      {/* 3.5. HUD COMPARATIVO TÉCNICO (Next.js vs. WordPress / No-Code) */}
-      <section id="hud-comparison" className="relative py-24 px-4 md:px-8 bg-teselar-dark/30 backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden content-visibility-auto">
-        {/* Laser Scanning Beam Sweep */}
-        <motion.div 
-          initial={{ top: "-10%", opacity: 0 }}
-          whileInView={{ 
-            top: ["0%", "110%"],
-            opacity: [0, 1, 1, 0] 
-          }}
-          viewport={{ once: true, margin: "-150px" }}
-          transition={{ duration: 2.2, ease: "easeInOut" }}
-          className="absolute inset-x-0 h-[3px] bg-gradient-to-r from-transparent via-innovacion to-transparent shadow-[0_0_15px_#00BFA5] pointer-events-none z-30"
-        />
-
-        <div className="absolute inset-0 loader-grid opacity-5 pointer-events-none" />
-        <div className="max-w-6xl mx-auto relative">
-          
-          <div className="text-center max-w-4xl mx-auto mb-16">
-            <span className="text-innovacion uppercase tracking-widest text-xs font-mono font-black">
-              &gt; {lng === 'es' ? 'COMPARATIVA_SISTEMAS' : lng === 'ca' ? 'COMPARATIVA_SISTEMES' : 'SYSTEM_COMPARISON'}
-            </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-3 mb-6 text-glow-cyan">
-              {t.hud.title}
-            </h2>
-            <p className="text-claridad/85 font-light text-base md:text-lg max-w-2xl mx-auto">
-              {t.hud.subtitle}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Left: Dynamic interactive visual dial control */}
-            <motion.div 
-              initial={{ opacity: 0, y: 60, rotateX: 15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-150px" }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-              style={{ transformPerspective: 1000 }}
-              className="lg:col-span-5 glass-card p-8 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between items-center relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-innovacion/5 rounded-bl-full pointer-events-none" />
-              
-              <div className="w-full flex flex-col items-center text-center">
-                <span className="text-xs font-mono text-claridad/40 uppercase tracking-widest mb-6">
-                  [ {lng === 'es' ? 'SELECCIÓN_ARQUITECTURA' : lng === 'ca' ? 'SELECCIÓ_ARQUITECTURA' : 'ARCHITECTURE_SELECTION'} ]
-                </span>
-                
-                {/* Visual HUD platform toggler */}
-                <div className="relative glass-panel p-1.5 rounded-full flex gap-1 w-full max-w-xs mb-10 shadow-inner">
-                  {/* Selector Background slide overlay */}
-                  <motion.div 
-                    className="absolute top-1.5 bottom-1.5 rounded-full bg-innovacion shadow-[0_0_15px_rgba(0,191,165,0.4)]"
-                    animate={{ 
-                      left: activeHudPlatform === 'nextjs' ? '6px' : 'calc(50% + 2px)',
-                      width: 'calc(50% - 8px)'
-                    }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                  />
-                  <button 
-                    onClick={() => setActiveHudPlatform('nextjs')}
-                    className={`relative z-10 w-1/2 py-3 rounded-full text-xs font-black tracking-wider uppercase transition-colors duration-300 cursor-pointer ${activeHudPlatform === 'nextjs' ? 'text-teselar-dark font-black' : 'text-claridad/65 hover:text-claridad font-bold'}`}
-                  >
-                    Next.js
-                  </button>
-                  <button 
-                    onClick={() => setActiveHudPlatform('wordpress')}
-                    className={`relative z-10 w-1/2 py-3 rounded-full text-xs font-black tracking-wider uppercase transition-colors duration-300 cursor-pointer ${activeHudPlatform === 'wordpress' ? 'text-teselar-dark font-black' : 'text-claridad/65 hover:text-claridad font-bold'}`}
-                  >
-                    WordPress
-                  </button>
-                </div>
-
-                {/* Circular HUD radar/speedometer dial visual */}
-                <div className="relative w-64 h-64 flex items-center justify-center mb-6">
-                  {/* Outer rotating ring */}
-                  <motion.div 
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: activeHudPlatform === 'nextjs' ? 8 : 25, repeat: Infinity, ease: 'linear' }}
-                    className={`absolute inset-0 rounded-full border border-dashed ${activeHudPlatform === 'nextjs' ? 'border-innovacion/30' : 'border-red-500/25'}`}
-                  />
-                  
-                  {/* Glowing core shadow */}
-                  <div className={`absolute w-40 h-40 rounded-full blur-3xl opacity-20 transition-colors duration-500 ${activeHudPlatform === 'nextjs' ? 'bg-innovacion' : 'bg-red-500'}`} />
-
-                  {/* SVG Dash dial */}
-                  <svg className="w-52 h-52 transform -rotate-90">
-                    {/* Background circle */}
-                    <circle 
-                      cx="104" cy="104" r="88" 
-                      className="stroke-claridad/5 fill-none" 
-                      strokeWidth="10" 
-                    />
-                    {/* Active circle with transition */}
-                    <motion.circle 
-                      cx="104" cy="104" r="88" 
-                      className="fill-none stroke-linecap-round" 
-                      strokeWidth="10"
-                      initial={{ strokeDasharray: '553', strokeDashoffset: '553' }}
-                      animate={{ 
-                        strokeDashoffset: activeHudPlatform === 'nextjs' ? 553 - (553 * 0.99) : 553 - (553 * 0.42),
-                        stroke: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444'
-                      }}
-                      transition={{ duration: 0.8, ease: 'easeOut' }}
-                      style={{
-                        filter: activeHudPlatform === 'nextjs' ? 'drop-shadow(0 0 8px rgba(0, 191, 165, 0.6))' : 'drop-shadow(0 0 8px rgba(239, 68, 68, 0.4))'
-                      }}
-                    />
-                  </svg>
-
-                  {/* Percentage Counter Monospace text */}
-                  <div className="absolute flex flex-col items-center justify-center">
-                    <span className="font-mono text-[10px] tracking-widest text-claridad/40 uppercase mb-1">SCORE</span>
-                    <motion.span 
-                      key={activeHudPlatform}
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      className={`text-5xl font-black font-mono transition-colors duration-500 ${activeHudPlatform === 'nextjs' ? 'text-innovacion text-glow-cyan' : 'text-red-500'}`}
-                    >
-                      {activeHudPlatform === 'nextjs' ? '99' : '42'}%
-                    </motion.span>
-                    <span className="font-mono text-[9px] tracking-wider text-claridad/50 mt-1 uppercase">
-                      {activeHudPlatform === 'nextjs' ? 'LIGHTHOUSE MAX' : 'SLUGGISH_SCORE'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Status footer with monospace diagnostics */}
-              <div className="w-full font-mono text-[10px] text-left border-t border-claridad/5 pt-5 space-y-1.5 text-claridad/65">
-                <p className="flex justify-between">
-                  <span>STATUS:</span>
-                  <span className={activeHudPlatform === 'nextjs' ? 'text-innovacion font-bold' : 'text-amber-500 animate-pulse'}>
-                    {activeHudPlatform === 'nextjs' ? 'OPTIMIZED_NATIVE' : 'WARNING_HEAVY_THEME'}
-                  </span>
-                </p>
-                <p className="flex justify-between">
-                  <span>RESPONSE_TIME:</span>
-                  <span className={activeHudPlatform === 'nextjs' ? 'text-innovacion font-bold' : 'text-red-500'}>
-                    {activeHudPlatform === 'nextjs' ? '0.2s (FAST)' : '4.8s (SLUGGISH)'}
-                  </span>
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Right: Detailed dynamic metrics comparison */}
-            <div className="lg:col-span-7 flex flex-col gap-5 justify-between">
-              
-              {/* Metric 1 */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-150px" }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="glass-card p-6 rounded-2xl border border-claridad/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:border-innovacion/20 relative overflow-hidden group"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
-                <div>
-                  <h3 className="text-xs font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 01. {t.hud.metric_perf}</h3>
-                  <p className="text-base font-bold text-claridad">
-                    {activeHudPlatform === 'nextjs' ? t.hud.nextjs_perf_desc : t.hud.wp_perf_desc}
-                  </p>
-                </div>
-                <div className="w-full sm:w-32 bg-claridad/5 h-2 rounded-full overflow-hidden relative">
-                  <motion.div 
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    animate={{ 
-                      width: activeHudPlatform === 'nextjs' ? '99%' : '42%',
-                      backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444' 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Metric 2 */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-150px" }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="glass-card p-6 rounded-2xl border border-claridad/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:border-innovacion/20 relative overflow-hidden group"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
-                <div>
-                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 02. {t.hud.metric_speed}</h3>
-                  <p className="text-base font-bold text-claridad">
-                    {activeHudPlatform === 'nextjs' ? t.hud.nextjs_speed_desc : t.hud.wp_speed_desc}
-                  </p>
-                </div>
-                <div className="w-full sm:w-32 bg-claridad/5 h-2 rounded-full overflow-hidden relative">
-                  <motion.div 
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    animate={{ 
-                      width: activeHudPlatform === 'nextjs' ? '95%' : '15%',
-                      backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444' 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Metric 3 */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-150px" }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="glass-card p-6 rounded-2xl border border-claridad/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:border-innovacion/20 relative overflow-hidden group"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
-                <div>
-                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 03. {t.hud.metric_sec}</h3>
-                  <p className="text-base font-bold text-claridad">
-                    {activeHudPlatform === 'nextjs' ? t.hud.nextjs_sec_desc : t.hud.wp_sec_desc}
-                  </p>
-                </div>
-                <div className="w-full sm:w-32 bg-claridad/5 h-2 rounded-full overflow-hidden relative">
-                  <motion.div 
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    animate={{ 
-                      width: activeHudPlatform === 'nextjs' ? '100%' : '30%',
-                      backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444' 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Metric 4 */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-150px" }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="glass-card p-6 rounded-2xl border border-claridad/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:border-innovacion/20 relative overflow-hidden group"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
-                <div>
-                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 04. {t.hud.metric_plug}</h3>
-                  <p className="text-base font-bold text-claridad">
-                    {activeHudPlatform === 'nextjs' ? t.hud.nextjs_plug_desc : t.hud.wp_plug_desc}
-                  </p>
-                </div>
-                <div className="w-full sm:w-32 bg-claridad/5 h-2 rounded-full overflow-hidden relative">
-                  <motion.div 
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    animate={{ 
-                      width: activeHudPlatform === 'nextjs' ? '100%' : '20%',
-                      backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444' 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Metric 5 */}
-              <motion.div 
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-150px" }}
-                transition={{ duration: 0.6, delay: 1.0 }}
-                className="glass-card p-6 rounded-2xl border border-claridad/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 hover:border-innovacion/20 relative overflow-hidden group"
-              >
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] transition-colors duration-500" style={{ backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#f59e0b' }} />
-                <div>
-                  <h3 className="text-sm font-black uppercase text-claridad/40 tracking-wider mb-1.5 font-mono">&gt; 05. {t.hud.metric_scale}</h3>
-                  <p className="text-base font-bold text-claridad">
-                    {activeHudPlatform === 'nextjs' ? t.hud.nextjs_scale_desc : t.hud.wp_scale_desc}
-                  </p>
-                </div>
-                <div className="w-full sm:w-32 bg-claridad/5 h-2 rounded-full overflow-hidden relative">
-                  <motion.div 
-                    className="absolute left-0 top-0 h-full rounded-full"
-                    animate={{ 
-                      width: activeHudPlatform === 'nextjs' ? '100%' : '35%',
-                      backgroundColor: activeHudPlatform === 'nextjs' ? '#00BFA5' : '#ef4444' 
-                    }}
-                    transition={{ duration: 0.6 }}
-                  />
-                </div>
-              </motion.div>
-
-            </div>
-
-          </div>
-
-        </div>
       </section>
 
       {/* 4. CATALOGO INTERACTIVO DE SERVICIOS */}
@@ -1663,7 +1372,239 @@ export default function Page({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 4.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
+      {/* 5. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
+      <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.pricing}</span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
+            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
+            
+            {/* Basic Plan Card */}
+            <motion.div 
+              initial={{ opacity: 0, rotateY: isMobile ? 0 : 90, rotateX: isMobile ? 45 : 0 }}
+              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              style={{ transformOrigin: isMobile ? 'center top' : 'left center', transformPerspective: 1200 }}
+              transition={{ type: "spring", stiffness: 70, damping: 15 }}
+              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
+            >
+              <div>
+                <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
+                <div className="flex items-baseline gap-1 mt-5 mb-8">
+                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period}</span>
+                </div>
+                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
+                
+                <ul className="space-y-4 border-t border-claridad/5 pt-8">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f3}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f4}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => handleScrollToContact('info')}
+                className="w-full py-5.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion transition-all duration-300 cursor-pointer mt-10"
+              >
+                {lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan'}
+              </button>
+            </motion.div>
+
+            {/* Plus Plan Card (Recommended) */}
+            <motion.div 
+              initial={{ opacity: 0, rotateY: isMobile ? 0 : -90, rotateX: isMobile ? 45 : 0 }}
+              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              style={{ transformOrigin: isMobile ? 'center top' : 'right center', transformPerspective: 1200 }}
+              transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.12 }}
+              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative shadow-2xl shadow-innovacion/10 [backface-visibility:hidden]"
+            >
+              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
+                {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
+              </div>
+              
+              <div>
+                <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
+                <div className="flex items-baseline gap-1 mt-5 mb-8">
+                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period}</span>
+                </div>
+                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
+                
+                <ul className="space-y-4 border-t border-claridad/5 pt-8">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f3}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f4}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => handleScrollToContact('info')}
+                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10 shadow-lg shadow-innovacion/15"
+              >
+                {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
+              </button>
+            </motion.div>
+
+          </div>
+
+          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Calendar size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
+              </div>
+
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.citas.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Brain size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
+              </div>
+
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.ia.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* POST-PRICING URGENCY STRIP */}
+      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+              <Star size={22} />
+            </div>
+            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+              {t.leads.post_pricing}
+            </p>
+          </div>
+          <a
+            href={waLink(t.leads.wa_precios)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+          >
+            <MessageCircle size={14} />
+            {t.leads.cta_whatsapp}
+          </a>
+        </div>
+      </div>
+
+      {/* 5.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
       <section id="roi-simulator" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden bg-teselar-dark/10 backdrop-blur-sm border-b border-claridad/5 content-visibility-auto">
         <div className="max-w-6xl mx-auto">
           
@@ -1935,7 +1876,6 @@ export default function Page({ params }: PageProps) {
         )}
       </AnimatePresence>
 
-      {/* 4. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
       {/* POST-ROI URGENCY STRIP */}
       <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
@@ -1959,236 +1899,6 @@ export default function Page({ params }: PageProps) {
         </div>
       </div>
 
-      <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.pricing}</span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
-            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
-            
-            {/* Basic Plan Card */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : 90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'left center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
-            >
-              <div>
-                <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion transition-all duration-300 cursor-pointer mt-10"
-              >
-                {lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan'}
-              </button>
-            </motion.div>
-
-            {/* Plus Plan Card (Recommended) */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : -90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'right center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.12 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative shadow-2xl shadow-innovacion/10 [backface-visibility:hidden]"
-            >
-              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
-                {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
-              </div>
-              
-              <div>
-                <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10 shadow-lg shadow-innovacion/15"
-              >
-                {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
-              </button>
-            </motion.div>
-
-          </div>
-
-          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Calendar size={20} />
-                  </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.citas.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Brain size={20} />
-                  </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.ia.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* POST-PRICING URGENCY STRIP */}
-      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-              <Star size={22} />
-            </div>
-            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
-              {t.leads.post_pricing}
-            </p>
-          </div>
-          <a
-            href={waLink(t.leads.wa_precios)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
-          >
-            <MessageCircle size={14} />
-            {t.leads.cta_whatsapp}
-          </a>
-        </div>
-      </div>
 
       {/* 6. EL PROCESO: TIMELINE INTERACTIVO */}
       <section id="process" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden content-visibility-auto">
