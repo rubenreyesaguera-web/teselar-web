@@ -1663,7 +1663,239 @@ export default function Page({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 4.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
+      {/* 5. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
+      <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center max-w-4xl mx-auto mb-20">
+            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.pricing}</span>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
+            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
+            
+            {/* Basic Plan Card */}
+            <motion.div 
+              initial={{ opacity: 0, rotateY: isMobile ? 0 : 90, rotateX: isMobile ? 45 : 0 }}
+              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              style={{ transformOrigin: isMobile ? 'center top' : 'left center', transformPerspective: 1200 }}
+              transition={{ type: "spring", stiffness: 70, damping: 15 }}
+              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
+            >
+              <div>
+                <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
+                <div className="flex items-baseline gap-1 mt-5 mb-8">
+                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period}</span>
+                </div>
+                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
+                
+                <ul className="space-y-4 border-t border-claridad/5 pt-8">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f3}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.basic.f4}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => handleScrollToContact('info')}
+                className="w-full py-5.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion transition-all duration-300 cursor-pointer mt-10"
+              >
+                {lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan'}
+              </button>
+            </motion.div>
+
+            {/* Plus Plan Card (Recommended) */}
+            <motion.div 
+              initial={{ opacity: 0, rotateY: isMobile ? 0 : -90, rotateX: isMobile ? 45 : 0 }}
+              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              style={{ transformOrigin: isMobile ? 'center top' : 'right center', transformPerspective: 1200 }}
+              transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.12 }}
+              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative shadow-2xl shadow-innovacion/10 [backface-visibility:hidden]"
+            >
+              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
+                {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
+              </div>
+              
+              <div>
+                <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
+                <div className="flex items-baseline gap-1 mt-5 mb-8">
+                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period}</span>
+                </div>
+                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
+                
+                <ul className="space-y-4 border-t border-claridad/5 pt-8">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f3}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.plus.f4}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => handleScrollToContact('info')}
+                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10 shadow-lg shadow-innovacion/15"
+              >
+                {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
+              </button>
+            </motion.div>
+
+          </div>
+
+          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Calendar size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
+              </div>
+
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.citas.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.citas.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
+          >
+            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
+              <div className="lg:w-2/5">
+                <div className="flex items-center gap-3.5 mb-5">
+                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+                    <Brain size={20} />
+                  </div>
+                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
+                </div>
+                <div className="flex items-baseline gap-1 mb-6">
+                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
+                </div>
+                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
+              </div>
+
+              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f1}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
+                    <span>{t.pricing.ia.f2}</span>
+                  </li>
+                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
+                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
+                  </li>
+                </ul>
+                <a
+                  href="#services"
+                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
+                >
+                  {t.pricing.ia.cta}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* POST-PRICING URGENCY STRIP */}
+      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
+              <Star size={22} />
+            </div>
+            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
+              {t.leads.post_pricing}
+            </p>
+          </div>
+          <a
+            href={waLink(t.leads.wa_precios)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+          >
+            <MessageCircle size={14} />
+            {t.leads.cta_whatsapp}
+          </a>
+        </div>
+      </div>
+
+      {/* 5.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
       <section id="roi-simulator" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden bg-teselar-dark/10 backdrop-blur-sm border-b border-claridad/5 content-visibility-auto">
         <div className="max-w-6xl mx-auto">
           
@@ -1935,7 +2167,6 @@ export default function Page({ params }: PageProps) {
         )}
       </AnimatePresence>
 
-      {/* 4. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
       {/* POST-ROI URGENCY STRIP */}
       <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
@@ -1959,236 +2190,6 @@ export default function Page({ params }: PageProps) {
         </div>
       </div>
 
-      <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.pricing}</span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
-            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
-            
-            {/* Basic Plan Card */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : 90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'left center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
-            >
-              <div>
-                <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion transition-all duration-300 cursor-pointer mt-10"
-              >
-                {lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan'}
-              </button>
-            </motion.div>
-
-            {/* Plus Plan Card (Recommended) */}
-            <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : -90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'right center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.12 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative shadow-2xl shadow-innovacion/10 [backface-visibility:hidden]"
-            >
-              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
-                {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
-              </div>
-              
-              <div>
-                <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10 shadow-lg shadow-innovacion/15"
-              >
-                {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
-              </button>
-            </motion.div>
-
-          </div>
-
-          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Calendar size={20} />
-                  </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.citas.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Brain size={20} />
-                  </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.ia.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* POST-PRICING URGENCY STRIP */}
-      <div className="urgency-strip py-8 px-4 md:px-8 z-10 relative border-t border-b border-claridad/5">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-              <Star size={22} />
-            </div>
-            <p className="text-base text-claridad/85 font-light leading-relaxed max-w-lg">
-              {t.leads.post_pricing}
-            </p>
-          </div>
-          <a
-            href={waLink(t.leads.wa_precios)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
-          >
-            <MessageCircle size={14} />
-            {t.leads.cta_whatsapp}
-          </a>
-        </div>
-      </div>
 
       {/* 6. EL PROCESO: TIMELINE INTERACTIVO */}
       <section id="process" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden content-visibility-auto">
