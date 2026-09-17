@@ -98,7 +98,10 @@ fabricación, no el número de funciones.
 
 ## Condiciones
 
-50% de pago por adelantado, resto fraccionable sin intereses hasta 3 meses. 1 semana de ajustes en
+señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ SON la
+señal y no se cobra dos veces), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
+entrega y no contra fecha**: el diseño y el alcance, el núcleo funcionando, el despliegue y la
+aceptación. 1 semana de ajustes en
 vivo gratis tras el lanzamiento. Proyecto combinado (varios servicios a la vez): el de mayor importe
 va al 100% y cada adicional lleva un 15% de descuento (la auditoría queda excluida de este descuento).
 No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting, comisiones de pago,
