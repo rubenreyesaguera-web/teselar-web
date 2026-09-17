@@ -224,7 +224,7 @@ export const dictionaries = {
       payment: {
         title: 'Métodos de Pago & Condiciones',
         methods: 'Métodos aceptados: Transferencia bancaria o efectivo en mano (con cita previa).',
-        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Si ya has pagado la Auditoría de Procesos, esos 150€ son la señal: no se cobra dos veces.'
+        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos, esos 150€ ya están pagados y se descuentan de la señal.'
       }
     },
     values: {
@@ -296,7 +296,7 @@ export const dictionaries = {
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
-        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos, esos 150€ cuentan como la señal. Acepto transferencia bancaria o efectivo en mano con cita previa.'
+        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Acepto transferencia bancaria o efectivo en mano con cita previa.'
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
@@ -638,7 +638,7 @@ export const dictionaries = {
       payment: {
         title: 'Mètodes de Pagament i Condicions',
         methods: 'Mètodes acceptats: Transferència bancària o efectiu a la mà (amb cita prèvia).',
-        conditions: 'Condicions: Possibilitat de fraccionar el pagament del projecte sense interessos fins a 3 mesos. Sempre es requerirà un pagament inicial del 10% (mínim 150€) per contractar. La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. Si ja has pagat l\'Auditoria de Processos, aquests 150€ són el senyal: no es cobra dues vegades.'
+        conditions: 'Condicions: Possibilitat de fraccionar el pagament del projecte sense interessos fins a 3 mesos. Sempre es requerirà un pagament inicial del 10% (mínim 150€) per contractar. La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l\'Auditoria de Processos, aquests 150€ ja estan pagats i es descompten del senyal.'
       }
     },
     values: {
@@ -710,7 +710,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'Com es paga un projecte?',
-        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos, aquests 150€ compten com el senyal. Accepto transferència bancària o efectiu a la mà amb cita prèvia.'
+        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Accepto transferència bancària o efectiu a la mà amb cita prèvia.'
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
@@ -1052,7 +1052,7 @@ export const dictionaries = {
       payment: {
         title: 'Payment Terms & Methods',
         methods: 'Accepted methods: Bank transfer or cash in hand (by appointment).',
-        conditions: 'Terms: Interest-free payment split available up to 3 months. An initial payment of a 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. If you have already paid for the Process Audit, those 150€ count as the deposit: you are not charged twice.'
+        conditions: 'Terms: Interest-free payment split available up to 3 months. An initial payment of a 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit, those 150€ are already paid and come off the deposit.'
       }
     },
     values: {
@@ -1124,7 +1124,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'How do I pay for a project?',
-        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit, those 150€ count as the deposit. I accept bank transfer or cash in hand by appointment.'
+        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. I accept bank transfer or cash in hand by appointment.'
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',

@@ -98,8 +98,9 @@ fabricación, no el número de funciones.
 
 ## Condiciones
 
-señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ SON la
-señal y no se cobra dos veces), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
+señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ se
+descuentan de la señal, no la cubren entera salvo en proyectos de 1.500€ o menos: en uno de 8.000€ la
+señal son 800€ y abonaría 650€), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
 entrega y no contra fecha**: el diseño y el alcance, el núcleo funcionando, el despliegue y la
 aceptación. 1 semana de ajustes en
 vivo gratis tras el lanzamiento. Proyecto combinado (varios servicios a la vez): el de mayor importe
