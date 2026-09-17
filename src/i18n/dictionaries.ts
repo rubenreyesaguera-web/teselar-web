@@ -55,7 +55,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Auditoría de Procesos',
-        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si contratas en los 60 días siguientes.',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si contratas en los 30 días siguientes.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Procesos y costes',
         f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante',
@@ -300,7 +300,7 @@ export const dictionaries = {
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
-        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, el coste real de tres trabajos ya cerrados, y qué se puede automatizar y en qué orden. Cuesta 150€ y se descuentan del total si contratas en los 60 días siguientes. Incluye también el prediagnóstico digital de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
+        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, el coste real de tres trabajos ya cerrados, y qué se puede automatizar y en qué orden. Cuesta 150€ y se descuentan del total si contratas en los 30 días siguientes. Incluye también el prediagnóstico digital de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
       },
       q9: {
         q: '¿Qué NO está incluido en el precio de un proyecto?',
@@ -469,7 +469,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Auditoria de Processos',
-        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si contractes en els 60 dies següents.',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si contractes en els 30 dies següents.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Processos i costos',
         f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant',
@@ -714,7 +714,7 @@ export const dictionaries = {
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
-        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, el cost real de tres treballs ja tancats, i què es pot automatitzar i en quin ordre. Costa 150€ i es descompten del total si contractes en els 60 dies següents. Inclou també el prediagnòstic digital del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
+        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, el cost real de tres treballs ja tancats, i què es pot automatitzar i en quin ordre. Costa 150€ i es descompten del total si contractes en els 30 dies següents. Inclou també el prediagnòstic digital del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
       },
       q9: {
         q: 'Què NO està inclòs en el preu d\'un projecte?',
@@ -883,7 +883,7 @@ export const dictionaries = {
       },
       s1: {
         title: '01. Process Audit',
-        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you go ahead within the following 60 days.',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you go ahead within the following 30 days.',
         price: '150€ (Deducted from your first project)',
         tag: 'Processes and costs',
         f1: '60-90 minute session going through your operations with your own figures in front of us',
@@ -1128,7 +1128,7 @@ export const dictionaries = {
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',
-        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us, plus a written 2-3 page report: which processes are costing you time or money, the real cost of three jobs you have already closed, and what can be automated and in what order. It costs 150€, deducted from the total if you hire within the following 60 days. It also includes the digital pre-diagnosis of your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
+        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us, plus a written 2-3 page report: which processes are costing you time or money, the real cost of three jobs you have already closed, and what can be automated and in what order. It costs 150€, deducted from the total if you hire within the following 30 days. It also includes the digital pre-diagnosis of your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
       },
       q9: {
         q: 'What is NOT included in a project price?',

@@ -18,7 +18,7 @@ Tres peldaños, en este orden:
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
    reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Dos
    plazas por semana. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
-2. **Auditoría de Procesos — 150€**, descontables del proyecto si contrata en los 60 días
+2. **Auditoría de Procesos — 150€**, descontables del proyecto si contrata en los 30 días
    siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante, y un
    informe escrito de 2-3 páginas: qué procesos le cuestan tiempo o dinero, el coste real de tres
    trabajos ya cerrados, y qué se puede automatizar y en qué orden. Incluye además el prediagnóstico
@@ -27,7 +27,7 @@ Tres peldaños, en este orden:
 
 ## Catálogo de servicios (precios cerrados, sin costes ocultos)
 
-- **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente contrata en los 60 días
+- **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente contrata en los 30 días
   siguientes). Sesión de 60-90 minutos sobre su operativa, mapeo de hasta tres procesos, coste real de
   tres trabajos ya cerrados, qué se puede automatizar y en qué orden, e informe escrito de 2-3
   páginas. El prediagnóstico digital de la web y las redes va incluido y por separado es gratuito.
@@ -131,7 +131,7 @@ Catalan and English, but delivered projects can be built in any language via AI-
 diagnosis call** (booked at https://calendly.com/teselarsoftware-info/diagnostico30min); the 150€
 **process audit** is the second step: a 60-90 minute session on how the business actually operates,
 plus a written report on which processes cost time or money, the real cost of three closed jobs, and
-what can be automated — deducted from the project if hired within 60 days, and it includes the
+what can be automated — deducted from the project if hired within 30 days, and it includes the
 digital pre-diagnosis of the website and social media, which on its own is free.
 Services: process audit (150€), specific automations
 (700€–1,800€ + 60€/mo required maintenance), WhatsApp appointment booking (700€–900€ + 150€/mo, or 1,500€–1,800€ + 250€/mo, with a
