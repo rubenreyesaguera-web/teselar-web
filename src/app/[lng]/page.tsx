@@ -181,6 +181,7 @@ export default function Page({ params }: PageProps) {
   // Observes the center hero title - when it exits viewport (user scrolled), header appears once via spring
   const [headerVisible, setHeaderVisible] = useState(false);
   const heroTitleRef = useRef<HTMLDivElement>(null);
+  const heroMarcaMovilRef = useRef<HTMLDivElement>(null);
   
   // UX Optimization: once the hero has been built, scrolling back to top must NOT show the central massive loader title again
   const [heroBuilt, setHeroBuilt] = useState(false);
@@ -199,7 +200,11 @@ export default function Page({ params }: PageProps) {
   }, [scrollY]);
 
   useEffect(() => {
-    const el = heroTitleRef.current;
+    // En escritorio observamos el rotulo central, como siempre. En movil el rotulo ya no
+    // se renderiza (lo oculta el CSS), y un elemento con display:none nunca intersecta:
+    // observarlo mostraria el header desde el primer frame. Por eso alli va un punto propio.
+    const esEscritorio = window.matchMedia('(min-width: 768px)').matches;
+    const el = esEscritorio ? heroTitleRef.current : heroMarcaMovilRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -648,37 +653,36 @@ export default function Page({ params }: PageProps) {
 
       <main>
       {/* 1. SCROLL-DRIVEN CINEMATIC HERO TRACK (Desktop: scroll-driven | Mobile: auto-reveal) */}
-      <section ref={heroContainerRef} className={`relative w-full z-10 ${isMobile ? 'min-h-screen-dynamic' : 'h-[160vh]'}`}>
-        <div className={`${isMobile ? 'relative min-h-screen-dynamic' : 'sticky top-0 h-screen'} w-full flex items-center justify-center overflow-hidden`}>
+      <section ref={heroContainerRef} className="relative w-full z-10 min-h-screen-dynamic md:min-h-0 md:h-[160vh]">
+        <div className="relative min-h-screen-dynamic md:min-h-0 md:sticky md:top-0 md:h-screen w-full flex items-center justify-center overflow-hidden">
           {/* Scoped High-Tech Cyber Dotted Grid (Subtle and ultra-premium) */}
           <div className="hero-grid opacity-15" />
 
           {/* Colorful cinematic neon glow balls (reduced on mobile) */}
-          <div className={`absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[56px]' : 'w-[40vw] h-[40vw] blur-[130px]'}`} />
-          <div className={`absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 ${isMobile ? 'w-[60vw] h-[60vw] blur-[64px]' : 'w-[45vw] h-[45vw] blur-[160px] animate-pulse'}`} style={{ animationDuration: '9s' }} />
+          <div className="absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 w-[60vw] h-[60vw] blur-[56px] md:w-[40vw] md:h-[40vw] md:blur-[130px]" />
+          <div className="absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 w-[60vw] h-[60vw] blur-[64px] md:w-[45vw] md:h-[45vw] md:blur-[160px] md:animate-pulse" style={{ animationDuration: '9s' }} />
 
-          {/* Widescreen Hollywood Anamorphic Lens Flare Background accents (hidden on mobile for perf) */}
-          {!isMobile && (
-            <>
-              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[1px] bg-gradient-to-r from-transparent via-innovacion/70 to-transparent blur-[2px] pointer-events-none z-0" />
-              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[6px] bg-gradient-to-r from-transparent via-innovacion to-transparent blur-[6px] pointer-events-none z-0 cinematic-flare-pulse" />
-              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-innovacion/20 blur-2xl pointer-events-none z-0 cinematic-flare-pulse" />
-              <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[120px] bg-gradient-to-r from-transparent via-teselar/25 to-transparent blur-[80px] pointer-events-none z-0" />
-            </>
-          )}
+          {/* Widescreen Hollywood Anamorphic Lens Flare Background accents (solo escritorio) */}
+          <div className="hidden md:block">
+            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[1px] bg-gradient-to-r from-transparent via-innovacion/70 to-transparent blur-[2px] pointer-events-none z-0" />
+            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[6px] bg-gradient-to-r from-transparent via-innovacion to-transparent blur-[6px] pointer-events-none z-0 cinematic-flare-pulse" />
+            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-innovacion/20 blur-2xl pointer-events-none z-0 cinematic-flare-pulse" />
+            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[120px] bg-gradient-to-r from-transparent via-teselar/25 to-transparent blur-[80px] pointer-events-none z-0" />
+          </div>
 
-          {/* Centered Massive branding logo card — Desktop: scroll-driven fade | Mobile: auto-fade splash */}
+          {/* Rotulo de arranque. SOLO ESCRITORIO, y lo decide el CSS: el servidor no sabe el
+              ancho de la pantalla, asi que mientras esto dependia de isMobile el movil recibia
+              igualmente el rotulo y lo pintaba sobre los botones hasta que React hidrataba.
+              En escritorio no estorba porque alli el resto del hero esta a opacidad 0 hasta
+              que se hace scroll; en movil no hay scroll que lo gobierne. */}
           <motion.div 
             ref={heroTitleRef}
-            style={isMobile ? undefined : { 
+            style={{ 
               opacity: heroBuilt ? 0 : centerTitleOpacity, 
               scale: heroBuilt ? 0.7 : centerTitleScale, 
               y: heroBuilt ? -50 : centerTitleY 
             }}
-            initial={isMobile ? { opacity: 1, scale: 1 } : undefined}
-            animate={isMobile ? { opacity: 0, scale: 0.7, y: -30 } : undefined}
-            transition={isMobile ? { duration: 0.8, delay: 1.2, ease: 'easeInOut' } : undefined}
-            className={`absolute z-40 flex flex-col items-center justify-center pointer-events-none select-none text-center px-4 ${isMobile ? '' : ''}`}
+            className="absolute z-40 hidden md:flex flex-col items-center justify-center pointer-events-none select-none text-center px-4"
           >
             <div className="w-16 h-px bg-innovacion/35 mb-6" />
             <div className="text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.06em] text-claridad drop-shadow-[0_0_30px_rgba(0,191,165,0.3)] uppercase leading-none">
@@ -688,138 +692,137 @@ export default function Page({ params }: PageProps) {
               SOFTWARE
             </div>
             <div className="w-16 h-px bg-innovacion/35 mt-8" />
-            {!isMobile && (
-              <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
-                [ SCROLL_TO_INITIALIZE ]
-              </p>
-            )}
+            <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
+              [ SCROLL_TO_INITIALIZE ]
+            </p>
           </motion.div>
+
+          {/* Lo que el header observa EN MOVIL, donde el rotulo de arriba ya no existe. En
+              escritorio sigue observandose el rotulo, para no mover el punto en que aparece. */}
+          <div ref={heroMarcaMovilRef} aria-hidden="true" className="md:hidden absolute top-1/2 left-1/2 w-px h-px pointer-events-none" />
 
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 px-4 md:px-8 pt-24 md:pt-28 lg:pt-20">
             
             {/* Hero Left Content — Desktop: scroll-reveal | Mobile: staggered auto fade-in */}
             <div className="lg:col-span-7 flex flex-col items-start text-left relative z-10 pr-0 lg:pr-6">
-              {isMobile ? (
-                /* MOBILE: Simple staggered fade-in title (no scroll dependency) */
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1.6 }}
-                  className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]"
-                >
-                  {activeWords.map((wordObj, idx) => (
-                    <React.Fragment key={idx}>
-                      <span
-                        className={`inline-block ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
-                      >
-                        {wordObj.text}
-                      </span>
-                      {idx < activeWords.length - 1 ? ' ' : ''}
-                    </React.Fragment>
-                  ))}
-                </motion.h1>
-              ) : (
-                /* DESKTOP: Scroll-driven word-by-word reveal */
-                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]">
-                  {activeWords.map((wordObj, idx) => (
-                    <AnimatedWord 
-                      key={idx}
-                      word={wordObj.text}
-                      index={idx}
-                      totalWords={activeWords.length}
-                      isGradient={wordObj.isGradient}
-                      scrollY={smoothScrollY}
-                      heroBuilt={heroBuilt}
-                    />
-                  ))}
-                </h1>
-              )}
+              {/* MOVIL: entra deslizando, SIN animar la opacidad y sin esperar a React. Mismo
+                  criterio que los botones de abajo: el texto se sirve ya legible en el HTML.
+                  Cuando lo revelaba la animacion tardaba 5,2 s en leerse en un movil modesto. */}
+              <motion.h1 
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="md:hidden text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]"
+              >
+                {activeWords.map((wordObj, idx) => (
+                  <React.Fragment key={idx}>
+                    <span
+                      className={`inline-block ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
+                    >
+                      {wordObj.text}
+                    </span>
+                    {idx < activeWords.length - 1 ? ' ' : ''}
+                  </React.Fragment>
+                ))}
+              </motion.h1>
 
-              {/* Sin JavaScript no habia titular: las palabras se sirven a opacity 0 y las
-                  revela la animacion. Esto lo pinta igual para quien no ejecuta JS. */}
+              {/* ESCRITORIO: el scroll revela el titular palabra a palabra */}
+              <h1 className="hidden md:block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]">
+                {activeWords.map((wordObj, idx) => (
+                  <AnimatedWord 
+                    key={idx}
+                    word={wordObj.text}
+                    index={idx}
+                    totalWords={activeWords.length}
+                    isGradient={wordObj.isGradient}
+                    scrollY={smoothScrollY}
+                    heroBuilt={heroBuilt}
+                  />
+                ))}
+              </h1>
+
+              {/* Sin JavaScript no hay titular EN ESCRITORIO: alli las palabras se sirven a
+                  opacity 0 y las revela la animacion. En movil ya se sirve pintado, asi que
+                  este respaldo tambien es solo de escritorio: si no, saldrian dos. */}
               <noscript>
-                <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad uppercase">
+                <h1 className="hidden md:block text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad uppercase">
                   {activeWords.map(w => w.text).join(' ')}
                 </h1>
               </noscript>
 
-              {isMobile ? (
-                <motion.p 
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 2.0 }}
-                  className="text-xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
-                >
-                  {t.hero.subtitle}
-                </motion.p>
-              ) : (
-                <motion.p 
-                  style={{ 
-                    opacity: heroBuilt ? 1 : subtitleOpacity, 
-                    y: heroBuilt ? 0 : subtitleY 
-                  }}
-                  className="text-xl md:text-2xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
-                >
-                  {t.hero.subtitle}
-                </motion.p>
-              )}
+              <motion.p 
+                initial={{ y: 15 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="md:hidden text-xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
+              >
+                {t.hero.subtitle}
+              </motion.p>
+
+              <motion.p 
+                style={{ 
+                  opacity: heroBuilt ? 1 : subtitleOpacity, 
+                  y: heroBuilt ? 0 : subtitleY 
+                }}
+                className="hidden md:block text-xl md:text-2xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
+              >
+                {t.hero.subtitle}
+              </motion.p>
               
-              {isMobile ? (
-                /* Entra deslizando, SIN animar la opacidad. Lighthouse audita mientras la
-                   pagina se pinta, y con el boton a medio aparecer medio 1,39:1 de
-                   contraste sobre un color que no existe: el turquesa mezclado con el
-                   fondo. Asentado da 7,88:1. El fallo no era real, pero lo ve cualquiera
-                   que pase PageSpeed a esta web, que es la carta de presentacion. */
-                <motion.div 
-                  initial={{ y: 15 }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.7, delay: 2.3 }}
-                  className="w-full flex flex-col gap-4"
+              {/* Entra deslizando, SIN animar la opacidad. Lighthouse audita mientras la
+                  pagina se pinta, y con el boton a medio aparecer medio 1,39:1 de contraste
+                  sobre un color que no existe: el turquesa mezclado con el fondo. Asentado
+                  da 7,88:1. El fallo no era real, pero lo ve cualquiera que pase PageSpeed a
+                  esta web, que es la carta de presentacion. */}
+              <motion.div 
+                initial={{ y: 15 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.7, delay: 0.45 }}
+                className="md:hidden w-full flex flex-col gap-4"
+              >
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <Calendar size={18} />
-                    {t.hero.cta_alt}
-                  </a>
-                  <a
-                    href={waLink(t.leads.wa_generico)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle size={18} />
-                    {t.leads.cta_whatsapp}
-                  </a>
-                </motion.div>
-              ) : (
-                <motion.div 
-                  style={{ y: heroBuilt ? 0 : ctaY }}
-                  className="w-full sm:w-auto flex flex-col sm:flex-row gap-4"
+                  <Calendar size={18} />
+                  {t.hero.cta_alt}
+                </a>
+                <a
+                  href={waLink(t.leads.wa_generico)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase whitespace-nowrap px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <Calendar size={18} />
-                    {t.hero.cta_alt}
-                  </a>
-                  <a
-                    href={waLink(t.leads.wa_generico)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle size={18} />
-                    {t.leads.cta_whatsapp}
-                  </a>
-                </motion.div>
-              )}
+                  <MessageCircle size={18} />
+                  {t.leads.cta_whatsapp}
+                </a>
+              </motion.div>
+
+              <motion.div 
+                style={{ y: heroBuilt ? 0 : ctaY }}
+                className="hidden md:flex w-full sm:w-auto flex-col sm:flex-row gap-4"
+              >
+                <a
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase whitespace-nowrap px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <Calendar size={18} />
+                  {t.hero.cta_alt}
+                </a>
+                <a
+                  href={waLink(t.leads.wa_generico)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <MessageCircle size={18} />
+                  {t.leads.cta_whatsapp}
+                </a>
+              </motion.div>
 
               {/* pr-20 en movil: el boton flotante de TesS se comia el final de esta frase,
                   que es justo la que quita el miedo ("sin coste y sin compromiso").
@@ -837,7 +840,7 @@ export default function Page({ params }: PageProps) {
               }}
               initial={isMobile ? { opacity: 0, scale: 0.9 } : undefined}
               animate={isMobile ? { opacity: 1, scale: 1 } : undefined}
-              transition={isMobile ? { duration: 0.8, delay: 2.5 } : undefined}
+              transition={isMobile ? { duration: 0.8, delay: 0.6 } : undefined}
               className="lg:col-span-5 flex justify-center items-center relative min-h-[280px] md:min-h-[350px]"
             >
               <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
