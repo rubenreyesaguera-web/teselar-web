@@ -462,7 +462,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s9.price,
       tag: t.services.s9.tag,
       icon: Calendar,
-      features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7]
+      features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7, t.services.s9.f8]
     },
     {
       id: 's3',
@@ -492,7 +492,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s5.price,
       tag: t.services.s5.tag,
       icon: Briefcase,
-      features: [t.services.s5.f1, t.services.s5.f2, t.services.s5.f3, t.services.s5.f4, t.services.s5.f5, t.services.s5.f6, t.services.s5.f7]
+      features: [t.services.s5.hereda, t.services.s5.f1, t.services.s5.f2, t.services.s5.f3, t.services.s5.f4, t.services.s5.f5, t.services.s5.f6, t.services.s5.f7]
     },
     {
       id: 's6',
@@ -502,7 +502,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s6.price,
       tag: t.services.s6.tag,
       icon: ShoppingCart,
-      features: [t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
+      features: [t.services.s6.hereda, t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
     },
     {
       id: 's7',
@@ -575,7 +575,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13
   ];
 
   return (
