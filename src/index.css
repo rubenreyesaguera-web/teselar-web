@@ -416,7 +416,6 @@ html.intro-seen .intro-loader-container {
 }
 
 #values { contain-intrinsic-size: auto 800px; }
-#hud-comparison { contain-intrinsic-size: auto 900px; }
 #services { contain-intrinsic-size: auto 1200px; }
 #roi-simulator { contain-intrinsic-size: auto 850px; }
 #pricing { contain-intrinsic-size: auto 950px; }
