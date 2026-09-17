@@ -44,9 +44,12 @@ Tres peldaños, en este orden:
   verificación de empresa de Meta (1–2 semanas, no depende de Teselar). **Garantía:** si en los tres
   primeros meses no entra ni una sola cita fuera del horario de atención, se devuelve el importe de
   la puesta en marcha; lo cuenta el propio sistema y el cliente ve el número en su panel.
-- **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. Página de reserva propia enlazada desde el
-  WhatsApp de siempre: el cliente escribe como hasta ahora, recibe el enlace y cierra la cita en la
-  página. Sin migrar de número ni depender de Meta.
+- **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. **No es el servicio de arriba más barato.** Aquí
+  **no hay asistente que converse**: el cliente del negocio escribe al WhatsApp de siempre, recibe un
+  enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email o SMS,
+  no por WhatsApp. A cambio, el negocio no migra de número, no pasa la verificación de Meta y no paga
+  mensajes. Lo que pierde es la conversación 24 h dentro de WhatsApp. Criterio para elegir: si sus
+  clientes ya le escriben por WhatsApp, el de arriba; si no, con este basta.
 - **Web Esencial** — 1.200€–1.600€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
   adicional), formulario y WhatsApp, SEO técnico básico (React + Vite + Tailwind CSS).
 - **Integración de Inteligencia Artificial** — 1.600€–6.000€ + cuota mensual del asistente,
@@ -111,6 +114,27 @@ cifras verificadas y no se inventan.
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
   acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable
   (4h en incidencia crítica), informe mensual. Recomendado para e-commerce e inmobiliarias.
+
+## Qué pasa si no se paga el mantenimiento o no se renueva
+
+Regla general: **nada se renueva solo**. En los servicios que llevan el Plan Básico incluido el primer
+año (e-commerce, inmobiliaria, ERP/CRM), Teselar avisa **un mes antes** de que acabe y el cliente
+decide. No hay renovación automática ni permanencia.
+
+Y a partir de ahí la respuesta depende de si el servicio necesita la cuota para funcionar:
+
+- **Lo que es del cliente, se queda.** Una web sigue publicada y siendo suya aunque no haya
+  mantenimiento. Lo que pierde es la red de seguridad: monitorización, copias de seguridad,
+  actualizaciones, corrección de errores y la hora de cambios al mes. Si algo se rompe, se entera él
+  y la reparación se presupuesta aparte.
+- **Lo que depende de la cuota para funcionar, se para.** Las Automatizaciones Específicas, el
+  asistente de la Integración de IA y las Citas por WhatsApp se detienen si se cancela la cuota, con
+  aviso previo de 15 días. No es una penalización: esa cuota paga la vigilancia y, en el producto de
+  citas, el coste del modelo de IA, que va incluido. Por eso en esos servicios la cuota es obligatoria
+  mientras el servicio esté en marcha — obligatoria no significa permanencia: el cliente puede darse
+  de baja cuando quiera, y lo que ocurre es que el servicio deja de funcionar.
+- **Volver es posible.** Si se dio de baja y más adelante quiere retomarlo, se revisa en qué estado
+  quedó y la puesta al día se presupuesta aparte.
 
 ## Condiciones
 

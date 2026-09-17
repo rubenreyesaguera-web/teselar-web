@@ -111,6 +111,7 @@ export const dictionaries = {
         ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
         price: 'Desde 3.000€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
+        hereda: 'Incluye todo lo de la Web Esencial (04): 3-4 secciones, diseño responsive, formulario y botón de WhatsApp, SEO básico y 1 semana de ajustes en vivo',
         f1: 'Estructura modular de 5 a 8 secciones bien definidas',
         f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
         f3: 'Sección autogestionable de blog, artículos o noticias',
@@ -124,6 +125,7 @@ export const dictionaries = {
         ideal: 'Comercios locales o marcas que venden productos o servicios directamente online.',
         price: 'Desde 4.000€',
         tag: 'React + BD + Pasarelas de Pago',
+        hereda: 'Incluye todo lo de la Web Completa (06): hasta 8 secciones, blog autogestionable, panel de administración, 2 idiomas y SEO completo',
         f1: 'Carrito de compra interactivo, fluido y de carga ultrarrápida',
         f2: 'Proceso de checkout seguro y simplificado (One-Step)',
         f3: 'Integración completa con Stripe, PayPal y Bizum',
@@ -171,7 +173,8 @@ export const dictionaries = {
         f4: 'Cambios y cancelaciones por el mismo WhatsApp, sin llamadas ni huecos muertos',
         f5: 'Panel con tus citas y el contador de las que entraron fuera de tu horario de atención',
         f6: 'Garantía: si en los tres primeros meses no entra ni una cita fuera de tu horario, te devuelvo la puesta en marcha',
-        f7: 'Petición automática de reseñas en Google al terminar la cita, como complemento (+200€)'
+        f7: 'Petición automática de reseñas en Google al terminar la cita, como complemento (+200€)',
+        f8: 'Hay una versión sin WhatsApp API por 400€-700€ + 90€/mes, y no es lo mismo más barato: ahí no hay asistente que converse — tu cliente te escribe al WhatsApp de siempre, recibe un enlace y reserva en una página, y la confirmación y el recordatorio le llegan por email o SMS. A cambio no migras de número ni dependes de Meta'
       }
     },
     pricing: {
@@ -308,7 +311,7 @@ export const dictionaries = {
       },
       q10: {
         q: '¿Puedes hacer que mi negocio coja las citas por WhatsApp?',
-        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes y el Completo 1.500€-1.800€ más 250€/mes. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo) y que Meta verifique tu empresa, que lleva una o dos semanas. Si prefieres no depender de Meta, hay una versión sin API por 400€-700€ más 90€/mes.'
+        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes y el Completo 1.500€-1.800€ más 250€/mes. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo) y que Meta verifique tu empresa, que lleva una o dos semanas. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email o SMS, no por WhatsApp. A cambio no migras de número, no pasas la verificación de Meta y no pagas mensajes.'
       },
       q11: {
         q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
@@ -317,6 +320,10 @@ export const dictionaries = {
       q12: {
         q: '¿Por qué no me haces la web en WordPress, que sale más barata?',
         a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Yo escribo el código, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
+      },
+      q13: {
+        q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
+        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y ERP/CRM) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: tu web sigue publicada y sigue siendo tuya, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
       }
     },
     contact: {
@@ -508,6 +515,7 @@ export const dictionaries = {
         ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
         price: 'Des de 3.000€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
+        hereda: 'Inclou tot el de la Web Essencial (04): 3-4 seccions, disseny responsive, formulari i botó de WhatsApp, SEO bàsic i 1 setmana d\'ajustaments en viu',
         f1: 'Estructura modular de 5 a 8 seccions ben definides',
         f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
         f3: 'Secció autogestionable de blog, articles o notícies',
@@ -521,6 +529,7 @@ export const dictionaries = {
         ideal: 'Comerços locals o marques que volen vendre productes o serveis directament online.',
         price: 'Des de 4.000€',
         tag: 'React + BD + Passarel·les de Pagament',
+        hereda: 'Inclou tot el de la Web Completa (06): fins a 8 seccions, blog autogestionable, panell d\'administració, 2 idiomes i SEO complet',
         f1: 'Carret de compra interactiu, fluid i de càrrega ultraràpida',
         f2: 'Procés de checkout segur i simplificat (One-Step)',
         f3: 'Integració completa amb Stripe, PayPal i Bizum',
@@ -568,7 +577,8 @@ export const dictionaries = {
         f4: 'Canvis i cancel·lacions pel mateix WhatsApp, sense trucades ni forats morts',
         f5: 'Panell amb les teves cites i el comptador de les que van entrar fora del teu horari d\'atenció',
         f6: 'Garantia: si en els tres primers mesos no entra ni una cita fora del teu horari, et torno la posada en marxa',
-        f7: 'Petició automàtica de ressenyes a Google en acabar la cita, com a complement (+200€)'
+        f7: 'Petició automàtica de ressenyes a Google en acabar la cita, com a complement (+200€)',
+        f8: 'Hi ha una versió sense WhatsApp API per 400€-700€ + 90€/mes, i no és el mateix més barat: allà no hi ha assistent que conversi — el teu client t\'escriu al WhatsApp de sempre, rep un enllaç i reserva en una pàgina, i la confirmació i el recordatori li arriben per email o SMS. A canvi no migres de número ni depens de Meta'
       }
     },
     pricing: {
@@ -705,7 +715,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Pots fer que el meu negoci agafi les cites per WhatsApp?',
-        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes i el Complet 1.500€-1.800€ més 250€/mes. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho) i que Meta verifiqui la teva empresa, cosa que porta una o dues setmanes. Si prefereixes no dependre de Meta, hi ha una versió sense API per 400€-700€ més 90€/mes.'
+        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes i el Complet 1.500€-1.800€ més 250€/mes. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho) i que Meta verifiqui la teva empresa, cosa que porta una o dues setmanes. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email o SMS, no per WhatsApp. A canvi no migres de número, no passes la verificació de Meta i no pagues missatges.'
       },
       q11: {
         q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
@@ -714,6 +724,10 @@ export const dictionaries = {
       q12: {
         q: 'Per què no em fas el web en WordPress, que surt més barat?',
         a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Jo escric el codi, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
+      },
+      q13: {
+        q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
+        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i ERP/CRM) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el teu web continua publicat i continua sent teu, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
       }
     },
     contact: {
@@ -905,6 +919,7 @@ export const dictionaries = {
         ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
         price: 'From 3,000€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
+        hereda: 'Includes everything in the Essential Website (04): 3-4 sections, responsive design, contact form and WhatsApp button, basic SEO and 1 week of live adjustments',
         f1: 'Modular structure with 5 to 8 well-defined sections',
         f2: 'Project gallery or interactive portfolio with dynamic filters',
         f3: 'Self-managed section for blog, articles, or news',
@@ -918,6 +933,7 @@ export const dictionaries = {
         ideal: 'Local businesses or brands that want to sell products or services directly online.',
         price: 'From 4,000€',
         tag: 'React + DB + Payment Gateways',
+        hereda: 'Includes everything in the Complete Website (06): up to 8 sections, self-managed blog, admin panel, 2 languages and full SEO',
         f1: 'Interactive, fluid, and ultra-fast loading shopping cart',
         f2: 'Secure and simplified one-step checkout process',
         f3: 'Full integration with Stripe, PayPal, and credit cards',
@@ -965,7 +981,8 @@ export const dictionaries = {
         f4: 'Reschedules and cancellations over the same WhatsApp, no calls and no dead slots',
         f5: 'Dashboard with your bookings and a counter of those that came in outside your opening hours',
         f6: 'Guarantee: if not a single booking comes in outside your hours in the first three months, you get the setup fee back',
-        f7: 'Automatic Google review request once the appointment is over, as an add-on (+200€)'
+        f7: 'Automatic Google review request once the appointment is over, as an add-on (+200€)',
+        f8: 'There is a version without the WhatsApp API for 400€-700€ + 90€/month, and it is not the same thing cheaper: there is no assistant holding a conversation — your client writes to your usual WhatsApp, gets a link and books on a page, and the confirmation and reminder arrive by email or SMS. In exchange you do not migrate your number or depend on Meta'
       }
     },
     pricing: {
@@ -1102,7 +1119,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Can you get my business taking bookings over WhatsApp?',
-        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, and the Complete one 1,500€-1,800€ plus 250€/month. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it) and Meta to verify your business, which takes one or two weeks. If you would rather not depend on Meta, there is a version without the API for 400€-700€ plus 90€/month.'
+        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, and the Complete one 1,500€-1,800€ plus 250€/month. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it) and Meta to verify your business, which takes one or two weeks. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email or SMS, not by WhatsApp. In exchange you do not migrate your number, you skip Meta\'s verification and you pay no messages.'
       },
       q11: {
         q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',
@@ -1111,6 +1128,10 @@ export const dictionaries = {
       q12: {
         q: 'Why not build my site in WordPress? It is cheaper.',
         a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I write the code myself, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
+      },
+      q13: {
+        q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
+        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and ERP/CRM) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: your website remains published and remains yours, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
       }
     },
     contact: {
