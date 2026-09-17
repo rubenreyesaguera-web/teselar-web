@@ -18,14 +18,19 @@ Tres peldaños, en este orden:
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
    reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Dos
    plazas por semana. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
-2. **Auditoría Digital — 150€**, descontables del proyecto. Es el entregable escrito con los
-   hallazgos, para quien quiere el informe además de la conversación.
+2. **Auditoría de Procesos — 150€**, descontables del proyecto si contrata en los 60 días
+   siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante, y un
+   informe escrito de 2-3 páginas: qué procesos le cuestan tiempo o dinero, el coste real de tres
+   trabajos ya cerrados, y qué se puede automatizar y en qué orden. Incluye además el prediagnóstico
+   digital de la web y las redes, que por separado es gratuito.
 3. **El proyecto**, del catálogo de abajo.
 
 ## Catálogo de servicios (precios cerrados, sin costes ocultos)
 
-- **Auditoría y Consultoría Digital** — 150€ (se descuenta del proyecto si el cliente contrata después).
-  Análisis de presencia digital, velocidad, UX, competencia y hoja de ruta con informe en PDF.
+- **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente contrata en los 60 días
+  siguientes). Sesión de 60-90 minutos sobre su operativa, mapeo de hasta tres procesos, coste real de
+  tres trabajos ya cerrados, qué se puede automatizar y en qué orden, e informe escrito de 2-3
+  páginas. El prediagnóstico digital de la web y las redes va incluido y por separado es gratuito.
 - **Automatizaciones Específicas** — 700€–1.800€ + 60€/mes. Presupuestos/facturas automáticas, chatbots de
   WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
   El Plan Básico de mantenimiento (60€/mes) es obligatorio mientras la automatización esté en marcha:
