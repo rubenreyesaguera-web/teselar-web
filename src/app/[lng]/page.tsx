@@ -528,6 +528,48 @@ export default function Page({ params }: PageProps) {
     }
   ];
 
+  // Las piezas flotantes del hero. Un solo contenido para los dos envoltorios del hero
+  // derecho (movil y escritorio): los tamanos van en clases responsive, no en isMobile.
+  // Ojo con el padding y el cuerpo de letra: el codigo viejo pedia p-3 y text-[8px] en
+  // movil, pero nunca se aplicaban —en la cascada de Tailwind ganaba el p-5 de la clase
+  // base—, asi que lo que se veia eran 20px y 10px. Se conserva eso. Cambiarlo es una
+  // decision estetica, no parte de este refactor.
+  const hologramaHero = (
+    <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
+      <div className="absolute bg-teselar/30 backdrop-blur-md max-md:backdrop-blur-sm border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between font-mono text-claridad/50 p-5 text-[10px] w-32 h-32 md:w-44 md:h-44">
+        <div className="flex justify-between items-center">
+          <span>[ MODULE.01 ]</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-innovacion" />
+        </div>
+        <div className="tracking-widest text-innovacion/70 uppercase font-bold text-[7px] md:text-[9px]">INTEGRITY_OK</div>
+      </div>
+
+      <div className="absolute bg-innovacion/20 backdrop-blur-md max-md:backdrop-blur-sm border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between font-mono text-innovacion p-5 text-[10px] w-28 h-28 md:w-36 md:h-36" style={{ animationDelay: '-2s' }}>
+        <div className="flex justify-between items-center">
+          <span>[ CORE.SYS ]</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-innovacion animate-ping" />
+        </div>
+        <div className="tracking-widest text-claridad/85 uppercase font-black text-[7px] md:text-[9px]">PERF: 99.2%</div>
+      </div>
+
+      <div className="hidden md:flex absolute w-24 h-24 bg-teselar-light/50 backdrop-blur-lg border border-claridad/10 rounded-2xl rotate-45 translate-x-6 -translate-y-20 animate-float shadow-xl flex-col justify-between p-4 text-[8px] font-mono text-claridad/45" style={{ animationDelay: '-4s' }}>
+        <span>[ DB.NODE ]</span>
+        <span className="text-[7px] tracking-widest text-innovacion/80 uppercase font-bold">SYNC_ACTIVE</span>
+      </div>
+
+      {/* Central Glowing Active Core representing Teselar Logo concept */}
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+        className="rounded-full border border-dashed border-innovacion/30 flex items-center justify-center absolute p-4 w-36 h-36 md:w-48 md:h-48"
+      >
+        <div className="rounded-full border border-innovacion/15 flex items-center justify-center w-28 h-28 md:w-36 md:h-36">
+          <img src="/logo.jpeg" alt="Teselar core" className="rounded-full border-2 border-innovacion/60 shadow-lg shadow-innovacion/20 object-cover w-20 h-20 md:w-24 md:h-24" />
+        </div>
+      </motion.div>
+    </div>
+  );
+
   const filteredServices = activeCategory === 'all'
     ? servicesList
     : servicesList.filter(s => s.category === activeCategory);
@@ -832,53 +874,26 @@ export default function Page({ params }: PageProps) {
               </p>
             </div>
 
-            {/* Hero Right Content (hidden on mobile for clean hero, visible on lg+) */}
+            {/* Hero Right Content. Como el resto del hero: el mismo contenido dentro de dos
+                envoltorios que elige el CSS, porque la animacion de escritorio la manda el
+                scroll y la de movil un temporizador, y eso no se puede decidir con una clase. */}
             <motion.div 
-              style={isMobile ? undefined : { 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="md:hidden flex justify-center items-center relative min-h-[280px]"
+            >
+              {hologramaHero}
+            </motion.div>
+
+            <motion.div 
+              style={{ 
                 opacity: heroBuilt ? 1 : rightOpacity, 
                 scale: heroBuilt ? 1 : rightScale 
               }}
-              initial={isMobile ? { opacity: 0, scale: 0.9 } : undefined}
-              animate={isMobile ? { opacity: 1, scale: 1 } : undefined}
-              transition={isMobile ? { duration: 0.8, delay: 0.6 } : undefined}
-              className="lg:col-span-5 flex justify-center items-center relative min-h-[280px] md:min-h-[350px]"
+              className="hidden md:flex lg:col-span-5 justify-center items-center relative min-h-[350px]"
             >
-              <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
-                {/* Glassmorphic puzzle elements floating with custom animations & rich cyber HUD details */}
-                <div className={`absolute bg-teselar/30 backdrop-blur-md max-md:backdrop-blur-sm border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-claridad/50 ${isMobile ? 'w-32 h-32 p-3 text-[8px]' : 'w-44 h-44'}`}>
-                  <div className="flex justify-between items-center">
-                    <span>[ MODULE.01 ]</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-innovacion" />
-                  </div>
-                  <div className={`tracking-widest text-innovacion/70 uppercase font-bold ${isMobile ? 'text-[7px]' : 'text-[9px]'}`}>INTEGRITY_OK</div>
-                </div>
-                
-                <div className={`absolute bg-innovacion/20 backdrop-blur-md max-md:backdrop-blur-sm border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between p-5 text-[10px] font-mono text-innovacion ${isMobile ? 'w-28 h-28 p-3 text-[8px]' : 'w-36 h-36'}`} style={{ animationDelay: '-2s' }}>
-                  <div className="flex justify-between items-center">
-                    <span>[ CORE.SYS ]</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-innovacion animate-ping" />
-                  </div>
-                  <div className={`tracking-widest text-claridad/85 uppercase font-black ${isMobile ? 'text-[7px]' : 'text-[9px]'}`}>PERF: 99.2%</div>
-                </div>
-                
-                {!isMobile && (
-                  <div className="absolute w-24 h-24 bg-teselar-light/50 backdrop-blur-lg border border-claridad/10 rounded-2xl rotate-45 translate-x-6 -translate-y-20 animate-float shadow-xl flex flex-col justify-between p-4 text-[8px] font-mono text-claridad/45" style={{ animationDelay: '-4s' }}>
-                    <span>[ DB.NODE ]</span>
-                    <span className="text-[7px] tracking-widest text-innovacion/80 uppercase font-bold">SYNC_ACTIVE</span>
-                  </div>
-                )}
-                
-                {/* Central Glowing Active Core representing Teselar Logo concept */}
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-                  className={`rounded-full border border-dashed border-innovacion/30 flex items-center justify-center absolute p-4 ${isMobile ? 'w-36 h-36' : 'w-48 h-48'}`}
-                >
-                  <div className={`rounded-full border border-innovacion/15 flex items-center justify-center ${isMobile ? 'w-28 h-28' : 'w-36 h-36'}`}>
-                    <img src="/logo.jpeg" alt="Teselar core" className={`rounded-full border-2 border-innovacion/60 shadow-lg shadow-innovacion/20 object-cover ${isMobile ? 'w-20 h-20' : 'w-24 h-24'}`} />
-                  </div>
-                </motion.div>
-              </div>
+              {hologramaHero}
             </motion.div>
 
           </div>
