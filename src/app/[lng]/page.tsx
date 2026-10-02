@@ -2446,7 +2446,7 @@ export default function Page({ params }: PageProps) {
 
         {/* Legal notice & subpath links */}
         <div className="max-w-7xl mx-auto border-t border-claridad/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-light text-claridad/70 text-center">
-          <span>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
+          <span suppressHydrationWarning>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
               href={`/${currentLng}/legal/aviso-legal`} 
