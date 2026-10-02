@@ -23,15 +23,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
 
   // Custom metadata based on current language
   const keywordsMap = {
-    es: ['diseño web Lloret de Mar', 'desarrollo web Girona', 'páginas web Costa Brava', 'software a medida', 'web inmobiliaria', 'automatización', 'IA', 'Teselar Software'],
-    ca: ['disseny web Lloret de Mar', 'desenvolupament web Girona', 'pàgines web Costa Brava', 'programari a mida', 'web immobiliària', 'automatització', 'IA', 'Teselar Software'],
-    en: ['web design Lloret de Mar', 'web development Girona', 'websites Costa Brava', 'custom software', 'real estate website', 'automation', 'AI', 'Teselar Software']
+    es: ['inteligencia artificial para empresas Lloret de Mar', 'software a medida Lloret de Mar', 'automatizaciones Costa Brava', 'citas por WhatsApp', 'programas a medida Girona', 'IA', 'Teselar Software'],
+    ca: ['intel·ligència artificial per a empreses Lloret de Mar', 'programari a mida Lloret de Mar', 'automatitzacions Costa Brava', 'cites per WhatsApp', 'programes a mida Girona', 'IA', 'Teselar Software'],
+    en: ['AI for businesses Lloret de Mar', 'custom software Lloret de Mar', 'automation Costa Brava', 'WhatsApp appointment booking', 'custom software Girona', 'AI', 'Teselar Software']
   };
 
   const titlesMap = {
-    es: 'Diseño Web y Software a Medida en Lloret de Mar | Teselar Software',
-    ca: 'Disseny Web i Programari a Mida a Lloret de Mar | Teselar Software',
-    en: 'Web Design & Custom Software in Lloret de Mar | Teselar Software'
+    es: 'IA y Software a Medida en Lloret de Mar | Teselar Software',
+    ca: 'IA i Programari a Mida a Lloret de Mar | Teselar Software',
+    en: 'AI & Custom Software in Lloret de Mar | Teselar Software'
   };
 
   const META_DESC = (t.hero as { meta_description?: string }).meta_description ?? t.hero.subtitle;
@@ -147,7 +147,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         '@type': 'ProfessionalService',
         '@id': localBusinessId,
         name: 'Teselar Software',
-        description: 'Diseño web, software a medida, automatización e integración de IA para pymes.',
+        description: 'Asistentes con inteligencia artificial, automatizaciones y software a medida para negocios de Lloret de Mar y la Costa Brava.',
         url: `${baseUrl}/${lng}`,
         parentOrganization: { '@id': organizationId },
         email: 'info@teselarsoftware.com',
