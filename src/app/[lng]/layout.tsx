@@ -16,6 +16,16 @@ interface Props {
   params: Promise<{ lng: string }>;
 }
 
+// Las tres portadas se generan al compilar. Sin esto la ruta [lng] era dinamica, y Next 15
+// envia los metadatos de una ruta dinamica por streaming: title, description, canonical y
+// los og: acababan en el <body> para navegadores y para Googlebot (solo los previsualizadores
+// de enlaces los recibian en el <head>). Lighthouse decia que no habia meta description
+// aunque existiera. Estaticas, los metadatos van en el <head> para todo el mundo y la pagina
+// se sirve desde la cache en vez de renderizarse en cada visita.
+export function generateStaticParams() {
+  return [{ lng: 'es' }, { lng: 'ca' }, { lng: 'en' }];
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ lng: string }> }): Promise<Metadata> {
   const { lng } = await params;
   const t = dictionaries[lng as 'es' | 'ca' | 'en'] || dictionaries.en;
