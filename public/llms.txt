@@ -1,6 +1,7 @@
 # Teselar Software
 
-> Estudio de diseño web y software a medida en Lloret de Mar (Girona, España), bajo el concepto
+> Inteligencia artificial, automatizaciones y software a medida para negocios, en Lloret de Mar
+> (Girona, España). Lo hace una sola persona, Rubén Reyes, bajo el concepto
 > "La pieza que encaja": la pieza exacta de tecnología que necesita cada negocio, sin sobrecoste ni
 > componentes que no se usan. Sitio web: https://www.teselarsoftware.com (español, català, English).
 
@@ -18,19 +19,23 @@ Tres peldaños, en este orden:
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
    reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Dos
    plazas por semana. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
-2. **Auditoría de Procesos — 150€**, descontables del proyecto si contrata en los 30 días
-   siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante, y un
-   informe escrito de 2-3 páginas: qué procesos le cuestan tiempo o dinero, el coste real de tres
-   trabajos ya cerrados, y qué se puede automatizar y en qué orden. Incluye además el prediagnóstico
-   digital de la web y las redes, que por separado es gratuito.
+2. **Auditoría de Procesos — 150€**, descontables del proyecto si acepta la propuesta en los 30
+   días siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante (antes
+   se le dice qué tiene que traer, que es poco y depende del negocio), y un informe escrito de 2-3
+   páginas: qué procesos le cuestan tiempo o dinero, cuánto, y qué se puede automatizar y en qué
+   orden. Con el informe se envía la propuesta con el precio de lo que saldría de ahí, y el cliente
+   decide si la acepta; si no hay nada que le compense, se le dice y no hay propuesta. Incluye además
+   el prediagnóstico digital de la web y las redes, que por separado es gratuito.
 3. **El proyecto**, del catálogo de abajo.
 
 ## Catálogo de servicios (precios cerrados, sin costes ocultos)
 
-- **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente contrata en los 30 días
-  siguientes). Sesión de 60-90 minutos sobre su operativa, mapeo de hasta tres procesos, coste real de
-  tres trabajos ya cerrados, qué se puede automatizar y en qué orden, e informe escrito de 2-3
-  páginas. El prediagnóstico digital de la web y las redes va incluido y por separado es gratuito.
+- **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente acepta la propuesta en
+  los 30 días siguientes). Sesión de 60-90 minutos sobre su operativa, mapeo de hasta tres procesos,
+  sus números (cuántas veces hace una tarea, cuánto tiempo le lleva y cuánto le cuesta), qué se puede
+  automatizar y en qué orden, e informe escrito de 2-3 páginas. La propuesta con precio se envía
+  junto con el informe; si no hay nada que le compense, se le dice y no hay propuesta. El
+  prediagnóstico digital de la web y las redes va incluido y por separado es gratuito.
 - **Automatizaciones Específicas** — 700€–1.800€ + 60€/mes. Presupuestos/facturas automáticas, chatbots de
   WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
   El Plan Básico de mantenimiento (60€/mes) es obligatorio mientras la automatización esté en marcha:
@@ -40,14 +45,15 @@ Tres peldaños, en este orden:
   asistente que atiende el WhatsApp del negocio 24 horas al día: consulta los huecos libres, reserva
   la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar. La cuota mensual
   se ajusta al tamaño del negocio (profesionales o citas al mes). Complemento de petición automática
-  de reseñas: +200€ sobre el proyecto (no se vende suelto). Requiere la app WhatsApp Business y la
-  verificación de empresa de Meta (1–2 semanas, no depende de Teselar). **Garantía:** si en los tres
+  de reseñas: +200€ sobre el proyecto (no se vende suelto). Requiere la app WhatsApp Business; enlazar
+  el número con el sistema depende de una aprobación de Meta, cuyo plazo no controla Teselar y se da
+  por escrito en la propuesta. **Garantía:** si en los tres
   primeros meses no entra ni una sola cita fuera del horario de atención, se devuelve el importe de
   la puesta en marcha; lo cuenta el propio sistema y el cliente ve el número en su panel.
 - **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. **No es el servicio de arriba más barato.** Aquí
   **no hay asistente que converse**: el cliente del negocio escribe al WhatsApp de siempre, recibe un
   enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email o SMS,
-  no por WhatsApp. A cambio, el negocio no migra de número, no pasa la verificación de Meta y no paga
+  no por WhatsApp. A cambio, el negocio no migra de número, no depende de los plazos de Meta y no paga
   mensajes. Lo que pierde es la conversación 24 h dentro de WhatsApp. Criterio para elegir: si sus
   clientes ya le escriben por WhatsApp, el de arriba; si no, con este basta.
 - **Web Esencial** — 1.200€–1.600€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
@@ -151,11 +157,12 @@ correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana p
 de citas, el coste del modelo de IA SÍ va incluido en la cuota mensual (uso normal: hasta 500
 conversaciones al mes en el plan Esencial y 1.500 en el Completo), y el cliente no tiene que darse de
 alta en ningún servicio de IA. Lo que no se incluye son los mensajes de WhatsApp: desde el 1 de octubre de 2026 Meta cobra los mensajes
-enviados (unos 8–10 céntimos por cita reservada, ~8-10€/mes en un negocio de 100 reservas; es una estimación
-contada sobre los mensajes que el sistema envía de verdad y con la tarifa vigente, porque Meta aún no
-ha publicado la lista de precios oficial que entra en vigor ese día) y los
-factura directamente al cliente, porque la cuenta de WhatsApp es suya. Los mensajes que escriben sus
-clientes son gratis siempre.
+enviados y los factura directamente al cliente, porque la cuenta de WhatsApp es suya. Sale entre 1,7
+y 3,3 céntimos por cita reservada (unos 2-3€/mes en un negocio de 100 reservas), calculado con la
+tarifa oficial de Meta en vigor desde ese día: las respuestas del asistente entran en los 1.000
+mensajes de servicio gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes, y
+lo que se paga es el recordatorio y la confirmación (0,0166€ cada uno en España). Los mensajes que
+escriben sus clientes son gratis siempre.
 
 ## Enlaces
 
@@ -168,14 +175,14 @@ clientes son gratis siempre.
 
 ## Summary (English)
 
-Teselar Software is a custom software and web design studio based in Lloret de Mar (Girona, Spain),
+Teselar Software builds AI assistants, automations and custom software, based in Lloret de Mar (Girona, Spain),
 serving the Costa Brava area and remote clients across Spain. It is run by one person, Rubén, who communicates in Spanish,
 Catalan and English, but delivered projects can be built in any language via AI-assisted translation
 (sworn/professional human translation quoted separately). The entry point is a **free 30-minute
 diagnosis call** (booked at https://calendly.com/teselarsoftware-info/diagnostico30min); the 150€
 **process audit** is the second step: a 60-90 minute session on how the business actually operates,
-plus a written report on which processes cost time or money, the real cost of three closed jobs, and
-what can be automated — deducted from the project if hired within 30 days, and it includes the
+plus a written report on which processes cost time or money and what can be automated, sent together
+with a priced proposal — deducted from the project if that proposal is accepted within 30 days, and it includes the
 digital pre-diagnosis of the website and social media, which on its own is free.
 Services: process audit (150€), specific automations
 (700€–1,800€ + 60€/mo required maintenance), WhatsApp appointment booking (700€–900€ + 150€/mo, or 1,500€–1,800€ + 250€/mo, with a
