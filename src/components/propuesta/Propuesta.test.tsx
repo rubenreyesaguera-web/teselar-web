@@ -53,7 +53,7 @@ describe('la página sale de la instantánea', () => {
     expect(html).toContain('150 € al mes + IVA');
     expect(html).toContain('Válida hasta el 5 de noviembre de 2026');
     expect(html).toContain('Pendiente de aceptación');
-    expect(html.match(/Aceptar propuesta/g)?.length).toBe(4); // cabecera, portada, cierre y barra del móvil
+    expect(html.match(/<button[^>]*>Aceptar propuesta/g)?.length).toBe(4); // botones: cabecera, portada, cierre y barra del móvil
   });
 
   test('el detalle va plegado hasta «Ver alcance completo», con un botón y no un enlace (no toca el fragmento)', () => {
