@@ -48,7 +48,7 @@ describe('la página sale de la instantánea', () => {
     expect(html).toContain(`Para ${escapar(instantanea.partes.cliente.nombre)} · ${escapar(instantanea.partes.cliente.negocio)}`);
     expect(html).toContain(`<h1 id="titular">${escapar(instantanea.portada.titular)}</h1>`);
     expect(html).toMatch(/<aside class="tarjeta"[\s\S]*Cómo se paga · 4 pagos[\s\S]*<\/aside>/);
-    expect(html).toContain('Propuesta de Rubén Reyes · Teselar Software · 6 de octubre de 2026');
+    expect(html).toContain('Propuesta de Rubén Reyes Agüera · Teselar Software · NIF 47897952S · 6 de octubre de 2026');
     expect(html).toContain('765 €<span> + IVA</span>');
     expect(html).toContain('150 € al mes + IVA');
     expect(html).toContain('Válida hasta el 5 de noviembre de 2026');

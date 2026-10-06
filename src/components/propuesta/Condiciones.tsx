@@ -25,7 +25,7 @@ export default function Condiciones({ instantanea: p, offerHash }: { instantanea
         Propuesta {p.referencia} · versión {p.version} · {fechaLarga(p.fecha)}
         <br />
         {p.partes.proveedor.nombre} · {p.partes.proveedor.marca}
-        {p.partes.proveedor.nif ? ` · NIF ${p.partes.proveedor.nif}` : ''} → {p.partes.cliente.nombre} · {p.partes.cliente.negocio}
+        {` · NIF ${p.partes.proveedor.nif}`} → {p.partes.cliente.nombre} · {p.partes.cliente.negocio}
       </p>
       <Bloque titulo="Qué incluye" items={[...p.alcance, ...p.entregables]} />
       <Bloque titulo="Qué no incluye" items={p.exclusiones} />

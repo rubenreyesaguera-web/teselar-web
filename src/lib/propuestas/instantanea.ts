@@ -8,6 +8,8 @@
 // los importes son enteros en centimos, y lo que pagan los hitos cuadra con lo que cuesta la puesta en marcha.
 // Lo que falte por saber se escribe «Por confirmar» en el texto; nunca se rellena (regla 1 del doc 24).
 
+import { dniValido, nifSociedadValido, normalizarDocumento } from './identificacion';
+
 export const SCHEMA_VERSION = 1;
 
 export interface Concepto {
@@ -34,7 +36,8 @@ export interface ContenidoV1 {
   portada: { titular: string; subtitulo: string };
   partes: {
     cliente: { nombre: string; negocio: string };
-    proveedor: { nombre: string; marca: string; nif: string | null };
+    /** El NIF es obligatorio y se comprueba su control: el responsable de la aceptacion es una persona con NIF (ADR-091). */
+    proveedor: { nombre: string; marca: string; nif: string };
   };
   situacion: { palabras_del_cliente: string[]; lo_que_funciona: string | null };
   solucion: { resumen: string; dia_a_dia: string[] };
@@ -130,6 +133,13 @@ function tramo(v: unknown, ruta: string): TramoDeCalendario {
 
 const textos = (v: unknown, r: string, minimo = 1) => lista(v, r, texto, minimo);
 
+/** DNI/NIE (autonomo) o NIF de sociedad, normalizado y con su control comprobado. */
+function nifProveedor(v: unknown): string {
+  const nif = normalizarDocumento(texto(v, '$.partes.proveedor.nif'));
+  if (!dniValido(nif) && !nifSociedadValido(nif)) falla('$.partes.proveedor.nif', `${nif} no es un NIF valido (la letra o el control no cuadran)`);
+  return nif;
+}
+
 /** La señal de ADR-061: el 10 % de la puesta en marcha (redondeado al centimo), con un minimo de 150 €. */
 export const SENAL_MINIMA_CENTIMOS = 15000;
 export function senalEsperada(puestaEnMarchaCentimos: number): number {
@@ -171,7 +181,7 @@ export function validarContenido(entrada: unknown, opciones: OpcionesValidacion 
       proveedor: {
         nombre: texto(proveedor.nombre, '$.partes.proveedor.nombre'),
         marca: texto(proveedor.marca, '$.partes.proveedor.marca'),
-        nif: textoONulo(proveedor.nif, '$.partes.proveedor.nif'),
+        nif: nifProveedor(proveedor.nif),
       },
     },
     situacion: {
