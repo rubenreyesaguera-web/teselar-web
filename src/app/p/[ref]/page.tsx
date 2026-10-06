@@ -24,9 +24,5 @@ export default async function PaginaPropuesta({ params }: Props) {
   const { ref } = await params;
   const p = await leerPropuesta(ref);
   if (!p) notFound();
-  return (
-    <main className="fondo">
-      <Propuesta instantanea={p.instantanea} offerHash={p.offerHash} estado={p.estado} aceptadaEl={p.aceptadaEl} />
-    </main>
-  );
+  return <Propuesta instantanea={p.instantanea} offerHash={p.offerHash} estado={p.estado} aceptadaEl={p.aceptadaEl} cumplidos={p.cumplidos} />;
 }

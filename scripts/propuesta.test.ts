@@ -9,8 +9,10 @@ import { randomUUID } from 'node:crypto';
 import type { Client } from '@neondatabase/serverless';
 import { hashOferta, jsonCanonico } from '../src/lib/propuestas/canonico';
 import { leerPropuesta } from '../src/lib/propuestas/leer';
+import { aceptarPropuesta, MAX_INTENTOS_FALLIDOS, type Justificante } from '../src/lib/propuestas/aceptar';
+import { nuevaCapacidad } from '../src/lib/propuestas/canonico';
 import ejemplo from './propuesta.ejemplo.json';
-import { conectar, crear, exportar, invalidar, migrar, sustituir, urlDeConexion } from './propuesta';
+import { avance, conectar, crear, exportar, invalidar, migrar, sustituir, urlDeConexion, type Publicada } from './propuesta';
 
 const BASE = 'propuestas_pruebas';
 const hayBase = Boolean(process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL);
@@ -167,6 +169,119 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       if (antes === undefined) delete process.env.DATABASE_URL;
       else process.env.DATABASE_URL = antes;
     }
+  });
+
+  describe('aceptar (hito 6.5)', () => {
+    const url = () => urlDeConexion(BASE);
+    const datos = (p: Publicada, cambios: Record<string, unknown> = {}) => ({
+      referencia: p.referencia,
+      version: p.version,
+      offer_hash: p.offerHash,
+      nombre: 'Persona de Prueba',
+      correo: 'prueba@example.com',
+      empresa: 'Negocio de Prueba',
+      casilla_leido: true,
+      casilla_autoridad: true,
+      idempotency_key: randomUUID().replace(/-/g, ''),
+      ...cambios,
+    });
+
+    test('datos mal: 400, y no cuenta como intento fallido', async () => {
+      const p = await crear(db, ejemplo);
+      for (const malo of [{ casilla_leido: false }, { casilla_autoridad: false }, { correo: 'no-es-correo' }, { nombre: '  ' }, { empresa: '' }, { idempotency_key: 'corta' }]) {
+        expect((await aceptarPropuesta(url(), p.capacidad, datos(p, malo))).status).toBe(400);
+      }
+      const { rows } = await db.query(`SELECT intentos_fallidos FROM propuesta_version WHERE proposal_id = $1`, [p.referencia]);
+      expect(rows[0].intentos_fallidos).toBe(0);
+    });
+
+    test('sin la capacidad buena: 403, se cuenta, y no se crea nada', async () => {
+      const p = await crear(db, ejemplo);
+      expect((await aceptarPropuesta(url(), '', datos(p))).status).toBe(403);
+      expect((await aceptarPropuesta(url(), nuevaCapacidad(), datos(p))).status).toBe(403);
+      expect((await aceptarPropuesta(url(), p.offerHash, datos(p))).status).toBe(403);
+      const { rows } = await db.query(
+        `SELECT intentos_fallidos, (SELECT count(*)::int FROM aceptacion WHERE proposal_id = $1) AS n FROM propuesta_version WHERE proposal_id = $1`,
+        [p.referencia],
+      );
+      expect(rows[0]).toEqual({ intentos_fallidos: 3, n: 0 });
+    });
+
+    test('demasiados intentos fallidos: 429 aunque luego llegue la buena', async () => {
+      const p = await crear(db, ejemplo);
+      for (let i = 0; i < MAX_INTENTOS_FALLIDOS; i++) await aceptarPropuesta(url(), nuevaCapacidad(), datos(p));
+      expect((await aceptarPropuesta(url(), p.capacidad, datos(p))).status).toBe(429);
+    });
+
+    test('version sustituida: 409 con la capacidad vieja y con la nueva sobre la vieja', async () => {
+      const v1 = await crear(db, ejemplo);
+      const v2 = await sustituir(db, v1.referencia, ejemplo);
+      expect((await aceptarPropuesta(url(), v1.capacidad, datos(v1))).status).toBe(403);
+      const r = await aceptarPropuesta(url(), v2.capacidad, datos(v1));
+      expect([r.status, r.body.codigo]).toEqual([409, 'version_nueva']);
+    });
+
+    test('vencida: 410; retirada: 410', async () => {
+      const vieja = await crear(db, ejemplo, { fecha: '2026-01-01' });
+      expect((await aceptarPropuesta(url(), vieja.capacidad, datos(vieja))).body.codigo).toBe('vencida');
+      const p = await crear(db, ejemplo);
+      await invalidar(db, p.referencia, 'prueba');
+      const r = await aceptarPropuesta(url(), p.capacidad, datos(p));
+      expect([r.status, r.body.codigo]).toEqual([410, 'retirada']);
+    });
+
+    test('201 una vez; repetir el mismo intento da 200 sin duplicar; otro intento, 409 «ya estaba aceptada»', async () => {
+      const p = await crear(db, ejemplo);
+      const avisos: Justificante[] = [];
+      const intento = datos(p);
+      const r1 = await aceptarPropuesta(url(), p.capacidad, intento, (j) => avisos.push(j));
+      expect(r1.status).toBe(201);
+      expect(r1.body.justificante).toMatchObject({ referencia: p.referencia, version: 1, offer_hash: p.offerHash });
+      const r2 = await aceptarPropuesta(url(), p.capacidad, intento, (j) => avisos.push(j));
+      expect([r2.status, r2.body.justificante]).toEqual([200, r1.body.justificante]);
+      const r3 = await aceptarPropuesta(url(), p.capacidad, datos(p, { nombre: 'Otra Persona' }), (j) => avisos.push(j));
+      expect([r3.status, r3.body.mensaje, r3.body.justificante]).toEqual([409, 'Esta propuesta ya estaba aceptada', r1.body.justificante]);
+      expect(avisos).toHaveLength(1);
+
+      // Lo guardado: la instantanea de la base (no la del navegador), una sola fila, la identidad aparte y el evento.
+      const a = (await db.query(`SELECT * FROM aceptacion WHERE proposal_id = $1`, [p.referencia])).rows;
+      expect(a).toHaveLength(1);
+      expect(hashOferta(a[0].snapshot)).toBe(p.offerHash);
+      const quien = (await db.query(`SELECT nombre, correo, empresa FROM aceptacion_identidad WHERE acceptance_id = $1`, [a[0].acceptance_id])).rows;
+      expect(quien).toEqual([{ nombre: 'Persona de Prueba', correo: 'prueba@example.com', empresa: 'Negocio de Prueba' }]);
+      const ev = (await db.query(`SELECT tipo FROM evento WHERE proposal_id = $1 ORDER BY evento_id`, [p.referencia])).rows.map((x) => x.tipo);
+      expect(ev).toEqual(['creada', 'aceptada']);
+      // El justificante no lleva datos personales.
+      expect(JSON.stringify(r1.body)).not.toMatch(/Persona de Prueba|example\.com|Negocio de Prueba/);
+    });
+
+    test('dos aceptaciones a la vez: entra una y la otra recibe 409', async () => {
+      const p = await crear(db, ejemplo);
+      const rs = await Promise.all([aceptarPropuesta(url(), p.capacidad, datos(p)), aceptarPropuesta(url(), p.capacidad, datos(p))]);
+      expect(rs.map((r) => r.status).sort()).toEqual([201, 409]);
+    });
+
+    test('seguimiento: avance marca y desmarca hitos y la pagina lo lee', async () => {
+      const p = await crear(db, ejemplo);
+      await expect(avance(db, p.referencia, 1)).rejects.toThrow('no esta aceptada');
+      await aceptarPropuesta(url(), p.capacidad, datos(p));
+      expect(await avance(db, p.referencia, 1)).toBe('Señal');
+      await expect(avance(db, p.referencia, 1)).rejects.toThrow('ya esta cumplido');
+      await expect(avance(db, p.referencia, 9)).rejects.toThrow('de 1 a 4');
+      await avance(db, p.referencia, 2);
+      await avance(db, p.referencia, 2, true);
+      await expect(avance(db, p.referencia, 2, true)).rejects.toThrow('no esta cumplido');
+      const antes = process.env.DATABASE_URL;
+      process.env.DATABASE_URL = url();
+      try {
+        const leida = await leerPropuesta(p.referencia);
+        expect(leida?.estado).toBe('aceptada');
+        expect(Object.keys(leida?.cumplidos ?? {})).toEqual(['1']);
+      } finally {
+        if (antes === undefined) delete process.env.DATABASE_URL;
+        else process.env.DATABASE_URL = antes;
+      }
+    });
   });
 
   test('un contenido invalido no deja nada a medias', async () => {
