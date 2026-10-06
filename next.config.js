@@ -13,6 +13,22 @@ const nextConfig = {
   // workspace, lo que rompe el bundling de vendor-chunks en `next start`. Fijamos la raíz aquí
   // explícitamente para que siempre sea este directorio.
   outputFileTracingRoot: __dirname,
+  // Las propuestas (ADR-091): nunca indexadas ni archivadas, sin enviar la URL a otros sitios y sin que
+  // nadie pueda meterlas en un marco. Va en cabecera ademas de en la meta, porque la cabecera tambien
+  // cubre el 404 y cualquier respuesta que no sea HTML.
+  async headers() {
+    return [
+      {
+        source: '/p/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
