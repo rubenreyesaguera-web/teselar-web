@@ -53,9 +53,10 @@ export const dictionaries = {
         automation: 'Automatización e IA',
         systems: 'Sistemas y ERP'
       },
+      vat: '+ IVA',
       s1: {
         title: '01. Auditoría de Procesos',
-        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo peldaño: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y estos 150€ se descuentan si aceptas la propuesta en los 30 días siguientes.',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas por WhatsApp, una web sencilla o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan si aceptas la propuesta en los 30 días siguientes.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Procesos y costes',
         f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante. Antes te digo qué tienes que traer, que es poco y depende de tu negocio',
@@ -204,7 +205,7 @@ export const dictionaries = {
         title: 'Citas por WhatsApp · cuota del servicio',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando — y se ajusta al tamaño de tu negocio.',
+        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. El Esencial lleva una agenda, con una cita a la vez; el Completo, varias a la vez, para cuando atendéis dos o más personas al mismo tiempo.',
         f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta: entre 1,7 y 3,3 céntimos por cita, calculado con la tarifa oficial de Meta en vigor desde el 1 de octubre de 2026. Las respuestas del asistente entran en los 1.000 mensajes gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes; lo que se paga es el recordatorio y la confirmación. Lo que escriben tus clientes es gratis',
@@ -227,7 +228,7 @@ export const dictionaries = {
       payment: {
         title: 'Métodos de Pago & Condiciones',
         methods: 'Métodos aceptados: Transferencia bancaria o efectivo en mano (con cita previa).',
-        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos, esos 150€ ya están pagados y se descuentan de la señal.'
+        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos, esos 150€ ya están pagados y se descuentan de la señal. Todos los precios son + IVA.'
       }
     },
     values: {
@@ -311,7 +312,7 @@ export const dictionaries = {
       },
       q10: {
         q: '¿Puedes hacer que mi negocio coja las citas por WhatsApp?',
-        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes y el Completo 1.500€-1.800€ más 250€/mes. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo). Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email o SMS, no por WhatsApp. A cambio no migras de número, no dependes de los plazos de Meta y no pagas mensajes.'
+        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes, para una agenda con una cita a la vez, y el Completo 1.500€-1.800€ más 250€/mes, para cuando atendéis varias personas al mismo tiempo. Todo, + IVA. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo). Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email o SMS, no por WhatsApp. A cambio no migras de número, no dependes de los plazos de Meta y no pagas mensajes.'
       },
       q11: {
         q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
@@ -457,9 +458,10 @@ export const dictionaries = {
         automation: 'Automatització i IA',
         systems: 'Sistemes i ERP'
       },
+      vat: '+ IVA',
       s1: {
         title: '01. Auditoria de Processos',
-        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon graó: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i aquests 150€ es descompten si acceptes la proposta en els 30 dies següents.',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites per WhatsApp, una web senzilla o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten si acceptes la proposta en els 30 dies següents.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Processos i costos',
         f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant. Abans et dic què has de portar, que és poc i depèn del teu negoci',
@@ -608,7 +610,7 @@ export const dictionaries = {
         title: 'Cites per WhatsApp · quota del servei',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant — i s\'ajusta a la mida del teu negoci.',
+        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. L\'Essencial porta una agenda, amb una cita alhora; el Complet, diverses alhora, per quan atenen dues o més persones al mateix temps.',
         f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte: entre 1,7 i 3,3 cèntims per cita, calculat amb la tarifa oficial de Meta en vigor des de l\'1 d\'octubre de 2026. Les respostes de l\'assistent entren en els 1.000 missatges gratis al mes que dona Meta per número, que cobreixen fins a unes 250 cites al mes; el que es paga és el recordatori i la confirmació. El que escriuen els teus clients és gratis',
@@ -631,7 +633,7 @@ export const dictionaries = {
       payment: {
         title: 'Mètodes de Pagament i Condicions',
         methods: 'Mètodes acceptats: Transferència bancària o efectiu a la mà (amb cita prèvia).',
-        conditions: 'Condicions: Possibilitat de fraccionar el pagament del projecte sense interessos fins a 3 mesos. Sempre es requerirà un pagament inicial del 10% (mínim 150€) per contractar. La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l\'Auditoria de Processos, aquests 150€ ja estan pagats i es descompten del senyal.'
+        conditions: 'Condicions: Per contractar només es demana un senyal del 10% (mínim 150€). La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l\'Auditoria de Processos, aquests 150€ ja estan pagats i es descompten del senyal. Tots els preus són + IVA.'
       }
     },
     values: {
@@ -715,7 +717,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Pots fer que el meu negoci agafi les cites per WhatsApp?',
-        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes i el Complet 1.500€-1.800€ més 250€/mes. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho). Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email o SMS, no per WhatsApp. A canvi no migres de número, no depens dels terminis de Meta i no pagues missatges.'
+        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes, per a una agenda amb una cita alhora, i el Complet 1.500€-1.800€ més 250€/mes, per quan atenen diverses persones al mateix temps. Tot, + IVA. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho). Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email o SMS, no per WhatsApp. A canvi no migres de número, no depens dels terminis de Meta i no pagues missatges.'
       },
       q11: {
         q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
@@ -861,9 +863,10 @@ export const dictionaries = {
         automation: 'Automation & AI',
         systems: 'Systems & ERP'
       },
+      vat: '+ VAT',
       s1: {
         title: '01. Process Audit',
-        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. This is the second step: the way in is the free 30-minute diagnosis, and these 150€ are deducted if you accept the proposal within the following 30 days.',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —WhatsApp appointments, a simple website or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted if you accept the proposal within the following 30 days.',
         price: '150€ (Deducted from your first project)',
         tag: 'Processes and costs',
         f1: '60-90 minute session going through your operations with your own figures in front of us. Beforehand I tell you what to bring, which is not much and depends on your business',
@@ -1012,7 +1015,7 @@ export const dictionaries = {
         title: 'WhatsApp Booking · service fee',
         price: '150€ — 250€',
         period: '/ month',
-        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running — and it scales with the size of your business.',
+        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. The Essential plan has one calendar, one appointment at a time; the Complete one handles several at once, for when two or more people are seeing clients at the same time.',
         f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account: between 1.7 and 3.3 cents per booking, worked out from Meta\'s official rates in force since 1 October 2026. The assistant\'s replies fall within the 1,000 free messages a month Meta gives each number, which cover up to about 250 bookings a month; what you pay for is the reminder and the confirmation. What your clients write is always free',
@@ -1035,7 +1038,7 @@ export const dictionaries = {
       payment: {
         title: 'Payment Terms & Methods',
         methods: 'Accepted methods: Bank transfer or cash in hand (by appointment).',
-        conditions: 'Terms: Interest-free payment split available up to 3 months. An initial payment of a 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit, those 150€ are already paid and come off the deposit.'
+        conditions: 'Terms: A 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit, those 150€ are already paid and come off the deposit. All prices are + VAT.'
       }
     },
     values: {
@@ -1119,7 +1122,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Can you get my business taking bookings over WhatsApp?',
-        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, and the Complete one 1,500€-1,800€ plus 250€/month. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it). Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email or SMS, not by WhatsApp. In exchange you do not migrate your number, you do not depend on Meta\'s timelines and you pay no messages.'
+        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, for one calendar with one appointment at a time, and the Complete one 1,500€-1,800€ plus 250€/month, for when several people see clients at the same time. All + VAT. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it). Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email or SMS, not by WhatsApp. In exchange you do not migrate your number, you do not depend on Meta\'s timelines and you pay no messages.'
       },
       q11: {
         q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',

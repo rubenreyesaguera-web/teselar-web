@@ -1298,7 +1298,7 @@ export default function Page({ params }: PageProps) {
                     <div className="border-t border-claridad/5 pt-6 mt-auto">
                       <div className="flex justify-between items-center gap-4 mb-5">
                         <span className="text-sm text-claridad/60 font-semibold">{t.services.pricing}</span>
-                        <span className="text-xl md:text-2xl font-black text-innovacion">{service.price}</span>
+                        <span className="text-xl md:text-2xl font-black text-innovacion text-right">{service.price} <span className="text-sm font-semibold text-claridad/55 whitespace-nowrap">{t.services.vat}</span></span>
                       </div>
 
                       <button 
@@ -1397,7 +1397,7 @@ export default function Page({ params }: PageProps) {
                 <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
                 <div className="flex items-baseline gap-1 mt-5 mb-8">
                   <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
                 
@@ -1446,7 +1446,7 @@ export default function Page({ params }: PageProps) {
                 <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
                 <div className="flex items-baseline gap-1 mt-5 mb-8">
                   <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
                 
@@ -1498,7 +1498,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
               </div>
@@ -1547,7 +1547,7 @@ export default function Page({ params }: PageProps) {
                 </div>
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period}</span>
+                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
               </div>
