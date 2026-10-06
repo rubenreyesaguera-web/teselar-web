@@ -155,7 +155,7 @@ export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaE
             {!retirada && (
               <p className="de">
                 Propuesta de {proveedor.nombre} · {proveedor.marca}
-                {proveedor.nif ? ` · NIF ${proveedor.nif}` : ''} · {fechaLarga(p.fecha)}
+                {` · NIF ${proveedor.nif}`} · {fechaLarga(p.fecha)}
               </p>
             )}
             <Aviso estado={estado} instantanea={p} aceptadaEl={aceptadaEl} />

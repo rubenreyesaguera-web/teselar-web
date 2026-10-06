@@ -53,6 +53,20 @@ describe('validarContenido', () => {
   });
 });
 
+describe('el NIF del proveedor', () => {
+  test('obligatorio, normalizado y con su control comprobado', () => {
+    expect(validarContenido(copia()).partes.proveedor.nif).toBe('47897952S');
+    for (const malo of [null, '', '47897952A', '1234']) {
+      const c = copia() as { partes: { proveedor: { nif: unknown } } };
+      c.partes.proveedor.nif = malo;
+      expect(() => validarContenido(c)).toThrow('$.partes.proveedor.nif');
+    }
+    const s = copia() as typeof ejemplo;
+    s.partes.proveedor.nif = 'B12345674';
+    expect(validarContenido(s).partes.proveedor.nif).toBe('B12345674');
+  });
+});
+
 describe('la señal (ADR-061)', () => {
   test('10 % de la puesta en marcha, con un minimo de 150 €', () => {
     expect(senalEsperada(76500)).toBe(15000);
