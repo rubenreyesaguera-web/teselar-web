@@ -8,6 +8,7 @@ import { afterAll, beforeAll, describe, expect, test } from 'bun:test';
 import { randomUUID } from 'node:crypto';
 import type { Client } from '@neondatabase/serverless';
 import { hashOferta, jsonCanonico } from '../src/lib/propuestas/canonico';
+import { leerPropuesta } from '../src/lib/propuestas/leer';
 import ejemplo from './propuesta.ejemplo.json';
 import { conectar, crear, exportar, invalidar, migrar, sustituir, urlDeConexion } from './propuesta';
 
@@ -144,6 +145,28 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
     const { rows } = await db.query(`SELECT tipo, detalle FROM evento WHERE proposal_id = 'P-2026-002' ORDER BY evento_id`);
     expect(rows.map((r) => r.tipo)).toEqual(['creada', 'invalidada']);
     expect(rows[1].detalle.motivo).toBe('Prueba: enviada a quien no era');
+  });
+
+  test('la pagina lee la ultima version de cada una, con su estado y su hash comprobado (hito 6.4)', async () => {
+    const antes = process.env.DATABASE_URL;
+    process.env.DATABASE_URL = urlDeConexion(BASE);
+    try {
+      const aceptada = await leerPropuesta('P-2026-001');
+      expect(aceptada?.estado).toBe('aceptada');
+      expect(aceptada?.instantanea.version).toBe(2);
+      expect(aceptada?.instantanea.precio.conceptos[1].importe_centimos).toBe(17500);
+      expect((await leerPropuesta('P-2026-002'))?.estado).toBe('retirada');
+      expect((await leerPropuesta('P-2026-003'))?.estado).toBe('vencida');
+      expect(await leerPropuesta('P-2026-999')).toBeNull();
+      const vigente = await crear(db, ejemplo);
+      const leida = await leerPropuesta(vigente.referencia);
+      expect(leida?.estado).toBe('vigente');
+      expect(leida?.offerHash).toBe(vigente.offerHash);
+      expect(jsonCanonico(leida?.instantanea)).toBe(jsonCanonico(vigente.instantanea));
+    } finally {
+      if (antes === undefined) delete process.env.DATABASE_URL;
+      else process.env.DATABASE_URL = antes;
+    }
   });
 
   test('un contenido invalido no deja nada a medias', async () => {

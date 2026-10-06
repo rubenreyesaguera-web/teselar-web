@@ -56,6 +56,9 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(url);
 }
 
+// `p/` va fuera: las propuestas (/p/P-2026-001, ADR-091) no tienen idioma en la ruta. Sin esto, el
+// middleware las redirigiria a /es/p/..., que no existe. Con la barra, para no dejar fuera /precios ni nada
+// que empiece por p.
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|logo\\.jpeg|logo_600x400\\.jpeg|.*\\..*).*)'],
+  matcher: ['/((?!api|p/|_next/static|_next/image|favicon.ico|logo\\.jpeg|logo_600x400\\.jpeg|.*\\..*).*)'],
 };
