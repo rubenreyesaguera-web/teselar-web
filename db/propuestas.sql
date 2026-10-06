@@ -66,6 +66,12 @@ CREATE TABLE IF NOT EXISTS evento (
 
 CREATE INDEX IF NOT EXISTS evento_por_propuesta ON evento (proposal_id, created_at);
 
+-- Seguimiento (6/10): los hitos de pago cumplidos (`hito_cumplido`) y su correccion (`hito_deshecho`), con el
+-- numero de hito en `detalle`. Se redefine la lista para que la migracion valga tambien sobre una base ya creada.
+ALTER TABLE evento DROP CONSTRAINT IF EXISTS evento_tipo_check;
+ALTER TABLE evento ADD CONSTRAINT evento_tipo_check CHECK (tipo IN (
+  'creada', 'sustituida', 'invalidada', 'aceptada', 'aviso_fallido', 'error_aceptacion', 'hito_cumplido', 'hito_deshecho'));
+
 -- 1. La version: solo cambian `status` (hacia delante) e `intentos_fallidos`; no se borra.
 CREATE OR REPLACE FUNCTION propuesta_version_inmutable() RETURNS trigger
 LANGUAGE plpgsql AS $$

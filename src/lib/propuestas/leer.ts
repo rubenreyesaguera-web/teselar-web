@@ -17,6 +17,8 @@ export interface PropuestaLeida {
   estado: Estado;
   venceEl: Date;
   aceptadaEl: Date | null;
+  /** Hitos de pago cumplidos (numero desde 1 → cuando), solo si esta aceptada. */
+  cumplidos: Record<number, string>;
 }
 
 export interface FilaVersion {
@@ -44,7 +46,17 @@ export function interpretar(fila: FilaVersion, ahora = new Date()): PropuestaLei
   else if (fila.status !== 'publicada') estado = 'retirada';
   else if (venceEl <= ahora) estado = 'vencida';
   else estado = 'vigente';
-  return { instantanea: fila.snapshot as InstantaneaV1, offerHash, estado, venceEl, aceptadaEl };
+  return { instantanea: fila.snapshot as InstantaneaV1, offerHash, estado, venceEl, aceptadaEl, cumplidos: {} };
+}
+
+/** Lo ultimo que se dijo de cada hito gana: cumplido, o deshecho (y entonces no cuenta). */
+export function hitosCumplidos(eventos: { tipo: string; hito: number; created_at: string | Date }[]): Record<number, string> {
+  const fuera: Record<number, string> = {};
+  for (const e of eventos) {
+    if (e.tipo === 'hito_cumplido') fuera[e.hito] = new Date(e.created_at).toISOString();
+    else delete fuera[e.hito];
+  }
+  return fuera;
 }
 
 /** La version mas reciente de `referencia`, o null si no existe. */
@@ -60,5 +72,14 @@ export async function leerPropuesta(referencia: string): Promise<PropuestaLeida 
      WHERE v.proposal_id = ${referencia}
      ORDER BY v.version DESC
      LIMIT 1`) as FilaVersion[];
-  return filas.length ? interpretar(filas[0]) : null;
+  if (!filas.length) return null;
+  const p = interpretar(filas[0]);
+  if (p.estado === 'aceptada') {
+    const eventos = (await sql`
+      SELECT tipo, (detalle->>'hito')::int AS hito, created_at FROM evento
+       WHERE proposal_id = ${referencia} AND tipo IN ('hito_cumplido', 'hito_deshecho')
+       ORDER BY evento_id`) as { tipo: string; hito: number; created_at: string | Date }[];
+    p.cumplidos = hitosCumplidos(eventos);
+  }
+  return p;
 }

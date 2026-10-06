@@ -30,6 +30,8 @@ export interface TramoDeCalendario {
 
 /** Lo que se rellena a mano (el JSON que lee `scripts/propuesta.ts crear`). */
 export interface ContenidoV1 {
+  /** La portada: la frase que vende el resultado, con las palabras del cliente; no se inventa. */
+  portada: { titular: string; subtitulo: string };
   partes: {
     cliente: { nombre: string; negocio: string };
     proveedor: { nombre: string; marca: string; nif: string | null };
@@ -131,10 +133,11 @@ const textos = (v: unknown, r: string, minimo = 1) => lista(v, r, texto, minimo)
 /** Valida y normaliza el JSON rellenado. Lanza con la ruta exacta del primer fallo. */
 export function validarContenido(entrada: unknown): ContenidoV1 {
   const o = objeto(entrada, '$', [
-    'partes', 'situacion', 'solucion', 'alcance', 'entregables', 'exclusiones', 'dependencias',
+    'portada', 'partes', 'situacion', 'solucion', 'alcance', 'entregables', 'exclusiones', 'dependencias',
     'calendario', 'precio', 'impuestos', 'pagos', 'garantia', 'vigencia_dias', 'siguiente_paso',
   ]);
 
+  const portada = objeto(o.portada, '$.portada', ['titular', 'subtitulo']);
   const partes = objeto(o.partes, '$.partes', ['cliente', 'proveedor']);
   const cliente = objeto(partes.cliente, '$.partes.cliente', ['nombre', 'negocio']);
   const proveedor = objeto(partes.proveedor, '$.partes.proveedor', ['nombre', 'marca', 'nif']);
@@ -151,6 +154,7 @@ export function validarContenido(entrada: unknown): ContenidoV1 {
   }
 
   const contenido: ContenidoV1 = {
+    portada: { titular: texto(portada.titular, '$.portada.titular'), subtitulo: texto(portada.subtitulo, '$.portada.subtitulo') },
     partes: {
       cliente: { nombre: texto(cliente.nombre, '$.partes.cliente.nombre'), negocio: texto(cliente.negocio, '$.partes.cliente.negocio') },
       proveedor: {

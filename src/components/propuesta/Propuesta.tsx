@@ -1,23 +1,43 @@
-// La propuesta tal y como se publico (ADR-091, hito 6.4): todo lo que se lee aqui sale de la instantanea
+// La propuesta tal y como se publico (ADR-091, hitos 6.4 y 6.5): todo lo que se lee aqui sale de la instantanea
 // canonica. Si un texto no esta en el JSON, no esta en la pagina; las unicas palabras propias son los titulos de
-// las secciones del doc 24 y los avisos de estado.
+// las secciones del doc 24, los avisos de estado y los botones.
+//
+// Es una landing, como la demo del dia 3 del curso: portada con la frase que vende, tarjeta de inversion con el
+// estado y el boton de aceptar a la vista; debajo, el detalle. Vale para cualquier cliente: no hay nada de un
+// producto concreto.
 import React from 'react';
 import type { Concepto, InstantaneaV1 } from '@/lib/propuestas/instantanea';
 import type { Estado } from '@/lib/propuestas/leer';
 import { euros, fechaLarga, momento } from '@/lib/propuestas/formato';
+import { BotonAceptar, ProveedorAceptacion } from './Aceptacion';
+import CaminoDePagos from './CaminoDePagos';
 
 interface Props {
   instantanea: InstantaneaV1;
   offerHash: string;
   estado: Estado;
   aceptadaEl: Date | null;
+  cumplidos?: Record<number, string>;
 }
 
-function Seccion({ n, titulo, children }: { n: number; titulo: string; children: React.ReactNode }) {
+const ETIQUETA_ESTADO: Record<Estado, string> = {
+  vigente: 'Pendiente de aceptación',
+  aceptada: 'Propuesta aceptada',
+  vencida: 'Vencida',
+  retirada: 'Retirada',
+};
+
+function Pastilla({ estado }: { estado: Estado }) {
+  return <span className={`pastilla pastilla-${estado}`}>{ETIQUETA_ESTADO[estado]}</span>;
+}
+
+function Seccion({ id, n, titulo, children }: { id: string; n: number; titulo: string; children: React.ReactNode }) {
   return (
-    <section className="seccion" aria-labelledby={`s${n}`}>
-      <h2 id={`s${n}`}>
-        <span className="num" aria-hidden="true">{String(n).padStart(2, '0')}</span>
+    <section className="seccion" id={id} aria-labelledby={`${id}-t`}>
+      <h2 id={`${id}-t`}>
+        <span className="num" aria-hidden="true">
+          {String(n).padStart(2, '0')}
+        </span>
         {titulo}
       </h2>
       {children}
@@ -25,9 +45,9 @@ function Seccion({ n, titulo, children }: { n: number; titulo: string; children:
   );
 }
 
-function Lista({ items }: { items: string[] }) {
+function Lista({ items, className }: { items: string[]; className?: string }) {
   return (
-    <ul>
+    <ul className={className}>
       {items.map((t, i) => (
         <li key={i}>{t}</li>
       ))}
@@ -39,7 +59,7 @@ function precioDe(c: Concepto): string {
   return `${euros(c.importe_centimos)}${c.periodicidad === 'mensual' ? ' al mes' : ''} + IVA`;
 }
 
-function Aviso({ estado, instantanea, aceptadaEl }: Omit<Props, 'offerHash'>) {
+function Aviso({ estado, instantanea, aceptadaEl }: Pick<Props, 'estado' | 'instantanea' | 'aceptadaEl'>) {
   switch (estado) {
     case 'aceptada':
       return (
@@ -50,8 +70,7 @@ function Aviso({ estado, instantanea, aceptadaEl }: Omit<Props, 'offerHash'>) {
     case 'vencida':
       return (
         <p className="aviso aviso-alerta" role="status">
-          Esta propuesta venció el {fechaLarga(instantanea.vigencia.hasta)}. Si te sigue interesando, pídeme una
-          actualizada.
+          Esta propuesta venció el {fechaLarga(instantanea.vigencia.hasta)}. Si te sigue interesando, pídeme una actualizada.
         </p>
       );
     case 'retirada':
@@ -61,158 +80,211 @@ function Aviso({ estado, instantanea, aceptadaEl }: Omit<Props, 'offerHash'>) {
         </p>
       );
     default:
-      return (
-        <p className="aviso" role="status">
-          Válida hasta el {fechaLarga(instantanea.vigencia.hasta)}.
-        </p>
-      );
+      return null;
   }
 }
 
-export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaEl }: Props) {
-  const { cliente, proveedor } = p.partes;
+function TarjetaInversion({ p, estado }: { p: InstantaneaV1; estado: Estado }) {
+  const unicos = p.precio.conceptos.filter((c) => c.periodicidad === 'unico');
+  const mensuales = p.precio.conceptos.filter((c) => c.periodicidad === 'mensual');
+  const total = unicos.reduce((s, c) => s + c.importe_centimos, 0);
+  const hitos = p.pagos.hitos;
   return (
-    <article className="hoja">
-      <header className="cabecera">
-        <p className="marca">{proveedor.marca}</p>
-        <h1>Propuesta para {cliente.negocio}</h1>
-        <dl className="datos">
-          <div>
-            <dt>Para</dt>
-            <dd>
-              {cliente.nombre} · {cliente.negocio}
-            </dd>
-          </div>
-          <div>
-            <dt>De</dt>
-            <dd>
-              {proveedor.nombre} · {proveedor.marca}
-              {proveedor.nif ? ` · NIF ${proveedor.nif}` : ''}
-            </dd>
-          </div>
-          <div>
-            <dt>Referencia</dt>
-            <dd>
-              {p.referencia} · v{p.version}
-            </dd>
-          </div>
-          <div>
-            <dt>Fecha</dt>
-            <dd>{fechaLarga(p.fecha)}</dd>
-          </div>
-        </dl>
-        <Aviso estado={estado} instantanea={p} aceptadaEl={aceptadaEl} />
+    <aside className="tarjeta" aria-label="Inversión">
+      <p className="tarjeta-etiqueta">Inversión</p>
+      {unicos.length > 0 && (
+        <p className="tarjeta-total">
+          {euros(total)}
+          <span> + IVA</span>
+        </p>
+      )}
+      {unicos.length > 1 && <p className="tarjeta-linea">{unicos.map((c) => `${c.concepto}: ${euros(c.importe_centimos)}`).join(' · ')}</p>}
+      {mensuales.map((c, i) => (
+        <p className="tarjeta-mensual" key={i}>
+          {unicos.length === 0 ? <strong>{precioDe(c)}</strong> : <>+ {precioDe(c)}</>}
+          <span>{c.concepto}</span>
+        </p>
+      ))}
+      {hitos.length > 0 && (
+        <p className="tarjeta-linea">
+          {hitos.length === 1 ? 'Un pago' : `En ${hitos.length} pagos`}: {hitos.map((h) => euros(h.importe_centimos)).join(' · ')}
+        </p>
+      )}
+      <p className="tarjeta-linea">Válida hasta el {fechaLarga(p.vigencia.hasta)}</p>
+      <Pastilla estado={estado} />
+    </aside>
+  );
+}
+
+export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaEl, cumplidos = {} }: Props) {
+  const { cliente, proveedor } = p.partes;
+  const unicos = p.precio.conceptos.filter((c) => c.periodicidad === 'unico');
+  const resumenPrecio = unicos.length
+    ? `${euros(unicos.reduce((s, c) => s + c.importe_centimos, 0))} + IVA`
+    : p.precio.conceptos.map(precioDe).join(' · ');
+  let n = 0;
+  const sig = () => ++n;
+
+  return (
+    <ProveedorAceptacion instantanea={p} offerHash={offerHash} estado={estado}>
+      <header className="barra">
+        <div className="barra-dentro">
+          <span className="barra-marca">{proveedor.marca}</span>
+          <span className="barra-ref">
+            Propuesta {p.referencia} · v{p.version}
+          </span>
+          <BotonAceptar className="boton boton-principal boton-pequeno" />
+        </div>
       </header>
 
-      {estado !== 'retirada' && (
-        <>
-          <Seccion n={1} titulo="Lo que me contaste">
-            {p.situacion.palabras_del_cliente.map((t, i) => (
-              <blockquote key={i}>{t}</blockquote>
-            ))}
-            {p.situacion.lo_que_funciona && <p className="nota">{p.situacion.lo_que_funciona}</p>}
-          </Seccion>
+      <main className="pagina">
+        <section className="portada" aria-labelledby="titular">
+          <div className="portada-texto">
+            {estado !== 'retirada' && <p className="para">Para {cliente.negocio}</p>}
+            <h1 id="titular">{estado === 'retirada' ? `Propuesta ${p.referencia}` : p.portada.titular}</h1>
+            {estado !== 'retirada' && <p className="subtitulo">{p.portada.subtitulo}</p>}
+            {estado !== 'retirada' && (
+              <div className="acciones">
+                <BotonAceptar />
+                <a className="boton boton-secundario" href="#alcance">
+                  Ver alcance completo
+                </a>
+              </div>
+            )}
+            <Aviso estado={estado} instantanea={p} aceptadaEl={aceptadaEl} />
+          </div>
+          {estado !== 'retirada' && <TarjetaInversion p={p} estado={estado} />}
+        </section>
 
-          <Seccion n={2} titulo="Lo que te propongo">
-            <p className="destacado">{p.solucion.resumen}</p>
-            <Lista items={p.solucion.dia_a_dia} />
-          </Seccion>
-
-          <Seccion n={3} titulo="Qué incluye">
-            <Lista items={p.alcance} />
-            <h3>Lo que te entrego</h3>
-            <Lista items={p.entregables} />
-          </Seccion>
-
-          <Seccion n={4} titulo="Qué no incluye">
-            <Lista items={p.exclusiones} />
-          </Seccion>
-
-          <Seccion n={5} titulo="Lo que necesito de ti">
-            <Lista items={p.dependencias} />
-          </Seccion>
-
-          <Seccion n={6} titulo="Calendario">
-            <div className="tabla">
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Qué</th>
-                    <th scope="col">Depende de</th>
-                    <th scope="col">Plazo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {p.calendario.map((t, i) => (
-                    <tr key={i}>
-                      <td>{t.tramo}</td>
-                      <td>{t.depende_de}</td>
-                      <td>{t.plazo}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Seccion>
-
-          <Seccion n={7} titulo="Inversión y forma de pago">
-            <dl className="precios">
-              {p.precio.conceptos.map((c, i) => (
-                <div key={i}>
-                  <dt>{c.concepto}</dt>
-                  <dd>{precioDe(c)}</dd>
-                </div>
-              ))}
+        {estado !== 'retirada' && (
+          <div className="detalle">
+            <dl className="datos">
+              <div>
+                <dt>Para</dt>
+                <dd>
+                  {cliente.nombre} · {cliente.negocio}
+                </dd>
+              </div>
+              <div>
+                <dt>De</dt>
+                <dd>
+                  {proveedor.nombre} · {proveedor.marca}
+                  {proveedor.nif ? ` · NIF ${proveedor.nif}` : ''}
+                </dd>
+              </div>
+              <div>
+                <dt>Referencia</dt>
+                <dd>
+                  {p.referencia} · v{p.version}
+                </dd>
+              </div>
+              <div>
+                <dt>Fecha</dt>
+                <dd>{fechaLarga(p.fecha)}</dd>
+              </div>
             </dl>
-            {p.impuestos.nota && <p className="nota">{p.impuestos.nota}</p>}
-            <h3>Cómo se paga</h3>
-            <div className="tabla">
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">Pago</th>
-                    <th scope="col">Cuándo</th>
-                    <th scope="col" className="importe">Importe</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {p.pagos.hitos.map((h, i) => (
-                    <tr key={i}>
-                      <td className="sin-corte">{h.hito}</td>
-                      <td>{h.cuando}</td>
-                      <td className="importe">{euros(h.importe_centimos)} + IVA</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {p.pagos.notas.length > 0 && <Lista items={p.pagos.notas} />}
-          </Seccion>
 
-          {p.garantia && (
-            <Seccion n={8} titulo="Garantía">
-              <p>{p.garantia}</p>
+            {estado === 'aceptada' && (
+              <Seccion id="seguimiento" n={sig()} titulo="Cómo va">
+                <CaminoDePagos hitos={p.pagos.hitos} seguimiento cumplidos={cumplidos} />
+              </Seccion>
+            )}
+
+            <Seccion id="situacion" n={sig()} titulo="Lo que me contaste">
+              {p.situacion.palabras_del_cliente.map((t, i) => (
+                <blockquote key={i}>{t}</blockquote>
+              ))}
+              {p.situacion.lo_que_funciona && <p className="nota">{p.situacion.lo_que_funciona}</p>}
             </Seccion>
-          )}
 
-          <Seccion n={p.garantia ? 9 : 8} titulo="Vigencia">
-            <p>
-              {p.vigencia.dias} días: hasta el {fechaLarga(p.vigencia.hasta)}.
-            </p>
-          </Seccion>
+            <Seccion id="solucion" n={sig()} titulo="Lo que te propongo">
+              <p className="destacado">{p.solucion.resumen}</p>
+              <Lista items={p.solucion.dia_a_dia} className="marcas" />
+            </Seccion>
 
-          <Seccion n={p.garantia ? 10 : 9} titulo="Siguiente paso">
-            <p className="destacado">{p.siguiente_paso}</p>
-          </Seccion>
-        </>
+            <Seccion id="alcance" n={sig()} titulo="Qué incluye">
+              <Lista items={p.alcance} className="marcas" />
+              <h3>Lo que te entrego</h3>
+              <Lista items={p.entregables} className="marcas" />
+            </Seccion>
+
+            <Seccion id="exclusiones" n={sig()} titulo="Qué no incluye">
+              <Lista items={p.exclusiones} />
+            </Seccion>
+
+            <Seccion id="dependencias" n={sig()} titulo="Lo que necesito de ti">
+              <Lista items={p.dependencias} />
+            </Seccion>
+
+            <Seccion id="calendario" n={sig()} titulo="Calendario">
+              <ol className="linea-tiempo">
+                {p.calendario.map((t, i) => (
+                  <li key={i}>
+                    <p className="lt-tramo">{t.tramo}</p>
+                    <p className="lt-meta">
+                      <span className="lt-depende">Depende de {t.depende_de}</span>
+                      <span>{t.plazo}</span>
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </Seccion>
+
+            <Seccion id="inversion" n={sig()} titulo="Inversión y forma de pago">
+              <dl className="precios">
+                {p.precio.conceptos.map((c, i) => (
+                  <div key={i}>
+                    <dt>{c.concepto}</dt>
+                    <dd>{precioDe(c)}</dd>
+                  </div>
+                ))}
+              </dl>
+              {p.impuestos.nota && <p className="nota">{p.impuestos.nota}</p>}
+              {estado !== 'aceptada' && (
+                <>
+                  <h3>Cómo se paga</h3>
+                  <p className="nota">Toca cada pago para ver cuándo se paga.</p>
+                  <CaminoDePagos hitos={p.pagos.hitos} seguimiento={false} cumplidos={{}} />
+                </>
+              )}
+              {p.pagos.notas.length > 0 && <Lista items={p.pagos.notas} />}
+            </Seccion>
+
+            {p.garantia && (
+              <Seccion id="garantia" n={sig()} titulo="Garantía">
+                <p>{p.garantia}</p>
+              </Seccion>
+            )}
+
+            <Seccion id="vigencia" n={sig()} titulo="Vigencia">
+              <p>
+                {p.vigencia.dias} días: hasta el {fechaLarga(p.vigencia.hasta)}.
+              </p>
+            </Seccion>
+
+            <section className="cierre" aria-labelledby="cierre-t">
+              <h2 id="cierre-t">Siguiente paso</h2>
+              <p className="destacado">{p.siguiente_paso}</p>
+              <BotonAceptar />
+              <Pastilla estado={estado} />
+            </section>
+          </div>
+        )}
+
+        <footer className="pie">
+          <p>
+            Huella de esta versión (SHA-256): <code>{offerHash}</code>
+          </p>
+          <p>Cualquier cambio en lo que dice esta propuesta da una versión nueva con otra huella.</p>
+        </footer>
+      </main>
+
+      {estado === 'vigente' && (
+        <div className="barra-movil">
+          <span className="barra-movil-precio">{resumenPrecio}</span>
+          <BotonAceptar className="boton boton-principal boton-pequeno" />
+        </div>
       )}
-
-      <footer className="pie">
-        <p>
-          Huella de esta versión (SHA-256): <code>{offerHash}</code>
-        </p>
-        <p>Cualquier cambio en lo que dice esta propuesta da una versión nueva con otra huella.</p>
-      </footer>
-    </article>
+    </ProveedorAceptacion>
   );
 }

@@ -7,6 +7,7 @@
 //   crear <contenido.json>          publica la v1 de una propuesta nueva y devuelve los dos enlaces
 //   sustituir <ref> <contenido.json> publica la version siguiente y deja la anterior como sustituida
 //   invalidar <ref> <motivo>        retira la version viva (fraude, error); queda el evento
+//   avance <ref> <n> [--deshacer]   marca (o desmarca) el hito de pago n (1 = el primero) como cumplido
 //   exportar <salida.json>          vuelca versiones, aceptaciones, identidades y eventos (copia propia)
 //
 // La conexion sale de DATABASE_URL_UNPOOLED (o DATABASE_URL). `--base` cambia solo el nombre de la base: las
@@ -162,6 +163,34 @@ export async function invalidar(client: Client, referencia: string, motivo: stri
   });
 }
 
+/**
+ * Seguimiento: marca el hito de pago `n` (desde 1) de una propuesta aceptada como cumplido, o lo desmarca. Solo
+ * anade eventos; la pagina enseña el ultimo de cada hito.
+ */
+export async function avance(client: Client, referencia: string, n: number, deshacer = false): Promise<string> {
+  return enTransaccion(client, async () => {
+    const { rows } = await client.query(
+      `SELECT a.version, a.snapshot FROM aceptacion a WHERE a.proposal_id = $1 FOR SHARE`,
+      [referencia],
+    );
+    if (rows.length === 0) throw new Error(`${referencia} no esta aceptada: el seguimiento empieza al aceptar`);
+    const hitos = (rows[0].snapshot as InstantaneaV1).pagos.hitos;
+    if (!Number.isSafeInteger(n) || n < 1 || n > hitos.length) throw new Error(`El hito va de 1 a ${hitos.length}`);
+    const ultimo = await client.query(
+      `SELECT tipo FROM evento WHERE proposal_id = $1 AND tipo IN ('hito_cumplido', 'hito_deshecho')
+         AND (detalle->>'hito')::int = $2 ORDER BY evento_id DESC LIMIT 1`,
+      [referencia, n],
+    );
+    const cumplido = ultimo.rows[0]?.tipo === 'hito_cumplido';
+    if (cumplido !== deshacer) throw new Error(`El hito ${n} ${cumplido ? 'ya esta cumplido' : 'no esta cumplido'}`);
+    await client.query(
+      `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, $3, $4::jsonb)`,
+      [referencia, rows[0].version, deshacer ? 'hito_deshecho' : 'hito_cumplido', JSON.stringify({ hito: n })],
+    );
+    return hitos[n - 1].hito;
+  });
+}
+
 export async function exportar(client: Client) {
   const q = async (sql: string) => (await client.query(sql)).rows;
   return {
@@ -225,6 +254,13 @@ async function main(argv: string[]): Promise<void> {
         console.log(`${args[0]} v${v} invalidada.`);
         break;
       }
+      case 'avance': {
+        if (!args[0] || !args[1]) throw new Error('avance pide la referencia y el numero de hito');
+        const deshacer = args.includes('--deshacer');
+        const hito = await avance(client, args[0], Number(args[1]), deshacer);
+        console.log(`${args[0]}: «${hito}» ${deshacer ? 'desmarcado' : 'cumplido'}.`);
+        break;
+      }
       case 'exportar': {
         if (!args[0]) throw new Error('exportar pide el fichero de salida');
         const datos = await exportar(client);
@@ -234,7 +270,7 @@ async function main(argv: string[]): Promise<void> {
         break;
       }
       default:
-        throw new Error('Ordenes: migrar · crear · sustituir · invalidar · exportar');
+        throw new Error('Ordenes: migrar · crear · sustituir · invalidar · avance · exportar');
     }
   } finally {
     await client.end();
