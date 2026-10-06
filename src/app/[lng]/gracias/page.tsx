@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Background3D } from '../../../components/Background3D';
 import { dictionaries } from '../../../i18n/dictionaries';
-import { CheckCircle, ArrowLeft, Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
+import { CheckCircle, ArrowLeft } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ lng: string }>;
