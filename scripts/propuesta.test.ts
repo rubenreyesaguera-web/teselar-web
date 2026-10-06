@@ -1,5 +1,5 @@
-// Pruebas contra Postgres de verdad, en la base `propuestas_pruebas` del mismo Neon (nunca en la de las
-// propuestas reales). Se saltan si no hay URL de conexion:
+// Pruebas contra Postgres de verdad, en la base `propuestas_tests` del mismo Neon: ni la de las propuestas reales
+// (`neondb`) ni la de las propuestas de ensayo que se enseñan (`propuestas_pruebas`). Se saltan si no hay URL:
 //
 //   bun --env-file=<fichero de vercel env pull> test
 //
@@ -14,7 +14,7 @@ import { nuevaCapacidad } from '../src/lib/propuestas/canonico';
 import ejemplo from './propuesta.ejemplo.json';
 import { avance, conectar, crear, exportar, invalidar, migrar, sustituir, urlDeConexion, type Publicada } from './propuesta';
 
-const BASE = 'propuestas_pruebas';
+const BASE = 'propuestas_tests';
 const hayBase = Boolean(process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL);
 
 describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
@@ -320,6 +320,16 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
         else process.env.DATABASE_URL = antes;
       }
     });
+  });
+
+  test('crear con una señal distinta a proposito deja el motivo en el evento', async () => {
+    const c = structuredClone(ejemplo);
+    c.pagos.hitos[0].importe_centimos = 10000;
+    c.pagos.hitos[1].importe_centimos = 20500 + 5000;
+    await expect(crear(db, c)).rejects.toThrow('ADR-061');
+    const p = await crear(db, c, { senalDistinta: 'Prueba: señal pactada' });
+    const { rows } = await db.query(`SELECT detalle FROM evento WHERE proposal_id = $1 AND tipo = 'creada'`, [p.referencia]);
+    expect(rows[0].detalle.senal_distinta).toBe('Prueba: señal pactada');
   });
 
   test('un contenido invalido no deja nada a medias', async () => {

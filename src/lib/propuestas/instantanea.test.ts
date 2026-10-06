@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import ejemplo from '../../../scripts/propuesta.ejemplo.json';
 import { hashOferta } from './canonico';
-import { construirInstantanea, hoyEnMadrid, sumarDias, validarContenido } from './instantanea';
+import { construirInstantanea, hoyEnMadrid, senalEsperada, sumarDias, validarContenido } from './instantanea';
 
 const copia = (): Record<string, unknown> => structuredClone(ejemplo) as Record<string, unknown>;
 
@@ -50,6 +50,36 @@ describe('validarContenido', () => {
     const v = validarContenido(c);
     expect(v.partes.cliente.nombre).toBe('Rubén');
     expect(() => hashOferta(construirInstantanea(v, { referencia: 'P-2026-001', version: 1, fecha: '2026-10-06' }))).not.toThrow();
+  });
+});
+
+describe('la señal (ADR-061)', () => {
+  test('10 % de la puesta en marcha, con un minimo de 150 €', () => {
+    expect(senalEsperada(76500)).toBe(15000);
+    expect(senalEsperada(250000)).toBe(25000);
+    expect(senalEsperada(1234567)).toBe(123457);
+  });
+
+  test('una señal que no es la regla no se publica', () => {
+    const c = copia() as typeof ejemplo;
+    c.pagos.hitos[0].importe_centimos = 7650;
+    c.pagos.hitos[1].importe_centimos = 20500 + 7350;
+    expect(() => validarContenido(c)).toThrow('ADR-061): 15000 centimos, no 7650');
+  });
+
+  test('saltarse la regla pide un motivo de verdad', () => {
+    const c = copia() as typeof ejemplo;
+    c.pagos.hitos[0].importe_centimos = 7650;
+    c.pagos.hitos[1].importe_centimos = 20500 + 7350;
+    expect(() => validarContenido(c, { senalDistinta: '   ' })).toThrow('ADR-061');
+    expect(validarContenido(c, { senalDistinta: 'Cliente de un referido: señal pactada de viva voz' }).pagos.hitos[0].importe_centimos).toBe(7650);
+  });
+
+  test('una propuesta solo de cuotas mensuales no tiene señal que comprobar', () => {
+    const c = copia() as typeof ejemplo;
+    c.precio.conceptos = [c.precio.conceptos[1]];
+    c.pagos.hitos = [{ hito: 'Primera cuota', importe_centimos: 0, cuando: 'Al empezar' }];
+    expect(() => validarContenido(c)).not.toThrow();
   });
 });
 
