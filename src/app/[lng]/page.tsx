@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useEffect, use, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useRouter, usePathname } from 'next/navigation';
+import { motion, AnimatePresence, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import { Background3D } from '../../components/Background3D';
 import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
 import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
-  Check, ShieldCheck, CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
+  ShieldCheck, CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
   Gift, Star, Users, Clock, Send, MessageCircle, Linkedin, Instagram, CalendarCheck
 } from 'lucide-react';
 
@@ -33,7 +33,7 @@ interface AnimatedWordProps {
   index: number;
   totalWords: number;
   isGradient: boolean;
-  scrollY: any;
+  scrollY: MotionValue<number>;
   heroBuilt: boolean;
 }
 
@@ -85,8 +85,10 @@ export default function Page({ params }: PageProps) {
   }, [urlLng]);
 
   // Word arrays for staggered title construction (Apple-style cinematic reveal)
+  // Empieza por IA y no por "Webs" desde el 6/10/2026, alineado con el titulo de la pagina
+  // (ADR-084): por las busquedas de diseño web no salia, y lo que se quiere vender es IA.
   const esWords = [
-    { text: "Webs,", isGradient: false },
+    { text: "IA,", isGradient: false },
     { text: "automatizaciones", isGradient: false },
     { text: "y", isGradient: false },
     { text: "software", isGradient: false },
@@ -95,7 +97,7 @@ export default function Page({ params }: PageProps) {
   ];
 
   const caWords = [
-    { text: "Webs,", isGradient: false },
+    { text: "IA,", isGradient: false },
     { text: "automatitzacions", isGradient: false },
     { text: "i", isGradient: false },
     { text: "programari", isGradient: false },
@@ -104,7 +106,7 @@ export default function Page({ params }: PageProps) {
   ];
 
   const enWords = [
-    { text: "Websites,", isGradient: false },
+    { text: "AI,", isGradient: false },
     { text: "automations", isGradient: false },
     { text: "and", isGradient: false },
     { text: "custom", isGradient: true },
@@ -120,7 +122,6 @@ export default function Page({ params }: PageProps) {
   const LOCALES: Record<string, string> = { es: 'es-ES', ca: 'ca-ES', en: 'en-US' };
   const fmt = (n: number) => n.toLocaleString(LOCALES[currentLng] ?? 'es-ES');
   
-  const router = useRouter();
   const pathname = usePathname();
 
   const [isMobile, setIsMobile] = useState(false);
@@ -134,7 +135,7 @@ export default function Page({ params }: PageProps) {
   }, []);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [, setSelectedService] = useState<string | null>(null);
   const [contactMessage, setContactMessage] = useState('');
   const [contactReason, setContactReason] = useState('info'); // default to requesting info
   const [activeCategory, setActiveCategory] = useState<'all' | 'web' | 'automation' | 'systems'>('all');
@@ -426,7 +427,7 @@ export default function Page({ params }: PageProps) {
         setSubmitError(t.contact.error);
         setIsSubmitting(false);
       }
-    } catch (err) {
+    } catch {
       setSubmitError(t.contact.error);
       setIsSubmitting(false);
     }
@@ -1247,7 +1248,6 @@ export default function Page({ params }: PageProps) {
             <AnimatePresence mode="popLayout">
               {filteredServices.map((service, sIndex) => {
                 const IconComponent = service.icon;
-                const isEvenColumn = sIndex % 2 === 0;
                 return (
                   <motion.div
                     layout
