@@ -1,15 +1,15 @@
-// La propuesta tal y como se publico (ADR-091, hitos 6.4 y 6.5): todo lo que se lee aqui sale de la instantanea
-// canonica. Si un texto no esta en el JSON, no esta en la pagina; las unicas palabras propias son los titulos de
-// las secciones del doc 24, los avisos de estado y los botones.
+// La propuesta tal y como se publico (ADR-091 y ADR-092): todo lo que se lee aqui sale de la instantanea canonica.
+// Si un texto no esta en el JSON, no esta en la pagina; las unicas palabras propias son los titulos de las secciones
+// del doc 24, los avisos de estado y los botones.
 //
-// Es una landing, como la demo del dia 3 del curso: portada con la frase que vende, tarjeta de inversion con el
-// estado y el boton de aceptar a la vista; debajo, el detalle. Vale para cualquier cliente: no hay nada de un
-// producto concreto.
+// Una landing, como la demo del dia 3 del curso, y comun a todos los clientes: a la vista solo la portada y la
+// tarjeta de inversion (con el camino de pagos, que despues de aceptar es el seguimiento). El resto, en el HTML pero
+// plegado, hasta que se pulsa «Ver alcance completo».
 import React from 'react';
 import type { Concepto, InstantaneaV1 } from '@/lib/propuestas/instantanea';
 import type { Estado } from '@/lib/propuestas/leer';
 import { euros, fechaLarga, momento } from '@/lib/propuestas/formato';
-import { BotonAceptar, ProveedorAceptacion } from './Aceptacion';
+import { BotonAceptar, BotonAlcance, ProveedorAceptacion, ZonaAlcance } from './Aceptacion';
 import CaminoDePagos from './CaminoDePagos';
 
 interface Props {
@@ -84,11 +84,10 @@ function Aviso({ estado, instantanea, aceptadaEl }: Pick<Props, 'estado' | 'inst
   }
 }
 
-function TarjetaInversion({ p, estado }: { p: InstantaneaV1; estado: Estado }) {
+function TarjetaInversion({ p, estado, cumplidos }: { p: InstantaneaV1; estado: Estado; cumplidos: Record<number, string> }) {
   const unicos = p.precio.conceptos.filter((c) => c.periodicidad === 'unico');
   const mensuales = p.precio.conceptos.filter((c) => c.periodicidad === 'mensual');
   const total = unicos.reduce((s, c) => s + c.importe_centimos, 0);
-  const hitos = p.pagos.hitos;
   return (
     <aside className="tarjeta" aria-label="Inversión">
       <p className="tarjeta-etiqueta">Inversión</p>
@@ -105,13 +104,11 @@ function TarjetaInversion({ p, estado }: { p: InstantaneaV1; estado: Estado }) {
           <span>{c.concepto}</span>
         </p>
       ))}
-      {hitos.length > 0 && (
-        <p className="tarjeta-linea">
-          {hitos.length === 1 ? 'Un pago' : `En ${hitos.length} pagos`}: {hitos.map((h) => euros(h.importe_centimos)).join(' · ')}
-        </p>
-      )}
-      <p className="tarjeta-linea">Válida hasta el {fechaLarga(p.vigencia.hasta)}</p>
-      <Pastilla estado={estado} />
+      {p.pagos.hitos.length > 0 && <CaminoDePagos hitos={p.pagos.hitos} seguimiento={estado === 'aceptada'} cumplidos={cumplidos} />}
+      <div className="tarjeta-pie">
+        <Pastilla estado={estado} />
+        {estado === 'vigente' && <span className="tarjeta-linea">Válida hasta el {fechaLarga(p.vigencia.hasta)}</span>}
+      </div>
     </aside>
   );
 }
@@ -122,6 +119,7 @@ export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaE
   const resumenPrecio = unicos.length
     ? `${euros(unicos.reduce((s, c) => s + c.importe_centimos, 0))} + IVA`
     : p.precio.conceptos.map(precioDe).join(' · ');
+  const retirada = estado === 'retirada';
   let n = 0;
   const sig = () => ++n;
 
@@ -132,6 +130,7 @@ export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaE
           <span className="barra-marca">{proveedor.marca}</span>
           <span className="barra-ref">
             Propuesta {p.referencia} · v{p.version}
+            {!retirada && <span className="barra-fecha"> · {fechaLarga(p.fecha)}</span>}
           </span>
           <BotonAceptar className="boton boton-principal boton-pequeno" />
         </div>
@@ -140,135 +139,107 @@ export default function Propuesta({ instantanea: p, offerHash, estado, aceptadaE
       <main className="pagina">
         <section className="portada" aria-labelledby="titular">
           <div className="portada-texto">
-            {estado !== 'retirada' && <p className="para">Para {cliente.negocio}</p>}
-            <h1 id="titular">{estado === 'retirada' ? `Propuesta ${p.referencia}` : p.portada.titular}</h1>
-            {estado !== 'retirada' && <p className="subtitulo">{p.portada.subtitulo}</p>}
-            {estado !== 'retirada' && (
+            {!retirada && (
+              <p className="para">
+                Para {cliente.nombre} · {cliente.negocio}
+              </p>
+            )}
+            <h1 id="titular">{retirada ? `Propuesta ${p.referencia}` : p.portada.titular}</h1>
+            {!retirada && <p className="subtitulo">{p.portada.subtitulo}</p>}
+            {!retirada && (
               <div className="acciones">
                 <BotonAceptar />
-                <a className="boton boton-secundario" href="#alcance">
-                  Ver alcance completo
-                </a>
+                <BotonAlcance />
               </div>
+            )}
+            {!retirada && (
+              <p className="de">
+                Propuesta de {proveedor.nombre} · {proveedor.marca}
+                {proveedor.nif ? ` · NIF ${proveedor.nif}` : ''} · {fechaLarga(p.fecha)}
+              </p>
             )}
             <Aviso estado={estado} instantanea={p} aceptadaEl={aceptadaEl} />
           </div>
-          {estado !== 'retirada' && <TarjetaInversion p={p} estado={estado} />}
+          {!retirada && <TarjetaInversion p={p} estado={estado} cumplidos={cumplidos} />}
         </section>
 
-        {estado !== 'retirada' && (
-          <div className="detalle">
-            <dl className="datos">
-              <div>
-                <dt>Para</dt>
-                <dd>
-                  {cliente.nombre} · {cliente.negocio}
-                </dd>
-              </div>
-              <div>
-                <dt>De</dt>
-                <dd>
-                  {proveedor.nombre} · {proveedor.marca}
-                  {proveedor.nif ? ` · NIF ${proveedor.nif}` : ''}
-                </dd>
-              </div>
-              <div>
-                <dt>Referencia</dt>
-                <dd>
-                  {p.referencia} · v{p.version}
-                </dd>
-              </div>
-              <div>
-                <dt>Fecha</dt>
-                <dd>{fechaLarga(p.fecha)}</dd>
-              </div>
-            </dl>
-
-            {estado === 'aceptada' && (
-              <Seccion id="seguimiento" n={sig()} titulo="Cómo va">
-                <CaminoDePagos hitos={p.pagos.hitos} seguimiento cumplidos={cumplidos} />
+        {!retirada && (
+          <ZonaAlcance>
+            <div className="detalle">
+              <Seccion id="situacion" n={sig()} titulo="Lo que me contaste">
+                {p.situacion.palabras_del_cliente.map((t, i) => (
+                  <blockquote key={i}>{t}</blockquote>
+                ))}
+                {p.situacion.lo_que_funciona && <p className="nota">{p.situacion.lo_que_funciona}</p>}
               </Seccion>
-            )}
 
-            <Seccion id="situacion" n={sig()} titulo="Lo que me contaste">
-              {p.situacion.palabras_del_cliente.map((t, i) => (
-                <blockquote key={i}>{t}</blockquote>
-              ))}
-              {p.situacion.lo_que_funciona && <p className="nota">{p.situacion.lo_que_funciona}</p>}
-            </Seccion>
+              <Seccion id="solucion" n={sig()} titulo="Lo que te propongo">
+                <p className="destacado">{p.solucion.resumen}</p>
+                <Lista items={p.solucion.dia_a_dia} className="marcas" />
+              </Seccion>
 
-            <Seccion id="solucion" n={sig()} titulo="Lo que te propongo">
-              <p className="destacado">{p.solucion.resumen}</p>
-              <Lista items={p.solucion.dia_a_dia} className="marcas" />
-            </Seccion>
+              <Seccion id="alcance" n={sig()} titulo="Qué incluye">
+                <Lista items={p.alcance} className="marcas" />
+                <h3>Lo que te entrego</h3>
+                <Lista items={p.entregables} className="marcas" />
+              </Seccion>
 
-            <Seccion id="alcance" n={sig()} titulo="Qué incluye">
-              <Lista items={p.alcance} className="marcas" />
-              <h3>Lo que te entrego</h3>
-              <Lista items={p.entregables} className="marcas" />
-            </Seccion>
+              <Seccion id="exclusiones" n={sig()} titulo="Qué no incluye">
+                <Lista items={p.exclusiones} />
+              </Seccion>
 
-            <Seccion id="exclusiones" n={sig()} titulo="Qué no incluye">
-              <Lista items={p.exclusiones} />
-            </Seccion>
+              <Seccion id="dependencias" n={sig()} titulo="Lo que necesito de ti">
+                <Lista items={p.dependencias} />
+              </Seccion>
 
-            <Seccion id="dependencias" n={sig()} titulo="Lo que necesito de ti">
-              <Lista items={p.dependencias} />
-            </Seccion>
+              <Seccion id="calendario" n={sig()} titulo="Calendario">
+                <ol className="linea-tiempo">
+                  {p.calendario.map((t, i) => (
+                    <li key={i}>
+                      <p className="lt-tramo">{t.tramo}</p>
+                      <p className="lt-meta">
+                        <span className="lt-depende">Depende de {t.depende_de}</span>
+                        <span>{t.plazo}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+              </Seccion>
 
-            <Seccion id="calendario" n={sig()} titulo="Calendario">
-              <ol className="linea-tiempo">
-                {p.calendario.map((t, i) => (
-                  <li key={i}>
-                    <p className="lt-tramo">{t.tramo}</p>
-                    <p className="lt-meta">
-                      <span className="lt-depende">Depende de {t.depende_de}</span>
-                      <span>{t.plazo}</span>
-                    </p>
-                  </li>
-                ))}
-              </ol>
-            </Seccion>
+              <Seccion id="inversion" n={sig()} titulo="Inversión y forma de pago">
+                <dl className="precios">
+                  {p.precio.conceptos.map((c, i) => (
+                    <div key={i}>
+                      <dt>{c.concepto}</dt>
+                      <dd>{precioDe(c)}</dd>
+                    </div>
+                  ))}
+                </dl>
+                {p.impuestos.nota && <p className="nota">{p.impuestos.nota}</p>}
+                {p.pagos.notas.length > 0 && <Lista items={p.pagos.notas} />}
+              </Seccion>
 
-            <Seccion id="inversion" n={sig()} titulo="Inversión y forma de pago">
-              <dl className="precios">
-                {p.precio.conceptos.map((c, i) => (
-                  <div key={i}>
-                    <dt>{c.concepto}</dt>
-                    <dd>{precioDe(c)}</dd>
-                  </div>
-                ))}
-              </dl>
-              {p.impuestos.nota && <p className="nota">{p.impuestos.nota}</p>}
-              {estado !== 'aceptada' && (
-                <>
-                  <h3>Cómo se paga</h3>
-                  <p className="nota">Toca cada pago para ver cuándo se paga.</p>
-                  <CaminoDePagos hitos={p.pagos.hitos} seguimiento={false} cumplidos={{}} />
-                </>
+              {p.garantia && (
+                <Seccion id="garantia" n={sig()} titulo="Garantía">
+                  <p>{p.garantia}</p>
+                </Seccion>
               )}
-              {p.pagos.notas.length > 0 && <Lista items={p.pagos.notas} />}
-            </Seccion>
 
-            {p.garantia && (
-              <Seccion id="garantia" n={sig()} titulo="Garantía">
-                <p>{p.garantia}</p>
+              <Seccion id="vigencia" n={sig()} titulo="Vigencia">
+                <p>
+                  {p.vigencia.dias} días: hasta el {fechaLarga(p.vigencia.hasta)}.
+                </p>
               </Seccion>
-            )}
 
-            <Seccion id="vigencia" n={sig()} titulo="Vigencia">
-              <p>
-                {p.vigencia.dias} días: hasta el {fechaLarga(p.vigencia.hasta)}.
-              </p>
-            </Seccion>
-
-            <section className="cierre" aria-labelledby="cierre-t">
-              <h2 id="cierre-t">Siguiente paso</h2>
-              <p className="destacado">{p.siguiente_paso}</p>
-              <BotonAceptar />
-              <Pastilla estado={estado} />
-            </section>
-          </div>
+              {estado === 'vigente' && (
+                <section className="cierre" aria-labelledby="cierre-t">
+                  <h2 id="cierre-t">Siguiente paso</h2>
+                  <p className="destacado">{p.siguiente_paso}</p>
+                  <BotonAceptar />
+                </section>
+              )}
+            </div>
+          </ZonaAlcance>
         )}
 
         <footer className="pie">

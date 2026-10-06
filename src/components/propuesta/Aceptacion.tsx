@@ -1,16 +1,26 @@
 'use client';
-// La aceptacion (ADR-091, hito 6.5): un contexto que comparten todos los botones «Aceptar propuesta» de la pagina
-// y el dialogo «Lo que aceptas». La capacidad se lee del fragmento de la URL aqui, en el navegador, y solo sale en la
-// cabecera del POST. Nada de esto finge: sin respuesta 201/200/409 del servidor, no se dice que esta aceptada.
+// La parte interactiva de la propuesta (ADR-091 y ADR-092): un contexto que comparten los botones «Aceptar propuesta»,
+// el dialogo «Lo que aceptas» y el desplegable «Ver alcance completo».
+//
+// La capacidad se lee del fragmento de la URL aqui, en el navegador, y solo sale en la cabecera del POST. Por eso
+// nada en la pagina puede cambiar el fragmento (ni un enlace a #ancla): se perderia el permiso para aceptar.
+// Nada finge: sin respuesta 201/200/409 del servidor, no se dice que esta aceptada.
 import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { InstantaneaV1 } from '@/lib/propuestas/instantanea';
 import type { Justificante } from '@/lib/propuestas/aceptar';
 import type { Estado } from '@/lib/propuestas/leer';
-import { momento } from '@/lib/propuestas/formato';
+import { euros, momento } from '@/lib/propuestas/formato';
 import Condiciones from './Condiciones';
 
-const Contexto = createContext<{ abrir: () => void; estado: Estado } | null>(null);
+interface Ctx {
+  abrir: () => void;
+  estado: Estado;
+  alcanceAbierto: boolean;
+  alternarAlcance: () => void;
+}
+
+const Contexto = createContext<Ctx | null>(null);
 
 const FORMA_CAPACIDAD = /^[A-Za-z0-9_-]{43}$/;
 
@@ -54,6 +64,8 @@ export function ProveedorAceptacion({
   const router = useRouter();
   const [capacidad, setCapacidad] = useState<string | null>(null);
   const [envio, setEnvio] = useState<Envio>({ fase: 'formulario' });
+  const [tipo, setTipo] = useState<'autonomo' | 'sociedad' | null>(null);
+  const [alcanceAbierto, setAlcanceAbierto] = useState(false);
 
   useEffect(() => {
     const c = window.location.hash.slice(1);
@@ -64,6 +76,13 @@ export function ProveedorAceptacion({
     if (estado !== 'vigente') return;
     dialogo.current?.showModal();
   }, [estado]);
+
+  const alternarAlcance = useCallback(() => {
+    setAlcanceAbierto((abierto) => {
+      if (!abierto) requestAnimationFrame(() => document.getElementById('alcance-completo')?.scrollIntoView({ behavior: 'smooth' }));
+      return !abierto;
+    });
+  }, []);
 
   // Al cerrar despues de aceptar, `onClose` vuelve a pedir la pagina al servidor: el estado lo dice la base.
   const cerrar = () => dialogo.current?.close();
@@ -82,9 +101,12 @@ export function ProveedorAceptacion({
           referencia: instantanea.referencia,
           version: instantanea.version,
           offer_hash: offerHash,
+          tipo: f.get('tipo'),
           nombre: f.get('nombre'),
+          dni: f.get('dni'),
           correo: f.get('correo'),
-          empresa: f.get('empresa'),
+          razon_social: f.get('razon_social'),
+          nif_sociedad: f.get('nif_sociedad'),
           casilla_leido: f.get('leido') === 'on',
           casilla_autoridad: f.get('autoridad') === 'on',
           idempotency_key: claveDelIntento(instantanea.referencia, instantanea.version),
@@ -101,8 +123,10 @@ export function ProveedorAceptacion({
     }
   }
 
+  const primerPago = instantanea.pagos.hitos[0];
+
   return (
-    <Contexto.Provider value={{ abrir, estado }}>
+    <Contexto.Provider value={{ abrir, estado, alcanceAbierto, alternarAlcance }}>
       {children}
       {/* Solo si se puede aceptar: el dialogo cerrado tambien va en el HTML, con todas las condiciones dentro. */}
       {estado === 'vigente' && (
@@ -137,7 +161,11 @@ export function ProveedorAceptacion({
                     </dd>
                   </div>
                 </dl>
-                <p>{instantanea.siguiente_paso}</p>
+                {primerPago && (
+                  <p>
+                    En breve te escribo con los datos para el primer pago ({primerPago.hito}: {euros(primerPago.importe_centimos)} + IVA).
+                  </p>
+                )}
                 <button type="button" className="boton boton-principal" onClick={cerrar}>
                   Volver a la propuesta
                 </button>
@@ -146,19 +174,42 @@ export function ProveedorAceptacion({
               <>
                 <Condiciones instantanea={instantanea} offerHash={offerHash} />
                 {capacidad ? (
-                  <form className="formulario" onSubmit={enviar} noValidate={false}>
-                    <h3>Tus datos</h3>
+                  <form className="formulario" onSubmit={enviar}>
+                    <h3>Quién acepta</h3>
+                    <fieldset className="tipo">
+                      <legend>Aceptas como</legend>
+                      <label className="opcion">
+                        <input type="radio" name="tipo" value="autonomo" required onChange={() => setTipo('autonomo')} />
+                        Autónomo
+                      </label>
+                      <label className="opcion">
+                        <input type="radio" name="tipo" value="sociedad" required onChange={() => setTipo('sociedad')} />
+                        Sociedad
+                      </label>
+                    </fieldset>
+                    {tipo === 'sociedad' && (
+                      <div className="sociedad">
+                        <label>
+                          Razón social
+                          <input name="razon_social" required maxLength={200} autoComplete="organization" placeholder="Ejemplo, S.L." />
+                        </label>
+                        <label>
+                          NIF de la sociedad
+                          <input name="nif_sociedad" required maxLength={12} autoCapitalize="characters" spellCheck={false} placeholder="B12345674" />
+                        </label>
+                      </div>
+                    )}
                     <label>
-                      Nombre y apellidos
+                      Nombre y apellidos de quien acepta
                       <input name="nombre" required maxLength={200} autoComplete="name" />
+                    </label>
+                    <label>
+                      DNI o NIE de quien acepta
+                      <input name="dni" required maxLength={12} autoCapitalize="characters" spellCheck={false} placeholder="12345678Z" />
                     </label>
                     <label>
                       Correo
                       <input name="correo" type="email" required maxLength={254} autoComplete="email" />
-                    </label>
-                    <label>
-                      Negocio
-                      <input name="empresa" required maxLength={200} autoComplete="organization" defaultValue={instantanea.partes.cliente.negocio} />
                     </label>
                     <label className="casilla">
                       <input type="checkbox" name="leido" required />
@@ -166,12 +217,14 @@ export function ProveedorAceptacion({
                     </label>
                     <label className="casilla">
                       <input type="checkbox" name="autoridad" required />
-                      Actúo en nombre del negocio y puedo aceptarla.
+                      {tipo === 'sociedad' ? 'Actúo en nombre de la sociedad y puedo aceptarla.' : 'Acepto en mi propio nombre, como autónomo.'}
                     </label>
                     <p className="aviso-legal">
-                      Tu identidad y tu autoridad para aceptar las declaras tú y no se verifican. Esto registra tu aceptación como
-                      evidencia comercial; <strong>no es una firma electrónica</strong>. Responsable: {instantanea.partes.proveedor.nombre}.
-                      Finalidad: registrar la aceptación de esta propuesta. Se conserva lo que dure el acuerdo y sus obligaciones
+                      Tus datos y tu autoridad para aceptar los declaras tú: se comprueba que el DNI y el NIF estén bien
+                      escritos, pero no que sean tuyos. Esto registra tu aceptación como evidencia comercial;{' '}
+                      <strong>no es una firma electrónica</strong>. Responsable: {instantanea.partes.proveedor.nombre}.
+                      Finalidad: registrar la aceptación de esta propuesta y preparar el acuerdo (nombre, DNI, correo y, si
+                      aceptas como sociedad, su razón social y NIF). Se conserva lo que dure el acuerdo y sus obligaciones
                       legales. Tus derechos y el resto de la información, en la{' '}
                       <a href="/es/legal/privacidad" target="_blank" rel="noopener">
                         política de privacidad
@@ -208,5 +261,26 @@ export function BotonAceptar({ className = 'boton boton-principal', children = '
     <button type="button" className={className} onClick={ctx.abrir}>
       {children} <span aria-hidden="true">→</span>
     </button>
+  );
+}
+
+/** «Ver alcance completo»: un boton, no un enlace a #ancla, para no tocar el fragmento (la capacidad). */
+export function BotonAlcance() {
+  const ctx = useContext(Contexto);
+  if (!ctx) return null;
+  return (
+    <button type="button" className="boton boton-secundario" aria-expanded={ctx.alcanceAbierto} aria-controls="alcance-completo" onClick={ctx.alternarAlcance}>
+      {ctx.alcanceAbierto ? 'Ocultar alcance' : 'Ver alcance completo'}
+    </button>
+  );
+}
+
+/** El detalle de la propuesta: siempre en el HTML (para imprimir y para lectores de pantalla), visible al desplegarlo. */
+export function ZonaAlcance({ children }: { children: React.ReactNode }) {
+  const ctx = useContext(Contexto);
+  return (
+    <div id="alcance-completo" className="zona-alcance" hidden={!ctx?.alcanceAbierto}>
+      {children}
+    </div>
   );
 }

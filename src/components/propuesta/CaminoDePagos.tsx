@@ -1,7 +1,7 @@
 'use client';
-// El camino de los pagos: antes de aceptar explica que tiene que estar hecho para cada pago; despues de aceptar
-// es el seguimiento del proyecto (cada hito, cumplido con su fecha o pendiente). Sale de `pagos.hitos`, que tienen
-// todas las propuestas, asi que vale para cualquier cliente.
+// El camino de los pagos, dentro de la tarjeta de inversion: antes de aceptar explica que tiene que estar hecho
+// para cada pago; despues de aceptar es el seguimiento del proyecto (cada hito, cumplido con su fecha o pendiente).
+// Sale de `pagos.hitos`, que tienen todas las propuestas, asi que vale para cualquier cliente (ADR-092).
 import React, { useState } from 'react';
 import type { HitoDePago } from '@/lib/propuestas/instantanea';
 import { euros, momento } from '@/lib/propuestas/formato';
@@ -21,6 +21,7 @@ export default function CaminoDePagos({
 
   return (
     <div className="camino">
+      <p className="camino-titulo">{seguimiento ? 'Cómo va' : `Cómo se paga · ${hitos.length === 1 ? 'un pago' : `${hitos.length} pagos`}`}</p>
       {seguimiento && (
         <p className="camino-progreso">
           <span className="camino-barra" aria-hidden="true">

@@ -47,12 +47,20 @@ CREATE TABLE IF NOT EXISTS aceptacion (
   FOREIGN KEY (proposal_id, version) REFERENCES propuesta_version (proposal_id, version) ON DELETE RESTRICT
 );
 
--- Quien acepto, aparte: el justificante publico lee `aceptacion` y nunca esta tabla.
+-- Quien acepto, aparte: el justificante publico lee `aceptacion` y nunca esta tabla. Siempre el firmante (nombre y
+-- DNI/NIE); si acepta una sociedad, ademas su razon social y su NIF (pedido por Ruben el 6/10). Los documentos se
+-- guardan normalizados (sin espacios ni guiones, en mayusculas) y con su control comprobado en el servidor, pero
+-- siguen siendo autodeclarados: nadie verifica que sean de quien los escribe.
 CREATE TABLE IF NOT EXISTS aceptacion_identidad (
   acceptance_id uuid PRIMARY KEY REFERENCES aceptacion (acceptance_id) ON DELETE RESTRICT,
   nombre        text NOT NULL CHECK (length(btrim(nombre)) BETWEEN 1 AND 200),
+  dni           text NOT NULL CHECK (dni ~ '^([0-9]{8}|[XYZ][0-9]{7})[A-Z]$'),
   correo        text NOT NULL CHECK (length(correo) BETWEEN 3 AND 254 AND correo ~ '^[^@[:space:]]+@[^@[:space:]]+\.[^@[:space:]]+$'),
-  empresa       text NOT NULL CHECK (length(btrim(empresa)) BETWEEN 1 AND 200)
+  tipo          text NOT NULL CHECK (tipo IN ('autonomo', 'sociedad')),
+  razon_social  text CHECK (length(btrim(razon_social)) BETWEEN 1 AND 200),
+  nif_sociedad  text CHECK (nif_sociedad ~ '^[ABCDEFGHJNPQRSUVW][0-9]{7}[0-9A-J]$'),
+  CHECK ((tipo = 'sociedad') = (razon_social IS NOT NULL AND nif_sociedad IS NOT NULL)),
+  CHECK (tipo = 'sociedad' OR (razon_social IS NULL AND nif_sociedad IS NULL))
 );
 
 CREATE TABLE IF NOT EXISTS evento (

@@ -187,7 +187,7 @@ a {
   margin: 0 auto;
   padding: 72px 24px 64px;
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 56px;
   align-items: center;
 }
@@ -312,29 +312,6 @@ h1 {
   max-width: 760px;
   margin: 0 auto;
   padding: 0 24px 48px;
-}
-
-.datos {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 24px;
-  margin: 0;
-  padding: 20px 24px;
-  border: 1px solid var(--linea);
-  border-radius: 14px;
-  background: var(--papel);
-}
-
-.datos dt {
-  color: var(--tinta-suave);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.datos dd {
-  margin: 0;
-  font-weight: 500;
 }
 
 .seccion {
@@ -502,7 +479,83 @@ blockquote {
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Camino de pagos / seguimiento ---------- */
+/* Quien propone y cuando, bajo los botones */
+.de {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--tinta-suave);
+}
+
+/* El detalle, plegado hasta «Ver alcance completo» */
+.zona-alcance {
+  padding-top: 8px;
+  border-top: 1px solid var(--linea);
+}
+
+.tarjeta-pie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 16px;
+}
+
+.tarjeta-pie .tarjeta-linea {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* ---------- Camino de pagos / seguimiento (dentro de la tarjeta) ---------- */
+.camino-titulo {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.tarjeta .camino-pasos {
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 6px;
+}
+
+.tarjeta .camino-paso {
+  padding: 10px;
+  border-radius: 12px;
+  gap: 2px;
+}
+
+.tarjeta .camino-punto {
+  width: 24px;
+  height: 24px;
+  font-size: 13px;
+}
+
+.tarjeta .camino-nombre {
+  font-size: 14px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.tarjeta .camino-importe {
+  font-size: 13px;
+}
+
+.tarjeta .camino-detalle {
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.tarjeta .camino-cuando {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.tarjeta .camino-cifra {
+  font-size: 18px;
+}
+
 .camino {
   margin: 8px 0 20px;
 }
@@ -685,6 +738,51 @@ blockquote {
 .justificante code {
   font-size: 12px;
   word-break: break-all;
+}
+
+/* ---------- Formulario: autonomo o sociedad ---------- */
+.formulario fieldset.tipo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.formulario fieldset.tipo legend {
+  width: 100%;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.formulario label.opcion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid var(--linea);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.formulario label.opcion:has(input:checked) {
+  border-color: var(--marca);
+  background: var(--acento-suave);
+}
+
+.opcion input {
+  accent-color: var(--marca);
+  margin: 0;
+}
+
+.sociedad {
+  display: grid;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--fondo);
 }
 
 /* ---------- Barra del movil ---------- */
@@ -937,9 +1035,8 @@ blockquote {
     padding: 0 16px 32px;
   }
 
-  .datos {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 16px;
+  .barra-fecha {
+    display: none;
   }
 
   .seccion {
@@ -958,12 +1055,16 @@ blockquote {
     font-size: 40px;
   }
 
-  .camino-pasos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .cierre {
     padding: 28px 20px;
+  }
+
+  .tarjeta .camino-paso {
+    padding: 8px;
+  }
+
+  .tarjeta .camino-nombre {
+    font-size: 13px;
   }
 
   .cierre .boton {
@@ -1033,7 +1134,8 @@ blockquote {
     break-inside: avoid;
   }
 
-  .camino-detalle[hidden] {
+  .camino-detalle[hidden],
+  .zona-alcance[hidden] {
     display: block;
     margin-top: 8px;
   }

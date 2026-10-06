@@ -22,9 +22,10 @@ export function textoAceptacion(j: Justificante, quien: Identidad, base: string)
     texto: [
       `${quien.nombre} ha aceptado la propuesta ${j.referencia} v${j.version} el ${hora} (hora de Lloret).`,
       '',
-      `Negocio que declara: ${quien.empresa}`,
-      `Correo que declara: ${quien.correo}`,
-      '(Identidad autodeclarada, sin verificar.)',
+      `Firmante: ${quien.nombre} · DNI/NIE ${quien.dni}`,
+      quien.tipo === 'sociedad' ? `En nombre de: ${quien.razon_social} · NIF ${quien.nif_sociedad}` : 'Como autónomo',
+      `Correo: ${quien.correo}`,
+      '(Todo autodeclarado: el control de los documentos cuadra, pero nadie ha verificado que sean suyos.)',
       '',
       `Huella de la versión aceptada: ${j.offer_hash}`,
       `Base: ${base}`,
