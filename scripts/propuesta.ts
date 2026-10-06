@@ -1,0 +1,249 @@
+// Crear y gestionar propuestas desde Claude Code (ADR-091): no hay panel de administracion ni rutas publicas
+// para crear o borrar. Se ejecuta con bun:
+//
+//   bun --env-file=<fichero> scripts/propuesta.ts [--base <nombre>] <orden> ...
+//
+//   migrar                          aplica db/propuestas.sql (idempotente)
+//   crear <contenido.json>          publica la v1 de una propuesta nueva y devuelve los dos enlaces
+//   sustituir <ref> <contenido.json> publica la version siguiente y deja la anterior como sustituida
+//   invalidar <ref> <motivo>        retira la version viva (fraude, error); queda el evento
+//   exportar <salida.json>          vuelca versiones, aceptaciones, identidades y eventos (copia propia)
+//
+// La conexion sale de DATABASE_URL_UNPOOLED (o DATABASE_URL). `--base` cambia solo el nombre de la base: las
+// pruebas van con `--base propuestas_pruebas`, nunca contra la de verdad.
+//
+// La capacidad del enlace del cliente se imprime UNA vez, aqui, y no se guarda en ningun sitio: en la base solo
+// queda su SHA-256. Si se pierde el enlace, se sustituye la version.
+import { Client, neonConfig } from '@neondatabase/serverless';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { hashCapacidad, hashOferta, nuevaCapacidad } from '../src/lib/propuestas/canonico';
+import {
+  construirInstantanea,
+  hoyEnMadrid,
+  validarContenido,
+  type ContenidoV1,
+  type InstantaneaV1,
+} from '../src/lib/propuestas/instantanea';
+
+if (!neonConfig.webSocketConstructor) neonConfig.webSocketConstructor = WebSocket;
+
+const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+export function urlDeConexion(base?: string): string {
+  const url = process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL;
+  if (!url) throw new Error('Falta DATABASE_URL_UNPOOLED (o DATABASE_URL)');
+  const u = new URL(url);
+  if (base) u.pathname = `/${base}`;
+  return u.toString();
+}
+
+export async function conectar(url: string): Promise<Client> {
+  const client = new Client(url);
+  await client.connect();
+  return client;
+}
+
+async function enTransaccion<T>(client: Client, fn: () => Promise<T>): Promise<T> {
+  await client.query('BEGIN');
+  try {
+    const r = await fn();
+    await client.query('COMMIT');
+    return r;
+  } catch (e) {
+    await client.query('ROLLBACK');
+    throw e;
+  }
+}
+
+export async function migrar(client: Client): Promise<void> {
+  await client.query(readFileSync(join(RAIZ, 'db', 'propuestas.sql'), 'utf8'));
+}
+
+export interface Publicada {
+  referencia: string;
+  version: number;
+  offerHash: string;
+  capacidad: string;
+  instantanea: InstantaneaV1;
+}
+
+async function insertarVersion(
+  client: Client,
+  contenido: ContenidoV1,
+  referencia: string,
+  version: number,
+  fecha: string,
+): Promise<Publicada> {
+  const instantanea = construirInstantanea(contenido, { referencia, version, fecha });
+  const offerHash = hashOferta(instantanea);
+  const capacidad = nuevaCapacidad();
+  // Vale hasta el final del dia `hasta`, hora de Lloret.
+  const { rows } = await client.query(
+    `INSERT INTO propuesta_version
+       (proposal_id, version, schema_version, snapshot, offer_hash, capability_hash, expires_at)
+     VALUES ($1, $2, $3, $4::jsonb, $5, $6, (($7::date + 1)::timestamp AT TIME ZONE 'Europe/Madrid'))
+     RETURNING snapshot`,
+    [referencia, version, instantanea.schema_version, JSON.stringify(instantanea), offerHash, hashCapacidad(capacidad), instantanea.vigencia.hasta],
+  );
+  // Lo que ha guardado Postgres tiene que dar el mismo hash; si no, no se publica.
+  if (hashOferta(rows[0].snapshot) !== offerHash) {
+    throw new Error(`La instantanea de ${referencia} v${version} no sobrevive al viaje por jsonb: no se publica`);
+  }
+  await client.query(
+    `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, 'creada', $3::jsonb)`,
+    [referencia, version, JSON.stringify({ offer_hash: offerHash })],
+  );
+  return { referencia, version, offerHash, capacidad, instantanea };
+}
+
+export async function crear(client: Client, entrada: unknown, opciones: { fecha?: string } = {}): Promise<Publicada> {
+  const contenido = validarContenido(entrada);
+  const fecha = opciones.fecha ?? hoyEnMadrid();
+  return enTransaccion(client, async () => {
+    // Numeracion por año sin huecos ni carreras: nadie mas inserta mientras se elige el numero.
+    await client.query('LOCK TABLE propuesta_version IN SHARE ROW EXCLUSIVE MODE');
+    const anio = fecha.slice(0, 4);
+    const { rows } = await client.query(
+      `SELECT coalesce(max(substring(proposal_id from 8)::int), 0) + 1 AS n
+         FROM propuesta_version WHERE proposal_id LIKE $1`,
+      [`P-${anio}-%`],
+    );
+    const n: number = rows[0].n;
+    if (n > 999) throw new Error(`Se acabaron las referencias de ${anio}`);
+    return insertarVersion(client, contenido, `P-${anio}-${String(n).padStart(3, '0')}`, 1, fecha);
+  });
+}
+
+export async function sustituir(
+  client: Client,
+  referencia: string,
+  entrada: unknown,
+  opciones: { fecha?: string } = {},
+): Promise<Publicada> {
+  const contenido = validarContenido(entrada);
+  const fecha = opciones.fecha ?? hoyEnMadrid();
+  return enTransaccion(client, async () => {
+    const { rows } = await client.query(
+      `SELECT version FROM propuesta_version WHERE proposal_id = $1 AND status = 'publicada' FOR UPDATE`,
+      [referencia],
+    );
+    if (rows.length === 0) throw new Error(`${referencia} no tiene ninguna version publicada`);
+    const anterior: number = rows[0].version;
+    const aceptada = await client.query(`SELECT 1 FROM aceptacion WHERE proposal_id = $1`, [referencia]);
+    if (aceptada.rows.length > 0) throw new Error(`${referencia} ya esta aceptada: no se sustituye`);
+    await client.query(
+      `UPDATE propuesta_version SET status = 'sustituida' WHERE proposal_id = $1 AND version = $2`,
+      [referencia, anterior],
+    );
+    await client.query(
+      `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, 'sustituida', $3::jsonb)`,
+      [referencia, anterior, JSON.stringify({ por: anterior + 1 })],
+    );
+    return insertarVersion(client, contenido, referencia, anterior + 1, fecha);
+  });
+}
+
+export async function invalidar(client: Client, referencia: string, motivo: string): Promise<number> {
+  if (!motivo.trim()) throw new Error('Invalidar pide un motivo');
+  return enTransaccion(client, async () => {
+    const { rows } = await client.query(
+      `UPDATE propuesta_version SET status = 'invalidada'
+        WHERE proposal_id = $1 AND status = 'publicada' RETURNING version`,
+      [referencia],
+    );
+    if (rows.length === 0) throw new Error(`${referencia} no tiene ninguna version publicada`);
+    await client.query(
+      `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, 'invalidada', $3::jsonb)`,
+      [referencia, rows[0].version, JSON.stringify({ motivo: motivo.trim() })],
+    );
+    return rows[0].version as number;
+  });
+}
+
+export async function exportar(client: Client) {
+  const q = async (sql: string) => (await client.query(sql)).rows;
+  return {
+    exportado_en: new Date().toISOString(),
+    base: (await q('SELECT current_database() AS b'))[0].b as string,
+    versiones: await q('SELECT * FROM propuesta_version ORDER BY proposal_id, version'),
+    aceptaciones: await q('SELECT * FROM aceptacion ORDER BY accepted_at'),
+    identidades: await q('SELECT * FROM aceptacion_identidad ORDER BY acceptance_id'),
+    eventos: await q('SELECT * FROM evento ORDER BY evento_id'),
+  };
+}
+
+export function enlaces(referencia: string, capacidad: string) {
+  const base = (process.env.PROPUESTAS_URL_BASE ?? 'https://www.teselarsoftware.com').replace(/\/$/, '');
+  const lectura = `${base}/p/${referencia}`;
+  return { lectura, cliente: `${lectura}#${capacidad}` };
+}
+
+function imprimir(p: Publicada): void {
+  const { lectura, cliente } = enlaces(p.referencia, p.capacidad);
+  console.log(`${p.referencia} v${p.version} publicada · vale hasta el ${p.instantanea.vigencia.hasta}`);
+  console.log(`offer_hash ${p.offerHash}`);
+  console.log(`Solo lectura:  ${lectura}`);
+  console.log(`Para aceptar:  ${cliente}`);
+  console.log('El enlace para aceptar no se guarda en ningun sitio: o se envia ahora o se sustituye la version.');
+}
+
+async function main(argv: string[]): Promise<void> {
+  let base: string | undefined;
+  const i = argv.indexOf('--base');
+  if (i !== -1) {
+    base = argv[i + 1];
+    if (!base) throw new Error('--base pide un nombre');
+    argv.splice(i, 2);
+  }
+  const [orden, ...args] = argv;
+  const leerJson = (ruta: string | undefined) => {
+    if (!ruta) throw new Error(`${orden} pide un fichero JSON`);
+    return JSON.parse(readFileSync(ruta, 'utf8')) as unknown;
+  };
+
+  const client = await conectar(urlDeConexion(base));
+  try {
+    const { rows } = await client.query('SELECT current_database() AS b');
+    console.log(`Base: ${rows[0].b}`);
+    switch (orden) {
+      case 'migrar':
+        await migrar(client);
+        console.log('Esquema aplicado.');
+        break;
+      case 'crear':
+        imprimir(await crear(client, leerJson(args[0])));
+        break;
+      case 'sustituir':
+        if (!args[0]) throw new Error('sustituir pide la referencia');
+        imprimir(await sustituir(client, args[0], leerJson(args[1])));
+        break;
+      case 'invalidar': {
+        if (!args[0]) throw new Error('invalidar pide la referencia');
+        const v = await invalidar(client, args[0], args.slice(1).join(' '));
+        console.log(`${args[0]} v${v} invalidada.`);
+        break;
+      }
+      case 'exportar': {
+        if (!args[0]) throw new Error('exportar pide el fichero de salida');
+        const datos = await exportar(client);
+        // Lleva nombres y correos de quien acepto: solo lo lee el dueño del fichero.
+        writeFileSync(args[0], JSON.stringify(datos, null, 2), { mode: 0o600 });
+        console.log(`${datos.versiones.length} versiones, ${datos.aceptaciones.length} aceptaciones, ${datos.eventos.length} eventos → ${args[0]}`);
+        break;
+      }
+      default:
+        throw new Error('Ordenes: migrar · crear · sustituir · invalidar · exportar');
+    }
+  } finally {
+    await client.end();
+  }
+}
+
+if (import.meta.main) {
+  main(process.argv.slice(2)).catch((e: unknown) => {
+    console.error(e instanceof Error ? e.message : e);
+    process.exit(1);
+  });
+}
