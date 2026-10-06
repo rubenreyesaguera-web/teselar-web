@@ -63,6 +63,18 @@ CREATE TABLE IF NOT EXISTS aceptacion_identidad (
   CHECK (tipo = 'sociedad' OR (razon_social IS NULL AND nif_sociedad IS NULL))
 );
 
+-- Domicilio siempre y cargo si acepta una sociedad (ADR-095, 6/10). Se anaden aparte para que la migracion valga
+-- sobre una base ya creada; las reglas van NOT VALID porque lo aceptado antes no se puede cambiar (es de solo
+-- anadir) y en neondb ya hay una aceptacion de prueba sin domicilio (P-2099-001): obligan a lo que entre desde ahora.
+ALTER TABLE aceptacion_identidad ADD COLUMN IF NOT EXISTS domicilio text;
+ALTER TABLE aceptacion_identidad ADD COLUMN IF NOT EXISTS cargo text;
+ALTER TABLE aceptacion_identidad DROP CONSTRAINT IF EXISTS aceptacion_identidad_domicilio_check;
+ALTER TABLE aceptacion_identidad ADD CONSTRAINT aceptacion_identidad_domicilio_check
+  CHECK (domicilio IS NOT NULL AND length(btrim(domicilio)) BETWEEN 5 AND 300) NOT VALID;
+ALTER TABLE aceptacion_identidad DROP CONSTRAINT IF EXISTS aceptacion_identidad_cargo_check;
+ALTER TABLE aceptacion_identidad ADD CONSTRAINT aceptacion_identidad_cargo_check
+  CHECK ((tipo = 'sociedad') = (cargo IS NOT NULL) AND (cargo IS NULL OR length(btrim(cargo)) BETWEEN 2 AND 100)) NOT VALID;
+
 CREATE TABLE IF NOT EXISTS evento (
   evento_id   bigint      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   proposal_id text        NOT NULL,

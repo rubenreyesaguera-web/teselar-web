@@ -107,6 +107,8 @@ export function ProveedorAceptacion({
           correo: f.get('correo'),
           razon_social: f.get('razon_social'),
           nif_sociedad: f.get('nif_sociedad'),
+          domicilio: f.get('domicilio'),
+          cargo: f.get('cargo'),
           casilla_leido: f.get('leido') === 'on',
           casilla_autoridad: f.get('autoridad') === 'on',
           idempotency_key: claveDelIntento(instantanea.referencia, instantanea.version),
@@ -200,9 +202,19 @@ export function ProveedorAceptacion({
                       </div>
                     )}
                     <label>
+                      {tipo === 'sociedad' ? 'Domicilio social' : 'Domicilio'} (calle, número, código postal y población)
+                      <input name="domicilio" required minLength={5} maxLength={300} autoComplete="street-address" />
+                    </label>
+                    <label>
                       Nombre y apellidos de quien acepta
                       <input name="nombre" required maxLength={200} autoComplete="name" />
                     </label>
+                    {tipo === 'sociedad' && (
+                      <label>
+                        Tu cargo en la sociedad
+                        <input name="cargo" required minLength={2} maxLength={100} autoComplete="organization-title" placeholder="Administradora, apoderado, gerente…" />
+                      </label>
+                    )}
                     <label>
                       DNI o NIE de quien acepta
                       <input name="dni" required maxLength={12} autoCapitalize="characters" spellCheck={false} placeholder="12345678Z" />
@@ -217,14 +229,14 @@ export function ProveedorAceptacion({
                     </label>
                     <label className="casilla">
                       <input type="checkbox" name="autoridad" required />
-                      {tipo === 'sociedad' ? 'Actúo en nombre de la sociedad y puedo aceptarla.' : 'Acepto en mi propio nombre, como autónomo.'}
+                      {tipo === 'sociedad' ? 'Actúo en nombre de la sociedad y tengo poderes para aceptarla.' : 'Acepto en mi propio nombre, como autónomo.'}
                     </label>
                     <p className="aviso-legal">
                       Tus datos y tu autoridad para aceptar los declaras tú: se comprueba que el DNI y el NIF estén bien
                       escritos, pero no que sean tuyos. Esto registra tu aceptación como evidencia comercial;{' '}
                       <strong>no es una firma electrónica</strong>. Responsable: {instantanea.partes.proveedor.nombre}.
-                      Finalidad: registrar la aceptación de esta propuesta y preparar el acuerdo (nombre, DNI, correo y, si
-                      aceptas como sociedad, su razón social y NIF). Se conserva lo que dure el acuerdo y sus obligaciones
+                      Finalidad: registrar la aceptación de esta propuesta y preparar el acuerdo (nombre, DNI, domicilio, correo
+                      y, si aceptas como sociedad, su razón social, su NIF y tu cargo). Se conserva lo que dure el acuerdo y sus obligaciones
                       legales. Tus derechos y el resto de la información, en la{' '}
                       <a href="/es/legal/privacidad" target="_blank" rel="noopener">
                         política de privacidad

@@ -181,6 +181,7 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       nombre: 'Persona de Prueba',
       dni: '12.345.678-z',
       correo: 'prueba@example.com',
+      domicilio: 'Carrer de Prova 1, 17310 Lloret de Mar',
       casilla_leido: true,
       casilla_autoridad: true,
       idempotency_key: randomUUID().replace(/-/g, ''),
@@ -193,8 +194,10 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
         { casilla_leido: false }, { casilla_autoridad: false }, { correo: 'no-es-correo' }, { nombre: '  ' }, { idempotency_key: 'corta' },
         { tipo: undefined }, { tipo: 'particular' }, { dni: '12345678A' }, { dni: '' },
         { tipo: 'sociedad' },
-        { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345670' },
-        { tipo: 'sociedad', razon_social: '', nif_sociedad: 'B12345674' },
+        { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345670', cargo: 'Administradora' },
+        { tipo: 'sociedad', razon_social: '', nif_sociedad: 'B12345674', cargo: 'Administradora' },
+        { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345674', cargo: '' },
+        { domicilio: '' }, { domicilio: 'C/ 1' },
       ]) {
         expect((await aceptarPropuesta(url(), p.capacidad, datos(p, malo))).status).toBe(400);
       }
@@ -264,31 +267,34 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
 
     test('una sociedad guarda razon social y NIF normalizado; un autonomo no los guarda aunque lleguen', async () => {
       const p = await crear(db, ejemplo);
-      expect((await aceptarPropuesta(url(), p.capacidad, datos(p, { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'b-12345674' }))).status).toBe(201);
+      expect((await aceptarPropuesta(url(), p.capacidad, datos(p, { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'b-12345674', cargo: 'Administradora' }))).status).toBe(201);
       const q = await crear(db, ejemplo);
-      expect((await aceptarPropuesta(url(), q.capacidad, datos(q, { razon_social: 'Colada, S.L.', nif_sociedad: 'B12345674' }))).status).toBe(201);
+      expect((await aceptarPropuesta(url(), q.capacidad, datos(q, { razon_social: 'Colada, S.L.', nif_sociedad: 'B12345674', cargo: 'Gerente' }))).status).toBe(201);
       const filas = (
         await db.query(
-          `SELECT a.proposal_id, i.tipo, i.razon_social, i.nif_sociedad FROM aceptacion_identidad i JOIN aceptacion a USING (acceptance_id)
+          `SELECT a.proposal_id, i.tipo, i.razon_social, i.nif_sociedad, i.cargo, i.domicilio FROM aceptacion_identidad i JOIN aceptacion a USING (acceptance_id)
             WHERE a.proposal_id IN ($1, $2) ORDER BY a.proposal_id`,
           [p.referencia, q.referencia],
         )
       ).rows;
       expect(filas).toEqual([
-        { proposal_id: p.referencia, tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345674' },
-        { proposal_id: q.referencia, tipo: 'autonomo', razon_social: null, nif_sociedad: null },
+        { proposal_id: p.referencia, tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345674', cargo: 'Administradora', domicilio: 'Carrer de Prova 1, 17310 Lloret de Mar' },
+        { proposal_id: q.referencia, tipo: 'autonomo', razon_social: null, nif_sociedad: null, cargo: null, domicilio: 'Carrer de Prova 1, 17310 Lloret de Mar' },
       ]);
     });
 
     test('la base rechaza por si sola una sociedad sin NIF o un DNI con forma mala', async () => {
       // Los CHECK de aceptacion_identidad, sobre una tabla temporal con la misma definicion (sin la clave ajena).
       await db.query(`CREATE TEMP TABLE id_prueba (LIKE aceptacion_identidad INCLUDING CONSTRAINTS)`);
-      const prueba = (dni: string, tipo: string, razon: string | null, nif: string | null) =>
-        db.query(`INSERT INTO id_prueba VALUES ($1::uuid, 'X', $2, 'x@example.com', $3, $4, $5)`, [randomUUID(), dni, tipo, razon, nif]);
+      const prueba = (dni: string, tipo: string, razon: string | null, nif: string | null, domicilio: string | null = 'Calle 1, Lloret', cargo: string | null = tipo === 'sociedad' ? 'Gerente' : null) =>
+        db.query(`INSERT INTO id_prueba VALUES ($1::uuid, 'X', $2, 'x@example.com', $3, $4, $5, $6, $7)`, [randomUUID(), dni, tipo, razon, nif, domicilio, cargo]);
       await expect(prueba('12345678Z', 'sociedad', 'Y, S.L.', null)).rejects.toThrow();
       await expect(prueba('1234', 'autonomo', null, null)).rejects.toThrow();
       await expect(prueba('12345678Z', 'autonomo', 'Y, S.L.', 'B12345674')).rejects.toThrow();
       await expect(prueba('12345678Z', 'particular', null, null)).rejects.toThrow();
+      await expect(prueba('12345678Z', 'autonomo', null, null, null)).rejects.toThrow();
+      await expect(prueba('12345678Z', 'sociedad', 'Y, S.L.', 'B12345674', 'Calle 1, Lloret', null)).rejects.toThrow();
+      await expect(prueba('12345678Z', 'autonomo', null, null, 'Calle 1, Lloret', 'Gerente')).rejects.toThrow();
       await prueba('X1234567L', 'autonomo', null, null);
       await prueba('12345678Z', 'sociedad', 'Y, S.L.', 'B12345674');
     });

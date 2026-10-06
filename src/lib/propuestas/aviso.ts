@@ -23,7 +23,10 @@ export function textoAceptacion(j: Justificante, quien: Identidad, base: string)
       `${quien.nombre} ha aceptado la propuesta ${j.referencia} v${j.version} el ${hora} (hora de Lloret).`,
       '',
       `Firmante: ${quien.nombre} · DNI/NIE ${quien.dni}`,
-      quien.tipo === 'sociedad' ? `En nombre de: ${quien.razon_social} · NIF ${quien.nif_sociedad}` : 'Como autónomo',
+      quien.tipo === 'sociedad'
+        ? `En nombre de: ${quien.razon_social} · NIF ${quien.nif_sociedad} · como ${quien.cargo} (declara tener poderes)`
+        : 'Como autónomo',
+      `Domicilio: ${quien.domicilio}`,
       `Correo: ${quien.correo}`,
       '(Todo autodeclarado: el control de los documentos cuadra, pero nadie ha verificado que sean suyos.)',
       '',
