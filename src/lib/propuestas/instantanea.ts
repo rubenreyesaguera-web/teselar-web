@@ -130,8 +130,19 @@ function tramo(v: unknown, ruta: string): TramoDeCalendario {
 
 const textos = (v: unknown, r: string, minimo = 1) => lista(v, r, texto, minimo);
 
+/** La señal de ADR-061: el 10 % de la puesta en marcha (redondeado al centimo), con un minimo de 150 €. */
+export const SENAL_MINIMA_CENTIMOS = 15000;
+export function senalEsperada(puestaEnMarchaCentimos: number): number {
+  return Math.max(Math.round(puestaEnMarchaCentimos / 10), SENAL_MINIMA_CENTIMOS);
+}
+
+export interface OpcionesValidacion {
+  /** Saltarse a proposito la regla de la señal; el motivo queda en el evento de la version. */
+  senalDistinta?: string;
+}
+
 /** Valida y normaliza el JSON rellenado. Lanza con la ruta exacta del primer fallo. */
-export function validarContenido(entrada: unknown): ContenidoV1 {
+export function validarContenido(entrada: unknown, opciones: OpcionesValidacion = {}): ContenidoV1 {
   const o = objeto(entrada, '$', [
     'portada', 'partes', 'situacion', 'solucion', 'alcance', 'entregables', 'exclusiones', 'dependencias',
     'calendario', 'precio', 'impuestos', 'pagos', 'garantia', 'vigencia_dias', 'siguiente_paso',
@@ -186,6 +197,19 @@ export function validarContenido(entrada: unknown): ContenidoV1 {
   const porHitos = contenido.pagos.hitos.reduce((s, h) => s + h.importe_centimos, 0);
   if (unico !== porHitos) {
     falla('$.pagos.hitos', `suman ${porHitos} centimos y los conceptos de pago unico, ${unico}`);
+  }
+
+  // El primer pago es la señal (ADR-061), salvo que se diga a proposito lo contrario y por que.
+  if (unico > 0 && !opciones.senalDistinta?.trim()) {
+    const esperada = senalEsperada(unico);
+    const primera = contenido.pagos.hitos[0].importe_centimos;
+    if (primera !== esperada) {
+      falla(
+        '$.pagos.hitos[0].importe_centimos',
+        `la señal es el 10 % de la puesta en marcha con un minimo de 150 € (ADR-061): ${esperada} centimos, no ${primera}. ` +
+          'Para saltarse la regla a proposito: --senal-distinta "<motivo>"',
+      );
+    }
   }
   return contenido;
 }

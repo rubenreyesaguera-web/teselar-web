@@ -5,6 +5,8 @@
 //
 //   migrar                          aplica db/propuestas.sql (idempotente)
 //   crear <contenido.json>          publica la v1 de una propuesta nueva y devuelve los dos enlaces
+//     (crear y sustituir comprueban que el primer pago sea la señal de ADR-061: 10 % de la puesta en marcha, minimo
+//      150 €; para saltarselo a proposito, --senal-distinta "<motivo>", que queda en el evento de la version)
 //   sustituir <ref> <contenido.json> publica la version siguiente y deja la anterior como sustituida
 //   invalidar <ref> <motivo>        retira la version viva (fraude, error); queda el evento
 //   avance <ref> <n> [--deshacer]   marca (o desmarca) el hito de pago n (1 = el primero) como cumplido
@@ -76,6 +78,7 @@ async function insertarVersion(
   referencia: string,
   version: number,
   fecha: string,
+  senalDistinta?: string,
 ): Promise<Publicada> {
   const instantanea = construirInstantanea(contenido, { referencia, version, fecha });
   const offerHash = hashOferta(instantanea);
@@ -94,13 +97,18 @@ async function insertarVersion(
   }
   await client.query(
     `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, 'creada', $3::jsonb)`,
-    [referencia, version, JSON.stringify({ offer_hash: offerHash })],
+    [referencia, version, JSON.stringify({ offer_hash: offerHash, ...(senalDistinta ? { senal_distinta: senalDistinta } : {}) })],
   );
   return { referencia, version, offerHash, capacidad, instantanea };
 }
 
-export async function crear(client: Client, entrada: unknown, opciones: { fecha?: string } = {}): Promise<Publicada> {
-  const contenido = validarContenido(entrada);
+export interface OpcionesPublicar {
+  fecha?: string;
+  senalDistinta?: string;
+}
+
+export async function crear(client: Client, entrada: unknown, opciones: OpcionesPublicar = {}): Promise<Publicada> {
+  const contenido = validarContenido(entrada, { senalDistinta: opciones.senalDistinta });
   const fecha = opciones.fecha ?? hoyEnMadrid();
   return enTransaccion(client, async () => {
     // Numeracion por año sin huecos ni carreras: nadie mas inserta mientras se elige el numero.
@@ -113,7 +121,7 @@ export async function crear(client: Client, entrada: unknown, opciones: { fecha?
     );
     const n: number = rows[0].n;
     if (n > 999) throw new Error(`Se acabaron las referencias de ${anio}`);
-    return insertarVersion(client, contenido, `P-${anio}-${String(n).padStart(3, '0')}`, 1, fecha);
+    return insertarVersion(client, contenido, `P-${anio}-${String(n).padStart(3, '0')}`, 1, fecha, opciones.senalDistinta?.trim());
   });
 }
 
@@ -121,9 +129,9 @@ export async function sustituir(
   client: Client,
   referencia: string,
   entrada: unknown,
-  opciones: { fecha?: string } = {},
+  opciones: OpcionesPublicar = {},
 ): Promise<Publicada> {
-  const contenido = validarContenido(entrada);
+  const contenido = validarContenido(entrada, { senalDistinta: opciones.senalDistinta });
   const fecha = opciones.fecha ?? hoyEnMadrid();
   return enTransaccion(client, async () => {
     const { rows } = await client.query(
@@ -142,7 +150,7 @@ export async function sustituir(
       `INSERT INTO evento (proposal_id, version, tipo, detalle) VALUES ($1, $2, 'sustituida', $3::jsonb)`,
       [referencia, anterior, JSON.stringify({ por: anterior + 1 })],
     );
-    return insertarVersion(client, contenido, referencia, anterior + 1, fecha);
+    return insertarVersion(client, contenido, referencia, anterior + 1, fecha, opciones.senalDistinta?.trim());
   });
 }
 
@@ -218,14 +226,19 @@ function imprimir(p: Publicada): void {
   console.log('El enlace para aceptar no se guarda en ningun sitio: o se envia ahora o se sustituye la version.');
 }
 
+/** Saca `--nombre valor` de los argumentos y devuelve el valor (o undefined si no esta). */
+function opcion(argv: string[], nombre: string): string | undefined {
+  const i = argv.indexOf(nombre);
+  if (i === -1) return undefined;
+  const valor = argv[i + 1];
+  if (!valor || valor.startsWith('--')) throw new Error(`${nombre} pide un valor`);
+  argv.splice(i, 2);
+  return valor;
+}
+
 async function main(argv: string[]): Promise<void> {
-  let base: string | undefined;
-  const i = argv.indexOf('--base');
-  if (i !== -1) {
-    base = argv[i + 1];
-    if (!base) throw new Error('--base pide un nombre');
-    argv.splice(i, 2);
-  }
+  const base = opcion(argv, '--base');
+  const senalDistinta = opcion(argv, '--senal-distinta');
   const [orden, ...args] = argv;
   const leerJson = (ruta: string | undefined) => {
     if (!ruta) throw new Error(`${orden} pide un fichero JSON`);
@@ -242,11 +255,11 @@ async function main(argv: string[]): Promise<void> {
         console.log('Esquema aplicado.');
         break;
       case 'crear':
-        imprimir(await crear(client, leerJson(args[0])));
+        imprimir(await crear(client, leerJson(args[0]), { senalDistinta }));
         break;
       case 'sustituir':
         if (!args[0]) throw new Error('sustituir pide la referencia');
-        imprimir(await sustituir(client, args[0], leerJson(args[1])));
+        imprimir(await sustituir(client, args[0], leerJson(args[1]), { senalDistinta }));
         break;
       case 'invalidar': {
         if (!args[0]) throw new Error('invalidar pide la referencia');
