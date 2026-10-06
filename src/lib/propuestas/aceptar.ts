@@ -34,12 +34,16 @@ export interface DatosAceptacion {
   tipo: 'autonomo' | 'sociedad';
   razon_social: string | null;
   nif_sociedad: string | null;
+  /** Del autonomo, o el domicilio social si es sociedad (ADR-095). */
+  domicilio: string;
+  /** Solo si acepta una sociedad: administrador, apoderado... (ADR-095). */
+  cargo: string | null;
   casilla_leido: boolean;
   casilla_autoridad: boolean;
   idempotency_key: string;
 }
 
-export type Identidad = Pick<DatosAceptacion, 'nombre' | 'dni' | 'correo' | 'tipo' | 'razon_social' | 'nif_sociedad'>;
+export type Identidad = Pick<DatosAceptacion, 'nombre' | 'dni' | 'correo' | 'tipo' | 'razon_social' | 'nif_sociedad' | 'domicilio' | 'cargo'>;
 
 const CORREO = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -65,6 +69,8 @@ export function validarDatos(entrada: unknown): string | DatosAceptacion {
     tipo,
     razon_social: tipo === 'sociedad' ? t('razon_social') : null,
     nif_sociedad: tipo === 'sociedad' ? normalizarDocumento(t('nif_sociedad')) : null,
+    domicilio: t('domicilio'),
+    cargo: tipo === 'sociedad' ? t('cargo') : null,
     casilla_leido: e.casilla_leido === true,
     casilla_autoridad: e.casilla_autoridad === true,
     idempotency_key: t('idempotency_key'),
@@ -75,9 +81,11 @@ export function validarDatos(entrada: unknown): string | DatosAceptacion {
   if (!datos.nombre || datos.nombre.length > 200) return 'Escribe tu nombre completo';
   if (!dniValido(datos.dni)) return 'Revisa el DNI o NIE: la letra no cuadra con el número';
   if (!CORREO.test(datos.correo) || datos.correo.length > 254) return 'Escribe un correo válido';
+  if (datos.domicilio.length < 5 || datos.domicilio.length > 300) return 'Escribe el domicilio completo';
   if (datos.tipo === 'sociedad') {
     if (!datos.razon_social || datos.razon_social.length > 200) return 'Escribe la razón social';
     if (!nifSociedadValido(datos.nif_sociedad ?? '')) return 'Revisa el NIF de la sociedad: el control no cuadra';
+    if (!datos.cargo || datos.cargo.length < 2 || datos.cargo.length > 100) return 'Escribe tu cargo en la sociedad';
   }
   if (!datos.casilla_leido || !datos.casilla_autoridad) return 'Marca las dos casillas para aceptar';
   return datos;
@@ -168,8 +176,9 @@ export async function aceptarPropuesta(
         ON CONFLICT DO NOTHING
         RETURNING acceptance_id, proposal_id, version, accepted_at
       ), i AS (
-        INSERT INTO aceptacion_identidad (acceptance_id, nombre, dni, correo, tipo, razon_social, nif_sociedad)
-        SELECT acceptance_id, ${datos.nombre}, ${datos.dni}, ${datos.correo}, ${datos.tipo}, ${datos.razon_social}, ${datos.nif_sociedad} FROM a
+        INSERT INTO aceptacion_identidad (acceptance_id, nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo)
+        SELECT acceptance_id, ${datos.nombre}, ${datos.dni}, ${datos.correo}, ${datos.tipo}, ${datos.razon_social}, ${datos.nif_sociedad},
+               ${datos.domicilio}, ${datos.cargo} FROM a
       ), e AS (
         INSERT INTO evento (proposal_id, version, tipo) SELECT proposal_id, version, 'aceptada' FROM a
       )
@@ -195,8 +204,8 @@ export async function aceptarPropuesta(
     offer_hash: datos.offer_hash,
     accepted_at: new Date(filas[0].accepted_at).toISOString(),
   };
-  const { nombre, dni, correo, tipo, razon_social, nif_sociedad } = datos;
-  avisar?.(justificante, { nombre, dni, correo, tipo, razon_social, nif_sociedad });
+  const { nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo } = datos;
+  avisar?.(justificante, { nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo });
   return r(201, 'aceptada', 'Propuesta aceptada', justificante);
 }
 
