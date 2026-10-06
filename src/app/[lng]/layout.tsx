@@ -191,6 +191,7 @@ export default async function LocaleLayout({ children, params }: Props) {
               '@type': 'PriceSpecification',
               price: t.services[id].price,
               priceCurrency: 'EUR',
+              valueAddedTaxIncluded: false,
             },
           })),
         },

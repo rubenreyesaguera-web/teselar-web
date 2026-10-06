@@ -13,13 +13,15 @@ humana profesional o jurada se presupuesta aparte.
 
 ## Cómo se empieza
 
-Tres peldaños, en este orden:
+Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida:
 
 1. **Diagnóstico gratuito — 30 minutos, sin coste ni compromiso.** Es la puerta de entrada. Antes de
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
    reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Dos
    plazas por semana. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
-2. **Auditoría de Procesos — 150€**, descontables del proyecto si acepta la propuesta en los 30
+2. **Auditoría de Procesos — 150€**, solo si lo que necesita va a medida (si del diagnóstico sale un
+   producto cerrado —Citas por WhatsApp, Web Esencial o una automatización sencilla— se pasa directo a la
+   propuesta, sin auditoría), descontables del proyecto si acepta la propuesta en los 30
    días siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante (antes
    se le dice qué tiene que traer, que es poco y depende del negocio), y un informe escrito de 2-3
    páginas: qué procesos le cuestan tiempo o dinero, cuánto, y qué se puede automatizar y en qué
@@ -28,7 +30,7 @@ Tres peldaños, en este orden:
    el prediagnóstico digital de la web y las redes, que por separado es gratuito.
 3. **El proyecto**, del catálogo de abajo.
 
-## Catálogo de servicios (precios cerrados, sin costes ocultos)
+## Catálogo de servicios (precios cerrados, sin costes ocultos, todos + IVA)
 
 - **Auditoría de Procesos** — 150€ (se descuentan del proyecto si el cliente acepta la propuesta en
   los 30 días siguientes). Sesión de 60-90 minutos sobre su operativa, mapeo de hasta tres procesos,
@@ -43,8 +45,9 @@ Tres peldaños, en este orden:
   nuevas ni cambios del proceso, que se presupuestan aparte.
 - **Citas por WhatsApp** — Esencial 700€–900€ + 150€/mes · Completo 1.500€–1.800€ + 250€/mes. Un
   asistente que atiende el WhatsApp del negocio 24 horas al día: consulta los huecos libres, reserva
-  la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar. La cuota mensual
-  se ajusta al tamaño del negocio (profesionales o citas al mes). Complemento de petición automática
+  la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar. El plan lo decide
+  cuántas personas atienden a la vez: el Esencial lleva una agenda, con una cita a la vez; el Completo,
+  varias agendas a la vez. Complemento de petición automática
   de reseñas: +200€ sobre el proyecto (no se vende suelto). Requiere la app WhatsApp Business; enlazar
   el número con el sistema depende de una aprobación de Meta, cuyo plazo no controla Teselar y se da
   por escrito en la propuesta. **Garantía:** si en los tres
@@ -144,7 +147,7 @@ Y a partir de ahí la respuesta depende de si el servicio necesita la cuota para
 
 ## Condiciones
 
-señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ se
+Todos los precios son + IVA. Señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ se
 descuentan de la señal, no la cubren entera salvo en proyectos de 1.500€ o menos: en uno de 8.000€ la
 señal son 800€ y abonaría 650€), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
 entrega y no contra fecha**: el diseño y el alcance, el núcleo funcionando, el despliegue y la
