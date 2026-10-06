@@ -36,3 +36,5 @@ build/
 # Ficheros generados por el build de TypeScript/Next
 tsconfig.tsbuildinfo
 next-env.d.ts
+.vercel
+.env*
