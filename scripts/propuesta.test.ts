@@ -177,9 +177,10 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       referencia: p.referencia,
       version: p.version,
       offer_hash: p.offerHash,
+      tipo: 'autonomo',
       nombre: 'Persona de Prueba',
+      dni: '12.345.678-z',
       correo: 'prueba@example.com',
-      empresa: 'Negocio de Prueba',
       casilla_leido: true,
       casilla_autoridad: true,
       idempotency_key: randomUUID().replace(/-/g, ''),
@@ -188,7 +189,13 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
 
     test('datos mal: 400, y no cuenta como intento fallido', async () => {
       const p = await crear(db, ejemplo);
-      for (const malo of [{ casilla_leido: false }, { casilla_autoridad: false }, { correo: 'no-es-correo' }, { nombre: '  ' }, { empresa: '' }, { idempotency_key: 'corta' }]) {
+      for (const malo of [
+        { casilla_leido: false }, { casilla_autoridad: false }, { correo: 'no-es-correo' }, { nombre: '  ' }, { idempotency_key: 'corta' },
+        { tipo: undefined }, { tipo: 'particular' }, { dni: '12345678A' }, { dni: '' },
+        { tipo: 'sociedad' },
+        { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345670' },
+        { tipo: 'sociedad', razon_social: '', nif_sociedad: 'B12345674' },
+      ]) {
         expect((await aceptarPropuesta(url(), p.capacidad, datos(p, malo))).status).toBe(400);
       }
       const { rows } = await db.query(`SELECT intentos_fallidos FROM propuesta_version WHERE proposal_id = $1`, [p.referencia]);
@@ -247,12 +254,43 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       const a = (await db.query(`SELECT * FROM aceptacion WHERE proposal_id = $1`, [p.referencia])).rows;
       expect(a).toHaveLength(1);
       expect(hashOferta(a[0].snapshot)).toBe(p.offerHash);
-      const quien = (await db.query(`SELECT nombre, correo, empresa FROM aceptacion_identidad WHERE acceptance_id = $1`, [a[0].acceptance_id])).rows;
-      expect(quien).toEqual([{ nombre: 'Persona de Prueba', correo: 'prueba@example.com', empresa: 'Negocio de Prueba' }]);
+      const quien = (await db.query(`SELECT nombre, dni, correo, tipo, razon_social, nif_sociedad FROM aceptacion_identidad WHERE acceptance_id = $1`, [a[0].acceptance_id])).rows;
+      expect(quien).toEqual([{ nombre: 'Persona de Prueba', dni: '12345678Z', correo: 'prueba@example.com', tipo: 'autonomo', razon_social: null, nif_sociedad: null }]);
       const ev = (await db.query(`SELECT tipo FROM evento WHERE proposal_id = $1 ORDER BY evento_id`, [p.referencia])).rows.map((x) => x.tipo);
       expect(ev).toEqual(['creada', 'aceptada']);
       // El justificante no lleva datos personales.
-      expect(JSON.stringify(r1.body)).not.toMatch(/Persona de Prueba|example\.com|Negocio de Prueba/);
+      expect(JSON.stringify(r1.body)).not.toMatch(/Persona de Prueba|example\.com|12345678Z/);
+    });
+
+    test('una sociedad guarda razon social y NIF normalizado; un autonomo no los guarda aunque lleguen', async () => {
+      const p = await crear(db, ejemplo);
+      expect((await aceptarPropuesta(url(), p.capacidad, datos(p, { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'b-12345674' }))).status).toBe(201);
+      const q = await crear(db, ejemplo);
+      expect((await aceptarPropuesta(url(), q.capacidad, datos(q, { razon_social: 'Colada, S.L.', nif_sociedad: 'B12345674' }))).status).toBe(201);
+      const filas = (
+        await db.query(
+          `SELECT a.proposal_id, i.tipo, i.razon_social, i.nif_sociedad FROM aceptacion_identidad i JOIN aceptacion a USING (acceptance_id)
+            WHERE a.proposal_id IN ($1, $2) ORDER BY a.proposal_id`,
+          [p.referencia, q.referencia],
+        )
+      ).rows;
+      expect(filas).toEqual([
+        { proposal_id: p.referencia, tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345674' },
+        { proposal_id: q.referencia, tipo: 'autonomo', razon_social: null, nif_sociedad: null },
+      ]);
+    });
+
+    test('la base rechaza por si sola una sociedad sin NIF o un DNI con forma mala', async () => {
+      // Los CHECK de aceptacion_identidad, sobre una tabla temporal con la misma definicion (sin la clave ajena).
+      await db.query(`CREATE TEMP TABLE id_prueba (LIKE aceptacion_identidad INCLUDING CONSTRAINTS)`);
+      const prueba = (dni: string, tipo: string, razon: string | null, nif: string | null) =>
+        db.query(`INSERT INTO id_prueba VALUES ($1::uuid, 'X', $2, 'x@example.com', $3, $4, $5)`, [randomUUID(), dni, tipo, razon, nif]);
+      await expect(prueba('12345678Z', 'sociedad', 'Y, S.L.', null)).rejects.toThrow();
+      await expect(prueba('1234', 'autonomo', null, null)).rejects.toThrow();
+      await expect(prueba('12345678Z', 'autonomo', 'Y, S.L.', 'B12345674')).rejects.toThrow();
+      await expect(prueba('12345678Z', 'particular', null, null)).rejects.toThrow();
+      await prueba('X1234567L', 'autonomo', null, null);
+      await prueba('12345678Z', 'sociedad', 'Y, S.L.', 'B12345674');
     });
 
     test('dos aceptaciones a la vez: entra una y la otra recibe 409', async () => {

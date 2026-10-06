@@ -44,15 +44,26 @@ describe('la página sale de la instantánea', () => {
     expect(faltan).toEqual([]);
   });
 
-  test('portada: titular, subtítulo, tarjeta con total + IVA, estado y botones', () => {
+  test('portada: para quién, titular, tarjeta con total + IVA y los pagos, estado y botones', () => {
+    expect(html).toContain(`Para ${escapar(instantanea.partes.cliente.nombre)} · ${escapar(instantanea.partes.cliente.negocio)}`);
     expect(html).toContain(`<h1 id="titular">${escapar(instantanea.portada.titular)}</h1>`);
+    expect(html).toMatch(/<aside class="tarjeta"[\s\S]*Cómo se paga · 4 pagos[\s\S]*<\/aside>/);
+    expect(html).toContain('Propuesta de Rubén Reyes · Teselar Software · 6 de octubre de 2026');
     expect(html).toContain('765 €<span> + IVA</span>');
     expect(html).toContain('150 € al mes + IVA');
-    expect(html).toContain('En 4 pagos: 150 € · 205 € · 205 € · 205 €');
     expect(html).toContain('Válida hasta el 5 de noviembre de 2026');
     expect(html).toContain('Pendiente de aceptación');
-    expect(html).toContain('href="#alcance"');
     expect(html.match(/Aceptar propuesta/g)?.length).toBe(4); // cabecera, portada, cierre y barra del móvil
+  });
+
+  test('el detalle va plegado hasta «Ver alcance completo», con un botón y no un enlace (no toca el fragmento)', () => {
+    expect(html).toContain('<div id="alcance-completo" class="zona-alcance" hidden="">');
+    expect(html).toContain('aria-controls="alcance-completo"');
+    expect(html).not.toMatch(/href="#/);
+  });
+
+  test('ya no hay cuadro de datos aparte', () => {
+    expect(html).not.toContain('class="datos"');
   });
 
   test('«Lo que aceptas»: el diálogo trae las condiciones; sin la capacidad del fragmento no hay formulario', () => {
@@ -91,7 +102,8 @@ describe('estados', () => {
     expect(h).toContain('Aceptada el 8 de octubre de 2026 a las 11:15');
     expect(h).toContain('Propuesta aceptada');
     expect(h).not.toContain('Aceptar propuesta');
-    expect(h).toContain('Cómo va');
+    expect(h).toMatch(/<aside class="tarjeta"[\s\S]*Cómo va[\s\S]*<\/aside>/);
+    expect(h).not.toContain('Siguiente paso');
     expect(h).toContain('1 de 4 pasos cumplidos');
     expect(h).toContain('Cumplido el 9 de octubre de 2026 a las 12:00');
     expect(h.match(/>Pendiente</g)?.length).toBe(3);
