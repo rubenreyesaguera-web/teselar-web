@@ -1,0 +1,64 @@
+{
+  "partes": {
+    "cliente": { "nombre": "Clienta de Prueba", "negocio": "Negocio Sintético (no es un cliente real)" },
+    "proveedor": { "nombre": "Rubén Reyes", "marca": "Teselar Software", "nif": null }
+  },
+  "situacion": {
+    "palabras_del_cliente": [
+      "Ejemplo: «Los lunes se me va la mañana contestando WhatsApp.»",
+      "Ejemplo: «Las citas las apunto en una libreta.»"
+    ],
+    "lo_que_funciona": "Ejemplo: la atención en el local, que no se toca."
+  },
+  "solucion": {
+    "resumen": "Un asistente de WhatsApp que da, cambia y recuerda las citas a cualquier hora.",
+    "dia_a_dia": [
+      "La agenda deja el papel y pasa a un panel que se mira en el móvil.",
+      "Las citas que entran de noche aparecen apuntadas por la mañana."
+    ]
+  },
+  "alcance": [
+    "Plan Esencial: una agenda, una cita a la vez.",
+    "Reserva, cancela y recuerda; hasta 500 conversaciones al mes con el modelo de IA pagado por Teselar."
+  ],
+  "entregables": [
+    "El asistente funcionando en su número de WhatsApp.",
+    "El número en su ficha de Google, en su web y un cartel para el mostrador."
+  ],
+  "exclusiones": [
+    "Los mensajes de WhatsApp los cobra Meta directamente, con su tarifa oficial.",
+    "Lo que esté fuera de este alcance se presupuesta aparte."
+  ],
+  "dependencias": [
+    "El número en la app WhatsApp Business.",
+    "Los servicios con su duración, y el horario.",
+    "La aprobación de Meta, que no depende de ninguno de los dos."
+  ],
+  "calendario": [
+    { "tramo": "Montarlo y probarlo con un número de prueba", "depende_de": "Teselar", "plazo": "Por confirmar" },
+    { "tramo": "Enlazar su número", "depende_de": "Meta", "plazo": "Sin plazo publicado por Meta" }
+  ],
+  "precio": {
+    "moneda": "EUR",
+    "conceptos": [
+      { "concepto": "Puesta en marcha", "importe_centimos": 76500, "periodicidad": "unico" },
+      { "concepto": "Cuota mensual", "importe_centimos": 15000, "periodicidad": "mensual" }
+    ]
+  },
+  "impuestos": { "precios_mas_iva": true, "nota": "El régimen concreto lo confirma la gestoría." },
+  "pagos": {
+    "hitos": [
+      { "hito": "Señal", "importe_centimos": 15000, "cuando": "Al aceptar" },
+      { "hito": "Cuota 1", "importe_centimos": 20500, "cuando": "Funcionando con sus datos en un número de prueba" },
+      { "hito": "Cuota 2", "importe_centimos": 20500, "cuando": "Su número enlazado" },
+      { "hito": "Cuota 3", "importe_centimos": 20500, "cuando": "Aceptación tras dos semanas con clientas reales" }
+    ],
+    "notas": [
+      "La cuota mensual empieza con la cuota 2 y se factura de fecha a fecha.",
+      "Así no pagas por adelantado un trabajo que todavía no has visto."
+    ]
+  },
+  "garantia": "Si en los tres primeros meses desde que su número queda enlazado no entra ni una cita fuera de su horario reservada por el asistente, se devuelve la puesta en marcha (señal y tres cuotas), no las cuotas mensuales, y el servicio se apaga.",
+  "vigencia_dias": 30,
+  "siguiente_paso": "Si te encaja, me lo dices y te paso los datos para la señal."
+}
