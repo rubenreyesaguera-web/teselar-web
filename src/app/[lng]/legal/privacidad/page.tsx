@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage({ params }: Props) {
     es: {
       title: 'Política de Privacidad',
       sec1_title: '1. Responsable del Tratamiento',
-      sec1_text: 'El Responsable del Tratamiento de los datos de carácter personal que se recaben a través de este sitio web es:\n\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: info@teselarsoftware.com',
+      sec1_text: 'El Responsable del Tratamiento de los datos de carácter personal que se recaben a través de este sitio web es:\n\n• Titular: Rubén Reyes Agüera\n• NIF: 47897952-S\n• Nombre Comercial: Teselar Software\n• Domicilio Social: Lloret de Mar, Girona, España\n• Correo electrónico de contacto: info@teselarsoftware.com',
       sec2_title: '2. Finalidad del Tratamiento de Datos',
       sec2_text: 'Los datos personales facilitados a través del formulario de contacto serán tratados exclusivamente para:\n\n1. Gestionar, atender y responder a la solicitud de contacto, presupuesto o cita enviada por el usuario.\n2. Remitir la información técnica o comercial solicitada por el usuario.',
       sec3_title: '3. Legitimación del Tratamiento',
@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage({ params }: Props) {
     ca: {
       title: 'Política de Privacitat',
       sec1_title: '1. Responsable del Tractament',
-      sec1_text: 'El Responsable del Tractament de les dades de caràcter personal que es recullin a través d\'aquest lloc web és:\n\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: info@teselarsoftware.com',
+      sec1_text: 'El Responsable del Tractament de les dades de caràcter personal que es recullin a través d\'aquest lloc web és:\n\n• Titular: Rubén Reyes Agüera\n• NIF: 47897952-S\n• Nom Comercial: Teselar Software\n• Domicili Social: Lloret de Mar, Girona, Espanya\n• Correu electrònic de contacte: info@teselarsoftware.com',
       sec2_title: '2. Finalitat del Tractament de Dades',
       sec2_text: 'Les dades personals facilitades a través del formulari de contacte seran tractades exclusivament per a:\n\n1. Gestionar, atendre i respondre a la sol·licitud de contacte, pressupost o cita enviada per l\'usuari.\n2. Remetre la informació tècnica o comercial sol·licitada per l\'usuari.',
       sec3_title: '3. Legitimació del Tractament',
@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage({ params }: Props) {
     en: {
       title: 'Privacy Policy',
       sec1_title: '1. Data Controller',
-      sec1_text: 'The Data Controller for the personal data collected through this website is:\n\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: info@teselarsoftware.com',
+      sec1_text: 'The Data Controller for the personal data collected through this website is:\n\n• Owner: Rubén Reyes Agüera\n• Tax ID (NIF): 47897952-S\n• Trade Name: Teselar Software\n• Registered Office: Lloret de Mar, Girona, Spain\n• Contact Email: info@teselarsoftware.com',
       sec2_title: '2. Purpose of Data Processing',
       sec2_text: 'The personal data provided through the contact form will be processed exclusively to:\n\n1. Manage, address, and respond to the contact, quote, or meeting request submitted by the user.\n2. Deliver the technical or commercial information requested by the user.',
       sec3_title: '3. Legal Basis for Processing',
