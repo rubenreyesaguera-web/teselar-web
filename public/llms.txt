@@ -55,7 +55,7 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   la puesta en marcha; lo cuenta el propio sistema y el cliente ve el número en su panel.
 - **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. **No es el servicio de arriba más barato.** Aquí
   **no hay asistente que converse**: el cliente del negocio escribe al WhatsApp de siempre, recibe un
-  enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email o SMS,
+  enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email,
   no por WhatsApp. A cambio, el negocio no migra de número, no depende de los plazos de Meta y no paga
   mensajes. Lo que pierde es la conversación 24 h dentro de WhatsApp. Criterio para elegir: si sus
   clientes ya le escriben por WhatsApp, el de arriba; si no, con este basta.
