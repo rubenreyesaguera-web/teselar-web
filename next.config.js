@@ -27,6 +27,16 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'no-referrer' },
         ],
       },
+      // Las propuestas en landing propia (public/propuestas/), sin aceptacion ni enlaces a la web: lo mismo.
+      {
+        source: '/propuestas/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'no-referrer' },
+        ],
+      },
     ];
   },
 };
