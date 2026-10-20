@@ -26,6 +26,7 @@ export const dictionaries = {
       cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
       pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
+      piezas_desc: ['Tus clientes y su historial, en un solo sitio', 'Presupuestos y facturas que salen solos', 'Citas que se reservan sin llamar', 'Una web hecha a mano, rápida', 'Respuestas y recordatorios automáticos', 'Avisos, técnicos y partes desde el móvil'],
       piezas_alt: 'Las piezas de un negocio encajadas, con la de Teselar en el hueco que faltaba'
     },
     concept: {
@@ -435,6 +436,7 @@ export const dictionaries = {
       cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
       pieza_texto: 'El que et falta, fet a la mida del forat',
+      piezas_desc: ['Els teus clients i el seu historial, en un sol lloc', 'Pressupostos i factures que surten sols', 'Cites que es reserven sense trucar', 'Una web feta a mà, ràpida', 'Respostes i recordatoris automàtics', 'Avisos, tècnics i parts des del mòbil'],
       piezas_alt: 'Les peces d\'un negoci encaixades, amb la de Teselar al forat que faltava'
     },
     concept: {
@@ -844,6 +846,7 @@ export const dictionaries = {
       cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
       pieza_texto: 'What you are missing, made to fit the gap',
+      piezas_desc: ['Your clients and their history, in one place', 'Quotes and invoices that go out on their own', 'Bookings made without a phone call', 'A hand-built, fast website', 'Automatic replies and reminders', 'Call-outs, technicians and job reports from your phone'],
       piezas_alt: 'The pieces of a business fitted together, with Teselar\'s in the gap that was missing'
     },
     concept: {

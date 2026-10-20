@@ -556,18 +556,31 @@ export default function Page({ params }: PageProps) {
             </div>
           </div>
 
+          {/* La teselacion se monta al cargar (Emil Kowalski: el movimiento explica la marca): las
+              piezas encajan una tras otra y la de Teselar, la cian, llega la ultima al hueco. Va en
+              CSS para no esperar a React; con "reducir movimiento" no se anima. Al pasar el raton,
+              cada pieza dice en una linea que se hace con ella. */}
           <div role="img" aria-label={t.hero.piezas_alt} className="lg:col-span-5 grid grid-cols-4 grid-rows-4 gap-2 min-h-[340px] sm:min-h-[420px]">
-            <div className="pieza col-span-2 bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[0]}</div>
-            <div className="pieza bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[1]}</div>
-            <div className="pieza row-span-3 bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[2]}</div>
-            <div className="pieza bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[3]}</div>
-            <div className="col-span-2 row-span-2 bg-innovacion rounded-md p-5 text-teselar-dark flex flex-col justify-between">
-              <span className="text-sm sm:text-base font-semibold">{t.concept.title}</span>
-              <span className="text-xl sm:text-2xl font-bold leading-tight [text-wrap:balance]">{t.hero.pieza_texto}</span>
-            </div>
-            <div className="pieza bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[4]}</div>
-            <div className="pieza col-span-3 bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[5]}</div>
-            <div className="pieza bg-teselar-light rounded-md" />
+            {[
+              { i: 0, clase: 'col-span-2 bg-teselar-light' },
+              { i: 1, clase: 'bg-[#0a3147]' },
+              { i: 2, clase: 'row-span-3 bg-teselar-light' },
+              { i: 3, clase: 'bg-[#0a3147]' },
+              { i: -1, clase: '' },
+              { i: 4, clase: 'bg-teselar-light' },
+              { i: 5, clase: 'col-span-3 bg-[#0a3147]' },
+            ].map(({ i, clase }, orden) => i === -1 ? (
+              <div key="teselar" className="pieza-teselar col-span-2 row-span-2 bg-innovacion rounded-md p-5 text-teselar-dark flex flex-col justify-between">
+                <span className="text-sm sm:text-base font-semibold">{t.concept.title}</span>
+                <span className="text-xl sm:text-2xl font-bold leading-tight [text-wrap:balance]">{t.hero.pieza_texto}</span>
+              </div>
+            ) : (
+              <div key={i} style={{ '--d': `${orden * 55}ms` } as React.CSSProperties} className={`pieza pieza-entra ${clase} rounded-md p-3 sm:p-4 text-claridad/85 flex flex-col justify-end gap-1`}>
+                <span className="pieza-desc text-sm leading-snug text-claridad/80 [text-wrap:balance]">{t.hero.piezas_desc[i]}</span>
+                <span className="text-sm sm:text-base">{t.hero.piezas[i]}</span>
+              </div>
+            ))}
+            <div style={{ '--d': '330ms' } as React.CSSProperties} className="pieza pieza-entra bg-teselar-light rounded-md" />
           </div>
         </div>
       </section>
@@ -576,10 +589,12 @@ export default function Page({ params }: PageProps) {
           tarjetas que entraban girando con destello. */}
       <section className="relative py-24 md:py-32 px-4 md:px-8 z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6">
-          <h2 className="lg:col-span-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">
+          {/* Titular de manifiesto (20/10): el salto de escala hace que no todas las secciones
+              pesen igual al bajar. */}
+          <h2 className="lg:col-span-6 text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] text-claridad [text-wrap:balance]">
             {t.concept.title}
           </h2>
-          <div className="lg:col-start-7 lg:col-span-6 flex flex-col gap-6 text-lg md:text-xl text-claridad/85 leading-relaxed">
+          <div className="lg:col-start-8 lg:col-span-5 flex flex-col gap-6 text-lg md:text-xl text-claridad/85 leading-relaxed lg:self-end">
             <p className="[text-wrap:pretty]">{t.concept.text1}</p>
             <p className="[text-wrap:pretty]">{t.concept.text2}</p>
           </div>
@@ -1189,7 +1204,7 @@ export default function Page({ params }: PageProps) {
           lista en movil. Antes era una linea de tiempo en zigzag (cada paso, una fila entera) con
           nodos, una linea que se dibujaba y los pasos 2 a 4 en gris, como desactivados. El primero
           lleva su boton porque es el paso que da quien esta leyendo. */}
-      <section id="process" className="relative py-16 md:py-24 px-4 md:px-8 z-10 content-visibility-auto">
+      <section id="process" className="relative py-16 md:py-24 px-4 md:px-8 z-10 bg-teselar content-visibility-auto">
         <div className="max-w-7xl mx-auto flex flex-col gap-10 md:gap-14">
           <div className="max-w-3xl flex flex-col gap-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">{t.process.title}</h2>
@@ -1205,8 +1220,8 @@ export default function Page({ params }: PageProps) {
             ].map(({ paso, extra, primero }) => {
               const [numero, ...resto] = paso.title.split('. ');
               return (
-                <li key={numero} className={`flex flex-col gap-3 pt-6 border-t-2 ${primero ? 'border-innovacion' : 'border-claridad/15'}`}>
-                  <span className={`text-4xl md:text-5xl font-bold tracking-tight ${primero ? 'text-innovacion' : 'text-claridad/70'}`} aria-hidden="true">{numero}</span>
+                <li key={numero} className={`flex flex-col gap-3 pt-6 border-t-2 ${primero ? 'border-innovacion' : 'border-claridad/25'}`}>
+                  <span className={`text-4xl md:text-5xl font-bold tracking-tight ${primero ? 'text-innovacion' : 'text-claridad/75'}`} aria-hidden="true">{numero}</span>
                   <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">
                     <span className="sr-only">{numero}. </span>{resto.join('. ')}
                   </h3>
@@ -1294,7 +1309,7 @@ export default function Page({ params }: PageProps) {
         <div className="max-w-7xl mx-auto flex flex-col gap-10">
 
           <div className="max-w-3xl flex flex-col gap-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">{t.contact.title}</h2>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.0] text-claridad [text-wrap:balance]">{t.contact.title}</h2>
             <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.contact.subtitle}</p>
           </div>
 

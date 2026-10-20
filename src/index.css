@@ -80,6 +80,28 @@
   .pieza:hover { transform: translateY(-3px); }
 }
 
+/* La teselacion de la portada se monta al cargar (20/10): cada pieza entra con un pequeno
+   desfase (--d) y la cian llega la ultima al hueco. fill-mode backwards: al terminar, la pieza
+   vuelve a sus estilos normales y el hover sigue funcionando. Con "reducir movimiento" la regla
+   global de arriba la deja en 0,01 ms. */
+@keyframes pieza-encaja {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes teselar-encaja {
+  from { opacity: 0; transform: translate(24px, -24px) scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+.pieza-entra { animation: pieza-encaja 420ms cubic-bezier(0.23, 1, 0.32, 1) var(--d, 0ms) backwards; }
+.pieza-teselar { animation: teselar-encaja 520ms cubic-bezier(0.23, 1, 0.32, 1) 420ms backwards; }
+
+/* Lo que dice cada pieza al pasar el raton: solo donde hay raton. En movil no se ve. */
+.pieza-desc { display: none; }
+@media (hover: hover) and (min-width: 640px) {
+  .pieza-desc { display: block; opacity: 0; transform: translateY(4px); transition: opacity 180ms cubic-bezier(0.23, 1, 0.32, 1), transform 180ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .pieza:hover .pieza-desc { opacity: 1; transform: none; }
+}
+
 /* Gradients */
 .text-glow-cyan {
   /* Sin brillo: Impeccable lo marca como tic de web hecha con IA (20/10). La clase se
