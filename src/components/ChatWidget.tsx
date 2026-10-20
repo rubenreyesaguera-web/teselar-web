@@ -97,7 +97,7 @@ export function ChatWidget({ lng }: { lng: string }) {
     <>
       {/* Burbuja de invitación */}
       {teaser && !abierto && (
-        <div className="fixed bottom-24 right-5 z-[99998] max-w-[280px] bg-teselar-dark border border-innovacion/40 rounded-2xl rounded-br-md shadow-[0_8px_30px_rgba(0,191,165,0.25)] p-4 animate-[fadeIn_.4s_ease]">
+        <div className="fixed bottom-24 right-5 z-[99998] max-w-[280px] bg-teselar-dark border border-innovacion/40 rounded-2xl rounded-br-md shadow-lg shadow-black/30 p-4 animate-[fadeIn_.4s_ease]">
           <button onClick={cerrarTeaser} aria-label={t.cerrar} className="absolute top-2 right-2 text-claridad/40 hover:text-claridad cursor-pointer">
             <X size={14} />
           </button>
@@ -116,7 +116,7 @@ export function ChatWidget({ lng }: { lng: string }) {
         onClick={abrirChat}
         aria-label={abierto ? t.cerrarChat : t.abrirChat}
         aria-expanded={abierto}
-        className="fixed bottom-5 right-5 z-[99998] w-16 h-16 rounded-full bg-innovacion text-teselar-dark shadow-[0_0_30px_rgba(0,191,165,0.55)] flex items-center justify-center hover:scale-110 transition-transform cursor-pointer"
+        className="fixed bottom-5 right-5 z-[99998] w-16 h-16 rounded-full bg-innovacion text-teselar-dark shadow-lg shadow-black/30 flex items-center justify-center active:scale-[0.97] transition-transform cursor-pointer"
       >
         {!abierto && <span className="absolute inset-0 rounded-full bg-innovacion/50 animate-ping" style={{ animationDuration: '2.5s' }} />}
         <span className="relative">{abierto ? <X size={26} /> : <Bot size={30} />}</span>

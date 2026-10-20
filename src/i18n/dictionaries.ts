@@ -23,7 +23,10 @@ export const dictionaries = {
       meta_description: 'Asistentes con inteligencia artificial, automatizaciones y programas a medida para negocios de Lloret de Mar y la Costa Brava. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
-      cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.'
+      cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.',
+      piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
+      pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
+      piezas_alt: 'Las piezas de un negocio encajadas, con la de Teselar en el hueco que faltaba'
     },
     concept: {
       title: 'La Pieza que Encaja',
@@ -429,7 +432,10 @@ export const dictionaries = {
       meta_description: 'Assistents amb intel·ligència artificial, automatitzacions i programes a mida per a negocis de Lloret de Mar i la Costa Brava. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
-      cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.'
+      cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.',
+      piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
+      pieza_texto: 'El que et falta, fet a la mida del forat',
+      piezas_alt: 'Les peces d\'un negoci encaixades, amb la de Teselar al forat que faltava'
     },
     concept: {
       title: 'La Peça que Encaixa',
@@ -835,7 +841,10 @@ export const dictionaries = {
       meta_description: 'AI assistants, automations and custom software for businesses in Lloret de Mar and the Costa Brava. I build them myself, end to end.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
-      cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.'
+      cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.',
+      piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
+      pieza_texto: 'What you are missing, made to fit the gap',
+      piezas_alt: 'The pieces of a business fitted together, with Teselar\'s in the gap that was missing'
     },
     concept: {
       title: 'The Fitting Piece',

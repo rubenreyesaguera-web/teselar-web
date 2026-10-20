@@ -60,20 +60,31 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px 0 rgba(3, 22, 34, 0.37);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Emil Kowalski: solo transform y color, 180 ms, curva que frena al final (20/10). */
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), background-color 180ms cubic-bezier(0.23, 1, 0.32, 1), border-color 180ms ease;
 }
 
 .glass-card:hover {
   background: rgba(5, 38, 56, 0.85);
   border-color: rgba(0, 191, 165, 0.3);
-  box-shadow: 0 12px 40px 0 rgba(0, 191, 165, 0.15);
   transform: translateY(-4px);
+}
+
+/* Tarjetas y piezas de la portada (20/10, Emil Kowalski): suben un poco al pasar el raton,
+   en 180 ms y con una curva que frena al final. Solo transform y color. */
+.valor, .pieza {
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (hover: hover) {
+  .valor:hover { transform: translateY(-4px); background-color: #0a3147; }
+  .pieza:hover { transform: translateY(-3px); }
 }
 
 /* Gradients */
 .text-glow-cyan {
-  text-shadow: 0 0 20px rgba(0, 191, 165, 0.4);
+  /* Sin brillo: Impeccable lo marca como tic de web hecha con IA (20/10). La clase se
+     queda para no tocar cada titulo que la usa. */
+  text-shadow: none;
 }
 
 .bg-radial-gradient {
@@ -109,7 +120,7 @@
 .form-input:focus {
   outline: none;
   border-color: var(--color-innovacion);
-  box-shadow: 0 0 10px rgba(0, 191, 165, 0.25);
+  box-shadow: 0 0 0 1px var(--color-innovacion);
   background: rgba(3, 22, 34, 0.7);
 }
 
@@ -127,13 +138,11 @@
   height: 8px;
   background: var(--color-innovacion);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--color-innovacion);
 }
 
 /* Card active border */
 .glowing-card {
   border: 1px solid rgba(0, 191, 165, 0.3);
-  box-shadow: 0 0 25px rgba(0, 191, 165, 0.15);
 }
 
 /* Cinematic Vignette with Teal/Orange Hollywood color grading */
@@ -462,13 +471,10 @@ html.intro-seen .intro-loader-container {
 /* ============================================= */
 
 /* Sticky Bottom CTA Bar */
-@keyframes sticky-glow-pulse {
-  0%, 100% { box-shadow: 0 -4px 20px rgba(0, 191, 165, 0.15), 0 0 0 0 rgba(0, 191, 165, 0); }
-  50% { box-shadow: 0 -4px 30px rgba(0, 191, 165, 0.3), 0 0 0 6px rgba(0, 191, 165, 0.08); }
-}
-
+/* La barra fija ya no late: un brillo que pulsa sin motivo pide una atencion que no se ha
+   ganado (Impeccable, 20/10). */
 .sticky-cta-bar {
-  animation: sticky-glow-pulse 3s ease-in-out infinite;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* Exit Intent Popup Overlay */

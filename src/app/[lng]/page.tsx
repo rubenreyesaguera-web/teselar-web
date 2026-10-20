@@ -1,15 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, use, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring, type MotionValue } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { Background3D } from '../../components/Background3D';
 import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
 import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
-  ShieldCheck, CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
+  CreditCard, ChevronRight, ChevronDown, Calendar, Sparkles,
   Gift, Star, Users, Clock, Send, MessageCircle, Linkedin, Instagram, CalendarCheck
 } from 'lucide-react';
 
@@ -28,51 +27,6 @@ const WHATSAPP_NUM = '34653232735';
 // El mensaje previo dice de que seccion viene, para saberlo sin preguntarlo.
 const waLink = (mensaje: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(mensaje)}`;
 
-interface AnimatedWordProps {
-  word: string;
-  index: number;
-  totalWords: number;
-  isGradient: boolean;
-  scrollY: MotionValue<number>;
-  heroBuilt: boolean;
-}
-
-const AnimatedWord = ({ word, index, totalWords, isGradient, scrollY, heroBuilt }: AnimatedWordProps) => {
-  // Let the title animation span from 200px to 440px scroll depth
-  const startScroll = 200;
-  const endScroll = 440;
-  const scrollSpan = endScroll - startScroll;
-  
-  // Stagger the activation of each word across the span
-  const wordStart = startScroll + (index / totalWords) * (scrollSpan * 0.55);
-  const wordEnd = wordStart + (scrollSpan * 0.45); // overlaps slightly for a fluid wave effect
-  
-  const opacityVal = useTransform(scrollY, [wordStart, wordEnd], [0, 1]);
-  const yVal = useTransform(scrollY, [wordStart, wordEnd], [18, 0]);
-  const scaleVal = useTransform(scrollY, [wordStart, wordEnd], [0.94, 1]);
-  
-  // El espacio va FUERA del span. La separacion entre palabras la daba solo un margen
-  // de CSS, asi que el titulo salia pegado -"Lapiezaexacta..."- tanto para un lector
-  // de pantalla como para un extractor de texto. Dentro del inline-block no vale: ahi
-  // el espacio final se colapsa al renderizar. Lo compensa word-spacing en el h1.
-  return (
-    <>
-    <motion.span
-      style={{ 
-        opacity: heroBuilt ? 1 : opacityVal, 
-        y: heroBuilt ? 0 : yVal, 
-        scale: heroBuilt ? 1 : scaleVal, 
-        display: 'inline-block' 
-      }}
-      className={`select-none ${isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
-    >
-      {word}
-    </motion.span>
-      {index < totalWords - 1 ? ' ' : ''}
-    </>
-  );
-};
-
 export default function Page({ params }: PageProps) {
   const { lng: urlLng } = use(params);
   const [currentLng, setCurrentLng] = useState(urlLng);
@@ -84,36 +38,15 @@ export default function Page({ params }: PageProps) {
     setCurrentLng(urlLng);
   }, [urlLng]);
 
-  // Word arrays for staggered title construction (Apple-style cinematic reveal)
-  // Empieza por IA y no por "Webs" desde el 6/10/2026, alineado con el titulo de la pagina
-  // (ADR-084): por las busquedas de diseño web no salia, y lo que se quiere vender es IA.
-  const esWords = [
-    { text: "IA,", isGradient: false },
-    { text: "automatizaciones", isGradient: false },
-    { text: "y", isGradient: false },
-    { text: "software", isGradient: false },
-    { text: "a", isGradient: true },
-    { text: "medida", isGradient: true }
-  ];
-
-  const caWords = [
-    { text: "IA,", isGradient: false },
-    { text: "automatitzacions", isGradient: false },
-    { text: "i", isGradient: false },
-    { text: "programari", isGradient: false },
-    { text: "a", isGradient: true },
-    { text: "mida", isGradient: true }
-  ];
-
-  const enWords = [
-    { text: "AI,", isGradient: false },
-    { text: "automations", isGradient: false },
-    { text: "and", isGradient: false },
-    { text: "custom", isGradient: true },
-    { text: "software", isGradient: true }
-  ];
-
-  const activeWords = currentLng === 'es' ? esWords : currentLng === 'ca' ? caWords : enWords;
+  // El titular empieza por IA y no por "Webs" desde el 6/10/2026, alineado con el titulo de
+  // la pagina (ADR-084). Antes se construia palabra a palabra con el scroll; desde el 20/10
+  // se sirve entero.
+  const TITULARES: Record<string, string> = {
+    es: 'IA, automatizaciones y software a medida',
+    ca: 'IA, automatitzacions i programari a mida',
+    en: 'AI, automations and custom software',
+  };
+  const heroTitulo = TITULARES[currentLng] ?? TITULARES.en;
 
   // Los numeros del simulador se formateaban con toLocaleString() SIN idioma, asi que
   // cada lado usaba el suyo: el servidor de Vercel escribia "20,784" y el navegador
@@ -163,60 +96,8 @@ export default function Page({ params }: PageProps) {
   const [exitFormSuccess, setExitFormSuccess] = useState(false);
   const contactSectionRef = useRef<HTMLElement>(null);
 
-  // Sticky Scroll Container tracking for cinematic morphing
-  const heroContainerRef = useRef<HTMLDivElement>(null);
-  
-  // Track global scroll Y position (prevents off-screen viewport exit resets completely)
-  const { scrollY } = useScroll();
-  
-  // Smooth out discrete scroll ticks with a premium spring physics model (buttery 120fps glide)
-  const smoothScrollY = useSpring(scrollY, {
-    stiffness: 250,     // Ultra-responsive, tracks aggressive/rapid keyboard jumps immediately
-    damping: 38,        // Critically damped to eliminate overshoot/rebound latency completely
-    restDelta: 0.05
-  });
-
-  // 0. Header: one-shot reveal triggered by IntersectionObserver (zero per-frame JS, restores 9-transform smoothScrollY load)
-  // Observes the center hero title - when it exits viewport (user scrolled), header appears once via spring
-  const [headerVisible, setHeaderVisible] = useState(false);
-  const heroTitleRef = useRef<HTMLDivElement>(null);
-  const heroMarcaMovilRef = useRef<HTMLDivElement>(null);
-  
-  // UX Optimization: once the hero has been built, scrolling back to top must NOT show the central massive loader title again
-  const [heroBuilt, setHeroBuilt] = useState(false);
-  
-  useEffect(() => {
-    // Check initial position on mount (e.g. reload)
-    if (typeof window !== 'undefined' && window.scrollY > 400) {
-      setHeroBuilt(true);
-    }
-    const unsubscribe = scrollY.on('change', v => {
-      if (v > 400) {
-        setHeroBuilt(true);
-      }
-    });
-    return unsubscribe;
-  }, [scrollY]);
-
-  useEffect(() => {
-    // En escritorio observamos el rotulo central, como siempre. En movil el rotulo ya no
-    // se renderiza (lo oculta el CSS), y un elemento con display:none nunca intersecta:
-    // observarlo mostraria el header desde el primer frame. Por eso alli va un punto propio.
-    const esEscritorio = window.matchMedia('(min-width: 768px)').matches;
-    const el = esEscritorio ? heroTitleRef.current : heroMarcaMovilRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) {
-          setHeaderVisible(true);
-          observer.disconnect(); // Fire once, then stop — zero ongoing overhead
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  // La cabecera se ve desde el principio (20/10). Antes esperaba a que el rotulo central
+  // saliera de pantalla, y en la portada no habia navegacion.
 
   // Lead Capture: Exit-Intent Detection (Desktop only)
   useEffect(() => {
@@ -325,24 +206,6 @@ export default function Page({ params }: PageProps) {
     }
     setExitFormSubmitting(false);
   };
-
-  // 1. Center Massive Title Transforms (0px to 140px - fades out quickly to prevent overlap)
-  const centerTitleOpacity = useTransform(smoothScrollY, [0, 140], [1, 0]);
-  const centerTitleScale = useTransform(smoothScrollY, [0, 140], [1, 0.7]);
-  const centerTitleY = useTransform(smoothScrollY, [0, 140], [0, -50]);
-
-  // 3. Left Slogan Title Reveal (handled word-by-word inside AnimatedWord from 200px to 440px)
-
-  // 4. Subtitle Reveal (400px to 520px - slides up cleanly in sequence)
-  const subtitleOpacity = useTransform(smoothScrollY, [400, 520], [0, 1]);
-  const subtitleY = useTransform(smoothScrollY, [400, 520], [20, 0]);
-
-  // 5. CTA Buttons Reveal (460px to 560px - final interactive elements arrival)
-  const ctaY = useTransform(smoothScrollY, [460, 560], [15, 0]);
-
-  // 6. Right Content Reveal (Floating Holographic Glass Shapes & Core) (340px to 480px)
-  const rightOpacity = useTransform(smoothScrollY, [340, 480], [0, 1]);
-  const rightScale = useTransform(smoothScrollY, [340, 480], [0.85, 1]);
 
   const handleLanguageChange = (newLng: string) => {
     setCurrentLng(newLng);
@@ -527,48 +390,6 @@ export default function Page({ params }: PageProps) {
     }
   ];
 
-  // Las piezas flotantes del hero. Un solo contenido para los dos envoltorios del hero
-  // derecho (movil y escritorio): los tamanos van en clases responsive, no en isMobile.
-  // Ojo con el padding y el cuerpo de letra: el codigo viejo pedia p-3 y text-[8px] en
-  // movil, pero nunca se aplicaban —en la cascada de Tailwind ganaba el p-5 de la clase
-  // base—, asi que lo que se veia eran 20px y 10px. Se conserva eso. Cambiarlo es una
-  // decision estetica, no parte de este refactor.
-  const hologramaHero = (
-    <div className="w-56 h-56 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center">
-      <div className="absolute bg-teselar/30 backdrop-blur-md max-md:backdrop-blur-sm border border-claridad/15 rounded-3xl -rotate-12 -translate-x-12 -translate-y-8 animate-float shadow-2xl flex flex-col justify-between font-mono text-claridad/50 p-5 text-[10px] w-32 h-32 md:w-44 md:h-44">
-        <div className="flex justify-between items-center">
-          <span>[ MODULE.01 ]</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-innovacion" />
-        </div>
-        <div className="tracking-widest text-innovacion/70 uppercase font-bold text-[7px] md:text-[9px]">INTEGRITY_OK</div>
-      </div>
-
-      <div className="absolute bg-innovacion/20 backdrop-blur-md max-md:backdrop-blur-sm border border-innovacion/35 rounded-[2.5rem] rotate-12 translate-x-12 translate-y-12 animate-float shadow-2xl flex flex-col justify-between font-mono text-innovacion p-5 text-[10px] w-28 h-28 md:w-36 md:h-36" style={{ animationDelay: '-2s' }}>
-        <div className="flex justify-between items-center">
-          <span>[ CORE.SYS ]</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-innovacion animate-ping" />
-        </div>
-        <div className="tracking-widest text-claridad/85 uppercase font-black text-[7px] md:text-[9px]">PERF: 99.2%</div>
-      </div>
-
-      <div className="hidden md:flex absolute w-24 h-24 bg-teselar-light/50 backdrop-blur-lg border border-claridad/10 rounded-2xl rotate-45 translate-x-6 -translate-y-20 animate-float shadow-xl flex-col justify-between p-4 text-[8px] font-mono text-claridad/45" style={{ animationDelay: '-4s' }}>
-        <span>[ DB.NODE ]</span>
-        <span className="text-[7px] tracking-widest text-innovacion/80 uppercase font-bold">SYNC_ACTIVE</span>
-      </div>
-
-      {/* Central Glowing Active Core representing Teselar Logo concept */}
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        className="rounded-full border border-dashed border-innovacion/30 flex items-center justify-center absolute p-4 w-36 h-36 md:w-48 md:h-48"
-      >
-        <div className="rounded-full border border-innovacion/15 flex items-center justify-center w-28 h-28 md:w-36 md:h-36">
-          <img src="/logo.jpeg" alt="Teselar core" className="rounded-full border-2 border-innovacion/60 shadow-lg shadow-innovacion/20 object-cover w-20 h-20 md:w-24 md:h-24" />
-        </div>
-      </motion.div>
-    </div>
-  );
-
   const filteredServices = activeCategory === 'all'
     ? servicesList
     : servicesList.filter(s => s.category === activeCategory);
@@ -581,16 +402,8 @@ export default function Page({ params }: PageProps) {
 
   return (
     <div className="relative min-h-screen">
-      {/* Immersive 3D interactive nodes connection canvas */}
-      <Background3D />
-
       {/* Floating Modern Header / Navbar — one-shot spring reveal, zero per-frame JS after trigger */}
-      <motion.header
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: headerVisible ? 1 : 0, y: headerVisible ? 0 : -40 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 22, mass: 1 }}
-        className="fixed top-0 inset-x-0 z-50 px-4 py-4 md:px-8"
-      >
+      <header className="fixed top-0 inset-x-0 z-50 px-4 py-4 md:px-8">
         <nav className="max-w-7xl mx-auto glass-panel px-6 py-3.5 rounded-full flex justify-between items-center shadow-lg shadow-teselar-dark/20">
           {/* Logo & Brand name */}
           <a href="#" className="flex items-center gap-3 hover:opacity-85 transition-opacity">
@@ -627,7 +440,7 @@ export default function Page({ params }: PageProps) {
             {/* Aggressive visible CTA Button */}
             <button 
               onClick={() => handleScrollToContact('meeting')}
-              className="bg-innovacion text-teselar-dark font-extrabold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer hidden xs:inline-block"
+              className="bg-innovacion text-teselar-dark font-extrabold text-xs tracking-wider uppercase px-5 py-2.5 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer hidden xs:inline-block"
             >
               {t.nav.contact}
             </button>
@@ -644,7 +457,7 @@ export default function Page({ params }: PageProps) {
             </button>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile Responsive Navigation overlay */}
       <AnimatePresence>
@@ -671,7 +484,7 @@ export default function Page({ params }: PageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full bg-innovacion text-teselar-dark text-center font-extrabold py-3.5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad"
+                className="w-full bg-innovacion text-teselar-dark text-center font-extrabold py-3.5 rounded-full hover:bg-claridad"
               >
                 {t.hero.cta_alt}
               </a>
@@ -693,452 +506,115 @@ export default function Page({ params }: PageProps) {
       </AnimatePresence>
 
       <main>
-      {/* 1. SCROLL-DRIVEN CINEMATIC HERO TRACK (Desktop: scroll-driven | Mobile: auto-reveal) */}
-      <section ref={heroContainerRef} className="relative w-full z-10 min-h-screen-dynamic md:min-h-0 md:h-[160vh]">
-        <div className="relative min-h-screen-dynamic md:min-h-0 md:sticky md:top-0 md:h-screen w-full flex items-center justify-center overflow-hidden">
-          {/* Scoped High-Tech Cyber Dotted Grid (Subtle and ultra-premium) */}
-          <div className="hero-grid opacity-15" />
-
-          {/* Colorful cinematic neon glow balls (reduced on mobile) */}
-          <div className="absolute top-[18%] left-[8%] rounded-full bg-innovacion/8 pointer-events-none z-0 w-[60vw] h-[60vw] blur-[56px] md:w-[40vw] md:h-[40vw] md:blur-[130px]" />
-          <div className="absolute bottom-[10%] right-[10%] rounded-full bg-teselar/25 pointer-events-none z-0 w-[60vw] h-[60vw] blur-[64px] md:w-[45vw] md:h-[45vw] md:blur-[160px] md:animate-pulse" style={{ animationDuration: '9s' }} />
-
-          {/* Widescreen Hollywood Anamorphic Lens Flare Background accents (solo escritorio) */}
-          <div className="hidden md:block">
-            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] h-[1px] bg-gradient-to-r from-transparent via-innovacion/70 to-transparent blur-[2px] pointer-events-none z-0" />
-            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[6px] bg-gradient-to-r from-transparent via-innovacion to-transparent blur-[6px] pointer-events-none z-0 cinematic-flare-pulse" />
-            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-innovacion/20 blur-2xl pointer-events-none z-0 cinematic-flare-pulse" />
-            <div className="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[120px] bg-gradient-to-r from-transparent via-teselar/25 to-transparent blur-[80px] pointer-events-none z-0" />
-          </div>
-
-          {/* Rotulo de arranque. SOLO ESCRITORIO, y lo decide el CSS: el servidor no sabe el
-              ancho de la pantalla, asi que mientras esto dependia de isMobile el movil recibia
-              igualmente el rotulo y lo pintaba sobre los botones hasta que React hidrataba.
-              En escritorio no estorba porque alli el resto del hero esta a opacidad 0 hasta
-              que se hace scroll; en movil no hay scroll que lo gobierne. */}
-          <motion.div 
-            ref={heroTitleRef}
-            style={{ 
-              opacity: heroBuilt ? 0 : centerTitleOpacity, 
-              scale: heroBuilt ? 0.7 : centerTitleScale, 
-              y: heroBuilt ? -50 : centerTitleY 
-            }}
-            className="absolute z-40 hidden md:flex flex-col items-center justify-center pointer-events-none select-none text-center px-4"
-          >
-            <div className="w-16 h-px bg-innovacion/35 mb-6" />
-            <div className="text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.06em] text-claridad drop-shadow-[0_0_30px_rgba(0,191,165,0.3)] uppercase leading-none">
-              TESELAR
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-light tracking-[0.32em] text-innovacion/85 uppercase mt-4">
-              SOFTWARE
-            </div>
-            <div className="w-16 h-px bg-innovacion/35 mt-8" />
-            <p className="font-mono text-[9px] tracking-[0.4em] text-claridad/30 uppercase mt-3.5">
-              [ SCROLL_TO_INITIALIZE ]
+      {/* 1. PORTADA (20/10, skills del video: Taste, Impeccable y Emil Kowalski). La idea sale de
+          la propia marca, la teselacion: un bloque de Azul Teselar con el titular y, al lado, las
+          piezas de un negocio encajadas, con la de Teselar en el hueco. Sin animacion atada al
+          scroll: el texto se sirve legible desde el primer pintado, en movil y en escritorio. */}
+      <section className="relative z-10 px-4 md:px-8 pt-28 md:pt-32 pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-3 lg:min-h-[620px]">
+          <div className="lg:col-span-7 bg-teselar rounded-lg px-6 py-10 sm:px-10 md:px-14 md:py-14 flex flex-col justify-between gap-10">
+            <h1 className="text-[2rem] min-[420px]:text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.02] text-claridad [text-wrap:balance]">
+              {heroTitulo}
+            </h1>
+            <p className="text-lg md:text-xl text-claridad/90 leading-relaxed max-w-2xl [text-wrap:pretty]">
+              {t.hero.subtitle}
             </p>
-          </motion.div>
-
-          {/* Lo que el header observa EN MOVIL, donde el rotulo de arriba ya no existe. En
-              escritorio sigue observandose el rotulo, para no mover el punto en que aparece. */}
-          <div ref={heroMarcaMovilRef} aria-hidden="true" className="md:hidden absolute top-1/2 left-1/2 w-px h-px pointer-events-none" />
-
-          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 px-4 md:px-8 pt-24 md:pt-28 lg:pt-20">
-            
-            {/* Hero Left Content — Desktop: scroll-reveal | Mobile: staggered auto fade-in */}
-            <div className="lg:col-span-7 flex flex-col items-start text-left relative z-10 pr-0 lg:pr-6">
-              {/* MOVIL: entra deslizando, SIN animar la opacidad y sin esperar a React. Mismo
-                  criterio que los botones de abajo: el texto se sirve ya legible en el HTML.
-                  Cuando lo revelaba la animacion tardaba 5,2 s en leerse en un movil modesto. */}
-              <motion.h1 
-                initial={{ y: 20 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.8, delay: 0.15 }}
-                className="md:hidden text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]"
-              >
-                {activeWords.map((wordObj, idx) => (
-                  <React.Fragment key={idx}>
-                    <span
-                      className={`inline-block ${wordObj.isGradient ? 'bg-gradient-to-r from-innovacion via-teal-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(0,191,165,0.25)] font-black' : 'font-extrabold'}`}
-                    >
-                      {wordObj.text}
-                    </span>
-                    {idx < activeWords.length - 1 ? ' ' : ''}
-                  </React.Fragment>
-                ))}
-              </motion.h1>
-
-              {/* ESCRITORIO: el scroll revela el titular palabra a palabra */}
-              <h1 className="hidden md:block text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad text-glow-cyan uppercase [word-spacing:0.12em]">
-                {activeWords.map((wordObj, idx) => (
-                  <AnimatedWord 
-                    key={idx}
-                    word={wordObj.text}
-                    index={idx}
-                    totalWords={activeWords.length}
-                    isGradient={wordObj.isGradient}
-                    scrollY={smoothScrollY}
-                    heroBuilt={heroBuilt}
-                  />
-                ))}
-              </h1>
-
-              {/* Sin JavaScript no hay titular EN ESCRITORIO: alli las palabras se sirven a
-                  opacity 0 y las revela la animacion. En movil ya se sirve pintado, asi que
-                  este respaldo tambien es solo de escritorio: si no, saldrian dos. */}
-              <noscript>
-                <h1 className="hidden md:block text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] mb-8 text-claridad uppercase">
-                  {activeWords.map(w => w.text).join(' ')}
-                </h1>
-              </noscript>
-
-              <motion.p 
-                initial={{ y: 15 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="md:hidden text-xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
-              >
-                {t.hero.subtitle}
-              </motion.p>
-
-              <motion.p 
-                style={{ 
-                  opacity: heroBuilt ? 1 : subtitleOpacity, 
-                  y: heroBuilt ? 0 : subtitleY 
-                }}
-                className="hidden md:block text-xl md:text-2xl font-light text-claridad/95 leading-relaxed max-w-2xl mb-12"
-              >
-                {t.hero.subtitle}
-              </motion.p>
-              
-              {/* Entra deslizando, SIN animar la opacidad. Lighthouse audita mientras la
-                  pagina se pinta, y con el boton a medio aparecer medio 1,39:1 de contraste
-                  sobre un color que no existe: el turquesa mezclado con el fondo. Asentado
-                  da 7,88:1. El fallo no era real, pero lo ve cualquiera que pase PageSpeed a
-                  esta web, que es la carta de presentacion. */}
-              <motion.div 
-                initial={{ y: 15 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.7, delay: 0.45 }}
-                className="md:hidden w-full flex flex-col gap-4"
-              >
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 <a
                   href={CALENDLY_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  className="bg-innovacion text-teselar-dark text-center font-bold text-base px-8 py-4 rounded-md hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <Calendar size={18} />
+                  <Calendar size={18} aria-hidden="true" />
                   {t.hero.cta_alt}
                 </a>
                 <a
                   href={waLink(t.leads.wa_generico)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                  className="text-center font-semibold text-base text-claridad px-4 py-4 underline underline-offset-[6px] decoration-claridad/50 hover:decoration-claridad transition-colors duration-150 cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <MessageCircle size={18} />
+                  <MessageCircle size={18} aria-hidden="true" />
                   {t.leads.cta_whatsapp}
                 </a>
-              </motion.div>
-
-              <motion.div 
-                style={{ y: heroBuilt ? 0 : ctaY }}
-                className="hidden md:flex w-full sm:w-auto flex-col sm:flex-row gap-4"
-              >
-                <a
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-innovacion text-teselar-dark text-center font-black text-base tracking-wider uppercase whitespace-nowrap px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <Calendar size={18} />
-                  {t.hero.cta_alt}
-                </a>
-                <a
-                  href={waLink(t.leads.wa_generico)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-panel text-center font-black text-base tracking-wider uppercase px-10 py-5 rounded-full border border-claridad/10 hover:border-innovacion hover:text-innovacion hover:scale-105 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={18} />
-                  {t.leads.cta_whatsapp}
-                </a>
-              </motion.div>
-
-              {/* pr-20 en movil: el boton flotante de TesS se comia el final de esta frase,
-                  que es justo la que quita el miedo ("sin coste y sin compromiso").
-                  text-claridad/75, que a /60 quedaba por debajo del contraste comodo. */}
-              <p className="text-sm font-light text-claridad/75 leading-relaxed max-w-xl mt-6 pr-20 sm:pr-0">
+              </div>
+              {/* pr-20 en movil: el boton flotante de TesS se comia el final de esta frase. */}
+              <p className="text-base text-claridad/80 leading-relaxed max-w-xl pr-20 sm:pr-0 [text-wrap:pretty]">
                 {t.hero.cta_note}
               </p>
             </div>
+          </div>
 
-            {/* Hero Right Content. Como el resto del hero: el mismo contenido dentro de dos
-                envoltorios que elige el CSS, porque la animacion de escritorio la manda el
-                scroll y la de movil un temporizador, y eso no se puede decidir con una clase. */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="md:hidden flex justify-center items-center relative min-h-[280px]"
-            >
-              {hologramaHero}
-            </motion.div>
-
-            <motion.div 
-              style={{ 
-                opacity: heroBuilt ? 1 : rightOpacity, 
-                scale: heroBuilt ? 1 : rightScale 
-              }}
-              className="hidden md:flex lg:col-span-5 justify-center items-center relative min-h-[350px]"
-            >
-              {hologramaHero}
-            </motion.div>
-
+          <div role="img" aria-label={t.hero.piezas_alt} className="lg:col-span-5 grid grid-cols-4 grid-rows-4 gap-2 min-h-[340px] sm:min-h-[420px]">
+            <div className="pieza col-span-2 bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[0]}</div>
+            <div className="pieza bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[1]}</div>
+            <div className="pieza row-span-3 bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[2]}</div>
+            <div className="pieza bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[3]}</div>
+            <div className="col-span-2 row-span-2 bg-innovacion rounded-md p-5 text-teselar-dark flex flex-col justify-between">
+              <span className="text-sm sm:text-base font-semibold">{t.concept.title}</span>
+              <span className="text-xl sm:text-2xl font-bold leading-tight [text-wrap:balance]">{t.hero.pieza_texto}</span>
+            </div>
+            <div className="pieza bg-teselar-light rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[4]}</div>
+            <div className="pieza col-span-3 bg-[#0a3147] rounded-md p-3 sm:p-4 text-sm sm:text-base text-claridad/85 flex items-end">{t.hero.piezas[5]}</div>
+            <div className="pieza bg-teselar-light rounded-md" />
           </div>
         </div>
       </section>
 
-      {/* 2. EL CONCEPTO: LA PIEZA QUE ENCAJA (Scroll Experience) */}
-      <section className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 md:backdrop-blur-sm z-10 border-t border-b border-claridad/5 overflow-hidden">
-        <div className="max-w-5xl mx-auto text-center relative">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-16 h-1 bg-innovacion mx-auto mb-8 rounded-full shadow-lg shadow-innovacion"
-          />
-
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-10 text-glow-cyan"
-          >
+      {/* 2. EL CONCEPTO: LA PIEZA QUE ENCAJA. Titulo a un lado y texto al otro (20/10); sin las
+          tarjetas que entraban girando con destello. */}
+      <section className="relative py-24 md:py-32 px-4 md:px-8 z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6">
+          <h2 className="lg:col-span-5 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">
             {t.concept.title}
-          </motion.h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-left mt-20 max-w-5xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, x: isMobile ? 0 : -180, y: isMobile ? -60 : -50, rotate: isMobile ? 0 : -12 }}
-              whileInView={{ 
-                opacity: 1, 
-                x: 0, 
-                y: 0, 
-                rotate: 0,
-                boxShadow: ["0 0 0px rgba(0,191,165,0)", "0 0 35px rgba(0,191,165,0.45)", "0 0 0px rgba(0,191,165,0)"]
-              }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 90, 
-                damping: 18,
-                boxShadow: { duration: 1.2, delay: 0.5 }
-              }}
-              className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex flex-col gap-6 relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 w-28 h-28 bg-teselar/10 rounded-bl-full pointer-events-none" />
-              <p className="text-lg md:text-xl text-claridad/95 font-light leading-relaxed">{t.concept.text1}</p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: isMobile ? 0 : 180, y: isMobile ? 60 : 50, rotate: isMobile ? 0 : 12 }}
-              whileInView={{ 
-                opacity: 1, 
-                x: 0, 
-                y: 0, 
-                rotate: 0,
-                boxShadow: ["0 0 0px rgba(0,191,165,0)", "0 0 35px rgba(0,191,165,0.45)", "0 0 0px rgba(0,191,165,0)"]
-              }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 90, 
-                damping: 18, 
-                delay: 0.12,
-                boxShadow: { duration: 1.2, delay: 0.62 }
-              }}
-              className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex flex-col gap-6 relative overflow-hidden group"
-            >
-              <div className="absolute top-0 right-0 w-28 h-28 bg-innovacion/5 rounded-bl-full pointer-events-none" />
-              <p className="text-lg md:text-xl text-claridad/95 font-light leading-relaxed">{t.concept.text2}</p>
-            </motion.div>
+          </h2>
+          <div className="lg:col-start-7 lg:col-span-6 flex flex-col gap-6 text-lg md:text-xl text-claridad/85 leading-relaxed">
+            <p className="[text-wrap:pretty]">{t.concept.text1}</p>
+            <p className="[text-wrap:pretty]">{t.concept.text2}</p>
           </div>
         </div>
       </section>
 
-      {/* 3. SECCION DE VALORES: ¿POR QUE ELEGIRNOS? */}
-      <section id="values" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.values}</span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.values.title}</h2>
-            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.values.subtitle}</p>
+      {/* 3. SECCION DE VALORES: ¿POR QUE ELEGIRNOS? Sin iconos en cuadrados, sin lineas que se
+          dibujan y sin la etiqueta encima del titulo (Impeccable, 20/10). Al pasar el raton la
+          tarjeta sube 4 px en 180 ms (Emil Kowalski): la clase .valor, en index.css. */}
+      <section id="values" className="relative py-16 md:py-24 px-4 md:px-8 z-10 content-visibility-auto">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10 md:gap-14">
+          <div className="max-w-3xl flex flex-col gap-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">{t.values.title}</h2>
+            <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.values.subtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            
-            {/* Value 1 */}
-            <div className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex gap-6 items-start group relative overflow-hidden">
-              {/* Blueprint Vector Line Drawing SVG */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
-                <motion.rect
-                  x="1.5"
-                  y="1.5"
-                  width="calc(100% - 3px)"
-                  height="calc(100% - 3px)"
-                  rx="30"
-                  fill="none"
-                  stroke="#00BFA5"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.4, ease: "easeInOut" }}
-                />
-              </svg>
-              <motion.div
-                initial={{ opacity: 0, filter: 'brightness(3) blur(4px)' }}
-                whileInView={{ opacity: 1, filter: 'brightness(1) blur(0px)' }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="flex gap-6 items-start w-full"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-teselar/40 border border-claridad/10 flex items-center justify-center text-innovacion flex-shrink-0">
-                  <Mail size={26} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v1.title}</h3>
-                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v1.desc}</p>
-                </div>
-              </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="valor bg-teselar-light rounded-lg p-8 md:p-10 flex flex-col gap-3">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{t.values.v1.title}</h3>
+              <p className="text-base md:text-lg text-claridad/80 leading-relaxed [text-wrap:pretty]">{t.values.v1.desc}</p>
             </div>
-
-            {/* Value 2 */}
-            <div className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex gap-6 items-start group relative overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
-                <motion.rect
-                  x="1.5"
-                  y="1.5"
-                  width="calc(100% - 3px)"
-                  height="calc(100% - 3px)"
-                  rx="30"
-                  fill="none"
-                  stroke="#00BFA5"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.4, ease: "easeInOut", delay: 0.15 }}
-                />
-              </svg>
-              <motion.div
-                initial={{ opacity: 0, filter: 'brightness(3) blur(4px)' }}
-                whileInView={{ opacity: 1, filter: 'brightness(1) blur(0px)' }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.65 }}
-                className="flex gap-6 items-start w-full"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-teselar/40 border border-claridad/10 flex items-center justify-center text-innovacion flex-shrink-0">
-                  <Laptop size={26} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v2.title}</h3>
-                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v2.desc}</p>
-                </div>
-              </motion.div>
+            <div className="valor bg-teselar-light rounded-lg p-8 md:p-10 flex flex-col gap-3">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{t.values.v2.title}</h3>
+              <p className="text-base md:text-lg text-claridad/80 leading-relaxed [text-wrap:pretty]">{t.values.v2.desc}</p>
             </div>
-
-            {/* Value 3 */}
-            <div className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex gap-6 items-start group relative overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
-                <motion.rect
-                  x="1.5"
-                  y="1.5"
-                  width="calc(100% - 3px)"
-                  height="calc(100% - 3px)"
-                  rx="30"
-                  fill="none"
-                  stroke="#00BFA5"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.4, ease: "easeInOut", delay: 0.3 }}
-                />
-              </svg>
-              <motion.div
-                initial={{ opacity: 0, filter: 'brightness(3) blur(4px)' }}
-                whileInView={{ opacity: 1, filter: 'brightness(1) blur(0px)' }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="flex gap-6 items-start w-full"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-teselar/40 border border-claridad/10 flex items-center justify-center text-innovacion flex-shrink-0">
-                  <MapPin size={26} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v3.title}</h3>
-                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v3.desc}</p>
-                </div>
-              </motion.div>
+            <div className="valor bg-teselar-light rounded-lg p-8 md:p-10 flex flex-col gap-3">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{t.values.v3.title}</h3>
+              <p className="text-base md:text-lg text-claridad/80 leading-relaxed [text-wrap:pretty]">{t.values.v3.desc}</p>
             </div>
-
-            {/* Value 4 */}
-            <div className="glass-card p-10 rounded-[2rem] border border-claridad/5 flex gap-6 items-start group relative overflow-hidden">
-              <svg className="absolute inset-0 w-full h-full pointer-events-none z-20">
-                <motion.rect
-                  x="1.5"
-                  y="1.5"
-                  width="calc(100% - 3px)"
-                  height="calc(100% - 3px)"
-                  rx="30"
-                  fill="none"
-                  stroke="#00BFA5"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1.4, ease: "easeInOut", delay: 0.45 }}
-                />
-              </svg>
-              <motion.div
-                initial={{ opacity: 0, filter: 'brightness(3) blur(4px)' }}
-                whileInView={{ opacity: 1, filter: 'brightness(1) blur(0px)' }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.95 }}
-                className="flex gap-6 items-start w-full"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-teselar/40 border border-claridad/10 flex items-center justify-center text-innovacion flex-shrink-0">
-                  <ShieldCheck size={26} />
-                </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl font-black tracking-tight mb-4 group-hover:text-innovacion transition-colors">{t.values.v4.title}</h3>
-                  <p className="text-base text-claridad/80 font-light leading-relaxed">{t.values.v4.desc}</p>
-                </div>
-              </motion.div>
+            <div className="valor bg-teselar-light rounded-lg p-8 md:p-10 flex flex-col gap-3">
+              <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{t.values.v4.title}</h3>
+              <p className="text-base md:text-lg text-claridad/80 leading-relaxed [text-wrap:pretty]">{t.values.v4.desc}</p>
             </div>
-
           </div>
-
         </div>
       </section>
 
       {/* INLINE LEAD MAGNET CTA BANNER (entre Valores y el catalogo) */}
       <section className="relative py-16 px-4 md:px-8 z-10 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 8 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
           className="max-w-4xl mx-auto inline-cta-banner glass-card p-10 md:p-14 rounded-[2.5rem] text-center relative"
         >
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-innovacion/8 rounded-full blur-3xl pointer-events-none" />
@@ -1155,7 +631,7 @@ export default function Page({ params }: PageProps) {
             </p>
             <button
               onClick={() => handleScrollToContact('info')}
-              className="bg-innovacion text-teselar-dark font-black tracking-wider uppercase px-10 py-5 rounded-full shadow-2xl shadow-innovacion/25 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer text-base flex items-center justify-center gap-2 mx-auto"
+              className="bg-innovacion text-teselar-dark font-black tracking-wider uppercase px-10 py-5 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer text-base flex items-center justify-center gap-2 mx-auto"
             >
               <Star size={18} />
               {t.leads.inline_btn}
@@ -1170,12 +646,11 @@ export default function Page({ params }: PageProps) {
           
           {/* Header section */}
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.services}</span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.services.title}</h2>
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.services.subtitle}</p>
             
             {/* Free adjustments callout alert banner */}
-            <div className="mt-10 inline-flex items-center gap-4 bg-innovacion/10 border border-innovacion/35 px-7 py-4.5 rounded-[1.5rem] text-innovacion text-sm font-extrabold text-left max-w-3xl shadow-xl shadow-innovacion/10">
+            <div className="mt-10 inline-flex items-center gap-4 bg-innovacion/10 border border-innovacion/35 px-7 py-4.5 rounded-[1.5rem] text-innovacion text-sm font-extrabold text-left max-w-3xl">
               <Info size={24} className="flex-shrink-0" />
               <span>{t.services.live_adjustments}</span>
             </div>
@@ -1246,22 +721,17 @@ export default function Page({ params }: PageProps) {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             <AnimatePresence mode="popLayout">
-              {filteredServices.map((service, sIndex) => {
+              {filteredServices.map((service) => {
                 const IconComponent = service.icon;
                 return (
                   <motion.div
                     layout
                     key={service.id}
-                    initial={{ opacity: 0, scale: 0.97, y: 30, filter: 'blur(4px)' }}
-                    whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+                    initial={{ y: 8 }}
+                    whileInView={{ y: 0 }}
                     viewport={{ once: true, margin: "-40px" }}
-                    exit={{ opacity: 0, scale: 0.95, filter: 'blur(4px)' }}
-                    transition={{ 
-                      type: 'spring', 
-                      stiffness: 90, 
-                      damping: 18, 
-                      delay: (sIndex % 4) * 0.05 
-                    }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                     className="glass-card p-8 rounded-[2rem] border border-claridad/5 flex flex-col justify-between h-full relative overflow-hidden group"
                   >
                     <div>
@@ -1270,7 +740,7 @@ export default function Page({ params }: PageProps) {
                         <div className="w-14 h-14 bg-teselar/40 border border-claridad/10 rounded-2xl flex items-center justify-center text-innovacion">
                           <IconComponent size={28} />
                         </div>
-                        <span className="text-xs font-black tracking-widest uppercase text-claridad/60 bg-claridad/5 border border-claridad/10 px-3 py-1.5 rounded-full">{service.tag}</span>
+                        <span className="text-sm font-medium text-claridad/75 bg-claridad/5 border border-claridad/10 px-3 py-1.5 rounded-full">{service.tag}</span>
                       </div>
 
                       {/* Service Title */}
@@ -1297,13 +767,13 @@ export default function Page({ params }: PageProps) {
                     {/* Bottom Pricing & CTA */}
                     <div className="border-t border-claridad/5 pt-6 mt-auto">
                       <div className="flex justify-between items-center gap-4 mb-5">
-                        <span className="text-sm text-claridad/60 font-semibold">{t.services.pricing}</span>
-                        <span className="text-xl md:text-2xl font-black text-innovacion text-right">{service.price} <span className="text-sm font-semibold text-claridad/55 whitespace-nowrap">{t.services.vat}</span></span>
+                        <span className="text-sm text-claridad/75 font-semibold">{t.services.pricing}</span>
+                        <span className="text-xl md:text-2xl font-black text-innovacion text-right">{service.price} <span className="text-sm font-semibold text-claridad/70 whitespace-nowrap">{t.services.vat}</span></span>
                       </div>
 
                       <button 
                         onClick={() => handleInterest(service.title.replace(/^\d+\.\s*/, ''))}
-                        className="w-full py-4.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion hover:scale-[1.02] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                        className="w-full py-4.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion active:scale-[0.97] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
                       >
                         {t.services.interest}
                         <ChevronRight size={15} />
@@ -1364,7 +834,7 @@ export default function Page({ params }: PageProps) {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
             <Calendar size={14} />
             {t.hero.cta_alt}
@@ -1377,7 +847,6 @@ export default function Page({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.pricing}</span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
           </div>
@@ -1386,18 +855,17 @@ export default function Page({ params }: PageProps) {
             
             {/* Basic Plan Card */}
             <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : 90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              initial={{ y: 8 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'left center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15 }}
+              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
               className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
             >
               <div>
-                <span className="text-sm font-black text-claridad/55 uppercase tracking-widest">{t.pricing.basic.title}</span>
+                <span className="text-base font-bold text-claridad/70">{t.pricing.basic.title}</span>
                 <div className="flex items-baseline gap-1 mt-5 mb-8">
                   <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.basic.period} {t.services.vat}</span>
+                  <span className="text-base font-light text-claridad/70">{t.pricing.basic.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
                 
@@ -1431,22 +899,21 @@ export default function Page({ params }: PageProps) {
 
             {/* Plus Plan Card (Recommended) */}
             <motion.div 
-              initial={{ opacity: 0, rotateY: isMobile ? 0 : -90, rotateX: isMobile ? 45 : 0 }}
-              whileInView={{ opacity: 1, rotateY: 0, rotateX: 0 }}
+              initial={{ y: 8 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              style={{ transformOrigin: isMobile ? 'center top' : 'right center', transformPerspective: 1200 }}
-              transition={{ type: "spring", stiffness: 70, damping: 15, delay: 0.12 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative shadow-2xl shadow-innovacion/10 [backface-visibility:hidden]"
+              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.03 }}
+              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative [backface-visibility:hidden]"
             >
-              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
+              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
                 {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
               </div>
               
               <div>
-                <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.plus.title}</span>
+                <span className="text-base font-bold text-innovacion">{t.pricing.plus.title}</span>
                 <div className="flex items-baseline gap-1 mt-5 mb-8">
                   <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.plus.period} {t.services.vat}</span>
+                  <span className="text-base font-light text-claridad/70">{t.pricing.plus.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
                 
@@ -1472,7 +939,7 @@ export default function Page({ params }: PageProps) {
 
               <button 
                 onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10 shadow-lg shadow-innovacion/15"
+                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10"
               >
                 {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
               </button>
@@ -1482,10 +949,10 @@ export default function Page({ params }: PageProps) {
 
           {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 8 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
           >
             <div className="flex flex-col lg:flex-row lg:items-start gap-10">
@@ -1494,11 +961,11 @@ export default function Page({ params }: PageProps) {
                   <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
                     <Calendar size={20} />
                   </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.citas.title}</span>
+                  <span className="text-base font-bold text-innovacion">{t.pricing.citas.title}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.citas.period} {t.services.vat}</span>
+                  <span className="text-base font-light text-claridad/70">{t.pricing.citas.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
               </div>
@@ -1514,7 +981,7 @@ export default function Page({ params }: PageProps) {
                     <span>{t.pricing.citas.f2}</span>
                   </li>
                   <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <Info size={18} className="text-claridad/70 flex-shrink-0 mt-0.5" />
                     <span className="text-claridad/70">{t.pricing.citas.f3}</span>
                   </li>
                 </ul>
@@ -1531,10 +998,10 @@ export default function Page({ params }: PageProps) {
 
           {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 8 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
           >
             <div className="flex flex-col lg:flex-row lg:items-start gap-10">
@@ -1543,11 +1010,11 @@ export default function Page({ params }: PageProps) {
                   <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
                     <Brain size={20} />
                   </div>
-                  <span className="text-sm font-black text-innovacion uppercase tracking-widest">{t.pricing.ia.title}</span>
+                  <span className="text-base font-bold text-innovacion">{t.pricing.ia.title}</span>
                 </div>
                 <div className="flex items-baseline gap-1 mb-6">
                   <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
-                  <span className="text-base font-light text-claridad/50">{t.pricing.ia.period} {t.services.vat}</span>
+                  <span className="text-base font-light text-claridad/70">{t.pricing.ia.period} {t.services.vat}</span>
                 </div>
                 <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
               </div>
@@ -1563,7 +1030,7 @@ export default function Page({ params }: PageProps) {
                     <span>{t.pricing.ia.f2}</span>
                   </li>
                   <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/45 flex-shrink-0 mt-0.5" />
+                    <Info size={18} className="text-claridad/70 flex-shrink-0 mt-0.5" />
                     <span className="text-claridad/70">{t.pricing.ia.f3}</span>
                   </li>
                 </ul>
@@ -1596,7 +1063,7 @@ export default function Page({ params }: PageProps) {
             href={waLink(t.leads.wa_precios)}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
             <MessageCircle size={14} />
             {t.leads.cta_whatsapp}
@@ -1609,9 +1076,6 @@ export default function Page({ params }: PageProps) {
         <div className="max-w-6xl mx-auto">
           
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-xs font-mono font-black">
-              &gt; {lng === 'es' ? 'ANALIZADOR_DE_COSTES' : lng === 'ca' ? 'ANALITZADOR_DE_COSTOS' : 'COST_ANALYZER'}
-            </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-3 mb-6 text-glow-cyan">
               {t.simulator.title}
             </h2>
@@ -1624,20 +1088,10 @@ export default function Page({ params }: PageProps) {
             
             {/* Left: Interactive Input sliders */}
             <motion.div 
-              initial={{ opacity: 0, x: isMobile ? 0 : -180, y: isMobile ? -50 : 0 }}
-              whileInView={{ 
-                opacity: 1, 
-                x: 0,
-                y: 0,
-                boxShadow: ["0 0 0px rgba(0,191,165,0)", "0 0 25px rgba(0,191,165,0.3)", "0 0 0px rgba(0,191,165,0)"]
-              }}
+              initial={{ y: 8 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 110, 
-                damping: 14,
-                boxShadow: { duration: 1.2, delay: 0.5 }
-              }}
+              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.12 }}
               className="lg:col-span-7 glass-card p-8 sm:p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col gap-8 justify-between relative overflow-hidden"
             >
               <div className="absolute -top-24 -left-24 w-48 h-48 bg-teselar/10 rounded-full blur-3xl pointer-events-none" />
@@ -1658,7 +1112,7 @@ export default function Page({ params }: PageProps) {
                     onChange={(e) => setWastedHours(parseInt(e.target.value))} 
                     className="w-full h-2 rounded-lg bg-claridad/10 appearance-none cursor-pointer accent-innovacion"
                   />
-                  <div className="flex justify-between text-[10px] text-claridad/40 font-mono">
+                  <div className="flex justify-between text-xs text-claridad/70 font-mono">
                     <span>1h</span>
                     <span>20h</span>
                     <span>40h</span>
@@ -1680,7 +1134,7 @@ export default function Page({ params }: PageProps) {
                     onChange={(e) => setEmployeeCount(parseInt(e.target.value))} 
                     className="w-full h-2 rounded-lg bg-claridad/10 appearance-none cursor-pointer accent-innovacion"
                   />
-                  <div className="flex justify-between text-[10px] text-claridad/40 font-mono">
+                  <div className="flex justify-between text-xs text-claridad/70 font-mono">
                     <span>1</span>
                     <span>10</span>
                     <span>20</span>
@@ -1702,7 +1156,7 @@ export default function Page({ params }: PageProps) {
                     onChange={(e) => setHourlyCost(parseInt(e.target.value))} 
                     className="w-full h-2 rounded-lg bg-claridad/10 appearance-none cursor-pointer accent-innovacion"
                   />
-                  <div className="flex justify-between text-[10px] text-claridad/40 font-mono">
+                  <div className="flex justify-between text-xs text-claridad/70 font-mono">
                     <span>10€/h</span>
                     <span>55€/h</span>
                     <span>100€/h</span>
@@ -1723,58 +1177,47 @@ export default function Page({ params }: PageProps) {
 
             {/* Right: Simulated financial outcomes HUD */}
             <motion.div 
-              initial={{ opacity: 0, x: isMobile ? 0 : 180, y: isMobile ? 50 : 0 }}
-              whileInView={{ 
-                opacity: 1, 
-                x: 0,
-                y: 0,
-                boxShadow: ["0 0 0px rgba(0,191,165,0)", "0 0 25px rgba(0,191,165,0.3)", "0 0 0px rgba(0,191,165,0)"]
-              }}
+              initial={{ y: 8 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 110, 
-                damping: 14, 
-                delay: 0.05,
-                boxShadow: { duration: 1.2, delay: 0.55 }
-              }}
+              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.01 }}
               className="lg:col-span-5 flex flex-col justify-between gap-6"
             >
               
               {/* Financial Dashboard Display Card */}
-              <div className="glass-card p-8 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/40 flex flex-col justify-between gap-8 relative overflow-hidden shadow-2xl shadow-innovacion/5">
+              <div className="glass-card p-8 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/40 flex flex-col justify-between gap-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-innovacion/5 rounded-bl-full pointer-events-none" />
                 
                 <div className="space-y-6">
                   {/* Monthly Savings Result */}
                   <div className="border-b border-claridad/5 pb-5">
-                    <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_monthly} ]</span>
+                    <span className="text-xs font-mono tracking-widest text-claridad/70 uppercase block mb-1">[ {t.simulator.result_monthly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-innovacion text-glow-cyan">
                       {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33))}€
                     </span>
-                    <span className="text-xs text-claridad/50 font-light block mt-1">
+                    <span className="text-xs text-claridad/70 font-light block mt-1">
                       {lng === 'es' ? 'ahorrados cada mes' : lng === 'ca' ? 'estalviats cada mes' : 'saved each month'}
                     </span>
                   </div>
 
                   {/* Annual Savings Result */}
                   <div className="border-b border-claridad/5 pb-5">
-                    <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_yearly} ]</span>
+                    <span className="text-xs font-mono tracking-widest text-claridad/70 uppercase block mb-1">[ {t.simulator.result_yearly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-claridad">
                       {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33 * 12))}€
                     </span>
-                    <span className="text-xs text-claridad/50 font-light block mt-1">
+                    <span className="text-xs text-claridad/70 font-light block mt-1">
                       {lng === 'es' ? 'pérdidas anuales recuperadas' : lng === 'ca' ? 'pèrdues anuals recuperades' : 'annual losses recovered'}
                     </span>
                   </div>
 
                   {/* Recovered Hours Result */}
                   <div>
-                    <span className="text-xs font-mono tracking-widest text-claridad/40 uppercase block mb-1">[ {t.simulator.result_hours} ]</span>
+                    <span className="text-xs font-mono tracking-widest text-claridad/70 uppercase block mb-1">[ {t.simulator.result_hours} ]</span>
                     <span className="font-mono text-3xl font-black text-claridad/85 block">
                       {fmt(wastedHours * employeeCount * 52)}h
                     </span>
-                    <span className="text-xs text-claridad/50 font-light block mt-1">
+                    <span className="text-xs text-claridad/70 font-light block mt-1">
                       {lng === 'es' ? 'de trabajo redirigidas a tareas productivas' : lng === 'ca' ? 'de treball redirigides a tasques productives' : 'of work redirected to productive tasks'}
                     </span>
                   </div>
@@ -1783,8 +1226,8 @@ export default function Page({ params }: PageProps) {
                 {/* Suggested service recommendation box */}
                 <div className="border-t border-claridad/5 pt-5 mt-4">
                   <div className="flex justify-between items-center gap-3 mb-2.5">
-                    <span className="text-xs font-mono text-claridad/40 tracking-widest uppercase">{t.simulator.rec_title}:</span>
-                    <span className="bg-innovacion text-teselar-dark text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded shadow">
+                    <span className="text-xs font-mono text-claridad/70 tracking-widest uppercase">{t.simulator.rec_title}:</span>
+                    <span className="bg-innovacion text-teselar-dark text-xs font-black tracking-widest uppercase px-2 py-0.5 rounded shadow">
                       {t.simulator.rec_badge}
                     </span>
                   </div>
@@ -1835,7 +1278,7 @@ export default function Page({ params }: PageProps) {
                     contactSec.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="w-full py-5 rounded-2xl bg-innovacion text-teselar-dark font-black tracking-wider uppercase hover:bg-claridad hover:scale-[1.01] transition-all duration-300 cursor-pointer shadow-lg shadow-innovacion/15 text-center block text-sm"
+                className="w-full py-5 rounded-2xl bg-innovacion text-teselar-dark font-black tracking-wider uppercase hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer text-center block text-sm"
               >
                 {t.simulator.btn_apply}
               </button>
@@ -1856,7 +1299,7 @@ export default function Page({ params }: PageProps) {
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
             className="fixed bottom-6 right-6 z-[99999] glass-panel border border-innovacion/45 px-6 py-4.5 rounded-2xl shadow-2xl flex items-center gap-3 backdrop-blur-xl bg-teselar-dark/95 max-w-sm"
           >
-            <div className="w-8 h-8 rounded-full bg-innovacion/15 border border-innovacion/40 flex items-center justify-center text-innovacion flex-shrink-0 animate-pulse">
+            <div className="w-8 h-8 rounded-full bg-innovacion/15 border border-innovacion/40 flex items-center justify-center text-innovacion flex-shrink-0">
               <Sparkles size={16} />
             </div>
             <div className="flex-1">
@@ -1868,7 +1311,7 @@ export default function Page({ params }: PageProps) {
             <button
               onClick={() => setShowSimulatorNotif(false)}
               aria-label={t.a11y.cerrar}
-              className="text-claridad/40 hover:text-claridad transition-colors p-1 flex-shrink-0 cursor-pointer"
+              className="text-claridad/70 hover:text-claridad transition-colors p-1 flex-shrink-0 cursor-pointer"
             >
               <X size={15} aria-hidden="true" />
             </button>
@@ -1891,7 +1334,7 @@ export default function Page({ params }: PageProps) {
             href={waLink(t.leads.wa_roi)}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full shadow-lg shadow-innovacion/15 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
+            className="bg-innovacion text-teselar-dark font-black text-xs tracking-wider uppercase px-8 py-4 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer whitespace-nowrap flex items-center gap-2"
           >
             <MessageCircle size={14} />
             {t.leads.cta_whatsapp}
@@ -1905,7 +1348,6 @@ export default function Page({ params }: PageProps) {
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center max-w-4xl mx-auto mb-24">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.process}</span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.process.title}</h2>
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.process.subtitle}</p>
           </div>
@@ -1918,8 +1360,8 @@ export default function Page({ params }: PageProps) {
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.8, ease: "easeInOut" }}
-              className="absolute left-[31px] md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-innovacion via-teal-300 to-transparent -translate-x-[1px] shadow-[0_0_8px_#00BFA5]"
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              className="absolute left-[31px] md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-innovacion via-teal-300 to-transparent -translate-x-[1px]"
             />
             
             {/* Step 1 — HIGHLIGHTED: "You are here" */}
@@ -1933,45 +1375,45 @@ export default function Page({ params }: PageProps) {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.04 }}
                   style={{ transformOrigin: 'left center' }}
-                  className="absolute left-[31px] md:left-[-40px] top-[30px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion shadow-[0_0_6px_#00BFA5] hidden md:block"
+                  className="absolute left-[31px] md:left-[-40px] top-[30px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion hidden md:block"
                 />
                 
                 {/* Active node marker with triple-ring pulse */}
-                <div className="absolute left-[31px] md:left-0 top-4 w-9 h-9 rounded-full border-[3px] border-innovacion bg-teselar-dark -translate-x-[48px] md:-translate-x-[20px] flex items-center justify-center shadow-[0_0_25px_rgba(45,212,191,0.45)] z-20">
-                  <div className="w-3 h-3 rounded-full bg-innovacion animate-ping" />
-                  <div className="absolute w-14 h-14 rounded-full border border-innovacion/30 animate-ping" style={{ animationDuration: '2s' }} />
-                  <div className="absolute w-20 h-20 rounded-full border border-innovacion/15 animate-ping" style={{ animationDuration: '3s' }} />
+                <div className="absolute left-[31px] md:left-0 top-4 w-9 h-9 rounded-full border-[3px] border-innovacion bg-teselar-dark -translate-x-[48px] md:-translate-x-[20px] flex items-center justify-center z-20">
+                  <div className="w-3 h-3 rounded-full bg-innovacion" />
+                  <div className="absolute w-14 h-14 rounded-full border border-innovacion/30" style={{ animationDuration: '2s' }} />
+                  <div className="absolute w-20 h-20 rounded-full border border-innovacion/15" style={{ animationDuration: '3s' }} />
                 </div>
                 {/* Tech HUD-style "You are here" indicator */}
                 <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.05 }}
                   className="absolute -top-14 left-16 md:left-8 z-30"
                 >
                   <div className="relative flex items-center gap-2">
                     {/* Connecting line from badge down to the node */}
                     <div className="absolute -bottom-3 left-3 w-px h-3 bg-innovacion/50" />
                     {/* Terminal-style container */}
-                    <div className="bg-teselar-dark/90 border border-innovacion/50 text-innovacion whitespace-nowrap flex items-center gap-2 px-3 py-1.5 shadow-[0_0_12px_rgba(45,212,191,0.15)]" style={{ clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))' }}>
-                      <span className="w-1.5 h-1.5 bg-innovacion rounded-full shadow-[0_0_6px_rgba(45,212,191,0.8)]" style={{ animation: 'pulse 1.5s ease-in-out infinite' }} />
-                      <span className="font-mono text-[10px] tracking-wider uppercase">
-                        <span className="text-claridad/40">&gt; </span>
+                    <div className="bg-teselar-dark/90 border border-innovacion/50 text-innovacion whitespace-nowrap flex items-center gap-2 px-3 py-1.5" style={{ clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))' }}>
+                      <span className="w-1.5 h-1.5 bg-innovacion rounded-full" />
+                      <span className="font-mono text-xs tracking-wider uppercase">
+                        <span className="text-claridad/70">&gt; </span>
                         {lng === 'es' ? 'ESTÁS AQUÍ' : lng === 'ca' ? 'ETS AQUÍ' : 'YOU ARE HERE'}
-                        <span className="text-claridad/40 animate-pulse">_</span>
+                        <span className="text-claridad/70">_</span>
                       </span>
                     </div>
                   </div>
                 </motion.div>
                 <motion.div
-                  initial={{ opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }}
-                  whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
-                  className="glass-card p-8 rounded-[2rem] border-2 border-innovacion/40 bg-innovacion/5 shadow-[0_0_40px_rgba(45,212,191,0.08)] relative overflow-hidden"
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.09 }}
+                  className="glass-card p-8 rounded-[2rem] border-2 border-innovacion/40 bg-innovacion/5 relative overflow-hidden"
                 >
                   {/* Glowing edge accent */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-innovacion to-transparent" />
@@ -1981,7 +1423,7 @@ export default function Page({ params }: PageProps) {
                     href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-innovacion text-teselar-dark text-xs font-black tracking-wider uppercase px-5 py-2.5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad hover:scale-105 transition-all duration-300 cursor-pointer"
+                    className="inline-flex items-center gap-2 bg-innovacion text-teselar-dark text-xs font-black tracking-wider uppercase px-5 py-2.5 rounded-full hover:bg-claridad active:scale-[0.97] transition-all duration-300 cursor-pointer"
                   >
                     <Calendar size={14} />
                     {t.hero.cta_alt}
@@ -1998,9 +1440,9 @@ export default function Page({ params }: PageProps) {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.04 }}
                   style={{ transformOrigin: 'right center' }}
-                  className="absolute right-[31px] md:right-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion shadow-[0_0_6px_#00BFA5] hidden md:block"
+                  className="absolute right-[31px] md:right-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion hidden md:block"
                 />
 
                 {/* Node marker */}
@@ -2008,25 +1450,25 @@ export default function Page({ params }: PageProps) {
                   <div className="w-3 h-3 rounded-full bg-claridad/30" />
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, clipPath: isMobile ? 'inset(0% 100% 0% 0%)' : 'inset(0% 0% 0% 100%)' }}
-                  whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.09 }}
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
-                  <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p2.title}</h3>
-                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p2.desc}</p>
+                  <h3 className="text-lg md:text-xl font-black text-claridad/70 mb-3.5">{t.process.p2.title}</h3>
+                  <p className="text-base text-claridad/75 font-light leading-relaxed">{t.process.p2.desc}</p>
                 </motion.div>
               </div>
               <div className="hidden md:block self-center pl-10">
-                <span className="text-claridad/40 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Planificación' : lng === 'ca' ? 'Planificació' : 'Planning'}</span>
+                <span className="text-claridad/70 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Planificación' : lng === 'ca' ? 'Planificació' : 'Planning'}</span>
               </div>
             </div>
 
             {/* Step 3 */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-28 mb-24">
               <div className="hidden md:block self-center md:text-right pr-10">
-                <span className="text-claridad/40 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Construcción' : lng === 'ca' ? 'Construcció' : 'Construction'}</span>
+                <span className="text-claridad/70 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Construcción' : lng === 'ca' ? 'Construcció' : 'Construction'}</span>
               </div>
               <div className="pl-16 md:pl-8 relative">
                 {/* Horizontal wire pulse */}
@@ -2034,9 +1476,9 @@ export default function Page({ params }: PageProps) {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.04 }}
                   style={{ transformOrigin: 'left center' }}
-                  className="absolute left-[31px] md:left-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion shadow-[0_0_6px_#00BFA5] hidden md:block"
+                  className="absolute left-[31px] md:left-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion hidden md:block"
                 />
 
                 {/* Node marker */}
@@ -2044,14 +1486,14 @@ export default function Page({ params }: PageProps) {
                   <div className="w-3 h-3 rounded-full bg-claridad/30" />
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, clipPath: 'inset(0% 100% 0% 0%)' }}
-                  whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.09 }}
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
-                  <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p3.title}</h3>
-                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p3.desc}</p>
+                  <h3 className="text-lg md:text-xl font-black text-claridad/70 mb-3.5">{t.process.p3.title}</h3>
+                  <p className="text-base text-claridad/75 font-light leading-relaxed">{t.process.p3.desc}</p>
                 </motion.div>
               </div>
             </div>
@@ -2064,9 +1506,9 @@ export default function Page({ params }: PageProps) {
                   initial={{ scaleX: 0 }}
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
+                  transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1], delay: 0.04 }}
                   style={{ transformOrigin: 'right center' }}
-                  className="absolute right-[31px] md:right-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion shadow-[0_0_6px_#00BFA5] hidden md:block"
+                  className="absolute right-[31px] md:right-[-40px] top-[26px] w-[20px] md:w-[40px] h-[1.5px] bg-innovacion hidden md:block"
                 />
 
                 {/* Node marker */}
@@ -2074,19 +1516,19 @@ export default function Page({ params }: PageProps) {
                   <div className="w-3 h-3 rounded-full bg-claridad/30" />
                 </div>
                 <motion.div
-                  initial={{ opacity: 0, clipPath: isMobile ? 'inset(0% 100% 0% 0%)' : 'inset(0% 0% 0% 100%)' }}
-                  whileInView={{ opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.09 }}
                   className="glass-card p-8 rounded-[2rem] border border-claridad/5 opacity-75"
                 >
-                  <h3 className="text-lg md:text-xl font-black text-claridad/50 mb-3.5">{t.process.p4.title}</h3>
-                  <p className="text-base text-claridad/50 font-bold mb-1.5">{lng === 'es' ? '¡Semana de Ajustes Gratis!' : lng === 'ca' ? 'Setmana d\'Ajustaments Gratis!' : 'Free Adjustments Week!'}</p>
-                  <p className="text-base text-claridad/60 font-light leading-relaxed">{t.process.p4.desc}</p>
+                  <h3 className="text-lg md:text-xl font-black text-claridad/70 mb-3.5">{t.process.p4.title}</h3>
+                  <p className="text-base text-claridad/70 font-bold mb-1.5">{lng === 'es' ? '¡Semana de Ajustes Gratis!' : lng === 'ca' ? 'Setmana d\'Ajustaments Gratis!' : 'Free Adjustments Week!'}</p>
+                  <p className="text-base text-claridad/75 font-light leading-relaxed">{t.process.p4.desc}</p>
                 </motion.div>
               </div>
               <div className="hidden md:block self-center pl-10">
-                <span className="text-claridad/40 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Lanzamiento' : lng === 'ca' ? 'Llançament' : 'Launch'}</span>
+                <span className="text-claridad/70 font-black text-base tracking-widest uppercase">{lng === 'es' ? 'Lanzamiento' : lng === 'ca' ? 'Llançament' : 'Launch'}</span>
               </div>
             </div>
 
@@ -2099,7 +1541,6 @@ export default function Page({ params }: PageProps) {
       <section id="faq" className="relative py-24 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
         <div className="max-w-4xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{t.nav.faq}</span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.faq.title}</h2>
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.faq.subtitle}</p>
           </div>
@@ -2110,10 +1551,10 @@ export default function Page({ params }: PageProps) {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ y: 8 }}
+                  whileInView={{ y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.4, delay: idx * 0.03 }}
+                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                   className="glass-card rounded-2xl border border-claridad/5 overflow-hidden"
                 >
                   <button
@@ -2150,17 +1591,16 @@ export default function Page({ params }: PageProps) {
         <div className="max-w-4xl mx-auto">
           
           <div className="text-center max-w-4xl mx-auto mb-20">
-            <span className="text-innovacion uppercase tracking-widest text-sm font-black">{currentLng === 'es' ? 'Hablemos' : currentLng === 'ca' ? 'Parlem' : 'Let\'s Talk'}</span>
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.contact.title}</h2>
             <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.contact.subtitle}</p>
           </div>
 
           {/* First step of the ladder: book the free diagnosis without filling in the form */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 8 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="glass-card p-8 sm:p-10 rounded-[2.5rem] border border-innovacion/25 mb-8 flex flex-col md:flex-row md:items-center gap-8"
           >
             <div className="flex-1">
@@ -2176,7 +1616,7 @@ export default function Page({ params }: PageProps) {
               href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-innovacion text-teselar-dark text-center font-black text-sm tracking-wider uppercase px-8 py-5 rounded-full shadow-lg shadow-innovacion/20 hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 flex-shrink-0"
+              className="bg-innovacion text-teselar-dark text-center font-black text-sm tracking-wider uppercase px-8 py-5 rounded-full hover:bg-claridad transition-all duration-300 cursor-pointer flex items-center justify-center gap-2 flex-shrink-0"
             >
               {t.contact.calendly_btn}
               <ArrowRight size={16} />
@@ -2185,10 +1625,10 @@ export default function Page({ params }: PageProps) {
 
           {/* Contact form (Glassmorphism card) */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ y: 8 }}
+            whileInView={{ y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
             className="glass-card p-8 sm:p-12 rounded-[2.5rem] border border-innovacion/15 shadow-2xl relative overflow-hidden"
           >
             {/* Ambient glows behind the form */}
@@ -2219,7 +1659,7 @@ export default function Page({ params }: PageProps) {
                 <div className="flex flex-col gap-3 md:col-span-2">
                   <label htmlFor="phone" className="text-sm font-black tracking-wider uppercase text-claridad/80 pl-1.5">{t.contact.phone}</label>
                   <input type="tel" id="phone" name="phone" inputMode="tel" autoComplete="tel" className="form-input" placeholder="+34 600 000 000" />
-                  <span className="text-xs font-light text-claridad/60 pl-1.5">{t.contact.phone_hint}</span>
+                  <span className="text-xs font-light text-claridad/75 pl-1.5">{t.contact.phone_hint}</span>
                 </div>
               </div>
 
@@ -2322,7 +1762,7 @@ export default function Page({ params }: PageProps) {
                 <button 
                   type="submit" 
                   disabled={isSubmitting || !gdprAccepted}
-                  className="w-full bg-innovacion text-teselar-dark font-black tracking-wider uppercase py-5.5 rounded-2xl shadow-xl shadow-innovacion/15 hover:bg-claridad hover:text-teselar-dark hover:scale-[1.01] transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base md:text-lg"
+                  className="w-full bg-innovacion text-teselar-dark font-black tracking-wider uppercase py-5.5 rounded-2xl hover:bg-claridad hover:text-teselar-dark active:scale-[0.97] transition-all duration-300 cursor-pointer disabled:opacity-40 disabled:hover:scale-100 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-base md:text-lg"
                 >
                   {isSubmitting ? (
                     <>
@@ -2363,7 +1803,7 @@ export default function Page({ params }: PageProps) {
               <img src="/logo.jpeg" alt="Teselar Logo" className="w-12 h-12 rounded-full border border-innovacion/35 object-cover" />
               <span className="font-extrabold text-2xl tracking-tight">TESELAR <span className="text-innovacion font-black">Software</span></span>
             </div>
-            <p className="text-xs text-claridad/60 font-light leading-relaxed max-w-sm mt-2">
+            <p className="text-xs text-claridad/75 font-light leading-relaxed max-w-sm mt-2">
               {currentLng === 'es'
                 ? 'Desarrollamos soluciones digitales a medida de alto rendimiento e impacto visual. Artesanía en software, automatizaciones e inteligencia artificial.'
                 : currentLng === 'ca'
@@ -2409,7 +1849,7 @@ export default function Page({ params }: PageProps) {
 
           {/* Column 2: Navigation shortcuts */}
           <div className="md:col-span-3">
-            <h3 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{currentLng === 'es' ? 'Navegación' : currentLng === 'ca' ? 'Navegació' : 'Navigation'}</h3>
+            <h3 className="text-sm font-bold text-innovacion mb-5">{currentLng === 'es' ? 'Navegación' : currentLng === 'ca' ? 'Navegació' : 'Navigation'}</h3>
             <div className="flex flex-col gap-3.5 text-xs text-claridad/65 font-medium">
               <a href="#values" className="hover:text-innovacion transition-colors">{t.nav.values}</a>
               <a href="#services" className="hover:text-innovacion transition-colors">{t.nav.services}</a>
@@ -2421,7 +1861,7 @@ export default function Page({ params }: PageProps) {
 
           {/* Column 3: Contact information */}
           <div className="md:col-span-4">
-            <h3 className="text-xs font-extrabold uppercase tracking-widest text-innovacion mb-5">{lng === 'es' ? 'Contacto y Sede' : lng === 'ca' ? 'Contacte i Seu' : 'Contact & Headquarters'}</h3>
+            <h3 className="text-sm font-bold text-innovacion mb-5">{lng === 'es' ? 'Contacto y Sede' : lng === 'ca' ? 'Contacte i Seu' : 'Contact & Headquarters'}</h3>
             <div className="space-y-4 text-xs font-light text-claridad/75 leading-relaxed">
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-innovacion" aria-hidden="true" />
@@ -2445,13 +1885,13 @@ export default function Page({ params }: PageProps) {
         </div>
 
         {/* Legal notice & subpath links */}
-        <div className="max-w-7xl mx-auto border-t border-claridad/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-light text-claridad/70 text-center">
+        <div className="max-w-7xl mx-auto border-t border-claridad/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-light text-claridad/70 text-center">
           <span suppressHydrationWarning>&copy; {new Date().getFullYear()} Teselar Software. All rights reserved.</span>
           <div className="flex flex-wrap gap-4 justify-center">
             <a 
               href={`/${currentLng}/legal/aviso-legal`} 
               onClick={(e) => { e.preventDefault(); setActiveLegalModal('aviso'); }}
-              className="hover:text-innovacion transition-colors animate-pulse-slow"
+              className="hover:text-innovacion transition-colors-slow"
             >
               {currentLng === 'es' ? 'Aviso Legal' : currentLng === 'ca' ? 'Avís Legal' : 'Legal Notice'}
             </a>
@@ -2614,7 +2054,7 @@ export default function Page({ params }: PageProps) {
                   />
                   <div className="flex items-start gap-2 pt-1">
                     <input type="checkbox" id="exit-gdpr" required className="mt-1" />
-                    <label htmlFor="exit-gdpr" className="text-[10px] text-claridad/75 leading-tight">
+                    <label htmlFor="exit-gdpr" className="text-xs text-claridad/75 leading-tight">
                       {t.leads.exit_gdpr}
                     </label>
                   </div>
@@ -2689,7 +2129,7 @@ export default function Page({ params }: PageProps) {
               <button
                 onClick={() => setShowScrollToast(false)}
                 aria-label={t.a11y.cerrar}
-                className="absolute top-3 right-3 text-claridad/40 hover:text-claridad transition-colors"
+                className="absolute top-3 right-3 text-claridad/70 hover:text-claridad transition-colors"
               >
                 <X size={14} aria-hidden="true" />
               </button>
