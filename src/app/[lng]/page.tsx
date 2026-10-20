@@ -2006,16 +2006,17 @@ export default function Page({ params }: PageProps) {
         )}
       </AnimatePresence>
 
-      {/* LEAD CAPTURE: Scroll-Triggered Toast (Bottom Left) */}
+      {/* LEAD CAPTURE: Scroll-Triggered Toast (Bottom Left). Solo en escritorio desde el 20/10: en
+          movil se amontonaba con la barra fija y el boton de TesS y tapaba el texto. */}
       <AnimatePresence>
-        {showScrollToast && (
+        {showScrollToast && !isMobile && (
           <motion.div
             initial={{ opacity: 0, x: -50, y: 20 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: -50, y: 20 }}
-            className="fixed bottom-6 left-6 z-40 max-w-sm"
+            className="hidden md:block fixed bottom-6 left-6 z-40 max-w-sm"
           >
-            <div className="glass-card p-5 rounded-2xl border border-innovacion/40 shadow-[0_8px_32px_rgba(0,191,165,0.2)] flex items-start gap-4">
+            <div className="glass-card p-5 rounded-2xl border border-innovacion/40 shadow-lg shadow-black/30 flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-innovacion/20 flex items-center justify-center text-innovacion flex-shrink-0 mt-1">
                 <Info size={20} />
               </div>
