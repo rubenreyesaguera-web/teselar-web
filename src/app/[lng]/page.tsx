@@ -72,6 +72,8 @@ export default function Page({ params }: PageProps) {
   const [contactMessage, setContactMessage] = useState('');
   const [contactReason, setContactReason] = useState('info'); // default to requesting info
   const [activeCategory, setActiveCategory] = useState<'all' | 'web' | 'automation' | 'systems'>('all');
+  // El servicio del catalogo que tiene desplegado "lo que incluye" (uno a la vez).
+  const [servicioAbierto, setServicioAbierto] = useState<string | null>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -687,7 +689,7 @@ export default function Page({ params }: PageProps) {
 
           {/* Interactive Category Selector Tabs */}
           <div className="flex justify-center mb-20">
-            <div className="glass-panel p-2 rounded-full flex flex-wrap justify-center gap-2 max-w-4xl">
+            <div className="glass-panel p-2 rounded-2xl sm:rounded-full grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-2 max-w-4xl w-full sm:w-auto">
               <button 
                 onClick={() => setActiveCategory('all')}
                 className={`px-7 py-3.5 rounded-full text-sm font-black transition-all duration-300 cursor-pointer ${activeCategory === 'all' ? 'bg-innovacion text-teselar-dark shadow-md' : 'text-claridad/75 hover:bg-claridad/10'}`}
@@ -715,76 +717,68 @@ export default function Page({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Dynamic Filterable Services Grid */}
-          <motion.div 
-            layout 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredServices.map((service) => {
-                const IconComponent = service.icon;
-                return (
-                  <motion.div
-                    layout
-                    key={service.id}
-                    initial={{ y: 8 }}
-                    whileInView={{ y: 0 }}
-                    viewport={{ once: true, margin: "-40px" }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-                    className="glass-card p-8 rounded-[2rem] border border-claridad/5 flex flex-col justify-between h-full relative overflow-hidden group"
-                  >
-                    <div>
-                      {/* Top icon and tag */}
-                      <div className="flex justify-between items-start mb-6">
-                        <div className="w-14 h-14 bg-teselar/40 border border-claridad/10 rounded-2xl flex items-center justify-center text-innovacion">
-                          <IconComponent size={28} />
-                        </div>
-                        <span className="text-sm font-medium text-claridad/75 bg-claridad/5 border border-claridad/10 px-3 py-1.5 rounded-full">{service.tag}</span>
-                      </div>
-
-                      {/* Service Title */}
-                      <h3 className="text-xl md:text-2xl font-black leading-snug tracking-tight mb-5 group-hover:text-innovacion transition-colors">{service.title}</h3>
-
-                      {/* Ideal for audience */}
-                      <div className="mb-6 text-sm text-claridad/80 font-light">
-                        <strong className="text-innovacion block font-black mb-1.5">{t.services.ideal}</strong>
-                        {service.ideal}
-                      </div>
-
-                      {/* List of features */}
-                      <strong className="text-claridad font-extrabold text-sm block mb-3 border-t border-claridad/5 pt-6">{t.services.features}</strong>
-                      <ul className="space-y-3 mb-8">
-                        {service.features.map((feature, fIndex) => (
-                          <li key={fIndex} className="flex items-start gap-3 text-sm text-claridad/90 font-light leading-relaxed">
-                            <CheckCircle2 size={15} className="text-innovacion flex-shrink-0 mt-0.5" />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+          {/* Catalogo en lista (20/10, Taste + Impeccable + Emil Kowalski): una fila por servicio con
+              lo que decide (para quien, precio y la accion); lo que incluye se despliega. Antes eran
+              tarjetas de 1.400-1.800 px de alto y el catalogo era el 36 % de la pagina en escritorio
+              y el 44 % en movil. Lo plegado sigue en el HTML, asi que buscadores e IA lo leen igual. */}
+          <ul className="border-t border-claridad/10">
+            {filteredServices.map((service) => {
+              const abierto = servicioAbierto === service.id;
+              const idLista = `incluye-${service.id}`;
+              return (
+                <li key={service.id} className="fila-servicio border-b border-claridad/10">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-4 py-7 md:py-8">
+                    <div className="lg:col-span-6 flex flex-col gap-2">
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{service.title}</h3>
+                      <p className={`text-base text-claridad/80 leading-relaxed max-w-[62ch] [text-wrap:pretty] ${abierto ? '' : 'line-clamp-2'}`}>{service.ideal}</p>
                     </div>
-
-                    {/* Bottom Pricing & CTA */}
-                    <div className="border-t border-claridad/5 pt-6 mt-auto">
-                      <div className="flex justify-between items-center gap-4 mb-5">
-                        <span className="text-sm text-claridad/75 font-semibold">{t.services.pricing}</span>
-                        <span className="text-xl md:text-2xl font-black text-innovacion text-right">{service.price} <span className="text-sm font-semibold text-claridad/70 whitespace-nowrap">{t.services.vat}</span></span>
-                      </div>
-
-                      <button 
+                    <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
+                      <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{service.price}</span>
+                      <span className="text-sm text-claridad/70">{t.services.vat}</span>
+                    </div>
+                    <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-2 lg:items-stretch">
+                      <button
+                        type="button"
+                        onClick={() => setServicioAbierto(abierto ? null : service.id)}
+                        aria-expanded={abierto}
+                        aria-controls={idLista}
+                        className="flex-1 lg:flex-none py-3 px-4 rounded-md border border-claridad/15 text-base font-semibold text-claridad hover:border-claridad/40 active:scale-[0.97] transition-[transform,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
+                      >
+                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what is included'}
+                        <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'rotate-180' : ''}`} />
+                      </button>
+                      <button
+                        type="button"
                         onClick={() => handleInterest(service.title.replace(/^\d+\.\s*/, ''))}
-                        className="w-full py-4.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion active:scale-[0.97] transition-all duration-300 cursor-pointer flex items-center justify-center gap-2"
+                        className="flex-1 lg:flex-none py-3 px-4 rounded-md bg-innovacion text-teselar-dark text-base font-bold hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
                       >
                         {t.services.interest}
-                        <ChevronRight size={15} />
+                        <ChevronRight size={18} aria-hidden="true" />
                       </button>
                     </div>
-
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
+                  </div>
+                  <div
+                    id={idLista}
+                    className={`grid transition-[grid-template-rows] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                  >
+                    <div className="overflow-hidden" inert={!abierto}>
+                      <div className="pb-8 flex flex-col gap-4">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
+                          {service.features.map((feature, fIndex) => (
+                            <li key={fIndex} className="flex items-start gap-3 text-base text-claridad/85 leading-relaxed">
+                              <CheckCircle2 size={17} aria-hidden="true" className="text-innovacion flex-shrink-0 mt-1" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <span className="text-sm text-claridad/70">{service.tag}</span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
 
           {/* Service Conditions: Not included & Payment terms */}
           <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-6.5">
@@ -1984,14 +1978,14 @@ export default function Page({ params }: PageProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.4, type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed bottom-6 left-0 right-0 z-50 px-4 pointer-events-none"
+            className="fixed bottom-6 left-0 right-0 z-50 pl-4 pr-24 pointer-events-none"
           >
             <div className="max-w-sm mx-auto pointer-events-auto">
               <a
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full bg-innovacion text-teselar-dark font-black tracking-widest uppercase py-4 rounded-2xl sticky-cta-bar flex items-center justify-center gap-3 shadow-2xl"
+                className="w-full bg-innovacion text-teselar-dark font-bold text-base py-4 rounded-xl sticky-cta-bar flex items-center justify-center gap-2 active:scale-[0.97] transition-transform duration-150"
               >
                 <Calendar size={18} />
                 <span>{t.leads.sticky_cta_long}</span>
