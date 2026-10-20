@@ -23,14 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: languageAlternates,
   }));
 
-  // Root entry (usually redirects or shows default language)
-  const rootEntry = {
-    url: baseUrl,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
-    alternates: languageAlternates,
-  };
-
-  return [rootEntry, ...languageEntries];
+  // La raiz no va (20/10): el middleware la redirige a /es, /ca o /en, y al sitemap solo deben
+  // ir direcciones finales, no redirecciones.
+  return languageEntries;
 }

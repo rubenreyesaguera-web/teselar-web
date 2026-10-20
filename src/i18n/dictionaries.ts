@@ -26,6 +26,7 @@ export const dictionaries = {
       cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
       pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
+      piezas_desc: ['Tus clientes y su historial, en un solo sitio', 'Presupuestos y facturas que salen solos', 'Citas que se reservan sin llamar', 'Una web hecha a mano, rápida', 'Respuestas y recordatorios automáticos', 'Avisos, técnicos y partes desde el móvil'],
       piezas_alt: 'Las piezas de un negocio encajadas, con la de Teselar en el hueco que faltaba'
     },
     concept: {
@@ -335,7 +336,7 @@ export const dictionaries = {
       title: '¿Hacemos encajar las piezas?',
       subtitle: 'Escríbeme sobre tu proyecto para agendar una cita o pedir información técnica, sin compromiso.',
       calendly_title: 'Reserva el diagnóstico gratuito de 30 minutos',
-      calendly_desc: 'Es la forma más rápida: eliges hueco y hablamos. Sin coste, sin compromiso y con tu negocio ya mirado por delante. Si prefieres escribir primero, tienes el formulario justo debajo.',
+      calendly_desc: 'Es la forma más rápida: eliges hueco y hablamos. Sin coste, sin compromiso y con tu negocio ya mirado por delante. Si prefieres escribir primero, tienes el formulario aquí mismo.',
       calendly_btn: 'Elegir hueco en el calendario',
       name: 'Nombre o Empresa',
       email: 'Tu Correo Electrónico',
@@ -435,6 +436,7 @@ export const dictionaries = {
       cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
       pieza_texto: 'El que et falta, fet a la mida del forat',
+      piezas_desc: ['Els teus clients i el seu historial, en un sol lloc', 'Pressupostos i factures que surten sols', 'Cites que es reserven sense trucar', 'Una web feta a mà, ràpida', 'Respostes i recordatoris automàtics', 'Avisos, tècnics i parts de treball des del mòbil'],
       piezas_alt: 'Les peces d\'un negoci encaixades, amb la de Teselar al forat que faltava'
     },
     concept: {
@@ -574,7 +576,7 @@ export const dictionaries = {
         f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
         f7: 'Formació integral de l\'equip + 1 setmana de suport prioritari',
         f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència',
-        f9: 'Si el teu equip treballa fora: avisos, assignació de tècnics, fitxatges i parts des del mòbil'
+        f9: 'Si el teu equip treballa fora: avisos, assignació de tècnics, fitxatges i parts de treball des del mòbil'
       },
       s9: {
         title: '03. Cites per WhatsApp',
@@ -744,7 +746,7 @@ export const dictionaries = {
       title: 'Fem encaixar les peces?',
       subtitle: 'Escriu-me sobre el teu projecte per agendar una cita o demanar informació tècnica, sense compromís.',
       calendly_title: 'Reserva el diagnòstic gratuït de 30 minuts',
-      calendly_desc: 'És la manera més ràpida: tries forat i parlem. Sense cost, sense compromís i amb el teu negoci ja mirat per endavant. Si prefereixes escriure primer, tens el formulari just a sota.',
+      calendly_desc: 'És la manera més ràpida: tries forat i parlem. Sense cost, sense compromís i amb el teu negoci ja mirat per endavant. Si prefereixes escriure primer, tens el formulari aquí mateix.',
       calendly_btn: 'Triar forat al calendari',
       name: 'Nom o Empresa',
       email: 'El Teu Correu Electrònic',
@@ -843,7 +845,8 @@ export const dictionaries = {
       cta_alt: 'Free 30-min diagnosis',
       cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
-      pieza_texto: 'What you are missing, made to fit the gap',
+      pieza_texto: 'What you\'re missing, made to fit the gap',
+      piezas_desc: ['Your clients and their history, in one place', 'Quotes and invoices that go out on their own', 'Bookings made without a phone call', 'A hand-built, fast website', 'Automatic replies and reminders', 'Call-outs, technicians and job reports from your phone'],
       piezas_alt: 'The pieces of a business fitted together, with Teselar\'s in the gap that was missing'
     },
     concept: {
@@ -1153,7 +1156,7 @@ export const dictionaries = {
       title: 'Shall we fit the pieces?',
       subtitle: 'Tell me about your project to book a meeting or ask for technical details, with no strings attached.',
       calendly_title: 'Book the free 30-minute diagnosis',
-      calendly_desc: 'It is the fastest way: pick a slot and we talk. No cost, no strings attached, and with your business already looked at beforehand. If you would rather write first, the form is right below.',
+      calendly_desc: 'It is the fastest way: pick a slot and we talk. No cost, no strings attached, and with your business already looked at beforehand. If you would rather write first, the form is right here.',
       calendly_btn: 'Pick a slot in the calendar',
       name: 'Name or Company Name',
       email: 'Your Contact Email',
