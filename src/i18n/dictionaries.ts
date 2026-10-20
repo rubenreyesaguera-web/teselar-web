@@ -150,7 +150,7 @@ export const dictionaries = {
         f7: 'SEO local, y mantenimiento incluido el primer año (los feeds a portales necesitan vigilancia)'
       },
       s8: {
-        title: '09. Sistema de Gestión a Medida (ERP/CRM)',
+        title: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
@@ -375,7 +375,7 @@ export const dictionaries = {
       notif_linked: '¡Simulación vinculada con éxito en el formulario!',
       opt_s2: '02. Automatizaciones Específicas',
       opt_s4: '05. Integración de Inteligencia Artificial',
-      opt_s8: '09. Sistema ERP/CRM (App Nativa)'
+      opt_s8: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Consulta gratuita',
@@ -556,7 +556,7 @@ export const dictionaries = {
         f7: 'SEO local, i manteniment inclòs el primer any (els feeds a portals necessiten vigilància)'
       },
       s8: {
-        title: '09. Sistema de Gestió a Mida (ERP/CRM)',
+        title: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
@@ -781,7 +781,7 @@ export const dictionaries = {
       notif_linked: '¡Simulació vinculada amb èxit al formulari!',
       opt_s2: '02. Automatitzacions Específiques',
       opt_s4: '05. Integració d\'Intel·ligència Artificial',
-      opt_s8: '09. Sistema ERP/CRM (App Nativa)'
+      opt_s8: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Consulta gratuïta',
@@ -962,7 +962,7 @@ export const dictionaries = {
         f7: 'Local SEO, and maintenance included for the first year (portal feeds need monitoring)'
       },
       s8: {
-        title: '09. Custom Management System (ERP/CRM)',
+        title: '09. Custom Management System (ERP/CRM/FSM)',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
@@ -1187,7 +1187,7 @@ export const dictionaries = {
       notif_linked: 'Simulation successfully linked to the form!',
       opt_s2: '02. Specific Automations',
       opt_s4: '05. Artificial Intelligence Integration',
-      opt_s8: '09. ERP/CRM System (Native Desktop App)'
+      opt_s8: '09. Custom Management System (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Free consultation',
