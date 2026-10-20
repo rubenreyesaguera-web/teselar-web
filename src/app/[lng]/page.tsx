@@ -25,6 +25,9 @@ const WHATSAPP_NUM = '34653232735';
 // 30 minutos como puerta de la escalera de ADR-021. El formulario deja de ser un boton
 // suelto en cada seccion y vuelve a ser el sitio donde se cuenta el caso con calma.
 // El mensaje previo dice de que seccion viene, para saberlo sin preguntarlo.
+// Preguntas frecuentes que se ven sin pulsar «ver todas» (20/10).
+const PREGUNTAS_VISIBLES = 5;
+
 const waLink = (mensaje: string) => `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(mensaje)}`;
 
 export default function Page({ params }: PageProps) {
@@ -74,6 +77,10 @@ export default function Page({ params }: PageProps) {
   const [activeCategory, setActiveCategory] = useState<'all' | 'web' | 'automation' | 'systems'>('all');
   // El servicio del catalogo que tiene desplegado "lo que incluye" (uno a la vez).
   const [servicioAbierto, setServicioAbierto] = useState<string | null>(null);
+  // Lo mismo para los planes de mantenimiento y las cuotas, y para las preguntas y el simulador.
+  const [planAbierto, setPlanAbierto] = useState<string | null>(null);
+  const [todasLasPreguntas, setTodasLasPreguntas] = useState(false);
+  const [simuladorAbierto, setSimuladorAbierto] = useState(false);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -837,207 +844,86 @@ export default function Page({ params }: PageProps) {
       </div>
 
       {/* 5. PRECIOS: MANTENIMIENTO, SOPORTE Y METODOS DE PAGO */}
-      <section id="pricing" className="relative py-24 px-4 md:px-8 bg-teselar-dark/50 backdrop-blur-sm z-10 border-t border-b border-claridad/5 content-visibility-auto">
-        <div className="max-w-7xl mx-auto">
-          
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.pricing.title}</h2>
-            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.pricing.subtitle}</p>
+      <section id="pricing" className="relative py-16 md:py-24 px-4 md:px-8 z-10 content-visibility-auto">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+
+          {/* Mantenimiento y cuotas en lista (20/10), como el catalogo: una fila por plan con lo
+              que decide y el detalle desplegable. Antes eran cuatro tarjetas grandes: el 11 % de la
+              pagina en escritorio y el 14 % en movil. */}
+          <div className="max-w-3xl flex flex-col gap-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">{t.pricing.title}</h2>
+            <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.pricing.subtitle}</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
-            
-            {/* Basic Plan Card */}
-            <motion.div 
-              initial={{ y: 8 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border border-claridad/5 flex flex-col justify-between [backface-visibility:hidden]"
-            >
-              <div>
-                <span className="text-base font-bold text-claridad/70">{t.pricing.basic.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.basic.price}</span>
-                  <span className="text-base font-light text-claridad/70">{t.pricing.basic.period} {t.services.vat}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.basic.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.basic.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-teselar/40 border border-claridad/10 text-sm font-black text-claridad tracking-wider uppercase hover:bg-innovacion hover:text-teselar-dark hover:border-innovacion transition-all duration-300 cursor-pointer mt-10"
-              >
-                {lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan'}
-              </button>
-            </motion.div>
-
-            {/* Plus Plan Card (Recommended) */}
-            <motion.div 
-              initial={{ y: 8 }}
-              whileInView={{ y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1], delay: 0.03 }}
-              className="lg:col-span-6 glass-card p-10 rounded-[2.5rem] border-2 border-innovacion/35 bg-teselar-light/50 flex flex-col justify-between relative [backface-visibility:hidden]"
-            >
-              <div className="absolute top-4 right-4 bg-innovacion text-teselar-dark text-xs font-black tracking-widest uppercase px-4 py-1.5 rounded-full">
-                {lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}
-              </div>
-              
-              <div>
-                <span className="text-base font-bold text-innovacion">{t.pricing.plus.title}</span>
-                <div className="flex items-baseline gap-1 mt-5 mb-8">
-                  <span className="text-5xl md:text-6xl font-black text-claridad">{t.pricing.plus.price}</span>
-                  <span className="text-base font-light text-claridad/70">{t.pricing.plus.period} {t.services.vat}</span>
-                </div>
-                <p className="text-base md:text-lg font-light text-claridad/85 mb-8 leading-relaxed">{t.pricing.plus.desc}</p>
-                
-                <ul className="space-y-4 border-t border-claridad/5 pt-8">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f3}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.plus.f4}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                onClick={() => handleScrollToContact('info')}
-                className="w-full py-5.5 rounded-2xl bg-innovacion text-teselar-dark text-sm font-black tracking-wider uppercase hover:bg-claridad hover:text-teselar-dark transition-all duration-300 cursor-pointer mt-10"
-              >
-                {lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan'}
-              </button>
-            </motion.div>
-
-          </div>
-
-          {/* Recurring fee of the WhatsApp booking product — separate from maintenance */}
-          <motion.div
-            initial={{ y: 8 }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Calendar size={20} />
+          <ul className="border-t border-claridad/10">
+            {[
+              { id: 'basic', plan: t.pricing.basic, items: [t.pricing.basic.f1, t.pricing.basic.f2, t.pricing.basic.f3, t.pricing.basic.f4], nota: null, recomendado: false,
+                cta: lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan', accion: () => handleScrollToContact('info'), href: null },
+              { id: 'plus', plan: t.pricing.plus, items: [t.pricing.plus.f1, t.pricing.plus.f2, t.pricing.plus.f3, t.pricing.plus.f4], nota: null, recomendado: true,
+                cta: lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan', accion: () => handleScrollToContact('info'), href: null },
+              { id: 'citas', plan: t.pricing.citas, items: [t.pricing.citas.f1, t.pricing.citas.f2], nota: t.pricing.citas.f3, recomendado: false,
+                cta: t.pricing.citas.cta, accion: null, href: '#services' },
+              { id: 'ia', plan: t.pricing.ia, items: [t.pricing.ia.f1, t.pricing.ia.f2], nota: t.pricing.ia.f3, recomendado: false,
+                cta: t.pricing.ia.cta, accion: null, href: '#services' },
+            ].map(({ id, plan, items, nota, recomendado, cta, accion, href }) => {
+              const abierto = planAbierto === id;
+              const idDetalle = `plan-${id}`;
+              const claseCta = 'flex-1 lg:flex-none py-3 px-4 rounded-md bg-innovacion text-teselar-dark text-base font-bold text-center hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2';
+              return (
+                <li key={id} className="fila-servicio border-b border-claridad/10">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-4 py-7 md:py-8">
+                    <div className="lg:col-span-6 flex flex-col gap-2">
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad flex flex-wrap items-center gap-3">
+                        {plan.title}
+                        {recomendado && <span className="text-sm font-semibold text-teselar-dark bg-innovacion px-2.5 py-0.5 rounded">{lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}</span>}
+                      </h3>
+                      <p className={`text-base text-claridad/80 leading-relaxed max-w-[62ch] [text-wrap:pretty] ${abierto ? '' : 'line-clamp-2'}`}>{plan.desc}</p>
+                    </div>
+                    <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
+                      <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{plan.price}</span>
+                      <span className="text-sm text-claridad/70">{plan.period} {t.services.vat}</span>
+                    </div>
+                    <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-2 lg:items-stretch">
+                      <button
+                        type="button"
+                        onClick={() => setPlanAbierto(abierto ? null : id)}
+                        aria-expanded={abierto}
+                        aria-controls={idDetalle}
+                        className="flex-1 lg:flex-none py-3 px-4 rounded-md border border-claridad/15 text-base font-semibold text-claridad hover:border-claridad/40 active:scale-[0.97] transition-[transform,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
+                      >
+                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what is included'}
+                        <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'rotate-180' : ''}`} />
+                      </button>
+                      {href
+                        ? <a href={href} className={claseCta}>{cta}<ArrowRight size={18} aria-hidden="true" /></a>
+                        : <button type="button" onClick={accion ?? undefined} className={claseCta}>{cta}</button>}
+                    </div>
                   </div>
-                  <span className="text-base font-bold text-innovacion">{t.pricing.citas.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.citas.price}</span>
-                  <span className="text-base font-light text-claridad/70">{t.pricing.citas.period} {t.services.vat}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.citas.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.citas.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/70 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.citas.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.citas.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Recurring fee of the AI assistant — separate from maintenance and from the booking fee */}
-          <motion.div
-            initial={{ y: 8 }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-            className="glass-card p-10 rounded-[2.5rem] border border-innovacion/20 max-w-6xl mx-auto mt-8"
-          >
-            <div className="flex flex-col lg:flex-row lg:items-start gap-10">
-              <div className="lg:w-2/5">
-                <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-11 h-11 rounded-2xl bg-innovacion/10 border border-innovacion/25 flex items-center justify-center text-innovacion flex-shrink-0">
-                    <Brain size={20} />
+                  <div
+                    id={idDetalle}
+                    className={`grid transition-[grid-template-rows] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+                  >
+                    <div className="overflow-hidden" inert={!abierto}>
+                      <ul className="pb-8 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
+                        {items.map((item, k) => (
+                          <li key={k} className="flex items-start gap-3 text-base text-claridad/85 leading-relaxed">
+                            <CheckCircle2 size={17} aria-hidden="true" className="text-innovacion flex-shrink-0 mt-1" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                        {nota && (
+                          <li className="flex items-start gap-3 text-base text-claridad/75 leading-relaxed md:col-span-2">
+                            <Info size={17} aria-hidden="true" className="text-claridad/70 flex-shrink-0 mt-1" />
+                            <span>{nota}</span>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
                   </div>
-                  <span className="text-base font-bold text-innovacion">{t.pricing.ia.title}</span>
-                </div>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl md:text-5xl font-black text-claridad">{t.pricing.ia.price}</span>
-                  <span className="text-base font-light text-claridad/70">{t.pricing.ia.period} {t.services.vat}</span>
-                </div>
-                <p className="text-base font-light text-claridad/85 leading-relaxed">{t.pricing.ia.desc}</p>
-              </div>
-
-              <div className="lg:w-3/5 lg:border-l lg:border-claridad/5 lg:pl-10">
-                <ul className="space-y-4">
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f1}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <CheckCircle2 size={18} className="text-innovacion flex-shrink-0 mt-0.5" />
-                    <span>{t.pricing.ia.f2}</span>
-                  </li>
-                  <li className="flex items-start gap-3.5 text-base text-claridad/95 font-light leading-relaxed">
-                    <Info size={18} className="text-claridad/70 flex-shrink-0 mt-0.5" />
-                    <span className="text-claridad/70">{t.pricing.ia.f3}</span>
-                  </li>
-                </ul>
-                <a
-                  href="#services"
-                  className="inline-flex items-center gap-2 mt-8 text-sm font-black text-innovacion uppercase tracking-wider hover:text-claridad transition-colors duration-300"
-                >
-                  {t.pricing.ia.cta}
-                  <ArrowRight size={16} />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+                </li>
+              );
+            })}
+          </ul>
 
         </div>
       </section>
@@ -1066,18 +952,37 @@ export default function Page({ params }: PageProps) {
       </div>
 
       {/* 5.5. SIMULADOR DE AHORRO Y PRESUPUESTO INTERACTIVO (ROI Slider Estimator) */}
-      <section id="roi-simulator" className="relative py-28 px-4 md:px-8 z-10 overflow-hidden bg-teselar-dark/10 backdrop-blur-sm border-b border-claridad/5 content-visibility-auto">
-        <div className="max-w-6xl mx-auto">
-          
-          <div className="text-center max-w-4xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mt-3 mb-6 text-glow-cyan">
+      <section id="roi-simulator" className="relative py-16 md:py-24 px-4 md:px-8 z-10 content-visibility-auto">
+        <div className="max-w-7xl mx-auto">
+          {/* El simulador queda plegado tras un boton (20/10): era el 6 % de la pagina y solo lo usa
+              quien ya esta echando cuentas. No va a pagina propia porque su boton pasa el resultado
+              al formulario de contacto de esta misma pagina. */}
+          <div className="max-w-3xl flex flex-col gap-4 mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">
               {t.simulator.title}
             </h2>
-            <p className="text-claridad/85 font-light text-base md:text-lg max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">
               {t.simulator.subtitle}
             </p>
+            <button
+              type="button"
+              onClick={() => setSimuladorAbierto(!simuladorAbierto)}
+              aria-expanded={simuladorAbierto}
+              aria-controls="simulador-cuerpo"
+              className="self-start mt-2 py-3 px-5 rounded-md bg-innovacion text-teselar-dark text-base font-bold hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center gap-2"
+            >
+              {simuladorAbierto
+                ? (lng === 'es' ? 'Cerrar el simulador' : lng === 'ca' ? 'Tancar el simulador' : 'Close the simulator')
+                : (lng === 'es' ? 'Calcular lo que te cuesta' : lng === 'ca' ? 'Calcular el que et costa' : 'Work out what it costs you')}
+              <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${simuladorAbierto ? 'rotate-180' : ''}`} />
+            </button>
           </div>
 
+          <div
+            id="simulador-cuerpo"
+            className={`grid transition-[grid-template-rows] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${simuladorAbierto ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+          >
+            <div className="overflow-hidden" inert={!simuladorAbierto}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left: Interactive Input sliders */}
@@ -1280,7 +1185,8 @@ export default function Page({ params }: PageProps) {
             </motion.div>
 
           </div>
-
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1532,51 +1438,62 @@ export default function Page({ params }: PageProps) {
       </section>
 
       {/* 6.5. PREGUNTAS FRECUENTES (FAQ) — contenido citable por buscadores de IA (AEO), espejo del FAQPage schema */}
-      <section id="faq" className="relative py-24 px-4 md:px-8 z-10 overflow-hidden content-visibility-auto">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mt-3 mb-8 text-glow-cyan">{t.faq.title}</h2>
-            <p className="text-claridad/85 font-light text-lg md:text-xl max-w-3xl mx-auto">{t.faq.subtitle}</p>
+      <section id="faq" className="relative py-16 md:py-24 px-4 md:px-8 z-10 content-visibility-auto">
+        <div className="max-w-4xl mx-auto flex flex-col gap-10">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] text-claridad [text-wrap:balance]">{t.faq.title}</h2>
+            <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.faq.subtitle}</p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          {/* Se ven 5 preguntas y el resto con un boton (20/10). Las ocultas y las respuestas
+              plegadas siguen en el HTML servido: los crawlers de IA que no ejecutan JS las leen. */}
+          <ul className="border-t border-claridad/10">
             {faqList.map((item, idx) => {
               const isOpen = openFaqIndex === idx;
+              const oculta = !todasLasPreguntas && idx >= PREGUNTAS_VISIBLES;
               return (
-                <motion.div
-                  key={idx}
-                  initial={{ y: 8 }}
-                  whileInView={{ y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
-                  className="glass-card rounded-2xl border border-claridad/5 overflow-hidden"
-                >
+                <li key={idx} className={`border-b border-claridad/10 ${oculta ? 'hidden' : ''}`}>
                   <button
+                    type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 cursor-pointer group"
+                    aria-controls={`respuesta-${idx}`}
+                    className="w-full flex items-center justify-between gap-4 text-left py-5 cursor-pointer group"
                   >
-                    <span className="text-base md:text-lg font-bold text-claridad group-hover:text-innovacion transition-colors">{item.q}</span>
+                    <span className="text-base md:text-lg font-semibold text-claridad group-hover:text-innovacion transition-colors duration-150">{item.q}</span>
                     <ChevronDown
                       size={20}
-                      className={`flex-shrink-0 text-innovacion transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                      aria-hidden="true"
+                      className={`flex-shrink-0 text-innovacion transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {/* Truco CSS-grid (0fr/1fr): la respuesta queda SIEMPRE montada en el DOM
-                      (visible en el HTML servido, sin necesitar JS) y el colapso es puramente
-                      visual — así los crawlers de IA que no ejecutan JS también la leen. */}
                   <div
-                    className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                    id={`respuesta-${idx}`}
+                    className="grid transition-[grid-template-rows] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]"
                     style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                   >
-                    <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-base text-claridad/75 font-light leading-relaxed">{item.a}</p>
+                    <div className="overflow-hidden" inert={!isOpen}>
+                      <p className="pb-6 text-base text-claridad/80 leading-relaxed max-w-[70ch] [text-wrap:pretty]">{item.a}</p>
                     </div>
                   </div>
-                </motion.div>
+                </li>
               );
             })}
-          </div>
+          </ul>
+
+          {faqList.length > PREGUNTAS_VISIBLES && (
+            <button
+              type="button"
+              onClick={() => setTodasLasPreguntas(!todasLasPreguntas)}
+              aria-expanded={todasLasPreguntas}
+              className="self-start py-3 px-5 rounded-md border border-claridad/15 text-base font-semibold text-claridad hover:border-claridad/40 active:scale-[0.97] transition-[transform,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center gap-2"
+            >
+              {todasLasPreguntas
+                ? (lng === 'es' ? 'Ver menos preguntas' : lng === 'ca' ? 'Veure menys preguntes' : 'Show fewer questions')
+                : (lng === 'es' ? `Ver las ${faqList.length} preguntas` : lng === 'ca' ? `Veure les ${faqList.length} preguntes` : `See all ${faqList.length} questions`)}
+              <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${todasLasPreguntas ? 'rotate-180' : ''}`} />
+            </button>
+          )}
         </div>
       </section>
 
