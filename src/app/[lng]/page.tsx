@@ -734,7 +734,7 @@ export default function Page({ params }: PageProps) {
                         aria-controls={idLista}
                         className="flex-1 lg:flex-none py-3 px-4 rounded-md border border-claridad/15 text-base font-semibold text-claridad hover:border-claridad/40 active:scale-[0.97] transition-[transform,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
                       >
-                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what is included'}
+                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what\'s included'}
                         <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'rotate-180' : ''}`} />
                       </button>
                       <button
@@ -853,10 +853,11 @@ export default function Page({ params }: PageProps) {
                 <li key={id} className="fila-servicio border-b border-claridad/10">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-4 py-7 md:py-8">
                     <div className="lg:col-span-6 flex flex-col gap-2">
-                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad flex flex-wrap items-center gap-3">
-                        {plan.title}
+                      {/* La etiqueta va fuera del titulo: dentro, buscadores y lectores leian "Plan PlusRecomendado". */}
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad">{plan.title}</h3>
                         {recomendado && <span className="text-sm font-semibold text-teselar-dark bg-innovacion px-2.5 py-0.5 rounded">{lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}</span>}
-                      </h3>
+                      </div>
                       <p className={`text-base text-claridad/80 leading-relaxed max-w-[62ch] [text-wrap:pretty] ${abierto ? '' : 'line-clamp-2'}`}>{plan.desc}</p>
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
@@ -871,7 +872,7 @@ export default function Page({ params }: PageProps) {
                         aria-controls={idDetalle}
                         className="flex-1 lg:flex-none py-3 px-4 rounded-md border border-claridad/15 text-base font-semibold text-claridad hover:border-claridad/40 active:scale-[0.97] transition-[transform,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
                       >
-                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what is included'}
+                        {lng === 'es' ? 'Ver qué incluye' : lng === 'ca' ? 'Veure què inclou' : 'See what\'s included'}
                         <ChevronDown size={18} aria-hidden="true" className={`transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${abierto ? 'rotate-180' : ''}`} />
                       </button>
                       {href

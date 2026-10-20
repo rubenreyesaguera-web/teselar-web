@@ -343,11 +343,6 @@
   border-right-width: 1px;
 }
 
-/* Fast-Bypass Session Loader Override */
-html.intro-seen .intro-loader-container {
-  display: none !important;
-}
-
 /* --- CINEMATIC HERO DESIGN SYSTEM --- */
 
 /* Scoped Hero Dotted Grid Background (ultra-premium, fully static for absolute fluid scroll) */

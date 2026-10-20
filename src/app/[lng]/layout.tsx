@@ -33,9 +33,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lng: stri
 
   // Custom metadata based on current language
   const keywordsMap = {
-    es: ['inteligencia artificial para empresas Lloret de Mar', 'software a medida Lloret de Mar', 'automatizaciones Costa Brava', 'citas por WhatsApp', 'programas a medida Girona', 'IA', 'Teselar Software'],
-    ca: ['intel·ligència artificial per a empreses Lloret de Mar', 'programari a mida Lloret de Mar', 'automatitzacions Costa Brava', 'cites per WhatsApp', 'programes a mida Girona', 'IA', 'Teselar Software'],
-    en: ['AI for businesses Lloret de Mar', 'custom software Lloret de Mar', 'automation Costa Brava', 'WhatsApp appointment booking', 'custom software Girona', 'AI', 'Teselar Software']
+    es: ['inteligencia artificial para empresas Lloret de Mar', 'software a medida Lloret de Mar', 'automatizaciones Costa Brava', 'gestión de técnicos y avisos', 'citas por WhatsApp', 'programas a medida Girona', 'IA', 'Teselar Software'],
+    ca: ['intel·ligència artificial per a empreses Lloret de Mar', 'programari a mida Lloret de Mar', 'automatitzacions Costa Brava', 'gestió de tècnics i avisos', 'cites per WhatsApp', 'programes a mida Girona', 'IA', 'Teselar Software'],
+    en: ['AI for businesses Lloret de Mar', 'custom software Lloret de Mar', 'automation Costa Brava', 'field service management', 'WhatsApp appointment booking', 'custom software Girona', 'AI', 'Teselar Software']
   };
 
   const titlesMap = {
@@ -157,7 +157,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         '@type': 'ProfessionalService',
         '@id': localBusinessId,
         name: 'Teselar Software',
-        description: 'Asistentes con inteligencia artificial, automatizaciones y software a medida para negocios de Lloret de Mar y la Costa Brava.',
+        // En el idioma de la pagina (20/10): antes iba fijo en castellano tambien en /ca y /en.
+        description: (t.hero as { meta_description?: string }).meta_description ?? t.hero.subtitle,
         url: `${baseUrl}/${lng}`,
         parentOrganization: { '@id': organizationId },
         email: 'info@teselarsoftware.com',
@@ -178,7 +179,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         knowsLanguage: ['es', 'ca', 'en'],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name: 'Catálogo de Servicios Teselar Software',
+          name: `${t.services.title} · Teselar Software`,
           itemListElement: serviceIds.map((id, idx) => ({
             '@type': 'Offer',
             position: idx + 1,
@@ -219,13 +220,6 @@ export default async function LocaleLayout({ children, params }: Props) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph) }}
         />
-        <script dangerouslySetInnerHTML={{__html: `
-          try {
-            if (sessionStorage.getItem('teselar_intro_seen') === 'true') {
-              document.documentElement.classList.add('intro-seen');
-            }
-          } catch(e) {}
-        `}} />
       </head>
       <body className="min-h-screen bg-teselar-dark text-claridad font-sans antialiased selection:bg-innovacion selection:text-teselar-dark">
         {children}
