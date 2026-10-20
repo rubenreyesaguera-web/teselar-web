@@ -73,8 +73,9 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
 - **Web Inmobiliaria** — desde 6.000€. Buscador con filtros, panel de propiedades, 2 idiomas,
   exportación XML formato Kyero para sincronizar con Idealista, Habitaclia y Fotocasa; Plan Básico
   incluido el primer año.
-- **Sistema de Gestión a Medida (ERP/CRM)** — 8.000€–12.000€. Aplicación de escritorio nativa
-  (Windows/macOS/Linux) con CRM, facturación, planificación y roles de usuario; Plan Básico incluido
+- **Sistema de Gestión a Medida (ERP/CRM/FSM)** — 8.000€–12.000€. Aplicación de escritorio nativa
+  (Windows/macOS/Linux) con CRM, facturación, planificación y roles de usuario; si el equipo trabaja
+  fuera, avisos, asignación de técnicos, fichajes y partes desde el móvil. Plan Básico incluido
   el primer año.
 
 ## Tres servicios que se confunden entre sí

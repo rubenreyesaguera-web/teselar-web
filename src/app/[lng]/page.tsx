@@ -523,7 +523,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s8.price,
       tag: t.services.s8.tag,
       icon: Monitor,
-      features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8]
+      features: [t.services.s8.f1, t.services.s8.f9, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8]
     }
   ];
 

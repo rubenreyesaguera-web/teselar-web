@@ -150,8 +150,8 @@ export const dictionaries = {
         f7: 'SEO local, y mantenimiento incluido el primer año (los feeds a portales necesitan vigilancia)'
       },
       s8: {
-        title: '09. Sistema de Gestión a Medida (ERP/CRM)',
-        ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos) con una herramienta hecha exactamente a su medida.',
+        title: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)',
+        ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
         f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
@@ -161,7 +161,8 @@ export const dictionaries = {
         f5: 'Planificador interno de proyectos, tareas de equipo y control de tiempos',
         f6: 'Roles de usuario avanzados con niveles de acceso seguros',
         f7: 'Formación integral del equipo + 1 semana de soporte prioritario',
-        f8: 'Plan Básico de mantenimiento incluido el primer año; después, 60€/mes sin permanencia'
+        f8: 'Plan Básico de mantenimiento incluido el primer año; después, 60€/mes sin permanencia',
+        f9: 'Si tu equipo trabaja fuera: avisos, asignación de técnicos, fichajes y partes desde el móvil'
       },
       s9: {
         title: '03. Citas por WhatsApp',
@@ -374,7 +375,7 @@ export const dictionaries = {
       notif_linked: '¡Simulación vinculada con éxito en el formulario!',
       opt_s2: '02. Automatizaciones Específicas',
       opt_s4: '05. Integración de Inteligencia Artificial',
-      opt_s8: '09. Sistema ERP/CRM (App Nativa)'
+      opt_s8: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Consulta gratuita',
@@ -555,8 +556,8 @@ export const dictionaries = {
         f7: 'SEO local, i manteniment inclòs el primer any (els feeds a portals necessiten vigilància)'
       },
       s8: {
-        title: '09. Sistema de Gestió a Mida (ERP/CRM)',
-        ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes) amb una eina feta exactament a mida.',
+        title: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)',
+        ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
         f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
@@ -566,7 +567,8 @@ export const dictionaries = {
         f5: 'Planificador intern de projectes, tasques d\'equip i control de temps',
         f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
         f7: 'Formació integral de l\'equip + 1 setmana de suport prioritari',
-        f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència'
+        f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència',
+        f9: 'Si el teu equip treballa fora: avisos, assignació de tècnics, fitxatges i parts des del mòbil'
       },
       s9: {
         title: '03. Cites per WhatsApp',
@@ -779,7 +781,7 @@ export const dictionaries = {
       notif_linked: '¡Simulació vinculada amb èxit al formulari!',
       opt_s2: '02. Automatitzacions Específiques',
       opt_s4: '05. Integració d\'Intel·ligència Artificial',
-      opt_s8: '09. Sistema ERP/CRM (App Nativa)'
+      opt_s8: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Consulta gratuïta',
@@ -960,8 +962,8 @@ export const dictionaries = {
         f7: 'Local SEO, and maintenance included for the first year (portal feeds need monitoring)'
       },
       s8: {
-        title: '09. Custom Management System (ERP/CRM)',
-        ideal: 'Businesses that want to digitalize a key process (billing, clients, projects) with a tool built exactly for them.',
+        title: '09. Custom Management System (ERP/CRM/FSM)',
+        ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
         f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
@@ -971,7 +973,8 @@ export const dictionaries = {
         f5: 'Internal planner for projects, team tasks, and time-tracking',
         f6: 'Advanced user roles with secure permission levels',
         f7: 'Team training included + 1 week of priority development support',
-        f8: 'Basic maintenance plan included for the first year; after that, 60€/mo with no lock-in'
+        f8: 'Basic maintenance plan included for the first year; after that, 60€/mo with no lock-in',
+        f9: 'If your team works on site: call-outs, technician assignment, clock-ins and job reports from their phone'
       },
       s9: {
         title: '03. WhatsApp Appointment Booking',
@@ -1184,7 +1187,7 @@ export const dictionaries = {
       notif_linked: 'Simulation successfully linked to the form!',
       opt_s2: '02. Specific Automations',
       opt_s4: '05. Artificial Intelligence Integration',
-      opt_s8: '09. ERP/CRM System (Native Desktop App)'
+      opt_s8: '09. Custom Management System (ERP/CRM/FSM)'
     },
     leads: {
       sticky_cta: 'Free consultation',
