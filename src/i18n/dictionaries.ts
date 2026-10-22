@@ -452,6 +452,8 @@ export const dictionaries = {
       cta_btn: 'Reservar diagnóstico gratis',
       cta_sub: 'Calendly · 30 minutos, sin compromiso',
       otro_prefijo: 'Otro',
+      portada_pregunta: '¿Quieres verlo antes de hablar?',
+      portada_link: 'Pruébalo con tu empresa',
     }
   },
   ca: {
@@ -905,6 +907,8 @@ export const dictionaries = {
       cta_btn: 'Reservar diagnòstic gratuït',
       cta_sub: 'Calendly · 30 minuts, sense compromís',
       otro_prefijo: 'Un altre',
+      portada_pregunta: 'Ho vols veure abans de parlar?',
+      portada_link: 'Prova-ho amb la teva empresa',
     }
   },
   en: {
@@ -1358,6 +1362,8 @@ export const dictionaries = {
       cta_btn: 'Book a free diagnosis',
       cta_sub: 'Calendly · 30 minutes, no commitment',
       otro_prefijo: 'Other',
+      portada_pregunta: 'Want to see it before we talk?',
+      portada_link: 'Try it with your business',
     }
   }
 };
