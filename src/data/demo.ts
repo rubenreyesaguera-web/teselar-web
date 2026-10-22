@@ -242,7 +242,7 @@ const ca: Record<Sector, EjemploSector> = {
         t('Jordi', '2 visites · Blanes', [p('09:00', 'Comunitat Carrer del Mar 8 · revisió anual'), p('12:00', 'Pis particular · instal·lació de split')]),
       ],
       parte: {
-        titulo: 'Part de manteniment',
+        titulo: 'Full de manteniment',
         filas: [f('Contracte', 'Hotel Mirador · revisió 3 de 4'), f('Tècnic', 'Marc · 2 h 10 min'), f('Revisat', '12 màquines · 1 amb fuita'), f('Material', 'Gas R32, filtres')],
         firma: 'Signatura del client al mòbil',
       },
@@ -268,7 +268,7 @@ const ca: Record<Sector, EjemploSector> = {
         t('Equip de l’Oriol', 'Obra · Blanes', [p('08:00', 'Reforma de local · enrajolat'), p('13:00', 'Recollir material al magatzem')]),
       ],
       parte: {
-        titulo: 'Part del dia',
+        titulo: 'Full del dia',
         filas: [f('Obra', 'Bany de la Sra. Vidal'), f('Hores', '2 persones · 8 h'), f('Material', 'Rajola 30×60, ciment cola')],
         firma: 'Conformitat del client al mòbil',
       },
@@ -411,7 +411,7 @@ const ca: Record<Sector, EjemploSector> = {
         t('Persona 2', '2 feines · Blanes', [p('10:00', 'Client C · seguiment'), p('16:00', 'Client D · lliurament')]),
       ],
       parte: {
-        titulo: 'Part de feina',
+        titulo: 'Full de feina',
         filas: [f('Persona', 'Persona 2'), f('Hores', '2 h'), f('Material', 'El que s’hagi fet servir')],
         firma: 'Signatura del client al mòbil',
       },
