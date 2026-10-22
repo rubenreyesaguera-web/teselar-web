@@ -15,9 +15,9 @@ describe('colaboradores', () => {
     }
   });
 
-  test('Gis: castellano y catalan, colaboradora', () => {
+  test('Gis: catalan por defecto y castellano, colaboradora', () => {
     const g = COLABORADORES.gis;
-    expect(g.idiomas.sort()).toEqual(['ca', 'es']);
+    expect(g.idiomas).toEqual(['ca', 'es']);
     expect(textos('es', g).etiqueta).toBe('COLABORADORA DE TESELAR');
     expect(textos('ca', g).etiqueta).toBe('COL·LABORADORA DE TESELAR');
   });

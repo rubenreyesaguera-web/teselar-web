@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { COLABORADORES } from './data/colaboradores';
 
 const locales = ['es', 'ca', 'en'];
 
@@ -49,8 +50,13 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return NextResponse.next();
 
+  // Las paginas de colaborador sin idioma (/c/gis) van al idioma por defecto de ese colaborador, no al del navegador:
+  // es el enlace corto que reparte el colaborador (fase 4 del doc 31).
+  const colaborador = /^\/c\/([^/]+)/.exec(pathname);
+  const porDefecto = colaborador ? COLABORADORES[colaborador[1]]?.idiomas[0] : undefined;
+
   // Redirect to language subpath
-  const locale = getLocale(request);
+  const locale = porDefecto ?? getLocale(request);
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname}`;
   return NextResponse.redirect(url);

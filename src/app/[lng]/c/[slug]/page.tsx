@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { COLABORADORES } from '../../../../data/colaboradores';
 import { RUBEN, calendlyDeParteDe, whatsappARuben } from '../../../../lib/colaboradores/enlaces';
 import { textos, type IdiomaColaborador } from '../../../../lib/colaboradores/textos';
+import { CabeceraIdioma } from '../../../../components/colaboradores/CabeceraIdioma';
 
 type Params = Promise<{ lng: string; slug: string }>;
 
@@ -44,9 +45,7 @@ export default async function PaginaColaborador({ params }: { params: Params }) 
   return (
     <div className="min-h-screen bg-[#EEF2F5] font-sans text-[#031622] antialiased">
       <main className="mx-auto max-w-[440px] pb-10">
-        <div className="bg-[#083C58] px-5 pb-14 pt-6 text-[13px] font-bold tracking-[0.22em] text-white">
-          TESELAR <span className="font-normal">SOFTWARE</span>
-        </div>
+        <CabeceraIdioma lng={lng as IdiomaColaborador} idiomas={c.idiomas} ruta={`/c/${slug}`} />
 
         <section className="relative mx-4 -mt-10 flex flex-col gap-1 rounded-2xl bg-white p-5 shadow-[0_8px_24px_rgba(3,22,34,.08)]">
           <div className="flex items-center gap-2 text-[13px] text-[#33434F]">
