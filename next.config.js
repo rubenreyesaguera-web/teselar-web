@@ -27,6 +27,15 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'no-referrer' },
         ],
       },
+      // Las tarjetas de colaborador (fase 4 del doc 31): publicas para quien tenga el enlace, pero nunca indexadas.
+      {
+        source: '/:lng(es|ca|en)/c/:path*',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+          { key: 'X-Frame-Options', value: 'DENY' },
+        ],
+      },
       // Las propuestas en landing propia (public/propuestas/), sin aceptacion ni enlaces a la web: lo mismo.
       {
         source: '/propuestas/:path*',
