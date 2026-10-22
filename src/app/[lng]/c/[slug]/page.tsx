@@ -64,7 +64,7 @@ export default async function PaginaColaborador({ params }: { params: Params }) 
         </section>
 
         <div className="flex flex-col gap-2.5 p-4">
-          <a href={calendlyDeParteDe(c.nombre)} target="_blank" rel="noopener" className={`${boton} bg-[#00BFA5] text-[#031622]`}>
+          <a href={calendlyDeParteDe(t.de_parte_de)} target="_blank" rel="noopener" className={`${boton} bg-[#00BFA5] text-[#031622]`}>
             <span className="flex flex-col">
               <span className="text-[15px]">{t.reservar}</span>
               <span className="text-xs font-normal">{t.reservar_sub}</span>

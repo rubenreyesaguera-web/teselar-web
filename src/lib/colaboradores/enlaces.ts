@@ -1,6 +1,6 @@
 // Los enlaces de la tarjeta de colaborador (fase 4 del doc 31). Todos llevan a Ruben: el Calendly, su WhatsApp y su
 // contacto. El nombre del colaborador solo viaja como «de parte de», para saber quien lo presento.
-import { CALENDLY_DIAGNOSTICO } from '@/lib/demo/calendly';
+import { enlaceCalendly } from '@/lib/demo/calendly';
 import { WHATSAPP_RUBEN } from '@/lib/demo/enlace';
 
 export const BASE = 'https://www.teselarsoftware.com';
@@ -11,7 +11,7 @@ export const RUBEN = {
   telefono: '+34653232735',
   correo: 'info@teselarsoftware.com',
   web: BASE,
-  // Generada con Google Flow a partir de sus fotos y elegida por el el 22/10 (ojos y canas corregidos), sin metadatos.
+  // Generada con ChatGPT a partir de sus fotos y elegida por el el 22/10 (ojos y canas corregidos), sin metadatos.
   foto: '/colaboradores/ruben.jpg',
 } as const;
 
@@ -20,9 +20,9 @@ export function enlaceColaborador(lng: 'es' | 'ca', slug: string): string {
   return `${BASE}/${lng}/c/${slug}`;
 }
 
-/** El Calendly con la pregunta 7, «¿Quien te ha presentado?», ya rellena. */
-export function calendlyDeParteDe(nombre: string): string {
-  return `${CALENDLY_DIAGNOSTICO}?a7=${encodeURIComponent(nombre)}`;
+/** El Calendly con la pregunta 4, «Lo que ya me has contado», rellena con «De parte de ...» en su idioma. */
+export function calendlyDeParteDe(deParteDe: string): string {
+  return enlaceCalendly('', deParteDe);
 }
 
 export function whatsappARuben(texto: string): string {

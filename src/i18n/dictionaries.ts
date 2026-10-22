@@ -463,6 +463,8 @@ export const dictionaries = {
       wa_sin_empresa: 'Hola Rubén, he visto la demo que me preparaste.',
       // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Valen para los ocho sectores (por eso
       // «cada persona» y no «tecnico»). Sin cifras: no hay nada medido que las respalde (ADR-025).
+      // La linea que va a la pregunta 4 del Calendly, «Lo que ya me has contado».
+      calendly_etiquetas: { sector: 'Sector', lleva: 'Llevo', como: 'Hoy' },
       como_label: 'Cómo funciona',
       ahorro_label: 'Te ahorras',
       explica: {
@@ -934,6 +936,7 @@ export const dictionaries = {
       doc2_sub: 'Et contesto jo',
       wa_con_empresa: 'Hola Rubén, he vist la demo que em vas preparar per a {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he vist la demo que em vas preparar.',
+      calendly_etiquetas: { sector: 'Sector', lleva: 'Porto', como: 'Avui' },
       como_label: 'Com funciona',
       ahorro_label: 'T’estalvies',
       explica: {
@@ -1405,6 +1408,7 @@ export const dictionaries = {
       doc2_sub: 'I’ll reply myself',
       wa_con_empresa: 'Hi Rubén, I’ve seen the demo you prepared for {empresa}.',
       wa_sin_empresa: 'Hi Rubén, I’ve seen the demo you prepared.',
+      calendly_etiquetas: { sector: 'Sector', lleva: 'I handle', como: 'Today' },
       como_label: 'How it works',
       ahorro_label: 'What it saves you',
       explica: {

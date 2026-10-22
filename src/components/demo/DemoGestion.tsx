@@ -7,7 +7,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { dictionaries } from '../../i18n/dictionaries';
 import { COMO, PARTES, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
-import { enlaceCalendly } from '../../lib/demo/calendly';
+import { contextoDemo, enlaceCalendly } from '../../lib/demo/calendly';
 import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
 
@@ -118,7 +118,11 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const llevaTexto = marcadas.map((p) => t.partes[p]).join(', ');
 
   const calendly = useMemo(
-    () => enlaceCalendly({ empresa: empresa.trim(), sector: sectorTexto, lleva: llevaTexto, como: como ? t.como[como] : '' }),
+    () =>
+      enlaceCalendly(
+        empresa.trim(),
+        contextoDemo({ sector: sectorTexto, lleva: llevaTexto, como: como ? t.como[como] : '' }, t.calendly_etiquetas),
+      ),
     [empresa, sectorTexto, llevaTexto, como, t],
   );
 

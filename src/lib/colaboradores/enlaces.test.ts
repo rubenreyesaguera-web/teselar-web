@@ -47,8 +47,9 @@ describe('todo lleva a Ruben', () => {
     expect(u.searchParams.get('text')).toBe('Hola Rubén, vinc de part de Gis.');
   });
 
-  test('el Calendly marca la reserva con la pregunta 7', () => {
-    expect(new URL(calendlyDeParteDe('Gis')).searchParams.get('a7')).toBe('Gis');
+  test('el Calendly marca la reserva en la pregunta 4, en su idioma', () => {
+    expect(new URL(calendlyDeParteDe(textos('es', g).de_parte_de)).searchParams.get('a4')).toBe('De parte de Gis');
+    expect(new URL(calendlyDeParteDe(textos('ca', g).de_parte_de)).searchParams.get('a4')).toBe('De part de Gis');
   });
 
   test('lo que reenvia el colaborador va sin numero y con su enlace', () => {
