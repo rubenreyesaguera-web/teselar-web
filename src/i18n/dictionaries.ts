@@ -454,6 +454,13 @@ export const dictionaries = {
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
+      // Cuando llega desde el documento 2 (&desde=doc2): ya hizo el diagnostico.
+      doc2_titulo: '¿Lo hablamos?',
+      doc2_texto: 'Si quieres darle una vuelta a lo que hemos visto, escríbeme y lo miramos juntos.',
+      doc2_btn: 'Escribir a Rubén por WhatsApp',
+      doc2_sub: 'Te contesto yo',
+      wa_con_empresa: 'Hola Rubén, he visto la demo que me preparaste para {empresa}.',
+      wa_sin_empresa: 'Hola Rubén, he visto la demo que me preparaste.',
     }
   },
   ca: {
@@ -909,6 +916,12 @@ export const dictionaries = {
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
+      doc2_titulo: 'En parlem?',
+      doc2_texto: 'Si vols donar-li una volta al que hem vist, escriu-me i ho mirem junts.',
+      doc2_btn: 'Escriure al Rubén per WhatsApp',
+      doc2_sub: 'Et contesto jo',
+      wa_con_empresa: 'Hola Rubén, he vist la demo que em vas preparar per a {empresa}.',
+      wa_sin_empresa: 'Hola Rubén, he vist la demo que em vas preparar.',
     }
   },
   en: {
@@ -1364,6 +1377,12 @@ export const dictionaries = {
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
+      doc2_titulo: 'Shall we talk it over?',
+      doc2_texto: 'If you want to go over what we looked at, drop me a line and we’ll look at it together.',
+      doc2_btn: 'Message Rubén on WhatsApp',
+      doc2_sub: 'I’ll reply myself',
+      wa_con_empresa: 'Hi Rubén, I’ve seen the demo you prepared for {empresa}.',
+      wa_sin_empresa: 'Hi Rubén, I’ve seen the demo you prepared.',
     }
   }
 };

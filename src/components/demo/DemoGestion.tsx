@@ -6,8 +6,9 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import type { dictionaries } from '../../i18n/dictionaries';
-import { COMO, PARTES, esSector, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
+import { COMO, PARTES, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
 import { enlaceCalendly } from '../../lib/demo/calendly';
+import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
 
 export type TextosDemo = (typeof dictionaries)['es']['demo'];
@@ -17,8 +18,6 @@ interface Props {
   t: TextosDemo;
   ejemplos: Record<Sector, EjemploSector>;
 }
-
-const MAXIMO_EMPRESA = 80;
 
 function contar(paso: Paso, datos: { lng: string; sector: Sector | null; partes: Parte[]; como: Como | null; desdeEnlace: boolean }) {
   try {
@@ -77,23 +76,24 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const [partes, setPartes] = useState<Parte[]>([]);
   const [como, setComo] = useState<Como | null>(null);
   const [desdeEnlace, setDesdeEnlace] = useState(false);
+  // Viene del documento 2: ya hizo el diagnostico. Ni se cuenta ni se le ofrece reservarlo otra vez.
+  const [doc2, setDoc2] = useState(false);
   const contado = useRef<Set<Paso>>(new Set());
   const panel = useRef<HTMLDivElement>(null);
 
-  // El nombre y el sector pueden venir en el enlace (?empresa=...&sector=...), para mandarla preparada a un lead. Se lee
-  // aqui y no en el servidor para que la pagina siga siendo estatica.
+  // Lo que viene en el enlace (src/lib/demo/enlace.ts). Se lee aqui y no en el servidor para que la pagina siga siendo
+  // estatica.
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search);
-    const e = (q.get('empresa') ?? '').trim().slice(0, MAXIMO_EMPRESA);
-    const s = q.get('sector');
-    const valido = esSector(s) ? s : null;
-    if (e) setEmpresa(e);
-    if (valido) setSector(valido);
-    const enlace = !!e || !!valido;
+    const e = leerEnlace(window.location.search);
+    if (e.empresa) setEmpresa(e.empresa);
+    if (e.sector) setSector(e.sector);
+    if (e.partes.length) setPartes(e.partes);
+    setDoc2(e.doc2);
+    const enlace = !!e.empresa || !!e.sector;
     setDesdeEnlace(enlace);
-    if (!contado.current.has('abrir')) {
+    if (!e.doc2 && !contado.current.has('abrir')) {
       contado.current.add('abrir');
-      contar('abrir', { lng, sector: valido, partes: [], como: null, desdeEnlace: enlace });
+      contar('abrir', { lng, sector: e.sector, partes: [], como: null, desdeEnlace: enlace });
     }
   }, [lng]);
 
@@ -110,7 +110,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
 
   const datos = { lng, sector, partes: marcadas, como, desdeEnlace };
   const contarUnaVez = (paso: Paso) => {
-    if (contado.current.has(paso)) return;
+    if (doc2 || contado.current.has(paso)) return;
     contado.current.add(paso);
     contar(paso, datos);
   };
@@ -290,18 +290,18 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
           <div className="px-[18px] pb-[18px]">
             <div className="flex flex-col gap-3 rounded-[14px] bg-[#083C58] p-4 text-white sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-col gap-1">
-                <span className="text-[17px] font-semibold">{t.cta_titulo}</span>
-                <span className="text-[13px] text-[#D9E4EA] [text-wrap:pretty]">{t.cta_texto}</span>
+                <span className="text-[17px] font-semibold">{doc2 ? t.doc2_titulo : t.cta_titulo}</span>
+                <span className="text-[13px] text-[#D9E4EA] [text-wrap:pretty]">{doc2 ? t.doc2_texto : t.cta_texto}</span>
               </div>
               <a
-                href={calendly}
+                href={doc2 ? enlaceWhatsApp(t.wa_con_empresa, t.wa_sin_empresa, empresa) : calendly}
                 target="_blank"
                 rel="noopener"
                 onClick={() => contarUnaVez('reservar')}
                 className="flex min-h-12 flex-none flex-col justify-center rounded-xl bg-[#00BFA5] px-4 py-2 font-semibold text-[#031622] no-underline transition-transform duration-150 ease-out active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
-                <span className="text-[15px]">{t.cta_btn}</span>
-                <span className="text-xs font-normal">{t.cta_sub}</span>
+                <span className="text-[15px]">{doc2 ? t.doc2_btn : t.cta_btn}</span>
+                <span className="text-xs font-normal">{doc2 ? t.doc2_sub : t.cta_sub}</span>
               </a>
             </div>
           </div>
