@@ -553,6 +553,17 @@ export default function Page({ params }: PageProps) {
               <p className="text-base text-claridad/80 leading-relaxed max-w-xl pr-20 sm:pr-0 [text-wrap:pretty]">
                 {t.hero.cta_note}
               </p>
+              {/* La demo de gestion (ADR-113): para quien quiere verlo antes de reservar. */}
+              <p className="text-base text-claridad/80 pr-20 sm:pr-0">
+                {t.demo.portada_pregunta}{' '}
+                <a
+                  href={`/${currentLng}/demo`}
+                  className="font-semibold text-claridad underline underline-offset-[6px] decoration-innovacion hover:decoration-claridad transition-colors duration-150 inline-flex items-center gap-1"
+                >
+                  {t.demo.portada_link}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </a>
+              </p>
             </div>
           </div>
 
@@ -721,6 +732,15 @@ export default function Page({ params }: PageProps) {
                     <div className="lg:col-span-6 flex flex-col gap-2">
                       <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad [text-wrap:balance]">{service.title}</h3>
                       <p className={`text-base text-claridad/80 leading-relaxed max-w-[62ch] [text-wrap:pretty] ${abierto ? '' : 'line-clamp-2'}`}>{service.ideal}</p>
+                      {service.id === 's8' && (
+                        <a
+                          href={`/${currentLng}/demo`}
+                          className="self-start text-base font-semibold text-innovacion underline underline-offset-[6px] decoration-innovacion/50 hover:decoration-innovacion transition-colors duration-150 inline-flex items-center gap-1"
+                        >
+                          {t.demo.portada_link}
+                          <ArrowRight size={16} aria-hidden="true" />
+                        </a>
+                      )}
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
                       <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{service.price}</span>
@@ -1890,6 +1910,10 @@ const legalTexts = {
         {
           title: '5. Derechos del Usuario',
           text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com.'
+        },
+        {
+          title: '6. Demo de gestión',
+          text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y solo llega a Teselar Software si reservas el diagnóstico, dentro de la reserva de Calendly. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
         }
       ]
     },
@@ -1955,6 +1979,10 @@ const legalTexts = {
         {
           title: '5. Drets de l\'Usuari',
           text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com.'
+        },
+        {
+          title: '6. Demo de gestió',
+          text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i només arriba a Teselar Software si reserves el diagnòstic, dins de la reserva de Calendly. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
         }
       ]
     },
@@ -2020,6 +2048,10 @@ const legalTexts = {
         {
           title: '5. Rights of the User',
           text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com.'
+        },
+        {
+          title: '6. Management demo',
+          text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and only reaches Teselar Software if you book the diagnosis, inside the Calendly booking. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
         }
       ]
     },

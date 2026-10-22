@@ -28,7 +28,9 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Conservación de los Datos',
       sec4_text: 'Los datos personales se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados, o hasta que el usuario ejerza su derecho de supresión u oposición, en cuyo caso serán bloqueados para la atención de posibles responsabilidades legales.',
       sec5_title: '5. Derechos del Usuario',
-      sec5_text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com.'
+      sec5_text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com.',
+      sec6_title: '6. Demo de gestión',
+      sec6_text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y solo llega a Teselar Software si reservas el diagnóstico, dentro de la reserva de Calendly. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
     },
     ca: {
       title: 'Política de Privacitat',
@@ -41,7 +43,9 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Conservació de les Dades',
       sec4_text: 'Les dades personals es conservaran durant el temps estrictament necessari per complir amb la finalitat per a la qual van ser recollides, o fins que l\'usuari exerceixi el seu dret de supressió o oposició, cas en el qual seran bloquejades per a l\'atenció de possibles responsabilitats legals.',
       sec5_title: '5. Drets de l\'Usuari',
-      sec5_text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com.'
+      sec5_text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com.',
+      sec6_title: '6. Demo de gestió',
+      sec6_text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i només arriba a Teselar Software si reserves el diagnòstic, dins de la reserva de Calendly. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
     },
     en: {
       title: 'Privacy Policy',
@@ -54,7 +58,9 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Data Retention',
       sec4_text: 'Personal data will be kept for the time strictly necessary to fulfill the purpose for which they were collected, or until the user exercises their right of deletion or opposition, in which case they will be blocked to address potential legal liabilities.',
       sec5_title: '5. Rights of the User',
-      sec5_text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com.'
+      sec5_text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com.',
+      sec6_title: '6. Management demo',
+      sec6_text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and only reaches Teselar Software if you book the diagnosis, inside the Calendly booking. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
     }
   };
 
@@ -100,6 +106,10 @@ export default function PrivacyPolicyPage({ params }: Props) {
             <div className="border-t border-claridad/10 pt-6">
               <h2 className="text-xl font-bold text-claridad mb-3">{t.sec5_title}</h2>
               <p>{t.sec5_text}</p>
+            </div>
+            <div className="border-t border-claridad/10 pt-6">
+              <h2 className="text-xl font-bold text-claridad mb-3">{t.sec6_title}</h2>
+              <p>{t.sec6_text}</p>
             </div>
           </div>
         </div>
