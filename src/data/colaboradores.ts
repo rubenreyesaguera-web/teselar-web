@@ -9,7 +9,7 @@ export interface Colaborador {
   /** Como sale escrito. */
   nombre: string;
   foto: string;
-  /** Idiomas en los que tiene pagina. */
+  /** Idiomas en los que tiene pagina; el primero es el de por defecto (el enlace sin idioma, /c/[slug], va a ese). */
   idiomas: ('es' | 'ca')[];
   /** Mujer u hombre, solo para «Colaboradora»/«Colaborador» y «te presenta». */
   genero: 'f' | 'm';
@@ -17,5 +17,6 @@ export interface Colaborador {
 
 // Gis: amiga de Ruben, lo hace como favor y sin comision (decidido el 22/10). Con su permiso para la foto y el nombre.
 export const COLABORADORES: Record<string, Colaborador> = {
-  gis: { nombre: 'Gis', foto: '/colaboradores/gis.jpg', idiomas: ['es', 'ca'], genero: 'f' },
+  // Catalan por defecto y el castellano en el selector (Ruben, 22/10).
+  gis: { nombre: 'Gis', foto: '/colaboradores/gis.jpg', idiomas: ['ca', 'es'], genero: 'f' },
 };
