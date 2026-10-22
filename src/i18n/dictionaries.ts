@@ -461,6 +461,18 @@ export const dictionaries = {
       doc2_sub: 'Te contesto yo',
       wa_con_empresa: 'Hola Rubén, he visto la demo que me preparaste para {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he visto la demo que me preparaste.',
+      // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Valen para los ocho sectores (por eso
+      // «cada persona» y no «tecnico»). Sin cifras: no hay nada medido que las respalde (ADR-025).
+      como_label: 'Cómo funciona',
+      ahorro_label: 'Te ahorras',
+      explica: {
+        tec: { como: 'Repartes el trabajo desde la oficina y cada persona ve en el móvil a dónde va hoy y qué tiene que hacer.', ahorro: 'Las llamadas de primera hora para repartir el trabajo y los cambios que se pierden en el WhatsApp.' },
+        parte: { como: 'Al acabar se rellena en el móvil y el cliente firma en la pantalla. Llega a la oficina en ese momento.', ahorro: 'Pasar a limpio hojas de papel y perseguir horas o datos que nadie apuntó.' },
+        cli: { como: 'Cada cliente con su historial, lo que se le ha ofrecido y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'Los presupuestos que se enfrían porque nadie volvió a llamar y las renovaciones que se pasan.' },
+        fac: { como: 'La factura sale del trabajo hecho, sin volver a escribirlo, y ves de un vistazo qué falta por cobrar.', ahorro: 'Hacer las facturas de memoria a final de mes y los cobros que nadie reclama.' },
+        cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al cliente el día antes.', ahorro: 'Citas apuntadas en tres sitios distintos y clientes que se olvidan de venir.' },
+        mat: { como: 'Sabes qué tienes, quién lo tiene y qué se está acabando, y te avisa antes de que falte.', ahorro: 'Quedarte sin algo justo cuando hace falta y los viajes de más a buscarlo.' },
+      },
     }
   },
   ca: {
@@ -922,6 +934,16 @@ export const dictionaries = {
       doc2_sub: 'Et contesto jo',
       wa_con_empresa: 'Hola Rubén, he vist la demo que em vas preparar per a {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he vist la demo que em vas preparar.',
+      como_label: 'Com funciona',
+      ahorro_label: 'T’estalvies',
+      explica: {
+        tec: { como: 'Reparteixes la feina des de l’oficina i cada persona veu al mòbil on va avui i què ha de fer.', ahorro: 'Les trucades de primera hora per repartir la feina i els canvis que es perden al WhatsApp.' },
+        parte: { como: 'En acabar s’omple al mòbil i el client signa a la pantalla. Arriba a l’oficina en aquell moment.', ahorro: 'Passar a net fulls de paper i perseguir hores o dades que ningú no va apuntar.' },
+        cli: { como: 'Cada client amb el seu historial, el que se li ha ofert i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'Els pressupostos que es refreden perquè ningú no va tornar a trucar i les renovacions que es passen.' },
+        fac: { como: 'La factura surt de la feina feta, sense tornar-la a escriure, i veus d’un cop d’ull què falta cobrar.', ahorro: 'Fer les factures de memòria a final de mes i els cobraments que ningú no reclama.' },
+        cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al client el dia abans.', ahorro: 'Cites apuntades a tres llocs diferents i clients que s’obliden de venir.' },
+        mat: { como: 'Saps què tens, qui ho té i què s’està acabant, i t’avisa abans que falti.', ahorro: 'Quedar-te sense alguna cosa just quan cal i els viatges de més per anar-la a buscar.' },
+      },
     }
   },
   en: {
@@ -1383,6 +1405,16 @@ export const dictionaries = {
       doc2_sub: 'I’ll reply myself',
       wa_con_empresa: 'Hi Rubén, I’ve seen the demo you prepared for {empresa}.',
       wa_sin_empresa: 'Hi Rubén, I’ve seen the demo you prepared.',
+      como_label: 'How it works',
+      ahorro_label: 'What it saves you',
+      explica: {
+        tec: { como: 'You hand out the work from the office and everyone sees on their phone where they’re going today and what to do.', ahorro: 'The early-morning calls to share out the work, and the changes that get lost in WhatsApp.' },
+        parte: { como: 'It’s filled in on the phone at the end of the job and the customer signs on the screen. The office gets it straight away.', ahorro: 'Copying up paper sheets and chasing hours or details nobody wrote down.' },
+        cli: { como: 'Every customer with their history, what you’ve offered them and what comes next. It flags whatever has stalled for days.', ahorro: 'Quotes that go cold because nobody called back, and renewals that slip by.' },
+        fac: { como: 'The invoice comes from the work already done, without typing it again, and you see at a glance what’s still unpaid.', ahorro: 'Doing invoices from memory at the end of the month, and payments nobody chases.' },
+        cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the customer the day before.', ahorro: 'Appointments written down in three different places, and customers who forget to turn up.' },
+        mat: { como: 'You know what you have, who has it and what’s running low, and it warns you before it runs out.', ahorro: 'Running out of something just when you need it, and extra trips to go and get it.' },
+      },
     }
   }
 };

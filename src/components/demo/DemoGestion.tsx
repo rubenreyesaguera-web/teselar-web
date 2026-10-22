@@ -42,11 +42,25 @@ const campo =
   'min-h-[50px] w-full rounded-[10px] border border-[#B9C6CF] bg-white px-3.5 text-base text-[#031622] ' +
   'placeholder:text-[#6B7C88] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00BFA5]';
 
-function Caja({ titulo, children }: { titulo: string; children: React.ReactNode }) {
+type Explicada = keyof TextosDemo['explica'];
+
+// Cada parte del panel lleva debajo como funcionaria y que deja de pasar: el ejemplo solo no dice para que sirve.
+function Caja({ titulo, t, explica, children }: { titulo: string; t: TextosDemo; explica: Explicada; children: React.ReactNode }) {
+  const e = t.explica[explica];
   return (
     <section className="flex min-w-0 flex-col gap-2.5 rounded-[14px] bg-white p-4 shadow-[0_1px_2px_rgba(3,22,34,.06)]">
       <h3 className="m-0 text-[15px] font-semibold text-[#083C58]">{titulo}</h3>
       {children}
+      <dl className="m-0 mt-1 flex flex-col gap-1.5 border-t border-[#E2E9EE] pt-3 text-[13px] leading-snug text-[#33434F]">
+        <div>
+          <dt className="font-semibold text-[#083C58]">{t.como_label}</dt>
+          <dd className="m-0 [text-wrap:pretty]">{e.como}</dd>
+        </div>
+        <div>
+          <dt className="font-semibold text-[#083C58]">{t.ahorro_label}</dt>
+          <dd className="m-0 [text-wrap:pretty]">{e.ahorro}</dd>
+        </div>
+      </dl>
     </section>
   );
 }
@@ -242,7 +256,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
             <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-start gap-4 p-[18px]">
               {partes.includes('tec') && (
                 <>
-                  <Caja titulo={ej.tec.titulo}>
+                  <Caja titulo={ej.tec.titulo} t={t} explica="tec">
                     {ej.tec.tecnicos.map((tec, i) => (
                       <div key={tec.nombre} className={'flex flex-col gap-1.5 pb-2.5 ' + (i < ej.tec.tecnicos.length - 1 ? 'border-b border-[#E2E9EE]' : '')}>
                         <div className="flex justify-between gap-2 text-sm">
@@ -253,7 +267,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                       </div>
                     ))}
                   </Caja>
-                  <Caja titulo={ej.tec.parte.titulo}>
+                  <Caja titulo={ej.tec.parte.titulo} t={t} explica="parte">
                     {ej.tec.parte.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}
                     <div className="flex h-20 items-center justify-center rounded-[10px] border border-dashed border-[#8FA3B0] text-[13px] text-[#4A5A66]">
                       {ej.tec.parte.firma}
@@ -262,7 +276,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 </>
               )}
               {partes.includes('cli') && (
-                <Caja titulo={ej.cli.titulo}>
+                <Caja titulo={ej.cli.titulo} t={t} explica="cli">
                   {ej.cli.avisos.map((a) => (
                     <div key={a.cliente + a.tipo} className="flex flex-col gap-0.5 rounded-[10px] border border-[#E2E9EE] p-2.5">
                       <div className="flex justify-between gap-2 text-xs text-[#4A5A66]"><span>{a.tipo}</span><span>{a.cuando}</span></div>
@@ -276,13 +290,13 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 </Caja>
               )}
               {partes.includes('fac') && (
-                <Caja titulo={ej.fac.titulo}>{ej.fac.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
+                <Caja titulo={ej.fac.titulo} t={t} explica="fac">{ej.fac.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
               )}
               {partes.includes('cit') && (
-                <Caja titulo={ej.cit.titulo}>{ej.cit.citas.map((p) => <Parada key={p.hora + p.texto} {...p} />)}</Caja>
+                <Caja titulo={ej.cit.titulo} t={t} explica="cit">{ej.cit.citas.map((p) => <Parada key={p.hora + p.texto} {...p} />)}</Caja>
               )}
               {partes.includes('mat') && (
-                <Caja titulo={ej.mat.titulo}>{ej.mat.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
+                <Caja titulo={ej.mat.titulo} t={t} explica="mat">{ej.mat.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
               )}
             </div>
           )}
