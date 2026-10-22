@@ -11,6 +11,10 @@ export type Sector = (typeof SECTORES)[number];
 export const PARTES = ['tec', 'cli', 'fac', 'cit', 'mat'] as const;
 export type Parte = (typeof PARTES)[number];
 
+// Como lo lleva hoy. Los textos de cada uno estan en el diccionario (demo.como).
+export const COMO = ['papel', 'excel', 'whatsapp', 'programa'] as const;
+export type Como = (typeof COMO)[number];
+
 export interface Parada { hora: string; texto: string }
 export interface Fila { etiqueta: string; valor: string }
 export interface Tecnico { nombre: string; resumen: string; paradas: Parada[] }
@@ -624,6 +628,14 @@ const en: Record<Sector, EjemploSector> = {
 
 export const EJEMPLOS: Record<Locale, Record<Sector, EjemploSector>> = { es, ca, en };
 
-export function esSector(valor: string | null | undefined): valor is Sector {
-  return !!valor && (SECTORES as readonly string[]).includes(valor);
+export function esSector(valor: unknown): valor is Sector {
+  return typeof valor === 'string' && (SECTORES as readonly string[]).includes(valor);
+}
+
+export function esParte(valor: unknown): valor is Parte {
+  return typeof valor === 'string' && (PARTES as readonly string[]).includes(valor);
+}
+
+export function esComo(valor: unknown): valor is Como {
+  return typeof valor === 'string' && (COMO as readonly string[]).includes(valor);
 }

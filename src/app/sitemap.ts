@@ -23,7 +23,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: languageAlternates,
   }));
 
+  // La demo de gestion (ADR-113), indexable en los tres idiomas.
+  const demoAlternates = {
+    languages: {
+      es: `${baseUrl}/es/demo`,
+      ca: `${baseUrl}/ca/demo`,
+      en: `${baseUrl}/en/demo`,
+    },
+  };
+  const demoEntries = languages.map((lng) => ({
+    url: `${baseUrl}/${lng}/demo`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+    alternates: demoAlternates,
+  }));
+
   // La raiz no va (20/10): el middleware la redirige a /es, /ca o /en, y al sitemap solo deben
   // ir direcciones finales, no redirecciones.
-  return languageEntries;
+  return [...languageEntries, ...demoEntries];
 }
