@@ -11,6 +11,8 @@ export const RUBEN = {
   telefono: '+34653232735',
   correo: 'info@teselarsoftware.com',
   web: BASE,
+  // Generada con Google Flow a partir de sus fotos y elegida por el el 22/10 (ojos y canas corregidos), sin metadatos.
+  foto: '/colaboradores/ruben.jpg',
 } as const;
 
 /** La pagina que ve el cliente al escanear. */

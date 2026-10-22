@@ -54,10 +54,7 @@ export default async function PaginaColaborador({ params }: { params: Params }) 
             <span>{t.te_presenta}</span>
           </div>
           <div className="mt-3 flex items-center gap-3.5">
-            {/* Mientras no haya foto de Ruben, sus iniciales. */}
-            <div aria-hidden="true" className="flex h-[60px] w-[60px] flex-none items-center justify-center rounded-full bg-[#083C58] text-lg font-semibold text-white">
-              RR
-            </div>
+            <Image src={RUBEN.foto} alt={RUBEN.nombre} width={60} height={60} priority className="h-[60px] w-[60px] flex-none rounded-full object-cover" />
             <div className="flex flex-col gap-0.5">
               <h1 className="m-0 text-2xl font-bold text-[#083C58]">{RUBEN.nombre}</h1>
               <span className="text-[15px] text-[#33434F]">{t.oficio}</span>
