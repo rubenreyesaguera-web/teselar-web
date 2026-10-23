@@ -4,15 +4,19 @@ import { join } from 'node:path';
 import { validarEvento } from './evento';
 
 const RAIZ = join(import.meta.dir, '..', '..', '..');
-const bueno = { paso: 'panel', lng: 'es', sector: 'inst', partes: ['cli', 'tec'], como: 'whatsapp', desdeEnlace: true };
+const bueno = { paso: 'panel', lng: 'es', sector: 'inst', partes: ['cli', 'tec'], como: ['whatsapp', 'excel'], desdeEnlace: true };
 
 describe('contador de la demo: lo que entra', () => {
   test('un evento bueno', () => {
-    expect(validarEvento(bueno)).toEqual({ paso: 'panel', lng: 'es', sector: 'inst', partes: ['tec', 'cli'], como: 'whatsapp', desdeEnlace: true });
+    expect(validarEvento(bueno)).toEqual({ paso: 'panel', lng: 'es', sector: 'inst', partes: ['tec', 'cli'], como: ['excel', 'whatsapp'], desdeEnlace: true });
   });
 
   test('lo minimo: abrir sin nada marcado', () => {
-    expect(validarEvento({ paso: 'abrir', lng: 'ca' })).toEqual({ paso: 'abrir', lng: 'ca', sector: null, partes: [], como: null, desdeEnlace: false });
+    expect(validarEvento({ paso: 'abrir', lng: 'ca' })).toEqual({ paso: 'abrir', lng: 'ca', sector: null, partes: [], como: [], desdeEnlace: false });
+  });
+
+  test('la pagina de antes del 24/10 mandaba una sola respuesta en «como»: se guarda como lista', () => {
+    expect(validarEvento({ ...bueno, como: 'papel' })?.como).toEqual(['papel']);
   });
 
   test('nunca guarda la empresa, el texto de Otro, la IP ni nada fuera de la lista', () => {
@@ -30,6 +34,9 @@ describe('contador de la demo: lo que entra', () => {
       { ...bueno, sector: 'Instalaciones Costa' },
       { ...bueno, sector: 'toString' },
       { ...bueno, como: 'fax' },
+      { ...bueno, como: ['whatsapp', 'fax'] },
+      { ...bueno, como: ['papel', 'papel', 'papel', 'papel', 'papel'] },
+      { ...bueno, como: { a: 'papel' } },
       { ...bueno, partes: 'tec' },
       { ...bueno, partes: ['tec', 'Instalaciones Costa'] },
       { ...bueno, partes: ['tec', 'tec', 'tec', 'tec', 'tec', 'tec'] },
