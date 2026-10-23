@@ -4,7 +4,7 @@
 // navegador no lo mande: validarEvento construye la fila solo con los campos de la lista, y la tabla (db/demo.sql) no
 // tiene columnas donde meterlos.
 import { neon } from '@neondatabase/serverless';
-import { esComo, esParte, esSector, PARTES, type Como, type Parte, type Sector } from '@/data/demo';
+import { COMO, esComo, esParte, esSector, PARTES, type Como, type Parte, type Sector } from '@/data/demo';
 
 export const PASOS = ['abrir', 'panel', 'reservar'] as const;
 export type Paso = (typeof PASOS)[number];
@@ -16,7 +16,7 @@ export interface EventoDemo {
   lng: (typeof IDIOMAS)[number];
   sector: Sector | null;
   partes: Parte[];
-  como: Como | null;
+  como: Como[];
   desdeEnlace: boolean;
 }
 
@@ -28,11 +28,14 @@ export function validarEvento(entrada: unknown): EventoDemo | null {
   if (!(PASOS as readonly unknown[]).includes(e.paso)) return null;
   if (!(IDIOMAS as readonly unknown[]).includes(e.lng)) return null;
   if (e.sector != null && !esSector(e.sector)) return null;
-  if (e.como != null && !esComo(e.como)) return null;
   if (e.desdeEnlace != null && typeof e.desdeEnlace !== 'boolean') return null;
 
   const partes = e.partes ?? [];
   if (!Array.isArray(partes) || partes.length > PARTES.length || !partes.every(esParte)) return null;
+
+  // Hasta el 24/10 «como» era una sola respuesta. Un navegador con la pagina vieja aun puede mandar el texto suelto.
+  const como = e.como == null ? [] : typeof e.como === 'string' ? [e.como] : e.como;
+  if (!Array.isArray(como) || como.length > COMO.length || !como.every(esComo)) return null;
 
   return {
     paso: e.paso as Paso,
@@ -40,7 +43,7 @@ export function validarEvento(entrada: unknown): EventoDemo | null {
     sector: e.sector ?? null,
     // En el orden de PARTES y sin repetidas, para que el mismo marcado cuente siempre igual.
     partes: PARTES.filter((p) => partes.includes(p)),
-    como: e.como ?? null,
+    como: COMO.filter((c) => como.includes(c)),
     desdeEnlace: e.desdeEnlace === true,
   } as EventoDemo;
 }

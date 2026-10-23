@@ -19,7 +19,7 @@ interface Props {
   ejemplos: Record<Sector, EjemploSector>;
 }
 
-function contar(paso: Paso, datos: { lng: string; sector: Sector | null; partes: Parte[]; como: Como | null; desdeEnlace: boolean }) {
+function contar(paso: Paso, datos: { lng: string; sector: Sector | null; partes: Parte[]; como: Como[]; desdeEnlace: boolean }) {
   try {
     void fetch('/api/demo/evento', {
       method: 'POST',
@@ -88,7 +88,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const [sector, setSector] = useState<Sector | null>(null);
   const [otro, setOtro] = useState('');
   const [partes, setPartes] = useState<Parte[]>([]);
-  const [como, setComo] = useState<Como | null>(null);
+  const [como, setComo] = useState<Como[]>([]);
   const [desdeEnlace, setDesdeEnlace] = useState(false);
   // Viene del documento 2: ya hizo el diagnostico. Ni se cuenta ni se le ofrece reservarlo otra vez.
   const [doc2, setDoc2] = useState(false);
@@ -107,7 +107,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
     setDesdeEnlace(enlace);
     if (!e.doc2 && !contado.current.has('abrir')) {
       contado.current.add('abrir');
-      contar('abrir', { lng, sector: e.sector, partes: [], como: null, desdeEnlace: enlace });
+      contar('abrir', { lng, sector: e.sector, partes: [], como: [], desdeEnlace: enlace });
     }
   }, [lng]);
 
@@ -116,17 +116,20 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const sectorTexto = sector === null ? '' : sector === 'otr' ? `${t.otro_prefijo}: ${otro.trim()}`.replace(/:\s*$/, '') : ej.nombre;
   const marcadas = PARTES.filter((p) => partes.includes(p));
   const llevaTexto = marcadas.map((p) => t.partes[p]).join(', ');
+  // WhatsApp lo usan casi todos ademas de otra cosa (Ruben, 24/10): por eso «como» admite varias, igual que las partes.
+  const comoMarcado = COMO.filter((c) => como.includes(c));
+  const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
 
   const calendly = useMemo(
     () =>
       enlaceCalendly(
         empresa.trim(),
-        contextoDemo({ sector: sectorTexto, lleva: llevaTexto, como: como ? t.como[como] : '' }, t.calendly_etiquetas),
+        contextoDemo({ sector: sectorTexto, lleva: llevaTexto, como: comoTexto }, t.calendly_etiquetas),
       ),
-    [empresa, sectorTexto, llevaTexto, como, t],
+    [empresa, sectorTexto, llevaTexto, comoTexto, t],
   );
 
-  const datos = { lng, sector, partes: marcadas, como, desdeEnlace };
+  const datos = { lng, sector, partes: marcadas, como: comoMarcado, desdeEnlace };
   const contarUnaVez = (paso: Paso) => {
     if (doc2 || contado.current.has(paso)) return;
     contado.current.add(paso);
@@ -134,6 +137,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   };
 
   const alternar = (p: Parte) => setPartes((ps) => (ps.includes(p) ? ps.filter((x) => x !== p) : [...ps, p]));
+  const alternarComo = (c: Como) => setComo((cs) => (cs.includes(c) ? cs.filter((x) => x !== c) : [...cs, c]));
 
   const verPanel = () => {
     contarUnaVez('panel');
@@ -218,10 +222,12 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
           </fieldset>
 
           <fieldset className="m-0 flex flex-col gap-2 border-0 p-0">
-            <legend className="mb-2 text-[13px] font-semibold text-[#33434F]">{t.como_legend}</legend>
+            <legend className="mb-2 text-[13px] font-semibold text-[#33434F]">
+              {t.como_legend} <span className="font-normal">· {t.lleva_hint}</span>
+            </legend>
             <div className="flex flex-wrap gap-2">
               {COMO.map((c) => (
-                <button key={c} type="button" className={chip} aria-pressed={como === c} onClick={() => setComo(c)}>
+                <button key={c} type="button" className={chip} aria-pressed={como.includes(c)} onClick={() => alternarComo(c)}>
                   {t.como[c]}
                 </button>
               ))}

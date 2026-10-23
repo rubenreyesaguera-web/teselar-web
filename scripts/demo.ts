@@ -42,7 +42,7 @@ async function main(argv: string[]): Promise<void> {
           FROM demo_evento GROUP BY 1 ORDER BY 3 DESC, 1`);
         console.table(pasos.rows);
         const marcado = await client.query(`
-          SELECT array_to_string(partes, '+') AS partes, coalesce(como, '-') AS como, count(*) AS veces
+          SELECT array_to_string(partes, '+') AS partes, coalesce(nullif(array_to_string(como, '+'), ''), '-') AS como, count(*) AS veces
           FROM demo_evento WHERE paso = 'panel' GROUP BY 1, 2 ORDER BY 3 DESC LIMIT 20`);
         console.table(marcado.rows);
         break;
