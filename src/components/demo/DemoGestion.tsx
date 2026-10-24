@@ -343,6 +343,21 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 <span className="text-xs font-normal">{doc2 ? t.doc2_sub : t.cta_sub}</span>
               </a>
             </div>
+
+            <details className="group mt-3 rounded-[14px] bg-white px-4 py-3 text-[13px] text-[#33434F]">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold text-[#083C58] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00BFA5] [&::-webkit-details-marker]:hidden">
+                {t.faq_titulo}
+                <span aria-hidden="true" className="text-base leading-none transition-transform duration-150 ease-out group-open:rotate-45">+</span>
+              </summary>
+              <dl className="m-0 mt-3 flex flex-col gap-3">
+                {t.faq.map((f) => (
+                  <div key={f.p}>
+                    <dt className="font-semibold text-[#083C58]">{f.p}</dt>
+                    <dd className="m-0 mt-0.5 leading-snug [text-wrap:pretty]">{f.r}</dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
           </div>
         </div>
       </main>

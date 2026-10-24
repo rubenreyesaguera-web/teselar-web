@@ -461,6 +461,16 @@ export const dictionaries = {
       // se le habia leido (cuarta pasada, 24/10).
       nota: 'En la charla me cuentas cómo lo llevas hoy ({como}) y vemos qué se pasa y cómo. No hace falta que me enseñes datos de tus clientes.',
       nota_como: 'Excel, papel, WhatsApp o tu programa',
+      // Plegado al final (24/10): responde sin cargar la pagina a lo que preguntaban los lectores del ensayo. Que todo
+      // vaya a nombre del cliente vale para cualquier producto (Ruben). El contrato de encargado no se nombra: genera mas
+      // dudas de las que quita.
+      faq_titulo: 'Lo que más me preguntan',
+      faq: [
+        { p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Un asistente atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
+        { p: '¿Quién me atiende si algo falla?', r: 'Yo. Trabajo solo y te atiendo directamente; el mantenimiento cubre el soporte.' },
+        { p: '¿Es un programa hecho o a medida?', r: 'A medida para tu negocio. Lo único igual para todos es el asistente de WhatsApp, que trabaja con tus datos.' },
+        { p: '¿Dónde se guardan mis datos?', r: 'Todo va en cuentas a tu nombre (el dominio, el alojamiento, la base de datos) y los datos, en servidores de la Unión Europea. El asistente de WhatsApp usa Google Cloud, también en la UE, y WhatsApp de Meta.' },
+      ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
@@ -941,6 +951,13 @@ export const dictionaries = {
       cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
       nota: 'A la xerrada m’expliques com ho portes avui ({como}) i mirem què s’hi passa i com. No cal que m’ensenyis dades dels teus clients.',
       nota_como: 'Excel, paper, WhatsApp o el teu programa',
+      faq_titulo: 'El que més em pregunten',
+      faq: [
+        { p: 'Com entra sola una cita per WhatsApp?', r: 'Un assistent atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
+        { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo. Treballo sol i t’atenc directament; el manteniment cobreix el suport.' },
+        { p: 'És un programa fet o a mida?', r: 'A mida per al teu negoci. L’únic que és igual per a tothom és l’assistent de WhatsApp, que treballa amb les teves dades.' },
+        { p: 'On es guarden les meves dades?', r: 'Tot va en comptes a nom teu (el domini, l’allotjament, la base de dades) i les dades, en servidors de la Unió Europea. L’assistent de WhatsApp fa servir Google Cloud, també a la UE, i el WhatsApp de Meta.' },
+      ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
@@ -1416,6 +1433,13 @@ export const dictionaries = {
       cta_sub: 'In my calendar · 30 minutes, no commitment',
       nota: 'In the chat you tell me how you handle it today ({como}) and we see what moves across and how. You don’t need to show me any customer data.',
       nota_como: 'Excel, paper, WhatsApp or your current software',
+      faq_titulo: 'What I get asked most',
+      faq: [
+        { p: 'How does a WhatsApp booking go in on its own?', r: 'An assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
+        { p: 'Who helps me if something goes wrong?', r: 'Me. I work on my own and deal with you directly; maintenance covers support.' },
+        { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure for your business. The only thing that’s the same for everyone is the WhatsApp assistant, which works with your data.' },
+        { p: 'Where is my data stored?', r: 'Everything goes in accounts in your name (the domain, the hosting, the database) and the data sits on servers in the European Union. The WhatsApp assistant uses Google Cloud, also in the EU, and Meta’s WhatsApp.' },
+      ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
