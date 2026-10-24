@@ -62,7 +62,7 @@ const es: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Ruta de cada técnico',
       tecnicos: [
-        t('Marc', '2 visitas · Lloret', [p('08:30', 'Hotel Mirador · revisión trimestral del contrato'), p('11:30', 'Bar Ca la Rosa · avería de cámara')]),
+        t('Marc', '2 visitas · Lloret', [p('08:00', 'Bar Ca la Rosa · avería de cámara'), p('11:30', 'Hotel Mirador · revisión trimestral del contrato')]),
         t('Jordi', '2 visitas · Blanes', [p('09:00', 'Comunidad Carrer del Mar 8 · revisión anual'), p('12:00', 'Piso particular · instalación de split')]),
       ],
       parte: {
@@ -74,7 +74,7 @@ const es: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Avisos y contratos',
       avisos: [
-        a('Aviso urgente', 'hoy', 'Bar Ca la Rosa', 'Avería de cámara', 'Asignado a Marc', true),
+        a('Aviso urgente', 'esta mañana', 'Bar Ca la Rosa', 'Avería de cámara · resuelta por Marc', 'Facturar hoy', true),
         a('Contrato anual', '4 revisiones', 'Hotel Mirador', 'Revisión de hoy · 12 máquinas', 'Asignada a Marc', false),
         a('Contrato anual', '1 revisión', 'Comunidad Carrer del Mar 8', 'Vence en enero · renovar', 'Avisar al presidente', true),
         a('Presupuesto enviado', 'hace 3 días', 'Restaurante Es Racó', 'Contrato de mantenimiento · sin respuesta', 'Toca llamar hoy', true),
@@ -94,7 +94,7 @@ const es: Record<Sector, EjemploSector> = {
       ],
       parte: {
         titulo: 'Parte del día',
-        filas: [f('Obra', 'Baño de la Sra. Vidal'), f('Horas', '2 personas · 8 h'), f('Material', 'Azulejo 30×60, cola')],
+        filas: [f('Obra', 'Baño de la Sra. Vidal'), f('Horas', '2 personas · 6 h'), f('Material', 'Azulejo 30×60, cola')],
         firma: 'Conformidad del cliente en el móvil',
       },
     },
@@ -130,7 +130,7 @@ const es: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Coches y presupuestos',
       avisos: [
-        a('Presupuesto enviado', 'ayer', 'Seat León · 1234 KLM', 'Sr. Roca · cambio de embrague · esperando respuesta', 'Toca llamar hoy', true),
+        a('Presupuesto enviado', 'ayer', 'Peugeot 308 · 1234 KLM', 'Sr. Roca · cambio de embrague · esperando respuesta', 'Toca llamar hoy', true),
         a('Revisión anual', 'hace 11 meses', 'Renault Clio · 5678 LMN', 'Sra. Serra · le toca la revisión', 'Recordatorio programado', false),
         a('3 furgonetas', 'cliente desde 2019', 'Repartos Costa', 'ITV de las tres en diciembre', 'Recordatorio programado', false),
       ],
@@ -142,7 +142,7 @@ const es: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Fisio o clínica',
     explica: {
-      cli: { como: 'Cada paciente con su historial, sus bonos y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'Los bonos que se acaban sin ofrecer renovarlos y las revisiones que se pasan.' },
+      cli: { como: 'Cada paciente con su historial, sus bonos y lo que toca hacer después. Te avisa de los bonos que se acaban y de las revisiones pendientes.', ahorro: 'Los bonos que se acaban sin que nadie lo comente y las revisiones que se pasan.' },
       cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al paciente el día antes.', ahorro: 'Citas apuntadas en varios sitios a la vez y pacientes que se olvidan de venir.' },
     },
     tec: {
@@ -159,7 +159,7 @@ const es: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Pacientes y bonos',
       avisos: [
-        a('Bono de 10 sesiones', 'quedan 2', 'Sra. Coll', 'Se le acaba el bono la semana que viene', 'Ofrecer renovarlo', true),
+        a('Bono de 10 sesiones', 'quedan 2', 'Sra. Coll', 'Se le acaba el bono la semana que viene', 'Comentarlo en su próxima sesión', true),
         a('Paciente desde 2022', '8 visitas', 'Sr. Ferrer', 'Revisión dentro de un mes', 'Recordatorio programado', false),
       ],
     },
@@ -210,7 +210,7 @@ const es: Record<Sector, EjemploSector> = {
       titulo: 'Compradores y propietarios',
       avisos: [
         a('Oferta presentada', 'ayer', 'Familia Soler', 'Piso en Fenals · esperando al propietario', 'Llamar al propietario hoy', true),
-        a('Propietario en exclusiva', 'desde 2025', 'Sr. Bosch', 'La exclusiva vence en diciembre', 'Recordatorio programado', false),
+        a('Propietario en exclusiva', 'desde julio', 'Sr. Bosch', 'La exclusiva vence en diciembre', 'Recordatorio programado', false),
       ],
     },
     fac: { titulo: 'Facturas y cobros', filas: [f('Comisiones de este mes', '2 firmadas en notaría'), f('Pendientes de cobro', '1'), f('Alquileres gestionados', '18 recibos emitidos')] },
@@ -220,7 +220,7 @@ const es: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Gestoría o asesoría',
     explica: {
-      cli: { ahorro: 'La documentación que nadie reclamó a tiempo y los trámites que se pasan de plazo.' },
+      cli: { como: 'Cada cliente con su historial, sus encargos y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'La documentación que nadie reclamó a tiempo y los trámites que se pasan de plazo.' },
       fac: { como: 'Las cuotas de cada mes y los encargos sueltos en el mismo sitio, y ves de un vistazo qué falta por cobrar.', ahorro: 'Los encargos sueltos que se quedan sin facturar y los recibos devueltos que nadie reclama.' },
     },
     tec: {
@@ -276,7 +276,7 @@ const ca: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Ruta de cada tècnic',
       tecnicos: [
-        t('Marc', '2 visites · Lloret', [p('08:30', 'Hotel Mirador · revisió trimestral del contracte'), p('11:30', 'Bar Ca la Rosa · avaria de cambra')]),
+        t('Marc', '2 visites · Lloret', [p('08:00', 'Bar Ca la Rosa · avaria de cambra'), p('11:30', 'Hotel Mirador · revisió trimestral del contracte')]),
         t('Jordi', '2 visites · Blanes', [p('09:00', 'Comunitat Carrer del Mar 8 · revisió anual'), p('12:00', 'Pis particular · instal·lació de split')]),
       ],
       parte: {
@@ -288,7 +288,7 @@ const ca: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Avisos i contractes',
       avisos: [
-        a('Avís urgent', 'avui', 'Bar Ca la Rosa', 'Avaria de cambra', 'Assignat al Marc', true),
+        a('Avís urgent', 'aquest matí', 'Bar Ca la Rosa', 'Avaria de cambra · resolta pel Marc', 'Facturar avui', true),
         a('Contracte anual', '4 revisions', 'Hotel Mirador', 'Revisió d’avui · 12 màquines', 'Assignada al Marc', false),
         a('Contracte anual', '1 revisió', 'Comunitat Carrer del Mar 8', 'Venç al gener · renovar', 'Avisar el president', true),
         a('Pressupost enviat', 'fa 3 dies', 'Restaurant Es Racó', 'Contracte de manteniment · sense resposta', 'Cal trucar avui', true),
@@ -308,7 +308,7 @@ const ca: Record<Sector, EjemploSector> = {
       ],
       parte: {
         titulo: 'Full del dia',
-        filas: [f('Obra', 'Bany de la Sra. Vidal'), f('Hores', '2 persones · 8 h'), f('Material', 'Rajola 30×60, ciment cola')],
+        filas: [f('Obra', 'Bany de la Sra. Vidal'), f('Hores', '2 persones · 6 h'), f('Material', 'Rajola 30×60, ciment cola')],
         firma: 'Conformitat del client al mòbil',
       },
     },
@@ -344,7 +344,7 @@ const ca: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Cotxes i pressupostos',
       avisos: [
-        a('Pressupost enviat', 'ahir', 'Seat León · 1234 KLM', 'Sr. Roca · canvi d’embragatge · esperant resposta', 'Cal trucar avui', true),
+        a('Pressupost enviat', 'ahir', 'Peugeot 308 · 1234 KLM', 'Sr. Roca · canvi d’embragatge · esperant resposta', 'Cal trucar avui', true),
         a('Revisió anual', 'fa 11 mesos', 'Renault Clio · 5678 LMN', 'Sra. Serra · li toca la revisió', 'Recordatori programat', false),
         a('3 furgonetes', 'client des del 2019', 'Repartos Costa', 'ITV de les tres al desembre', 'Recordatori programat', false),
       ],
@@ -356,7 +356,7 @@ const ca: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Fisio o clínica',
     explica: {
-      cli: { como: 'Cada pacient amb el seu historial, els seus bons i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'Els bons que s’acaben sense oferir renovar-los i les revisions que es passen.' },
+      cli: { como: 'Cada pacient amb el seu historial, els seus bons i el que toca fer després. T’avisa dels bons que s’acaben i de les revisions pendents.', ahorro: 'Els bons que s’acaben sense que ningú ho comenti i les revisions que es passen.' },
       cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al pacient el dia abans.', ahorro: 'Cites apuntades a diversos llocs alhora i pacients que s’obliden de venir.' },
     },
     tec: {
@@ -373,7 +373,7 @@ const ca: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Pacients i bons',
       avisos: [
-        a('Bo de 10 sessions', 'en queden 2', 'Sra. Coll', 'Se li acaba el bo la setmana que ve', 'Oferir-li renovar-lo', true),
+        a('Bo de 10 sessions', 'en queden 2', 'Sra. Coll', 'Se li acaba el bo la setmana que ve', 'Comentar-ho a la propera sessió', true),
         a('Pacient des del 2022', '8 visites', 'Sr. Ferrer', 'Revisió d’aquí a un mes', 'Recordatori programat', false),
       ],
     },
@@ -424,7 +424,7 @@ const ca: Record<Sector, EjemploSector> = {
       titulo: 'Compradors i propietaris',
       avisos: [
         a('Oferta presentada', 'ahir', 'Família Soler', 'Pis a Fenals · esperant el propietari', 'Trucar al propietari avui', true),
-        a('Propietari en exclusiva', 'des del 2025', 'Sr. Bosch', 'L’exclusiva venç al desembre', 'Recordatori programat', false),
+        a('Propietari en exclusiva', 'des del juliol', 'Sr. Bosch', 'L’exclusiva venç al desembre', 'Recordatori programat', false),
       ],
     },
     fac: { titulo: 'Factures i cobraments', filas: [f('Comissions d’aquest mes', '2 signades a la notaria'), f('Pendents de cobrament', '1'), f('Lloguers gestionats', '18 rebuts emesos')] },
@@ -434,7 +434,7 @@ const ca: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Gestoria o assessoria',
     explica: {
-      cli: { ahorro: 'La documentació que ningú no va reclamar a temps i els tràmits que passen de termini.' },
+      cli: { como: 'Cada client amb el seu historial, els seus encàrrecs i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'La documentació que ningú no va reclamar a temps i els tràmits que passen de termini.' },
       fac: { como: 'Les quotes de cada mes i els encàrrecs solts al mateix lloc, i veus d’un cop d’ull què falta cobrar.', ahorro: 'Els encàrrecs solts que es queden sense facturar i els rebuts retornats que ningú no reclama.' },
     },
     tec: {
@@ -490,7 +490,7 @@ const en: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Each technician’s route',
       tecnicos: [
-        t('Marc', '2 visits · Lloret', [p('08:30', 'Hotel Mirador · quarterly contract service'), p('11:30', 'Bar Ca la Rosa · cold room breakdown')]),
+        t('Marc', '2 visits · Lloret', [p('08:00', 'Bar Ca la Rosa · cold room breakdown'), p('11:30', 'Hotel Mirador · quarterly contract service')]),
         t('Jordi', '2 visits · Blanes', [p('09:00', 'Carrer del Mar 8 residents’ association · annual service'), p('12:00', 'Private flat · split unit installation')]),
       ],
       parte: {
@@ -502,7 +502,7 @@ const en: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Call-outs and contracts',
       avisos: [
-        a('Urgent call-out', 'today', 'Bar Ca la Rosa', 'Cold room breakdown', 'Assigned to Marc', true),
+        a('Urgent call-out', 'this morning', 'Bar Ca la Rosa', 'Cold room breakdown · fixed by Marc', 'Invoice today', true),
         a('Annual contract', '4 services', 'Hotel Mirador', 'Today’s service · 12 units', 'Assigned to Marc', false),
         a('Annual contract', '1 service', 'Carrer del Mar 8 residents’ association', 'Expires in January · renew', 'Let the chairman know', true),
         a('Quote sent', '3 days ago', 'Es Racó restaurant', 'Maintenance contract · no reply', 'Call today', true),
@@ -522,7 +522,7 @@ const en: Record<Sector, EjemploSector> = {
       ],
       parte: {
         titulo: 'Daily report',
-        filas: [f('Job', 'Mrs. Vidal’s bathroom'), f('Hours', '2 people · 8 h'), f('Materials', '30×60 tiles, tile adhesive')],
+        filas: [f('Job', 'Mrs. Vidal’s bathroom'), f('Hours', '2 people · 6 h'), f('Materials', '30×60 tiles, tile adhesive')],
         firma: 'Customer approves on the phone',
       },
     },
@@ -558,7 +558,7 @@ const en: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Cars and quotes',
       avisos: [
-        a('Quote sent', 'yesterday', 'Seat León · 1234 KLM', 'Mr. Roca · clutch replacement · awaiting reply', 'Call today', true),
+        a('Quote sent', 'yesterday', 'Peugeot 308 · 1234 KLM', 'Mr. Roca · clutch replacement · awaiting reply', 'Call today', true),
         a('Annual service', '11 months ago', 'Renault Clio · 5678 LMN', 'Mrs. Serra · service due', 'Reminder scheduled', false),
         a('3 vans', 'customer since 2019', 'Repartos Costa', 'All three due for MOT in December', 'Reminder scheduled', false),
       ],
@@ -570,7 +570,7 @@ const en: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Physio or clinic',
     explica: {
-      cli: { como: 'Every patient with their history, their session packs and what comes next. It flags whatever has stalled for days.', ahorro: 'Session packs that run out without anyone offering a renewal, and check-ups that slip by.' },
+      cli: { como: 'Every patient with their history, their session packs and what comes next. It reminds you of packs running out and pending check-ups.', ahorro: 'Session packs that run out without anyone mentioning it, and check-ups that slip by.' },
       cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the patient the day before.', ahorro: 'Appointments written down in several places at once, and patients who forget to turn up.' },
     },
     tec: {
@@ -587,7 +587,7 @@ const en: Record<Sector, EjemploSector> = {
     cli: {
       titulo: 'Patients and session packs',
       avisos: [
-        a('10-session pack', '2 left', 'Mrs. Coll', 'Her pack runs out next week', 'Offer a renewal', true),
+        a('10-session pack', '2 left', 'Mrs. Coll', 'Her pack runs out next week', 'Mention it at her next session', true),
         a('Patient since 2022', '8 visits', 'Mr. Ferrer', 'Check-up in a month', 'Reminder scheduled', false),
       ],
     },
@@ -638,7 +638,7 @@ const en: Record<Sector, EjemploSector> = {
       titulo: 'Buyers and owners',
       avisos: [
         a('Offer made', 'yesterday', 'Soler family', 'Flat in Fenals · waiting for the owner', 'Call the owner today', true),
-        a('Exclusive listing', 'since 2025', 'Mr. Bosch', 'Exclusivity ends in December', 'Reminder scheduled', false),
+        a('Exclusive listing', 'since July', 'Mr. Bosch', 'Exclusivity ends in December', 'Reminder scheduled', false),
       ],
     },
     fac: { titulo: 'Invoices and payments', filas: [f('Commissions this month', '2 signed at the notary'), f('Awaiting payment', '1'), f('Managed rentals', '18 receipts issued')] },
@@ -648,7 +648,7 @@ const en: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Accounting or advisory',
     explica: {
-      cli: { ahorro: 'Paperwork nobody chased in time, and filings that miss their deadline.' },
+      cli: { como: 'Every client with their history, their jobs and what comes next. It flags whatever has stalled for days.', ahorro: 'Paperwork nobody chased in time, and filings that miss their deadline.' },
       fac: { como: 'Monthly fees and one-off jobs in the same place, and you see at a glance what’s still unpaid.', ahorro: 'One-off jobs that never get invoiced, and returned direct debits nobody chases.' },
     },
     tec: {

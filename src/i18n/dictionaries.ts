@@ -450,11 +450,14 @@ export const dictionaries = {
       panel_vacio: 'Marca arriba lo que llevas en tu empresa y aparecerá aquí.',
       cta_titulo: '¿Lo quieres con tus datos de verdad?',
       cta_texto: 'Es una conversación de 30 minutos, gratis: lo miramos con tu empresa delante y después te llevas por escrito lo que vimos. Si reservas, me llega lo que has marcado aquí, para no preguntártelo otra vez.',
-      cta_btn: 'Reservar diagnóstico gratis',
-      cta_sub: 'Reserva en mi calendario · 30 minutos, sin compromiso',
-      // Prudente a proposito (24/10): que sale solo depende de cada proyecto, y WhatsApp tiene coste y pide la
-      // verificacion de Meta (ADR-041). Lo que ya tienen solo se promete mirarlo; pasarlo se presupuesta aparte.
-      nota: 'Lo que se puede hacer solo, se hace solo; lo que no, lo vemos con tu caso. Tráeme lo que tengas (Excel, papel o tu programa) y vemos juntos qué se pasa y cómo.',
+      // En la demo no se dice «diagnostico» (segunda pasada del ensayo, 24/10): a una peluqueria le sonaba a medico, a
+      // un taller a algo que se cobra y a otros a gancho comercial. En el resto de la web y en el Calendly sigue el nombre.
+      cta_btn: 'Reservar una charla gratis',
+      cta_sub: 'En mi calendario · 30 minutos, sin compromiso',
+      // Lo que ya tienen solo se promete mirarlo; pasarlo se presupuesta aparte. Hasta la segunda pasada del ensayo
+      // (24/10) empezaba por «Lo que se puede hacer solo, se hace solo…»: no enganchaba a nadie y sonaba a evasiva.
+      // Tampoco se promete que algo salga solo: depende de cada proyecto, y WhatsApp tiene coste (ADR-041).
+      nota: 'En la charla me enseñas lo que tengas (Excel, papel, tu programa o tu WhatsApp) y vemos qué se pasa y cómo.',
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
@@ -931,9 +934,9 @@ export const dictionaries = {
       panel_vacio: 'Marca a dalt el que portes a la teva empresa i apareixerà aquí.',
       cta_titulo: 'El vols amb les teves dades de veritat?',
       cta_texto: 'És una conversa de 30 minuts, gratuïta: ho mirem amb la teva empresa davant i després t’emportes per escrit el que hem vist. Si reserves, m’arriba el que has marcat aquí, perquè no te l’hagi de tornar a preguntar.',
-      cta_btn: 'Reservar diagnòstic gratuït',
-      cta_sub: 'Reserva al meu calendari · 30 minuts, sense compromís',
-      nota: 'El que es pot fer sol, es fa sol; el que no, ho mirem amb el teu cas. Porta’m el que tinguis (Excel, paper o el teu programa) i mirem junts què s’hi passa i com.',
+      cta_btn: 'Reservar una xerrada gratuïta',
+      cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
+      nota: 'A la xerrada m’ensenyes el que tinguis (Excel, paper, el teu programa o el teu WhatsApp) i mirem què s’hi passa i com.',
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
@@ -1405,9 +1408,9 @@ export const dictionaries = {
       panel_vacio: 'Pick what you handle in your business above and it will show up here.',
       cta_titulo: 'Want it with your real data?',
       cta_texto: 'It’s a free 30-minute conversation: we look at it with your business in front of us, and afterwards you get what we saw in writing. If you book, I receive what you’ve ticked here, so I don’t have to ask you again.',
-      cta_btn: 'Book a free diagnosis',
-      cta_sub: 'Book in my calendar · 30 minutes, no commitment',
-      nota: 'Whatever can run on its own, runs on its own; the rest we work out for your case. Bring what you have (Excel, paper or your current software) and we’ll see together what moves across and how.',
+      cta_btn: 'Book a free chat',
+      cta_sub: 'In my calendar · 30 minutes, no commitment',
+      nota: 'In the chat you show me what you have (Excel, paper, your current software or your WhatsApp) and we see what moves across and how.',
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',

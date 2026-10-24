@@ -79,6 +79,17 @@ describe('ejemplos de la demo', () => {
     expect(inst.tec.parte.filas[0].etiqueta).toBe('Aviso');
   });
 
+  // La opcion de clientes toma este titulo al elegir sector: donde no hay presupuestos, no puede decirlo (24/10).
+  test('inmobiliaria, fisio y gestoria no hablan de presupuestos', () => {
+    for (const lng of IDIOMAS) {
+      for (const s of ['inm', 'sal', 'ges'] as const) {
+        const e = EJEMPLOS[lng][s];
+        expect(e.cli.titulo).not.toMatch(/presupuest|pressupost|quote/i);
+        expect(e.explica?.cli?.ahorro ?? '').not.toMatch(/presupuest|pressupost|quote/i);
+      }
+    }
+  });
+
   test('en el taller, cada coche va por su matricula', () => {
     for (const lng of IDIOMAS) {
       for (const a of EJEMPLOS[lng].tal.cli.avisos.filter((x) => !x.cliente.includes('Repartos'))) {

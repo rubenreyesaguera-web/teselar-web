@@ -116,7 +116,10 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const nombre = empresa.trim() || t.tu_empresa;
   const sectorTexto = sector === null ? '' : sector === 'otr' ? `${t.otro_prefijo}: ${otro.trim()}`.replace(/:\s*$/, '') : ej.nombre;
   const marcadas = PARTES.filter((p) => partes.includes(p));
-  const llevaTexto = marcadas.map((p) => t.partes[p]).join(', ');
+  // Con sector elegido, «Clientes y presupuestos» se llama como en su panel: en una inmobiliaria o una clinica no hay
+  // presupuestos (ensayo del 24/10).
+  const etiqueta = (p: Parte) => (p === 'cli' && sector ? ej.cli.titulo : t.partes[p]);
+  const llevaTexto = marcadas.map(etiqueta).join(', ');
   // WhatsApp lo usan casi todos ademas de otra cosa (Ruben, 24/10): por eso «como» admite varias, igual que las partes.
   const comoMarcado = COMO.filter((c) => como.includes(c));
   const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
@@ -221,7 +224,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
             <div className="flex flex-wrap gap-2">
               {(sector ? ORDEN_PARTES[sector] : ORDEN_INICIAL).map((p) => (
                 <button key={p} type="button" className={chip} aria-pressed={partes.includes(p)} onClick={() => alternar(p)}>
-                  {t.partes[p]}
+                  {etiqueta(p)}
                 </button>
               ))}
             </div>
@@ -317,7 +320,9 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
             </div>
           )}
 
-          <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota}</p>
+          {marcadas.length > 0 && (
+            <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota}</p>
+          )}
 
           <div className="px-[18px] pb-[18px]">
             <div className="flex flex-col gap-3 rounded-[14px] bg-[#083C58] p-4 text-white sm:flex-row sm:items-center sm:justify-between">
