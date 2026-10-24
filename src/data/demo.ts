@@ -26,8 +26,9 @@ export interface Explicacion { como: string; ahorro: string }
 
 export interface EjemploSector {
   nombre: string;
-  // Solo donde el texto comun chirria en este sector (ensayo del 24/10, doc 32): «presupuestos» en una inmobiliaria,
-  // «cliente» en una clinica, «quien lo tiene» para las piezas de un taller.
+  // Los textos de este sector (opcion B del ensayo del 24/10, doc 32): cada caja dice que se puede hacer y a quien le
+  // llega. La demo sirve para todo el catalogo, no solo para el 09: el producto lo decide Ruben al leer la reserva.
+  // «Otro» no lleva: usa los comunes del diccionario.
   explica?: Partial<Record<Caja, Partial<Explicacion>>>;
   tec: { titulo: string; tecnicos: Tecnico[]; parte: { titulo: string; filas: Fila[]; firma: string } };
   cli: { titulo: string; avisos: Aviso[] };
@@ -59,6 +60,14 @@ const a = (tipo: string, cuando: string, cliente: string, detalle: string, sigui
 const es: Record<Sector, EjemploSector> = {
   inst: {
     nombre: 'Instalaciones',
+    explica: {
+      tec: { como: 'Asignas cada aviso desde el móvil, estés donde estés, y cada técnico ve en el suyo a dónde va, qué tiene que hacer y el historial de esa instalación.', ahorro: 'Repartir el trabajo por teléfono a primera hora y los cambios que se pierden en el grupo de WhatsApp.' },
+      parte: { como: 'El técnico apunta en el móvil las horas, el material y las fotos, y el cliente firma en la pantalla. Te llega a ti en cuanto hay cobertura.', ahorro: 'Pasar a limpio partes de papel y buscar fotos y horas en el grupo de WhatsApp.' },
+      cli: { como: 'Cada cliente con sus instalaciones, sus avisos y su contrato de mantenimiento. Te avisa a ti de las revisiones que tocan y de los contratos que vencen.', ahorro: 'Las revisiones que se pasan, los contratos que vencen sin renovar y los presupuestos que nadie volvió a llamar.' },
+      fac: { como: 'La factura sale del parte, sin volver a escribirlo, y las cuotas de los contratos se emiten cada mes. Ves de un vistazo qué falta por cobrar.', ahorro: 'Hacer las facturas a mano copiando lo que ya te mandaron y los cobros que nadie reclama.' },
+      cit: { como: 'Las visitas para presupuesto y las revisiones en una agenda que ve todo el equipo. Al cliente le puede llegar un recordatorio el día antes, por WhatsApp o por correo.', ahorro: 'Visitas apuntadas en varios sitios y clientes que no están en casa cuando llega el técnico.' },
+      mat: { como: 'Sabes qué material hay en el almacén y en cada furgoneta, y te avisa a ti antes de que falte, con el pedido preparado para enviarlo.', ahorro: 'Que el técnico llegue sin la pieza y los viajes de más al proveedor.' },
+    },
     tec: {
       titulo: 'Ruta de cada técnico',
       tecnicos: [
@@ -76,7 +85,7 @@ const es: Record<Sector, EjemploSector> = {
       avisos: [
         a('Aviso urgente', 'esta mañana', 'Bar Ca la Rosa', 'Avería de cámara · resuelta por Marc', 'Facturar hoy', true),
         a('Contrato anual', '4 revisiones', 'Hotel Mirador', 'Revisión de hoy · 12 máquinas', 'Asignada a Marc', false),
-        a('Contrato anual', '1 revisión', 'Comunidad Carrer del Mar 8', 'Vence en enero · renovar', 'Avisar al presidente', true),
+        a('Contrato anual', '1 revisión', 'Comunidad Carrer Major 3', 'Vence en enero · renovar', 'Avisar al presidente', true),
         a('Presupuesto enviado', 'hace 3 días', 'Restaurante Es Racó', 'Contrato de mantenimiento · sin respuesta', 'Toca llamar hoy', true),
       ],
     },
@@ -86,6 +95,14 @@ const es: Record<Sector, EjemploSector> = {
   },
   ref: {
     nombre: 'Reformas y obras',
+    explica: {
+      tec: { como: 'Cada equipo ve en el móvil en qué obra está hoy y qué toca hacer; si cambias algo, les llega al momento.', ahorro: 'Las llamadas de primera hora para repartir los equipos y los cambios que se pierden en el WhatsApp.' },
+      parte: { como: 'El encargado apunta en el móvil las horas de cada persona y el material de la obra, aunque no haya cobertura; te llega en cuanto la hay.', ahorro: 'Perseguir horas a final de semana y no saber cuánto se ha ido en cada obra.' },
+      cli: { como: 'Cada cliente con su obra, su presupuesto y los extras que va pidiendo. Te avisa a ti de los presupuestos que siguen sin respuesta.', ahorro: 'Los presupuestos que se enfrían y los extras que se hacen y nunca se cobran.' },
+      fac: { como: 'Las certificaciones y las facturas salen de lo que se ha hecho en la obra, con los extras incluidos, y ves qué falta por cobrar.', ahorro: 'Calcular a mano qué facturar cada mes y los cobros que se quedan sin reclamar.' },
+      cit: { como: 'Las visitas para medir y las citas en tienda en una agenda común; al cliente le puede llegar un recordatorio el día antes.', ahorro: 'Visitas que se solapan con la obra y clientes que se olvidan de la cita.' },
+      mat: { como: 'Sabes qué material hay para cada obra y qué falta, y te avisa a ti antes de que te quedes corto.', ahorro: 'Parar una obra por falta de material y los viajes de más al almacén.' },
+    },
     tec: {
       titulo: 'Dónde está cada equipo',
       tecnicos: [
@@ -112,8 +129,12 @@ const es: Record<Sector, EjemploSector> = {
   tal: {
     nombre: 'Taller mecánico',
     explica: {
-      cli: { como: 'Cada coche por su matrícula, con su historial, lo que se le ha presupuestado y lo que le toca después.', ahorro: 'Los presupuestos que se enfrían porque nadie volvió a llamar y las revisiones que se pasan.' },
-      mat: { como: 'Sabes qué piezas tienes y cuáles se están acabando, y te avisa antes de que falten.' },
+      tec: { como: 'Cada mecánico ve en su pantalla qué coche tiene en el elevador y qué le toca después.', ahorro: 'Ir preguntando quién está con qué coche y los trabajos que se quedan a medias sin que nadie lo sepa.' },
+      parte: { como: 'La orden de trabajo recoge las horas y las piezas mientras se trabaja, y el cliente firma al recoger el coche.', ahorro: 'Rehacer a mano lo que se ha hecho en cada coche para poder facturarlo.' },
+      cli: { como: 'Cada coche por su matrícula, con su historial, sus presupuestos y lo que le toca después. Al cliente le puede llegar el aviso de la revisión o de la ITV.', ahorro: 'Los presupuestos que se enfrían y las revisiones e ITV que se pasan sin que nadie avise.' },
+      fac: { como: 'La factura sale de la orden de trabajo al entregar el coche, sin volver a escribirla, y ves qué falta por cobrar.', ahorro: 'Pasar las órdenes al Excel para facturar y los cobros que se olvidan.' },
+      cit: { como: 'Las citas del taller en una agenda por elevador; las que te piden por WhatsApp pueden entrar solas.', ahorro: 'Coches que llegan sin cita a la vez y huecos que se quedan vacíos.' },
+      mat: { como: 'Sabes qué piezas tienes y cuáles se acaban; te avisa a ti antes de que falten y te deja el pedido preparado para enviarlo.', ahorro: 'Quedarte sin la pieza con el coche en el elevador y los pedidos hechos a última hora.' },
     },
     tec: {
       titulo: 'Trabajo de cada mecánico',
@@ -132,7 +153,7 @@ const es: Record<Sector, EjemploSector> = {
       avisos: [
         a('Presupuesto enviado', 'ayer', 'Peugeot 308 · 1234 KLM', 'Sr. Roca · cambio de embrague · esperando respuesta', 'Toca llamar hoy', true),
         a('Revisión anual', 'hace 11 meses', 'Renault Clio · 5678 LMN', 'Sra. Serra · le toca la revisión', 'Recordatorio programado', false),
-        a('3 furgonetas', 'cliente desde 2019', 'Repartos Costa', 'ITV de las tres en diciembre', 'Recordatorio programado', false),
+        a('ITV', 'en diciembre', 'Repartos Costa · 3 furgonetas', 'Las tres pasan la ITV el mismo mes', 'Recordatorio programado', false),
       ],
     },
     fac: { titulo: 'Facturas y cobros', filas: [f('Coches entregados ayer', '4 facturas listas'), f('Pendientes de cobro', '3'), f('Vencidas', '1 · aviso enviado')] },
@@ -142,8 +163,12 @@ const es: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Fisio o clínica',
     explica: {
-      cli: { como: 'Cada paciente con su historial, sus bonos y lo que toca hacer después. Te avisa de los bonos que se acaban y de las revisiones pendientes.', ahorro: 'Los bonos que se acaban sin que nadie lo comente y las revisiones que se pasan.' },
-      cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al paciente el día antes.', ahorro: 'Citas apuntadas en varios sitios a la vez y pacientes que se olvidan de venir.' },
+      tec: { como: 'Las visitas a domicilio de cada fisio en su móvil, con la dirección y lo que toca en cada sesión.', ahorro: 'Coordinar por teléfono quién va a cada casa y las visitas que se solapan.' },
+      parte: { como: 'Al acabar la sesión se apunta en el móvil lo que se ha hecho y el paciente firma. Queda en su historial.', ahorro: 'Pasar a limpio las notas de cada sesión al final del día.' },
+      cli: { como: 'Cada paciente con su historial, sus bonos y sus revisiones, y solo lo ve quien tú decidas. Te avisa a ti de los bonos que se acaban.', ahorro: 'Los bonos que se acaban sin que nadie lo comente y las revisiones que se pasan.' },
+      fac: { como: 'Las sesiones y los bonos se cobran desde el mismo sitio, y las facturas para las mutuas salen de las sesiones hechas.', ahorro: 'Preparar a mano las facturas de las mutuas y los bonos pendientes de pago.' },
+      cit: { como: 'Una agenda para todos los fisios; las citas que te piden por WhatsApp pueden entrar solas, y al paciente le llega un recordatorio el día antes.', ahorro: 'Citas apuntadas en varios sitios y pacientes que se olvidan de venir.' },
+      mat: { como: 'Sabes qué material de consulta queda y te avisa a ti antes de que se acabe.', ahorro: 'Quedarte sin vendaje o sin agujas a media semana.' },
     },
     tec: {
       titulo: 'Visitas a domicilio',
@@ -169,6 +194,14 @@ const es: Record<Sector, EjemploSector> = {
   },
   est: {
     nombre: 'Peluquería y estética',
+    explica: {
+      tec: { como: 'Los servicios fuera del salón, como bodas o eventos, con su hora, su sitio y quién va.', ahorro: 'Organizar por WhatsApp quién va a cada boda y con qué.' },
+      parte: { como: 'Al acabar se apunta lo que se ha hecho y los productos usados, y la clienta da su conformidad.', ahorro: 'Recordar de memoria qué se hizo y qué se gastó en cada servicio.' },
+      cli: { como: 'Cada clienta con su historial (el tinte, el corte, lo que le va bien) y lo que le toca después. Te avisa a ti de las clientas a las que les toca volver.', ahorro: 'Apuntar en la libreta el color de cada clienta y las que dejan de venir sin que te des cuenta.' },
+      fac: { como: 'La caja del día, las señales de las bodas y lo que queda pendiente, en el mismo sitio.', ahorro: 'Cuadrar la caja a mano y las señales que nadie recuerda haber cobrado.' },
+      cit: { como: 'Una agenda para el salón; las citas que te piden por WhatsApp pueden entrar solas y a la clienta le llega un recordatorio el día antes, sin que lo mandes tú.', ahorro: 'Pasarte el día de descanso contestando y mandando recordatorios uno a uno.' },
+      mat: { como: 'Sabes qué tintes y productos quedan y te avisa antes de que se acaben.', ahorro: 'Quedarte sin el tinte de una clienta el día de su cita.' },
+    },
     tec: {
       titulo: 'Servicios a domicilio',
       tecnicos: [t('Clara', '1 servicio · Tossa', [p('09:00', 'Boda · peinado y maquillaje de la novia')])],
@@ -192,7 +225,12 @@ const es: Record<Sector, EjemploSector> = {
   inm: {
     nombre: 'Inmobiliaria',
     explica: {
-      cli: { ahorro: 'Los compradores que se enfrían porque nadie volvió a llamar y las exclusivas que vencen sin renovar.' },
+      tec: { como: 'Las visitas y las captaciones de cada agente en su móvil, con el inmueble y el comprador.', ahorro: 'Coordinar por WhatsApp quién enseña cada piso y las visitas que se solapan.' },
+      parte: { como: 'Al acabar la visita se apunta en el móvil el interés del comprador y lo que ha pedido, y el comprador firma la hoja de visita.', ahorro: 'Recordar de memoria qué dijo cada comprador y las hojas de visita en papel.' },
+      cli: { como: 'Cada comprador con lo que busca, su idioma y sus visitas; cada propietario con su inmueble y su exclusiva. Los contactos de los portales pueden entrar solos.', ahorro: 'Los compradores que se enfrían porque nadie volvió a llamar y las exclusivas que vencen sin renovar.' },
+      fac: { como: 'Las comisiones de cada venta y los recibos de los alquileres gestionados, y ves qué falta por cobrar.', ahorro: 'Llevar las comisiones y los alquileres en hojas distintas y los recibos que nadie reclama.' },
+      cit: { como: 'Las visitas y las valoraciones en una agenda común; al comprador le llega un recordatorio el día antes, en su idioma.', ahorro: 'Visitas que se solapan y compradores que no se presentan.' },
+      mat: { como: 'Sabes quién tiene las llaves de cada inmueble y qué documentación falta, y te avisa a ti antes de la firma.', ahorro: 'Buscar llaves que no aparecen y descubrir el día de la firma que falta un papel.' },
     },
     tec: {
       titulo: 'Agenda de cada agente',
@@ -220,8 +258,12 @@ const es: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Gestoría o asesoría',
     explica: {
-      cli: { como: 'Cada cliente con su historial, sus encargos y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'La documentación que nadie reclamó a tiempo y los trámites que se pasan de plazo.' },
+      tec: { como: 'Las salidas del despacho (recoger papeles, la notaría, Hacienda) con su hora y quién va.', ahorro: 'Coordinar las salidas por teléfono y los recados que se quedan sin hacer.' },
+      parte: { como: 'Cada encargo con el tiempo dedicado y lo que se ha hecho, para saber qué te cuesta cada cliente.', ahorro: 'No saber cuánto tiempo te lleva cada cliente ni si la cuota lo cubre.' },
+      cli: { como: 'Cada cliente con su historial, sus encargos y lo que toca hacer después. Te avisa a ti de la documentación que falta antes de cada plazo.', ahorro: 'La documentación que nadie reclamó a tiempo y los trámites que se pasan de plazo.' },
       fac: { como: 'Las cuotas de cada mes y los encargos sueltos en el mismo sitio, y ves de un vistazo qué falta por cobrar.', ahorro: 'Los encargos sueltos que se quedan sin facturar y los recibos devueltos que nadie reclama.' },
+      cit: { como: 'Las citas del despacho en una agenda común; las que te piden por WhatsApp pueden entrar solas y al cliente le llega un recordatorio el día antes.', ahorro: 'Citas apuntadas en varios sitios y clientes que llegan sin los papeles.' },
+      mat: { como: 'Sabes qué documentación falta de cada cliente y qué certificados caducan, y te avisa a ti con tiempo.', ahorro: 'Perseguir papeles el último día del plazo y certificados que caducan sin darte cuenta.' },
     },
     tec: {
       titulo: 'Visitas y gestiones fuera',
@@ -273,6 +315,14 @@ const es: Record<Sector, EjemploSector> = {
 const ca: Record<Sector, EjemploSector> = {
   inst: {
     nombre: 'Instal·lacions',
+    explica: {
+      tec: { como: 'Assignes cada avís des del mòbil, siguis on siguis, i cada tècnic veu al seu on va, què ha de fer i l’historial d’aquella instal·lació.', ahorro: 'Repartir la feina per telèfon a primera hora i els canvis que es perden al grup de WhatsApp.' },
+      parte: { como: 'El tècnic apunta al mòbil les hores, el material i les fotos, i el client signa a la pantalla. T’arriba a tu tan bon punt hi ha cobertura.', ahorro: 'Passar a net fulls de paper i buscar fotos i hores al grup de WhatsApp.' },
+      cli: { como: 'Cada client amb les seves instal·lacions, els seus avisos i el seu contracte de manteniment. T’avisa a tu de les revisions que toquen i dels contractes que vencen.', ahorro: 'Les revisions que es passen, els contractes que vencen sense renovar i els pressupostos que ningú no va tornar a trucar.' },
+      fac: { como: 'La factura surt del full de feina, sense tornar-lo a escriure, i les quotes dels contractes s’emeten cada mes. Veus d’un cop d’ull què falta cobrar.', ahorro: 'Fer les factures a mà copiant el que ja et van enviar i els cobraments que ningú no reclama.' },
+      cit: { como: 'Les visites per a pressupost i les revisions en una agenda que veu tot l’equip. Al client li pot arribar un recordatori el dia abans, per WhatsApp o per correu.', ahorro: 'Visites apuntades a diversos llocs i clients que no són a casa quan arriba el tècnic.' },
+      mat: { como: 'Saps quin material hi ha al magatzem i a cada furgoneta, i t’avisa a tu abans que falti, amb la comanda preparada per enviar-la.', ahorro: 'Que el tècnic arribi sense la peça i els viatges de més al proveïdor.' },
+    },
     tec: {
       titulo: 'Ruta de cada tècnic',
       tecnicos: [
@@ -290,7 +340,7 @@ const ca: Record<Sector, EjemploSector> = {
       avisos: [
         a('Avís urgent', 'aquest matí', 'Bar Ca la Rosa', 'Avaria de cambra · resolta pel Marc', 'Facturar avui', true),
         a('Contracte anual', '4 revisions', 'Hotel Mirador', 'Revisió d’avui · 12 màquines', 'Assignada al Marc', false),
-        a('Contracte anual', '1 revisió', 'Comunitat Carrer del Mar 8', 'Venç al gener · renovar', 'Avisar el president', true),
+        a('Contracte anual', '1 revisió', 'Comunitat Carrer Major 3', 'Venç al gener · renovar', 'Avisar el president', true),
         a('Pressupost enviat', 'fa 3 dies', 'Restaurant Es Racó', 'Contracte de manteniment · sense resposta', 'Cal trucar avui', true),
       ],
     },
@@ -300,6 +350,14 @@ const ca: Record<Sector, EjemploSector> = {
   },
   ref: {
     nombre: 'Reformes i obres',
+    explica: {
+      tec: { como: 'Cada equip veu al mòbil a quina obra és avui i què toca fer; si canvies alguna cosa, els arriba al moment.', ahorro: 'Les trucades de primera hora per repartir els equips i els canvis que es perden al WhatsApp.' },
+      parte: { como: 'L’encarregat apunta al mòbil les hores de cada persona i el material de l’obra, encara que no hi hagi cobertura; t’arriba tan bon punt n’hi ha.', ahorro: 'Perseguir hores a final de setmana i no saber quant se n’ha anat a cada obra.' },
+      cli: { como: 'Cada client amb la seva obra, el seu pressupost i els extres que va demanant. T’avisa a tu dels pressupostos que continuen sense resposta.', ahorro: 'Els pressupostos que es refreden i els extres que es fan i no es cobren mai.' },
+      fac: { como: 'Les certificacions i les factures surten del que s’ha fet a l’obra, amb els extres inclosos, i veus què falta cobrar.', ahorro: 'Calcular a mà què facturar cada mes i els cobraments que es queden sense reclamar.' },
+      cit: { como: 'Les visites per mesurar i les cites a botiga en una agenda comuna; al client li pot arribar un recordatori el dia abans.', ahorro: 'Visites que se solapen amb l’obra i clients que s’obliden de la cita.' },
+      mat: { como: 'Saps quin material hi ha per a cada obra i què falta, i t’avisa a tu abans que te’n quedis curt.', ahorro: 'Aturar una obra per falta de material i els viatges de més al magatzem.' },
+    },
     tec: {
       titulo: 'On és cada equip',
       tecnicos: [
@@ -326,8 +384,12 @@ const ca: Record<Sector, EjemploSector> = {
   tal: {
     nombre: 'Taller mecànic',
     explica: {
-      cli: { como: 'Cada cotxe per la seva matrícula, amb el seu historial, el que se li ha pressupostat i el que li toca després.', ahorro: 'Els pressupostos que es refreden perquè ningú no va tornar a trucar i les revisions que es passen.' },
-      mat: { como: 'Saps quines peces tens i quines s’estan acabant, i t’avisa abans que faltin.' },
+      tec: { como: 'Cada mecànic veu a la seva pantalla quin cotxe té a l’elevador i què li toca després.', ahorro: 'Anar preguntant qui és amb quin cotxe i les feines que es queden a mitges sense que ningú ho sàpiga.' },
+      parte: { como: 'L’ordre de treball recull les hores i les peces mentre es treballa, i el client signa en recollir el cotxe.', ahorro: 'Refer a mà el que s’ha fet a cada cotxe per poder-ho facturar.' },
+      cli: { como: 'Cada cotxe per la seva matrícula, amb el seu historial, els seus pressupostos i el que li toca després. Al client li pot arribar l’avís de la revisió o de l’ITV.', ahorro: 'Els pressupostos que es refreden i les revisions i ITV que es passen sense que ningú avisi.' },
+      fac: { como: 'La factura surt de l’ordre de treball en lliurar el cotxe, sense tornar-la a escriure, i veus què falta cobrar.', ahorro: 'Passar les ordres a l’Excel per facturar i els cobraments que s’obliden.' },
+      cit: { como: 'Les cites del taller en una agenda per elevador; les que et demanen per WhatsApp poden entrar soles.', ahorro: 'Cotxes que arriben sense cita alhora i forats que es queden buits.' },
+      mat: { como: 'Saps quines peces tens i quines s’acaben; t’avisa a tu abans que faltin i et deixa la comanda preparada per enviar-la.', ahorro: 'Quedar-te sense la peça amb el cotxe a l’elevador i les comandes fetes a última hora.' },
     },
     tec: {
       titulo: 'Feina de cada mecànic',
@@ -346,7 +408,7 @@ const ca: Record<Sector, EjemploSector> = {
       avisos: [
         a('Pressupost enviat', 'ahir', 'Peugeot 308 · 1234 KLM', 'Sr. Roca · canvi d’embragatge · esperant resposta', 'Cal trucar avui', true),
         a('Revisió anual', 'fa 11 mesos', 'Renault Clio · 5678 LMN', 'Sra. Serra · li toca la revisió', 'Recordatori programat', false),
-        a('3 furgonetes', 'client des del 2019', 'Repartos Costa', 'ITV de les tres al desembre', 'Recordatori programat', false),
+        a('ITV', 'al desembre', 'Repartos Costa · 3 furgonetes', 'Les tres passen l’ITV el mateix mes', 'Recordatori programat', false),
       ],
     },
     fac: { titulo: 'Factures i cobraments', filas: [f('Cotxes lliurats ahir', '4 factures llestes'), f('Pendents de cobrament', '3'), f('Vençudes', '1 · avís enviat')] },
@@ -356,8 +418,12 @@ const ca: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Fisio o clínica',
     explica: {
-      cli: { como: 'Cada pacient amb el seu historial, els seus bons i el que toca fer després. T’avisa dels bons que s’acaben i de les revisions pendents.', ahorro: 'Els bons que s’acaben sense que ningú ho comenti i les revisions que es passen.' },
-      cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al pacient el dia abans.', ahorro: 'Cites apuntades a diversos llocs alhora i pacients que s’obliden de venir.' },
+      tec: { como: 'Les visites a domicili de cada fisio al seu mòbil, amb l’adreça i el que toca a cada sessió.', ahorro: 'Coordinar per telèfon qui va a cada casa i les visites que se solapen.' },
+      parte: { como: 'En acabar la sessió s’apunta al mòbil el que s’ha fet i el pacient signa. Queda al seu historial.', ahorro: 'Passar a net les notes de cada sessió al final del dia.' },
+      cli: { como: 'Cada pacient amb el seu historial, els seus bons i les seves revisions, i només ho veu qui tu decideixis. T’avisa a tu dels bons que s’acaben.', ahorro: 'Els bons que s’acaben sense que ningú ho comenti i les revisions que es passen.' },
+      fac: { como: 'Les sessions i els bons es cobren des del mateix lloc, i les factures per a les mútues surten de les sessions fetes.', ahorro: 'Preparar a mà les factures de les mútues i els bons pendents de pagament.' },
+      cit: { como: 'Una agenda per a tots els fisios; les cites que et demanen per WhatsApp poden entrar soles, i al pacient li arriba un recordatori el dia abans.', ahorro: 'Cites apuntades a diversos llocs i pacients que s’obliden de venir.' },
+      mat: { como: 'Saps quin material de consulta queda i t’avisa a tu abans que s’acabi.', ahorro: 'Quedar-te sense embenat o sense agulles a mitja setmana.' },
     },
     tec: {
       titulo: 'Visites a domicili',
@@ -383,6 +449,14 @@ const ca: Record<Sector, EjemploSector> = {
   },
   est: {
     nombre: 'Perruqueria i estètica',
+    explica: {
+      tec: { como: 'Els serveis fora del saló, com casaments o esdeveniments, amb la seva hora, el lloc i qui hi va.', ahorro: 'Organitzar per WhatsApp qui va a cada casament i amb què.' },
+      parte: { como: 'En acabar s’apunta el que s’ha fet i els productes usats, i la clienta hi dona la conformitat.', ahorro: 'Recordar de memòria què es va fer i què es va gastar en cada servei.' },
+      cli: { como: 'Cada clienta amb el seu historial (el tint, el tall, el que li va bé) i el que li toca després. T’avisa a tu de les clientes a qui toca tornar.', ahorro: 'Apuntar a la llibreta el color de cada clienta i les que deixen de venir sense que te n’adonis.' },
+      fac: { como: 'La caixa del dia, les paga-i-senyals dels casaments i el que queda pendent, al mateix lloc.', ahorro: 'Quadrar la caixa a mà i les paga-i-senyals que ningú no recorda haver cobrat.' },
+      cit: { como: 'Una agenda per al saló; les cites que et demanen per WhatsApp poden entrar soles i a la clienta li arriba un recordatori el dia abans, sense que l’hagis d’enviar tu.', ahorro: 'Passar-te el dia de descans contestant i enviant recordatoris un per un.' },
+      mat: { como: 'Saps quins tints i productes queden i t’avisa abans que s’acabin.', ahorro: 'Quedar-te sense el tint d’una clienta el dia de la seva cita.' },
+    },
     tec: {
       titulo: 'Serveis a domicili',
       tecnicos: [t('Clara', '1 servei · Tossa', [p('09:00', 'Casament · pentinat i maquillatge de la núvia')])],
@@ -406,7 +480,12 @@ const ca: Record<Sector, EjemploSector> = {
   inm: {
     nombre: 'Immobiliària',
     explica: {
-      cli: { ahorro: 'Els compradors que es refreden perquè ningú no els va tornar a trucar i les exclusives que vencen sense renovar.' },
+      tec: { como: 'Les visites i les captacions de cada agent al seu mòbil, amb l’immoble i el comprador.', ahorro: 'Coordinar per WhatsApp qui ensenya cada pis i les visites que se solapen.' },
+      parte: { como: 'En acabar la visita s’apunta al mòbil l’interès del comprador i el que ha demanat, i el comprador signa el full de visita.', ahorro: 'Recordar de memòria què va dir cada comprador i els fulls de visita en paper.' },
+      cli: { como: 'Cada comprador amb el que busca, el seu idioma i les seves visites; cada propietari amb el seu immoble i la seva exclusiva. Els contactes dels portals poden entrar sols.', ahorro: 'Els compradors que es refreden perquè ningú no els va tornar a trucar i les exclusives que vencen sense renovar.' },
+      fac: { como: 'Les comissions de cada venda i els rebuts dels lloguers gestionats, i veus què falta cobrar.', ahorro: 'Portar les comissions i els lloguers en fulls diferents i els rebuts que ningú no reclama.' },
+      cit: { como: 'Les visites i les valoracions en una agenda comuna; al comprador li arriba un recordatori el dia abans, en el seu idioma.', ahorro: 'Visites que se solapen i compradors que no es presenten.' },
+      mat: { como: 'Saps qui té les claus de cada immoble i quina documentació falta, i t’avisa a tu abans de la signatura.', ahorro: 'Buscar claus que no apareixen i descobrir el dia de la signatura que falta un paper.' },
     },
     tec: {
       titulo: 'Agenda de cada agent',
@@ -434,8 +513,12 @@ const ca: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Gestoria o assessoria',
     explica: {
-      cli: { como: 'Cada client amb el seu historial, els seus encàrrecs i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'La documentació que ningú no va reclamar a temps i els tràmits que passen de termini.' },
+      tec: { como: 'Les sortides del despatx (recollir papers, la notaria, Hisenda) amb la seva hora i qui hi va.', ahorro: 'Coordinar les sortides per telèfon i els encàrrecs que es queden per fer.' },
+      parte: { como: 'Cada encàrrec amb el temps dedicat i el que s’ha fet, per saber què et costa cada client.', ahorro: 'No saber quant de temps et porta cada client ni si la quota ho cobreix.' },
+      cli: { como: 'Cada client amb el seu historial, els seus encàrrecs i el que toca fer després. T’avisa a tu de la documentació que falta abans de cada termini.', ahorro: 'La documentació que ningú no va reclamar a temps i els tràmits que passen de termini.' },
       fac: { como: 'Les quotes de cada mes i els encàrrecs solts al mateix lloc, i veus d’un cop d’ull què falta cobrar.', ahorro: 'Els encàrrecs solts que es queden sense facturar i els rebuts retornats que ningú no reclama.' },
+      cit: { como: 'Les cites del despatx en una agenda comuna; les que et demanen per WhatsApp poden entrar soles i al client li arriba un recordatori el dia abans.', ahorro: 'Cites apuntades a diversos llocs i clients que arriben sense els papers.' },
+      mat: { como: 'Saps quina documentació falta de cada client i quins certificats caduquen, i t’avisa a tu amb temps.', ahorro: 'Perseguir papers l’últim dia del termini i certificats que caduquen sense adonar-te’n.' },
     },
     tec: {
       titulo: 'Visites i gestions fora',
@@ -487,6 +570,14 @@ const ca: Record<Sector, EjemploSector> = {
 const en: Record<Sector, EjemploSector> = {
   inst: {
     nombre: 'Installations',
+    explica: {
+      tec: { como: 'You assign each call-out from your phone, wherever you are, and each technician sees on theirs where they’re going, what to do and that installation’s history.', ahorro: 'Sharing out the work by phone first thing, and the changes that get lost in the WhatsApp group.' },
+      parte: { como: 'The technician logs hours, materials and photos on the phone, and the customer signs on the screen. It reaches you as soon as there’s signal.', ahorro: 'Copying up paper job sheets and hunting for photos and hours in the WhatsApp group.' },
+      cli: { como: 'Every customer with their installations, their call-outs and their maintenance contract. It reminds you of services that are due and contracts that are expiring.', ahorro: 'Services that slip by, contracts that lapse without renewal and quotes nobody followed up.' },
+      fac: { como: 'The invoice comes from the job report without typing it again, and contract fees go out every month. You see at a glance what’s still unpaid.', ahorro: 'Doing invoices by hand, copying what you were already sent, and payments nobody chases.' },
+      cit: { como: 'Quote visits and services in one diary the whole team can see. The customer can get a reminder the day before, by WhatsApp or email.', ahorro: 'Visits written down in several places, and customers who aren’t home when the technician arrives.' },
+      mat: { como: 'You know what’s in the warehouse and in each van, and it warns you before something runs out, with the order ready to send.', ahorro: 'The technician turning up without the part, and extra trips to the supplier.' },
+    },
     tec: {
       titulo: 'Each technician’s route',
       tecnicos: [
@@ -504,7 +595,7 @@ const en: Record<Sector, EjemploSector> = {
       avisos: [
         a('Urgent call-out', 'this morning', 'Bar Ca la Rosa', 'Cold room breakdown · fixed by Marc', 'Invoice today', true),
         a('Annual contract', '4 services', 'Hotel Mirador', 'Today’s service · 12 units', 'Assigned to Marc', false),
-        a('Annual contract', '1 service', 'Carrer del Mar 8 residents’ association', 'Expires in January · renew', 'Let the chairman know', true),
+        a('Annual contract', '1 service', 'Carrer Major 3 residents’ association', 'Expires in January · renew', 'Let the chairman know', true),
         a('Quote sent', '3 days ago', 'Es Racó restaurant', 'Maintenance contract · no reply', 'Call today', true),
       ],
     },
@@ -514,6 +605,14 @@ const en: Record<Sector, EjemploSector> = {
   },
   ref: {
     nombre: 'Renovation and building',
+    explica: {
+      tec: { como: 'Each crew sees on the phone which site they’re on today and what needs doing; if you change something, they get it straight away.', ahorro: 'The early-morning calls to share out the crews, and the changes that get lost in WhatsApp.' },
+      parte: { como: 'The foreman logs each person’s hours and the site materials on the phone, even without signal; it reaches you as soon as there is.', ahorro: 'Chasing hours at the end of the week and not knowing how much each job has cost.' },
+      cli: { como: 'Every customer with their job, their quote and the extras they keep asking for. It reminds you of quotes still waiting for a reply.', ahorro: 'Quotes that go cold, and extras that get done and never charged.' },
+      fac: { como: 'Progress invoices and final invoices come from the work done on site, extras included, and you see what’s still unpaid.', ahorro: 'Working out by hand what to invoice each month, and payments nobody chases.' },
+      cit: { como: 'Measuring visits and showroom appointments in a shared diary; the customer can get a reminder the day before.', ahorro: 'Visits that clash with the job, and customers who forget the appointment.' },
+      mat: { como: 'You know what materials there are for each job and what’s missing, and it warns you before you run short.', ahorro: 'Stopping a job for lack of materials, and extra trips to the warehouse.' },
+    },
     tec: {
       titulo: 'Where each crew is',
       tecnicos: [
@@ -540,8 +639,12 @@ const en: Record<Sector, EjemploSector> = {
   tal: {
     nombre: 'Car repair shop',
     explica: {
-      cli: { como: 'Each car by its number plate, with its history, what’s been quoted and what it needs next.', ahorro: 'Quotes that go cold because nobody called back, and services that slip by.' },
-      mat: { como: 'You know which parts you have and which are running low, and it warns you before they run out.' },
+      tec: { como: 'Each mechanic sees on their screen which car is on their lift and what comes next.', ahorro: 'Asking around who’s on which car, and jobs left half-done without anyone knowing.' },
+      parte: { como: 'The work order collects hours and parts as the work is done, and the customer signs when collecting the car.', ahorro: 'Redoing by hand what was done to each car so you can invoice it.' },
+      cli: { como: 'Each car by its number plate, with its history, its quotes and what it needs next. The customer can get a reminder for the service or the MOT.', ahorro: 'Quotes that go cold, and services and MOTs that slip by without anyone saying anything.' },
+      fac: { como: 'The invoice comes from the work order when the car is handed back, without typing it again, and you see what’s still unpaid.', ahorro: 'Copying work orders into Excel to invoice them, and payments that get forgotten.' },
+      cit: { como: 'Workshop bookings in a diary by lift; the ones you get on WhatsApp can go in on their own.', ahorro: 'Cars turning up without a booking at the same time, and slots left empty.' },
+      mat: { como: 'You know which parts you have and which are running low; it warns you before they run out and leaves the order ready to send.', ahorro: 'Running out of a part with the car on the lift, and orders placed at the last minute.' },
     },
     tec: {
       titulo: 'Each mechanic’s work',
@@ -560,7 +663,7 @@ const en: Record<Sector, EjemploSector> = {
       avisos: [
         a('Quote sent', 'yesterday', 'Peugeot 308 · 1234 KLM', 'Mr. Roca · clutch replacement · awaiting reply', 'Call today', true),
         a('Annual service', '11 months ago', 'Renault Clio · 5678 LMN', 'Mrs. Serra · service due', 'Reminder scheduled', false),
-        a('3 vans', 'customer since 2019', 'Repartos Costa', 'All three due for MOT in December', 'Reminder scheduled', false),
+        a('MOT', 'in December', 'Repartos Costa · 3 vans', 'All three are due for their MOT the same month', 'Reminder scheduled', false),
       ],
     },
     fac: { titulo: 'Invoices and payments', filas: [f('Cars handed back yesterday', '4 invoices ready'), f('Awaiting payment', '3'), f('Overdue', '1 · reminder sent')] },
@@ -570,8 +673,12 @@ const en: Record<Sector, EjemploSector> = {
   sal: {
     nombre: 'Physio or clinic',
     explica: {
-      cli: { como: 'Every patient with their history, their session packs and what comes next. It reminds you of packs running out and pending check-ups.', ahorro: 'Session packs that run out without anyone mentioning it, and check-ups that slip by.' },
-      cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the patient the day before.', ahorro: 'Appointments written down in several places at once, and patients who forget to turn up.' },
+      tec: { como: 'Each physio’s home visits on their phone, with the address and what each session involves.', ahorro: 'Coordinating by phone who goes to which home, and visits that overlap.' },
+      parte: { como: 'At the end of the session, what was done is noted on the phone and the patient signs. It stays in their record.', ahorro: 'Writing up each session’s notes at the end of the day.' },
+      cli: { como: 'Every patient with their record, their session packs and their check-ups, and only the people you choose can see it. It reminds you of packs running out.', ahorro: 'Session packs that run out without anyone mentioning it, and check-ups that slip by.' },
+      fac: { como: 'Sessions and packs are charged from the same place, and invoices for insurers come from the sessions done.', ahorro: 'Preparing insurer invoices by hand, and packs still waiting to be paid.' },
+      cit: { como: 'One diary for all the physios; bookings you get on WhatsApp can go in on their own, and the patient gets a reminder the day before.', ahorro: 'Appointments written down in several places, and patients who forget to turn up.' },
+      mat: { como: 'You know what clinic supplies are left and it warns you before they run out.', ahorro: 'Running out of tape or needles mid-week.' },
     },
     tec: {
       titulo: 'Home visits',
@@ -597,6 +704,14 @@ const en: Record<Sector, EjemploSector> = {
   },
   est: {
     nombre: 'Hair and beauty',
+    explica: {
+      tec: { como: 'Services away from the salon, like weddings or events, with the time, the place and who’s going.', ahorro: 'Organising on WhatsApp who goes to each wedding and with what.' },
+      parte: { como: 'At the end, what was done and the products used are noted, and the client gives her approval.', ahorro: 'Remembering what was done and what was used in each service.' },
+      cli: { como: 'Every client with her history (the colour, the cut, what suits her) and what’s due next. It reminds you of clients who are due back.', ahorro: 'Writing each client’s colour in a notebook, and clients who stop coming without you noticing.' },
+      fac: { como: 'The day’s takings, wedding deposits and anything outstanding, all in one place.', ahorro: 'Balancing the till by hand, and deposits nobody remembers taking.' },
+      cit: { como: 'One diary for the salon; bookings you get on WhatsApp can go in on their own, and the client gets a reminder the day before without you sending it.', ahorro: 'Spending your day off answering messages and sending reminders one by one.' },
+      mat: { como: 'You know which colours and products are left and it warns you before they run out.', ahorro: 'Running out of a client’s colour on the day of her appointment.' },
+    },
     tec: {
       titulo: 'Home services',
       tecnicos: [t('Clara', '1 service · Tossa', [p('09:00', 'Wedding · bride’s hair and make-up')])],
@@ -620,7 +735,12 @@ const en: Record<Sector, EjemploSector> = {
   inm: {
     nombre: 'Real estate',
     explica: {
-      cli: { ahorro: 'Buyers who go cold because nobody called back, and exclusive listings that lapse without renewal.' },
+      tec: { como: 'Each agent’s viewings and listings on their phone, with the property and the buyer.', ahorro: 'Coordinating on WhatsApp who shows each flat, and viewings that overlap.' },
+      parte: { como: 'After the viewing, the buyer’s interest and requests are noted on the phone, and the buyer signs the viewing sheet.', ahorro: 'Remembering what each buyer said, and viewing sheets on paper.' },
+      cli: { como: 'Every buyer with what they’re looking for, their language and their viewings; every owner with their property and their exclusivity. Leads from the portals can come in on their own.', ahorro: 'Buyers who go cold because nobody called back, and exclusive listings that lapse without renewal.' },
+      fac: { como: 'Commissions on each sale and receipts for managed rentals, and you see what’s still unpaid.', ahorro: 'Keeping commissions and rentals on separate sheets, and receipts nobody chases.' },
+      cit: { como: 'Viewings and valuations in a shared diary; the buyer gets a reminder the day before, in their language.', ahorro: 'Viewings that clash, and buyers who don’t turn up.' },
+      mat: { como: 'You know who has the keys to each property and what paperwork is missing, and it warns you before the signing.', ahorro: 'Looking for keys that won’t turn up, and finding out on signing day that a document is missing.' },
     },
     tec: {
       titulo: 'Each agent’s diary',
@@ -648,8 +768,12 @@ const en: Record<Sector, EjemploSector> = {
   ges: {
     nombre: 'Accounting or advisory',
     explica: {
-      cli: { como: 'Every client with their history, their jobs and what comes next. It flags whatever has stalled for days.', ahorro: 'Paperwork nobody chased in time, and filings that miss their deadline.' },
+      tec: { como: 'Trips out of the office (collecting paperwork, the notary, the tax office) with the time and who’s going.', ahorro: 'Coordinating trips by phone, and errands that never get done.' },
+      parte: { como: 'Each job with the time spent and what was done, so you know what each client costs you.', ahorro: 'Not knowing how much time each client takes or whether their fee covers it.' },
+      cli: { como: 'Every client with their history, their jobs and what comes next. It warns you of missing paperwork before each deadline.', ahorro: 'Paperwork nobody chased in time, and filings that miss their deadline.' },
       fac: { como: 'Monthly fees and one-off jobs in the same place, and you see at a glance what’s still unpaid.', ahorro: 'One-off jobs that never get invoiced, and returned direct debits nobody chases.' },
+      cit: { como: 'Office appointments in a shared diary; the ones you get on WhatsApp can go in on their own, and the client gets a reminder the day before.', ahorro: 'Appointments written down in several places, and clients who turn up without their paperwork.' },
+      mat: { como: 'You know what paperwork is missing from each client and which certificates are expiring, and it warns you in good time.', ahorro: 'Chasing paperwork on the last day of the deadline, and certificates that expire without you noticing.' },
     },
     tec: {
       titulo: 'Visits and errands',

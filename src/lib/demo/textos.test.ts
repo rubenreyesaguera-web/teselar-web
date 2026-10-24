@@ -50,6 +50,21 @@ describe('explicaciones propias de cada sector', () => {
   });
 });
 
+// Opcion B (24/10): todos los sectores menos «Otro» llevan sus seis cajas completas, en los tres idiomas.
+describe('cada sector con sus textos', () => {
+  for (const lng of ['es', 'ca', 'en'] as const) {
+    test(`${lng}: seis cajas con «como» y «ahorro» en cada sector`, () => {
+      for (const s of SECTORES.filter((x) => x !== 'otr')) {
+        const e = EJEMPLOS[lng][s].explica;
+        for (const c of CAJAS) {
+          expect(e?.[c]?.como?.trim()).toBeTruthy();
+          expect(e?.[c]?.ahorro?.trim()).toBeTruthy();
+        }
+      }
+    });
+  }
+});
+
 describe('orden de «¿Que llevas?»', () => {
   test('cada sector, y el inicial, tienen las cinco partes sin repetir', () => {
     for (const orden of [ORDEN_INICIAL, ...SECTORES.map((s) => ORDEN_PARTES[s])]) {

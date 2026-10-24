@@ -449,7 +449,7 @@ export const dictionaries = {
       panel_dia: 'Martes · lo que pasa hoy',
       panel_vacio: 'Marca arriba lo que llevas en tu empresa y aparecerá aquí.',
       cta_titulo: '¿Lo quieres con tus datos de verdad?',
-      cta_texto: 'Es una conversación de 30 minutos, gratis: lo miramos con tu empresa delante y después te llevas por escrito lo que vimos. Si reservas, me llega lo que has marcado aquí, para no preguntártelo otra vez.',
+      cta_texto: 'Es una charla de 30 minutos, gratis, normalmente por videollamada. Si tu negocio está a menos de media hora de Lloret de Mar, también puede ser en persona. Después te llevas por escrito lo que vimos. Si reservas, me llega lo que has marcado aquí, para no preguntártelo otra vez.',
       // En la demo no se dice «diagnostico» (segunda pasada del ensayo, 24/10): a una peluqueria le sonaba a medico, a
       // un taller a algo que se cobra y a otros a gancho comercial. En el resto de la web y en el Calendly sigue el nombre.
       cta_btn: 'Reservar una charla gratis',
@@ -457,7 +457,7 @@ export const dictionaries = {
       // Lo que ya tienen solo se promete mirarlo; pasarlo se presupuesta aparte. Hasta la segunda pasada del ensayo
       // (24/10) empezaba por «Lo que se puede hacer solo, se hace solo…»: no enganchaba a nadie y sonaba a evasiva.
       // Tampoco se promete que algo salga solo: depende de cada proyecto, y WhatsApp tiene coste (ADR-041).
-      nota: 'En la charla me enseñas lo que tengas (Excel, papel, tu programa o tu WhatsApp) y vemos qué se pasa y cómo.',
+      nota: 'En la charla me cuentas cómo lo llevas hoy (Excel, papel, tu programa) y vemos qué se pasa y cómo. No hace falta que me enseñes datos de tus clientes.',
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
@@ -468,8 +468,8 @@ export const dictionaries = {
       doc2_sub: 'Te contesto yo',
       wa_con_empresa: 'Hola Rubén, he visto la demo que me preparaste para {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he visto la demo que me preparaste.',
-      // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Valen para los ocho sectores (por eso
-      // «cada persona» y no «tecnico»); donde chirriaban, el sector los cambia en src/data/demo.ts (`explica`, 24/10).
+      // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Desde el 24/10 cada sector lleva los suyos
+      // (src/data/demo.ts, `explica`); estos comunes solo los usa «Otro».
       // Sin cifras: no hay nada medido que las respalde (ADR-025).
       // La linea que va a la pregunta 4 del Calendly, «Lo que ya me has contado».
       calendly_etiquetas: { sector: 'Sector', lleva: 'Llevo', como: 'Hoy' },
@@ -933,10 +933,10 @@ export const dictionaries = {
       panel_dia: 'Dimarts · el que passa avui',
       panel_vacio: 'Marca a dalt el que portes a la teva empresa i apareixerà aquí.',
       cta_titulo: 'El vols amb les teves dades de veritat?',
-      cta_texto: 'És una conversa de 30 minuts, gratuïta: ho mirem amb la teva empresa davant i després t’emportes per escrit el que hem vist. Si reserves, m’arriba el que has marcat aquí, perquè no te l’hagi de tornar a preguntar.',
+      cta_texto: 'És una xerrada de 30 minuts, gratuïta, normalment per videotrucada. Si el teu negoci és a menys de mitja hora de Lloret de Mar, també pot ser en persona. Després t’emportes per escrit el que hem vist. Si reserves, m’arriba el que has marcat aquí, perquè no te l’hagi de tornar a preguntar.',
       cta_btn: 'Reservar una xerrada gratuïta',
       cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
-      nota: 'A la xerrada m’ensenyes el que tinguis (Excel, paper, el teu programa o el teu WhatsApp) i mirem què s’hi passa i com.',
+      nota: 'A la xerrada m’expliques com ho portes avui (Excel, paper, el teu programa) i mirem què s’hi passa i com. No cal que m’ensenyis dades dels teus clients.',
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
@@ -1407,10 +1407,10 @@ export const dictionaries = {
       panel_dia: 'Tuesday · what’s happening today',
       panel_vacio: 'Pick what you handle in your business above and it will show up here.',
       cta_titulo: 'Want it with your real data?',
-      cta_texto: 'It’s a free 30-minute conversation: we look at it with your business in front of us, and afterwards you get what we saw in writing. If you book, I receive what you’ve ticked here, so I don’t have to ask you again.',
+      cta_texto: 'It’s a free 30-minute chat, usually by video call. If your business is less than half an hour from Lloret de Mar, it can also be in person. Afterwards you get what we saw in writing. If you book, I receive what you’ve ticked here, so I don’t have to ask you again.',
       cta_btn: 'Book a free chat',
       cta_sub: 'In my calendar · 30 minutes, no commitment',
-      nota: 'In the chat you show me what you have (Excel, paper, your current software or your WhatsApp) and we see what moves across and how.',
+      nota: 'In the chat you tell me how you handle it today (Excel, paper, your current software) and we see what moves across and how. You don’t need to show me any customer data.',
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
