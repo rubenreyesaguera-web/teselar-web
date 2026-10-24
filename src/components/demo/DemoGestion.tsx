@@ -123,6 +123,10 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   // WhatsApp lo usan casi todos ademas de otra cosa (Ruben, 24/10): por eso «como» admite varias, igual que las partes.
   const comoMarcado = COMO.filter((c) => como.includes(c));
   const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
+  // La pregunta de las citas por WhatsApp va primera solo si ha marcado citas; si no, al final: al que no lleva agenda
+  // le parecia que «la pagina no me ha escuchado» (septima pasada, 24/10).
+  const esWhatsapp = (f: (typeof t.faq)[number]) => 'id' in f && f.id === 'whatsapp';
+  const faqOrdenadas = marcadas.includes('cit') ? t.faq : [...t.faq.filter((f) => !esWhatsapp(f)), ...t.faq.filter(esWhatsapp)];
   // En mitad de la nota, en minuscula salvo los nombres propios («papel y libreta, WhatsApp y memoria»).
   const comoEnFrase = comoMarcado.map((c) => t.como[c]).map((x) => (/^(Excel|WhatsApp)/.test(x) ? x : x[0].toLowerCase() + x.slice(1))).join(', ');
 
@@ -350,7 +354,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 <span aria-hidden="true" className="text-base leading-none transition-transform duration-150 ease-out group-open:rotate-45">+</span>
               </summary>
               <dl className="m-0 mt-3 flex flex-col gap-3">
-                {t.faq.map((f) => (
+                {faqOrdenadas.map((f) => (
                   <div key={f.p}>
                     <dt className="font-semibold text-[#083C58]">{f.p}</dt>
                     <dd className="m-0 mt-0.5 leading-snug [text-wrap:pretty]">

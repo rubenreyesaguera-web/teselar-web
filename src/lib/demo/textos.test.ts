@@ -85,6 +85,7 @@ describe('preguntas frecuentes de la demo', () => {
       const d = dictionaries[lng].demo;
       expect(d.faq.length).toBe(4);
       expect(d.faq.filter((f) => 'id' in f && f.id === 'datos').length).toBe(1);
+      expect(d.faq.filter((f) => 'id' in f && f.id === 'whatsapp').length).toBe(1);
       expect(d.faq_contrato.trim()).not.toBe('');
     });
   }
