@@ -123,6 +123,8 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   // WhatsApp lo usan casi todos ademas de otra cosa (Ruben, 24/10): por eso «como» admite varias, igual que las partes.
   const comoMarcado = COMO.filter((c) => como.includes(c));
   const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
+  // En mitad de la nota, en minuscula salvo los nombres propios («papel y libreta, WhatsApp y memoria»).
+  const comoEnFrase = comoMarcado.map((c) => t.como[c]).map((x) => (/^(Excel|WhatsApp)/.test(x) ? x : x[0].toLowerCase() + x.slice(1))).join(', ');
 
   const calendly = useMemo(
     () =>
@@ -321,7 +323,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
           )}
 
           {marcadas.length > 0 && (
-            <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota.replace('{como}', comoTexto || t.nota_como)}</p>
+            <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota.replace('{como}', comoEnFrase || t.nota_como)}</p>
           )}
 
           <div className="px-[18px] pb-[18px]">
