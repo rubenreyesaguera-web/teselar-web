@@ -122,7 +122,7 @@ cifras verificadas y no se inventan.
   Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
   Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
-  acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día laborable
+  acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones
   (4h en incidencia crítica), informe mensual. Recomendado para e-commerce e inmobiliarias.
 
 ## Qué pasa si no se paga el mantenimiento o no se renueva

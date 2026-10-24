@@ -204,7 +204,7 @@ export const dictionaries = {
         f1: 'Todo lo del Básico, con copias de seguridad diarias',
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
         f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
-        f4: 'Respuesta el mismo día laborable (4h en incidencia crítica) e informe mensual'
+        f4: 'Respuesta el mismo día, también en fines de semana, festivos y vacaciones (4h en incidencia crítica), e informe mensual'
       },
       citas: {
         title: 'Citas por WhatsApp · cuota del servicio',
@@ -301,7 +301,7 @@ export const dictionaries = {
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
-        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
+        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones, e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
@@ -417,9 +417,10 @@ export const dictionaries = {
       banda: 'Simulación · datos de ejemplo según tu sector',
       volver: 'Volver a la web',
       titulo: 'Mira tu empresa organizada en dos minutos.',
-      intro: 'Dime a qué te dedicas, qué llevas y cómo lo llevas hoy. Te enseño cómo quedaría todo en un solo sitio, con ejemplos de tu sector.',
+      intro: 'Dime a qué te dedicas, qué llevas (avisos y técnicos, clientes, facturas, citas o material) y cómo lo llevas hoy. Te enseño cómo quedaría todo en un solo sitio, con ejemplos de tu sector.',
+      quien: 'Soy Rubén Reyes, de Teselar Software, en Lloret de Mar.',
       empresa_label: 'Nombre de tu empresa',
-      empresa_placeholder: 'p. ej. Instalaciones Costa',
+      empresa_placeholder: 'p. ej. Serveis Costa',
       sector_legend: '¿A qué os dedicáis?',
       otro_label: 'Cuéntame a qué os dedicáis',
       otro_placeholder: 'p. ej. jardinería y piscinas',
@@ -447,10 +448,31 @@ export const dictionaries = {
       ver: 'Ver mi sistema',
       panel_dia: 'Martes · lo que pasa hoy',
       panel_vacio: 'Marca arriba lo que llevas en tu empresa y aparecerá aquí.',
-      cta_titulo: '¿Lo quieres con tus datos de verdad?',
-      cta_texto: 'En el diagnóstico gratis lo miramos con tu empresa delante. Tus respuestas ya van puestas en la reserva.',
-      cta_btn: 'Reservar diagnóstico gratis',
-      cta_sub: 'Calendly · 30 minutos, sin compromiso',
+      cta_titulo: '¿Lo vemos con tu caso?',
+      cta_texto: 'Es una charla de 30 minutos, gratis, normalmente por videollamada. Si tu negocio está a menos de media hora de Lloret de Mar, también puede ser en persona; si estás algo más lejos, pregúntame. Después te llevas por escrito lo que vimos. Si reservas, me llega lo que has marcado aquí, para no preguntártelo otra vez.',
+      // En la demo no se dice «diagnostico» (segunda pasada del ensayo, 24/10): a una peluqueria le sonaba a medico, a
+      // un taller a algo que se cobra y a otros a gancho comercial. En el resto de la web y en el Calendly sigue el nombre.
+      cta_btn: 'Reservar una charla gratis',
+      cta_sub: 'En mi calendario · 30 minutos, sin compromiso',
+      // Lo que ya tienen solo se promete mirarlo; pasarlo se presupuesta aparte. Hasta la segunda pasada del ensayo
+      // (24/10) empezaba por «Lo que se puede hacer solo, se hace solo…»: no enganchaba a nadie y sonaba a evasiva.
+      // Tampoco se promete que algo salga solo: depende de cada proyecto, y WhatsApp tiene coste (ADR-041).
+      // {como} es lo que ha marcado en «¿Como lo llevas hoy?»: quien marco WhatsApp y no lo veia nombrado sentia que no
+      // se le habia leido (cuarta pasada, 24/10).
+      nota: 'En la charla me cuentas cómo lo llevas hoy ({como}) y vemos qué se pasa y cómo. No hace falta que me enseñes datos de tus clientes.',
+      nota_como: 'Excel, papel, WhatsApp o tu programa',
+      // Plegado al final (24/10): responde sin cargar la pagina a lo que preguntaban los lectores del ensayo. Que todo
+      // vaya a nombre del cliente vale para cualquier producto (Ruben). El contrato de encargado no se nombra: genera mas
+      // dudas de las que quita.
+      // Solo en fisio y gestoria (datos de salud y fiscales): alli lo pedian; en el resto genera mas dudas (Ruben, 24/10).
+      faq_contrato: 'Firmamos un contrato de protección de datos, como pide la ley.',
+      faq_titulo: 'Lo que más me preguntan',
+      faq: [
+        { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
+        { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
+        { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo que se monte va en cuentas a tu nombre, y los datos, en servidores de la Unión Europea. El asistente de WhatsApp usa Google Cloud, también en la UE, y WhatsApp de Meta.' },
+      ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
@@ -461,18 +483,19 @@ export const dictionaries = {
       doc2_sub: 'Te contesto yo',
       wa_con_empresa: 'Hola Rubén, he visto la demo que me preparaste para {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he visto la demo que me preparaste.',
-      // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Valen para los ocho sectores (por eso
-      // «cada persona» y no «tecnico»). Sin cifras: no hay nada medido que las respalde (ADR-025).
+      // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Desde el 24/10 cada sector lleva los suyos
+      // (src/data/demo.ts, `explica`); estos comunes solo los usa «Otro».
+      // Sin cifras: no hay nada medido que las respalde (ADR-025).
       // La linea que va a la pregunta 4 del Calendly, «Lo que ya me has contado».
       calendly_etiquetas: { sector: 'Sector', lleva: 'Llevo', como: 'Hoy' },
       como_label: 'Cómo funciona',
       ahorro_label: 'Te ahorras',
       explica: {
-        tec: { como: 'Repartes el trabajo desde la oficina y cada persona ve en el móvil a dónde va hoy y qué tiene que hacer.', ahorro: 'Las llamadas de primera hora para repartir el trabajo y los cambios que se pierden en el WhatsApp.' },
-        parte: { como: 'Al acabar se rellena en el móvil y el cliente firma en la pantalla. Llega a la oficina en ese momento.', ahorro: 'Pasar a limpio hojas de papel y perseguir horas o datos que nadie apuntó.' },
+        tec: { como: 'Repartes el trabajo desde donde estés y cada persona ve en el móvil a dónde va hoy y qué tiene que hacer.', ahorro: 'Las llamadas de primera hora para repartir el trabajo y los cambios que se pierden en el WhatsApp.' },
+        parte: { como: 'Al acabar se rellena en el móvil y el cliente firma en la pantalla. Te llega en cuanto el móvil tiene cobertura.', ahorro: 'Pasar a limpio hojas de papel y perseguir horas o datos que nadie apuntó.' },
         cli: { como: 'Cada cliente con su historial, lo que se le ha ofrecido y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'Los presupuestos que se enfrían porque nadie volvió a llamar y las renovaciones que se pasan.' },
         fac: { como: 'La factura sale del trabajo hecho, sin volver a escribirlo, y ves de un vistazo qué falta por cobrar.', ahorro: 'Hacer las facturas de memoria a final de mes y los cobros que nadie reclama.' },
-        cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al cliente el día antes.', ahorro: 'Citas apuntadas en tres sitios distintos y clientes que se olvidan de venir.' },
+        cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al cliente el día antes.', ahorro: 'Citas apuntadas en varios sitios a la vez y clientes que se olvidan de venir.' },
         mat: { como: 'Sabes qué tienes, quién lo tiene y qué se está acabando, y te avisa antes de que falte.', ahorro: 'Quedarte sin algo justo cuando hace falta y los viajes de más a buscarlo.' },
       },
     }
@@ -680,7 +703,7 @@ export const dictionaries = {
         f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
         f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
-        f4: 'Resposta el mateix dia laborable (4h en incidència crítica) i informe mensual'
+        f4: 'Resposta el mateix dia, també en caps de setmana, festius i vacances (4h en incidència crítica), i informe mensual'
       },
       citas: {
         title: 'Cites per WhatsApp · quota del servei',
@@ -777,7 +800,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
-        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
+        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia, també en caps de setmana, festius i vacances, i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
       },
       q7: {
         q: 'Com es paga un projecte?',
@@ -893,9 +916,10 @@ export const dictionaries = {
       banda: 'Simulació · dades d’exemple segons el teu sector',
       volver: 'Tornar a la web',
       titulo: 'Mira la teva empresa organitzada en dos minuts.',
-      intro: 'Digues-me a què et dediques, què portes i com ho portes avui. Et mostro com quedaria tot en un sol lloc, amb exemples del teu sector.',
+      intro: 'Digues-me a què et dediques, què portes (avisos i tècnics, clients, factures, cites o material) i com ho portes avui. Et mostro com quedaria tot en un sol lloc, amb exemples del teu sector.',
+      quien: 'Soc el Rubén Reyes, de Teselar Software, a Lloret de Mar.',
       empresa_label: 'Nom de la teva empresa',
-      empresa_placeholder: 'p. ex. Instal·lacions Costa',
+      empresa_placeholder: 'p. ex. Serveis Costa',
       sector_legend: 'A què us dediqueu?',
       otro_label: 'Explica’m a què us dediqueu',
       otro_placeholder: 'p. ex. jardineria i piscines',
@@ -923,10 +947,20 @@ export const dictionaries = {
       ver: 'Veure el meu sistema',
       panel_dia: 'Dimarts · el que passa avui',
       panel_vacio: 'Marca a dalt el que portes a la teva empresa i apareixerà aquí.',
-      cta_titulo: 'El vols amb les teves dades de veritat?',
-      cta_texto: 'Al diagnòstic gratuït ho mirem amb la teva empresa davant. Les teves respostes ja van posades a la reserva.',
-      cta_btn: 'Reservar diagnòstic gratuït',
-      cta_sub: 'Calendly · 30 minuts, sense compromís',
+      cta_titulo: 'Ho mirem amb el teu cas?',
+      cta_texto: 'És una xerrada de 30 minuts, gratuïta, normalment per videotrucada. Si el teu negoci és a menys de mitja hora de Lloret de Mar, també pot ser en persona; si ets una mica més lluny, pregunta-m’ho. Després t’emportes per escrit el que hem vist. Si reserves, m’arriba el que has marcat aquí, perquè no te l’hagi de tornar a preguntar.',
+      cta_btn: 'Reservar una xerrada gratuïta',
+      cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
+      nota: 'A la xerrada m’expliques com ho portes avui ({como}) i mirem què s’hi passa i com. No cal que m’ensenyis dades dels teus clients.',
+      nota_como: 'Excel, paper, WhatsApp o el teu programa',
+      faq_contrato: 'Signem un contracte de protecció de dades, com demana la llei.',
+      faq_titulo: 'El que més em pregunten',
+      faq: [
+        { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
+        { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
+        { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que es munti va en comptes a nom teu, i les dades, en servidors de la Unió Europea. L’assistent de WhatsApp fa servir Google Cloud, també a la UE, i el WhatsApp de Meta.' },
+      ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
@@ -940,11 +974,11 @@ export const dictionaries = {
       como_label: 'Com funciona',
       ahorro_label: 'T’estalvies',
       explica: {
-        tec: { como: 'Reparteixes la feina des de l’oficina i cada persona veu al mòbil on va avui i què ha de fer.', ahorro: 'Les trucades de primera hora per repartir la feina i els canvis que es perden al WhatsApp.' },
-        parte: { como: 'En acabar s’omple al mòbil i el client signa a la pantalla. Arriba a l’oficina en aquell moment.', ahorro: 'Passar a net fulls de paper i perseguir hores o dades que ningú no va apuntar.' },
+        tec: { como: 'Reparteixes la feina des d’on siguis i cada persona veu al mòbil on va avui i què ha de fer.', ahorro: 'Les trucades de primera hora per repartir la feina i els canvis que es perden al WhatsApp.' },
+        parte: { como: 'En acabar s’omple al mòbil i el client signa a la pantalla. T’arriba tan bon punt el mòbil té cobertura.', ahorro: 'Passar a net fulls de paper i perseguir hores o dades que ningú no va apuntar.' },
         cli: { como: 'Cada client amb el seu historial, el que se li ha ofert i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'Els pressupostos que es refreden perquè ningú no va tornar a trucar i les renovacions que es passen.' },
         fac: { como: 'La factura surt de la feina feta, sense tornar-la a escriure, i veus d’un cop d’ull què falta cobrar.', ahorro: 'Fer les factures de memòria a final de mes i els cobraments que ningú no reclama.' },
-        cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al client el dia abans.', ahorro: 'Cites apuntades a tres llocs diferents i clients que s’obliden de venir.' },
+        cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al client el dia abans.', ahorro: 'Cites apuntades a diversos llocs alhora i clients que s’obliden de venir.' },
         mat: { como: 'Saps què tens, qui ho té i què s’està acabant, i t’avisa abans que falti.', ahorro: 'Quedar-te sense alguna cosa just quan cal i els viatges de més per anar-la a buscar.' },
       },
     }
@@ -1152,7 +1186,7 @@ export const dictionaries = {
         f1: 'Everything in Basic, with daily backups',
         f2: '5h/month of development and improvements (non-cumulative)',
         f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
-        f4: 'Same business day response (4h for critical issues) and monthly report'
+        f4: 'Same-day response, weekends, bank holidays and holidays included (4h for critical issues), and monthly report'
       },
       citas: {
         title: 'WhatsApp Booking · service fee',
@@ -1249,7 +1283,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
-        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
+        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, weekends, bank holidays and holidays included, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
       },
       q7: {
         q: 'How do I pay for a project?',
@@ -1365,9 +1399,10 @@ export const dictionaries = {
       banda: 'Simulation · sample data for your sector',
       volver: 'Back to the website',
       titulo: 'See your business organised in two minutes.',
-      intro: 'Tell me what you do, what you handle and how you handle it today. I’ll show you how it would all look in one place, with examples from your sector.',
+      intro: 'Tell me what you do, what you handle (call-outs and technicians, customers, invoices, appointments or stock) and how you handle it today. I’ll show you how it would all look in one place, with examples from your sector.',
+      quien: 'I’m Rubén Reyes, from Teselar Software, in Lloret de Mar.',
       empresa_label: 'Your business name',
-      empresa_placeholder: 'e.g. Costa Installations',
+      empresa_placeholder: 'e.g. Costa Services',
       sector_legend: 'What do you do?',
       otro_label: 'Tell me what you do',
       otro_placeholder: 'e.g. gardening and pools',
@@ -1395,10 +1430,20 @@ export const dictionaries = {
       ver: 'See my system',
       panel_dia: 'Tuesday · what’s happening today',
       panel_vacio: 'Pick what you handle in your business above and it will show up here.',
-      cta_titulo: 'Want it with your real data?',
-      cta_texto: 'In the free diagnosis we look at it with your business in front of us. Your answers are already filled in on the booking.',
-      cta_btn: 'Book a free diagnosis',
-      cta_sub: 'Calendly · 30 minutes, no commitment',
+      cta_titulo: 'Shall we look at your case?',
+      cta_texto: 'It’s a free 30-minute chat, usually by video call. If your business is less than half an hour from Lloret de Mar, it can also be in person; if you’re a bit further away, just ask. Afterwards you get what we saw in writing. If you book, I receive what you’ve ticked here, so I don’t have to ask you again.',
+      cta_btn: 'Book a free chat',
+      cta_sub: 'In my calendar · 30 minutes, no commitment',
+      nota: 'In the chat you tell me how you handle it today ({como}) and we see what moves across and how. You don’t need to show me any customer data.',
+      nota_como: 'Excel, paper, WhatsApp or your current software',
+      faq_contrato: 'We sign a data protection agreement, as the law requires.',
+      faq_titulo: 'What I get asked most',
+      faq: [
+        { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
+        { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
+        { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything we set up goes in accounts in your name, and the data sits on servers in the European Union. The WhatsApp assistant uses Google Cloud, also in the EU, and Meta’s WhatsApp.' },
+      ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
@@ -1412,11 +1457,11 @@ export const dictionaries = {
       como_label: 'How it works',
       ahorro_label: 'What it saves you',
       explica: {
-        tec: { como: 'You hand out the work from the office and everyone sees on their phone where they’re going today and what to do.', ahorro: 'The early-morning calls to share out the work, and the changes that get lost in WhatsApp.' },
-        parte: { como: 'It’s filled in on the phone at the end of the job and the customer signs on the screen. The office gets it straight away.', ahorro: 'Copying up paper sheets and chasing hours or details nobody wrote down.' },
+        tec: { como: 'You hand out the work from wherever you are and everyone sees on their phone where they’re going today and what to do.', ahorro: 'The early-morning calls to share out the work, and the changes that get lost in WhatsApp.' },
+        parte: { como: 'It’s filled in on the phone at the end of the job and the customer signs on the screen. It reaches you as soon as the phone has signal.', ahorro: 'Copying up paper sheets and chasing hours or details nobody wrote down.' },
         cli: { como: 'Every customer with their history, what you’ve offered them and what comes next. It flags whatever has stalled for days.', ahorro: 'Quotes that go cold because nobody called back, and renewals that slip by.' },
         fac: { como: 'The invoice comes from the work already done, without typing it again, and you see at a glance what’s still unpaid.', ahorro: 'Doing invoices from memory at the end of the month, and payments nobody chases.' },
-        cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the customer the day before.', ahorro: 'Appointments written down in three different places, and customers who forget to turn up.' },
+        cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the customer the day before.', ahorro: 'Appointments written down in several places at once, and customers who forget to turn up.' },
         mat: { como: 'You know what you have, who has it and what’s running low, and it warns you before it runs out.', ahorro: 'Running out of something just when you need it, and extra trips to go and get it.' },
       },
     }
