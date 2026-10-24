@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect, use, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
+import { RUBEN } from '../../lib/colaboradores/enlaces';
 import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
@@ -406,7 +408,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13, t.faq.q14
   ];
 
   return (
@@ -549,6 +551,11 @@ export default function Page({ params }: PageProps) {
                   {t.leads.cta_whatsapp}
                 </a>
               </div>
+              {/* Quien lo hace, con la foto de la tarjeta: lo pidieron 5 lectores del ensayo de la portada (24/10, doc 32). */}
+              <p className="flex items-center gap-3 text-base text-claridad/90">
+                <Image src={RUBEN.foto} alt="" width={40} height={40} className="h-10 w-10 flex-none rounded-full object-cover" />
+                <span className="[text-wrap:pretty]">{t.hero.quien}</span>
+              </p>
               {/* pr-20 en movil: el boton flotante de TesS se comia el final de esta frase. */}
               <p className="text-base text-claridad/80 leading-relaxed max-w-xl pr-20 sm:pr-0 [text-wrap:pretty]">
                 {t.hero.cta_note}
@@ -563,6 +570,8 @@ export default function Page({ params }: PageProps) {
                   {t.demo.portada_link}
                   <ArrowRight size={16} aria-hidden="true" />
                 </a>
+                {/* Que es «Pruebalo»: ninguno de los 14 lectores del ensayo lo sabia (24/10). */}
+                <span className="block mt-1 text-sm text-claridad/70">{t.demo.portada_nota}</span>
               </p>
             </div>
           </div>
@@ -741,6 +750,7 @@ export default function Page({ params }: PageProps) {
                           <ArrowRight size={16} aria-hidden="true" />
                         </a>
                       )}
+                      {service.id === 's8' && <span className="text-sm text-claridad/70">{t.demo.portada_nota}</span>}
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
                       <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{service.price}</span>
@@ -781,7 +791,6 @@ export default function Page({ params }: PageProps) {
                             </li>
                           ))}
                         </ul>
-                        <span className="text-sm text-claridad/70">{service.tag}</span>
                       </div>
                     </div>
                   </div>
@@ -1065,10 +1074,10 @@ export default function Page({ params }: PageProps) {
               <div className="bg-claridad/5 border border-claridad/10 p-5 rounded-2xl text-xs font-light text-claridad/75 leading-relaxed mt-6">
                 <strong>{lng === 'es' ? '¿Cómo se calcula?' : lng === 'ca' ? 'Com es calcula?' : 'How is it calculated?'}</strong>{' '}
                 {lng === 'es'
-                  ? 'Multiplicamos las horas perdidas por el coste por hora, el número de empleados y un factor medio mensual (4.33 semanas al mes). Son recursos invisibles que podrías estar reinvirtiendo en el crecimiento real de tu negocio.'
+                  ? 'Multiplico las horas perdidas por el coste por hora, el número de empleados y un factor medio mensual (4.33 semanas al mes). Son recursos invisibles que podrías estar reinvirtiendo en el crecimiento real de tu negocio.'
                   : lng === 'ca'
-                    ? 'Multipliquem les hores perdudes pel cost per hora, el nombre d\'empleats i un factor mitjà mensual (4.33 setmanes al mes). Són recursos invisibles que podries estar reinvertint en el creixement real del teu negoci.'
-                    : 'We multiply the hours lost by the hourly cost, the number of employees, and a monthly average factor (4.33 weeks per month). These are invisible resources that you could be reinvesting in the actual growth of your business.'}
+                    ? 'Multiplico les hores perdudes pel cost per hora, el nombre d\'empleats i un factor mitjà mensual (4.33 setmanes al mes). Són recursos invisibles que podries estar reinvertint en el creixement real del teu negoci.'
+                    : 'I multiply the hours lost by the hourly cost, the number of employees, and a monthly average factor (4.33 weeks per month). These are invisible resources that you could be reinvesting in the actual growth of your business.'}
               </div>
             </motion.div>
 
@@ -1093,7 +1102,7 @@ export default function Page({ params }: PageProps) {
                       {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33))}€
                     </span>
                     <span className="text-xs text-claridad/70 font-light block mt-1">
-                      {lng === 'es' ? 'ahorrados cada mes' : lng === 'ca' ? 'estalviats cada mes' : 'saved each month'}
+                      {lng === 'es' ? 'lo que te cuesta cada mes' : lng === 'ca' ? 'el que et costa cada mes' : 'what it costs you each month'}
                     </span>
                   </div>
 
@@ -1104,7 +1113,7 @@ export default function Page({ params }: PageProps) {
                       {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33 * 12))}€
                     </span>
                     <span className="text-xs text-claridad/70 font-light block mt-1">
-                      {lng === 'es' ? 'pérdidas anuales recuperadas' : lng === 'ca' ? 'pèrdues anuals recuperades' : 'annual losses recovered'}
+                      {lng === 'es' ? 'lo que te cuesta al año' : lng === 'ca' ? 'el que et costa a l’any' : 'what it costs you each year'}
                     </span>
                   </div>
 
@@ -1115,26 +1124,15 @@ export default function Page({ params }: PageProps) {
                       {fmt(wastedHours * employeeCount * 52)}h
                     </span>
                     <span className="text-xs text-claridad/70 font-light block mt-1">
-                      {lng === 'es' ? 'de trabajo redirigidas a tareas productivas' : lng === 'ca' ? 'de treball redirigides a tasques productives' : 'of work redirected to productive tasks'}
+                      {lng === 'es' ? 'que podrías dedicar a otra cosa' : lng === 'ca' ? 'que podries dedicar a una altra cosa' : 'you could spend on something else'}
                     </span>
                   </div>
                 </div>
 
-                {/* Suggested service recommendation box */}
+                {/* Sin servicio recomendado (24/10): con los valores de serie salia el 09 a todo el mundo,
+                    porque se elegia por el dinero y no por lo que hace falta. La pieza se decide en el diagnostico. */}
                 <div className="border-t border-claridad/5 pt-5 mt-4">
-                  <div className="flex justify-between items-center gap-3 mb-2.5">
-                    <span className="text-xs font-mono text-claridad/70 tracking-widest uppercase">{t.simulator.rec_title}:</span>
-                    <span className="bg-innovacion text-teselar-dark text-xs font-black tracking-widest uppercase px-2 py-0.5 rounded shadow">
-                      {t.simulator.rec_badge}
-                    </span>
-                  </div>
-                  
-                  {/* Dynamic suggesting name based on financial scale */}
-                  <p className="text-sm sm:text-base font-black text-innovacion leading-snug">
-                    {wastedHours * employeeCount * hourlyCost * 4.33 < 500 ? t.simulator.opt_s2 :
-                     wastedHours * employeeCount * hourlyCost * 4.33 < 1500 ? t.simulator.opt_s4 :
-                     t.simulator.opt_s8}
-                  </p>
+                  <p className="text-sm sm:text-base text-claridad/85 leading-snug [text-wrap:pretty]">{t.simulator.rec_texto}</p>
                 </div>
               </div>
 
@@ -1144,7 +1142,6 @@ export default function Page({ params }: PageProps) {
                   const monthlyVal = Math.round(wastedHours * employeeCount * hourlyCost * 4.33);
                   const yearlyVal = monthlyVal * 12;
                   const yearlyHours = wastedHours * employeeCount * 52;
-                  const suggestedService = monthlyVal < 500 ? t.simulator.opt_s2 : monthlyVal < 1500 ? t.simulator.opt_s4 : t.simulator.opt_s8;
                   const budgetTier = monthlyVal < 500 ? 'low' : monthlyVal < 1500 ? 'mid' : 'high';
                   
                   // 1. Autofill contact reason
@@ -1152,10 +1149,10 @@ export default function Page({ params }: PageProps) {
                   
                   // 2. Autofill details into the textarea
                   const customizedText = lng === 'es'
-                    ? `Hola Teselar Software, he utilizado el simulador interactivo de vuestra web y he calculado unas pérdidas anuales estimadas de ${fmt(yearlyVal)}€ por tareas manuales repetitivas (${fmt(yearlyHours)}h recuperables/año). Me interesa vuestra propuesta de "${suggestedService}" para automatizar estos procesos e incrementar la rentabilidad de mi negocio.`
+                    ? `Hola, Rubén: he usado el simulador de tu web y me salen unos ${fmt(yearlyVal)}€ al año en tareas que se repiten (${fmt(yearlyHours)} h al año). Me gustaría ver en el diagnóstico qué parte se puede recuperar.`
                     : lng === 'ca'
-                      ? `Hola Teselar Software, he utilitzat el simulador interactiu de la vostra web i he calculat unes pèrdues anuales estimades de ${fmt(yearlyVal)}€ per tasques manuals repetitives (${fmt(yearlyHours)}h recuperables/any). M'interessa la vostra proposta de "${suggestedService}" per automatitzar aquests processos i incrementar la rendibilitat del meu negoci.`
-                      : `Hello Teselar Software, I have used the interactive simulator on your website and calculated an estimated annual loss of ${fmt(yearlyVal)}€ due to repetitive manual tasks (${fmt(yearlyHours)} recoverable hours/year). I am interested in your proposal for "${suggestedService}" to automate these processes and increase our operational profitability.`;
+                      ? `Hola, Rubén: he fet servir el simulador del teu web i em surten uns ${fmt(yearlyVal)}€ l’any en tasques que es repeteixen (${fmt(yearlyHours)} h l’any). M’agradaria veure al diagnòstic quina part es pot recuperar.`
+                      : `Hi Rubén, I used the simulator on your website and it comes to about ${fmt(yearlyVal)}€ a year on tasks that repeat (${fmt(yearlyHours)} h a year). I would like to see in the diagnosis which part can be recovered.`;
                   
                   setContactMessage(customizedText);
 
@@ -1525,12 +1522,12 @@ export default function Page({ params }: PageProps) {
               <img src="/logo.jpeg" alt="Teselar Logo" className="w-12 h-12 rounded-full border border-innovacion/35 object-cover" />
               <span className="font-extrabold text-2xl tracking-tight">TESELAR <span className="text-innovacion font-black">Software</span></span>
             </div>
-            <p className="text-xs text-claridad/75 font-light leading-relaxed max-w-sm mt-2">
+            <p className="text-xs text-claridad/75 font-light leading-relaxed max-w-sm mt-2 [text-wrap:pretty]">
               {currentLng === 'es'
-                ? 'Desarrollamos soluciones digitales a medida de alto rendimiento e impacto visual. Artesanía en software, automatizaciones e inteligencia artificial.'
+                ? 'Programas, automatizaciones e inteligencia artificial a medida para negocios de la Costa Brava. Los hago yo, desde Lloret de Mar.'
                 : currentLng === 'ca'
-                  ? 'Desenvolupem solucions digitals a mida d\'alt rendiment i impacte visual. Artesania en programari, automatitzacions i intel·ligència artificial.'
-                  : 'We hand-craft custom digital solutions with maximum performance and outstanding visual design. Software craftsmanship, automation, and custom artificial intelligence.'}
+                  ? 'Programes, automatitzacions i intel·ligència artificial a mida per a negocis de la Costa Brava. Els faig jo, des de Lloret de Mar.'
+                  : 'Custom software, automations and artificial intelligence for businesses on the Costa Brava. I build them myself, from Lloret de Mar.'}
             </p>
 
             {/* Social profiles and the booking link for the free diagnosis */}

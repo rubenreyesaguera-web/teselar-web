@@ -72,10 +72,10 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   stock; Plan Básico de mantenimiento incluido el primer año.
 - **Web Inmobiliaria** — desde 6.000€. Buscador con filtros, panel de propiedades, 2 idiomas,
   exportación XML formato Kyero para sincronizar con Idealista, Habitaclia y Fotocasa; Plan Básico
-  incluido el primer año.
-- **Sistema de Gestión a Medida (ERP/CRM/FSM)** — 8.000€–12.000€. Aplicación de escritorio nativa
-  (Windows/macOS/Linux) con CRM, facturación, planificación y roles de usuario; si el equipo trabaja
-  fuera, avisos, asignación de técnicos, fichajes y partes desde el móvil. Plan Básico incluido
+  incluido el primer año, que vigila también el feed a los portales.
+- **Programa de gestión a medida: clientes, facturas y técnicos (ERP/CRM)** — 8.000€–12.000€. Funciona
+  en el móvil, la tablet y el ordenador (en el móvil, también sin cobertura), con clientes, facturación,
+  planificación y roles de usuario; si el equipo trabaja fuera, avisos, asignación de técnicos, fichajes y partes desde el móvil. Plan Básico incluido
   el primer año.
 
 ## Tres servicios que se confunden entre sí
@@ -123,7 +123,14 @@ cifras verificadas y no se inventan.
   Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
   acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones
-  (4h en incidencia crítica), informe mensual. Recomendado para e-commerce e inmobiliarias.
+  (4h en incidencia crítica), informe mensual. Para quien no puede esperar: tiendas, inmobiliarias y programas que el equipo usa cada día.
+
+## Dónde quedan los datos
+
+Todo lo del cliente va en cuentas a su nombre (dominio, hosting, base de datos y su número de WhatsApp),
+con los datos en servidores de la Unión Europea. Lo único que va en la cuenta de Teselar es la
+inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra
+en la cuota. Con datos de salud o fiscales se firma además un contrato de protección de datos.
 
 ## Qué pasa si no se paga el mantenimiento o no se renueva
 
@@ -152,7 +159,7 @@ Todos los precios son + IVA. Señal del 10% para contratar (mínimo 150€; si y
 descuentan de la señal, no la cubren entera salvo en proyectos de 1.500€ o menos: en uno de 8.000€ la
 señal son 800€ y abonaría 650€), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
 entrega y no contra fecha**: el diseño y el alcance, el núcleo funcionando, el despliegue y la
-aceptación. 1 semana de ajustes en
+aceptación. Se paga por transferencia bancaria. 1 semana de ajustes en
 vivo gratis tras el lanzamiento. Proyecto combinado (varios servicios a la vez): el de mayor importe
 va al 100% y cada adicional lleva un 15% de descuento (la auditoría queda excluida de este descuento).
 No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting, comisiones de pago,

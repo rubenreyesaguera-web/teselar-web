@@ -19,11 +19,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
-      subtitle: 'La pieza exacta donde tu negocio y la tecnología encajan: desde tu presencia digital hasta sistemas ERP/CRM e integraciones de IA. Los hago yo, de principio a fin, aquí en Lloret de Mar.',
+      subtitle: 'Programas para llevar clientes, presupuestos, facturas y técnicos en un solo sitio, asistentes que atienden tu WhatsApp y webs hechas a mano. Para instaladores, reformas, talleres, clínicas, peluquerías, inmobiliarias y gestorías. Los hago yo, aquí en Lloret de Mar.',
       meta_description: 'Asistentes con inteligencia artificial, automatizaciones y programas a medida para negocios de Lloret de Mar y la Costa Brava. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
-      cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.',
+      cta_note: 'Gratis y sin compromiso. Antes de hablar miro tu web, tu ficha de Google y cómo te contactan tus clientes, para no empezar de cero. Por eso solo hago dos por semana.',
+      quien: 'Soy Rubén Reyes, de Teselar Software. Te atiendo yo.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
       pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
       piezas_desc: ['Tus clientes y su historial, en un solo sitio', 'Presupuestos y facturas que salen solos', 'Citas que se reservan sin llamar', 'Una web hecha a mano, rápida', 'Respuestas y recordatorios automáticos', 'Avisos, técnicos y partes desde el móvil'],
@@ -36,7 +37,7 @@ export const dictionaries = {
     },
     services: {
       title: 'Catálogo de Servicios',
-      subtitle: 'Soluciones modulares y de alto rendimiento adaptadas a tu tamaño y presupuesto. Sin costes ocultos.',
+      subtitle: 'Soluciones modulares adaptadas a tu tamaño y presupuesto. Sin costes ocultos: lo que no entra está aquí abajo y, por escrito, en tu propuesta.',
       ideal: 'Ideal para:',
       pricing: 'Precio',
       features: 'Lo que incluye:',
@@ -47,7 +48,7 @@ export const dictionaries = {
         c1_title: 'Chatbot guiado · dentro del 02',
         c1_desc: 'Sigue un guion de botones y respuestas previstas. Barato y suficiente si las preguntas son siempre las mismas; en cuanto se salen del guion, se atasca.',
         c2_title: 'Asistente de IA · el 05',
-        c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Se construye a medida sobre tu documentación, tus canales y tus sistemas: por eso el rango es amplio. Es lo que estás usando aquí: TesS.',
+        c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Se construye a medida sobre tu documentación, tus canales y tus sistemas: por eso el rango es amplio. Es el chat que tienes en la esquina de esta web: TesS. Pregúntale lo que quieras.',
         c3_title: 'Citas por WhatsApp · el 03',
         c3_desc: 'Un asistente de IA que además actúa: mira los huecos que tienes libres de verdad, reserva la cita, la confirma y manda el recordatorio. Ya está construido y probado — se configura con tus servicios y tus horarios, y por eso es más barato que un desarrollo a medida y puede llevar garantía.',
         nota: 'La pregunta para elegir es sencilla: ¿lo que pierdes son consultas sin responder, o citas sin coger? Y si son citas, no pagues un desarrollo a medida: eso ya está hecho y te sale más barato.'
@@ -151,14 +152,14 @@ export const dictionaries = {
         f4: '2 idiomas incluidos para compradores extranjeros — adicional +250€',
         f5: 'Exportación XML (formato Kyero) para sincronizar con Idealista, Habitaclia, Fotocasa y portales internacionales',
         f6: 'Formulario de contacto por propiedad y botón de WhatsApp',
-        f7: 'SEO local, y mantenimiento incluido el primer año (los feeds a portales necesitan vigilancia)'
+        f7: 'SEO local y mantenimiento incluido el primer año, con la vigilancia del feed a los portales'
       },
       s8: {
-        title: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)',
+        title: '09. Programa de gestión a medida: clientes, facturas y técnicos',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
-        f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
+        f1: 'Funciona en el móvil, la tablet y el ordenador. En el móvil, también sin cobertura: guarda lo que se apunta y lo envía al volver la señal.',
         f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
         f3: 'Módulo integral de gestión de clientes (CRM) y base de contactos',
         f4: 'Generación automática y descarga directa de facturas y presupuestos en PDF',
@@ -200,7 +201,7 @@ export const dictionaries = {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Para e-commerce, inmobiliarias y webs que cambian mucho. Sin permanencia.',
+        desc: 'Para cuando no puedes esperar: tiendas, inmobiliarias, programas que tu equipo usa cada día y webs que cambian mucho. Sin permanencia.',
         f1: 'Todo lo del Básico, con copias de seguridad diarias',
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
         f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
@@ -232,16 +233,16 @@ export const dictionaries = {
       },
       payment: {
         title: 'Métodos de Pago & Condiciones',
-        methods: 'Métodos aceptados: Transferencia bancaria o efectivo en mano (con cita previa).',
+        methods: 'Transferencia bancaria.',
         conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos, esos 150€ ya están pagados y se descuentan de la señal. Todos los precios son + IVA.'
       }
     },
     values: {
       title: '¿Por qué elegirme?',
-      subtitle: 'La ventaja competitiva de trabajar con artesanos de software especializados en lugar de grandes consultoras lentas o freelancers inestables.',
+      subtitle: 'Trabajas directamente con quien lo hace: sin intermediarios, sin plantillas y cerca de ti.',
       v1: {
-        title: 'Contacto Directo sin Intermediarios',
-        desc: 'Hablo tu mismo idioma. Tratas directamente con el desarrollador que escribe cada línea de código de tu aplicación, sin esperas ni malentendidos.'
+        title: 'Vengo de la empresa',
+        desc: 'Antes del software pasé doce años en compras y posventa, en una sociedad anónima y dos multinacionales: albaranes, facturas, presupuestos de reparación, proveedores y un taller a mi cargo. Por eso primero miro cómo trabajas, y la tecnología viene después. Y hablas siempre conmigo.'
       },
       v2: {
         title: 'Desarrollo Nativo a Medida',
@@ -305,7 +306,7 @@ export const dictionaries = {
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
-        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Acepto transferencia bancaria o efectivo en mano con cita previa.'
+        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Se paga por transferencia bancaria.'
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
@@ -330,6 +331,10 @@ export const dictionaries = {
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
         a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y ERP/CRM) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: tu web sigue publicada y sigue siendo tuya, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
+      },
+      q14: {
+        q: '¿Dónde quedan los datos de mis clientes?',
+        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra en la cuota. Si manejas datos de salud o fiscales, firmamos además un contrato de protección de datos.'
       }
     },
     contact: {
@@ -367,19 +372,15 @@ export const dictionaries = {
     simulator: {
       title: 'Simulador de Retorno de Inversión (ROI)',
       subtitle: 'Descubre cuánto tiempo y dinero estás perdiendo por no automatizar las tareas repetitivas de tu negocio.',
-      label_hours: 'Horas semanales desperdiciadas en tareas repetitivas',
+      label_hours: 'Horas a la semana en tareas que se repiten (pasar datos, hacer facturas, llamar para recordar…)',
       label_employees: 'Número de empleados haciendo estas tareas',
       label_cost: 'Coste medio por hora del empleado',
-      result_monthly: 'Ahorro Mensual Estimado',
-      result_yearly: 'Ahorro Anual Estimado',
-      result_hours: 'Tiempo Anual Recuperado',
-      rec_title: 'Propuesta de Solución Sugerida',
-      rec_badge: 'RECOMENDADO',
-      btn_apply: 'Vincular presupuesto y continuar al formulario',
-      notif_linked: '¡Simulación vinculada con éxito en el formulario!',
-      opt_s2: '02. Automatizaciones Específicas',
-      opt_s4: '05. Integración de Inteligencia Artificial',
-      opt_s8: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)'
+      result_monthly: 'Coste mensual estimado',
+      result_yearly: 'Coste anual estimado',
+      result_hours: 'Tiempo anual en estas tareas',
+      rec_texto: 'Esto es lo que se te va. En el diagnóstico vemos qué pieza lo recupera, y si no compensa, te lo digo.',
+      btn_apply: 'Llevar estos números al formulario',
+      notif_linked: '¡Simulación vinculada con éxito en el formulario!'
     },
     leads: {
       sticky_cta: 'Consulta gratuita',
@@ -471,11 +472,12 @@ export const dictionaries = {
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo que se monte va en cuentas a tu nombre, y los datos, en servidores de la Unión Europea. El asistente de WhatsApp usa Google Cloud, también en la UE, y WhatsApp de Meta.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra en la cuota.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
+      portada_nota: '2 minutos y sin registrarte: eliges tu sector y ves cómo quedaría tu día a día.',
       // Cuando llega desde el documento 2 (&desde=doc2): ya hizo el diagnostico.
       doc2_titulo: '¿Lo hablamos?',
       doc2_texto: 'Si quieres darle una vuelta a lo que hemos visto, escríbeme y lo miramos juntos.',
@@ -518,11 +520,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
-      subtitle: 'La peça exacta on el teu negoci i la tecnologia encaixen: des de la teva presència digital fins a sistemes ERP/CRM i integracions d\'IA. Els faig jo, de principi a fi, aquí a Lloret de Mar.',
+      subtitle: 'Programes per portar clients, pressupostos, factures i tècnics en un sol lloc, assistents que atenen el teu WhatsApp i webs fetes a mà. Per a instal·ladors, reformes, tallers, clíniques, perruqueries, immobiliàries i gestories. Els faig jo, aquí a Lloret de Mar.',
       meta_description: 'Assistents amb intel·ligència artificial, automatitzacions i programes a mida per a negocis de Lloret de Mar i la Costa Brava. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
-      cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.',
+      cta_note: 'Gratis i sense compromís. Abans de parlar miro el teu web, la teva fitxa de Google i com et contacten els teus clients, per no començar de zero. Per això només en faig dues per setmana.',
+      quien: 'Sóc Rubén Reyes, de Teselar Software. T’atenc jo.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
       pieza_texto: 'El que et falta, fet a la mida del forat',
       piezas_desc: ['Els teus clients i el seu historial, en un sol lloc', 'Pressupostos i factures que surten sols', 'Cites que es reserven sense trucar', 'Una web feta a mà, ràpida', 'Respostes i recordatoris automàtics', 'Avisos, tècnics i parts de treball des del mòbil'],
@@ -535,7 +538,7 @@ export const dictionaries = {
     },
     services: {
       title: 'Catàleg de Serveis',
-      subtitle: 'Solucions modulars i d\'alt rendiment adaptades a la teva mida i pressupost. Sense costos ocults.',
+      subtitle: 'Solucions modulars adaptades a la teva mida i pressupost. Sense costos ocults: el que no hi entra és aquí sota i, per escrit, a la teva proposta.',
       ideal: 'Ideal per a:',
       pricing: 'Preu',
       features: 'Què inclou:',
@@ -546,7 +549,7 @@ export const dictionaries = {
         c1_title: 'Xatbot guiat · dins del 02',
         c1_desc: 'Segueix un guió de botons i respostes previstes. Barat i suficient si les preguntes són sempre les mateixes; així que se surten del guió, s\'encalla.',
         c2_title: 'Assistent d\'IA · el 05',
-        c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. Es construeix a mida sobre la teva documentació, els teus canals i els teus sistemes: per això el rang és ampli. És el que estàs fent servir aquí: la TesS.',
+        c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. Es construeix a mida sobre la teva documentació, els teus canals i els teus sistemes: per això el rang és ampli. És el xat que tens a la cantonada d’aquest web: la TesS. Pregunta-li el que vulguis.',
         c3_title: 'Cites per WhatsApp · el 03',
         c3_desc: 'Un assistent d\'IA que a més actua: mira els forats que tens lliures de debò, reserva la cita, la confirma i envia el recordatori. Ja està construït i provat — es configura amb els teus serveis i els teus horaris, i per això és més barat que un desenvolupament a mida i pot portar garantia.',
         nota: 'La pregunta per triar és senzilla: el que perds són consultes sense respondre, o cites sense agafar? I si són cites, no paguis un desenvolupament a mida: això ja està fet i et surt més barat.'
@@ -650,14 +653,14 @@ export const dictionaries = {
         f4: '2 idiomes inclosos per a compradors estrangers — addicional +250€',
         f5: 'Exportació XML (format Kyero) per sincronitzar amb Idealista, Habitaclia, Fotocasa i portals internacionals',
         f6: 'Formulari de contacte per propietat i botó de WhatsApp',
-        f7: 'SEO local, i manteniment inclòs el primer any (els feeds a portals necessiten vigilància)'
+        f7: 'SEO local i manteniment inclòs el primer any, amb la vigilància del feed als portals'
       },
       s8: {
-        title: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)',
+        title: '09. Programa de gestió a mida: clients, factures i tècnics',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
-        f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
+        f1: 'Funciona al mòbil, la tauleta i l’ordinador. Al mòbil, també sense cobertura: desa el que s’apunta i ho envia quan torna el senyal.',
         f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
         f3: 'Mòdul integral de gestió de clients (CRM) i base de contactes',
         f4: 'Generació automàtica i descàrrega directa de factures i pressupostos en PDF',
@@ -699,7 +702,7 @@ export const dictionaries = {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Per a e-commerce, immobiliàries i webs que canvien molt. Sense permanència.',
+        desc: 'Per quan no pots esperar: botigues, immobiliàries, programes que el teu equip fa servir cada dia i webs que canvien molt. Sense permanència.',
         f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
         f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
@@ -731,16 +734,16 @@ export const dictionaries = {
       },
       payment: {
         title: 'Mètodes de Pagament i Condicions',
-        methods: 'Mètodes acceptats: Transferència bancària o efectiu a la mà (amb cita prèvia).',
+        methods: 'Transferència bancària.',
         conditions: 'Condicions: Per contractar només es demana un senyal del 10% (mínim 150€). La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l\'Auditoria de Processos, aquests 150€ ja estan pagats i es descompten del senyal. Tots els preus són + IVA.'
       }
     },
     values: {
       title: 'Per què escollir-me?',
-      subtitle: 'L\'avantatge competitiu de treballar amb artesans del programari especialitzats en lloc de grans consultores lentes o freelancers inestables.',
+      subtitle: 'Treballes directament amb qui ho fa: sense intermediaris, sense plantilles i a prop teu.',
       v1: {
-        title: 'Contacte Directe sense Intermediaris',
-        desc: 'Parlo el teu mateix idioma. Tractes directament amb el desenvolupador que escriu cada línia de codi de la teva aplicació, sense esperes ni malentesos.'
+        title: 'Vinc de l’empresa',
+        desc: 'Abans del programari vaig passar dotze anys a compres i postvenda, en una societat anònima i dues multinacionals: albarans, factures, pressupostos de reparació, proveïdors i un taller al meu càrrec. Per això primer miro com treballes, i la tecnologia ve després. I parles sempre amb mi.'
       },
       v2: {
         title: 'Desenvolupament Natiu a Mida',
@@ -804,7 +807,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'Com es paga un projecte?',
-        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Accepto transferència bancària o efectiu a la mà amb cita prèvia.'
+        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Es paga per transferència bancària.'
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
@@ -829,6 +832,10 @@ export const dictionaries = {
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
         a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i ERP/CRM) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el teu web continua publicat i continua sent teu, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
+      },
+      q14: {
+        q: 'On queden les dades dels meus clients?',
+        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites (Google Cloud, també a la UE), i per això el seu cost entra a la quota. Si treballes amb dades de salut o fiscals, signem a més un contracte de protecció de dades.'
       }
     },
     contact: {
@@ -866,19 +873,15 @@ export const dictionaries = {
     simulator: {
       title: 'Simulador de Retorn de la Inversió (ROI)',
       subtitle: 'Descobreix quant temps i diners estàs perdent per no automatitzar les tasques repetitives del teu negoci.',
-      label_hours: 'Hores setmanals malgastades en tasques repetitives',
+      label_hours: 'Hores a la setmana en tasques que es repeteixen (passar dades, fer factures, trucar per recordar…)',
       label_employees: 'Nombre d\'empleats fent aquestes tasques',
       label_cost: 'Cost mitjà per hora de l\'empleat',
-      result_monthly: 'Estalvi Mensual Estimat',
-      result_yearly: 'Estalvi Anual Estimat',
-      result_hours: 'Temps Anual Recuperat',
-      rec_title: 'Proposta de Solució Suggerida',
-      rec_badge: 'RECOMANAT',
-      btn_apply: 'Vincular pressupost i continuar al formulari',
-      notif_linked: '¡Simulació vinculada amb èxit al formulari!',
-      opt_s2: '02. Automatitzacions Específiques',
-      opt_s4: '05. Integració d\'Intel·ligència Artificial',
-      opt_s8: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)'
+      result_monthly: 'Cost mensual estimat',
+      result_yearly: 'Cost anual estimat',
+      result_hours: 'Temps anual en aquestes tasques',
+      rec_texto: 'Això és el que se t’escapa. Al diagnòstic veiem quina peça ho recupera, i si no compensa, t’ho dic.',
+      btn_apply: 'Portar aquests números al formulari',
+      notif_linked: '¡Simulació vinculada amb èxit al formulari!'
     },
     leads: {
       sticky_cta: 'Consulta gratuïta',
@@ -959,11 +962,12 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que es munti va en comptes a nom teu, i les dades, en servidors de la Unió Europea. L’assistent de WhatsApp fa servir Google Cloud, també a la UE, i el WhatsApp de Meta.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites (Google Cloud, també a la UE), i per això el seu cost entra a la quota.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
+      portada_nota: '2 minuts i sense registrar-te: tries el teu sector i veus com quedaria el teu dia a dia.',
       doc2_titulo: 'En parlem?',
       doc2_texto: 'Si vols donar-li una volta al que hem vist, escriu-me i ho mirem junts.',
       doc2_btn: 'Escriure al Rubén per WhatsApp',
@@ -1001,11 +1005,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'The exact piece where technology and your business fit perfectly',
-      subtitle: 'The exact piece where your business and technology fit together: from your web presence to native ERP/CRM systems and AI integrations. I build them myself, end to end, here in Lloret de Mar.',
+      subtitle: 'Software to keep your customers, quotes, invoices and technicians in one place, assistants that answer your WhatsApp, and hand-built websites. For installers, renovation firms, garages, clinics, salons, estate agents and accountancy firms. I build them myself, here in Lloret de Mar.',
       meta_description: 'AI assistants, automations and custom software for businesses in Lloret de Mar and the Costa Brava. I build them myself, end to end.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
-      cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.',
+      cta_note: 'Free and with no strings attached. Before we talk I look at your website, your Google profile and how your customers reach you, so we do not start from scratch. That is why I only do two a week.',
+      quien: 'I am Rubén Reyes, from Teselar Software. You deal with me.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
       pieza_texto: 'What you\'re missing, made to fit the gap',
       piezas_desc: ['Your clients and their history, in one place', 'Quotes and invoices that go out on their own', 'Bookings made without a phone call', 'A hand-built, fast website', 'Automatic replies and reminders', 'Call-outs, technicians and job reports from your phone'],
@@ -1018,7 +1023,7 @@ export const dictionaries = {
     },
     services: {
       title: 'Services Catalog',
-      subtitle: 'Modular and high-performance solutions tailored to your size and budget. No hidden costs.',
+      subtitle: 'Modular solutions tailored to your size and budget. No hidden costs: what is not included is listed below and, in writing, in your proposal.',
       ideal: 'Ideal for:',
       pricing: 'Price',
       features: 'What is included:',
@@ -1029,7 +1034,7 @@ export const dictionaries = {
         c1_title: 'Guided chatbot · part of 02',
         c1_desc: 'Follows a script of buttons and pre-written answers. Cheap and enough when the questions are always the same; step off the script and it gets stuck.',
         c2_title: 'AI assistant · service 05',
-        c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is built from scratch around your documentation, your channels and your systems, which is why the range is wide. It is what you are using here: TesS.',
+        c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is built from scratch around your documentation, your channels and your systems, which is why the range is wide. It is the chat in the corner of this website: TesS. Ask it anything.',
         c3_title: 'WhatsApp Booking · service 03',
         c3_desc: 'An AI assistant that also acts: it checks the slots you actually have free, books the appointment, confirms it and sends the reminder. It is already built and proven — it gets configured with your services and opening hours, which is why it costs less than bespoke work and can carry a guarantee.',
         nota: 'The question to choose is simple: are you losing unanswered enquiries, or uncaught bookings? And if it is bookings, do not pay for bespoke work: that one is already built and costs you less.'
@@ -1133,14 +1138,14 @@ export const dictionaries = {
         f4: '2 languages included for foreign buyers — each additional +250€',
         f5: 'XML export (Kyero format) to sync with Idealista, Habitaclia, Fotocasa, and international portals',
         f6: 'Per-property contact form and WhatsApp button',
-        f7: 'Local SEO, and maintenance included for the first year (portal feeds need monitoring)'
+        f7: 'Local SEO and maintenance included for the first year, including monitoring of the feed to the portals'
       },
       s8: {
-        title: '09. Custom Management System (ERP/CRM/FSM)',
+        title: '09. Custom management software: customers, invoices and technicians',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
-        f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
+        f1: 'Works on mobile, tablet and computer. On mobile it also works without signal: it saves what you enter and sends it when the signal is back.',
         f2: 'Interactive dashboard with financial charts and live metrics',
         f3: 'Complete client management (CRM) and contact database module',
         f4: 'Automated generation and direct PDF download of quotes and invoices',
@@ -1182,7 +1187,7 @@ export const dictionaries = {
         title: 'Plus Plan',
         price: '150€',
         period: '/ month',
-        desc: 'For e-commerce, real estate agencies, and fast-changing websites. No lock-in.',
+        desc: 'For when you cannot wait: online shops, estate agents, software your team uses every day, and fast-changing websites. No lock-in.',
         f1: 'Everything in Basic, with daily backups',
         f2: '5h/month of development and improvements (non-cumulative)',
         f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
@@ -1214,16 +1219,16 @@ export const dictionaries = {
       },
       payment: {
         title: 'Payment Terms & Methods',
-        methods: 'Accepted methods: Bank transfer or cash in hand (by appointment).',
+        methods: 'Bank transfer.',
         conditions: 'Terms: A 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit, those 150€ are already paid and come off the deposit. All prices are + VAT.'
       }
     },
     values: {
       title: 'Why Work With Me?',
-      subtitle: 'The competitive advantage of working with specialized software craftsmen instead of slow corporate agencies or unstable freelancers.',
+      subtitle: 'You work directly with the person who builds it: no middlemen, no templates, and close to you.',
       v1: {
-        title: 'Direct Contact, No Intermediaries',
-        desc: 'I speak your language. You deal directly with the developer writing every line of your software, with no delays and no misunderstandings.'
+        title: 'I come from business',
+        desc: 'Before software I spent twelve years in purchasing and after-sales, at a public limited company and two multinationals: delivery notes, invoices, repair quotes, suppliers and a workshop under my charge. That is why I look at how you work first, and the technology comes after. And you always talk to me.'
       },
       v2: {
         title: 'Custom Native Development',
@@ -1287,7 +1292,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'How do I pay for a project?',
-        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. I accept bank transfer or cash in hand by appointment.'
+        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. Payment is by bank transfer.'
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',
@@ -1312,6 +1317,10 @@ export const dictionaries = {
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
         a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and ERP/CRM) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: your website remains published and remains yours, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
+      },
+      q14: {
+        q: 'Where does my customers’ data stay?',
+        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant (Google Cloud, also in the EU), which is why its cost is part of the monthly fee. If you handle health or tax data, we also sign a data protection agreement.'
       }
     },
     contact: {
@@ -1349,19 +1358,15 @@ export const dictionaries = {
     simulator: {
       title: 'Return on Investment (ROI) Simulator',
       subtitle: 'Discover how much time and money you are losing by not automating your business tasks.',
-      label_hours: 'Weekly hours wasted on repetitive tasks',
+      label_hours: 'Hours a week on tasks that repeat (entering data, making invoices, calling to remind…)',
       label_employees: 'Number of employees doing these tasks',
       label_cost: 'Average hourly cost per employee',
-      result_monthly: 'Estimated Monthly Savings',
-      result_yearly: 'Estimated Yearly Savings',
-      result_hours: 'Annual Recovered Time',
-      rec_title: 'Suggested Solution Proposal',
-      rec_badge: 'RECOMMENDED',
-      btn_apply: 'Link budget and continue to form',
-      notif_linked: 'Simulation successfully linked to the form!',
-      opt_s2: '02. Specific Automations',
-      opt_s4: '05. Artificial Intelligence Integration',
-      opt_s8: '09. Custom Management System (ERP/CRM/FSM)'
+      result_monthly: 'Estimated monthly cost',
+      result_yearly: 'Estimated yearly cost',
+      result_hours: 'Yearly time on these tasks',
+      rec_texto: 'This is what is slipping away. In the diagnosis we look at which piece recovers it, and if it is not worth it, I will tell you.',
+      btn_apply: 'Take these numbers to the form',
+      notif_linked: 'Simulation successfully linked to the form!'
     },
     leads: {
       sticky_cta: 'Free consultation',
@@ -1442,11 +1447,12 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'Everything we set up goes in accounts in your name, and the data sits on servers in the European Union. The WhatsApp assistant uses Google Cloud, also in the EU, and Meta’s WhatsApp.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant (Google Cloud, also in the EU), which is why its cost is part of the monthly fee.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
+      portada_nota: '2 minutes, no sign-up: pick your sector and see what your day-to-day would look like.',
       doc2_titulo: 'Shall we talk it over?',
       doc2_texto: 'If you want to go over what we looked at, drop me a line and we’ll look at it together.',
       doc2_btn: 'Message Rubén on WhatsApp',
