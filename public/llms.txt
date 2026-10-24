@@ -56,7 +56,7 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
 - **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. **No es el servicio de arriba más barato.** Aquí
   **no hay asistente que converse**: el cliente del negocio escribe al WhatsApp de siempre, recibe un
   enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email,
-  no por WhatsApp. A cambio, el negocio no migra de número, no depende de los plazos de Meta y no paga
+  no por WhatsApp. A cambio, no se conecta al número del negocio, no depende de los plazos de Meta y no paga
   mensajes. Lo que pierde es la conversación 24 h dentro de WhatsApp. Criterio para elegir: si sus
   clientes ya le escriben por WhatsApp, el de arriba; si no, con este basta.
 - **Web Esencial** — 1.200€–1.600€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
@@ -122,15 +122,17 @@ cifras verificadas y no se inventan.
   Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
   Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
-  acumulables), vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones
-  (4h en incidencia crítica), informe mensual. Para quien no puede esperar: tiendas, inmobiliarias y programas que el equipo usa cada día.
+  acumulables), vigilancia de pasarelas de pago, respuesta el mismo día, también en fines de semana, festivos y vacaciones
+  (4h en incidencia crítica), informe mensual. El Básico cubre lo normal; el Plus es para quien no puede esperar.
 
 ## Dónde quedan los datos
 
 Todo lo del cliente va en cuentas a su nombre (dominio, hosting, base de datos y su número de WhatsApp),
 con los datos en servidores de la Unión Europea. Lo único que va en la cuenta de Teselar es la
-inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra
-en la cuota. Con datos de salud o fiscales se firma además un contrato de protección de datos.
+inteligencia artificial del asistente de citas: Google Cloud, en la UE, con el acuerdo de protección de datos
+de Google y sin que Google use las conversaciones para entrenar nada; por eso su coste entra en la cuota.
+Las conversaciones solo las ve Rubén, y solo si hay un fallo que corregir o si el cliente se lo pide. Y
+siempre se firma el contrato de protección de datos que pide la ley.
 
 ## Qué pasa si no se paga el mantenimiento o no se renueva
 

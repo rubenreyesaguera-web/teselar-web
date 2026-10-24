@@ -181,7 +181,7 @@ export const dictionaries = {
         f5: 'Panel con tus citas y el contador de las que entraron fuera de tu horario de atención',
         f6: 'Garantía: si en los tres primeros meses no entra ni una cita fuera de tu horario, te devuelvo la puesta en marcha',
         f7: 'Petición automática de reseñas en Google al terminar la cita, como complemento (+200€)',
-        f8: 'Hay una versión sin WhatsApp API por 400€-700€ + 90€/mes, y no es lo mismo más barato: ahí no hay asistente que converse — tu cliente te escribe al WhatsApp de siempre, recibe un enlace y reserva en una página, y la confirmación y el recordatorio le llegan por email. A cambio no migras de número ni dependes de Meta'
+        f8: 'Hay una versión sin WhatsApp API por 400€-700€ + 90€/mes, y no es lo mismo más barato: ahí no hay asistente que converse — tu cliente te escribe al WhatsApp de siempre, recibe un enlace y reserva en una página, y la confirmación y el recordatorio le llegan por email. A cambio, no se conecta a tu número ni dependes de Meta'
       }
     },
     pricing: {
@@ -201,10 +201,10 @@ export const dictionaries = {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Para cuando no puedes esperar: tiendas, inmobiliarias, programas que tu equipo usa cada día y webs que cambian mucho. Sin permanencia.',
+        desc: 'El Básico cubre lo normal. El Plus es para cuando no puedes esperar: respuesta el mismo día, también en fines de semana y vacaciones. Sin permanencia.',
         f1: 'Todo lo del Básico, con copias de seguridad diarias',
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
-        f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
+        f3: 'Vigilancia de pasarelas de pago + revisión trimestral de velocidad y SEO',
         f4: 'Respuesta el mismo día, también en fines de semana, festivos y vacaciones (4h en incidencia crítica), e informe mensual'
       },
       citas: {
@@ -212,7 +212,7 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ mes',
         desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. El Esencial lleva una agenda, con una cita a la vez; el Completo, varias a la vez, para cuando atendéis dos o más personas al mismo tiempo.',
-        f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
+        f1: 'El asistente atendiendo tu WhatsApp cada día, vigilado, y corregido si algo falla — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta: entre 1,7 y 3,3 céntimos por cita, calculado con la tarifa oficial de Meta en vigor desde el 1 de octubre de 2026. Las respuestas del asistente entran en los 1.000 mensajes gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes; lo que se paga es el recordatorio y la confirmación. Lo que escriben tus clientes es gratis',
         cta: 'Ver el producto de citas'
@@ -302,7 +302,7 @@ export const dictionaries = {
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
-        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones, e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
+        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago, respuesta el mismo día, también en fines de semana, festivos y vacaciones, e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico (60€/mes) de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
@@ -318,7 +318,7 @@ export const dictionaries = {
       },
       q10: {
         q: '¿Puedes hacer que mi negocio coja las citas por WhatsApp?',
-        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes, para una agenda con una cita a la vez, y el Completo 1.500€-1.800€ más 250€/mes, para cuando atendéis varias personas al mismo tiempo. Todo, + IVA. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo). Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email, no por WhatsApp. A cambio no migras de número, no dependes de los plazos de Meta y no pagas mensajes.'
+        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes, para una agenda con una cita a la vez, y el Completo 1.500€-1.800€ más 250€/mes, para cuando atendéis varias personas al mismo tiempo. Todo, + IVA. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Tu número tiene que estar en la app WhatsApp Business, la de siempre con herramientas para negocios. Si aún no la usas, el cambio es gratis, tarda diez minutos y conservas número, chats y contactos; te ayudo a hacerlo. Tus clientes no notan nada, y tú sigues escribiendo desde el móvil a la vez que el asistente. Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email, no por WhatsApp. A cambio, no se conecta a tu número, no dependes de los plazos de Meta y no pagas mensajes.'
       },
       q11: {
         q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
@@ -334,7 +334,7 @@ export const dictionaries = {
       },
       q14: {
         q: '¿Dónde quedan los datos de mis clientes?',
-        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra en la cuota. Si manejas datos de salud o fiscales, firmamos además un contrato de protección de datos.'
+        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. Y siempre firmamos el contrato de protección de datos que pide la ley.'
       }
     },
     contact: {
@@ -466,13 +466,12 @@ export const dictionaries = {
       // vaya a nombre del cliente vale para cualquier producto (Ruben). El contrato de encargado no se nombra: genera mas
       // dudas de las que quita.
       // Solo en fisio y gestoria (datos de salud y fiscales): alli lo pedian; en el resto genera mas dudas (Ruben, 24/10).
-      faq_contrato: 'Firmamos un contrato de protección de datos, como pide la ley.',
       faq_titulo: 'Lo que más me preguntan',
       faq: [
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas (Google Cloud, también en la UE), y por eso su coste entra en la cuota.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. Y siempre firmamos el contrato de protección de datos que pide la ley.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
@@ -682,7 +681,7 @@ export const dictionaries = {
         f5: 'Panell amb les teves cites i el comptador de les que van entrar fora del teu horari d\'atenció',
         f6: 'Garantia: si en els tres primers mesos no entra ni una cita fora del teu horari, et torno la posada en marxa',
         f7: 'Petició automàtica de ressenyes a Google en acabar la cita, com a complement (+200€)',
-        f8: 'Hi ha una versió sense WhatsApp API per 400€-700€ + 90€/mes, i no és el mateix més barat: allà no hi ha assistent que conversi — el teu client t\'escriu al WhatsApp de sempre, rep un enllaç i reserva en una pàgina, i la confirmació i el recordatori li arriben per email. A canvi no migres de número ni depens de Meta'
+        f8: 'Hi ha una versió sense WhatsApp API per 400€-700€ + 90€/mes, i no és el mateix més barat: allà no hi ha assistent que conversi — el teu client t\'escriu al WhatsApp de sempre, rep un enllaç i reserva en una pàgina, i la confirmació i el recordatori li arriben per email. A canvi, no es connecta al teu número ni depens de Meta'
       }
     },
     pricing: {
@@ -702,10 +701,10 @@ export const dictionaries = {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Per quan no pots esperar: botigues, immobiliàries, programes que el teu equip fa servir cada dia i webs que canvien molt. Sense permanència.',
+        desc: 'El Bàsic cobreix el normal. El Plus és per quan no pots esperar: resposta el mateix dia, també en caps de setmana i vacances. Sense permanència.',
         f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
-        f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
+        f3: 'Vigilància de passarel·les de pagament + revisió trimestral de velocitat i SEO',
         f4: 'Resposta el mateix dia, també en caps de setmana, festius i vacances (4h en incidència crítica), i informe mensual'
       },
       citas: {
@@ -713,7 +712,7 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ mes',
         desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. L\'Essencial porta una agenda, amb una cita alhora; el Complet, diverses alhora, per quan atenen dues o més persones al mateix temps.',
-        f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
+        f1: 'L\'assistent atenent el teu WhatsApp cada dia, vigilat, i corregit si alguna cosa falla — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte: entre 1,7 i 3,3 cèntims per cita, calculat amb la tarifa oficial de Meta en vigor des de l\'1 d\'octubre de 2026. Les respostes de l\'assistent entren en els 1.000 missatges gratis al mes que dona Meta per número, que cobreixen fins a unes 250 cites al mes; el que es paga és el recordatori i la confirmació. El que escriuen els teus clients és gratis',
         cta: 'Veure el producte de cites'
@@ -803,7 +802,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
-        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia, també en caps de setmana, festius i vacances, i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
+        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament, resposta el mateix dia, també en caps de setmana, festius i vacances, i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic (60€/mes) de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
       },
       q7: {
         q: 'Com es paga un projecte?',
@@ -819,7 +818,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Pots fer que el meu negoci agafi les cites per WhatsApp?',
-        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes, per a una agenda amb una cita alhora, i el Complet 1.500€-1.800€ més 250€/mes, per quan atenen diverses persones al mateix temps. Tot, + IVA. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho). Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email, no per WhatsApp. A canvi no migres de número, no depens dels terminis de Meta i no pagues missatges.'
+        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes, per a una agenda amb una cita alhora, i el Complet 1.500€-1.800€ més 250€/mes, per quan atenen diverses persones al mateix temps. Tot, + IVA. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. El teu número ha d’estar a l’app WhatsApp Business, la de sempre amb eines per a negocis. Si encara no la fas servir, el canvi és gratis, triga deu minuts i conserves número, xats i contactes; t’ajudo a fer-ho. Els teus clients no noten res, i tu continues escrivint des del mòbil alhora que l’assistent. Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email, no per WhatsApp. A canvi, no es connecta al teu número, no depens dels terminis de Meta i no pagues missatges.'
       },
       q11: {
         q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
@@ -835,7 +834,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'On queden les dades dels meus clients?',
-        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites (Google Cloud, també a la UE), i per això el seu cost entra a la quota. Si treballes amb dades de salut o fiscals, signem a més un contracte de protecció de dades.'
+        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. I sempre signem el contracte de protecció de dades que demana la llei.'
       }
     },
     contact: {
@@ -956,13 +955,12 @@ export const dictionaries = {
       cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
       nota: 'A la xerrada m’expliques com ho portes avui ({como}) i mirem què s’hi passa i com. No cal que m’ensenyis dades dels teus clients.',
       nota_como: 'Excel, paper, WhatsApp o el teu programa',
-      faq_contrato: 'Signem un contracte de protecció de dades, com demana la llei.',
       faq_titulo: 'El que més em pregunten',
       faq: [
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites (Google Cloud, també a la UE), i per això el seu cost entra a la quota.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. I sempre signem el contracte de protecció de dades que demana la llei.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
@@ -1167,7 +1165,7 @@ export const dictionaries = {
         f5: 'Dashboard with your bookings and a counter of those that came in outside your opening hours',
         f6: 'Guarantee: if not a single booking comes in outside your hours in the first three months, you get the setup fee back',
         f7: 'Automatic Google review request once the appointment is over, as an add-on (+200€)',
-        f8: 'There is a version without the WhatsApp API for 400€-700€ + 90€/month, and it is not the same thing cheaper: there is no assistant holding a conversation — your client writes to your usual WhatsApp, gets a link and books on a page, and the confirmation and reminder arrive by email. In exchange you do not migrate your number or depend on Meta'
+        f8: 'There is a version without the WhatsApp API for 400€-700€ + 90€/month, and it is not the same thing cheaper: there is no assistant holding a conversation — your client writes to your usual WhatsApp, gets a link and books on a page, and the confirmation and reminder arrive by email. In exchange, it does not connect to your number and you do not depend on Meta'
       }
     },
     pricing: {
@@ -1187,10 +1185,10 @@ export const dictionaries = {
         title: 'Plus Plan',
         price: '150€',
         period: '/ month',
-        desc: 'For when you cannot wait: online shops, estate agents, software your team uses every day, and fast-changing websites. No lock-in.',
+        desc: 'Basic covers the normal needs. Plus is for when you cannot wait: same-day response, weekends and holidays included. No lock-in.',
         f1: 'Everything in Basic, with daily backups',
         f2: '5h/month of development and improvements (non-cumulative)',
-        f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
+        f3: 'Payment gateway monitoring + quarterly speed and SEO review',
         f4: 'Same-day response, weekends, bank holidays and holidays included (4h for critical issues), and monthly report'
       },
       citas: {
@@ -1198,7 +1196,7 @@ export const dictionaries = {
         price: '150€ — 250€',
         period: '/ month',
         desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. The Essential plan has one calendar, one appointment at a time; the Complete one handles several at once, for when two or more people are seeing clients at the same time.',
-        f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes — with the AI model cost included: no signing up to any AI service and no API keys to manage',
+        f1: 'The assistant answering your WhatsApp every day, monitored, and fixed if something goes wrong — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account: between 1.7 and 3.3 cents per booking, worked out from Meta\'s official rates in force since 1 October 2026. The assistant\'s replies fall within the 1,000 free messages a month Meta gives each number, which cover up to about 250 bookings a month; what you pay for is the reminder and the confirmation. What your clients write is always free',
         cta: 'See the booking product'
@@ -1288,7 +1286,7 @@ export const dictionaries = {
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
-        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, weekends, bank holidays and holidays included, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
+        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway monitoring, same-day response, weekends, bank holidays and holidays included, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations require the Basic Plan (60€/month) while they are running, because an unwatched automation breaks silently the day an API changes.'
       },
       q7: {
         q: 'How do I pay for a project?',
@@ -1304,7 +1302,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Can you get my business taking bookings over WhatsApp?',
-        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, for one calendar with one appointment at a time, and the Complete one 1,500€-1,800€ plus 250€/month, for when several people see clients at the same time. All + VAT. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it). Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email, not by WhatsApp. In exchange you do not migrate your number, you do not depend on Meta\'s timelines and you pay no messages.'
+        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, for one calendar with one appointment at a time, and the Complete one 1,500€-1,800€ plus 250€/month, for when several people see clients at the same time. All + VAT. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. Your number has to be on the WhatsApp Business app, the usual one with tools for businesses. If you do not use it yet, switching is free, takes ten minutes and you keep your number, chats and contacts; I help you do it. Your customers notice nothing, and you keep writing from your phone alongside the assistant. Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email, not by WhatsApp. In exchange, it does not connect to your number, you do not depend on Meta\'s timelines and you pay no messages.'
       },
       q11: {
         q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',
@@ -1320,7 +1318,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'Where does my customers’ data stay?',
-        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant (Google Cloud, also in the EU), which is why its cost is part of the monthly fee. If you handle health or tax data, we also sign a data protection agreement.'
+        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the conversations, and only if there is a fault to fix or you ask me to. And we always sign the data protection agreement the law requires.'
       }
     },
     contact: {
@@ -1441,13 +1439,12 @@ export const dictionaries = {
       cta_sub: 'In my calendar · 30 minutes, no commitment',
       nota: 'In the chat you tell me how you handle it today ({como}) and we see what moves across and how. You don’t need to show me any customer data.',
       nota_como: 'Excel, paper, WhatsApp or your current software',
-      faq_contrato: 'We sign a data protection agreement, as the law requires.',
       faq_titulo: 'What I get asked most',
       faq: [
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant (Google Cloud, also in the EU), which is why its cost is part of the monthly fee.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the conversations, and only if there is a fault to fix or you ask me to. And we always sign the data protection agreement the law requires.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',

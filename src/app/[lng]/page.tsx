@@ -866,15 +866,15 @@ export default function Page({ params }: PageProps) {
 
           <ul className="border-t border-claridad/10">
             {[
-              { id: 'basic', plan: t.pricing.basic, items: [t.pricing.basic.f1, t.pricing.basic.f2, t.pricing.basic.f3, t.pricing.basic.f4], nota: null, recomendado: false,
+              { id: 'basic', plan: t.pricing.basic, items: [t.pricing.basic.f1, t.pricing.basic.f2, t.pricing.basic.f3, t.pricing.basic.f4], nota: null,
                 cta: lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan', accion: () => handleScrollToContact('info'), href: null },
-              { id: 'plus', plan: t.pricing.plus, items: [t.pricing.plus.f1, t.pricing.plus.f2, t.pricing.plus.f3, t.pricing.plus.f4], nota: null, recomendado: true,
+              { id: 'plus', plan: t.pricing.plus, items: [t.pricing.plus.f1, t.pricing.plus.f2, t.pricing.plus.f3, t.pricing.plus.f4], nota: null,
                 cta: lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan', accion: () => handleScrollToContact('info'), href: null },
-              { id: 'citas', plan: t.pricing.citas, items: [t.pricing.citas.f1, t.pricing.citas.f2], nota: t.pricing.citas.f3, recomendado: false,
+              { id: 'citas', plan: t.pricing.citas, items: [t.pricing.citas.f1, t.pricing.citas.f2], nota: t.pricing.citas.f3,
                 cta: t.pricing.citas.cta, accion: null, href: '#services' },
-              { id: 'ia', plan: t.pricing.ia, items: [t.pricing.ia.f1, t.pricing.ia.f2], nota: t.pricing.ia.f3, recomendado: false,
+              { id: 'ia', plan: t.pricing.ia, items: [t.pricing.ia.f1, t.pricing.ia.f2], nota: t.pricing.ia.f3,
                 cta: t.pricing.ia.cta, accion: null, href: '#services' },
-            ].map(({ id, plan, items, nota, recomendado, cta, accion, href }) => {
+            ].map(({ id, plan, items, nota, cta, accion, href }) => {
               const abierto = planAbierto === id;
               const idDetalle = `plan-${id}`;
               const claseCta = 'flex-1 lg:flex-none py-3 px-4 rounded-md bg-innovacion text-teselar-dark text-base font-bold text-center hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2';
@@ -882,11 +882,8 @@ export default function Page({ params }: PageProps) {
                 <li key={id} className="fila-servicio border-b border-claridad/10">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-6 gap-y-4 py-7 md:py-8">
                     <div className="lg:col-span-6 flex flex-col gap-2">
-                      {/* La etiqueta va fuera del titulo: dentro, buscadores y lectores leian "Plan PlusRecomendado". */}
-                      <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad">{plan.title}</h3>
-                        {recomendado && <span className="text-sm font-semibold text-teselar-dark bg-innovacion px-2.5 py-0.5 rounded">{lng === 'es' ? 'Recomendado' : lng === 'ca' ? 'Recomanat' : 'Recommended'}</span>}
-                      </div>
+                      {/* Sin etiqueta «Recomendado» en el Plus (24/10): hacia creer que el Basico incluido no bastaba. */}
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight text-claridad">{plan.title}</h3>
                       <p className={`text-base text-claridad/80 leading-relaxed max-w-[62ch] [text-wrap:pretty] ${abierto ? '' : 'line-clamp-2'}`}>{plan.desc}</p>
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">

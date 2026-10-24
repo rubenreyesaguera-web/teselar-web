@@ -77,16 +77,17 @@ describe('orden de «¿Que llevas?»', () => {
   });
 });
 
-// «Lo que mas me preguntan» (24/10): la respuesta de los datos lleva `id`, porque en fisio y gestoria se le anade el
-// contrato de proteccion de datos.
+// «Lo que mas me preguntan» (24/10): la respuesta de los datos lleva `id`. El contrato de proteccion de datos va en
+// ella para todos los sectores, porque la ley lo pide siempre que se tratan datos de sus clientes (doc 25).
 describe('preguntas frecuentes de la demo', () => {
   for (const lng of ['es', 'ca', 'en'] as const) {
-    test(`${lng}: cuatro preguntas, la de los datos marcada y el contrato escrito`, () => {
+    test(`${lng}: cuatro preguntas, la de los datos marcada y con el contrato`, () => {
       const d = dictionaries[lng].demo;
       expect(d.faq.length).toBe(4);
-      expect(d.faq.filter((f) => 'id' in f && f.id === 'datos').length).toBe(1);
+      const datos = d.faq.filter((f) => 'id' in f && f.id === 'datos');
+      expect(datos.length).toBe(1);
+      expect(datos[0].r).toMatch(/contrato de protección|contracte de protecció|data protection agreement/);
       expect(d.faq.filter((f) => 'id' in f && f.id === 'whatsapp').length).toBe(1);
-      expect(d.faq_contrato.trim()).not.toBe('');
     });
   }
 });

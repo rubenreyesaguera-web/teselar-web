@@ -76,3 +76,27 @@ describe('catalogo', () => {
     expect(PORTADA).not.toContain('{service.tag}');
   });
 });
+
+// Segunda pasada (24/10): lo que la primera tanda de arreglos dejo torcido.
+describe('mantenimiento', () => {
+  test('el Plus no lleva «Recomendado» ni los feeds, que ya van en el Basico de la inmobiliaria', () => {
+    expect(PORTADA).not.toMatch(/'Recomendado'|recomendado: true/);
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].pricing.plus.f3).not.toMatch(/feed/);
+      expect(dictionaries[lng].faq.q6.a).not.toMatch(/feeds? a portal|portal feed/);
+    }
+  });
+
+  test('el Basico de las automatizaciones se paga: no dice «incluido»', () => {
+    expect(JSON.stringify(dictionaries)).not.toMatch(/Básico incluido de forma obligatoria|Bàsic inclòs de manera obligatòria|include the Basic Plan as a requirement/);
+  });
+});
+
+describe('WhatsApp Business', () => {
+  // Cuatro lectores entendian que perdian su numero: el cambio conserva numero, chats y contactos.
+  test('sin «migrar» ni «no migras de número»', () => {
+    const textos = [JSON.stringify(dictionaries), LLMS, TESS];
+    for (const t of textos) expect(t).not.toMatch(/migrar es gratis|migrar és gratis|migrating is free|no migras de número|no migres de número|not migrate your number|no migra de n[uú]mero/);
+  });
+});
+
