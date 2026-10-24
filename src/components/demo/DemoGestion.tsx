@@ -321,7 +321,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
           )}
 
           {marcadas.length > 0 && (
-            <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota}</p>
+            <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota.replace('{como}', comoTexto || t.nota_como)}</p>
           )}
 
           <div className="px-[18px] pb-[18px]">
