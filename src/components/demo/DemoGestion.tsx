@@ -353,7 +353,9 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 {t.faq.map((f) => (
                   <div key={f.p}>
                     <dt className="font-semibold text-[#083C58]">{f.p}</dt>
-                    <dd className="m-0 mt-0.5 leading-snug [text-wrap:pretty]">{f.r}</dd>
+                    <dd className="m-0 mt-0.5 leading-snug [text-wrap:pretty]">
+                      {'id' in f && f.id === 'datos' && (sector === 'sal' || sector === 'ges') ? `${f.r} ${t.faq_contrato}` : f.r}
+                    </dd>
                   </div>
                 ))}
               </dl>

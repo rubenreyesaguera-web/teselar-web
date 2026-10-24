@@ -76,3 +76,16 @@ describe('orden de «¿Que llevas?»', () => {
     expect(ORDEN_INICIAL[0]).not.toBe('tec');
   });
 });
+
+// «Lo que mas me preguntan» (24/10): la respuesta de los datos lleva `id`, porque en fisio y gestoria se le anade el
+// contrato de proteccion de datos.
+describe('preguntas frecuentes de la demo', () => {
+  for (const lng of ['es', 'ca', 'en'] as const) {
+    test(`${lng}: cuatro preguntas, la de los datos marcada y el contrato escrito`, () => {
+      const d = dictionaries[lng].demo;
+      expect(d.faq.length).toBe(4);
+      expect(d.faq.filter((f) => 'id' in f && f.id === 'datos').length).toBe(1);
+      expect(d.faq_contrato.trim()).not.toBe('');
+    });
+  }
+});
