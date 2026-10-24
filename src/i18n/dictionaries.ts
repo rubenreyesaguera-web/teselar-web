@@ -204,7 +204,7 @@ export const dictionaries = {
         f1: 'Todo lo del Básico, con copias de seguridad diarias',
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
         f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
-        f4: 'Respuesta el mismo día laborable (4h en incidencia crítica) e informe mensual'
+        f4: 'Respuesta el mismo día, también en fines de semana, festivos y vacaciones (4h en incidencia crítica), e informe mensual'
       },
       citas: {
         title: 'Citas por WhatsApp · cuota del servicio',
@@ -469,7 +469,7 @@ export const dictionaries = {
       faq_titulo: 'Lo que más me preguntan',
       faq: [
         { p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
-        { p: '¿Quién me atiende si algo falla?', r: 'Yo. Trabajo solo y te atiendo directamente. Y como todo va a tu nombre y lo que se hace a medida es tuyo cuando lo has pagado, nunca te quedas atado a mí.' },
+        { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. Si tu temporada fuerte son los fines de semana, también los cubro. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
         { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo que se monte va en cuentas a tu nombre, y los datos, en servidores de la Unión Europea. El asistente de WhatsApp usa Google Cloud, también en la UE, y WhatsApp de Meta.' },
       ],
@@ -703,7 +703,7 @@ export const dictionaries = {
         f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
         f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
-        f4: 'Resposta el mateix dia laborable (4h en incidència crítica) i informe mensual'
+        f4: 'Resposta el mateix dia, també en caps de setmana, festius i vacances (4h en incidència crítica), i informe mensual'
       },
       citas: {
         title: 'Cites per WhatsApp · quota del servei',
@@ -957,7 +957,7 @@ export const dictionaries = {
       faq_titulo: 'El que més em pregunten',
       faq: [
         { p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
-        { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo. Treballo sol i t’atenc directament. I com que tot va a nom teu i el que es fa a mida és teu quan ho has pagat, mai no et quedes lligat a mi.' },
+        { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. Si la teva temporada forta són els caps de setmana, també els cobreixo. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
         { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que es munti va en comptes a nom teu, i les dades, en servidors de la Unió Europea. L’assistent de WhatsApp fa servir Google Cloud, també a la UE, i el WhatsApp de Meta.' },
       ],
@@ -1186,7 +1186,7 @@ export const dictionaries = {
         f1: 'Everything in Basic, with daily backups',
         f2: '5h/month of development and improvements (non-cumulative)',
         f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
-        f4: 'Same business day response (4h for critical issues) and monthly report'
+        f4: 'Same-day response, weekends, bank holidays and holidays included (4h for critical issues), and monthly report'
       },
       citas: {
         title: 'WhatsApp Booking · service fee',
@@ -1440,7 +1440,7 @@ export const dictionaries = {
       faq_titulo: 'What I get asked most',
       faq: [
         { p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
-        { p: 'Who helps me if something goes wrong?', r: 'Me. I work on my own and deal with you directly. And since everything is in your name and anything made to measure is yours once paid for, you’re never tied to me.' },
+        { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. If your busy season is weekends, I cover those too. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
         { id: 'datos', p: 'Where is my data stored?', r: 'Everything we set up goes in accounts in your name, and the data sits on servers in the European Union. The WhatsApp assistant uses Google Cloud, also in the EU, and Meta’s WhatsApp.' },
       ],
