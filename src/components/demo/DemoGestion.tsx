@@ -4,9 +4,11 @@
 // nombre de la empresa ni el texto de «Otro». Recibe del servidor solo sus textos y los ejemplos de su idioma, para que
 // al navegador no llegue el diccionario entero.
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { dictionaries } from '../../i18n/dictionaries';
-import { COMO, PARTES, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
+import { COMO, ORDEN_INICIAL, ORDEN_PARTES, PARTES, type Caja as CajaExplicada, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
+import { RUBEN } from '../../lib/colaboradores/enlaces';
 import { contextoDemo, enlaceCalendly } from '../../lib/demo/calendly';
 import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
@@ -42,11 +44,10 @@ const campo =
   'min-h-[50px] w-full rounded-[10px] border border-[#B9C6CF] bg-white px-3.5 text-base text-[#031622] ' +
   'placeholder:text-[#6B7C88] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00BFA5]';
 
-type Explicada = keyof TextosDemo['explica'];
-
 // Cada parte del panel lleva debajo como funcionaria y que deja de pasar: el ejemplo solo no dice para que sirve.
-function Caja({ titulo, t, explica, children }: { titulo: string; t: TextosDemo; explica: Explicada; children: React.ReactNode }) {
-  const e = t.explica[explica];
+function Caja({ titulo, t, explica, propia, children }: { titulo: string; t: TextosDemo; explica: CajaExplicada; propia?: Partial<TextosDemo['explica'][CajaExplicada]>; children: React.ReactNode }) {
+  // El texto del sector, si lo tiene; si no, el comun.
+  const e = { ...t.explica[explica], ...propia };
   return (
     <section className="flex min-w-0 flex-col gap-2.5 rounded-[14px] bg-white p-4 shadow-[0_1px_2px_rgba(3,22,34,.06)]">
       <h3 className="m-0 text-[15px] font-semibold text-[#083C58]">{titulo}</h3>
@@ -166,6 +167,11 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
           <div className="flex flex-col gap-2">
             <h1 className="m-0 text-[28px] font-bold leading-[1.1] text-[#083C58] [text-wrap:balance]">{t.titulo}</h1>
             <p className="m-0 text-[15px] leading-normal text-[#33434F] [text-wrap:pretty]">{t.intro}</p>
+            {/* Quien habla en «Te enseño»: lo preguntaron 9 de 14 lectores del ensayo del 24/10. La foto es la de la tarjeta. */}
+            <p className="m-0 flex items-center gap-2.5 text-[13px] leading-snug text-[#33434F]">
+              <Image src={RUBEN.foto} alt="" width={36} height={36} className="h-9 w-9 flex-none rounded-full object-cover" />
+              <span className="[text-wrap:pretty]">{t.quien}</span>
+            </p>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -213,7 +219,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
               {t.lleva_legend} <span className="font-normal">· {t.lleva_hint}</span>
             </legend>
             <div className="flex flex-wrap gap-2">
-              {PARTES.map((p) => (
+              {(sector ? ORDEN_PARTES[sector] : ORDEN_INICIAL).map((p) => (
                 <button key={p} type="button" className={chip} aria-pressed={partes.includes(p)} onClick={() => alternar(p)}>
                   {t.partes[p]}
                 </button>
@@ -266,7 +272,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
             <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-start gap-4 p-[18px]">
               {partes.includes('tec') && (
                 <>
-                  <Caja titulo={ej.tec.titulo} t={t} explica="tec">
+                  <Caja titulo={ej.tec.titulo} t={t} explica="tec" propia={ej.explica?.tec}>
                     {ej.tec.tecnicos.map((tec, i) => (
                       <div key={tec.nombre} className={'flex flex-col gap-1.5 pb-2.5 ' + (i < ej.tec.tecnicos.length - 1 ? 'border-b border-[#E2E9EE]' : '')}>
                         <div className="flex justify-between gap-2 text-sm">
@@ -277,7 +283,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                       </div>
                     ))}
                   </Caja>
-                  <Caja titulo={ej.tec.parte.titulo} t={t} explica="parte">
+                  <Caja titulo={ej.tec.parte.titulo} t={t} explica="parte" propia={ej.explica?.parte}>
                     {ej.tec.parte.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}
                     <div className="flex h-20 items-center justify-center rounded-[10px] border border-dashed border-[#8FA3B0] text-[13px] text-[#4A5A66]">
                       {ej.tec.parte.firma}
@@ -286,7 +292,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 </>
               )}
               {partes.includes('cli') && (
-                <Caja titulo={ej.cli.titulo} t={t} explica="cli">
+                <Caja titulo={ej.cli.titulo} t={t} explica="cli" propia={ej.explica?.cli}>
                   {ej.cli.avisos.map((a) => (
                     <div key={a.cliente + a.tipo} className="flex flex-col gap-0.5 rounded-[10px] border border-[#E2E9EE] p-2.5">
                       <div className="flex justify-between gap-2 text-xs text-[#4A5A66]"><span>{a.tipo}</span><span>{a.cuando}</span></div>
@@ -300,16 +306,18 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 </Caja>
               )}
               {partes.includes('fac') && (
-                <Caja titulo={ej.fac.titulo} t={t} explica="fac">{ej.fac.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
+                <Caja titulo={ej.fac.titulo} t={t} explica="fac" propia={ej.explica?.fac}>{ej.fac.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
               )}
               {partes.includes('cit') && (
-                <Caja titulo={ej.cit.titulo} t={t} explica="cit">{ej.cit.citas.map((p) => <Parada key={p.hora + p.texto} {...p} />)}</Caja>
+                <Caja titulo={ej.cit.titulo} t={t} explica="cit" propia={ej.explica?.cit}>{ej.cit.citas.map((p) => <Parada key={p.hora + p.texto} {...p} />)}</Caja>
               )}
               {partes.includes('mat') && (
-                <Caja titulo={ej.mat.titulo} t={t} explica="mat">{ej.mat.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
+                <Caja titulo={ej.mat.titulo} t={t} explica="mat" propia={ej.explica?.mat}>{ej.mat.filas.map((f) => <Fila key={f.etiqueta} {...f} />)}</Caja>
               )}
             </div>
           )}
+
+          <p className="m-0 px-[18px] pb-3 text-[13px] leading-snug text-[#33434F] [text-wrap:pretty]">{t.nota}</p>
 
           <div className="px-[18px] pb-[18px]">
             <div className="flex flex-col gap-3 rounded-[14px] bg-[#083C58] p-4 text-white sm:flex-row sm:items-center sm:justify-between">

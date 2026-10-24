@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 import { dictionaries } from '../../i18n/dictionaries';
+import { EJEMPLOS, ORDEN_INICIAL, ORDEN_PARTES, PARTES, SECTORES } from '../../data/demo';
 
 // Las seis cajas del panel (la ruta y el parte son dos) llevan «Como funciona» y «Te ahorras» en los tres idiomas.
 const CAJAS = ['tec', 'parte', 'cli', 'fac', 'cit', 'mat'] as const;
@@ -23,4 +24,40 @@ describe('explicaciones de la demo', () => {
       for (const t of textos) expect(t).not.toMatch(/\d|%|€/);
     });
   }
+});
+
+// Los textos propios de un sector (24/10) siguen las mismas reglas que los comunes.
+describe('explicaciones propias de cada sector', () => {
+  for (const lng of ['es', 'ca', 'en'] as const) {
+    test(`${lng}: solo cajas que existen, sin textos vacios y sin cifras`, () => {
+      for (const s of SECTORES) {
+        for (const [caja, e] of Object.entries(EJEMPLOS[lng][s].explica ?? {})) {
+          expect([...CAJAS] as string[]).toContain(caja);
+          for (const t of [e?.como, e?.ahorro].filter((x) => x !== undefined)) {
+            expect(t!.trim()).not.toBe('');
+            expect(t).not.toMatch(/\d|%|€/);
+          }
+        }
+      }
+    });
+  }
+
+  test('los tres idiomas cambian los mismos textos en los mismos sectores', () => {
+    const forma = (lng: 'es' | 'ca' | 'en') =>
+      SECTORES.map((s) => Object.entries(EJEMPLOS[lng][s].explica ?? {}).map(([c, e]) => `${s}.${c}:${Object.keys(e!).sort()}`).sort().join('|'));
+    expect(forma('ca')).toEqual(forma('es'));
+    expect(forma('en')).toEqual(forma('es'));
+  });
+});
+
+describe('orden de «¿Que llevas?»', () => {
+  test('cada sector, y el inicial, tienen las cinco partes sin repetir', () => {
+    for (const orden of [ORDEN_INICIAL, ...SECTORES.map((s) => ORDEN_PARTES[s])]) {
+      expect([...orden].sort()).toEqual([...PARTES].sort());
+    }
+  });
+
+  test('sin sector no empieza por «Tecnicos»', () => {
+    expect(ORDEN_INICIAL[0]).not.toBe('tec');
+  });
 });

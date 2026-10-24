@@ -69,9 +69,22 @@ describe('ejemplos de la demo', () => {
     }
   });
 
-  test('en instalaciones mandan los contratos de mantenimiento', () => {
-    expect(EJEMPLOS.es.inst.cli.titulo).toBe('Contratos de mantenimiento');
-    expect(EJEMPLOS.es.inst.tec.parte.titulo).toBe('Parte de mantenimiento');
+  // Hasta el 24/10 mandaban los contratos de mantenimiento. Ruben, despues del ensayo: «Avisos y obras es el dia a
+  // dia. Mantenimientos es lo programado». Las dos cosas, al mismo nivel.
+  test('en instalaciones salen los avisos y los contratos de mantenimiento', () => {
+    const inst = EJEMPLOS.es.inst;
+    expect(inst.cli.titulo).toBe('Avisos y contratos');
+    expect(inst.cli.avisos.some((a) => a.tipo.startsWith('Aviso'))).toBe(true);
+    expect(inst.cli.avisos.some((a) => a.tipo.startsWith('Contrato'))).toBe(true);
+    expect(inst.tec.parte.filas[0].etiqueta).toBe('Aviso');
+  });
+
+  test('en el taller, cada coche va por su matricula', () => {
+    for (const lng of IDIOMAS) {
+      for (const a of EJEMPLOS[lng].tal.cli.avisos.filter((x) => !x.cliente.includes('Repartos'))) {
+        expect(a.cliente).toMatch(/· \d{4} [A-Z]{3}$/);
+      }
+    }
   });
 
   test('el sector del enlace solo vale si existe', () => {

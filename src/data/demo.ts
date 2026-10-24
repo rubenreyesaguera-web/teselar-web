@@ -20,14 +20,35 @@ export interface Fila { etiqueta: string; valor: string }
 export interface Tecnico { nombre: string; resumen: string; paradas: Parada[] }
 export interface Aviso { tipo: string; cuando: string; cliente: string; detalle: string; siguiente: string; urgente: boolean }
 
+// Las cajas del panel que llevan «Como funciona» y «Te ahorras» (los textos comunes estan en el diccionario).
+export type Caja = 'tec' | 'parte' | 'cli' | 'fac' | 'cit' | 'mat';
+export interface Explicacion { como: string; ahorro: string }
+
 export interface EjemploSector {
   nombre: string;
+  // Solo donde el texto comun chirria en este sector (ensayo del 24/10, doc 32): «presupuestos» en una inmobiliaria,
+  // «cliente» en una clinica, «quien lo tiene» para las piezas de un taller.
+  explica?: Partial<Record<Caja, Partial<Explicacion>>>;
   tec: { titulo: string; tecnicos: Tecnico[]; parte: { titulo: string; filas: Fila[]; firma: string } };
   cli: { titulo: string; avisos: Aviso[] };
   fac: { titulo: string; filas: Fila[] };
   cit: { titulo: string; citas: Parada[] };
   mat: { titulo: string; filas: Fila[] };
 }
+
+// El orden de «¿Que llevas?» segun el sector elegido: lo suyo primero. Sin sector, empieza por clientes, que lleva
+// todo el mundo; con «Tecnicos» primero, los que no son instaladores creian que la pagina no era para ellos (24/10).
+export const ORDEN_INICIAL: readonly Parte[] = ['cli', 'fac', 'cit', 'tec', 'mat'];
+export const ORDEN_PARTES: Record<Sector, readonly Parte[]> = {
+  inst: ['tec', 'cli', 'fac', 'mat', 'cit'],
+  ref: ['tec', 'cli', 'fac', 'mat', 'cit'],
+  tal: ['cli', 'fac', 'mat', 'cit', 'tec'],
+  sal: ['cit', 'cli', 'fac', 'tec', 'mat'],
+  est: ['cit', 'cli', 'fac', 'mat', 'tec'],
+  inm: ['cli', 'cit', 'fac', 'tec', 'mat'],
+  ges: ['cli', 'fac', 'cit', 'tec', 'mat'],
+  otr: ORDEN_INICIAL,
+};
 
 const p = (hora: string, texto: string): Parada => ({ hora, texto });
 const f = (etiqueta: string, valor: string): Fila => ({ etiqueta, valor });
@@ -41,24 +62,25 @@ const es: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Ruta de cada técnico',
       tecnicos: [
-        t('Marc', '3 visitas · Lloret', [p('08:30', 'Hotel Mirador · revisión trimestral del contrato'), p('11:30', 'Bar Ca la Rosa · avería de cámara')]),
+        t('Marc', '2 visitas · Lloret', [p('08:30', 'Hotel Mirador · revisión trimestral del contrato'), p('11:30', 'Bar Ca la Rosa · avería de cámara')]),
         t('Jordi', '2 visitas · Blanes', [p('09:00', 'Comunidad Carrer del Mar 8 · revisión anual'), p('12:00', 'Piso particular · instalación de split')]),
       ],
       parte: {
-        titulo: 'Parte de mantenimiento',
-        filas: [f('Contrato', 'Hotel Mirador · revisión 3 de 4'), f('Técnico', 'Marc · 2 h 10 min'), f('Revisado', '12 máquinas · 1 con fuga'), f('Material', 'Gas R32, filtros')],
+        titulo: 'Parte de trabajo',
+        filas: [f('Aviso', 'Bar Ca la Rosa · avería de cámara'), f('Técnico', 'Marc · 1 h 40 min'), f('Hecho', 'Ventilador cambiado · cámara a 2 °C'), f('Material', 'Ventilador, gas R32')],
         firma: 'Firma del cliente en el móvil',
       },
     },
     cli: {
-      titulo: 'Contratos de mantenimiento',
+      titulo: 'Avisos y contratos',
       avisos: [
+        a('Aviso urgente', 'hoy', 'Bar Ca la Rosa', 'Avería de cámara', 'Asignado a Marc', true),
         a('Contrato anual', '4 revisiones', 'Hotel Mirador', 'Revisión de hoy · 12 máquinas', 'Asignada a Marc', false),
         a('Contrato anual', '1 revisión', 'Comunidad Carrer del Mar 8', 'Vence en enero · renovar', 'Avisar al presidente', true),
         a('Presupuesto enviado', 'hace 3 días', 'Restaurante Es Racó', 'Contrato de mantenimiento · sin respuesta', 'Toca llamar hoy', true),
       ],
     },
-    fac: { titulo: 'Facturas y cobros', filas: [f('Revisiones de ayer', '3 facturas listas'), f('Cuotas de contrato del mes', '14 emitidas'), f('Vencidas', '1 · aviso enviado')] },
+    fac: { titulo: 'Facturas y cobros', filas: [f('Avisos y revisiones de ayer', '3 facturas listas'), f('Cuotas de contrato del mes', '14 emitidas'), f('Vencidas', '1 · aviso enviado')] },
     cit: { titulo: 'Citas y agenda', citas: [p('10:00', 'Visita para presupuesto · Tossa'), p('17:30', 'Revisión de caldera · Sra. Puig · reservada por WhatsApp')] },
     mat: { titulo: 'Material y almacén', filas: [f('Gas R32', 'Quedan 2 · pedir'), f('Filtros de máquinas', 'Faltan para la revisión del viernes')] },
   },
@@ -89,6 +111,10 @@ const es: Record<Sector, EjemploSector> = {
   },
   tal: {
     nombre: 'Taller mecánico',
+    explica: {
+      cli: { como: 'Cada coche por su matrícula, con su historial, lo que se le ha presupuestado y lo que le toca después.', ahorro: 'Los presupuestos que se enfrían porque nadie volvió a llamar y las revisiones que se pasan.' },
+      mat: { como: 'Sabes qué piezas tienes y cuáles se están acabando, y te avisa antes de que falten.' },
+    },
     tec: {
       titulo: 'Trabajo de cada mecánico',
       tecnicos: [
@@ -102,10 +128,11 @@ const es: Record<Sector, EjemploSector> = {
       },
     },
     cli: {
-      titulo: 'Clientes y presupuestos',
+      titulo: 'Coches y presupuestos',
       avisos: [
-        a('Presupuesto enviado', 'ayer', 'Sr. Roca', 'Cambio de embrague · esperando respuesta', 'Toca llamar hoy', true),
-        a('Cliente desde 2019', '3 furgonetas', 'Repartos Costa', 'ITV de las tres en diciembre', 'Recordatorio programado', false),
+        a('Presupuesto enviado', 'ayer', 'Seat León · 1234 KLM', 'Sr. Roca · cambio de embrague · esperando respuesta', 'Toca llamar hoy', true),
+        a('Revisión anual', 'hace 11 meses', 'Renault Clio · 5678 LMN', 'Sra. Serra · le toca la revisión', 'Recordatorio programado', false),
+        a('3 furgonetas', 'cliente desde 2019', 'Repartos Costa', 'ITV de las tres en diciembre', 'Recordatorio programado', false),
       ],
     },
     fac: { titulo: 'Facturas y cobros', filas: [f('Coches entregados ayer', '4 facturas listas'), f('Pendientes de cobro', '3'), f('Vencidas', '1 · aviso enviado')] },
@@ -114,6 +141,10 @@ const es: Record<Sector, EjemploSector> = {
   },
   sal: {
     nombre: 'Fisio o clínica',
+    explica: {
+      cli: { como: 'Cada paciente con su historial, sus bonos y lo que toca hacer después. Te avisa de lo que lleva días parado.', ahorro: 'Los bonos que se acaban sin ofrecer renovarlos y las revisiones que se pasan.' },
+      cit: { como: 'Una sola agenda para todo el equipo, con las citas que entran por teléfono o por WhatsApp, y un recordatorio al paciente el día antes.', ahorro: 'Citas apuntadas en varios sitios a la vez y pacientes que se olvidan de venir.' },
+    },
     tec: {
       titulo: 'Visitas a domicilio',
       tecnicos: [
@@ -160,10 +191,13 @@ const es: Record<Sector, EjemploSector> = {
   },
   inm: {
     nombre: 'Inmobiliaria',
+    explica: {
+      cli: { ahorro: 'Los compradores que se enfrían porque nadie volvió a llamar y las exclusivas que vencen sin renovar.' },
+    },
     tec: {
       titulo: 'Agenda de cada agente',
       tecnicos: [
-        t('Anna', '3 visitas · Lloret', [p('10:00', 'Piso en Fenals · visita con comprador'), p('12:30', 'Casa en Lloret · captación y fotos')]),
+        t('Anna', '2 visitas · Lloret', [p('10:00', 'Piso en Fenals · visita con comprador'), p('12:30', 'Casa en Lloret · captación y fotos')]),
         t('Marc', '2 visitas · Blanes', [p('11:00', 'Ático en el centro · segunda visita'), p('17:00', 'Local comercial · valoración')]),
       ],
       parte: {
@@ -185,25 +219,29 @@ const es: Record<Sector, EjemploSector> = {
   },
   ges: {
     nombre: 'Gestoría o asesoría',
+    explica: {
+      cli: { ahorro: 'La documentación que nadie reclamó a tiempo y los trámites que se pasan de plazo.' },
+      fac: { como: 'Las cuotas de cada mes y los encargos sueltos en el mismo sitio, y ves de un vistazo qué falta por cobrar.', ahorro: 'Los encargos sueltos que se quedan sin facturar y los recibos devueltos que nadie reclama.' },
+    },
     tec: {
       titulo: 'Visitas y gestiones fuera',
       tecnicos: [t('Laura', '2 salidas', [p('09:30', 'Bar Ca la Rosa · recoger facturas del trimestre'), p('12:00', 'Notaría · constitución de una SL')])],
       parte: {
         titulo: 'Hoja de encargo',
-        filas: [f('Cliente', 'Bar Ca la Rosa'), f('Encargo', 'IVA del cuarto trimestre'), f('Tiempo', '1 h 15 min')],
+        filas: [f('Cliente', 'Bar Ca la Rosa'), f('Encargo', 'IVA del trimestre'), f('Tiempo', '1 h 15 min')],
         firma: 'Conformidad del cliente',
       },
     },
     cli: {
       titulo: 'Clientes y encargos',
       avisos: [
-        a('Falta documentación', 'IVA 4T', 'Bar Ca la Rosa', 'Faltan las facturas de diciembre', 'Reclamar hoy', true),
+        a('Falta documentación', 'IVA del trimestre', 'Bar Ca la Rosa', 'Faltan las facturas del último mes', 'Reclamar hoy', true),
         a('Cliente desde 2018', 'autónomo', 'Sr. Puig', 'Renta en abril', 'Recordatorio programado', false),
       ],
     },
     fac: { titulo: 'Facturas y cobros', filas: [f('Cuotas mensuales', '42 emitidas'), f('Pendientes de cobro', '4'), f('Devueltas por el banco', '1 · aviso enviado')] },
     cit: { titulo: 'Citas y agenda', citas: [p('09:00', 'Alta de autónomo · cliente nuevo'), p('16:30', 'Revisión de la renta · reservada por WhatsApp')] },
-    mat: { titulo: 'Documentación pendiente', filas: [f('Facturas de diciembre', 'Faltan de 4 clientes'), f('Certificados digitales', '2 caducan este mes')] },
+    mat: { titulo: 'Documentación pendiente', filas: [f('Facturas del último mes', 'Faltan de 4 clientes'), f('Certificados digitales', '2 caducan este mes')] },
   },
   otr: {
     nombre: 'Otro',
@@ -238,24 +276,25 @@ const ca: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Ruta de cada tècnic',
       tecnicos: [
-        t('Marc', '3 visites · Lloret', [p('08:30', 'Hotel Mirador · revisió trimestral del contracte'), p('11:30', 'Bar Ca la Rosa · avaria de cambra')]),
+        t('Marc', '2 visites · Lloret', [p('08:30', 'Hotel Mirador · revisió trimestral del contracte'), p('11:30', 'Bar Ca la Rosa · avaria de cambra')]),
         t('Jordi', '2 visites · Blanes', [p('09:00', 'Comunitat Carrer del Mar 8 · revisió anual'), p('12:00', 'Pis particular · instal·lació de split')]),
       ],
       parte: {
-        titulo: 'Full de manteniment',
-        filas: [f('Contracte', 'Hotel Mirador · revisió 3 de 4'), f('Tècnic', 'Marc · 2 h 10 min'), f('Revisat', '12 màquines · 1 amb fuita'), f('Material', 'Gas R32, filtres')],
+        titulo: 'Full de feina',
+        filas: [f('Avís', 'Bar Ca la Rosa · avaria de cambra'), f('Tècnic', 'Marc · 1 h 40 min'), f('Fet', 'Ventilador canviat · cambra a 2 °C'), f('Material', 'Ventilador, gas R32')],
         firma: 'Signatura del client al mòbil',
       },
     },
     cli: {
-      titulo: 'Contractes de manteniment',
+      titulo: 'Avisos i contractes',
       avisos: [
+        a('Avís urgent', 'avui', 'Bar Ca la Rosa', 'Avaria de cambra', 'Assignat al Marc', true),
         a('Contracte anual', '4 revisions', 'Hotel Mirador', 'Revisió d’avui · 12 màquines', 'Assignada al Marc', false),
         a('Contracte anual', '1 revisió', 'Comunitat Carrer del Mar 8', 'Venç al gener · renovar', 'Avisar el president', true),
         a('Pressupost enviat', 'fa 3 dies', 'Restaurant Es Racó', 'Contracte de manteniment · sense resposta', 'Cal trucar avui', true),
       ],
     },
-    fac: { titulo: 'Factures i cobraments', filas: [f('Revisions d’ahir', '3 factures llestes'), f('Quotes de contracte del mes', '14 emeses'), f('Vençudes', '1 · avís enviat')] },
+    fac: { titulo: 'Factures i cobraments', filas: [f('Avisos i revisions d’ahir', '3 factures llestes'), f('Quotes de contracte del mes', '14 emeses'), f('Vençudes', '1 · avís enviat')] },
     cit: { titulo: 'Cites i agenda', citas: [p('10:00', 'Visita per a pressupost · Tossa'), p('17:30', 'Revisió de caldera · Sra. Puig · reservada per WhatsApp')] },
     mat: { titulo: 'Material i magatzem', filas: [f('Gas R32', 'En queden 2 · demanar'), f('Filtres de màquines', 'Falten per a la revisió de divendres')] },
   },
@@ -286,6 +325,10 @@ const ca: Record<Sector, EjemploSector> = {
   },
   tal: {
     nombre: 'Taller mecànic',
+    explica: {
+      cli: { como: 'Cada cotxe per la seva matrícula, amb el seu historial, el que se li ha pressupostat i el que li toca després.', ahorro: 'Els pressupostos que es refreden perquè ningú no va tornar a trucar i les revisions que es passen.' },
+      mat: { como: 'Saps quines peces tens i quines s’estan acabant, i t’avisa abans que faltin.' },
+    },
     tec: {
       titulo: 'Feina de cada mecànic',
       tecnicos: [
@@ -299,10 +342,11 @@ const ca: Record<Sector, EjemploSector> = {
       },
     },
     cli: {
-      titulo: 'Clients i pressupostos',
+      titulo: 'Cotxes i pressupostos',
       avisos: [
-        a('Pressupost enviat', 'ahir', 'Sr. Roca', 'Canvi d’embragatge · esperant resposta', 'Cal trucar avui', true),
-        a('Client des del 2019', '3 furgonetes', 'Repartos Costa', 'ITV de les tres al desembre', 'Recordatori programat', false),
+        a('Pressupost enviat', 'ahir', 'Seat León · 1234 KLM', 'Sr. Roca · canvi d’embragatge · esperant resposta', 'Cal trucar avui', true),
+        a('Revisió anual', 'fa 11 mesos', 'Renault Clio · 5678 LMN', 'Sra. Serra · li toca la revisió', 'Recordatori programat', false),
+        a('3 furgonetes', 'client des del 2019', 'Repartos Costa', 'ITV de les tres al desembre', 'Recordatori programat', false),
       ],
     },
     fac: { titulo: 'Factures i cobraments', filas: [f('Cotxes lliurats ahir', '4 factures llestes'), f('Pendents de cobrament', '3'), f('Vençudes', '1 · avís enviat')] },
@@ -311,6 +355,10 @@ const ca: Record<Sector, EjemploSector> = {
   },
   sal: {
     nombre: 'Fisio o clínica',
+    explica: {
+      cli: { como: 'Cada pacient amb el seu historial, els seus bons i el que toca fer després. T’avisa del que fa dies que està aturat.', ahorro: 'Els bons que s’acaben sense oferir renovar-los i les revisions que es passen.' },
+      cit: { como: 'Una sola agenda per a tot l’equip, amb les cites que entren per telèfon o per WhatsApp, i un recordatori al pacient el dia abans.', ahorro: 'Cites apuntades a diversos llocs alhora i pacients que s’obliden de venir.' },
+    },
     tec: {
       titulo: 'Visites a domicili',
       tecnicos: [
@@ -357,10 +405,13 @@ const ca: Record<Sector, EjemploSector> = {
   },
   inm: {
     nombre: 'Immobiliària',
+    explica: {
+      cli: { ahorro: 'Els compradors que es refreden perquè ningú no els va tornar a trucar i les exclusives que vencen sense renovar.' },
+    },
     tec: {
       titulo: 'Agenda de cada agent',
       tecnicos: [
-        t('Anna', '3 visites · Lloret', [p('10:00', 'Pis a Fenals · visita amb comprador'), p('12:30', 'Casa a Lloret · captació i fotos')]),
+        t('Anna', '2 visites · Lloret', [p('10:00', 'Pis a Fenals · visita amb comprador'), p('12:30', 'Casa a Lloret · captació i fotos')]),
         t('Marc', '2 visites · Blanes', [p('11:00', 'Àtic al centre · segona visita'), p('17:00', 'Local comercial · valoració')]),
       ],
       parte: {
@@ -382,25 +433,29 @@ const ca: Record<Sector, EjemploSector> = {
   },
   ges: {
     nombre: 'Gestoria o assessoria',
+    explica: {
+      cli: { ahorro: 'La documentació que ningú no va reclamar a temps i els tràmits que passen de termini.' },
+      fac: { como: 'Les quotes de cada mes i els encàrrecs solts al mateix lloc, i veus d’un cop d’ull què falta cobrar.', ahorro: 'Els encàrrecs solts que es queden sense facturar i els rebuts retornats que ningú no reclama.' },
+    },
     tec: {
       titulo: 'Visites i gestions fora',
       tecnicos: [t('Laura', '2 sortides', [p('09:30', 'Bar Ca la Rosa · recollir factures del trimestre'), p('12:00', 'Notaria · constitució d’una SL')])],
       parte: {
         titulo: 'Full d’encàrrec',
-        filas: [f('Client', 'Bar Ca la Rosa'), f('Encàrrec', 'IVA del quart trimestre'), f('Temps', '1 h 15 min')],
+        filas: [f('Client', 'Bar Ca la Rosa'), f('Encàrrec', 'IVA del trimestre'), f('Temps', '1 h 15 min')],
         firma: 'Conformitat del client',
       },
     },
     cli: {
       titulo: 'Clients i encàrrecs',
       avisos: [
-        a('Falta documentació', 'IVA 4T', 'Bar Ca la Rosa', 'Falten les factures de desembre', 'Reclamar-les avui', true),
+        a('Falta documentació', 'IVA del trimestre', 'Bar Ca la Rosa', 'Falten les factures de l’últim mes', 'Reclamar-les avui', true),
         a('Client des del 2018', 'autònom', 'Sr. Puig', 'Renda a l’abril', 'Recordatori programat', false),
       ],
     },
     fac: { titulo: 'Factures i cobraments', filas: [f('Quotes mensuals', '42 emeses'), f('Pendents de cobrament', '4'), f('Retornades pel banc', '1 · avís enviat')] },
     cit: { titulo: 'Cites i agenda', citas: [p('09:00', 'Alta d’autònom · client nou'), p('16:30', 'Revisió de la renda · reservada per WhatsApp')] },
-    mat: { titulo: 'Documentació pendent', filas: [f('Factures de desembre', 'Falten de 4 clients'), f('Certificats digitals', '2 caduquen aquest mes')] },
+    mat: { titulo: 'Documentació pendent', filas: [f('Factures de l’últim mes', 'Falten de 4 clients'), f('Certificats digitals', '2 caduquen aquest mes')] },
   },
   otr: {
     nombre: 'Un altre',
@@ -435,24 +490,25 @@ const en: Record<Sector, EjemploSector> = {
     tec: {
       titulo: 'Each technician’s route',
       tecnicos: [
-        t('Marc', '3 visits · Lloret', [p('08:30', 'Hotel Mirador · quarterly contract service'), p('11:30', 'Bar Ca la Rosa · cold room breakdown')]),
+        t('Marc', '2 visits · Lloret', [p('08:30', 'Hotel Mirador · quarterly contract service'), p('11:30', 'Bar Ca la Rosa · cold room breakdown')]),
         t('Jordi', '2 visits · Blanes', [p('09:00', 'Carrer del Mar 8 residents’ association · annual service'), p('12:00', 'Private flat · split unit installation')]),
       ],
       parte: {
-        titulo: 'Maintenance report',
-        filas: [f('Contract', 'Hotel Mirador · service 3 of 4'), f('Technician', 'Marc · 2 h 10 min'), f('Checked', '12 units · 1 leaking'), f('Materials', 'R32 gas, filters')],
+        titulo: 'Job report',
+        filas: [f('Call-out', 'Bar Ca la Rosa · cold room breakdown'), f('Technician', 'Marc · 1 h 40 min'), f('Done', 'Fan replaced · cold room at 2 °C'), f('Materials', 'Fan, R32 gas')],
         firma: 'Customer signs on the phone',
       },
     },
     cli: {
-      titulo: 'Maintenance contracts',
+      titulo: 'Call-outs and contracts',
       avisos: [
+        a('Urgent call-out', 'today', 'Bar Ca la Rosa', 'Cold room breakdown', 'Assigned to Marc', true),
         a('Annual contract', '4 services', 'Hotel Mirador', 'Today’s service · 12 units', 'Assigned to Marc', false),
         a('Annual contract', '1 service', 'Carrer del Mar 8 residents’ association', 'Expires in January · renew', 'Let the chairman know', true),
         a('Quote sent', '3 days ago', 'Es Racó restaurant', 'Maintenance contract · no reply', 'Call today', true),
       ],
     },
-    fac: { titulo: 'Invoices and payments', filas: [f('Yesterday’s services', '3 invoices ready'), f('Contract fees this month', '14 issued'), f('Overdue', '1 · reminder sent')] },
+    fac: { titulo: 'Invoices and payments', filas: [f('Yesterday’s call-outs and services', '3 invoices ready'), f('Contract fees this month', '14 issued'), f('Overdue', '1 · reminder sent')] },
     cit: { titulo: 'Appointments', citas: [p('10:00', 'Visit for a quote · Tossa'), p('17:30', 'Boiler service · Mrs. Puig · booked on WhatsApp')] },
     mat: { titulo: 'Materials and stock', filas: [f('R32 gas', '2 left · reorder'), f('Unit filters', 'Short for Friday’s service')] },
   },
@@ -483,6 +539,10 @@ const en: Record<Sector, EjemploSector> = {
   },
   tal: {
     nombre: 'Car repair shop',
+    explica: {
+      cli: { como: 'Each car by its number plate, with its history, what’s been quoted and what it needs next.', ahorro: 'Quotes that go cold because nobody called back, and services that slip by.' },
+      mat: { como: 'You know which parts you have and which are running low, and it warns you before they run out.' },
+    },
     tec: {
       titulo: 'Each mechanic’s work',
       tecnicos: [
@@ -496,10 +556,11 @@ const en: Record<Sector, EjemploSector> = {
       },
     },
     cli: {
-      titulo: 'Customers and quotes',
+      titulo: 'Cars and quotes',
       avisos: [
-        a('Quote sent', 'yesterday', 'Mr. Roca', 'Clutch replacement · awaiting reply', 'Call today', true),
-        a('Customer since 2019', '3 vans', 'Repartos Costa', 'All three due for MOT in December', 'Reminder scheduled', false),
+        a('Quote sent', 'yesterday', 'Seat León · 1234 KLM', 'Mr. Roca · clutch replacement · awaiting reply', 'Call today', true),
+        a('Annual service', '11 months ago', 'Renault Clio · 5678 LMN', 'Mrs. Serra · service due', 'Reminder scheduled', false),
+        a('3 vans', 'customer since 2019', 'Repartos Costa', 'All three due for MOT in December', 'Reminder scheduled', false),
       ],
     },
     fac: { titulo: 'Invoices and payments', filas: [f('Cars handed back yesterday', '4 invoices ready'), f('Awaiting payment', '3'), f('Overdue', '1 · reminder sent')] },
@@ -508,6 +569,10 @@ const en: Record<Sector, EjemploSector> = {
   },
   sal: {
     nombre: 'Physio or clinic',
+    explica: {
+      cli: { como: 'Every patient with their history, their session packs and what comes next. It flags whatever has stalled for days.', ahorro: 'Session packs that run out without anyone offering a renewal, and check-ups that slip by.' },
+      cit: { como: 'One diary for the whole team, with bookings that come in by phone or WhatsApp, and a reminder to the patient the day before.', ahorro: 'Appointments written down in several places at once, and patients who forget to turn up.' },
+    },
     tec: {
       titulo: 'Home visits',
       tecnicos: [
@@ -554,10 +619,13 @@ const en: Record<Sector, EjemploSector> = {
   },
   inm: {
     nombre: 'Real estate',
+    explica: {
+      cli: { ahorro: 'Buyers who go cold because nobody called back, and exclusive listings that lapse without renewal.' },
+    },
     tec: {
       titulo: 'Each agent’s diary',
       tecnicos: [
-        t('Anna', '3 viewings · Lloret', [p('10:00', 'Flat in Fenals · viewing with buyer'), p('12:30', 'House in Lloret · new listing and photos')]),
+        t('Anna', '2 viewings · Lloret', [p('10:00', 'Flat in Fenals · viewing with buyer'), p('12:30', 'House in Lloret · new listing and photos')]),
         t('Marc', '2 viewings · Blanes', [p('11:00', 'Penthouse in the centre · second viewing'), p('17:00', 'Retail unit · valuation')]),
       ],
       parte: {
@@ -579,25 +647,29 @@ const en: Record<Sector, EjemploSector> = {
   },
   ges: {
     nombre: 'Accounting or advisory',
+    explica: {
+      cli: { ahorro: 'Paperwork nobody chased in time, and filings that miss their deadline.' },
+      fac: { como: 'Monthly fees and one-off jobs in the same place, and you see at a glance what’s still unpaid.', ahorro: 'One-off jobs that never get invoiced, and returned direct debits nobody chases.' },
+    },
     tec: {
       titulo: 'Visits and errands',
       tecnicos: [t('Laura', '2 trips out', [p('09:30', 'Bar Ca la Rosa · collect quarterly invoices'), p('12:00', 'Notary · setting up an SL company')])],
       parte: {
         titulo: 'Job sheet',
-        filas: [f('Client', 'Bar Ca la Rosa'), f('Job', 'Fourth-quarter VAT'), f('Time', '1 h 15 min')],
+        filas: [f('Client', 'Bar Ca la Rosa'), f('Job', 'Quarterly VAT'), f('Time', '1 h 15 min')],
         firma: 'Client approval',
       },
     },
     cli: {
       titulo: 'Clients and jobs',
       avisos: [
-        a('Missing paperwork', 'Q4 VAT', 'Bar Ca la Rosa', 'December invoices missing', 'Chase today', true),
+        a('Missing paperwork', 'Quarterly VAT', 'Bar Ca la Rosa', 'Last month’s invoices missing', 'Chase today', true),
         a('Client since 2018', 'self-employed', 'Mr. Puig', 'Income tax in April', 'Reminder scheduled', false),
       ],
     },
     fac: { titulo: 'Invoices and payments', filas: [f('Monthly fees', '42 issued'), f('Awaiting payment', '4'), f('Returned by the bank', '1 · reminder sent')] },
     cit: { titulo: 'Appointments', citas: [p('09:00', 'Self-employed registration · new client'), p('16:30', 'Income tax review · booked on WhatsApp')] },
-    mat: { titulo: 'Pending paperwork', filas: [f('December invoices', 'Missing from 4 clients'), f('Digital certificates', '2 expire this month')] },
+    mat: { titulo: 'Pending paperwork', filas: [f('Last month’s invoices', 'Missing from 4 clients'), f('Digital certificates', '2 expire this month')] },
   },
   otr: {
     nombre: 'Other',
