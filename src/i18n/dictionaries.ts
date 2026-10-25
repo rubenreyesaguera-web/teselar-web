@@ -56,7 +56,7 @@ export const dictionaries = {
       categories: {
         web: 'Desarrollo Web',
         automation: 'Automatización e IA',
-        systems: 'Sistemas y ERP'
+        systems: 'Programas de gestión'
       },
       vat: '+ IVA',
       s1: {
@@ -78,13 +78,13 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automático de presupuestos en PDF desde un formulario',
-        f2: 'Envío automático de facturas por email con datos de tu CRM',
+        f2: 'Envío automático de facturas por email con los datos de tus clientes',
         f3: 'Extractor automatizado de datos de correos a Google Sheets',
         f4: 'Chatbot de respuestas guiadas para WhatsApp o Telegram (sigue un guion; si necesitas que entienda lenguaje libre, eso es la Integración de IA)',
-        f5: 'Sincronizador de base de datos bidireccional entre plataformas',
+        f5: 'Que dos programas que ya usas se pasen los datos solos, en los dos sentidos',
         f6: 'Sistema inteligente de recordatorios y alertas automáticas',
         f7: 'Reportes diarios/semanales automáticos por email',
-        f8: 'Plan Básico de mantenimiento (60€/mes), obligatorio mientras la automatización esté en marcha: vigilo que siga funcionando y la arreglo si cambia una API o caduca una credencial. Dónde acaba mi trabajo: no cubre funciones nuevas, cambios del proceso ni integrar herramientas que no estuvieran en el alcance acordado — eso se presupuesta aparte'
+        f8: 'Plan Básico de mantenimiento (60€/mes), que va con la automatización: vigilo que siga funcionando y la arreglo si cambia una API o caduca una credencial, y si lo das de baja, se para. Dónde acaba mi trabajo: no cubre funciones nuevas, cambios del proceso ni integrar herramientas que no estuvieran en el alcance acordado — eso se presupuesta aparte'
       },
       s3: {
         title: '04. Web Esencial',
@@ -156,7 +156,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Programa de gestión a medida: clientes, facturas y técnicos',
-        paso: 'Entre la charla gratis y la propuesta está la auditoría (150 €), que se descuentan si sigues adelante: un programa a medida no se presupuesta en 30 minutos.',
+        paso: 'La charla de 30 minutos es gratis. Después, un programa a medida pide mirar tus números con calma: es la auditoría (150 €), te queda por escrito sigas o no, y si sigues adelante se descuentan.',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
@@ -193,11 +193,11 @@ export const dictionaries = {
         title: 'Plan Básico',
         price: '60€',
         period: '/ mes',
-        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y el programa de gestión a medida (09), y obligatorio mientras tengas una automatización en marcha. Los dos servicios con IA llevan cuota propia, aparte de esta.',
+        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y el programa de gestión a medida (09), y si tienes una automatización, va con ella: es lo que la mantiene funcionando, y si lo das de baja, se para. Los dos servicios con IA llevan cuota propia, aparte de esta.',
         f1: 'Monitorización automática 24/7 y copias de seguridad semanales',
         f2: 'Actualizaciones de seguridad y corrección de errores',
         f3: '1h/mes de cambios de contenido y ajustes menores',
-        f4: 'Respuesta en 24-48h laborables e informe trimestral de estado'
+        f4: 'Respuesta en 48h laborables como máximo, aunque siempre intento contestar lo antes posible (si no puedes esperar, el Plus responde el mismo día), e informe trimestral de estado'
       },
       plus: {
         title: 'Plan Plus',
@@ -333,11 +333,15 @@ export const dictionaries = {
       },
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
-        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y ERP/CRM) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: tu web sigue publicada y sigue siendo tuya, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
+        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y programa de gestión a medida) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: lo que te hice sigue siendo tuyo y, si es una web o un programa, sigue funcionando, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
       },
       q14: {
         q: '¿Dónde quedan los datos de mis clientes o pacientes?',
-        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley.'
+        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Y lo que te hago a medida (web, programa o automatización) es tuyo cuando lo has pagado entero, con su código: te lo entrego. El producto de citas es la excepción: es mío y lo usas mientras pagas la cuota.'
+      },
+      q15: {
+        q: '¿Y si trabajas solo y un día no estás?',
+        a: 'Hablas siempre con quien lo ha hecho, sin centralitas. Lo que monto funciona solo y lo vigilo a todas horas: si algo falla, me entero antes que tú. Y no te quedas atado: todo va a tu nombre y lo que te hago a medida es tuyo, con su código, cuando lo has pagado. Y si te hace falta que te atienda también en fines de semana y vacaciones, está el Plan Plus.'
       }
     },
     contact: {
@@ -407,7 +411,7 @@ export const dictionaries = {
       wa_servicios: 'Hola Rubén, vengo de tu web. He estado mirando los servicios y quería preguntarte por uno.',
       wa_roi: 'Hola Rubén, vengo de tu web. Me ha llamado la atención lo del tiempo que se pierde y quería contarte mi caso.',
       wa_precios: 'Hola Rubén, vengo de la sección de precios de tu web y quería preguntarte por un presupuesto.',
-      post_services: 'Trabajo con un número reducido de clientes para poder cuidar cada proyecto.',
+      post_services: 'Cojo pocos proyectos a la vez, para hacer bien cada uno.',
       post_services_btn: 'Reserva tu plaza',
       post_roi: 'Tu proyecto merece atención personalizada. Reserva tu consulta y te cuento cómo puedo ayudarte.',
       post_roi_btn: 'Agendar consulta personalizada',
@@ -474,7 +478,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Y lo que te hago a medida (web, programa o automatización) es tuyo cuando lo has pagado entero, con su código: te lo entrego. El producto de citas es la excepción: es mío y lo usas mientras pagas la cuota.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
@@ -559,7 +563,7 @@ export const dictionaries = {
       categories: {
         web: 'Desenvolupament Web',
         automation: 'Automatització i IA',
-        systems: 'Sistemes i ERP'
+        systems: 'Programes de gestió'
       },
       vat: '+ IVA',
       s1: {
@@ -581,13 +585,13 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
-        f2: 'Enviament automàtic de factures per correu amb dades del teu CRM',
+        f2: 'Enviament automàtic de factures per correu amb les dades dels teus clients',
         f3: 'Extractor automatitzat de dades de correus a Google Sheets',
         f4: 'Xatbot de respostes guiades per a WhatsApp o Telegram (segueix un guió; si necessites que entengui llenguatge lliure, això és la Integració d\'IA)',
-        f5: 'Sincronizador de base de dades bidireccional entre plataformes',
+        f5: 'Que dos programes que ja fas servir es passin les dades sols, en els dos sentits',
         f6: 'Sistema intel·ligent de recordatoris i alertes automàtiques',
         f7: 'Informes diaris o setmanals automàtics per correu electrònic',
-        f8: 'Pla Bàsic de manteniment (60€/mes), obligatori mentre l\'automatització estigui en marxa: vigilo que segueixi funcionant i l\'arreglo si canvia una API o caduca una credencial. On acaba la meva feina: no cobreix funcions noves, canvis del procés ni integrar eines que no fossin a l\'abast acordat — això es pressuposta a part'
+        f8: 'Pla Bàsic de manteniment (60€/mes), que va amb l’automatització: vigilo que segueixi funcionant i l’arreglo si canvia una API o caduca una credencial, i si el dones de baixa, s’atura. On acaba la meva feina: no cobreix funcions noves, canvis del procés ni integrar eines que no fossin a l\'abast acordat — això es pressuposta a part'
       },
       s3: {
         title: '04. Web Essencial',
@@ -659,7 +663,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Programa de gestió a mida: clients, factures i tècnics',
-        paso: 'Entre la xerrada gratis i la proposta hi ha l’auditoria (150 €), que es descompten si tires endavant: un programa a mida no es pressuposta en 30 minuts.',
+        paso: 'La xerrada de 30 minuts és gratis. Després, un programa a mida demana mirar els teus números amb calma: és l’auditoria (150 €), et queda per escrit tant si continues com si no, i si tires endavant es descompten.',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
@@ -696,11 +700,11 @@ export const dictionaries = {
         title: 'Plan Bàsic',
         price: '60€',
         period: '/ mes',
-        desc: 'La teva web o el teu programa, vigilats i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i el programa de gestió a mida (09), i obligatori mentre tinguis una automatització en marxa. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
+        desc: 'La teva web o el teu programa, vigilats i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i el programa de gestió a mida (09), i si tens una automatització, va amb ella: és el que la manté funcionant, i si el dones de baixa, s’atura. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
         f1: 'Monitorització automàtica 24/7 i còpies de seguretat setmanals',
         f2: 'Actualitzacions de seguretat i correcció d\'errors',
         f3: '1h/mes de canvis de contingut i ajustos menors',
-        f4: 'Resposta en 24-48h laborables i informe trimestral d\'estat'
+        f4: 'Resposta en 48h laborables com a màxim, tot i que sempre intento contestar al més aviat possible (si no pots esperar, el Plus respon el mateix dia), i informe trimestral d’estat'
       },
       plus: {
         title: 'Plan Plus',
@@ -836,11 +840,15 @@ export const dictionaries = {
       },
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
-        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i ERP/CRM) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el teu web continua publicat i continua sent teu, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
+        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i programa de gestió a mida) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el que et vaig fer continua sent teu i, si és un web o un programa, continua funcionant, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
       },
       q14: {
         q: 'On queden les dades dels meus clients o pacients?',
-        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei.'
+        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. I el que et faig a mida (web, programa o automatització) és teu quan l’has pagat sencer, amb el seu codi: te l’entrego. El producte de cites és l’excepció: és meu i el fas servir mentre pagues la quota.'
+      },
+      q15: {
+        q: 'I si treballes sol i un dia no hi ets?',
+        a: 'Parles sempre amb qui ho ha fet, sense centraletes. El que munto funciona sol i ho vigilo a totes hores: si alguna cosa falla, me n’assabento abans que tu. I no et quedes lligat: tot va a nom teu i el que et faig a mida és teu, amb el seu codi, quan l’has pagat. I si et cal que t’atengui també els caps de setmana i en vacances, hi ha el Pla Plus.'
       }
     },
     contact: {
@@ -910,7 +918,7 @@ export const dictionaries = {
       wa_servicios: 'Hola Rubén, vinc del teu web. He estat mirant els serveis i volia preguntar-te per un.',
       wa_roi: 'Hola Rubén, vinc del teu web. M\'ha cridat l\'atenció això del temps que es perd i volia explicar-te el meu cas.',
       wa_precios: 'Hola Rubén, vinc de la secció de preus del teu web i volia preguntar-te per un pressupost.',
-      post_services: 'Treballo amb un nombre reduït de clients per poder cuidar cada projecte.',
+      post_services: 'Agafo pocs projectes alhora, per fer bé cadascun.',
       post_services_btn: 'Reserva la teva plaça',
       post_roi: 'El teu projecte mereix atenció personalitzada. Reserva la teva consulta i t\'explico com puc ajudar-te.',
       post_roi_btn: 'Agendar consulta personalitzada',
@@ -966,7 +974,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. I el que et faig a mida (web, programa o automatització) és teu quan l’has pagat sencer, amb el seu codi: te l’entrego. El producte de cites és l’excepció: és meu i el fas servir mentre pagues la quota.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
@@ -1046,7 +1054,7 @@ export const dictionaries = {
       categories: {
         web: 'Web Development',
         automation: 'Automation & AI',
-        systems: 'Systems & ERP'
+        systems: 'Management software'
       },
       vat: '+ VAT',
       s1: {
@@ -1068,13 +1076,13 @@ export const dictionaries = {
         price: '700€ — 1,800€ + 60€/mo',
         tag: 'Apps Script + APIs + Make',
         f1: 'Automatic generation of PDF quotes/budgets from a web form',
-        f2: 'Automatic invoice mailing connecting directly with your CRM',
+        f2: 'Automatic invoice emails using your customers’ details',
         f3: 'Automated data extraction from emails directly into Google Sheets',
         f4: 'Guided-reply chatbots for WhatsApp or Telegram (they follow a script; if you need it to understand free language, that is AI Integration)',
-        f5: 'Two-way database synchronization between different platforms',
+        f5: 'Two programs you already use passing data to each other on their own, both ways',
         f6: 'Smart automated alert and notification system',
         f7: 'Daily or weekly automated email reporting',
-        f8: 'Basic maintenance plan (60€/mo), required while the automation is running: I keep an eye on it and fix it when an API changes or a credential expires. Where my work ends: it does not cover new features, process changes, or wiring in tools that were not part of the agreed scope — those are quoted separately'
+        f8: 'Basic maintenance plan (60€/mo), which goes with the automation: I keep an eye on it and fix it when an API changes or a credential expires, and if you cancel it, the automation stops. Where my work ends: it does not cover new features, process changes, or wiring in tools that were not part of the agreed scope — those are quoted separately'
       },
       s3: {
         title: '04. Essential Web',
@@ -1146,7 +1154,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Custom management software: customers, invoices and technicians',
-        paso: 'Between the free chat and the proposal comes the audit (150 €), which is deducted if you go ahead: custom software cannot be quoted in 30 minutes.',
+        paso: 'The 30-minute chat is free. After that, custom software needs a calm look at your numbers: that is the audit (150 €), you keep it in writing whether you go ahead or not, and if you do, it is deducted.',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
@@ -1183,11 +1191,11 @@ export const dictionaries = {
         title: 'Basic Plan',
         price: '60€',
         period: '/ month',
-        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites and the custom management software (09), and required while you have an automation running. The two AI services carry their own fee, separate from this one.',
+        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites and the custom management software (09), and if you have an automation, it goes with it: it is what keeps it working, and if you cancel it, the automation stops. The two AI services carry their own fee, separate from this one.',
         f1: 'Automatic 24/7 monitoring and weekly backups',
         f2: 'Security updates and error fixing',
         f3: '1h/month of content changes and minor tweaks',
-        f4: 'Response within 24-48 business hours and quarterly status report'
+        f4: 'Response within 48 business hours at most, though I always try to answer as soon as I can (if you cannot wait, the Plus answers the same day), and quarterly status report'
       },
       plus: {
         title: 'Plus Plan',
@@ -1323,11 +1331,15 @@ export const dictionaries = {
       },
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
-        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and ERP/CRM) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: your website remains published and remains yours, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
+        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and custom management software) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: what I built for you remains yours and, if it is a website or software, it keeps working, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
       },
       q14: {
         q: 'Where does my customers’ or patients’ data stay?',
-        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires.'
+        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. And what I build for you (website, software or automation) is yours once you have paid for it in full, source code included: I hand it over. The booking product is the exception: it is mine and you use it while you pay the fee.'
+      },
+      q15: {
+        q: 'What if you work alone and one day you are not around?',
+        a: 'You always talk to the person who built it, no call centres. What I set up runs on its own and I monitor it around the clock: if something fails, I know before you do. And you are not tied to me: everything is in your name, and what I build for you is yours, source code included, once you have paid for it. And if you need me to answer at weekends and during holidays too, there is the Plus Plan.'
       }
     },
     contact: {
@@ -1397,7 +1409,7 @@ export const dictionaries = {
       wa_servicios: 'Hi Rubén, I am coming from your website. I was looking at your services and had a question about one of them.',
       wa_roi: 'Hi Rubén, I am coming from your website. The part about wasted time caught my eye and I wanted to tell you about my case.',
       wa_precios: 'Hi Rubén, I am coming from the pricing section of your website and I wanted to ask about a quote.',
-      post_services: 'I work with a limited number of clients so I can look after every project properly.',
+      post_services: 'I take on few projects at a time, to do each one well.',
       post_services_btn: 'Reserve your spot',
       post_roi: 'Your project deserves personalized attention. Book your consultation and I\'ll show you how I can help.',
       post_roi_btn: 'Book personalized consultation',
@@ -1453,7 +1465,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. And what I build for you (website, software or automation) is yours once you have paid for it in full, source code included: I hand it over. The booking product is the exception: it is mine and you use it while you pay the fee.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',

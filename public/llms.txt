@@ -39,8 +39,8 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   prediagnóstico digital de la web y las redes va incluido y por separado es gratuito.
 - **Automatizaciones Específicas** — 700€–1.800€ + 60€/mes. Presupuestos/facturas automáticas, chatbots de
   WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
-  El Plan Básico de mantenimiento (60€/mes) es obligatorio mientras la automatización esté en marcha:
-  cubre vigilarla y arreglarla cuando cambie una API o caduque una credencial, y no cubre funciones
+  El Plan Básico de mantenimiento (60€/mes) va con la automatización mientras esté en marcha (si se da
+  de baja, se para): cubre vigilarla y arreglarla cuando cambie una API o caduque una credencial, y no cubre funciones
   nuevas ni cambios del proceso, que se presupuestan aparte.
 - **Citas por WhatsApp** — Esencial 700€–900€ + 150€/mes · Completo 1.500€–1.800€ + 250€/mes. Un
   asistente que atiende el WhatsApp del negocio 24 horas al día: consulta los huecos libres, reserva
@@ -118,7 +118,8 @@ cifras verificadas y no se inventan.
 ## Mantenimiento (sin permanencia)
 
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
-  corrección de errores, 1h/mes de cambios, respuesta en 24-48h laborables, informe trimestral.
+  corrección de errores, 1h/mes de cambios, respuesta en 48h laborables como máximo (siempre intentando antes),
+  informe trimestral.
   Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
   Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
@@ -135,10 +136,15 @@ Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un f
 cliente se lo pide; en la Integración de IA (05), revisarlas cada mes es parte del servicio. Y
 siempre se firma el contrato de protección de datos que pide la ley.
 
+Lo hecho a medida (web, programa o automatización) es del cliente cuando lo ha pagado entero, con su
+código, que se le entrega. El producto de citas es la excepción: es de Teselar y se usa mientras se paga
+la cuota. Si preguntan qué pasa si Rubén no está: todo va a nombre del cliente, lo que monta funciona solo
+y lo vigila a todas horas; con el Plan Plus, también fines de semana y vacaciones.
+
 ## Qué pasa si no se paga el mantenimiento o no se renueva
 
 Regla general: **nada se renueva solo**. En los servicios que llevan el Plan Básico incluido el primer
-año (e-commerce, inmobiliaria, ERP/CRM), Teselar avisa **un mes antes** de que acabe y el cliente
+año (e-commerce, inmobiliaria, programa de gestión a medida), Teselar avisa **un mes antes** de que acabe y el cliente
 decide. No hay renovación automática ni permanencia.
 
 Y a partir de ahí la respuesta depende de si el servicio necesita la cuota para funcionar:
@@ -204,6 +210,6 @@ Services: process audit (150€), specific automations
 three-month guarantee), essential websites (1,200€–1,600€),
 AI integrations/chatbots (1,600€–6,000€ + a 90-250€/mo assistant fee, depending on complexity), complete
 websites (from 3,000€), e-commerce (from 4,000€), real-estate websites with Kyero/Idealista sync
-(from 6,000€), and custom ERP/CRM desktop systems (8,000€–12,000€). No-lock-in maintenance plans
+(from 6,000€), and custom management software for customers, invoices and field technicians (8,000€–12,000€). No-lock-in maintenance plans
 from 60€/mo. Contact:
 info@teselarsoftware.com, WhatsApp +34 653 232 735.

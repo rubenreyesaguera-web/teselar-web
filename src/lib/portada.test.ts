@@ -170,3 +170,38 @@ describe('textos de la cuarta pasada', () => {
     for (const t of [TESS, LLMS]) expect(t).not.toMatch(/plazas\s+por\s+semana/i);
   });
 });
+
+// Quinta pasada (25/10).
+describe('textos de la quinta pasada', () => {
+  // ADR-094: lo hecho a medida es del cliente al pagarlo todo, con su codigo; citas es la excepcion.
+  test('la respuesta de los datos dice de quien es lo hecho a medida', () => {
+    for (const lng of LNGS) {
+      const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
+      for (const t of [dictionaries[lng].faq.q14.a, datos]) expect(t).toMatch(/código|codi|source code/);
+    }
+    expect(JSON.stringify(dictionaries) + LLMS + TESS).not.toMatch(/inmobiliaria y ERP\/CRM|immobiliària i ERP\/CRM|real estate and ERP\/CRM|inmobiliaria, ERP\/CRM|ERP\/CRM desktop/);
+  });
+
+  test('«¿y si un dia no estas?» tiene su pregunta, sin suplente', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].faq.q15.a).toMatch(/Plus/);
+      expect(dictionaries[lng].faq.q15.a).not.toMatch(/otro programador|un altre programador|another developer/);
+      expect(dictionaries[lng].leads.post_services).not.toMatch(/reducido|reduït|limited number/);
+    }
+    expect(PORTADA).toContain('t.faq.q15');
+    expect(LAYOUT).toContain("'q15'");
+  });
+
+  test('sin «obligatorio» en el Basico ni en el 02, ni «24-48h», ni jerga', () => {
+    for (const lng of LNGS) {
+      const d = dictionaries[lng];
+      expect(d.pricing.basic.desc + d.services.s2.f8).not.toMatch(/obligatori|required/);
+      expect(d.pricing.basic.f4).toMatch(/48/);
+      expect(JSON.stringify(d)).not.toMatch(/24-48/);
+      expect(d.services.categories.systems).not.toMatch(/ERP/);
+      expect(d.services.s2.f2 + d.services.s2.f5).not.toMatch(/CRM|bidireccional|Two-way database/);
+      expect(d.services.s8.paso).not.toMatch(/^(Entre la|Between)/);
+    }
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/24-48/);
+  });
+});
