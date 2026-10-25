@@ -667,34 +667,6 @@ export default function Page({ params }: PageProps) {
               <span>{t.services.live_adjustments}</span>
             </div>
 
-            {/* Los tres servicios que hablan por WhatsApp y se confunden entre si */}
-            <div className="mt-12 glass-panel rounded-[2rem] border border-claridad/10 p-8 md:p-10 text-left">
-              <h3 className="text-lg md:text-xl font-black text-claridad mb-8 text-center tracking-tight">{t.services.tres_ia.title}</h3>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <Zap size={20} className="text-innovacion flex-shrink-0" />
-                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c1_title}</span>
-                  </div>
-                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c1_desc}</p>
-                </div>
-                <div className="md:border-l md:border-claridad/10 md:pl-8">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Brain size={20} className="text-innovacion flex-shrink-0" />
-                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c2_title}</span>
-                  </div>
-                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c2_desc}</p>
-                </div>
-                <div className="md:border-l md:border-claridad/10 md:pl-8">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Calendar size={20} className="text-innovacion flex-shrink-0" />
-                    <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c3_title}</span>
-                  </div>
-                  <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c3_desc}</p>
-                </div>
-              </div>
-              <p className="mt-8 pt-6 border-t border-claridad/10 text-base text-claridad font-semibold text-center">{t.services.tres_ia.nota}</p>
-            </div>
           </div>
 
           {/* Interactive Category Selector Tabs */}
@@ -753,6 +725,8 @@ export default function Page({ params }: PageProps) {
                       {service.id === 's8' && <span className="text-sm text-claridad/70">{t.demo.portada_nota}</span>}
                       {/* La auditoria antes del 09 (ADR-086), dicha aqui y no descubierta en la reunion (25/10). */}
                       {service.id === 's8' && <span className="text-sm text-claridad/70 max-w-[62ch] [text-wrap:pretty]">{t.services.s8.paso}</span>}
+                      {/* Los dos planes de citas (doc 04): «700 € — 1.800 €» se leia como un solo producto (25/10). */}
+                      {service.id === 's9' && <span className="text-sm text-claridad/70 max-w-[62ch] [text-wrap:pretty]">{t.services.s9.planes}</span>}
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
                       <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{service.price}</span>
@@ -800,6 +774,36 @@ export default function Page({ params }: PageProps) {
               );
             })}
           </ul>
+
+          {/* Los tres servicios que hablan por WhatsApp y se confunden entre si. Despues de las tarjetas (25/10): delante,
+              quien no busca WhatsApp leia «esto va de chatbots» antes de ver el catalogo. */}
+          <div className="max-w-4xl mx-auto mt-16 glass-panel rounded-[2rem] border border-claridad/10 p-8 md:p-10 text-left">
+            <h3 className="text-lg md:text-xl font-black text-claridad mb-8 text-center tracking-tight">{t.services.tres_ia.title}</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <Zap size={20} className="text-innovacion flex-shrink-0" />
+                  <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c1_title}</span>
+                </div>
+                <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c1_desc}</p>
+              </div>
+              <div className="md:border-l md:border-claridad/10 md:pl-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <Brain size={20} className="text-innovacion flex-shrink-0" />
+                  <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c2_title}</span>
+                </div>
+                <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c2_desc}</p>
+              </div>
+              <div className="md:border-l md:border-claridad/10 md:pl-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <Calendar size={20} className="text-innovacion flex-shrink-0" />
+                  <span className="text-sm font-black text-innovacion uppercase tracking-wider">{t.services.tres_ia.c3_title}</span>
+                </div>
+                <p className="text-sm text-claridad/80 font-light leading-relaxed">{t.services.tres_ia.c3_desc}</p>
+              </div>
+            </div>
+            <p className="mt-8 pt-6 border-t border-claridad/10 text-base text-claridad font-semibold text-center">{t.services.tres_ia.nota}</p>
+          </div>
 
           {/* Service Conditions: Not included & Payment terms */}
           <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 gap-6.5">
@@ -872,7 +876,7 @@ export default function Page({ params }: PageProps) {
                 cta: lng === 'es' ? 'Contratar Plan Básico' : lng === 'ca' ? 'Contractar Pla Bàsic' : 'Hire Basic Plan', accion: () => handleScrollToContact('info'), href: null },
               { id: 'plus', plan: t.pricing.plus, items: [t.pricing.plus.f1, t.pricing.plus.f2, t.pricing.plus.f3, t.pricing.plus.f4], nota: null,
                 cta: lng === 'es' ? 'Contratar Plan Plus' : lng === 'ca' ? 'Contractar Pla Plus' : 'Hire Plus Plan', accion: () => handleScrollToContact('info'), href: null },
-              { id: 'citas', plan: t.pricing.citas, items: [t.pricing.citas.f1, t.pricing.citas.f2], nota: t.pricing.citas.f3,
+              { id: 'citas', plan: t.pricing.citas, items: [t.pricing.citas.f1, t.pricing.citas.f2, t.pricing.citas.tope], nota: t.pricing.citas.f3,
                 cta: t.pricing.citas.cta, accion: null, href: '#services' },
               { id: 'ia', plan: t.pricing.ia, items: [t.pricing.ia.f1, t.pricing.ia.f2], nota: t.pricing.ia.f3,
                 cta: t.pricing.ia.cta, accion: null, href: '#services' },

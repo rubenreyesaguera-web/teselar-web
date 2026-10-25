@@ -174,6 +174,7 @@ export const dictionaries = {
         title: '03. Citas por WhatsApp',
         ideal: 'Negocios que trabajan con cita previa y hoy las cogen a mano: peluquerías y barberías, estética, fisioterapia, clínicas, talleres o asesorías. Es el único servicio que entra en tu agenda y reserva de verdad, no solo informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
+        planes: 'Dos planes: Esencial, 700-900€ + 150€/mes, si atiende una sola persona; Completo, 1.500-1.800€ + 250€/mes, si sois dos o más a la vez.',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres, reserva la cita y la confirma sin que tengas que contestar',
         f2: 'Tu agenda en Google Calendar u Outlook, conectada al asistente: nunca dos citas en el mismo hueco. Si hoy la llevas en papel o en Excel, la pasamos ahí al empezar, y te ayudo.',
@@ -187,12 +188,12 @@ export const dictionaries = {
     },
     pricing: {
       title: 'Mantenimiento y Soporte',
-      subtitle: 'Tranquilidad absoluta para tu negocio. Cuido de tu tecnología para que te enfoques en crecer.',
+      subtitle: 'Lo que te entrego sigue funcionando: lo vigilo, lo actualizo y, si algo falla, lo arreglo yo. Sin permanencia.',
       basic: {
         title: 'Plan Básico',
         price: '60€',
         period: '/ mes',
-        desc: 'Tu web vigilada y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y Sistemas a Medida, y obligatorio mientras tengas una automatización en marcha. Los dos servicios con IA llevan cuota propia, aparte de esta.',
+        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y el programa de gestión a medida (09), y obligatorio mientras tengas una automatización en marcha. Los dos servicios con IA llevan cuota propia, aparte de esta.',
         f1: 'Monitorización automática 24/7 y copias de seguridad semanales',
         f2: 'Actualizaciones de seguridad y corrección de errores',
         f3: '1h/mes de cambios de contenido y ajustes menores',
@@ -215,6 +216,7 @@ export const dictionaries = {
         desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. Lo que cuenta es cuántas personas atendéis a la vez, no cuántos servicios hacéis: si atiende una sola persona, el Esencial; si en algún momento sois dos o más atendiendo al mismo tiempo, el Completo.',
         f1: 'El asistente atendiendo tu WhatsApp cada día, vigilado, y corregido si algo falla — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
+        tope: 'La cuota cubre el uso normal del negocio: hasta 500 conversaciones al mes en el Esencial y 1.500 en el Completo. Si un mes te pasas, no se corta: lo miramos juntos y, si se repite, ajustamos la cuota.',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta: entre 1,7 y 3,3 céntimos por cita, calculado con la tarifa oficial de Meta en vigor desde el 1 de octubre de 2026. Las respuestas del asistente entran en los 1.000 mensajes gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes; lo que se paga es el recordatorio y la confirmación. Lo que escriben tus clientes es gratis',
         cta: 'Ver el producto de citas'
       },
@@ -250,32 +252,32 @@ export const dictionaries = {
         desc: 'Lo hago a medida y de cero, sin plantillas ni veinte plugins de autores distintos que tengan que llevarse bien. Por eso va rápido y, si algo falla, sabes a quién llamar. Y si para lo tuyo te basta con WordPress, te lo digo.'
       },
       v3: {
-        title: 'Cercanía y Entendimiento Local',
-        desc: 'Con base en Lloret de Mar. Me gusta conocer tu negocio de cerca, vernos en persona y diseñar la solución que encaje con tus objetivos locales.'
+        title: 'Cerca de ti',
+        desc: 'Estoy en Lloret de Mar y voy a tu negocio: prefiero ver cómo trabajáis antes de proponer nada. Y si un día algo falla, estoy a un rato de coche.'
       },
       v4: {
-        title: 'Estabilidad y Soporte Garantizado',
-        desc: 'Cada desarrollo se entrega con garantía de estabilidad, formación integral y soporte técnico comprometido para asegurar el éxito continuo de tu negocio.'
+        title: 'Y después, sigo ahí',
+        desc: 'Cuando entrego, no desaparezco: te enseño a usarlo en persona, en tu negocio, y con el mantenimiento, si algo falla, me llamas a mí y lo arreglo yo.'
       }
     },
     process: {
       title: 'Mi Proceso de Trabajo',
       subtitle: 'Una hoja de ruta clara para dar forma a tu solución digital de principio a fin.',
       p1: {
-        title: '01. Primer Contacto',
-        desc: 'Analizo tus necesidades actuales en detalle. Definimos juntos los objetivos y te aconsejo el módulo que mejor se adapta.'
+        title: '01. Charla gratis',
+        desc: '30 minutos para ver cómo trabajas y qué te quita tiempo. Si lo tuyo va a medida, después viene la auditoría.'
       },
       p2: {
-        title: '02. Propuesta Clara',
-        desc: 'Trazo la arquitectura exacta del software, fijo los plazos y te entrego un presupuesto detallado y cerrado, sin sorpresas.'
+        title: '02. Propuesta por escrito',
+        desc: 'En la web ves rangos; en la propuesta, la cifra exacta, qué entra, qué no y los plazos. Pagas una señal y el resto contra entrega.'
       },
       p3: {
-        title: '03. Desarrollo Ágil',
-        desc: 'Programo la web o el software con las mejores prácticas de la industria. Tendrás acceso privado para ver el progreso real paso a paso.'
+        title: '03. Lo construyo por partes',
+        desc: 'Con cada entrega te enseño lo que ya está hecho y, si ya puedes usarlo, cómo se usa.'
       },
       p4: {
-        title: '04. Ajustes en Vivo',
-        desc: 'Despliego la web. Durante la primera semana hago ajustes y mejoras en caliente sobre producción, a partir de lo que me vayas diciendo.'
+        title: '04. Lo usas y lo ajusto',
+        desc: 'Con todo entregado, la primera semana ajusto lo que salga al usarlo de verdad, y después sigue el mantenimiento.'
       }
     },
     faq: {
@@ -335,7 +337,7 @@ export const dictionaries = {
       },
       q14: {
         q: '¿Dónde quedan los datos de mis clientes o pacientes?',
-        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. Y siempre firmamos el contrato de protección de datos que pide la ley.'
+        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley.'
       }
     },
     contact: {
@@ -472,7 +474,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. Y siempre firmamos el contrato de protección de datos que pide la ley.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
@@ -675,6 +677,7 @@ export const dictionaries = {
         title: '03. Cites per WhatsApp',
         ideal: 'Negocis que treballen amb cita prèvia i avui les agafen a mà: perruqueries i barberies, estètica, fisioteràpia, clíniques, tallers o assessories. És l\'únic servei que entra a la teva agenda i reserva de debò, no només informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
+        planes: 'Dos plans: Essencial, 700-900€ + 150€/mes, si atén una sola persona; Complet, 1.500-1.800€ + 250€/mes, si sou dues o més alhora.',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures, reserva la cita i la confirma sense que hagis de contestar',
         f2: 'La teva agenda a Google Calendar o Outlook, connectada a l’assistent: mai dues cites al mateix forat. Si avui la portes en paper o en Excel, la hi passem en començar, i t’ajudo.',
@@ -688,12 +691,12 @@ export const dictionaries = {
     },
     pricing: {
       title: 'Manteniment i Suport',
-      subtitle: 'Tranquil·litat absoluta per al teu negoci. Cuido de la teva tecnologia perquè t\'enfoquis a créixer.',
+      subtitle: 'El que et lliuro continua funcionant: ho vigilo, ho actualitzo i, si alguna cosa falla, ho arreglo jo. Sense permanència.',
       basic: {
         title: 'Plan Bàsic',
         price: '60€',
         period: '/ mes',
-        desc: 'La teva web vigilada i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i Sistemes a Mida, i obligatori mentre tinguis una automatització en marxa. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
+        desc: 'La teva web o el teu programa, vigilats i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i el programa de gestió a mida (09), i obligatori mentre tinguis una automatització en marxa. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
         f1: 'Monitorització automàtica 24/7 i còpies de seguretat setmanals',
         f2: 'Actualitzacions de seguretat i correcció d\'errors',
         f3: '1h/mes de canvis de contingut i ajustos menors',
@@ -716,6 +719,7 @@ export const dictionaries = {
         desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. El que compta és quantes persones ateneu alhora, no quants serveis feu: si atén una sola persona, l’Essencial; si en algun moment sou dues o més atenent al mateix temps, el Complet.',
         f1: 'L\'assistent atenent el teu WhatsApp cada dia, vigilat, i corregit si alguna cosa falla — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
+        tope: 'La quota cobreix l’ús normal del negoci: fins a 500 converses al mes a l’Essencial i 1.500 al Complet. Si un mes te’n passes, no es talla: ho mirem junts i, si es repeteix, ajustem la quota.',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte: entre 1,7 i 3,3 cèntims per cita, calculat amb la tarifa oficial de Meta en vigor des de l\'1 d\'octubre de 2026. Les respostes de l\'assistent entren en els 1.000 missatges gratis al mes que dona Meta per número, que cobreixen fins a unes 250 cites al mes; el que es paga és el recordatori i la confirmació. El que escriuen els teus clients és gratis',
         cta: 'Veure el producte de cites'
       },
@@ -751,32 +755,32 @@ export const dictionaries = {
         desc: 'Ho faig a mida i de zero, sense plantilles ni vint plugins d’autors diferents que s’hagin d’entendre. Per això va ràpid i, si alguna cosa falla, saps a qui trucar. I si per al teu cas en tens prou amb WordPress, t’ho dic.'
       },
       v3: {
-        title: 'Proximitat i Comprensió Local',
-        desc: 'Amb base a Lloret de Mar. M\'agrada conèixer el teu negoci de prop, veure\'ns en persona i dissenyar la solució que encaixi amb els teus objectius locals.'
+        title: 'A prop teu',
+        desc: 'Soc a Lloret de Mar i vinc al teu negoci: prefereixo veure com treballeu abans de proposar res. I si un dia alguna cosa falla, soc a una estona de cotxe.'
       },
       v4: {
-        title: 'Estabilitat i Suport Garantit',
-        desc: 'Cada desenvolupament es lliura amb garantia d\'estabilitat, formació integral i suport tècnic compromès per assegurar l\'èxit continu del teu negoci.'
+        title: 'I després, segueixo aquí',
+        desc: 'Quan lliuro, no desapareixo: t’ensenyo a fer-lo servir en persona, al teu negoci, i amb el manteniment, si alguna cosa falla, em truques a mi i ho arreglo jo.'
       }
     },
     process: {
       title: 'El Meu Procés de Treball',
       subtitle: 'Un full de ruta clar per donar forma a la teva solució digital de principi a fi.',
       p1: {
-        title: '01. Primer Contacto',
-        desc: 'Analitzo les teves necessitats actuals en detall. Definim junts els objectius i t\'aconsello el mòdul que millor s\'adapta.'
+        title: '01. Xerrada gratis',
+        desc: '30 minuts per veure com treballes i què et fa perdre temps. Si el teu cas va a mida, després ve l’auditoria.'
       },
       p2: {
-        title: '02. Proposta Clara',
-        desc: 'Traço l\'arquitectura exacta del programari, fixo els terminis i et lliuro un pressupost detallat i tancat, sense sorpreses.'
+        title: '02. Proposta per escrit',
+        desc: 'A la web veus rangs; a la proposta, la xifra exacta, què hi entra, què no i els terminis. Pagues una paga i senyal i la resta contra lliurament.'
       },
       p3: {
-        title: '03. Desenvolupament Àgil',
-        desc: 'Programo la web o el programari amb les millors pràctiques de la indústria. Tindràs accés privat per veure el progrés real pas a pas.'
+        title: '03. Ho construeixo per parts',
+        desc: 'Amb cada lliurament t’ensenyo el que ja està fet i, si ja el pots fer servir, com es fa servir.'
       },
       p4: {
-        title: '04. Ajustos en Viu',
-        desc: 'Desplego el projecte. Durant la primera setmana faig ajustos i millores en calent sobre producció, a partir del que em vagis dient.'
+        title: '04. Ho fas servir i ho ajusto',
+        desc: 'Amb tot lliurat, la primera setmana ajusto el que surti en fer-ho servir de debò, i després continua el manteniment.'
       }
     },
     faq: {
@@ -836,7 +840,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'On queden les dades dels meus clients o pacients?',
-        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. I sempre signem el contracte de protecció de dades que demana la llei.'
+        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei.'
       }
     },
     contact: {
@@ -962,7 +966,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. I sempre signem el contracte de protecció de dades que demana la llei.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
@@ -1160,6 +1164,7 @@ export const dictionaries = {
         title: '03. WhatsApp Appointment Booking',
         ideal: 'Appointment-based businesses still booking by hand: hair and barber shops, beauty salons, physiotherapy, clinics, workshops or consultancies.',
         price: '700€ — 1,800€ + 150-250€/mo',
+        planes: 'Two plans: Essential, 700-900€ + 150€/month, if one person serves; Complete, 1,500-1,800€ + 250€/month, if two or more of you serve at once.',
         tag: 'WhatsApp Cloud API + Calendar',
         f1: 'An assistant answers your WhatsApp around the clock: checks open slots, books the appointment and confirms it without you replying',
         f2: 'Your calendar in Google Calendar or Outlook, connected to the assistant: never two appointments in the same slot. If you keep it on paper or in Excel today, we move it there when we start, and I help you.',
@@ -1173,12 +1178,12 @@ export const dictionaries = {
     },
     pricing: {
       title: 'Maintenance & Support',
-      subtitle: 'Absolute peace of mind. I take care of your technology so you can focus on growth.',
+      subtitle: 'What I deliver keeps working: I watch it, keep it updated and, if something fails, I fix it. No lock-in.',
       basic: {
         title: 'Basic Plan',
         price: '60€',
         period: '/ month',
-        desc: 'Your website watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites, and Custom Systems, and required while you have an automation running. The two AI services carry their own fee, separate from this one.',
+        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites and the custom management software (09), and required while you have an automation running. The two AI services carry their own fee, separate from this one.',
         f1: 'Automatic 24/7 monitoring and weekly backups',
         f2: 'Security updates and error fixing',
         f3: '1h/month of content changes and minor tweaks',
@@ -1201,6 +1206,7 @@ export const dictionaries = {
         desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. What counts is how many people are serving at the same time, not how many services you offer: if one person serves, the Essential plan; if at any point two or more of you are serving at once, the Complete one.',
         f1: 'The assistant answering your WhatsApp every day, monitored, and fixed if something goes wrong — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
+        tope: 'The fee covers normal business use: up to 500 conversations a month on Essential and 1,500 on Complete. If you go over one month, nothing is cut off: we look at it together and, if it keeps happening, we adjust the fee.',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account: between 1.7 and 3.3 cents per booking, worked out from Meta\'s official rates in force since 1 October 2026. The assistant\'s replies fall within the 1,000 free messages a month Meta gives each number, which cover up to about 250 bookings a month; what you pay for is the reminder and the confirmation. What your clients write is always free',
         cta: 'See the booking product'
       },
@@ -1236,32 +1242,32 @@ export const dictionaries = {
         desc: 'I build it to measure and from scratch, with no templates and no twenty plugins from different authors that have to get along. That is why it is fast and, if something breaks, you know who to call. And if WordPress is enough for you, I will tell you.'
       },
       v3: {
-        title: 'Local Proximity & Understanding',
-        desc: 'Based in Lloret de Mar. I like getting to know your business up close, meeting in person, and designing the solution that fits your local goals.'
+        title: 'Close to you',
+        desc: 'I am in Lloret de Mar and I come to your business: I prefer to see how you work before proposing anything. And if something ever fails, I am a short drive away.'
       },
       v4: {
-        title: 'Stability & Uptime Guarantee',
-        desc: 'Every project is delivered with a stability guarantee, extensive user training, and dedicated support to ensure your long-term success.'
+        title: 'And afterwards, I am still here',
+        desc: 'When I deliver, I do not disappear: I show you how to use it in person, at your business, and with maintenance, if something fails, you call me and I fix it.'
       }
     },
     process: {
       title: 'My Working Method',
       subtitle: 'A clear roadmap to shape your digital solution from start to finish.',
       p1: {
-        title: '01. First Contact',
-        desc: 'I analyze your current business needs in detail. We set the goals together and I recommend the modular solution that fits your budget.'
+        title: '01. Free chat',
+        desc: '30 minutes to see how you work and what eats up your time. If what you need is custom, the audit comes next.'
       },
       p2: {
-        title: '02. Clear Proposal',
-        desc: 'I define the exact software architecture and the delivery schedule, and hand you a transparent, closed budget with no surprises.'
+        title: '02. Written proposal',
+        desc: 'The website shows ranges; the proposal gives the exact figure, what is in, what is not and the timeline. You pay a deposit and the rest on delivery.'
       },
       p3: {
-        title: '03. Agile Development',
-        desc: 'I build it using an industry-leading stack. You will have private access to preview the real progress step by step.'
+        title: '03. I build it in parts',
+        desc: 'With each delivery I show you what is done and, if you can already use it, how to use it.'
       },
       p4: {
-        title: '04. Live Adjustments',
-        desc: 'I deploy the project. During the first week I make live tweaks and hotfixes straight from your real-world feedback.'
+        title: '04. You use it, I fine-tune it',
+        desc: 'Once everything is delivered, during the first week I adjust whatever comes up in real use, and then maintenance takes over.'
       }
     },
     faq: {
@@ -1321,7 +1327,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'Where does my customers’ or patients’ data stay?',
-        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the conversations, and only if there is a fault to fix or you ask me to. And we always sign the data protection agreement the law requires.'
+        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires.'
       }
     },
     contact: {
@@ -1447,7 +1453,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the conversations, and only if there is a fault to fix or you ask me to. And we always sign the data protection agreement the law requires.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',

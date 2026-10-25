@@ -17,8 +17,7 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
 
 1. **Diagnóstico gratuito — 30 minutos, sin coste ni compromiso.** Es la puerta de entrada. Antes de
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
-   reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Dos
-   plazas por semana. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
+   reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
 2. **Auditoría de Procesos — 150€**, solo si lo que necesita va a medida (si del diagnóstico sale un
    producto cerrado —Citas por WhatsApp, Web Esencial o una automatización sencilla— se pasa directo a la
    propuesta, sin auditoría), descontables del proyecto si acepta la propuesta en los 30
@@ -128,11 +127,12 @@ cifras verificadas y no se inventan.
 
 ## Dónde quedan los datos
 
-Todo lo del cliente va en cuentas a su nombre (dominio, hosting, base de datos y su número de WhatsApp),
+Todo lo del cliente va en cuentas a su nombre (dominio, hosting, base de datos, su agenda y su número de WhatsApp),
 con los datos en servidores de la Unión Europea. Lo único que va en la cuenta de Teselar es la
 inteligencia artificial del asistente de citas: Google Cloud, en la UE, con el acuerdo de protección de datos
 de Google y sin que Google use las conversaciones para entrenar nada; por eso su coste entra en la cuota.
-Las conversaciones solo las ve Rubén, y solo si hay un fallo que corregir o si el cliente se lo pide. Y
+Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un fallo que corregir o si el
+cliente se lo pide; en la Integración de IA (05), revisarlas cada mes es parte del servicio. Y
 siempre se firma el contrato de protección de datos que pide la ley.
 
 ## Qué pasa si no se paga el mantenimiento o no se renueva
@@ -169,7 +169,8 @@ No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting,
 correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana profesional o jurada
 (la traducción con IA revisada sí va incluida), publicidad de pago y redes sociales. En el producto
 de citas, el coste del modelo de IA SÍ va incluido en la cuota mensual (uso normal: hasta 500
-conversaciones al mes en el plan Esencial y 1.500 en el Completo), y el cliente no tiene que darse de
+conversaciones al mes en el plan Esencial y 1.500 en el Completo; si un mes se pasa, no se corta: se mira
+con el cliente y, si se repite, se ajusta la cuota), y el cliente no tiene que darse de
 alta en ningún servicio de IA. Lo que no se incluye son los mensajes de WhatsApp: desde el 1 de octubre de 2026 Meta cobra los mensajes
 enviados y los factura directamente al cliente, porque la cuenta de WhatsApp es suya. Sale entre 1,7
 y 3,3 céntimos por cita reservada (unos 2-3€/mes en un negocio de 100 reservas), calculado con la

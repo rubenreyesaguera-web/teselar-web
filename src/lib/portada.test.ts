@@ -128,3 +128,45 @@ describe('textos de la tercera pasada', () => {
   });
 });
 
+// Cuarta pasada (25/10).
+describe('textos de la cuarta pasada', () => {
+  test('sin frases de plantilla en «¿Por qué elegirme?», el mantenimiento ni el proceso', () => {
+    const todo = JSON.stringify(dictionaries);
+    expect(todo).not.toMatch(/éxito continuo|èxit continu|long-term success|Tranquilidad absoluta|Tranquil·litat absoluta|peace of mind/);
+    expect(todo).not.toMatch(/objetivos locales|objectius locals|local goals|mejores prácticas de la industria|industry-leading|acceso privado|accés privat|private access/);
+  });
+
+  test('el Basico no habla solo de «tu web» ni del nombre antiguo del 09', () => {
+    for (const lng of LNGS) expect(dictionaries[lng].pricing.basic.desc).not.toMatch(/Sistemas a Medida|Sistemes a Mida|Custom Systems|^(Tu web vigilada|La teva web vigilada|Your website watched)/);
+  });
+
+  // Doc 04: el tope de conversaciones se dice de frente, y el 03 son dos planes.
+  test('el 03 dice sus dos planes y la cuota su tope', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].services.s9.planes).toMatch(/700-900€.*150€.*1[.,]500-1[.,]800€.*250€/);
+      expect(dictionaries[lng].pricing.citas.tope).toMatch(/500.*1[.,]500/);
+    }
+    expect(PORTADA).toContain('t.services.s9.planes');
+    expect(PORTADA).toContain('t.pricing.citas.tope');
+    for (const t of [TESS, LLMS]) expect(t).toMatch(/no se corta/);
+  });
+
+  test('los datos separan citas del 05 y nombran la agenda', () => {
+    for (const lng of LNGS) {
+      const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
+      for (const t of [dictionaries[lng].faq.q14.a, datos]) {
+        expect(t).toMatch(/\(05\)/);
+        expect(t).toMatch(/agenda|calendar/);
+      }
+    }
+    for (const t of [TESS, LLMS]) expect(t).toMatch(/su agenda/);
+  });
+
+  test('el bloque de WhatsApp va despues de las tarjetas', () => {
+    expect(PORTADA.indexOf('t.services.tres_ia.title')).toBeGreaterThan(PORTADA.indexOf('filteredServices.map'));
+  });
+
+  test('TesS y llms.txt ya no ofrecen «dos plazas por semana»', () => {
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/plazas\s+por\s+semana/i);
+  });
+});
