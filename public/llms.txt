@@ -138,7 +138,8 @@ siempre se firma el contrato de protección de datos que pide la ley.
 
 Lo hecho a medida (web, programa o automatización) es del cliente cuando lo ha pagado entero, con su
 código, que se le entrega. El producto de citas es distinto: ya está hecho y probado, por eso cuesta menos, y se usa mientras se
-paga la cuota; los clientes y las citas del negocio son siempre suyos. Si el negocio trata datos de salud,
+paga la cuota; los clientes y las citas del negocio son siempre suyos (las citas ya están en su
+agenda y la lista de clientes se le da en un Excel). Si el negocio trata datos de salud,
 el contrato lo recoge y se ve antes de empezar. Si preguntan qué pasa si Rubén no está: todo va a nombre del cliente, lo que monta funciona solo
 y lo vigila a todas horas; con el Plan Plus, también fines de semana y vacaciones.
 
@@ -158,14 +159,15 @@ Y a partir de ahí:
   funcionando en las cuentas del cliente, sin vigilancia ni revisión.
 - **La única excepción son las Citas por WhatsApp:** se detienen si se cancela la cuota, con aviso previo
   de 15 días, porque la inteligencia artificial que las mueve va en la cuenta de Teselar y la paga Teselar.
-  Sus clientes y sus citas son siempre suyos y se los lleva.
+  Sus clientes y sus citas son siempre suyos: las citas ya están en su agenda y la lista de clientes se
+  le da en un Excel.
 - **Volver es posible.** Si se dio de baja y más adelante quiere retomarlo, se revisa en qué estado
   quedó y la puesta al día se presupuesta aparte.
 
 ## Condiciones
 
-Todos los precios son + IVA. Señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos, esos 150€ se
-descuentan de la señal, no la cubren entera salvo en proyectos de 1.500€ o menos: en uno de 8.000€ la
+Todos los precios son + IVA. Señal del 10% para contratar (mínimo 150€; si ya pagó la Auditoría de Procesos y acepta en los 30 días
+siguientes, esos 150€ cuentan como parte de la señal: con señal de 150€ no paga nada para empezar, y si es mayor, solo la diferencia; en uno de 8.000€ la
 señal son 800€ y abonaría 650€), y el resto en 3 o 4 cuotas sin intereses que se pagan **contra
 entrega y no contra fecha**: el diseño y el alcance, el núcleo funcionando, el despliegue y la
 aceptación. Se paga por transferencia bancaria. 1 semana de ajustes en

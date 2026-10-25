@@ -237,3 +237,27 @@ describe('textos de la sexta pasada', () => {
     }
   });
 });
+
+// Septima pasada (25/10).
+describe('textos de la septima pasada', () => {
+  test('la FAQ de citas usa la regla de la tarjeta', () => {
+    expect(JSON.stringify(dictionaries)).not.toMatch(/una cita a la vez|una cita alhora|one appointment at a time/);
+  });
+
+  // Doc 24: la auditoria cuenta como señal si acepta en 30 dias.
+  test('los 150 € de la auditoria cuentan como señal, con el plazo en todos los sitios', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].pricing.payment.conditions).toMatch(/30/);
+      expect(dictionaries[lng].pricing.payment.conditions).toMatch(/200€.*50€/);
+      expect(dictionaries[lng].services.s1.ideal).toMatch(/señal|senyal|deposit/);
+    }
+    expect(JSON.stringify(dictionaries)).not.toMatch(/ya están pagados y se descuentan|ja estan pagats|are already paid and come off/);
+  });
+
+  test('pocos proyectos dice cuando empieza, y citas como se lleva sus datos', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].leads.post_services).toMatch(/propuesta|proposta|proposal/);
+      expect(dictionaries[lng].faq.q14.a).toMatch(/Excel/);
+    }
+  });
+});
