@@ -261,3 +261,13 @@ describe('textos de la septima pasada', () => {
     }
   });
 });
+
+// Octava pasada (25/10): el aviso de TesS no choca con «Te atiendo yo».
+describe('aviso de TesS', () => {
+  const CHAT = leer('../components/ChatWidget.tsx');
+  test('sale a los 30 segundos, se presenta como ejemplo en vivo y orienta en vez de dar precios', () => {
+    expect(CHAT).toContain('setTeaser(true), 30000)');
+    expect(CHAT).toMatch(/ejemplo en vivo/);
+    expect(CHAT).not.toMatch(/Te respondo precios|Et responc preus|I answer pricing/);
+  });
+});
