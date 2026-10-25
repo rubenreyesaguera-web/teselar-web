@@ -19,11 +19,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La pieza exacta donde la tecnología y tu negocio encajan perfectamente',
-      subtitle: 'La pieza exacta donde tu negocio y la tecnología encajan: desde tu presencia digital hasta sistemas ERP/CRM e integraciones de IA. Los hago yo, de principio a fin, aquí en Lloret de Mar.',
+      subtitle: 'Programas para llevar clientes, presupuestos, facturas y técnicos en un solo sitio, asistentes que atienden tu WhatsApp y webs hechas a mano. Para instaladores, reformas, talleres, clínicas, peluquerías, inmobiliarias y gestorías. Los hago yo, aquí en Lloret de Mar.',
       meta_description: 'Asistentes con inteligencia artificial, automatizaciones y programas a medida para negocios de Lloret de Mar y la Costa Brava. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
-      cta_note: 'Sin coste y sin compromiso. Miro tu negocio antes de la llamada, así que no vengo a preguntarte qué necesitas: vengo con lo que ya he visto. Dos plazas por semana.',
+      cta_note: 'Gratis y sin compromiso. Antes de hablar miro tu web, tu ficha de Google y cómo te contactan tus clientes, para no empezar de cero.',
+      quien: 'Soy Rubén Reyes, de Teselar Software. Te atiendo yo.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
       pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
       piezas_desc: ['Tus clientes y su historial, en un solo sitio', 'Presupuestos y facturas que salen solos', 'Citas que se reservan sin llamar', 'Una web hecha a mano, rápida', 'Respuestas y recordatorios automáticos', 'Avisos, técnicos y partes desde el móvil'],
@@ -31,12 +32,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'La Pieza que Encaja',
-      text1: 'La identidad visual de Teselar se inspira en la teselación: el arte de ensamblar piezas de forma que encajen a la perfección, sin dejar huecos ni generar fricciones.',
-      text2: 'En el mundo digital, Teselar es esa pieza exacta de software a medida que tu negocio necesita para completar su engranaje y funcionar con total fluidez.'
+      text1: 'Una teselación es un mosaico de piezas que encajan sin dejar huecos, como las baldosas de un suelo.',
+      text2: 'Tu negocio ya tiene sus piezas: clientes, facturas, agenda, WhatsApp, tu equipo. Lo que hago es la que falta para que encajen y dejes de pasar datos de una a otra a mano.'
     },
     services: {
       title: 'Catálogo de Servicios',
-      subtitle: 'Soluciones modulares y de alto rendimiento adaptadas a tu tamaño y presupuesto. Sin costes ocultos.',
+      subtitle: 'Soluciones modulares adaptadas a tu tamaño y presupuesto. Lo que no entra lo tienes escrito aquí abajo y, otra vez, en tu propuesta.',
       ideal: 'Ideal para:',
       pricing: 'Precio',
       features: 'Lo que incluye:',
@@ -47,7 +48,7 @@ export const dictionaries = {
         c1_title: 'Chatbot guiado · dentro del 02',
         c1_desc: 'Sigue un guion de botones y respuestas previstas. Barato y suficiente si las preguntas son siempre las mismas; en cuanto se salen del guion, se atasca.',
         c2_title: 'Asistente de IA · el 05',
-        c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Se construye a medida sobre tu documentación, tus canales y tus sistemas: por eso el rango es amplio. Es lo que estás usando aquí: TesS.',
+        c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Se construye a medida sobre tu documentación, tus canales y tus sistemas: por eso el rango es amplio. Es el chat que tienes en la esquina de esta web: TesS. Pregúntale lo que quieras.',
         c3_title: 'Citas por WhatsApp · el 03',
         c3_desc: 'Un asistente de IA que además actúa: mira los huecos que tienes libres de verdad, reserva la cita, la confirma y manda el recordatorio. Ya está construido y probado — se configura con tus servicios y tus horarios, y por eso es más barato que un desarrollo a medida y puede llevar garantía.',
         nota: 'La pregunta para elegir es sencilla: ¿lo que pierdes son consultas sin responder, o citas sin coger? Y si son citas, no pagues un desarrollo a medida: eso ya está hecho y te sale más barato.'
@@ -55,12 +56,12 @@ export const dictionaries = {
       categories: {
         web: 'Desarrollo Web',
         automation: 'Automatización e IA',
-        systems: 'Sistemas y ERP'
+        systems: 'Programas de gestión'
       },
       vat: '+ IVA',
       s1: {
         title: '01. Auditoría de Procesos',
-        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas por WhatsApp, una web sencilla o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan si aceptas la propuesta en los 30 días siguientes.',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas por WhatsApp, una web sencilla o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes: cuentan como parte de la señal.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Procesos y costes',
         f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante. Antes te digo qué tienes que traer, que es poco y depende de tu negocio',
@@ -69,7 +70,7 @@ export const dictionaries = {
         f4: 'Tus números: cuántas veces haces una tarea, cuánto tiempo te lleva y cuánto te cuesta',
         f5: 'Qué se puede automatizar, qué no, y en qué orden',
         f6: 'Informe escrito de 2-3 páginas con prioridades, y con él la propuesta con el precio de lo que saldría de ahí: tú decides si la aceptas. Si no veo nada que te compense, te lo digo y no hay propuesta',
-        f7: 'El prediagnóstico digital de tu web y tus redes, incluido'
+        f7: 'Un repaso de tu web y tus redes, incluido'
       },
       s2: {
         title: '02. Automatizaciones Específicas',
@@ -77,13 +78,13 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automático de presupuestos en PDF desde un formulario',
-        f2: 'Envío automático de facturas por email con datos de tu CRM',
+        f2: 'Envío automático de facturas por email con los datos de tus clientes',
         f3: 'Extractor automatizado de datos de correos a Google Sheets',
         f4: 'Chatbot de respuestas guiadas para WhatsApp o Telegram (sigue un guion; si necesitas que entienda lenguaje libre, eso es la Integración de IA)',
-        f5: 'Sincronizador de base de datos bidireccional entre plataformas',
+        f5: 'Que dos programas que ya usas se pasen los datos solos, en los dos sentidos',
         f6: 'Sistema inteligente de recordatorios y alertas automáticas',
         f7: 'Reportes diarios/semanales automáticos por email',
-        f8: 'Plan Básico de mantenimiento (60€/mes), obligatorio mientras la automatización esté en marcha: vigilo que siga funcionando y la arreglo si cambia una API o caduca una credencial. Dónde acaba mi trabajo: no cubre funciones nuevas, cambios del proceso ni integrar herramientas que no estuvieran en el alcance acordado — eso se presupuesta aparte'
+        f8: 'Plan Básico de mantenimiento (60€/mes), recomendado mientras la automatización esté en marcha: vigilo que siga funcionando y la arreglo si cambia una API o caduca una credencial. Sin él sigue funcionando, pero nadie la vigila, y lo que se rompa se presupuesta aparte. Dónde acaba mi trabajo: no cubre funciones nuevas, cambios del proceso ni integrar herramientas que no estuvieran en el alcance acordado — eso se presupuesta aparte'
       },
       s3: {
         title: '04. Web Esencial',
@@ -109,14 +110,14 @@ export const dictionaries = {
         f4: 'Análisis, clasificación y resumen automático de documentos',
         f5: 'Automatización avanzada con procesamiento de lenguaje natural',
         f6: 'Integración directa con modelos GPT, Claude u homólogos',
-        f7: 'Cuota mensual del asistente, obligatoria y en tres tramos: 90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y además se integra con tus sistemas. Incluye revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde. El consumo de las APIs de IA va en tu propia cuenta, a tu nombre'
+        f7: 'Cuota mensual del asistente, recomendada y en tres tramos: 90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y además se integra con tus sistemas. Incluye revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde; sin ella el asistente sigue funcionando, pero nadie lo revisa. El consumo de las APIs de IA va en tu propia cuenta, a tu nombre'
       },
       s5: {
         title: '06. Web Completa',
         ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
         price: 'Desde 3.000€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Incluye todo lo de la Web Esencial (04): 3-4 secciones, diseño responsive, formulario y botón de WhatsApp, SEO básico y 1 semana de ajustes en vivo',
+        hereda: 'Incluye todo lo de la Web Esencial (04): diseño responsive, formulario y botón de WhatsApp, SEO básico y 1 semana de ajustes en vivo',
         f1: 'Estructura modular de 5 a 8 secciones bien definidas',
         f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
         f3: 'Sección autogestionable de blog, artículos o noticias',
@@ -151,20 +152,21 @@ export const dictionaries = {
         f4: '2 idiomas incluidos para compradores extranjeros — adicional +250€',
         f5: 'Exportación XML (formato Kyero) para sincronizar con Idealista, Habitaclia, Fotocasa y portales internacionales',
         f6: 'Formulario de contacto por propiedad y botón de WhatsApp',
-        f7: 'SEO local, y mantenimiento incluido el primer año (los feeds a portales necesitan vigilancia)'
+        f7: 'SEO local y mantenimiento incluido el primer año, con la vigilancia del feed a los portales'
       },
       s8: {
-        title: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)',
+        title: '09. Programa de gestión a medida: clientes, facturas y técnicos',
+        paso: 'La charla de 30 minutos es gratis. Después, un programa a medida pide mirar tus números con calma: es la auditoría (150 €), te queda por escrito sigas o no, y si sigues adelante se descuentan.',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
-        f1: 'Aplicación de escritorio nativa instalable (Windows, macOS, Linux)',
+        f1: 'Funciona en el móvil, la tablet y el ordenador. En el móvil, también sin cobertura: guarda lo que se apunta y lo envía al volver la señal.',
         f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
         f3: 'Módulo integral de gestión de clientes (CRM) y base de contactos',
         f4: 'Generación automática y descarga directa de facturas y presupuestos en PDF',
         f5: 'Planificador interno de proyectos, tareas de equipo y control de tiempos',
         f6: 'Roles de usuario avanzados con niveles de acceso seguros',
-        f7: 'Formación integral del equipo + 1 semana de soporte prioritario',
+        f7: 'Formación de tu equipo en persona + 1 semana de ajustes en vivo',
         f8: 'Plan Básico de mantenimiento incluido el primer año; después, 60€/mes sin permanencia',
         f9: 'Si tu equipo trabaja fuera: avisos, asignación de técnicos, fichajes y partes desde el móvil'
       },
@@ -172,47 +174,49 @@ export const dictionaries = {
         title: '03. Citas por WhatsApp',
         ideal: 'Negocios que trabajan con cita previa y hoy las cogen a mano: peluquerías y barberías, estética, fisioterapia, clínicas, talleres o asesorías. Es el único servicio que entra en tu agenda y reserva de verdad, no solo informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
+        planes: 'Dos planes: Esencial, 700-900€ + 150€/mes, si atiende una sola persona; Completo, 1.500-1.800€ + 250€/mes, si sois dos o más a la vez.',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres, reserva la cita y la confirma sin que tengas que contestar',
-        f2: 'Agenda sincronizada con la que ya usas — nunca dos citas en el mismo hueco',
+        f2: 'Tu agenda en Google Calendar u Outlook, conectada al asistente: nunca dos citas en el mismo hueco. Si hoy la llevas en papel o en Excel, la pasamos ahí al empezar, y te ayudo.',
         f3: 'Recordatorio automático antes de la cita, que es lo que hace que la gente no falte',
         f4: 'Cambios y cancelaciones por el mismo WhatsApp, sin llamadas ni huecos muertos',
         f5: 'Panel con tus citas y el contador de las que entraron fuera de tu horario de atención',
         f6: 'Garantía: si en los tres primeros meses no entra ni una cita fuera de tu horario, te devuelvo la puesta en marcha',
         f7: 'Petición automática de reseñas en Google al terminar la cita, como complemento (+200€)',
-        f8: 'Hay una versión sin WhatsApp API por 400€-700€ + 90€/mes, y no es lo mismo más barato: ahí no hay asistente que converse — tu cliente te escribe al WhatsApp de siempre, recibe un enlace y reserva en una página, y la confirmación y el recordatorio le llegan por email. A cambio no migras de número ni dependes de Meta'
+        f8: 'Hay una versión sin WhatsApp API por 400€-700€ + 90€/mes, y no es lo mismo más barato: ahí no hay asistente que converse — tu cliente te escribe al WhatsApp de siempre, recibe un enlace y reserva en una página, y la confirmación y el recordatorio le llegan por email. A cambio, no se conecta a tu número ni dependes de Meta'
       }
     },
     pricing: {
       title: 'Mantenimiento y Soporte',
-      subtitle: 'Tranquilidad absoluta para tu negocio. Cuido de tu tecnología para que te enfoques en crecer.',
+      subtitle: 'Lo que te entrego sigue funcionando: lo vigilo, lo actualizo y, si algo falla, lo arreglo yo. Sin permanencia.',
       basic: {
         title: 'Plan Básico',
         price: '60€',
         period: '/ mes',
-        desc: 'Tu web vigilada y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y Sistemas a Medida, y obligatorio mientras tengas una automatización en marcha. Los dos servicios con IA llevan cuota propia, aparte de esta.',
+        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y el programa de gestión a medida (09), y recomendado si tienes una automatización: sin él sigue funcionando, pero nadie la vigila. Los dos servicios con IA llevan cuota propia, aparte de esta.',
         f1: 'Monitorización automática 24/7 y copias de seguridad semanales',
         f2: 'Actualizaciones de seguridad y corrección de errores',
         f3: '1h/mes de cambios de contenido y ajustes menores',
-        f4: 'Respuesta en 24-48h laborables e informe trimestral de estado'
+        f4: 'Respuesta en 48h laborables como máximo, aunque siempre intento contestar lo antes posible (si no puedes esperar, el Plus responde el mismo día), e informe trimestral de estado'
       },
       plus: {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Para e-commerce, inmobiliarias y webs que cambian mucho. Sin permanencia.',
+        desc: 'El Básico cubre lo normal. El Plus es para cuando no puedes esperar: respuesta el mismo día, también en fines de semana y vacaciones. Sin permanencia.',
         f1: 'Todo lo del Básico, con copias de seguridad diarias',
         f2: '5h/mes de desarrollo y mejoras (no acumulables)',
-        f3: 'Vigilancia de pasarelas de pago y feeds a portales + revisión trimestral de velocidad y SEO',
+        f3: 'Vigilancia de pasarelas de pago + revisión trimestral de velocidad y SEO',
         f4: 'Respuesta el mismo día, también en fines de semana, festivos y vacaciones (4h en incidencia crítica), e informe mensual'
       },
       citas: {
         title: 'Citas por WhatsApp · cuota del servicio',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. El Esencial lleva una agenda, con una cita a la vez; el Completo, varias a la vez, para cuando atendéis dos o más personas al mismo tiempo.',
-        f1: 'El asistente atendiendo tu WhatsApp cada día, supervisado y corregido si algo cambia — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
+        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. Lo que cuenta es cuántas personas atendéis a la vez, no cuántos servicios hacéis: si atiende una sola persona, el Esencial; si en algún momento sois dos o más atendiendo al mismo tiempo, el Completo.',
+        f1: 'El asistente atendiendo tu WhatsApp cada día, vigilado, y corregido si algo falla — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
+        tope: 'La cuota cubre el uso normal del negocio: hasta 500 conversaciones al mes en el Esencial y 1.500 en el Completo. Si un mes te pasas, no se corta: lo miramos juntos y, si se repite, ajustamos la cuota.',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta: entre 1,7 y 3,3 céntimos por cita, calculado con la tarifa oficial de Meta en vigor desde el 1 de octubre de 2026. Las respuestas del asistente entran en los 1.000 mensajes gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes; lo que se paga es el recordatorio y la confirmación. Lo que escriben tus clientes es gratis',
         cta: 'Ver el producto de citas'
       },
@@ -232,48 +236,48 @@ export const dictionaries = {
       },
       payment: {
         title: 'Métodos de Pago & Condiciones',
-        methods: 'Métodos aceptados: Transferencia bancaria o efectivo en mano (con cita previa).',
-        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos, esos 150€ ya están pagados y se descuentan de la señal. Todos los precios son + IVA.'
+        methods: 'Transferencia bancaria.',
+        conditions: 'Condiciones: Para contratar solo se pide una señal del 10% (mínimo 150€). El resto se reparte sin intereses en 3 o 4 cuotas, y cada una se paga contra una entrega —el diseño, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha del calendario. Y si ya has pagado la Auditoría de Procesos y aceptas la propuesta en los 30 días siguientes, esos 150€ cuentan como parte de la señal: si la señal es de 150€, no pagas nada para empezar, y si es mayor, solo la diferencia (con una señal de 200€, pagas 50€). Todos los precios son + IVA.'
       }
     },
     values: {
       title: '¿Por qué elegirme?',
-      subtitle: 'La ventaja competitiva de trabajar con artesanos de software especializados en lugar de grandes consultoras lentas o freelancers inestables.',
+      subtitle: 'Trabajas directamente con quien lo hace: sin intermediarios, sin plantillas y cerca de ti.',
       v1: {
-        title: 'Contacto Directo sin Intermediarios',
-        desc: 'Hablo tu mismo idioma. Tratas directamente con el desarrollador que escribe cada línea de código de tu aplicación, sin esperas ni malentendidos.'
+        title: 'Vengo de la empresa',
+        desc: 'Antes del software pasé doce años en compras y posventa, en una sociedad anónima y dos multinacionales: albaranes, facturas, presupuestos de reparación, proveedores y un taller a mi cargo. Por eso primero miro cómo trabajas, y la tecnología viene después. Y hablas siempre conmigo.'
       },
       v2: {
-        title: 'Desarrollo Nativo a Medida',
-        desc: 'Huyo de las plantillas de WordPress pesadas e inseguras. Hago las webs a mano con React y Tailwind, y eso te da una velocidad insuperable y un SEO excelente.'
+        title: 'Hecho a mano',
+        desc: 'Lo hago a medida y de cero, sin plantillas ni veinte plugins de autores distintos que tengan que llevarse bien. Por eso va rápido y, si algo falla, sabes a quién llamar. Y si para lo tuyo te basta con WordPress, te lo digo.'
       },
       v3: {
-        title: 'Cercanía y Entendimiento Local',
-        desc: 'Con base en Lloret de Mar. Me gusta conocer tu negocio de cerca, vernos en persona y diseñar la solución que encaje con tus objetivos locales.'
+        title: 'Cerca de ti',
+        desc: 'Estoy en Lloret de Mar y voy a tu negocio: prefiero ver cómo trabajáis antes de proponer nada. Y si un día algo falla, estoy a un rato de coche.'
       },
       v4: {
-        title: 'Estabilidad y Soporte Garantizado',
-        desc: 'Cada desarrollo se entrega con garantía de estabilidad, formación integral y soporte técnico comprometido para asegurar el éxito continuo de tu negocio.'
+        title: 'Y después, sigo ahí',
+        desc: 'Cuando entrego, no desaparezco: te enseño a usarlo en persona, en tu negocio, y con el mantenimiento, si algo falla, me llamas a mí y lo arreglo yo.'
       }
     },
     process: {
       title: 'Mi Proceso de Trabajo',
       subtitle: 'Una hoja de ruta clara para dar forma a tu solución digital de principio a fin.',
       p1: {
-        title: '01. Primer Contacto',
-        desc: 'Analizo tus necesidades actuales en detalle. Definimos juntos los objetivos y te aconsejo el módulo que mejor se adapta.'
+        title: '01. Charla gratis',
+        desc: '30 minutos para ver cómo trabajas y qué te quita tiempo. Si lo tuyo va a medida, después viene la auditoría.'
       },
       p2: {
-        title: '02. Propuesta Clara',
-        desc: 'Trazo la arquitectura exacta del software, fijo los plazos y te entrego un presupuesto detallado y cerrado, sin sorpresas.'
+        title: '02. Propuesta por escrito',
+        desc: 'En la web ves rangos; en la propuesta, la cifra exacta, qué entra, qué no y los plazos. Pagas una señal y el resto contra entrega.'
       },
       p3: {
-        title: '03. Desarrollo Ágil',
-        desc: 'Programo la web o el software con las mejores prácticas de la industria. Tendrás acceso privado para ver el progreso real paso a paso.'
+        title: '03. Lo construyo por partes',
+        desc: 'Con cada entrega te enseño lo que ya está hecho y, si ya puedes usarlo, cómo se usa.'
       },
       p4: {
-        title: '04. Ajustes en Vivo',
-        desc: 'Despliego la web. Durante la primera semana hago ajustes y mejoras en caliente sobre producción, a partir de lo que me vayas diciendo.'
+        title: '04. Lo usas y lo ajusto',
+        desc: 'Con todo entregado, la primera semana ajusto lo que salga al usarlo de verdad, y después sigue el mantenimiento.'
       }
     },
     faq: {
@@ -281,7 +285,7 @@ export const dictionaries = {
       subtitle: 'Lo que más me preguntan antes de empezar un proyecto. Si tienes otra duda, escríbeme.',
       q1: {
         q: '¿Cuánto cuesta una página web?',
-        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. Te doy un precio cerrado tras la primera conversación, sin sorpresas.'
+        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. En la Web Esencial te doy un precio cerrado tras la primera conversación, sin sorpresas; la Completa, como todo lo que va a medida, pasa antes por la auditoría.'
       },
       q2: {
         q: '¿Trabajas solo en Lloret de Mar o también fuera?',
@@ -301,15 +305,15 @@ export const dictionaries = {
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
-        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago y feeds a portales, respuesta el mismo día, también en fines de semana, festivos y vacaciones, e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y las Automatizaciones Específicas llevan el Plan Básico incluido de forma obligatoria mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
+        a: 'Dos planes sin permanencia: el Básico (60€/mes) incluye monitorización 24/7, copias de seguridad semanales, actualizaciones, 1h/mes de cambios e informe trimestral. El Plus (150€/mes) añade copias diarias, 5h/mes de desarrollo, vigilancia de pasarelas de pago, respuesta el mismo día, también en fines de semana, festivos y vacaciones, e informe mensual. Aparte del mantenimiento hay dos cuotas propias, porque son servicios funcionando y no una web vigilada: el asistente de la Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes). Y en las Automatizaciones Específicas te recomiendo el Plan Básico (60€/mes) mientras estén en marcha, porque una automatización sin vigilar se rompe callada el día que cambia una API.'
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
-        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Acepto transferencia bancaria o efectivo en mano con cita previa.'
+        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos y aceptas en los 30 días siguientes, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Se paga por transferencia bancaria.'
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
-        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante —antes te digo qué tienes que traer, que es poco y depende de tu negocio—, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, cuánto, y qué se puede automatizar y en qué orden. Con el informe te mando la propuesta con el precio de lo que saldría de ahí, y tú decides si la aceptas; si no veo nada que te compense, te lo digo y no hay propuesta. Cuesta 150€ y se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes. Incluye también el prediagnóstico digital de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
+        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante —antes te digo qué tienes que traer, que es poco y depende de tu negocio—, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, cuánto, y qué se puede automatizar y en qué orden. Con el informe te mando la propuesta con el precio de lo que saldría de ahí, y tú decides si la aceptas; si no veo nada que te compense, te lo digo y no hay propuesta. Cuesta 150€ y se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes. Incluye también un repaso de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
       },
       q9: {
         q: '¿Qué NO está incluido en el precio de un proyecto?',
@@ -317,7 +321,7 @@ export const dictionaries = {
       },
       q10: {
         q: '¿Puedes hacer que mi negocio coja las citas por WhatsApp?',
-        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes, para una agenda con una cita a la vez, y el Completo 1.500€-1.800€ más 250€/mes, para cuando atendéis varias personas al mismo tiempo. Todo, + IVA. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Necesitas tener el número en la app WhatsApp Business (migrar es gratis, tarda diez minutos y te ayudo a hacerlo). Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email, no por WhatsApp. A cambio no migras de número, no dependes de los plazos de Meta y no pagas mensajes.'
+        a: 'Sí, es uno de mis servicios. Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres de tu agenda, reserva la cita, la confirma y manda el recordatorio, sin que tengas que contestar tú. El plan Esencial cuesta 700€-900€ de puesta en marcha más 150€/mes, si atiende una sola persona, y el Completo 1.500€-1.800€ más 250€/mes, si sois dos o más a la vez. Todo, + IVA. Va con garantía: si en los tres primeros meses no entra ni una sola cita fuera de tu horario de atención, te devuelvo la puesta en marcha. Tu número tiene que estar en la app WhatsApp Business, la de siempre con herramientas para negocios. Si aún no la usas, el cambio es gratis, tarda diez minutos y conservas número, chats y contactos; te ayudo a hacerlo. Tus clientes no notan nada, y tú sigues escribiendo desde el móvil a la vez que el asistente. Enlazar tu número con el sistema depende de una aprobación de Meta: ese plazo no lo controlo yo, y te lo doy por escrito en la propuesta. Si prefieres no depender de Meta hay una versión sin API por 400€-700€ más 90€/mes, pero que quede claro que no es lo mismo más barato: ahí no hay asistente que converse. Tu cliente te escribe al WhatsApp de siempre, recibe un enlace y cierra la cita en una página de reserva, y la confirmación y el recordatorio le llegan por email, no por WhatsApp. A cambio, no se conecta a tu número, no dependes de los plazos de Meta y no pagas mensajes.'
       },
       q11: {
         q: '¿Qué diferencia hay entre un chatbot, un asistente de IA y el sistema de citas por WhatsApp?',
@@ -325,11 +329,19 @@ export const dictionaries = {
       },
       q12: {
         q: '¿Por qué no me haces la web en WordPress, que sale más barata?',
-        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Yo escribo el código, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
+        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Lo hago a medida y de cero, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
       },
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
-        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y ERP/CRM) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: tu web sigue publicada y sigue siendo tuya, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
+        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y programa de gestión a medida) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: lo que te hice sigue siendo tuyo y, si es una web o un programa, sigue funcionando, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. Lo mismo con las Automatizaciones Específicas y el asistente de la Integración de IA: siguen funcionando en tus cuentas, pero sin nadie que los vigile ni los revise. La única excepción son las Citas por WhatsApp: se paran si cancelas la cuota, avisándote 15 días antes, porque la inteligencia artificial que las mueve va en mi cuenta y la pago yo. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
+      },
+      q14: {
+        q: '¿Dónde quedan los datos de mis clientes o pacientes?',
+        a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Y lo que te hago a medida (web, programa o automatización) es tuyo cuando lo has pagado entero, con su código: te lo entrego. El producto de citas es distinto: no se hace para ti, ya está hecho y probado, y por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas ya están en tu Google Calendar u Outlook, y la lista de clientes te la doy en un Excel si lo dejas. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.'
+      },
+      q15: {
+        q: '¿Y si trabajas solo y un día no estás?',
+        a: 'Hablas siempre con quien lo ha hecho, sin centralitas. Lo que monto funciona solo y lo vigilo a todas horas: si algo falla, me entero antes que tú. Y no te quedas atado: todo va a tu nombre y lo que te hago a medida es tuyo, con su código, cuando lo has pagado. Y si te hace falta que te atienda también en fines de semana y vacaciones, está el Plan Plus.'
       }
     },
     contact: {
@@ -367,19 +379,15 @@ export const dictionaries = {
     simulator: {
       title: 'Simulador de Retorno de Inversión (ROI)',
       subtitle: 'Descubre cuánto tiempo y dinero estás perdiendo por no automatizar las tareas repetitivas de tu negocio.',
-      label_hours: 'Horas semanales desperdiciadas en tareas repetitivas',
+      label_hours: 'Horas a la semana en tareas que se repiten (pasar datos, hacer facturas, llamar para recordar…)',
       label_employees: 'Número de empleados haciendo estas tareas',
       label_cost: 'Coste medio por hora del empleado',
-      result_monthly: 'Ahorro Mensual Estimado',
-      result_yearly: 'Ahorro Anual Estimado',
-      result_hours: 'Tiempo Anual Recuperado',
-      rec_title: 'Propuesta de Solución Sugerida',
-      rec_badge: 'RECOMENDADO',
-      btn_apply: 'Vincular presupuesto y continuar al formulario',
-      notif_linked: '¡Simulación vinculada con éxito en el formulario!',
-      opt_s2: '02. Automatizaciones Específicas',
-      opt_s4: '05. Integración de Inteligencia Artificial',
-      opt_s8: '09. Sistema de Gestión a Medida (ERP/CRM/FSM)'
+      result_monthly: 'Coste mensual estimado',
+      result_yearly: 'Coste anual estimado',
+      result_hours: 'Tiempo anual en estas tareas',
+      rec_texto: 'Esto es lo que se te va. En el diagnóstico vemos qué pieza lo recupera, y si no compensa, te lo digo.',
+      btn_apply: 'Llevar estos números al formulario',
+      notif_linked: '¡Simulación vinculada con éxito en el formulario!'
     },
     leads: {
       sticky_cta: 'Consulta gratuita',
@@ -403,7 +411,7 @@ export const dictionaries = {
       wa_servicios: 'Hola Rubén, vengo de tu web. He estado mirando los servicios y quería preguntarte por uno.',
       wa_roi: 'Hola Rubén, vengo de tu web. Me ha llamado la atención lo del tiempo que se pierde y quería contarte mi caso.',
       wa_precios: 'Hola Rubén, vengo de la sección de precios de tu web y quería preguntarte por un presupuesto.',
-      post_services: 'Trabajo con un número reducido de clientes para poder cuidar cada proyecto.',
+      post_services: 'Cojo pocos proyectos a la vez, para hacer bien cada uno, y en la propuesta te digo por escrito cuándo empiezo.',
       post_services_btn: 'Reserva tu plaza',
       post_roi: 'Tu proyecto merece atención personalizada. Reserva tu consulta y te cuento cómo puedo ayudarte.',
       post_roi_btn: 'Agendar consulta personalizada',
@@ -465,17 +473,17 @@ export const dictionaries = {
       // vaya a nombre del cliente vale para cualquier producto (Ruben). El contrato de encargado no se nombra: genera mas
       // dudas de las que quita.
       // Solo en fisio y gestoria (datos de salud y fiscales): alli lo pedian; en el resto genera mas dudas (Ruben, 24/10).
-      faq_contrato: 'Firmamos un contrato de protección de datos, como pide la ley.',
       faq_titulo: 'Lo que más me preguntan',
       faq: [
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo que se monte va en cuentas a tu nombre, y los datos, en servidores de la Unión Europea. El asistente de WhatsApp usa Google Cloud, también en la UE, y WhatsApp de Meta.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos, tu agenda y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones del asistente de citas solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Y lo que te hago a medida (web, programa o automatización) es tuyo cuando lo has pagado entero, con su código: te lo entrego. El producto de citas es distinto: no se hace para ti, ya está hecho y probado, y por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas ya están en tu Google Calendar u Outlook, y la lista de clientes te la doy en un Excel si lo dejas. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
       portada_link: 'Pruébalo con tu empresa',
+      portada_nota: '2 minutos y sin registrarte: eliges tu sector y ves cómo quedaría tu día a día.',
       // Cuando llega desde el documento 2 (&desde=doc2): ya hizo el diagnostico.
       doc2_titulo: '¿Lo hablamos?',
       doc2_texto: 'Si quieres darle una vuelta a lo que hemos visto, escríbeme y lo miramos juntos.',
@@ -518,11 +526,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'La peça exacta on la tecnologia i el teu negoci encaixen perfectament',
-      subtitle: 'La peça exacta on el teu negoci i la tecnologia encaixen: des de la teva presència digital fins a sistemes ERP/CRM i integracions d\'IA. Els faig jo, de principi a fi, aquí a Lloret de Mar.',
+      subtitle: 'Programes per portar clients, pressupostos, factures i tècnics en un sol lloc, assistents que atenen el teu WhatsApp i webs fetes a mà. Per a instal·ladors, reformes, tallers, clíniques, perruqueries, immobiliàries i gestories. Els faig jo, aquí a Lloret de Mar.',
       meta_description: 'Assistents amb intel·ligència artificial, automatitzacions i programes a mida per a negocis de Lloret de Mar i la Costa Brava. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
-      cta_note: 'Sense cost i sense compromís. Miro el teu negoci abans de la trucada, així que no vinc a preguntar-te què necessites: vinc amb el que ja he vist. Dues places per setmana.',
+      cta_note: 'Gratis i sense compromís. Abans de parlar miro el teu web, la teva fitxa de Google i com et contacten els teus clients, per no començar de zero.',
+      quien: 'Sóc Rubén Reyes, de Teselar Software. T’atenc jo.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
       pieza_texto: 'El que et falta, fet a la mida del forat',
       piezas_desc: ['Els teus clients i el seu historial, en un sol lloc', 'Pressupostos i factures que surten sols', 'Cites que es reserven sense trucar', 'Una web feta a mà, ràpida', 'Respostes i recordatoris automàtics', 'Avisos, tècnics i parts de treball des del mòbil'],
@@ -530,12 +539,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'La Peça que Encaixa',
-      text1: 'La identitat visual de Teselar s\'inspira en la tessel·lació: l\'art d\'acoblar peces de manera que encaixin perfectament, sense deixar buits ni generar friccions.',
-      text2: 'En el món digital, Teselar és aquesta peça exacta de programari a mida que el teu negoci necessita per completar el seu engranatge i funcionar amb fluïdesa total.'
+      text1: 'Una tessel·lació és un mosaic de peces que encaixen sense deixar forats, com les rajoles d’un terra.',
+      text2: 'El teu negoci ja té les seves peces: clients, factures, agenda, WhatsApp, el teu equip. El que faig és la que falta perquè encaixin i deixis de passar dades d’una a l’altra a mà.'
     },
     services: {
       title: 'Catàleg de Serveis',
-      subtitle: 'Solucions modulars i d\'alt rendiment adaptades a la teva mida i pressupost. Sense costos ocults.',
+      subtitle: 'Solucions modulars adaptades a la teva mida i pressupost. El que no hi entra ho tens escrit aquí sota i, una altra vegada, a la teva proposta.',
       ideal: 'Ideal per a:',
       pricing: 'Preu',
       features: 'Què inclou:',
@@ -546,7 +555,7 @@ export const dictionaries = {
         c1_title: 'Xatbot guiat · dins del 02',
         c1_desc: 'Segueix un guió de botons i respostes previstes. Barat i suficient si les preguntes són sempre les mateixes; així que se surten del guió, s\'encalla.',
         c2_title: 'Assistent d\'IA · el 05',
-        c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. Es construeix a mida sobre la teva documentació, els teus canals i els teus sistemes: per això el rang és ampli. És el que estàs fent servir aquí: la TesS.',
+        c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. Es construeix a mida sobre la teva documentació, els teus canals i els teus sistemes: per això el rang és ampli. És el xat que tens a la cantonada d’aquest web: la TesS. Pregunta-li el que vulguis.',
         c3_title: 'Cites per WhatsApp · el 03',
         c3_desc: 'Un assistent d\'IA que a més actua: mira els forats que tens lliures de debò, reserva la cita, la confirma i envia el recordatori. Ja està construït i provat — es configura amb els teus serveis i els teus horaris, i per això és més barat que un desenvolupament a mida i pot portar garantia.',
         nota: 'La pregunta per triar és senzilla: el que perds són consultes sense respondre, o cites sense agafar? I si són cites, no paguis un desenvolupament a mida: això ja està fet i et surt més barat.'
@@ -554,12 +563,12 @@ export const dictionaries = {
       categories: {
         web: 'Desenvolupament Web',
         automation: 'Automatització i IA',
-        systems: 'Sistemes i ERP'
+        systems: 'Programes de gestió'
       },
       vat: '+ IVA',
       s1: {
         title: '01. Auditoria de Processos',
-        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites per WhatsApp, una web senzilla o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten si acceptes la proposta en els 30 dies següents.',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites per WhatsApp, una web senzilla o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten del projecte si acceptes la proposta en els 30 dies següents: compten com a part del senyal.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Processos i costos',
         f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant. Abans et dic què has de portar, que és poc i depèn del teu negoci',
@@ -568,7 +577,7 @@ export const dictionaries = {
         f4: 'Els teus números: quantes vegades fas una tasca, quant temps et porta i quant et costa',
         f5: 'Què es pot automatitzar, què no, i en quin ordre',
         f6: 'Informe escrit de 2-3 pàgines amb prioritats, i amb ell la proposta amb el preu del que en sortiria: tu decideixes si l\'acceptes. Si no veig res que et compensi, t\'ho dic i no hi ha proposta',
-        f7: 'El prediagnòstic digital del teu web i les teves xarxes, inclòs'
+        f7: 'Un repàs del teu web i les teves xarxes, inclòs'
       },
       s2: {
         title: '02. Automatitzacions Específiques',
@@ -576,13 +585,13 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 60€/mes',
         tag: 'Apps Script + APIs + Make',
         f1: 'Generador automàtic de pressupostos en PDF des d\'un formulari',
-        f2: 'Enviament automàtic de factures per correu amb dades del teu CRM',
+        f2: 'Enviament automàtic de factures per correu amb les dades dels teus clients',
         f3: 'Extractor automatitzat de dades de correus a Google Sheets',
         f4: 'Xatbot de respostes guiades per a WhatsApp o Telegram (segueix un guió; si necessites que entengui llenguatge lliure, això és la Integració d\'IA)',
-        f5: 'Sincronizador de base de dades bidireccional entre plataformes',
+        f5: 'Que dos programes que ja fas servir es passin les dades sols, en els dos sentits',
         f6: 'Sistema intel·ligent de recordatoris i alertes automàtiques',
         f7: 'Informes diaris o setmanals automàtics per correu electrònic',
-        f8: 'Pla Bàsic de manteniment (60€/mes), obligatori mentre l\'automatització estigui en marxa: vigilo que segueixi funcionant i l\'arreglo si canvia una API o caduca una credencial. On acaba la meva feina: no cobreix funcions noves, canvis del procés ni integrar eines que no fossin a l\'abast acordat — això es pressuposta a part'
+        f8: 'Pla Bàsic de manteniment (60€/mes), recomanat mentre l’automatització estigui en marxa: vigilo que segueixi funcionant i l’arreglo si canvia una API o caduca una credencial. Sense ell continua funcionant, però ningú no la vigila, i el que es trenqui es pressuposta a part. On acaba la meva feina: no cobreix funcions noves, canvis del procés ni integrar eines que no fossin a l\'abast acordat — això es pressuposta a part'
       },
       s3: {
         title: '04. Web Essencial',
@@ -608,14 +617,14 @@ export const dictionaries = {
         f4: 'Anàlisi, classificació i resum automàtic de documents',
         f5: 'Automatització avançada amb processament de llenguatge natural',
         f6: 'Integració directa amb models GPT, Claude o homòlegs',
-        f7: 'Quota mensual de l\'assistent, obligatòria i en tres trams: 90€/mes si atén un sol canal, 150€/mes si en són diversos o porta integracions, i 250€/mes si és multicanal i a més s\'integra amb els teus sistemes. Inclou revisar les converses, corregir el que es respongui malament i mantenir al dia la informació amb què respon. El consum de les APIs d\'IA va al teu propi compte, al teu nom'
+        f7: 'Quota mensual de l\'assistent, recomanada i en tres trams: 90€/mes si atén un sol canal, 150€/mes si en són diversos o porta integracions, i 250€/mes si és multicanal i a més s\'integra amb els teus sistemes. Inclou revisar les converses, corregir el que es respongui malament i mantenir al dia la informació amb què respon. El consum de les APIs d\'IA va al teu propi compte, al teu nom'
       },
       s5: {
         title: '06. Web Completa',
         ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
         price: 'Des de 3.000€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Inclou tot el de la Web Essencial (04): 3-4 seccions, disseny responsive, formulari i botó de WhatsApp, SEO bàsic i 1 setmana d\'ajustaments en viu',
+        hereda: 'Inclou tot el de la Web Essencial (04): disseny responsive, formulari i botó de WhatsApp, SEO bàsic i 1 setmana d\'ajustaments en viu',
         f1: 'Estructura modular de 5 a 8 seccions ben definides',
         f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
         f3: 'Secció autogestionable de blog, articles o notícies',
@@ -650,20 +659,21 @@ export const dictionaries = {
         f4: '2 idiomes inclosos per a compradors estrangers — addicional +250€',
         f5: 'Exportació XML (format Kyero) per sincronitzar amb Idealista, Habitaclia, Fotocasa i portals internacionals',
         f6: 'Formulari de contacte per propietat i botó de WhatsApp',
-        f7: 'SEO local, i manteniment inclòs el primer any (els feeds a portals necessiten vigilància)'
+        f7: 'SEO local i manteniment inclòs el primer any, amb la vigilància del feed als portals'
       },
       s8: {
-        title: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)',
+        title: '09. Programa de gestió a mida: clients, factures i tècnics',
+        paso: 'La xerrada de 30 minuts és gratis. Després, un programa a mida demana mirar els teus números amb calma: és l’auditoria (150 €), et queda per escrit tant si continues com si no, i si tires endavant es descompten.',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
-        f1: 'Aplicació d\'escriptori nativa instal·lable (Windows, macOS, Linux)',
+        f1: 'Funciona al mòbil, la tauleta i l’ordinador. Al mòbil, també sense cobertura: desa el que s’apunta i ho envia quan torna el senyal.',
         f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
         f3: 'Mòdul integral de gestió de clients (CRM) i base de contactes',
         f4: 'Generació automàtica i descàrrega directa de factures i pressupostos en PDF',
         f5: 'Planificador intern de projectes, tasques d\'equip i control de temps',
         f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
-        f7: 'Formació integral de l\'equip + 1 setmana de suport prioritari',
+        f7: 'Formació del teu equip en persona + 1 setmana d’ajustos en viu',
         f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència',
         f9: 'Si el teu equip treballa fora: avisos, assignació de tècnics, fitxatges i parts de treball des del mòbil'
       },
@@ -671,47 +681,49 @@ export const dictionaries = {
         title: '03. Cites per WhatsApp',
         ideal: 'Negocis que treballen amb cita prèvia i avui les agafen a mà: perruqueries i barberies, estètica, fisioteràpia, clíniques, tallers o assessories. És l\'únic servei que entra a la teva agenda i reserva de debò, no només informa.',
         price: '700€ — 1.800€ + 150-250€/mes',
+        planes: 'Dos plans: Essencial, 700-900€ + 150€/mes, si atén una sola persona; Complet, 1.500-1.800€ + 250€/mes, si sou dues o més alhora.',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures, reserva la cita i la confirma sense que hagis de contestar',
-        f2: 'Agenda sincronitzada amb la que ja fas servir — mai dues cites al mateix forat',
+        f2: 'La teva agenda a Google Calendar o Outlook, connectada a l’assistent: mai dues cites al mateix forat. Si avui la portes en paper o en Excel, la hi passem en començar, i t’ajudo.',
         f3: 'Recordatori automàtic abans de la cita, que és el que fa que la gent no hi falti',
         f4: 'Canvis i cancel·lacions pel mateix WhatsApp, sense trucades ni forats morts',
         f5: 'Panell amb les teves cites i el comptador de les que van entrar fora del teu horari d\'atenció',
         f6: 'Garantia: si en els tres primers mesos no entra ni una cita fora del teu horari, et torno la posada en marxa',
         f7: 'Petició automàtica de ressenyes a Google en acabar la cita, com a complement (+200€)',
-        f8: 'Hi ha una versió sense WhatsApp API per 400€-700€ + 90€/mes, i no és el mateix més barat: allà no hi ha assistent que conversi — el teu client t\'escriu al WhatsApp de sempre, rep un enllaç i reserva en una pàgina, i la confirmació i el recordatori li arriben per email. A canvi no migres de número ni depens de Meta'
+        f8: 'Hi ha una versió sense WhatsApp API per 400€-700€ + 90€/mes, i no és el mateix més barat: allà no hi ha assistent que conversi — el teu client t\'escriu al WhatsApp de sempre, rep un enllaç i reserva en una pàgina, i la confirmació i el recordatori li arriben per email. A canvi, no es connecta al teu número ni depens de Meta'
       }
     },
     pricing: {
       title: 'Manteniment i Suport',
-      subtitle: 'Tranquil·litat absoluta per al teu negoci. Cuido de la teva tecnologia perquè t\'enfoquis a créixer.',
+      subtitle: 'El que et lliuro continua funcionant: ho vigilo, ho actualitzo i, si alguna cosa falla, ho arreglo jo. Sense permanència.',
       basic: {
         title: 'Plan Bàsic',
         price: '60€',
         period: '/ mes',
-        desc: 'La teva web vigilada i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i Sistemes a Mida, i obligatori mentre tinguis una automatització en marxa. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
+        desc: 'La teva web o el teu programa, vigilats i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i el programa de gestió a mida (09), i recomanat si tens una automatització: sense ell continua funcionant, però ningú no la vigila. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
         f1: 'Monitorització automàtica 24/7 i còpies de seguretat setmanals',
         f2: 'Actualitzacions de seguretat i correcció d\'errors',
         f3: '1h/mes de canvis de contingut i ajustos menors',
-        f4: 'Resposta en 24-48h laborables i informe trimestral d\'estat'
+        f4: 'Resposta en 48h laborables com a màxim, tot i que sempre intento contestar al més aviat possible (si no pots esperar, el Plus respon el mateix dia), i informe trimestral d’estat'
       },
       plus: {
         title: 'Plan Plus',
         price: '150€',
         period: '/ mes',
-        desc: 'Per a e-commerce, immobiliàries i webs que canvien molt. Sense permanència.',
+        desc: 'El Bàsic cobreix el normal. El Plus és per quan no pots esperar: resposta el mateix dia, també en caps de setmana i vacances. Sense permanència.',
         f1: 'Tot el del Bàsic, amb còpies de seguretat diàries',
         f2: '5h/mes de desenvolupament i millores (no acumulables)',
-        f3: 'Vigilància de passarel·les de pagament i feeds a portals + revisió trimestral de velocitat i SEO',
+        f3: 'Vigilància de passarel·les de pagament + revisió trimestral de velocitat i SEO',
         f4: 'Resposta el mateix dia, també en caps de setmana, festius i vacances (4h en incidència crítica), i informe mensual'
       },
       citas: {
         title: 'Cites per WhatsApp · quota del servei',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. L\'Essencial porta una agenda, amb una cita alhora; el Complet, diverses alhora, per quan atenen dues o més persones al mateix temps.',
-        f1: 'L\'assistent atenent el teu WhatsApp cada dia, supervisat i corregit si alguna cosa canvia — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
+        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. El que compta és quantes persones ateneu alhora, no quants serveis feu: si atén una sola persona, l’Essencial; si en algun moment sou dues o més atenent al mateix temps, el Complet.',
+        f1: 'L\'assistent atenent el teu WhatsApp cada dia, vigilat, i corregit si alguna cosa falla — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
+        tope: 'La quota cobreix l’ús normal del negoci: fins a 500 converses al mes a l’Essencial i 1.500 al Complet. Si un mes te’n passes, no es talla: ho mirem junts i, si es repeteix, ajustem la quota.',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte: entre 1,7 i 3,3 cèntims per cita, calculat amb la tarifa oficial de Meta en vigor des de l\'1 d\'octubre de 2026. Les respostes de l\'assistent entren en els 1.000 missatges gratis al mes que dona Meta per número, que cobreixen fins a unes 250 cites al mes; el que es paga és el recordatori i la confirmació. El que escriuen els teus clients és gratis',
         cta: 'Veure el producte de cites'
       },
@@ -731,48 +743,48 @@ export const dictionaries = {
       },
       payment: {
         title: 'Mètodes de Pagament i Condicions',
-        methods: 'Mètodes acceptats: Transferència bancària o efectiu a la mà (amb cita prèvia).',
-        conditions: 'Condicions: Per contractar només es demana un senyal del 10% (mínim 150€). La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l\'Auditoria de Processos, aquests 150€ ja estan pagats i es descompten del senyal. Tots els preus són + IVA.'
+        methods: 'Transferència bancària.',
+        conditions: 'Condicions: Per contractar només es demana un senyal del 10% (mínim 150€). La resta es reparteix sense interessos en 3 o 4 quotes, i cada una es paga contra una entrega —el disseny, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data del calendari. I si ja has pagat l’Auditoria de Processos i acceptes la proposta en els 30 dies següents, aquests 150€ compten com a part del senyal: si el senyal és de 150€, no pagues res per començar, i si és més alt, només la diferència (amb un senyal de 200€, pagues 50€). Tots els preus són + IVA.'
       }
     },
     values: {
       title: 'Per què escollir-me?',
-      subtitle: 'L\'avantatge competitiu de treballar amb artesans del programari especialitzats en lloc de grans consultores lentes o freelancers inestables.',
+      subtitle: 'Treballes directament amb qui ho fa: sense intermediaris, sense plantilles i a prop teu.',
       v1: {
-        title: 'Contacte Directe sense Intermediaris',
-        desc: 'Parlo el teu mateix idioma. Tractes directament amb el desenvolupador que escriu cada línia de codi de la teva aplicació, sense esperes ni malentesos.'
+        title: 'Vinc de l’empresa',
+        desc: 'Abans del programari vaig passar dotze anys a compres i postvenda, en una societat anònima i dues multinacionals: albarans, factures, pressupostos de reparació, proveïdors i un taller al meu càrrec. Per això primer miro com treballes, i la tecnologia ve després. I parles sempre amb mi.'
       },
       v2: {
-        title: 'Desenvolupament Natiu a Mida',
-        desc: 'Fujo de les plantilles de WordPress pesades i insegures. Faig les webs a mà amb React i Tailwind, i això et dóna una velocitat insuperable i un SEO excel·lent.'
+        title: 'Fet a mà',
+        desc: 'Ho faig a mida i de zero, sense plantilles ni vint plugins d’autors diferents que s’hagin d’entendre. Per això va ràpid i, si alguna cosa falla, saps a qui trucar. I si per al teu cas en tens prou amb WordPress, t’ho dic.'
       },
       v3: {
-        title: 'Proximitat i Comprensió Local',
-        desc: 'Amb base a Lloret de Mar. M\'agrada conèixer el teu negoci de prop, veure\'ns en persona i dissenyar la solució que encaixi amb els teus objectius locals.'
+        title: 'A prop teu',
+        desc: 'Soc a Lloret de Mar i vinc al teu negoci: prefereixo veure com treballeu abans de proposar res. I si un dia alguna cosa falla, soc a una estona de cotxe.'
       },
       v4: {
-        title: 'Estabilitat i Suport Garantit',
-        desc: 'Cada desenvolupament es lliura amb garantia d\'estabilitat, formació integral i suport tècnic compromès per assegurar l\'èxit continu del teu negoci.'
+        title: 'I després, segueixo aquí',
+        desc: 'Quan lliuro, no desapareixo: t’ensenyo a fer-lo servir en persona, al teu negoci, i amb el manteniment, si alguna cosa falla, em truques a mi i ho arreglo jo.'
       }
     },
     process: {
       title: 'El Meu Procés de Treball',
       subtitle: 'Un full de ruta clar per donar forma a la teva solució digital de principi a fi.',
       p1: {
-        title: '01. Primer Contacto',
-        desc: 'Analitzo les teves necessitats actuals en detall. Definim junts els objectius i t\'aconsello el mòdul que millor s\'adapta.'
+        title: '01. Xerrada gratis',
+        desc: '30 minuts per veure com treballes i què et fa perdre temps. Si el teu cas va a mida, després ve l’auditoria.'
       },
       p2: {
-        title: '02. Proposta Clara',
-        desc: 'Traço l\'arquitectura exacta del programari, fixo els terminis i et lliuro un pressupost detallat i tancat, sense sorpreses.'
+        title: '02. Proposta per escrit',
+        desc: 'A la web veus rangs; a la proposta, la xifra exacta, què hi entra, què no i els terminis. Pagues una paga i senyal i la resta contra lliurament.'
       },
       p3: {
-        title: '03. Desenvolupament Àgil',
-        desc: 'Programo la web o el programari amb les millors pràctiques de la indústria. Tindràs accés privat per veure el progrés real pas a pas.'
+        title: '03. Ho construeixo per parts',
+        desc: 'Amb cada lliurament t’ensenyo el que ja està fet i, si ja el pots fer servir, com es fa servir.'
       },
       p4: {
-        title: '04. Ajustos en Viu',
-        desc: 'Desplego el projecte. Durant la primera setmana faig ajustos i millores en calent sobre producció, a partir del que em vagis dient.'
+        title: '04. Ho fas servir i ho ajusto',
+        desc: 'Amb tot lliurat, la primera setmana ajusto el que surti en fer-ho servir de debò, i després continua el manteniment.'
       }
     },
     faq: {
@@ -780,7 +792,7 @@ export const dictionaries = {
       subtitle: 'El que més em pregunten abans de començar un projecte. Si tens un altre dubte, escriu-me.',
       q1: {
         q: 'Quant costa una pàgina web?',
-        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. Et dono un preu tancat després de la primera conversa, sense sorpreses.'
+        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. A la Web Essencial et dono un preu tancat després de la primera conversa, sense sorpreses; la Completa, com tot el que va a mida, passa abans per l’auditoria.'
       },
       q2: {
         q: 'Treballes només a Lloret de Mar o també fora?',
@@ -800,15 +812,15 @@ export const dictionaries = {
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
-        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament i feeds a portals, resposta el mateix dia, també en caps de setmana, festius i vacances, i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I les Automatitzacions Específiques porten el Pla Bàsic inclòs de manera obligatòria mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
+        a: 'Dos plans sense permanència: el Bàsic (60€/mes) inclou monitorització 24/7, còpies de seguretat setmanals, actualitzacions, 1h/mes de canvis i informe trimestral. El Plus (150€/mes) afegeix còpies diàries, 5h/mes de desenvolupament, vigilància de passarel·les de pagament, resposta el mateix dia, també en caps de setmana, festius i vacances, i informe mensual. A part del manteniment hi ha dues quotes pròpies, perquè són serveis funcionant i no una web vigilada: l\'assistent de la Integració d\'IA (90-250€/mes) i les Cites per WhatsApp (150-250€/mes). I a les Automatitzacions Específiques et recomano el Pla Bàsic (60€/mes) mentre estiguin en marxa, perquè una automatització sense vigilar es trenca en silenci el dia que canvia una API.'
       },
       q7: {
         q: 'Com es paga un projecte?',
-        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Accepto transferència bancària o efectiu a la mà amb cita prèvia.'
+        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos i acceptes en els 30 dies següents, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Es paga per transferència bancària.'
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
-        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant —abans et dic què has de portar, que és poc i depèn del teu negoci—, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, quant, i què es pot automatitzar i en quin ordre. Amb l\'informe t\'envio la proposta amb el preu del que en sortiria, i tu decideixes si l\'acceptes; si no veig res que et compensi, t\'ho dic i no hi ha proposta. Costa 150€ i es descompten del projecte si acceptes la proposta en els 30 dies següents. Inclou també el prediagnòstic digital del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
+        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant —abans et dic què has de portar, que és poc i depèn del teu negoci—, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, quant, i què es pot automatitzar i en quin ordre. Amb l\'informe t\'envio la proposta amb el preu del que en sortiria, i tu decideixes si l\'acceptes; si no veig res que et compensi, t\'ho dic i no hi ha proposta. Costa 150€ i es descompten del projecte si acceptes la proposta en els 30 dies següents. Inclou també un repàs del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
       },
       q9: {
         q: 'Què NO està inclòs en el preu d\'un projecte?',
@@ -816,7 +828,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Pots fer que el meu negoci agafi les cites per WhatsApp?',
-        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes, per a una agenda amb una cita alhora, i el Complet 1.500€-1.800€ més 250€/mes, per quan atenen diverses persones al mateix temps. Tot, + IVA. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. Necessites tenir el número a l\'app WhatsApp Business (migrar és gratis, triga deu minuts i t\'ajudo a fer-ho). Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email, no per WhatsApp. A canvi no migres de número, no depens dels terminis de Meta i no pagues missatges.'
+        a: 'Sí, és un dels meus serveis. Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures de la teva agenda, reserva la cita, la confirma i envia el recordatori, sense que hagis de contestar tu. El pla Essencial costa 700€-900€ de posada en marxa més 150€/mes, si atén una sola persona, i el Complet 1.500€-1.800€ més 250€/mes, si sou dues o més alhora. Tot, + IVA. Va amb garantia: si en els tres primers mesos no entra ni una sola cita fora del teu horari d\'atenció, et torno la posada en marxa. El teu número ha d’estar a l’app WhatsApp Business, la de sempre amb eines per a negocis. Si encara no la fas servir, el canvi és gratis, triga deu minuts i conserves número, xats i contactes; t’ajudo a fer-ho. Els teus clients no noten res, i tu continues escrivint des del mòbil alhora que l’assistent. Enllaçar el teu número amb el sistema depèn d\'una aprovació de Meta: aquest termini no el controlo jo, i te\'l dono per escrit a la proposta. Si prefereixes no dependre de Meta hi ha una versió sense API per 400€-700€ més 90€/mes, però que quedi clar que no és el mateix més barat: allà no hi ha assistent que conversi. El teu client t\'escriu al WhatsApp de sempre, rep un enllaç i tanca la cita en una pàgina de reserva, i la confirmació i el recordatori li arriben per email, no per WhatsApp. A canvi, no es connecta al teu número, no depens dels terminis de Meta i no pagues missatges.'
       },
       q11: {
         q: 'Quina diferència hi ha entre un xatbot, un assistent d\'IA i el sistema de cites per WhatsApp?',
@@ -824,11 +836,19 @@ export const dictionaries = {
       },
       q12: {
         q: 'Per què no em fas el web en WordPress, que surt més barat?',
-        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Jo escric el codi, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
+        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Ho faig a mida i de zero, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
       },
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
-        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i ERP/CRM) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el teu web continua publicat i continua sent teu, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
+        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i programa de gestió a mida) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el que et vaig fer continua sent teu i, si és un web o un programa, continua funcionant, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. El mateix amb les Automatitzacions Específiques i l’assistent de la Integració d’IA: continuen funcionant als teus comptes, però sense ningú que els vigili ni els revisi. L’única excepció són les Cites per WhatsApp: s’aturen si canceles la quota, avisant-te 15 dies abans, perquè la intel·ligència artificial que les mou va al meu compte i la pago jo. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
+      },
+      q14: {
+        q: 'On queden les dades dels meus clients o pacients?',
+        a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. I el que et faig a mida (web, programa o automatització) és teu quan l’has pagat sencer, amb el seu codi: te l’entrego. El producte de cites és diferent: no es fa per a tu, ja està fet i provat, i per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites ja són al teu Google Calendar o Outlook, i la llista de clients te la dono en un Excel si ho deixes. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.'
+      },
+      q15: {
+        q: 'I si treballes sol i un dia no hi ets?',
+        a: 'Parles sempre amb qui ho ha fet, sense centraletes. El que munto funciona sol i ho vigilo a totes hores: si alguna cosa falla, me n’assabento abans que tu. I no et quedes lligat: tot va a nom teu i el que et faig a mida és teu, amb el seu codi, quan l’has pagat. I si et cal que t’atengui també els caps de setmana i en vacances, hi ha el Pla Plus.'
       }
     },
     contact: {
@@ -866,19 +886,15 @@ export const dictionaries = {
     simulator: {
       title: 'Simulador de Retorn de la Inversió (ROI)',
       subtitle: 'Descobreix quant temps i diners estàs perdent per no automatitzar les tasques repetitives del teu negoci.',
-      label_hours: 'Hores setmanals malgastades en tasques repetitives',
+      label_hours: 'Hores a la setmana en tasques que es repeteixen (passar dades, fer factures, trucar per recordar…)',
       label_employees: 'Nombre d\'empleats fent aquestes tasques',
       label_cost: 'Cost mitjà per hora de l\'empleat',
-      result_monthly: 'Estalvi Mensual Estimat',
-      result_yearly: 'Estalvi Anual Estimat',
-      result_hours: 'Temps Anual Recuperat',
-      rec_title: 'Proposta de Solució Suggerida',
-      rec_badge: 'RECOMANAT',
-      btn_apply: 'Vincular pressupost i continuar al formulari',
-      notif_linked: '¡Simulació vinculada amb èxit al formulari!',
-      opt_s2: '02. Automatitzacions Específiques',
-      opt_s4: '05. Integració d\'Intel·ligència Artificial',
-      opt_s8: '09. Sistema de Gestió a Mida (ERP/CRM/FSM)'
+      result_monthly: 'Cost mensual estimat',
+      result_yearly: 'Cost anual estimat',
+      result_hours: 'Temps anual en aquestes tasques',
+      rec_texto: 'Això és el que se t’escapa. Al diagnòstic veiem quina peça ho recupera, i si no compensa, t’ho dic.',
+      btn_apply: 'Portar aquests números al formulari',
+      notif_linked: '¡Simulació vinculada amb èxit al formulari!'
     },
     leads: {
       sticky_cta: 'Consulta gratuïta',
@@ -902,7 +918,7 @@ export const dictionaries = {
       wa_servicios: 'Hola Rubén, vinc del teu web. He estat mirant els serveis i volia preguntar-te per un.',
       wa_roi: 'Hola Rubén, vinc del teu web. M\'ha cridat l\'atenció això del temps que es perd i volia explicar-te el meu cas.',
       wa_precios: 'Hola Rubén, vinc de la secció de preus del teu web i volia preguntar-te per un pressupost.',
-      post_services: 'Treballo amb un nombre reduït de clients per poder cuidar cada projecte.',
+      post_services: 'Agafo pocs projectes alhora, per fer bé cadascun, i a la proposta et dic per escrit quan començo.',
       post_services_btn: 'Reserva la teva plaça',
       post_roi: 'El teu projecte mereix atenció personalitzada. Reserva la teva consulta i t\'explico com puc ajudar-te.',
       post_roi_btn: 'Agendar consulta personalitzada',
@@ -953,17 +969,17 @@ export const dictionaries = {
       cta_sub: 'Al meu calendari · 30 minuts, sense compromís',
       nota: 'A la xerrada m’expliques com ho portes avui ({como}) i mirem què s’hi passa i com. No cal que m’ensenyis dades dels teus clients.',
       nota_como: 'Excel, paper, WhatsApp o el teu programa',
-      faq_contrato: 'Signem un contracte de protecció de dades, com demana la llei.',
       faq_titulo: 'El que més em pregunten',
       faq: [
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que es munti va en comptes a nom teu, i les dades, en servidors de la Unió Europea. L’assistent de WhatsApp fa servir Google Cloud, també a la UE, i el WhatsApp de Meta.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades, la teva agenda i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses de l’assistent de cites només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. I el que et faig a mida (web, programa o automatització) és teu quan l’has pagat sencer, amb el seu codi: te l’entrego. El producte de cites és diferent: no es fa per a tu, ja està fet i provat, i per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites ja són al teu Google Calendar o Outlook, i la llista de clients te la dono en un Excel si ho deixes. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
       portada_link: 'Prova-ho amb la teva empresa',
+      portada_nota: '2 minuts i sense registrar-te: tries el teu sector i veus com quedaria el teu dia a dia.',
       doc2_titulo: 'En parlem?',
       doc2_texto: 'Si vols donar-li una volta al que hem vist, escriu-me i ho mirem junts.',
       doc2_btn: 'Escriure al Rubén per WhatsApp',
@@ -1001,11 +1017,12 @@ export const dictionaries = {
     hero: {
       tagline: 'Teselar Software',
       title: 'The exact piece where technology and your business fit perfectly',
-      subtitle: 'The exact piece where your business and technology fit together: from your web presence to native ERP/CRM systems and AI integrations. I build them myself, end to end, here in Lloret de Mar.',
+      subtitle: 'Software to keep your customers, quotes, invoices and technicians in one place, assistants that answer your WhatsApp, and hand-built websites. For installers, renovation firms, garages, clinics, salons, estate agents and accountancy firms. I build them myself, here in Lloret de Mar.',
       meta_description: 'AI assistants, automations and custom software for businesses in Lloret de Mar and the Costa Brava. I build them myself, end to end.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
-      cta_note: 'No cost, no strings attached. I look at your business before the call, so I am not coming to ask what you need: I come with what I have already seen. Two slots a week.',
+      cta_note: 'Free and with no strings attached. Before we talk I look at your website, your Google profile and how your customers reach you, so we do not start from scratch.',
+      quien: 'I am Rubén Reyes, from Teselar Software. You deal with me.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
       pieza_texto: 'What you\'re missing, made to fit the gap',
       piezas_desc: ['Your clients and their history, in one place', 'Quotes and invoices that go out on their own', 'Bookings made without a phone call', 'A hand-built, fast website', 'Automatic replies and reminders', 'Call-outs, technicians and job reports from your phone'],
@@ -1013,12 +1030,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'The Fitting Piece',
-      text1: 'The Teselar visual identity is inspired by tessellation: the art of assembling pieces so they fit together perfectly, leaving no gaps and creating no friction.',
-      text2: 'In the digital world, Teselar is that exact piece of custom software that your business needs to complete its gears and run with total fluidity.'
+      text1: 'A tessellation is a mosaic of pieces that fit together with no gaps, like the tiles on a floor.',
+      text2: 'Your business already has its pieces: customers, invoices, calendar, WhatsApp, your team. What I build is the missing one, so they fit together and you stop copying data from one to another by hand.'
     },
     services: {
       title: 'Services Catalog',
-      subtitle: 'Modular and high-performance solutions tailored to your size and budget. No hidden costs.',
+      subtitle: 'Modular solutions tailored to your size and budget. What is not included is written below and, again, in your proposal.',
       ideal: 'Ideal for:',
       pricing: 'Price',
       features: 'What is included:',
@@ -1029,7 +1046,7 @@ export const dictionaries = {
         c1_title: 'Guided chatbot · part of 02',
         c1_desc: 'Follows a script of buttons and pre-written answers. Cheap and enough when the questions are always the same; step off the script and it gets stuck.',
         c2_title: 'AI assistant · service 05',
-        c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is built from scratch around your documentation, your channels and your systems, which is why the range is wide. It is what you are using here: TesS.',
+        c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is built from scratch around your documentation, your channels and your systems, which is why the range is wide. It is the chat in the corner of this website: TesS. Ask it anything.',
         c3_title: 'WhatsApp Booking · service 03',
         c3_desc: 'An AI assistant that also acts: it checks the slots you actually have free, books the appointment, confirms it and sends the reminder. It is already built and proven — it gets configured with your services and opening hours, which is why it costs less than bespoke work and can carry a guarantee.',
         nota: 'The question to choose is simple: are you losing unanswered enquiries, or uncaught bookings? And if it is bookings, do not pay for bespoke work: that one is already built and costs you less.'
@@ -1037,12 +1054,12 @@ export const dictionaries = {
       categories: {
         web: 'Web Development',
         automation: 'Automation & AI',
-        systems: 'Systems & ERP'
+        systems: 'Management software'
       },
       vat: '+ VAT',
       s1: {
         title: '01. Process Audit',
-        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —WhatsApp appointments, a simple website or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted if you accept the proposal within the following 30 days.',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —WhatsApp appointments, a simple website or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted from the project if you accept the proposal within the following 30 days: they count as part of the deposit.',
         price: '150€ (Deducted from your first project)',
         tag: 'Processes and costs',
         f1: '60-90 minute session going through your operations with your own figures in front of us. Beforehand I tell you what to bring, which is not much and depends on your business',
@@ -1051,7 +1068,7 @@ export const dictionaries = {
         f4: 'Your numbers: how many times you do a task, how long it takes and what it costs you',
         f5: 'What can be automated, what cannot, and in what order',
         f6: 'A written 2-3 page report with priorities, and with it the proposal with the price of what would come out of it: you decide whether to accept it. If I see nothing worth your while, I tell you so and there is no proposal',
-        f7: 'The digital pre-diagnosis of your website and social media, included'
+        f7: 'A look over your website and social media, included'
       },
       s2: {
         title: '02. Specific Automations',
@@ -1059,13 +1076,13 @@ export const dictionaries = {
         price: '700€ — 1,800€ + 60€/mo',
         tag: 'Apps Script + APIs + Make',
         f1: 'Automatic generation of PDF quotes/budgets from a web form',
-        f2: 'Automatic invoice mailing connecting directly with your CRM',
+        f2: 'Automatic invoice emails using your customers’ details',
         f3: 'Automated data extraction from emails directly into Google Sheets',
         f4: 'Guided-reply chatbots for WhatsApp or Telegram (they follow a script; if you need it to understand free language, that is AI Integration)',
-        f5: 'Two-way database synchronization between different platforms',
+        f5: 'Two programs you already use passing data to each other on their own, both ways',
         f6: 'Smart automated alert and notification system',
         f7: 'Daily or weekly automated email reporting',
-        f8: 'Basic maintenance plan (60€/mo), required while the automation is running: I keep an eye on it and fix it when an API changes or a credential expires. Where my work ends: it does not cover new features, process changes, or wiring in tools that were not part of the agreed scope — those are quoted separately'
+        f8: 'Basic maintenance plan (60€/mo), recommended while the automation is running: I keep an eye on it and fix it when an API changes or a credential expires. Without it the automation keeps working, but nobody watches it, and whatever breaks is quoted separately. Where my work ends: it does not cover new features, process changes, or wiring in tools that were not part of the agreed scope — those are quoted separately'
       },
       s3: {
         title: '04. Essential Web',
@@ -1091,14 +1108,14 @@ export const dictionaries = {
         f4: 'Automated analysis, classification, and summary of documents',
         f5: 'Advanced automation using Natural Language Processing (NLP)',
         f6: 'Direct integration with models like GPT-4, Claude 3.5, and others',
-        f7: 'Monthly assistant fee, required, in three tiers: 90€/mo for a single channel, 150€/mo for several channels or with integrations, and 250€/mo when it is multichannel and also wired into your systems. It covers reviewing the conversations, correcting whatever gets answered wrong, and keeping the information it answers with up to date. AI API usage is billed to your own account, in your name'
+        f7: 'Monthly assistant fee, recommended, in three tiers: 90€/mo for a single channel, 150€/mo for several channels or with integrations, and 250€/mo when it is multichannel and also wired into your systems. It covers reviewing the conversations, correcting whatever gets answered wrong, and keeping the information it answers with up to date; without it the assistant keeps working, but nobody reviews it. AI API usage is billed to your own account, in your name'
       },
       s5: {
         title: '06. Complete Web',
         ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
         price: 'From 3,000€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Includes everything in the Essential Website (04): 3-4 sections, responsive design, contact form and WhatsApp button, basic SEO and 1 week of live adjustments',
+        hereda: 'Includes everything in the Essential Website (04): responsive design, contact form and WhatsApp button, basic SEO and 1 week of live adjustments',
         f1: 'Modular structure with 5 to 8 well-defined sections',
         f2: 'Project gallery or interactive portfolio with dynamic filters',
         f3: 'Self-managed section for blog, articles, or news',
@@ -1133,20 +1150,21 @@ export const dictionaries = {
         f4: '2 languages included for foreign buyers — each additional +250€',
         f5: 'XML export (Kyero format) to sync with Idealista, Habitaclia, Fotocasa, and international portals',
         f6: 'Per-property contact form and WhatsApp button',
-        f7: 'Local SEO, and maintenance included for the first year (portal feeds need monitoring)'
+        f7: 'Local SEO and maintenance included for the first year, including monitoring of the feed to the portals'
       },
       s8: {
-        title: '09. Custom Management System (ERP/CRM/FSM)',
+        title: '09. Custom management software: customers, invoices and technicians',
+        paso: 'The 30-minute chat is free. After that, custom software needs a calm look at your numbers: that is the audit (150 €), you keep it in writing whether you go ahead or not, and if you do, it is deducted.',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
-        f1: 'Self-installing native desktop application (Windows, macOS, Linux)',
+        f1: 'Works on mobile, tablet and computer. On mobile it also works without signal: it saves what you enter and sends it when the signal is back.',
         f2: 'Interactive dashboard with financial charts and live metrics',
         f3: 'Complete client management (CRM) and contact database module',
         f4: 'Automated generation and direct PDF download of quotes and invoices',
         f5: 'Internal planner for projects, team tasks, and time-tracking',
         f6: 'Advanced user roles with secure permission levels',
-        f7: 'Team training included + 1 week of priority development support',
+        f7: 'In-person training for your team + 1 week of live adjustments',
         f8: 'Basic maintenance plan included for the first year; after that, 60€/mo with no lock-in',
         f9: 'If your team works on site: call-outs, technician assignment, clock-ins and job reports from their phone'
       },
@@ -1154,47 +1172,49 @@ export const dictionaries = {
         title: '03. WhatsApp Appointment Booking',
         ideal: 'Appointment-based businesses still booking by hand: hair and barber shops, beauty salons, physiotherapy, clinics, workshops or consultancies.',
         price: '700€ — 1,800€ + 150-250€/mo',
+        planes: 'Two plans: Essential, 700-900€ + 150€/month, if one person serves; Complete, 1,500-1,800€ + 250€/month, if two or more of you serve at once.',
         tag: 'WhatsApp Cloud API + Calendar',
         f1: 'An assistant answers your WhatsApp around the clock: checks open slots, books the appointment and confirms it without you replying',
-        f2: 'Synced with the calendar you already use — never two bookings in the same slot',
+        f2: 'Your calendar in Google Calendar or Outlook, connected to the assistant: never two appointments in the same slot. If you keep it on paper or in Excel today, we move it there when we start, and I help you.',
         f3: 'Automatic reminder before the appointment, which is what keeps people from missing it',
         f4: 'Reschedules and cancellations over the same WhatsApp, no calls and no dead slots',
         f5: 'Dashboard with your bookings and a counter of those that came in outside your opening hours',
         f6: 'Guarantee: if not a single booking comes in outside your hours in the first three months, you get the setup fee back',
         f7: 'Automatic Google review request once the appointment is over, as an add-on (+200€)',
-        f8: 'There is a version without the WhatsApp API for 400€-700€ + 90€/month, and it is not the same thing cheaper: there is no assistant holding a conversation — your client writes to your usual WhatsApp, gets a link and books on a page, and the confirmation and reminder arrive by email. In exchange you do not migrate your number or depend on Meta'
+        f8: 'There is a version without the WhatsApp API for 400€-700€ + 90€/month, and it is not the same thing cheaper: there is no assistant holding a conversation — your client writes to your usual WhatsApp, gets a link and books on a page, and the confirmation and reminder arrive by email. In exchange, it does not connect to your number and you do not depend on Meta'
       }
     },
     pricing: {
       title: 'Maintenance & Support',
-      subtitle: 'Absolute peace of mind. I take care of your technology so you can focus on growth.',
+      subtitle: 'What I deliver keeps working: I watch it, keep it updated and, if something fails, I fix it. No lock-in.',
       basic: {
         title: 'Basic Plan',
         price: '60€',
         period: '/ month',
-        desc: 'Your website watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites, and Custom Systems, and required while you have an automation running. The two AI services carry their own fee, separate from this one.',
+        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites and the custom management software (09), and recommended if you have an automation: without it the automation keeps working, but nobody watches it. The two AI services carry their own fee, separate from this one.',
         f1: 'Automatic 24/7 monitoring and weekly backups',
         f2: 'Security updates and error fixing',
         f3: '1h/month of content changes and minor tweaks',
-        f4: 'Response within 24-48 business hours and quarterly status report'
+        f4: 'Response within 48 business hours at most, though I always try to answer as soon as I can (if you cannot wait, the Plus answers the same day), and quarterly status report'
       },
       plus: {
         title: 'Plus Plan',
         price: '150€',
         period: '/ month',
-        desc: 'For e-commerce, real estate agencies, and fast-changing websites. No lock-in.',
+        desc: 'Basic covers the normal needs. Plus is for when you cannot wait: same-day response, weekends and holidays included. No lock-in.',
         f1: 'Everything in Basic, with daily backups',
         f2: '5h/month of development and improvements (non-cumulative)',
-        f3: 'Payment gateway and portal feed monitoring + quarterly speed and SEO review',
+        f3: 'Payment gateway monitoring + quarterly speed and SEO review',
         f4: 'Same-day response, weekends, bank holidays and holidays included (4h for critical issues), and monthly report'
       },
       citas: {
         title: 'WhatsApp Booking · service fee',
         price: '150€ — 250€',
         period: '/ month',
-        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. The Essential plan has one calendar, one appointment at a time; the Complete one handles several at once, for when two or more people are seeing clients at the same time.',
-        f1: 'The assistant answering your WhatsApp every day, supervised and corrected whenever something changes — with the AI model cost included: no signing up to any AI service and no API keys to manage',
+        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. What counts is how many people are serving at the same time, not how many services you offer: if one person serves, the Essential plan; if at any point two or more of you are serving at once, the Complete one.',
+        f1: 'The assistant answering your WhatsApp every day, monitored, and fixed if something goes wrong — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
+        tope: 'The fee covers normal business use: up to 500 conversations a month on Essential and 1,500 on Complete. If you go over one month, nothing is cut off: we look at it together and, if it keeps happening, we adjust the fee.',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account: between 1.7 and 3.3 cents per booking, worked out from Meta\'s official rates in force since 1 October 2026. The assistant\'s replies fall within the 1,000 free messages a month Meta gives each number, which cover up to about 250 bookings a month; what you pay for is the reminder and the confirmation. What your clients write is always free',
         cta: 'See the booking product'
       },
@@ -1214,48 +1234,48 @@ export const dictionaries = {
       },
       payment: {
         title: 'Payment Terms & Methods',
-        methods: 'Accepted methods: Bank transfer or cash in hand (by appointment).',
-        conditions: 'Terms: A 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit, those 150€ are already paid and come off the deposit. All prices are + VAT.'
+        methods: 'Bank transfer.',
+        conditions: 'Terms: A 10% deposit (minimum 150€) is all that is needed to start. The rest is split interest-free into 3 or 4 instalments, and each one is paid against a delivery —the design, the working core, the deployment and the acceptance—, not against a calendar date. And if you have already paid for the Process Audit and accept the proposal within the following 30 days, those 150€ count as part of the deposit: if the deposit is 150€, you pay nothing to start, and if it is higher, only the difference (with a 200€ deposit, you pay 50€). All prices are + VAT.'
       }
     },
     values: {
       title: 'Why Work With Me?',
-      subtitle: 'The competitive advantage of working with specialized software craftsmen instead of slow corporate agencies or unstable freelancers.',
+      subtitle: 'You work directly with the person who builds it: no middlemen, no templates, and close to you.',
       v1: {
-        title: 'Direct Contact, No Intermediaries',
-        desc: 'I speak your language. You deal directly with the developer writing every line of your software, with no delays and no misunderstandings.'
+        title: 'I come from business',
+        desc: 'Before software I spent twelve years in purchasing and after-sales, at a public limited company and two multinationals: delivery notes, invoices, repair quotes, suppliers and a workshop under my charge. That is why I look at how you work first, and the technology comes after. And you always talk to me.'
       },
       v2: {
-        title: 'Custom Native Development',
-        desc: 'I avoid heavy, slow, and insecure WordPress templates. I hand-craft websites using React and Tailwind, which gives you unrivaled speed and outstanding SEO.'
+        title: 'Handmade',
+        desc: 'I build it to measure and from scratch, with no templates and no twenty plugins from different authors that have to get along. That is why it is fast and, if something breaks, you know who to call. And if WordPress is enough for you, I will tell you.'
       },
       v3: {
-        title: 'Local Proximity & Understanding',
-        desc: 'Based in Lloret de Mar. I like getting to know your business up close, meeting in person, and designing the solution that fits your local goals.'
+        title: 'Close to you',
+        desc: 'I am in Lloret de Mar and I come to your business: I prefer to see how you work before proposing anything. And if something ever fails, I am a short drive away.'
       },
       v4: {
-        title: 'Stability & Uptime Guarantee',
-        desc: 'Every project is delivered with a stability guarantee, extensive user training, and dedicated support to ensure your long-term success.'
+        title: 'And afterwards, I am still here',
+        desc: 'When I deliver, I do not disappear: I show you how to use it in person, at your business, and with maintenance, if something fails, you call me and I fix it.'
       }
     },
     process: {
       title: 'My Working Method',
       subtitle: 'A clear roadmap to shape your digital solution from start to finish.',
       p1: {
-        title: '01. First Contact',
-        desc: 'I analyze your current business needs in detail. We set the goals together and I recommend the modular solution that fits your budget.'
+        title: '01. Free chat',
+        desc: '30 minutes to see how you work and what eats up your time. If what you need is custom, the audit comes next.'
       },
       p2: {
-        title: '02. Clear Proposal',
-        desc: 'I define the exact software architecture and the delivery schedule, and hand you a transparent, closed budget with no surprises.'
+        title: '02. Written proposal',
+        desc: 'The website shows ranges; the proposal gives the exact figure, what is in, what is not and the timeline. You pay a deposit and the rest on delivery.'
       },
       p3: {
-        title: '03. Agile Development',
-        desc: 'I build it using an industry-leading stack. You will have private access to preview the real progress step by step.'
+        title: '03. I build it in parts',
+        desc: 'With each delivery I show you what is done and, if you can already use it, how to use it.'
       },
       p4: {
-        title: '04. Live Adjustments',
-        desc: 'I deploy the project. During the first week I make live tweaks and hotfixes straight from your real-world feedback.'
+        title: '04. You use it, I fine-tune it',
+        desc: 'Once everything is delivered, during the first week I adjust whatever comes up in real use, and then maintenance takes over.'
       }
     },
     faq: {
@@ -1263,7 +1283,7 @@ export const dictionaries = {
       subtitle: 'What people ask me most before starting a project. Got another question? Just write to me.',
       q1: {
         q: 'How much does a website cost?',
-        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. I give you a closed price after the first conversation, no surprises.'
+        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. For the Essential Website I give you a closed price after the first conversation, no surprises; the Complete one, like everything custom, goes through the audit first.'
       },
       q2: {
         q: 'Do you only work in Lloret de Mar, or also further afield?',
@@ -1283,15 +1303,15 @@ export const dictionaries = {
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
-        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway and portal feed monitoring, same-day response, weekends, bank holidays and holidays included, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And Specific Automations include the Basic Plan as a requirement while they are running, because an unwatched automation breaks silently the day an API changes.'
+        a: 'Two no-lock-in plans: Basic (60€/month) includes 24/7 monitoring, weekly backups, updates, 1h/month of changes, and a quarterly report. Plus (150€/month) adds daily backups, 5h/month of development, payment gateway monitoring, same-day response, weekends, bank holidays and holidays included, and a monthly report. Separately from maintenance there are two fees of their own, because they are running services rather than a watched website: the AI Integration assistant (90-250€/month) and WhatsApp Booking (150-250€/month). And for Specific Automations I recommend the Basic Plan (60€/month) while they are running, because an unwatched automation breaks silently the day an API changes.'
       },
       q7: {
         q: 'How do I pay for a project?',
-        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. I accept bank transfer or cash in hand by appointment.'
+        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit and accept within the following 30 days, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. Payment is by bank transfer.'
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',
-        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us —beforehand I tell you what to bring, which is not much and depends on your business—, plus a written 2-3 page report: which processes are costing you time or money, how much, and what can be automated and in what order. With the report I send you the proposal with the price of what would come out of it, and you decide whether to accept it; if I see nothing worth your while, I tell you so and there is no proposal. It costs 150€, deducted from the project if you accept the proposal within the following 30 days. It also includes the digital pre-diagnosis of your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
+        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us —beforehand I tell you what to bring, which is not much and depends on your business—, plus a written 2-3 page report: which processes are costing you time or money, how much, and what can be automated and in what order. With the report I send you the proposal with the price of what would come out of it, and you decide whether to accept it; if I see nothing worth your while, I tell you so and there is no proposal. It costs 150€, deducted from the project if you accept the proposal within the following 30 days. It also includes a look over your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
       },
       q9: {
         q: 'What is NOT included in a project price?',
@@ -1299,7 +1319,7 @@ export const dictionaries = {
       },
       q10: {
         q: 'Can you get my business taking bookings over WhatsApp?',
-        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, for one calendar with one appointment at a time, and the Complete one 1,500€-1,800€ plus 250€/month, for when several people see clients at the same time. All + VAT. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. You need the number on the WhatsApp Business app (migrating is free, takes ten minutes and I help you do it). Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email, not by WhatsApp. In exchange you do not migrate your number, you do not depend on Meta\'s timelines and you pay no messages.'
+        a: 'Yes, it is one of my services. An assistant answers your WhatsApp around the clock: it checks the open slots in your calendar, books the appointment, confirms it and sends the reminder, with no need for you to reply. The Essential plan is 700€-900€ to set up plus 150€/month, if one person serves, and the Complete one 1,500€-1,800€ plus 250€/month, if two or more of you serve at once. All + VAT. It comes with a guarantee: if not a single booking comes in outside your opening hours during the first three months, you get the setup fee back. Your number has to be on the WhatsApp Business app, the usual one with tools for businesses. If you do not use it yet, switching is free, takes ten minutes and you keep your number, chats and contacts; I help you do it. Your customers notice nothing, and you keep writing from your phone alongside the assistant. Linking your number to the system depends on an approval from Meta: I do not control that timeline, and I give it to you in writing in the proposal. If you would rather not depend on Meta there is a version without the API for 400€-700€ plus 90€/month, but be clear that it is not the same thing cheaper: there is no assistant holding a conversation. Your client writes to your usual WhatsApp, gets a link and closes the booking on a reservation page, and the confirmation and reminder arrive by email, not by WhatsApp. In exchange, it does not connect to your number, you do not depend on Meta\'s timelines and you pay no messages.'
       },
       q11: {
         q: 'What is the difference between a chatbot, an AI assistant, and the WhatsApp booking system?',
@@ -1307,11 +1327,19 @@ export const dictionaries = {
       },
       q12: {
         q: 'Why not build my site in WordPress? It is cheaper.',
-        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I write the code myself, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
+        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I build it to measure from scratch, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
       },
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
-        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and ERP/CRM) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: your website remains published and remains yours, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
+        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and custom management software) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: what I built for you remains yours and, if it is a website or software, it keeps working, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. The same goes for Specific Automations and the AI Integration assistant: they keep working in your accounts, but with nobody watching or reviewing them. The only exception is WhatsApp Appointments: it stops if you cancel the fee, with 15 days notice, because the artificial intelligence that runs it is in my account and I pay for it. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
+      },
+      q14: {
+        q: 'Where does my customers’ or patients’ data stay?',
+        a: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. And what I build for you (website, software or automation) is yours once you have paid for it in full, source code included: I hand it over. The booking product is different: it is not built for you, it is already made and tested, and that is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: the appointments are already in your Google Calendar or Outlook, and I give you the customer list in an Excel file if you leave. If your business handles health data, the agreement covers it and we go over it before we start.'
+      },
+      q15: {
+        q: 'What if you work alone and one day you are not around?',
+        a: 'You always talk to the person who built it, no call centres. What I set up runs on its own and I monitor it around the clock: if something fails, I know before you do. And you are not tied to me: everything is in your name, and what I build for you is yours, source code included, once you have paid for it. And if you need me to answer at weekends and during holidays too, there is the Plus Plan.'
       }
     },
     contact: {
@@ -1349,19 +1377,15 @@ export const dictionaries = {
     simulator: {
       title: 'Return on Investment (ROI) Simulator',
       subtitle: 'Discover how much time and money you are losing by not automating your business tasks.',
-      label_hours: 'Weekly hours wasted on repetitive tasks',
+      label_hours: 'Hours a week on tasks that repeat (entering data, making invoices, calling to remind…)',
       label_employees: 'Number of employees doing these tasks',
       label_cost: 'Average hourly cost per employee',
-      result_monthly: 'Estimated Monthly Savings',
-      result_yearly: 'Estimated Yearly Savings',
-      result_hours: 'Annual Recovered Time',
-      rec_title: 'Suggested Solution Proposal',
-      rec_badge: 'RECOMMENDED',
-      btn_apply: 'Link budget and continue to form',
-      notif_linked: 'Simulation successfully linked to the form!',
-      opt_s2: '02. Specific Automations',
-      opt_s4: '05. Artificial Intelligence Integration',
-      opt_s8: '09. Custom Management System (ERP/CRM/FSM)'
+      result_monthly: 'Estimated monthly cost',
+      result_yearly: 'Estimated yearly cost',
+      result_hours: 'Yearly time on these tasks',
+      rec_texto: 'This is what is slipping away. In the diagnosis we look at which piece recovers it, and if it is not worth it, I will tell you.',
+      btn_apply: 'Take these numbers to the form',
+      notif_linked: 'Simulation successfully linked to the form!'
     },
     leads: {
       sticky_cta: 'Free consultation',
@@ -1385,7 +1409,7 @@ export const dictionaries = {
       wa_servicios: 'Hi Rubén, I am coming from your website. I was looking at your services and had a question about one of them.',
       wa_roi: 'Hi Rubén, I am coming from your website. The part about wasted time caught my eye and I wanted to tell you about my case.',
       wa_precios: 'Hi Rubén, I am coming from the pricing section of your website and I wanted to ask about a quote.',
-      post_services: 'I work with a limited number of clients so I can look after every project properly.',
+      post_services: 'I take on few projects at a time, to do each one well, and in the proposal I tell you in writing when I start.',
       post_services_btn: 'Reserve your spot',
       post_roi: 'Your project deserves personalized attention. Book your consultation and I\'ll show you how I can help.',
       post_roi_btn: 'Book personalized consultation',
@@ -1436,17 +1460,17 @@ export const dictionaries = {
       cta_sub: 'In my calendar · 30 minutes, no commitment',
       nota: 'In the chat you tell me how you handle it today ({como}) and we see what moves across and how. You don’t need to show me any customer data.',
       nota_como: 'Excel, paper, WhatsApp or your current software',
-      faq_contrato: 'We sign a data protection agreement, as the law requires.',
       faq_titulo: 'What I get asked most',
       faq: [
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'Everything we set up goes in accounts in your name, and the data sits on servers in the European Union. The WhatsApp assistant uses Google Cloud, also in the EU, and Meta’s WhatsApp.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'Everything that is yours goes in accounts in your name: domain, hosting, database, your calendar and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the booking assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. And what I build for you (website, software or automation) is yours once you have paid for it in full, source code included: I hand it over. The booking product is different: it is not built for you, it is already made and tested, and that is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: the appointments are already in your Google Calendar or Outlook, and I give you the customer list in an Excel file if you leave. If your business handles health data, the agreement covers it and we go over it before we start.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',
       portada_link: 'Try it with your business',
+      portada_nota: '2 minutes, no sign-up: pick your sector and see what your day-to-day would look like.',
       doc2_titulo: 'Shall we talk it over?',
       doc2_texto: 'If you want to go over what we looked at, drop me a line and we’ll look at it together.',
       doc2_btn: 'Message Rubén on WhatsApp',
