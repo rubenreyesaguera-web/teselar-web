@@ -205,3 +205,35 @@ describe('textos de la quinta pasada', () => {
     for (const t of [TESS, LLMS]) expect(t).not.toMatch(/24-48/);
   });
 });
+
+// Sexta pasada (25/10). Addenda de ADR-041: solo Citas se para al dar de baja la cuota.
+describe('textos de la sexta pasada', () => {
+  test('solo Citas se para; el Basico del 02 y la cuota del 05 son recomendados', () => {
+    for (const lng of LNGS) {
+      const d = dictionaries[lng];
+      const textos = [d.pricing.basic.desc, d.services.s2.f8, d.services.s4.f7, d.faq.q6.a, d.faq.q13.a].join(' ');
+      expect(textos).not.toMatch(/obligatori|required|mandatory|se para\.|s’atura\.|the automation stops/);
+      expect(d.faq.q13.a).toMatch(/Citas por WhatsApp: se paran|Cites per WhatsApp: s’aturen|WhatsApp Appointments: it stops/);
+    }
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/NO es opcional|cuota mensual del asistente,\s+obligatoria|se detienen si se cancela la cuota -/);
+  });
+
+  test('la excepcion de citas dice por que y que se lleva, y los datos nombran la salud', () => {
+    for (const lng of LNGS) {
+      const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
+      for (const t of [dictionaries[lng].faq.q14.a, datos]) {
+        expect(t).not.toMatch(/excepción|excepció|exception/);
+        expect(t).toMatch(/salud|salut|health/);
+      }
+    }
+  });
+
+  test('sin «formación integral», «3-4 secciones» heredadas ni «prediagnóstico digital»', () => {
+    for (const lng of LNGS) {
+      const d = dictionaries[lng];
+      expect(d.services.s8.f7).not.toMatch(/integral|priority/);
+      expect(d.services.s5.hereda).not.toMatch(/3-4/);
+      expect(JSON.stringify(d)).not.toMatch(/prediagnóstico digital|prediagnòstic digital|digital pre-diagnosis/);
+    }
+  });
+});
