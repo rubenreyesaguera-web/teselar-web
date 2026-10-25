@@ -100,3 +100,31 @@ describe('WhatsApp Business', () => {
   });
 });
 
+// Tercera pasada (25/10).
+describe('textos de la tercera pasada', () => {
+  test('sin «costes ocultos», «dos por semana», superlativos ni «escribo el código»', () => {
+    const todo = JSON.stringify(dictionaries) + TESS;
+    expect(todo).not.toMatch(/costes ocultos|costos ocults|hidden costs|dos por semana|dues per setmana|two a week/);
+    expect(todo).not.toMatch(/insuperable|unrivaled|Huyo de|Fujo de|I avoid heavy/);
+    expect(todo).not.toMatch(/Yo escribo el código|Jo escric el codi|I write the code|escribe el c[oó]digo/);
+  });
+
+  test('la teselacion se explica y el 09 avisa de la auditoria', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].concept.text1).toMatch(/baldosas|rajoles|tiles/);
+      expect(dictionaries[lng].services.s8.paso).toMatch(/150 €/);
+    }
+    expect(PORTADA).toContain('t.services.s8.paso');
+  });
+
+  test('la agenda nombra Google Calendar y Outlook', () => {
+    for (const lng of LNGS) expect(dictionaries[lng].services.s9.f2).toMatch(/Google Calendar.*Outlook/);
+  });
+
+  // 52 semanas para el año y el mes = año / 12: con 4,33 el año daba 20.784 € frente a 1.040 h (52 semanas).
+  test('el simulador cuenta con 52 semanas', () => {
+    expect(PORTADA).not.toContain('4.33');
+    expect(PORTADA).toContain('hourlyCost * 52');
+  });
+});
+

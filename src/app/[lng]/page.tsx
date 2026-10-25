@@ -751,6 +751,8 @@ export default function Page({ params }: PageProps) {
                         </a>
                       )}
                       {service.id === 's8' && <span className="text-sm text-claridad/70">{t.demo.portada_nota}</span>}
+                      {/* La auditoria antes del 09 (ADR-086), dicha aqui y no descubierta en la reunion (25/10). */}
+                      {service.id === 's8' && <span className="text-sm text-claridad/70 max-w-[62ch] [text-wrap:pretty]">{t.services.s8.paso}</span>}
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
                       <span className="text-xl md:text-2xl font-bold text-innovacion lg:text-right">{service.price}</span>
@@ -1071,10 +1073,10 @@ export default function Page({ params }: PageProps) {
               <div className="bg-claridad/5 border border-claridad/10 p-5 rounded-2xl text-xs font-light text-claridad/75 leading-relaxed mt-6">
                 <strong>{lng === 'es' ? '¿Cómo se calcula?' : lng === 'ca' ? 'Com es calcula?' : 'How is it calculated?'}</strong>{' '}
                 {lng === 'es'
-                  ? 'Multiplico las horas perdidas por el coste por hora, el número de empleados y un factor medio mensual (4.33 semanas al mes). Son recursos invisibles que podrías estar reinvirtiendo en el crecimiento real de tu negocio.'
+                  ? 'Multiplico las horas por el número de personas, el coste por hora y las 52 semanas del año; el mes es esa cifra entre 12. Son recursos invisibles que podrías estar reinvirtiendo en el crecimiento real de tu negocio.'
                   : lng === 'ca'
-                    ? 'Multiplico les hores perdudes pel cost per hora, el nombre d\'empleats i un factor mitjà mensual (4.33 setmanes al mes). Són recursos invisibles que podries estar reinvertint en el creixement real del teu negoci.'
-                    : 'I multiply the hours lost by the hourly cost, the number of employees, and a monthly average factor (4.33 weeks per month). These are invisible resources that you could be reinvesting in the actual growth of your business.'}
+                    ? 'Multiplico les hores pel nombre de persones, el cost per hora i les 52 setmanes de l’any; el mes és aquesta xifra entre 12. Són recursos invisibles que podries estar reinvertint en el creixement real del teu negoci.'
+                    : 'I multiply the hours by the number of people, the hourly cost and the 52 weeks of the year; the month is that figure divided by 12. These are invisible resources that you could be reinvesting in the actual growth of your business.'}
               </div>
             </motion.div>
 
@@ -1096,7 +1098,7 @@ export default function Page({ params }: PageProps) {
                   <div className="border-b border-claridad/5 pb-5">
                     <span className="text-xs font-mono tracking-widest text-claridad/70 uppercase block mb-1">[ {t.simulator.result_monthly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-innovacion text-glow-cyan">
-                      {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33))}€
+                      {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 52 / 12))}€
                     </span>
                     <span className="text-xs text-claridad/70 font-light block mt-1">
                       {lng === 'es' ? 'lo que te cuesta cada mes' : lng === 'ca' ? 'el que et costa cada mes' : 'what it costs you each month'}
@@ -1107,7 +1109,7 @@ export default function Page({ params }: PageProps) {
                   <div className="border-b border-claridad/5 pb-5">
                     <span className="text-xs font-mono tracking-widest text-claridad/70 uppercase block mb-1">[ {t.simulator.result_yearly} ]</span>
                     <span className="font-mono text-4xl sm:text-5xl font-black text-claridad">
-                      {fmt(Math.round(wastedHours * employeeCount * hourlyCost * 4.33 * 12))}€
+                      {fmt(wastedHours * employeeCount * hourlyCost * 52)}€
                     </span>
                     <span className="text-xs text-claridad/70 font-light block mt-1">
                       {lng === 'es' ? 'lo que te cuesta al año' : lng === 'ca' ? 'el que et costa a l’any' : 'what it costs you each year'}
@@ -1136,8 +1138,8 @@ export default function Page({ params }: PageProps) {
               {/* Action Trigger Button */}
               <button 
                 onClick={() => {
-                  const monthlyVal = Math.round(wastedHours * employeeCount * hourlyCost * 4.33);
-                  const yearlyVal = monthlyVal * 12;
+                  const yearlyVal = wastedHours * employeeCount * hourlyCost * 52;
+                  const monthlyVal = Math.round(yearlyVal / 12);
                   const yearlyHours = wastedHours * employeeCount * 52;
                   const budgetTier = monthlyVal < 500 ? 'low' : monthlyVal < 1500 ? 'mid' : 'high';
                   

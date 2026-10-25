@@ -23,7 +23,7 @@ export const dictionaries = {
       meta_description: 'Asistentes con inteligencia artificial, automatizaciones y programas a medida para negocios de Lloret de Mar y la Costa Brava. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
       cta_alt: 'Diagnóstico gratis · 30 min',
-      cta_note: 'Gratis y sin compromiso. Antes de hablar miro tu web, tu ficha de Google y cómo te contactan tus clientes, para no empezar de cero. Por eso solo hago dos por semana.',
+      cta_note: 'Gratis y sin compromiso. Antes de hablar miro tu web, tu ficha de Google y cómo te contactan tus clientes, para no empezar de cero.',
       quien: 'Soy Rubén Reyes, de Teselar Software. Te atiendo yo.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
       pieza_texto: 'Lo que te falta, hecho a la medida del hueco',
@@ -32,12 +32,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'La Pieza que Encaja',
-      text1: 'La identidad visual de Teselar se inspira en la teselación: el arte de ensamblar piezas de forma que encajen a la perfección, sin dejar huecos ni generar fricciones.',
-      text2: 'En el mundo digital, Teselar es esa pieza exacta de software a medida que tu negocio necesita para completar su engranaje y funcionar con total fluidez.'
+      text1: 'Una teselación es un mosaico de piezas que encajan sin dejar huecos, como las baldosas de un suelo.',
+      text2: 'Tu negocio ya tiene sus piezas: clientes, facturas, agenda, WhatsApp, tu equipo. Lo que hago es la que falta para que encajen y dejes de pasar datos de una a otra a mano.'
     },
     services: {
       title: 'Catálogo de Servicios',
-      subtitle: 'Soluciones modulares adaptadas a tu tamaño y presupuesto. Sin costes ocultos: lo que no entra está aquí abajo y, por escrito, en tu propuesta.',
+      subtitle: 'Soluciones modulares adaptadas a tu tamaño y presupuesto. Lo que no entra lo tienes escrito aquí abajo y, otra vez, en tu propuesta.',
       ideal: 'Ideal para:',
       pricing: 'Precio',
       features: 'Lo que incluye:',
@@ -156,6 +156,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Programa de gestión a medida: clientes, facturas y técnicos',
+        paso: 'Entre la charla gratis y la propuesta está la auditoría (150 €), que se descuentan si sigues adelante: un programa a medida no se presupuesta en 30 minutos.',
         ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Datos',
@@ -175,7 +176,7 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 150-250€/mes',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un asistente atiende tu WhatsApp las 24 horas: consulta los huecos libres, reserva la cita y la confirma sin que tengas que contestar',
-        f2: 'Agenda sincronizada con la que ya usas — nunca dos citas en el mismo hueco',
+        f2: 'Tu agenda en Google Calendar u Outlook, conectada al asistente: nunca dos citas en el mismo hueco. Si hoy la llevas en papel o en Excel, la pasamos ahí al empezar, y te ayudo.',
         f3: 'Recordatorio automático antes de la cita, que es lo que hace que la gente no falte',
         f4: 'Cambios y cancelaciones por el mismo WhatsApp, sin llamadas ni huecos muertos',
         f5: 'Panel con tus citas y el contador de las que entraron fuera de tu horario de atención',
@@ -211,7 +212,7 @@ export const dictionaries = {
         title: 'Citas por WhatsApp · cuota del servicio',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. El Esencial lleva una agenda, con una cita a la vez; el Completo, varias a la vez, para cuando atendéis dos o más personas al mismo tiempo.',
+        desc: 'El producto de Citas por WhatsApp lleva su propia cuota, aparte del mantenimiento: 150€/mes el plan Esencial y 250€/mes el Completo. No es un extra opcional, es el servicio funcionando. Lo que cuenta es cuántas personas atendéis a la vez, no cuántos servicios hacéis: si atiende una sola persona, el Esencial; si en algún momento sois dos o más atendiendo al mismo tiempo, el Completo.',
         f1: 'El asistente atendiendo tu WhatsApp cada día, vigilado, y corregido si algo falla — con el coste del modelo de IA incluido: no tienes que darte de alta en ningún servicio ni gestionar claves',
         f2: 'Cambios de horarios, servicios, precios y textos cuando los necesites',
         f3: 'Los mensajes que envía WhatsApp los factura Meta directamente a tu cuenta: entre 1,7 y 3,3 céntimos por cita, calculado con la tarifa oficial de Meta en vigor desde el 1 de octubre de 2026. Las respuestas del asistente entran en los 1.000 mensajes gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes; lo que se paga es el recordatorio y la confirmación. Lo que escriben tus clientes es gratis',
@@ -245,8 +246,8 @@ export const dictionaries = {
         desc: 'Antes del software pasé doce años en compras y posventa, en una sociedad anónima y dos multinacionales: albaranes, facturas, presupuestos de reparación, proveedores y un taller a mi cargo. Por eso primero miro cómo trabajas, y la tecnología viene después. Y hablas siempre conmigo.'
       },
       v2: {
-        title: 'Desarrollo Nativo a Medida',
-        desc: 'Huyo de las plantillas de WordPress pesadas e inseguras. Hago las webs a mano con React y Tailwind, y eso te da una velocidad insuperable y un SEO excelente.'
+        title: 'Hecho a mano',
+        desc: 'Lo hago a medida y de cero, sin plantillas ni veinte plugins de autores distintos que tengan que llevarse bien. Por eso va rápido y, si algo falla, sabes a quién llamar. Y si para lo tuyo te basta con WordPress, te lo digo.'
       },
       v3: {
         title: 'Cercanía y Entendimiento Local',
@@ -282,7 +283,7 @@ export const dictionaries = {
       subtitle: 'Lo que más me preguntan antes de empezar un proyecto. Si tienes otra duda, escríbeme.',
       q1: {
         q: '¿Cuánto cuesta una página web?',
-        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. Te doy un precio cerrado tras la primera conversación, sin sorpresas.'
+        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. En la Web Esencial te doy un precio cerrado tras la primera conversación, sin sorpresas; la Completa, como todo lo que va a medida, pasa antes por la auditoría.'
       },
       q2: {
         q: '¿Trabajas solo en Lloret de Mar o también fuera?',
@@ -326,14 +327,14 @@ export const dictionaries = {
       },
       q12: {
         q: '¿Por qué no me haces la web en WordPress, que sale más barata?',
-        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Yo escribo el código, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
+        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Lo hago a medida y de cero, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
       },
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
         a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y ERP/CRM) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: tu web sigue publicada y sigue siendo tuya, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. En cambio, lo que necesita la cuota para funcionar se para: las Automatizaciones Específicas, el asistente de la Integración de IA y las Citas por WhatsApp se detienen si cancelas la cuota, avisándote 15 días antes. No es un castigo, es que esa cuota paga vigilar que siga funcionando y, en el caso de las citas, el coste del modelo de IA, que va incluido en la cuota y lo pago yo. Por eso digo que en esos servicios la cuota es obligatoria mientras el servicio esté en marcha: obligatoria no quiere decir permanencia, quiere decir que si te das de baja el servicio deja de funcionar. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
       },
       q14: {
-        q: '¿Dónde quedan los datos de mis clientes?',
+        q: '¿Dónde quedan los datos de mis clientes o pacientes?',
         a: 'Todo lo tuyo va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea. Lo único que va en mi cuenta es la inteligencia artificial del asistente de citas: Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Por eso su coste entra en la cuota. Las conversaciones solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. Y siempre firmamos el contrato de protección de datos que pide la ley.'
       }
     },
@@ -523,7 +524,7 @@ export const dictionaries = {
       meta_description: 'Assistents amb intel·ligència artificial, automatitzacions i programes a mida per a negocis de Lloret de Mar i la Costa Brava. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
       cta_alt: 'Diagnòstic gratis · 30 min',
-      cta_note: 'Gratis i sense compromís. Abans de parlar miro el teu web, la teva fitxa de Google i com et contacten els teus clients, per no començar de zero. Per això només en faig dues per setmana.',
+      cta_note: 'Gratis i sense compromís. Abans de parlar miro el teu web, la teva fitxa de Google i com et contacten els teus clients, per no començar de zero.',
       quien: 'Sóc Rubén Reyes, de Teselar Software. T’atenc jo.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
       pieza_texto: 'El que et falta, fet a la mida del forat',
@@ -532,12 +533,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'La Peça que Encaixa',
-      text1: 'La identitat visual de Teselar s\'inspira en la tessel·lació: l\'art d\'acoblar peces de manera que encaixin perfectament, sense deixar buits ni generar friccions.',
-      text2: 'En el món digital, Teselar és aquesta peça exacta de programari a mida que el teu negoci necessita per completar el seu engranatge i funcionar amb fluïdesa total.'
+      text1: 'Una tessel·lació és un mosaic de peces que encaixen sense deixar forats, com les rajoles d’un terra.',
+      text2: 'El teu negoci ja té les seves peces: clients, factures, agenda, WhatsApp, el teu equip. El que faig és la que falta perquè encaixin i deixis de passar dades d’una a l’altra a mà.'
     },
     services: {
       title: 'Catàleg de Serveis',
-      subtitle: 'Solucions modulars adaptades a la teva mida i pressupost. Sense costos ocults: el que no hi entra és aquí sota i, per escrit, a la teva proposta.',
+      subtitle: 'Solucions modulars adaptades a la teva mida i pressupost. El que no hi entra ho tens escrit aquí sota i, una altra vegada, a la teva proposta.',
       ideal: 'Ideal per a:',
       pricing: 'Preu',
       features: 'Què inclou:',
@@ -656,6 +657,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Programa de gestió a mida: clients, factures i tècnics',
+        paso: 'Entre la xerrada gratis i la proposta hi ha l’auditoria (150 €), que es descompten si tires endavant: un programa a mida no es pressuposta en 30 minuts.',
         ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
         price: '8.000€ — 12.000€',
         tag: 'Electron + React + Base de Dades',
@@ -675,7 +677,7 @@ export const dictionaries = {
         price: '700€ — 1.800€ + 150-250€/mes',
         tag: 'WhatsApp Cloud API + Agenda',
         f1: 'Un assistent atén el teu WhatsApp les 24 hores: consulta els forats lliures, reserva la cita i la confirma sense que hagis de contestar',
-        f2: 'Agenda sincronitzada amb la que ja fas servir — mai dues cites al mateix forat',
+        f2: 'La teva agenda a Google Calendar o Outlook, connectada a l’assistent: mai dues cites al mateix forat. Si avui la portes en paper o en Excel, la hi passem en començar, i t’ajudo.',
         f3: 'Recordatori automàtic abans de la cita, que és el que fa que la gent no hi falti',
         f4: 'Canvis i cancel·lacions pel mateix WhatsApp, sense trucades ni forats morts',
         f5: 'Panell amb les teves cites i el comptador de les que van entrar fora del teu horari d\'atenció',
@@ -711,7 +713,7 @@ export const dictionaries = {
         title: 'Cites per WhatsApp · quota del servei',
         price: '150€ — 250€',
         period: '/ mes',
-        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. L\'Essencial porta una agenda, amb una cita alhora; el Complet, diverses alhora, per quan atenen dues o més persones al mateix temps.',
+        desc: 'El producte de Cites per WhatsApp té la seva pròpia quota, a part del manteniment: 150€/mes el pla Essencial i 250€/mes el Complet. No és un extra opcional, és el servei funcionant. El que compta és quantes persones ateneu alhora, no quants serveis feu: si atén una sola persona, l’Essencial; si en algun moment sou dues o més atenent al mateix temps, el Complet.',
         f1: 'L\'assistent atenent el teu WhatsApp cada dia, vigilat, i corregit si alguna cosa falla — amb el cost del model d\'IA inclòs: no t\'has de donar d\'alta a cap servei ni gestionar claus',
         f2: 'Canvis d\'horaris, serveis, preus i textos quan els necessitis',
         f3: 'Els missatges que envia WhatsApp els factura Meta directament al teu compte: entre 1,7 i 3,3 cèntims per cita, calculat amb la tarifa oficial de Meta en vigor des de l\'1 d\'octubre de 2026. Les respostes de l\'assistent entren en els 1.000 missatges gratis al mes que dona Meta per número, que cobreixen fins a unes 250 cites al mes; el que es paga és el recordatori i la confirmació. El que escriuen els teus clients és gratis',
@@ -745,8 +747,8 @@ export const dictionaries = {
         desc: 'Abans del programari vaig passar dotze anys a compres i postvenda, en una societat anònima i dues multinacionals: albarans, factures, pressupostos de reparació, proveïdors i un taller al meu càrrec. Per això primer miro com treballes, i la tecnologia ve després. I parles sempre amb mi.'
       },
       v2: {
-        title: 'Desenvolupament Natiu a Mida',
-        desc: 'Fujo de les plantilles de WordPress pesades i insegures. Faig les webs a mà amb React i Tailwind, i això et dóna una velocitat insuperable i un SEO excel·lent.'
+        title: 'Fet a mà',
+        desc: 'Ho faig a mida i de zero, sense plantilles ni vint plugins d’autors diferents que s’hagin d’entendre. Per això va ràpid i, si alguna cosa falla, saps a qui trucar. I si per al teu cas en tens prou amb WordPress, t’ho dic.'
       },
       v3: {
         title: 'Proximitat i Comprensió Local',
@@ -782,7 +784,7 @@ export const dictionaries = {
       subtitle: 'El que més em pregunten abans de començar un projecte. Si tens un altre dubte, escriu-me.',
       q1: {
         q: 'Quant costa una pàgina web?',
-        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. Et dono un preu tancat després de la primera conversa, sense sorpreses.'
+        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. A la Web Essencial et dono un preu tancat després de la primera conversa, sense sorpreses; la Completa, com tot el que va a mida, passa abans per l’auditoria.'
       },
       q2: {
         q: 'Treballes només a Lloret de Mar o també fora?',
@@ -826,14 +828,14 @@ export const dictionaries = {
       },
       q12: {
         q: 'Per què no em fas el web en WordPress, que surt més barat?',
-        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Jo escric el codi, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
+        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Ho faig a mida i de zero, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
       },
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
         a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i ERP/CRM) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el teu web continua publicat i continua sent teu, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. En canvi, el que necessita la quota per funcionar s\'atura: les Automatitzacions Específiques, l\'assistent de la Integració d\'IA i les Cites per WhatsApp es aturen si canceles la quota, avisant-te 15 dies abans. No és un càstig: aquesta quota paga vigilar que continuï funcionant i, en el cas de les cites, el cost del model d\'IA, que va inclòs i el pago jo. Per això dic que en aquests serveis la quota és obligatòria mentre el servei estigui en marxa: obligatòria no vol dir permanència, vol dir que si et dones de baixa el servei deixa de funcionar. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
       },
       q14: {
-        q: 'On queden les dades dels meus clients?',
+        q: 'On queden les dades dels meus clients o pacients?',
         a: 'Tot el que és teu va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea. L’únic que va al meu compte és la intel·ligència artificial de l’assistent de cites: Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Per això el seu cost entra a la quota. Les converses només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. I sempre signem el contracte de protecció de dades que demana la llei.'
       }
     },
@@ -1007,7 +1009,7 @@ export const dictionaries = {
       meta_description: 'AI assistants, automations and custom software for businesses in Lloret de Mar and the Costa Brava. I build them myself, end to end.',
       cta: 'Request information',
       cta_alt: 'Free 30-min diagnosis',
-      cta_note: 'Free and with no strings attached. Before we talk I look at your website, your Google profile and how your customers reach you, so we do not start from scratch. That is why I only do two a week.',
+      cta_note: 'Free and with no strings attached. Before we talk I look at your website, your Google profile and how your customers reach you, so we do not start from scratch.',
       quien: 'I am Rubén Reyes, from Teselar Software. You deal with me.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
       pieza_texto: 'What you\'re missing, made to fit the gap',
@@ -1016,12 +1018,12 @@ export const dictionaries = {
     },
     concept: {
       title: 'The Fitting Piece',
-      text1: 'The Teselar visual identity is inspired by tessellation: the art of assembling pieces so they fit together perfectly, leaving no gaps and creating no friction.',
-      text2: 'In the digital world, Teselar is that exact piece of custom software that your business needs to complete its gears and run with total fluidity.'
+      text1: 'A tessellation is a mosaic of pieces that fit together with no gaps, like the tiles on a floor.',
+      text2: 'Your business already has its pieces: customers, invoices, calendar, WhatsApp, your team. What I build is the missing one, so they fit together and you stop copying data from one to another by hand.'
     },
     services: {
       title: 'Services Catalog',
-      subtitle: 'Modular solutions tailored to your size and budget. No hidden costs: what is not included is listed below and, in writing, in your proposal.',
+      subtitle: 'Modular solutions tailored to your size and budget. What is not included is written below and, again, in your proposal.',
       ideal: 'Ideal for:',
       pricing: 'Price',
       features: 'What is included:',
@@ -1140,6 +1142,7 @@ export const dictionaries = {
       },
       s8: {
         title: '09. Custom management software: customers, invoices and technicians',
+        paso: 'Between the free chat and the proposal comes the audit (150 €), which is deducted if you go ahead: custom software cannot be quoted in 30 minutes.',
         ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
         price: '8,000€ — 12,000€',
         tag: 'Electron + React + Database',
@@ -1159,7 +1162,7 @@ export const dictionaries = {
         price: '700€ — 1,800€ + 150-250€/mo',
         tag: 'WhatsApp Cloud API + Calendar',
         f1: 'An assistant answers your WhatsApp around the clock: checks open slots, books the appointment and confirms it without you replying',
-        f2: 'Synced with the calendar you already use — never two bookings in the same slot',
+        f2: 'Your calendar in Google Calendar or Outlook, connected to the assistant: never two appointments in the same slot. If you keep it on paper or in Excel today, we move it there when we start, and I help you.',
         f3: 'Automatic reminder before the appointment, which is what keeps people from missing it',
         f4: 'Reschedules and cancellations over the same WhatsApp, no calls and no dead slots',
         f5: 'Dashboard with your bookings and a counter of those that came in outside your opening hours',
@@ -1195,7 +1198,7 @@ export const dictionaries = {
         title: 'WhatsApp Booking · service fee',
         price: '150€ — 250€',
         period: '/ month',
-        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. The Essential plan has one calendar, one appointment at a time; the Complete one handles several at once, for when two or more people are seeing clients at the same time.',
+        desc: 'The WhatsApp Appointment Booking product carries its own fee, separate from maintenance: 150€/month for the Essential plan and 250€/month for the Complete one. It is not an optional add-on, it is the service running. What counts is how many people are serving at the same time, not how many services you offer: if one person serves, the Essential plan; if at any point two or more of you are serving at once, the Complete one.',
         f1: 'The assistant answering your WhatsApp every day, monitored, and fixed if something goes wrong — with the AI model cost included: no signing up to any AI service and no API keys to manage',
         f2: 'Changes to opening hours, services, prices and wording whenever you need them',
         f3: 'The messages WhatsApp sends are billed by Meta straight to your own account: between 1.7 and 3.3 cents per booking, worked out from Meta\'s official rates in force since 1 October 2026. The assistant\'s replies fall within the 1,000 free messages a month Meta gives each number, which cover up to about 250 bookings a month; what you pay for is the reminder and the confirmation. What your clients write is always free',
@@ -1229,8 +1232,8 @@ export const dictionaries = {
         desc: 'Before software I spent twelve years in purchasing and after-sales, at a public limited company and two multinationals: delivery notes, invoices, repair quotes, suppliers and a workshop under my charge. That is why I look at how you work first, and the technology comes after. And you always talk to me.'
       },
       v2: {
-        title: 'Custom Native Development',
-        desc: 'I avoid heavy, slow, and insecure WordPress templates. I hand-craft websites using React and Tailwind, which gives you unrivaled speed and outstanding SEO.'
+        title: 'Handmade',
+        desc: 'I build it to measure and from scratch, with no templates and no twenty plugins from different authors that have to get along. That is why it is fast and, if something breaks, you know who to call. And if WordPress is enough for you, I will tell you.'
       },
       v3: {
         title: 'Local Proximity & Understanding',
@@ -1266,7 +1269,7 @@ export const dictionaries = {
       subtitle: 'What people ask me most before starting a project. Got another question? Just write to me.',
       q1: {
         q: 'How much does a website cost?',
-        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. I give you a closed price after the first conversation, no surprises.'
+        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. For the Essential Website I give you a closed price after the first conversation, no surprises; the Complete one, like everything custom, goes through the audit first.'
       },
       q2: {
         q: 'Do you only work in Lloret de Mar, or also further afield?',
@@ -1310,14 +1313,14 @@ export const dictionaries = {
       },
       q12: {
         q: 'Why not build my site in WordPress? It is cheaper.',
-        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I write the code myself, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
+        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I build it to measure from scratch, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
       },
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
         a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and ERP/CRM) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: your website remains published and remains yours, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. What does need the fee to work, on the other hand, stops: Specific Automations, the Integration AI assistant and WhatsApp Appointments are switched off if you cancel the fee, with 15 days notice. It is not a punishment: that fee pays for watching that it keeps working and, for appointments, the cost of the AI model, which is included and I pay for it. That is why in those services the fee is mandatory while the service is running: mandatory does not mean lock-in, it means that if you cancel, the service stops working. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
       },
       q14: {
-        q: 'Where does my customers’ data stay?',
+        q: 'Where does my customers’ or patients’ data stay?',
         a: 'Everything that is yours goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union. The only thing in my account is the artificial intelligence of the booking assistant: Google Cloud, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. That is why its cost is part of the monthly fee. Only I see the conversations, and only if there is a fault to fix or you ask me to. And we always sign the data protection agreement the law requires.'
       }
     },

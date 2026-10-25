@@ -46,8 +46,9 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
 - **Citas por WhatsApp** — Esencial 700€–900€ + 150€/mes · Completo 1.500€–1.800€ + 250€/mes. Un
   asistente que atiende el WhatsApp del negocio 24 horas al día: consulta los huecos libres, reserva
   la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar. El plan lo decide
-  cuántas personas atienden a la vez: el Esencial lleva una agenda, con una cita a la vez; el Completo,
-  varias agendas a la vez. Complemento de petición automática
+  cuántas personas atienden a la vez: si atiende una sola persona, el Esencial; si en algún momento
+  atienden dos o más al mismo tiempo, el Completo. La agenda va en Google Calendar u Outlook (si se
+  lleva en papel o Excel, se pasa ahí al empezar). Complemento de petición automática
   de reseñas: +200€ sobre el proyecto (no se vende suelto). Requiere la app WhatsApp Business; enlazar
   el número con el sistema depende de una aprobación de Meta, cuyo plazo no controla Teselar y se da
   por escrito en la propuesta. **Garantía:** si en los tres

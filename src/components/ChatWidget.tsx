@@ -15,7 +15,7 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
     saludo: '¡Hola! Soy TesS, la IA de Teselar Software 🤖 Y sí, soy una demo en vivo de lo que hace Rubén: asistentes como yo desde 1.600€. ¿Qué necesita tu negocio? ¿Una web, una automatización, un sistema a medida?',
     placeholder: 'Escribe tu mensaje...',
     error: 'Algo ha fallado. Prueba de nuevo o escríbeme por WhatsApp: +34 653 232 735.',
-    teaser: '¿Tienes 1 minuto? Soy TesS, la IA de Teselar 🤖 Pregúntame precios o cuéntame tu proyecto.',
+    teaser: '¿Tienes 1 minuto? Soy TesS, la asistente de Rubén 🤖 Te respondo precios al momento y, si quieres, le paso tu caso a él.',
     cerrar: 'Cerrar', enviar: 'Enviar mensaje', abrirChat: 'Abrir chat con TesS', cerrarChat: 'Cerrar chat con TesS'
   },
   ca: {
@@ -24,7 +24,7 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
     saludo: 'Hola! Sóc TesS, la IA de Teselar Software 🤖 I sí, sóc una demo en viu del que fa en Rubén: assistents com jo des de 1.600€. Què necessita el teu negoci? Una web, una automatització, un sistema a mida?',
     placeholder: 'Escriu el teu missatge...',
     error: 'Alguna cosa ha fallat. Torna-ho a provar o escriu-me per WhatsApp: +34 653 232 735.',
-    teaser: 'Tens 1 minut? Sóc TesS, la IA de Teselar 🤖 Pregunta\'m preus o explica\'m el teu projecte.',
+    teaser: 'Tens 1 minut? Sóc la TesS, l’assistent d’en Rubén 🤖 Et responc preus al moment i, si vols, li passo el teu cas a ell.',
     cerrar: 'Tancar', enviar: 'Enviar missatge', abrirChat: 'Obrir xat amb TesS', cerrarChat: 'Tancar xat amb TesS'
   },
   en: {
@@ -33,7 +33,7 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
     saludo: 'Hi! I\'m TesS, the Teselar Software AI 🤖 And yes, I\'m a live demo of what Rubén builds: assistants like me from 1,600€. What does your business need? A website, an automation, a custom system?',
     placeholder: 'Type your message...',
     error: 'Something went wrong. Try again or message me on WhatsApp: +34 653 232 735.',
-    teaser: 'Got 1 minute? I\'m TesS, Teselar\'s AI 🤖 Ask me about pricing or tell me about your project.',
+    teaser: 'Got 1 minute? I’m TesS, Rubén’s assistant 🤖 I answer pricing right away and, if you like, I pass your case on to him.',
     cerrar: 'Close', enviar: 'Send message', abrirChat: 'Open chat with TesS', cerrarChat: 'Close chat with TesS'
   }
 };
