@@ -7,10 +7,70 @@
 //   410 vencida o retirada · 403 sin capacidad valida · 429 demasiados intentos fallidos · 400 datos mal · 404 no existe
 import { neon, type NeonQueryFunction } from '@neondatabase/serverless';
 import { capacidadValida } from './canonico';
+import { CONDICIONES, huellaCondiciones, type Lengua } from './condiciones';
 import { dniValido, nifSociedadValido, normalizarDocumento } from './identificacion';
 import { FORMA_REFERENCIA } from './leer';
 
 export const MAX_INTENTOS_FALLIDOS = 20;
+
+// Los mensajes que ve quien acepta, en la lengua de la propuesta. El castellano es el de siempre (los tests lo leen).
+const MENSAJES = {
+  es: {
+    faltan: 'Faltan los datos',
+    tipo: 'Elige si aceptas como autónomo o como sociedad',
+    propuesta: 'Propuesta no válida',
+    intento: 'Intento no válido',
+    nombre: 'Escribe tu nombre completo',
+    dni: 'Revisa el DNI o NIE: la letra no cuadra con el número',
+    correo: 'Escribe un correo válido',
+    domicilio: 'Escribe el domicilio completo',
+    razon: 'Escribe la razón social',
+    nif: 'Revisa el NIF de la sociedad: el control no cuadra',
+    cargo: 'Escribe tu cargo en la sociedad',
+    casillas: 'Marca las tres casillas para aceptar',
+    no_existe: 'Esta propuesta no existe',
+    repetida: 'Aceptación registrada',
+    ya_aceptada: 'Esta propuesta ya estaba aceptada',
+    bloqueada: 'Demasiados intentos. Escríbeme y te mando un enlace nuevo',
+    sin_capacidad: 'Para aceptar, abre el enlace completo que te envié',
+    version_nueva: 'Hay una versión más reciente de esta propuesta. Recarga la página',
+    condiciones_nuevas: 'Las condiciones generales han cambiado. Recarga la página para ver las vigentes',
+    retirada: 'Esta propuesta se ha retirado',
+    vencida: 'Esta propuesta ha vencido',
+    no_vigente: 'Esta versión ya no está vigente. Recarga la página',
+    aceptada: 'Propuesta aceptada',
+  },
+  ca: {
+    faltan: 'Hi falten les dades',
+    tipo: 'Tria si acceptes com a autònom o com a societat',
+    propuesta: 'Proposta no vàlida',
+    intento: 'Intent no vàlid',
+    nombre: 'Escriu el teu nom complet',
+    dni: 'Revisa el DNI o NIE: la lletra no quadra amb el número',
+    correo: 'Escriu un correu vàlid',
+    domicilio: 'Escriu el domicili complet',
+    razon: 'Escriu la raó social',
+    nif: 'Revisa el NIF de la societat: el control no quadra',
+    cargo: 'Escriu el teu càrrec a la societat',
+    casillas: 'Marca les tres caselles per acceptar',
+    no_existe: 'Aquesta proposta no existeix',
+    repetida: 'Acceptació registrada',
+    ya_aceptada: 'Aquesta proposta ja estava acceptada',
+    bloqueada: 'Massa intents. Escriu-me i t’envio un enllaç nou',
+    sin_capacidad: 'Per acceptar, obre l’enllaç complet que et vaig enviar',
+    version_nueva: 'Hi ha una versió més recent d’aquesta proposta. Torna a carregar la pàgina',
+    condiciones_nuevas: 'Les condicions generals han canviat. Torna a carregar la pàgina per veure les vigents',
+    retirada: 'Aquesta proposta s’ha retirat',
+    vencida: 'Aquesta proposta ha vençut',
+    no_vigente: 'Aquesta versió ja no és vigent. Torna a carregar la pàgina',
+    aceptada: 'Proposta acceptada',
+  },
+} as const satisfies Record<Lengua, Record<string, string>>;
+
+type ClaveMensaje = keyof (typeof MENSAJES)['es'];
+
+/** La lengua que pide el navegador; cualquier otra cosa, castellano. */
+const lenguaDe = (v: unknown): Lengua => (v === 'ca' ? 'ca' : 'es');
 
 export interface Justificante {
   referencia: string;
@@ -40,6 +100,11 @@ export interface DatosAceptacion {
   cargo: string | null;
   casilla_leido: boolean;
   casilla_autoridad: boolean;
+  /** Las condiciones generales y su anexo (ADR-117): la casilla y la version que se le enseno. */
+  casilla_condiciones: boolean;
+  condiciones_version: number;
+  /** La lengua de la propuesta: la del justificante, el correo y el PDF. */
+  lengua: Lengua;
   idempotency_key: string;
 }
 
@@ -47,18 +112,20 @@ export type Identidad = Pick<DatosAceptacion, 'nombre' | 'dni' | 'correo' | 'tip
 
 const CORREO = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
-const r = (status: number, codigo: string, mensaje: string, justificante?: Justificante): Resultado => ({
+const r = (lengua: Lengua, status: number, codigo: string, clave: ClaveMensaje, justificante?: Justificante): Resultado => ({
   status,
-  body: { ok: status < 300, codigo, mensaje, ...(justificante ? { justificante } : {}) },
+  body: { ok: status < 300, codigo, mensaje: MENSAJES[lengua][clave], ...(justificante ? { justificante } : {}) },
 });
 
 /** Valida la forma de lo que llega. Devuelve el mensaje del primer fallo, o los datos limpios. */
 export function validarDatos(entrada: unknown): string | DatosAceptacion {
-  if (typeof entrada !== 'object' || entrada === null) return 'Faltan los datos';
+  if (typeof entrada !== 'object' || entrada === null) return MENSAJES.es.faltan;
   const e = entrada as Record<string, unknown>;
+  const lengua = lenguaDe(e.lengua);
+  const m = MENSAJES[lengua];
   const t = (k: string) => (typeof e[k] === 'string' ? (e[k] as string).normalize('NFC').trim() : '');
   const tipo = e.tipo === 'sociedad' ? 'sociedad' : e.tipo === 'autonomo' ? 'autonomo' : null;
-  if (!tipo) return 'Elige si aceptas como autónomo o como sociedad';
+  if (!tipo) return m.tipo;
   const datos: DatosAceptacion = {
     referencia: t('referencia'),
     version: typeof e.version === 'number' ? e.version : NaN,
@@ -73,21 +140,25 @@ export function validarDatos(entrada: unknown): string | DatosAceptacion {
     cargo: tipo === 'sociedad' ? t('cargo') : null,
     casilla_leido: e.casilla_leido === true,
     casilla_autoridad: e.casilla_autoridad === true,
+    casilla_condiciones: e.casilla_condiciones === true,
+    condiciones_version: typeof e.condiciones_version === 'number' ? e.condiciones_version : NaN,
+    lengua,
     idempotency_key: t('idempotency_key'),
   };
-  if (!FORMA_REFERENCIA.test(datos.referencia) || !Number.isSafeInteger(datos.version) || datos.version < 1) return 'Propuesta no válida';
-  if (!/^[0-9a-f]{64}$/.test(datos.offer_hash)) return 'Propuesta no válida';
-  if (!/^[A-Za-z0-9_-]{16,128}$/.test(datos.idempotency_key)) return 'Intento no válido';
-  if (!datos.nombre || datos.nombre.length > 200) return 'Escribe tu nombre completo';
-  if (!dniValido(datos.dni)) return 'Revisa el DNI o NIE: la letra no cuadra con el número';
-  if (!CORREO.test(datos.correo) || datos.correo.length > 254) return 'Escribe un correo válido';
-  if (datos.domicilio.length < 5 || datos.domicilio.length > 300) return 'Escribe el domicilio completo';
+  if (!FORMA_REFERENCIA.test(datos.referencia) || !Number.isSafeInteger(datos.version) || datos.version < 1) return m.propuesta;
+  if (!/^[0-9a-f]{64}$/.test(datos.offer_hash)) return m.propuesta;
+  if (!/^[A-Za-z0-9_-]{16,128}$/.test(datos.idempotency_key)) return m.intento;
+  if (!datos.nombre || datos.nombre.length > 200) return m.nombre;
+  if (!dniValido(datos.dni)) return m.dni;
+  if (!CORREO.test(datos.correo) || datos.correo.length > 254) return m.correo;
+  if (datos.domicilio.length < 5 || datos.domicilio.length > 300) return m.domicilio;
   if (datos.tipo === 'sociedad') {
-    if (!datos.razon_social || datos.razon_social.length > 200) return 'Escribe la razón social';
-    if (!nifSociedadValido(datos.nif_sociedad ?? '')) return 'Revisa el NIF de la sociedad: el control no cuadra';
-    if (!datos.cargo || datos.cargo.length < 2 || datos.cargo.length > 100) return 'Escribe tu cargo en la sociedad';
+    if (!datos.razon_social || datos.razon_social.length > 200) return m.razon;
+    if (!nifSociedadValido(datos.nif_sociedad ?? '')) return m.nif;
+    if (!datos.cargo || datos.cargo.length < 2 || datos.cargo.length > 100) return m.cargo;
   }
-  if (!datos.casilla_leido || !datos.casilla_autoridad) return 'Marca las dos casillas para aceptar';
+  if (!datos.casilla_leido || !datos.casilla_autoridad || !datos.casilla_condiciones) return m.casillas;
+  if (!Number.isSafeInteger(datos.condiciones_version) || datos.condiciones_version < 1) return m.faltan;
   return datos;
 }
 
@@ -123,10 +194,11 @@ export async function aceptarPropuesta(
   url: string,
   capacidad: string,
   entrada: unknown,
-  avisar?: (j: Justificante, quien: Identidad) => void,
+  avisar?: (j: Justificante, quien: Identidad, lengua: Lengua) => void,
 ): Promise<Resultado> {
   const datos = validarDatos(entrada);
-  if (typeof datos === 'string') return r(400, 'datos', datos);
+  if (typeof datos === 'string') return { status: 400, body: { ok: false, codigo: 'datos', mensaje: datos } };
+  const L = datos.lengua;
   const sql = neon(url);
 
   const versiones = (await sql`
@@ -139,30 +211,32 @@ export async function aceptarPropuesta(
     capability_hash: string;
     intentos_fallidos: number;
   }[];
-  if (!versiones.length) return r(404, 'no_existe', 'Esta propuesta no existe');
+  if (!versiones.length) return r(L, 404, 'no_existe', 'no_existe');
   const ultima = versiones[0];
 
   // Ya aceptada: se distingue la repeticion del mismo intento de otro intento distinto.
   const previa = await justificanteExistente(sql, datos.referencia);
   if (previa) {
-    if (previa.clave === datos.idempotency_key) return r(200, 'repetida', 'Aceptación registrada', previa.justificante);
-    return r(409, 'ya_aceptada', 'Esta propuesta ya estaba aceptada', previa.justificante);
+    if (previa.clave === datos.idempotency_key) return r(L, 200, 'repetida', 'repetida', previa.justificante);
+    return r(L, 409, 'ya_aceptada', 'ya_aceptada', previa.justificante);
   }
 
   // La capacidad se comprueba sobre la version que dice aceptar, que tiene que ser la ultima.
   if (ultima.intentos_fallidos >= MAX_INTENTOS_FALLIDOS) {
-    return r(429, 'bloqueada', 'Demasiados intentos. Escríbeme y te mando un enlace nuevo');
+    return r(L, 429, 'bloqueada', 'bloqueada');
   }
   if (!capacidadValida(capacidad, ultima.capability_hash.trim())) {
     await sql`UPDATE propuesta_version SET intentos_fallidos = intentos_fallidos + 1
                WHERE proposal_id = ${datos.referencia} AND version = ${ultima.version}`;
-    return r(403, 'sin_capacidad', 'Para aceptar, abre el enlace completo que te envié');
+    return r(L, 403, 'sin_capacidad', 'sin_capacidad');
   }
   if (ultima.version !== datos.version || ultima.offer_hash.trim() !== datos.offer_hash) {
-    return r(409, 'version_nueva', 'Hay una versión más reciente de esta propuesta. Recarga la página');
+    return r(L, 409, 'version_nueva', 'version_nueva');
   }
-  if (ultima.status !== 'publicada') return r(410, 'retirada', 'Esta propuesta se ha retirado');
-  if (new Date(ultima.expires_at) <= new Date()) return r(410, 'vencida', 'Esta propuesta ha vencido');
+  // Se acepta el texto de condiciones que hay ahora; si el navegador ensenaba otro, que recargue y lo vea.
+  if (datos.condiciones_version !== CONDICIONES.version) return r(L, 409, 'condiciones_nuevas', 'condiciones_nuevas');
+  if (ultima.status !== 'publicada') return r(L, 410, 'retirada', 'retirada');
+  if (new Date(ultima.expires_at) <= new Date()) return r(L, 410, 'vencida', 'vencida');
 
   // Una sola sentencia: copia los terminos de la base, guarda la identidad aparte y deja el evento. Si otra
   // aceptacion se ha colado entre medias, ON CONFLICT no inserta nada y se responde con la que gano.
@@ -170,8 +244,10 @@ export async function aceptarPropuesta(
   try {
     filas = (await sql`
       WITH a AS (
-        INSERT INTO aceptacion (proposal_id, version, snapshot, offer_hash, casilla_leido, casilla_autoridad, idempotency_key)
-        SELECT proposal_id, version, snapshot, offer_hash, true, true, ${datos.idempotency_key}
+        INSERT INTO aceptacion (proposal_id, version, snapshot, offer_hash, casilla_leido, casilla_autoridad, idempotency_key,
+                                casilla_condiciones, condiciones_version, condiciones_hash, lengua)
+        SELECT proposal_id, version, snapshot, offer_hash, true, true, ${datos.idempotency_key},
+               true, ${CONDICIONES.version}, ${huellaCondiciones(L)}, ${L}
           FROM propuesta_version WHERE proposal_id = ${datos.referencia} AND version = ${datos.version}
         ON CONFLICT DO NOTHING
         RETURNING acceptance_id, proposal_id, version, accepted_at
@@ -186,15 +262,15 @@ export async function aceptarPropuesta(
   } catch (e) {
     // El trigger de la base tiene la ultima palabra (vencio o se retiro justo ahora).
     const m = e instanceof Error ? e.message : '';
-    if (m.includes('vencio')) return r(410, 'vencida', 'Esta propuesta ha vencido');
-    if (m.includes('esta invalidada') || m.includes('esta sustituida')) return r(409, 'version_nueva', 'Esta versión ya no está vigente. Recarga la página');
+    if (m.includes('vencio')) return r(L, 410, 'vencida', 'vencida');
+    if (m.includes('esta invalidada') || m.includes('esta sustituida')) return r(L, 409, 'version_nueva', 'no_vigente');
     throw e;
   }
 
   if (!filas.length) {
     const gano = await justificanteExistente(sql, datos.referencia);
-    if (gano?.clave === datos.idempotency_key) return r(200, 'repetida', 'Aceptación registrada', gano.justificante);
-    if (gano) return r(409, 'ya_aceptada', 'Esta propuesta ya estaba aceptada', gano.justificante);
+    if (gano?.clave === datos.idempotency_key) return r(L, 200, 'repetida', 'repetida', gano.justificante);
+    if (gano) return r(L, 409, 'ya_aceptada', 'ya_aceptada', gano.justificante);
     throw new Error('La aceptación no se insertó y no hay ninguna guardada');
   }
 
@@ -205,12 +281,17 @@ export async function aceptarPropuesta(
     accepted_at: new Date(filas[0].accepted_at).toISOString(),
   };
   const { nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo } = datos;
-  avisar?.(justificante, { nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo });
-  return r(201, 'aceptada', 'Propuesta aceptada', justificante);
+  avisar?.(justificante, { nombre, dni, correo, tipo, razon_social, nif_sociedad, domicilio, cargo }, L);
+  return r(L, 201, 'aceptada', 'aceptada', justificante);
 }
 
 /** Deja constancia de un fallo en la tabla de eventos (hito 6.6). Nunca lanza. */
-export async function registrarEvento(url: string, referencia: string, tipo: 'aviso_fallido' | 'error_aceptacion', detalle: object) {
+export async function registrarEvento(
+  url: string,
+  referencia: string,
+  tipo: 'aviso_fallido' | 'error_aceptacion' | 'acuse_enviado' | 'acuse_fallido',
+  detalle: object,
+) {
   try {
     const sql = neon(url);
     await sql`INSERT INTO evento (proposal_id, tipo, detalle) VALUES (${referencia}, ${tipo}, ${JSON.stringify(detalle)}::jsonb)`;

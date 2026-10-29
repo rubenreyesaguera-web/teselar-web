@@ -1633,6 +1633,10 @@ export default function Page({ params }: PageProps) {
             >
               {currentLng === 'es' ? 'Política de Cookies' : currentLng === 'ca' ? 'Política de Cookies' : 'Cookie Policy'}
             </a>
+            <span>|</span>
+            <a href={`/${currentLng === 'ca' ? 'ca' : 'es'}/legal/condiciones`} className="hover:text-innovacion transition-colors">
+              {currentLng === 'ca' ? 'Condicions de contractació' : currentLng === 'es' ? 'Condiciones de contratación' : 'Terms of Service (ES/CA)'}
+            </a>
           </div>
         </div>
       </footer>

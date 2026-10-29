@@ -118,3 +118,34 @@ describe('estados', () => {
     expect(h).not.toContain('765');
   });
 });
+
+describe('en catalán (29/10)', () => {
+  const ca = { ...instantanea, idioma: 'ca' as const };
+  const h = pintar(ca);
+
+  test('las palabras propias salen en catalán y no queda ninguna en castellano', () => {
+    expect(h).toContain('lang="ca"');
+    expect(h.match(/<button[^>]*>Acceptar la proposta/g)?.length).toBe(4);
+    expect(h).toContain('Veure l’abast complet');
+    expect(h).toContain('Vàlida fins al 5 de novembre del 2026');
+    expect(h).toContain('El que acceptes');
+    expect(h).not.toMatch(/<button[^>]*>Aceptar propuesta/); // el ejemplo, escrito en castellano, sí lo nombra en su texto
+    for (const es of ['Lo que aceptas', 'Válida hasta', 'Qué incluye', 'Cómo se paga', 'Pendiente de aceptación']) {
+      expect(h).not.toContain(es);
+    }
+  });
+
+  test('aceptada, con la fecha en catalán', () => {
+    expect(pintar(ca, 'aceptada', new Date('2026-10-08T09:15:00Z'))).toContain('Acceptada el 8 d’octubre del 2026, a les 11:15');
+  });
+});
+
+describe('el diálogo antes de aceptar (ADR-117)', () => {
+  test('lleva la información previa de la LSSI y ya no dice «no es una firma electrónica»', () => {
+    const h = pintar(instantanea);
+    expect(h).toContain('Antes de aceptar');
+    expect(h).toContain('el contrato se puede formalizar en castellano o en catalán'.replace('el', 'El'));
+    expect(h).not.toContain('firma electrónica');
+  });
+});
+

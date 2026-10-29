@@ -11,6 +11,7 @@ import { hashOferta, jsonCanonico } from '../src/lib/propuestas/canonico';
 import { leerPropuesta } from '../src/lib/propuestas/leer';
 import { aceptarPropuesta, MAX_INTENTOS_FALLIDOS, type Justificante } from '../src/lib/propuestas/aceptar';
 import { nuevaCapacidad } from '../src/lib/propuestas/canonico';
+import { CONDICIONES, huellaCondiciones } from '../src/lib/propuestas/condiciones';
 import ejemplo from './propuesta.ejemplo.json';
 import { avance, conectar, crear, exportar, invalidar, migrar, sustituir, urlDeConexion, type Publicada } from './propuesta';
 
@@ -41,9 +42,10 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
 
   const aceptar = (ref: string, version: number, snapshot: unknown, hash: string, clave = randomUUID()) =>
     db.query(
-      `INSERT INTO aceptacion (proposal_id, version, snapshot, offer_hash, casilla_leido, casilla_autoridad, idempotency_key)
-       VALUES ($1, $2, $3::jsonb, $4, true, true, $5) RETURNING acceptance_id, accepted_at`,
-      [ref, version, JSON.stringify(snapshot), hash, clave],
+      `INSERT INTO aceptacion (proposal_id, version, snapshot, offer_hash, casilla_leido, casilla_autoridad, idempotency_key,
+                               casilla_condiciones, condiciones_version, condiciones_hash, lengua)
+       VALUES ($1, $2, $3::jsonb, $4, true, true, $5, true, $6, $7, 'es') RETURNING acceptance_id, accepted_at`,
+      [ref, version, JSON.stringify(snapshot), hash, clave, CONDICIONES.version, huellaCondiciones('es')],
     );
 
   test('criterio del hito 6.3: dos versiones, dos hashes, y la v1 intacta tras crear la v2', async () => {
@@ -184,6 +186,8 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       domicilio: 'Carrer de Prova 1, 17310 Lloret de Mar',
       casilla_leido: true,
       casilla_autoridad: true,
+      casilla_condiciones: true,
+      condiciones_version: CONDICIONES.version,
       idempotency_key: randomUUID().replace(/-/g, ''),
       ...cambios,
     });
@@ -191,7 +195,7 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
     test('datos mal: 400, y no cuenta como intento fallido', async () => {
       const p = await crear(db, ejemplo);
       for (const malo of [
-        { casilla_leido: false }, { casilla_autoridad: false }, { correo: 'no-es-correo' }, { nombre: '  ' }, { idempotency_key: 'corta' },
+        { casilla_leido: false }, { casilla_autoridad: false }, { casilla_condiciones: false }, { condiciones_version: undefined }, { correo: 'no-es-correo' }, { nombre: '  ' }, { idempotency_key: 'corta' },
         { tipo: undefined }, { tipo: 'particular' }, { dni: '12345678A' }, { dni: '' },
         { tipo: 'sociedad' },
         { tipo: 'sociedad', razon_social: 'Ejemplo, S.L.', nif_sociedad: 'B12345670', cargo: 'Administradora' },
@@ -231,6 +235,26 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       expect([r.status, r.body.codigo]).toEqual([409, 'version_nueva']);
     });
 
+    test('condiciones de otra versión: 409 «condiciones_nuevas», y no se crea nada (ADR-117)', async () => {
+      const p = await crear(db, ejemplo);
+      const r = await aceptarPropuesta(url(), p.capacidad, datos(p, { condiciones_version: CONDICIONES.version + 1 }));
+      expect([r.status, r.body.codigo]).toEqual([409, 'condiciones_nuevas']);
+      const { rows } = await db.query(`SELECT count(*)::int AS n FROM aceptacion WHERE proposal_id = $1`, [p.referencia]);
+      expect(rows[0].n).toBe(0);
+    });
+
+    test('la base no deja entrar una aceptación sin las condiciones', async () => {
+      const p = await crear(db, ejemplo);
+      const snap = (await db.query(`SELECT snapshot FROM propuesta_version WHERE proposal_id = $1`, [p.referencia])).rows[0].snapshot;
+      await expect(
+        db.query(
+          `INSERT INTO aceptacion (proposal_id, version, snapshot, offer_hash, casilla_leido, casilla_autoridad, idempotency_key)
+           VALUES ($1, 1, $2::jsonb, $3, true, true, $4)`,
+          [p.referencia, JSON.stringify(snap), p.offerHash, randomUUID()],
+        ),
+      ).rejects.toThrow('aceptacion_condiciones_check');
+    });
+
     test('vencida: 410; retirada: 410', async () => {
       const vieja = await crear(db, ejemplo, { fecha: '2026-01-01' });
       expect((await aceptarPropuesta(url(), vieja.capacidad, datos(vieja))).body.codigo).toBe('vencida');
@@ -257,6 +281,9 @@ describe.skipIf(!hayBase)(`contra la base ${BASE}`, () => {
       const a = (await db.query(`SELECT * FROM aceptacion WHERE proposal_id = $1`, [p.referencia])).rows;
       expect(a).toHaveLength(1);
       expect(hashOferta(a[0].snapshot)).toBe(p.offerHash);
+      expect([a[0].casilla_condiciones, a[0].condiciones_version, a[0].condiciones_hash, a[0].lengua]).toEqual([
+        true, CONDICIONES.version, huellaCondiciones('es'), 'es',
+      ]);
       const quien = (await db.query(`SELECT nombre, dni, correo, tipo, razon_social, nif_sociedad FROM aceptacion_identidad WHERE acceptance_id = $1`, [a[0].acceptance_id])).rows;
       expect(quien).toEqual([{ nombre: 'Persona de Prueba', dni: '12345678Z', correo: 'prueba@example.com', tipo: 'autonomo', razon_social: null, nif_sociedad: null }]);
       const ev = (await db.query(`SELECT tipo FROM evento WHERE proposal_id = $1 ORDER BY evento_id`, [p.referencia])).rows.map((x) => x.tipo);

@@ -75,6 +75,18 @@ ALTER TABLE aceptacion_identidad DROP CONSTRAINT IF EXISTS aceptacion_identidad_
 ALTER TABLE aceptacion_identidad ADD CONSTRAINT aceptacion_identidad_cargo_check
   CHECK ((tipo = 'sociedad') = (cargo IS NOT NULL) AND (cargo IS NULL OR length(btrim(cargo)) BETWEEN 2 AND 100)) NOT VALID;
 
+-- Condiciones generales y lengua (ADR-117, 29/10): la casilla de las condiciones, la version y la huella del texto
+-- que se le enseno, y la lengua de la propuesta (castellano o catalan). Igual que el domicilio: NOT VALID, porque lo
+-- aceptado antes no se cambia; obliga a lo que entre desde ahora.
+ALTER TABLE aceptacion ADD COLUMN IF NOT EXISTS casilla_condiciones boolean;
+ALTER TABLE aceptacion ADD COLUMN IF NOT EXISTS condiciones_version integer;
+ALTER TABLE aceptacion ADD COLUMN IF NOT EXISTS condiciones_hash char(64);
+ALTER TABLE aceptacion ADD COLUMN IF NOT EXISTS lengua text;
+ALTER TABLE aceptacion DROP CONSTRAINT IF EXISTS aceptacion_condiciones_check;
+ALTER TABLE aceptacion ADD CONSTRAINT aceptacion_condiciones_check
+  CHECK (casilla_condiciones IS TRUE AND condiciones_version >= 1 AND condiciones_hash ~ '^[0-9a-f]{64}$'
+         AND lengua IN ('es', 'ca')) NOT VALID;
+
 CREATE TABLE IF NOT EXISTS evento (
   evento_id   bigint      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   proposal_id text        NOT NULL,
@@ -90,7 +102,9 @@ CREATE INDEX IF NOT EXISTS evento_por_propuesta ON evento (proposal_id, created_
 -- numero de hito en `detalle`. Se redefine la lista para que la migracion valga tambien sobre una base ya creada.
 ALTER TABLE evento DROP CONSTRAINT IF EXISTS evento_tipo_check;
 ALTER TABLE evento ADD CONSTRAINT evento_tipo_check CHECK (tipo IN (
-  'creada', 'sustituida', 'invalidada', 'aceptada', 'aviso_fallido', 'error_aceptacion', 'hito_cumplido', 'hito_deshecho'));
+  'creada', 'sustituida', 'invalidada', 'aceptada', 'aviso_fallido', 'error_aceptacion', 'hito_cumplido', 'hito_deshecho',
+  -- 29/10 (ADR-117): el correo al cliente con el PDF, que es tambien el acuse de la LSSI (art. 28).
+  'acuse_enviado', 'acuse_fallido'));
 
 -- 1. La version: solo cambian `status` (hacia delante) e `intentos_fallidos`; no se borra.
 CREATE OR REPLACE FUNCTION propuesta_version_inmutable() RETURNS trigger
