@@ -16,8 +16,9 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { ref } = await params;
-  // Solo la referencia: ni el nombre del negocio ni nada del contenido en la vista previa de un enlace.
-  return { title: FORMA_REFERENCIA.test(ref) ? `Propuesta ${ref} · Teselar Software` : 'Teselar Software' };
+  // Solo la referencia: ni el nombre del negocio ni nada del contenido en la vista previa de un enlace. Sin «Propuesta»,
+  // que valga igual en castellano y en catalan sin leer la base.
+  return { title: FORMA_REFERENCIA.test(ref) ? `${ref} · Teselar Software` : 'Teselar Software' };
 }
 
 export default async function PaginaPropuesta({ params }: Props) {

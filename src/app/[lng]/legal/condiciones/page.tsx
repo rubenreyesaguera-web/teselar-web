@@ -47,13 +47,13 @@ export default async function PaginaCondiciones({ params }: Props) {
 
         <article className="glass-card p-8 md:p-12 rounded-3xl border border-claridad/5 shadow-2xl space-y-8">
           <header>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-innovacion mb-3">{t.titulo}</h1>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-innovacion mb-3 [text-wrap:balance]">{t.titulo}</h1>
             <p className="text-sm text-claridad/70">
               {r.version} {CONDICIONES.version} · {r.vigor} {fechaLarga(CONDICIONES.enVigor, l)}
             </p>
           </header>
 
-          <div className="space-y-6 text-sm md:text-base text-claridad/85 leading-relaxed">
+          <div className="max-w-[58ch] space-y-6 text-sm md:text-base text-claridad/85 leading-relaxed [&_li]:[text-wrap:pretty] [&_p]:[text-wrap:pretty]">
             {t.intro.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
@@ -62,7 +62,7 @@ export default async function PaginaCondiciones({ params }: Props) {
               const Lista = anexo ? 'ol' : 'ul';
               return (
                 <section key={i} className="border-t border-claridad/10 pt-6">
-                  <h2 className="text-xl font-bold text-claridad mb-3">{c.titulo}</h2>
+                  <h2 className="text-xl font-bold text-claridad mb-3 [text-wrap:balance]">{c.titulo}</h2>
                   {c.puntos.length === 1 ? (
                     <p>{c.puntos[0]}</p>
                   ) : (
