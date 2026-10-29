@@ -19,4 +19,7 @@ export interface Colaborador {
 export const COLABORADORES: Record<string, Colaborador> = {
   // Catalan por defecto y el castellano en el selector (Ruben, 22/10).
   gis: { nombre: 'Gis', foto: '/colaboradores/gis.jpg', idiomas: ['ca', 'es'], genero: 'f' },
+  // Betty, la duena de Estetica Kapriz: 10 % del setup, cobrado o descontado de su asistente, sus mantenimientos o un
+  // proyecto nuevo (addenda del 29/10 en ADR-100). Foto de su propia web; falta su permiso, se le pide ensenandosela.
+  betty: { nombre: 'Betty, de Estética Kapriz', foto: '/colaboradores/betty.jpg', idiomas: ['es', 'ca'], genero: 'f' },
 };
