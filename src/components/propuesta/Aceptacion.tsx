@@ -171,7 +171,7 @@ export function ProveedorAceptacion({
                   <div>
                     <dt>{T.aceptadaElRotulo}</dt>
                     <dd>
-                      {momento(new Date(envio.justificante.accepted_at), l)} {T.horaLloret} · {envio.justificante.accepted_at} UTC
+                      {momento(new Date(envio.justificante.accepted_at), l)} · {envio.justificante.accepted_at} UTC
                     </dd>
                   </div>
                   <div>

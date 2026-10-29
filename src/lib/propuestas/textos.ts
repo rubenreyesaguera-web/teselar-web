@@ -84,7 +84,6 @@ export interface Textos {
   gracias: string;
   yaEstaba: string;
   aceptadaElRotulo: string;
-  horaLloret: string;
   huellaAceptado: string;
   correoEnviado: (correo: string) => string;
   primerPago: (hito: string, importe: string) => string;
@@ -95,7 +94,7 @@ const es: Textos = {
   estado: { vigente: 'Pendiente de aceptación', aceptada: 'Propuesta aceptada', vencida: 'Vencida', retirada: 'Retirada' },
   alMes: ' al mes',
   masIva: ' + IVA',
-  aceptadaEl: (c) => `Aceptada el ${c} (hora de Lloret).`,
+  aceptadaEl: (c) => `Aceptada el ${c}.`,
   vencio: (c) => `Esta propuesta venció el ${c}. Si te sigue interesando, pídeme una actualizada.`,
   retirada: 'Esta propuesta se ha retirado y ya no se puede consultar.',
   inversion: 'Inversión',
@@ -184,7 +183,6 @@ const es: Textos = {
   gracias: 'Gracias. Tu aceptación ha quedado registrada.',
   yaEstaba: 'Esta propuesta ya estaba aceptada.',
   aceptadaElRotulo: 'Aceptada el',
-  horaLloret: '(hora de Lloret)',
   huellaAceptado: 'Huella de lo aceptado',
   correoEnviado: (c) => `En unos minutos te llega a ${c} un PDF con la propuesta, las condiciones generales y el justificante.`,
   primerPago: (h, i) => `En breve te escribo con los datos para el primer pago (${h}: ${i} + IVA).`,
@@ -195,7 +193,7 @@ const ca: Textos = {
   estado: { vigente: 'Pendent d’acceptació', aceptada: 'Proposta acceptada', vencida: 'Vençuda', retirada: 'Retirada' },
   alMes: ' al mes',
   masIva: ' + IVA',
-  aceptadaEl: (c) => `Acceptada el ${c} (hora de Lloret).`,
+  aceptadaEl: (c) => `Acceptada el ${c}.`,
   vencio: (c) => `Aquesta proposta va vèncer el ${c}. Si encara t’interessa, demana-me’n una d’actualitzada.`,
   retirada: 'Aquesta proposta s’ha retirat i ja no es pot consultar.',
   inversion: 'Inversió',
@@ -219,7 +217,7 @@ const ca: Textos = {
   dependeDe: 'Depèn de',
   vigenciaDias: (d, h) => `${d} dies: fins al ${h}.`,
   huella: 'Empremta d’aquesta versió (SHA-256):',
-  huellaNota: 'Qualsevol canvi en el que diu aquesta proposta en dona una versió nova amb una altra empremta.',
+  huellaNota: 'Qualsevol canvi en allò que diu aquesta proposta en dona una versió nova amb una altra empremta.',
   botonAceptar: 'Acceptar la proposta',
   verAlcance: 'Veure l’abast complet',
   ocultarAlcance: 'Amagar l’abast',
@@ -284,7 +282,6 @@ const ca: Textos = {
   gracias: 'Gràcies. La teva acceptació ha quedat registrada.',
   yaEstaba: 'Aquesta proposta ja estava acceptada.',
   aceptadaElRotulo: 'Acceptada el',
-  horaLloret: '(hora de Lloret)',
   huellaAceptado: 'Empremta del que s’ha acceptat',
   correoEnviado: (c) => `D’aquí a uns minuts t’arribarà a ${c} un PDF amb la proposta, les condicions generals i el justificant.`,
   primerPago: (h, i) => `Aviat t’escric amb les dades per al primer pagament (${h}: ${i} + IVA).`,

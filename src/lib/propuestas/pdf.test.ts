@@ -41,6 +41,8 @@ describe('el correo del acuse', () => {
     const a = textoAcuse(j, sociedad, 'es', 'neondb');
     expect(a.asunto).toBe('Propuesta P-2026-001 aceptada: tu copia y el justificante');
     expect(a.texto).toContain('Hola, Persona:');
+    expect(a.texto).toContain('he recibido tu aceptación el 8 de octubre de 2026 a las 11:15.');
+    expect(a.texto).not.toContain('Lloret');
     expect(a.texto).toMatch(/Un saludo,\n\n-- \nRubén Reyes · Teselar Software/);
     expect(a.html).toContain('<p>Un saludo,</p></div><table');
     expect(a.nombrePdf).toBe('Propuesta-P-2026-001-v1.pdf');
@@ -50,6 +52,7 @@ describe('el correo del acuse', () => {
     const a = textoAcuse(j, sociedad, 'ca', 'propuestas_pruebas');
     expect(a.asunto).toBe('[PRUEBAS] Proposta P-2026-001 acceptada: la teva còpia i el justificant');
     expect(a.texto).toContain('Gràcies per acceptar la proposta P-2026-001');
+    expect(a.texto).toContain('el 8 d’octubre del 2026 a les 11:15.');
     expect(a.html).toContain('Solucions de desenvolupament a mida');
   });
 

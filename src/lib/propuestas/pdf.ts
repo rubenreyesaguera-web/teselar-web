@@ -188,7 +188,7 @@ export async function generarPdf({ instantanea: p, justificante: j, quien, lengu
 
   e.titulo(R.justificante);
   e.texto(`${R.referencia}: ${j.referencia} · ${T.versionN(j.version)}`);
-  e.texto(`${R.aceptadaEl}: ${momento(ahora, l)} ${T.horaLloret} · ${j.accepted_at} UTC`);
+  e.texto(`${R.aceptadaEl}: ${momento(ahora, l)} · ${j.accepted_at} UTC`);
   e.texto(`${R.huellaOferta}: ${j.offer_hash}`);
   e.texto(R.condiciones(CONDICIONES.version));
   e.texto(`${R.huellaCondiciones}: ${huellaCondiciones(l)}`);

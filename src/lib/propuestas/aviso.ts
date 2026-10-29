@@ -3,8 +3,7 @@
 import nodemailer from 'nodemailer';
 import type { Identidad, Justificante } from './aceptar';
 import { CONDICIONES, type Lengua } from './condiciones';
-import { momento } from './formato';
-import { TEXTOS } from './textos';
+import { fechaLarga } from './formato';
 
 export const DESTINO_AVISOS = 'info@teselarsoftware.com';
 
@@ -50,7 +49,11 @@ function firmaHtml(l: Lengua): string {
 /** El texto del correo al cliente, en la lengua de su propuesta. Despedida sin nombre: la firma ya empieza por el. */
 export function textoAcuse(j: Justificante, quien: Identidad, l: Lengua, base: string) {
   const etiqueta = base === 'neondb' ? '' : '[PRUEBAS] ';
-  const cuando = `${momento(new Date(j.accepted_at), l)} ${TEXTOS[l].horaLloret}`;
+  // En el correo, fecha y hora a secas: el cliente y Teselar estan en la misma zona (Ruben, 29/10).
+  const d = new Date(j.accepted_at);
+  const hora = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' }).format(d);
+  const dia = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(d);
+  const cuando = `${fechaLarga(dia, l)} ${l === 'ca' ? 'a les' : 'a las'} ${hora}`;
   const nombre = quien.nombre.split(/\s+/)[0];
   const parrafos =
     l === 'ca'
@@ -58,7 +61,7 @@ export function textoAcuse(j: Justificante, quien: Identidad, l: Lengua, base: s
           `Hola, ${nombre}:`,
           `Gràcies per acceptar la proposta ${j.referencia} (versió ${j.version}). Et confirmo que he rebut la teva acceptació el ${cuando}.`,
           `T’adjunto un PDF amb la proposta acceptada, les condicions generals (versió ${CONDICIONES.version}) i l’annex d’encàrrec del tractament de dades. És la teva còpia: guarda-la.`,
-          'Aviat t’escric amb les dades per al primer pagament. Si veus algun error a les teves dades, respon aquest correu.',
+          'Aviat t’escric amb les dades per al primer pagament. Si veus algun error a les teves dades, respon a aquest correu.',
           'Salutacions,',
         ]
       : [
@@ -88,7 +91,7 @@ export function textoAceptacion(j: Justificante, quien: Identidad, base: string)
   return {
     asunto: `${etiqueta}Propuesta ${j.referencia} aceptada`,
     texto: [
-      `${quien.nombre} ha aceptado la propuesta ${j.referencia} v${j.version} el ${hora} (hora de Lloret).`,
+      `${quien.nombre} ha aceptado la propuesta ${j.referencia} v${j.version} el ${hora}.`,
       '',
       `Firmante: ${quien.nombre} · DNI/NIE ${quien.dni}`,
       quien.tipo === 'sociedad'
