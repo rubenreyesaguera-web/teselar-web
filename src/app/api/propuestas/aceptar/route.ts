@@ -3,7 +3,12 @@
 // log, ni ella ni el cuerpo.
 import { after, NextResponse, type NextRequest } from 'next/server';
 import { aceptarPropuesta, registrarEvento } from '@/lib/propuestas/aceptar';
-import { enviarAviso, textoAceptacion } from '@/lib/propuestas/aviso';
+import { enviarAcuse, enviarAviso, textoAceptacion, textoAcuse } from '@/lib/propuestas/aviso';
+import { leerPropuesta } from '@/lib/propuestas/leer';
+import { generarPdf } from '@/lib/propuestas/pdf';
+
+/** El domicilio completo del prestador va solo en el PDF de quien firma; vive en el entorno, no en el codigo. */
+const DOMICILIO = process.env.TESELAR_DOMICILIO ?? 'Lloret de Mar (Girona)';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,14 +41,36 @@ export async function POST(req: NextRequest) {
   const referencia = typeof (entrada as { referencia?: unknown })?.referencia === 'string' ? (entrada as { referencia: string }).referencia : '?';
 
   try {
-    const resultado = await aceptarPropuesta(url, req.headers.get('x-propuesta-capacidad') ?? '', entrada, (j, quien) => {
-      // Despues de responder: la clienta no espera al correo, y si falla queda como evento.
+    const resultado = await aceptarPropuesta(url, req.headers.get('x-propuesta-capacidad') ?? '', entrada, (j, quien, lengua) => {
+      // Despues de responder: la clienta no espera a los correos, y si fallan queda como evento.
       after(async () => {
         const { asunto, texto } = textoAceptacion(j, quien, base);
         try {
           await enviarAviso(asunto, texto);
         } catch (e) {
           await registrarEvento(url, j.referencia, 'aviso_fallido', { error: e instanceof Error ? e.message : String(e) });
+        }
+      });
+      // El acuse con el PDF (LSSI art. 28: en 24 horas). Si falla, Ruben lo sabe por correo y por el evento, y lo manda a mano.
+      after(async () => {
+        try {
+          const p = await leerPropuesta(j.referencia);
+          if (!p) throw new Error('No se pudo leer la propuesta para el PDF');
+          const pdf = await generarPdf({ instantanea: p.instantanea, justificante: j, quien, lengua, domicilioProveedor: DOMICILIO });
+          const a = textoAcuse(j, quien, lengua, base);
+          await enviarAcuse({ para: quien.correo, ...a, pdf });
+          await registrarEvento(url, j.referencia, 'acuse_enviado', { lengua, bytes: pdf.length });
+        } catch (e) {
+          const error = e instanceof Error ? e.message : String(e);
+          await registrarEvento(url, j.referencia, 'acuse_fallido', { error });
+          try {
+            await enviarAviso(
+              `${base === 'neondb' ? '' : '[PRUEBAS] '}NO salió el PDF de ${j.referencia}`,
+              `El cliente aceptó ${j.referencia}, pero no le llegó su copia en PDF:\n\n${error}\n\nMándasela a mano antes de 24 horas (LSSI art. 28).`,
+            );
+          } catch {
+            // Ya esta en la base.
+          }
         }
       });
     });

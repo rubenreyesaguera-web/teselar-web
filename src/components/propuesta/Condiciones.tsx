@@ -3,6 +3,7 @@
 import React from 'react';
 import type { InstantaneaV1 } from '@/lib/propuestas/instantanea';
 import { euros, fechaLarga } from '@/lib/propuestas/formato';
+import { TEXTOS } from '@/lib/propuestas/textos';
 
 function Bloque({ titulo, items }: { titulo: string; items: string[] }) {
   if (!items.length) return null;
@@ -19,30 +20,33 @@ function Bloque({ titulo, items }: { titulo: string; items: string[] }) {
 }
 
 export default function Condiciones({ instantanea: p, offerHash }: { instantanea: InstantaneaV1; offerHash: string }) {
+  const l = p.idioma ?? 'es';
+  const T = TEXTOS[l];
+  const B = T.bloques;
   return (
     <div className="condiciones">
       <p className="condiciones-cabecera">
-        Propuesta {p.referencia} · versión {p.version} · {fechaLarga(p.fecha)}
+        {T.propuesta} {p.referencia} · {T.versionN(p.version)} · {fechaLarga(p.fecha, l)}
         <br />
         {p.partes.proveedor.nombre} · {p.partes.proveedor.marca}
         {` · NIF ${p.partes.proveedor.nif}`} → {p.partes.cliente.nombre} · {p.partes.cliente.negocio}
       </p>
-      <Bloque titulo="Qué incluye" items={[...p.alcance, ...p.entregables]} />
-      <Bloque titulo="Qué no incluye" items={p.exclusiones} />
-      <Bloque titulo="Lo que necesito de ti" items={p.dependencias} />
-      <Bloque titulo="Calendario" items={p.calendario.map((t) => `${t.tramo} — depende de ${t.depende_de}: ${t.plazo}`)} />
+      <Bloque titulo={B.incluye} items={[...p.alcance, ...p.entregables]} />
+      <Bloque titulo={B.noIncluye} items={p.exclusiones} />
+      <Bloque titulo={B.necesito} items={p.dependencias} />
+      <Bloque titulo={B.calendario} items={p.calendario.map((t) => `${t.tramo} — ${T.dependeDe.toLowerCase()} ${t.depende_de}: ${t.plazo}`)} />
       <Bloque
-        titulo="Precio (todos los importes + IVA)"
-        items={p.precio.conceptos.map((c) => `${c.concepto}: ${euros(c.importe_centimos)}${c.periodicidad === 'mensual' ? ' al mes' : ''} + IVA`)}
+        titulo={B.precio}
+        items={p.precio.conceptos.map((c) => `${c.concepto}: ${euros(c.importe_centimos)}${c.periodicidad === 'mensual' ? T.alMes : ''}${T.masIva}`)}
       />
       <Bloque
-        titulo="Pagos"
-        items={[...p.pagos.hitos.map((h) => `${h.hito}: ${euros(h.importe_centimos)} + IVA — ${h.cuando}`), ...p.pagos.notas]}
+        titulo={B.pagos}
+        items={[...p.pagos.hitos.map((h) => `${h.hito}: ${euros(h.importe_centimos)}${T.masIva} — ${h.cuando}`), ...p.pagos.notas]}
       />
-      {p.garantia && <Bloque titulo="Garantía" items={[p.garantia]} />}
-      <Bloque titulo="Vigencia" items={[`${p.vigencia.dias} días: hasta el ${fechaLarga(p.vigencia.hasta)}.`]} />
+      {p.garantia && <Bloque titulo={B.garantia} items={[p.garantia]} />}
+      <Bloque titulo={B.vigencia} items={[T.vigenciaHasta(p.vigencia.dias, fechaLarga(p.vigencia.hasta, l))]} />
       <p className="condiciones-huella">
-        Huella de esta versión (SHA-256): <code>{offerHash}</code>
+        {T.huellaVersion} <code>{offerHash}</code>
       </p>
     </div>
   );

@@ -8,6 +8,7 @@
 // los importes son enteros en centimos, y lo que pagan los hitos cuadra con lo que cuesta la puesta en marcha.
 // Lo que falte por saber se escribe «Por confirmar» en el texto; nunca se rellena (regla 1 del doc 24).
 
+import type { Lengua } from './condiciones';
 import { dniValido, nifSociedadValido, normalizarDocumento } from './identificacion';
 
 export const SCHEMA_VERSION = 1;
@@ -52,6 +53,11 @@ export interface ContenidoV1 {
   garantia: string | null;
   vigencia_dias: number;
   siguiente_paso: string;
+  /**
+   * La lengua en que esta escrita la propuesta, y con ella la pagina, el dialogo, el correo y el PDF (29/10). Si no
+   * esta, castellano: asi las instantaneas de antes no cambian de hash.
+   */
+  idioma?: Lengua;
 }
 
 /** Lo que se guarda y se firma con el hash: el contenido mas lo que pone el script. */
@@ -71,10 +77,10 @@ function falla(ruta: string, que: string): never {
   throw new ErrorDeContenido(`${ruta}: ${que}`);
 }
 
-function objeto(v: unknown, ruta: string, claves: readonly string[]): Obj {
+function objeto(v: unknown, ruta: string, claves: readonly string[], opcionales: readonly string[] = []): Obj {
   if (typeof v !== 'object' || v === null || Array.isArray(v)) falla(ruta, 'tiene que ser un objeto');
   const o = v as Obj;
-  for (const k of Object.keys(o)) if (!claves.includes(k)) falla(`${ruta}.${k}`, 'clave desconocida');
+  for (const k of Object.keys(o)) if (!claves.includes(k) && !opcionales.includes(k)) falla(`${ruta}.${k}`, 'clave desconocida');
   for (const k of claves) if (!(k in o)) falla(`${ruta}.${k}`, 'falta');
   return o;
 }
@@ -156,7 +162,8 @@ export function validarContenido(entrada: unknown, opciones: OpcionesValidacion 
   const o = objeto(entrada, '$', [
     'portada', 'partes', 'situacion', 'solucion', 'alcance', 'entregables', 'exclusiones', 'dependencias',
     'calendario', 'precio', 'impuestos', 'pagos', 'garantia', 'vigencia_dias', 'siguiente_paso',
-  ]);
+  ], ['idioma']);
+  if ('idioma' in o && o.idioma !== 'es' && o.idioma !== 'ca') falla('$.idioma', "'es' o 'ca'");
 
   const portada = objeto(o.portada, '$.portada', ['titular', 'subtitulo']);
   const partes = objeto(o.partes, '$.partes', ['cliente', 'proveedor']);
@@ -200,6 +207,7 @@ export function validarContenido(entrada: unknown, opciones: OpcionesValidacion 
     garantia: textoONulo(o.garantia, '$.garantia'),
     vigencia_dias: o.vigencia_dias,
     siguiente_paso: texto(o.siguiente_paso, '$.siguiente_paso'),
+    ...('idioma' in o ? { idioma: o.idioma as Lengua } : {}),
   };
 
   // Lo que se paga por hitos es la puesta en marcha entera: ni un centimo mas ni uno menos.

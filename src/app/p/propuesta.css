@@ -876,6 +876,29 @@ blockquote {
   font-size: 13px;
 }
 
+/* La informacion previa de la LSSI (art. 27): pasos, correccion, archivo y lenguas (ADR-117). */
+.antes {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--tinta-suave);
+}
+
+.antes h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tinta);
+}
+
+.antes li + li {
+  margin-top: 4px;
+}
+
+.casilla a {
+  color: var(--marca);
+}
+
 .formulario {
   margin-top: 20px;
   display: grid;

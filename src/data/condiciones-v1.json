@@ -1,0 +1,294 @@
+{
+  "es": {
+    "titulo": "Condiciones generales de contratación de Teselar Software",
+    "intro": [
+      "Estas condiciones se aplican a todos los servicios que Teselar Software presta a negocios (autónomos y sociedades) que los contratan para su actividad. Junto con la propuesta aceptada y, si las hay, las condiciones particulares del producto, forman el contrato."
+    ],
+    "clausulas": [
+      {
+        "titulo": "1. Partes",
+        "puntos": [
+          "Prestador: Rubén Reyes Agüera, con NIF 47897952-S, que actúa con el nombre comercial Teselar Software, con domicilio en Lloret de Mar (Girona). Contacto: info@teselarsoftware.com.",
+          "Cliente: quien acepta la propuesta, con los datos que declara al aceptarla: nombre completo, DNI o NIE y domicilio y, si es una sociedad, su razón social, su NIF y el cargo de quien acepta.",
+          "Quien acepta en nombre de una sociedad declara que tiene poderes suficientes para hacerlo y responde de esa declaración. Si no figura como administrador en el Registro Mercantil, Teselar podrá pedirle la escritura de poderes antes de empezar."
+        ]
+      },
+      {
+        "titulo": "2. Objeto",
+        "puntos": [
+          "El servicio es el que describe la propuesta aceptada: alcance, entregables, exclusiones y calendario, tal como quedaron en la versión que el cliente aceptó. Lo que no esté en el alcance se presupuesta aparte."
+        ]
+      },
+      {
+        "titulo": "3. Precio e impuestos",
+        "puntos": [
+          "Los importes son los de la propuesta aceptada, más el IVA que corresponda.",
+          "La propuesta se puede aceptar durante el plazo de vigencia que indica, que es de 30 días salvo que diga otra cosa."
+        ]
+      },
+      {
+        "titulo": "4. Forma de pago",
+        "puntos": [
+          "Señal: el 10 % del proyecto, con un mínimo de 150 €, al aceptar. Reserva el hueco en el calendario y no paga trabajo. Si antes hubo una auditoría de procesos, sus 150 € se descuentan de la señal.",
+          "El resto, en las cuotas que indica la propuesta. Cada cuota se paga contra una entrega, no contra una fecha.",
+          "Solo por transferencia bancaria.",
+          "Cada cuota se factura cuando su entrega queda aceptada (cláusula 6) y se paga en los 15 días naturales siguientes a la factura.",
+          "Retrasos: una factura no pagada a tiempo devenga el interés de demora legal y la indemnización de 40 € por costes de cobro que fija la Ley 3/2004.",
+          "Impago: Teselar avisará por escrito y, si en 10 días naturales no se ha pagado, podrá suspender el trabajo y el servicio sin que eso sea un incumplimiento suyo. Si el impago continúa, se aplica la cláusula 13."
+        ]
+      },
+      {
+        "titulo": "5. Cuotas mensuales, cambios de precio y bajas",
+        "puntos": [
+          "Nada se renueva solo. Teselar avisa un mes antes de que se acabe lo incluido en el precio.",
+          "Sin permanencia. El cliente puede darse de baja de una cuota mensual avisando con 15 días por escrito a info@teselarsoftware.com. La baja tiene efecto al final del periodo ya pagado, y Teselar confirma por escrito que la ha recibido y la fecha en que tiene efecto.",
+          "Al darse de baja, lo que es del cliente se queda con él. Lo que necesita la cuota para funcionar se para, con 15 días de aviso.",
+          "Teselar no cambia la cuota por su cuenta. Si un tercero del que depende el servicio sube sus precios (Meta, el proveedor del modelo, el alojamiento), Teselar avisará con 30 días y el cliente podrá darse de baja sin coste."
+        ]
+      },
+      {
+        "titulo": "6. Aceptación de las entregas",
+        "puntos": [
+          "Cada entrega es algo que el cliente puede comprobar por sí mismo. Tiene 7 días naturales para revisarla; si en ese plazo no comunica por escrito una objeción concreta, la entrega queda aceptada.",
+          "Una objeción tiene que señalar en qué no cumple la entrega lo que dice la propuesta aceptada. Lo que se pida de más es un cambio de alcance (cláusula 8).",
+          "Teselar corrige lo objetado y se lo enseña al cliente, en persona, por videollamada o por escrito con capturas. Si la corrección resuelve lo que decía la objeción, la entrega queda aceptada en ese momento. Si el cliente considera que no lo resuelve, se aplica la cláusula 14."
+        ]
+      },
+      {
+        "titulo": "7. Obligaciones de cada parte",
+        "puntos": [
+          "Teselar hace lo que dice el alcance, en los plazos que dependen de Teselar, y avisa de los que dependen de otros.",
+          "El cliente aporta lo que la propuesta indica en «Lo que necesito de ti».",
+          "Si el cliente no aporta algo a tiempo, los plazos que dependen de eso se mueven lo mismo que se retrase, y no cuenta como retraso de Teselar. Si el retraso pasa de 30 días, Teselar puede proponer un calendario nuevo para lo que queda, según su disponibilidad."
+        ]
+      },
+      {
+        "titulo": "8. Cambios de alcance",
+        "puntos": [
+          "Un cambio comercial es una versión nueva de la propuesta, que el cliente tiene que volver a aceptar."
+        ]
+      },
+      {
+        "titulo": "9. Propiedad intelectual",
+        "puntos": [
+          "Cuando el cliente haya pagado todos los importes del proyecto, Teselar le cede, sin exclusiva, los derechos de explotación sobre lo creado para él (diseño, código fuente y código objeto, configuración y documentación): de reproducción, transformación (incluido modificar y ampliar el código), distribución y comunicación pública, para todo el mundo y durante todo el tiempo que duren esos derechos. Se le entrega el código fuente en un repositorio a su nombre o en una copia completa. Hasta ese pago, el cliente solo puede usar lo entregado para revisarlo.",
+          "Teselar conserva sus derechos y puede reutilizar el código en otros proyectos, pero nunca los datos del cliente ni de sus clientes, su marca, sus textos, sus contenidos ni la información confidencial de su negocio.",
+          "Las plantillas, componentes y herramientas que Teselar ya tenía siguen siendo de Teselar. El cliente recibe una licencia gratuita, para todo el mundo y sin límite de tiempo, para usarlas como parte de lo entregado.",
+          "Teselar consiente que el cliente transmita estos derechos a quien adquiera o continúe su negocio.",
+          "Si el cliente quiere la exclusiva sobre lo creado para él, se pacta y se presupuesta en su propuesta.",
+          "Los productos que Teselar ofrece como servicio con cuota (por ejemplo, el de citas) son de Teselar, y el cliente los usa mientras paga la cuota. Sus datos y contenidos son siempre suyos.",
+          "Si una parte de lo entregado no estuviera protegida por la propiedad intelectual, las partes acuerdan que lo dicho en esta cláusula se le aplica igualmente como obligación del contrato.",
+          "Portfolio: Teselar puede citar al cliente (nombre y logo) y enseñar el trabajo sin datos personales de nadie; en clientes del sector salud, solo con datos inventados. El cliente puede retirar este permiso de ahí en adelante."
+        ]
+      },
+      {
+        "titulo": "10. Protección de datos",
+        "puntos": [
+          "Cuando Teselar trata datos de los clientes del cliente para prestar el servicio, lo hace como encargado del tratamiento, por cuenta del cliente y según el anexo de encargo del tratamiento, que forma parte de estas condiciones.",
+          "Los datos de quien acepta la propuesta los trata Teselar como responsable, para registrar la aceptación y gestionar el contrato, como explica la política de privacidad de teselarsoftware.com."
+        ]
+      },
+      {
+        "titulo": "11. Garantías y responsabilidad",
+        "puntos": [
+          "Solo se garantiza lo que diga la sección de garantía de la propuesta o de las condiciones particulares.",
+          "La responsabilidad de Teselar por cualquier daño derivado del servicio se limita al importe que el cliente haya pagado por el servicio que lo causó en los 12 meses anteriores al daño. No responde del lucro cesante ni de daños indirectos. Esta limitación no se aplica a los daños causados con dolo o culpa grave, ni limita los derechos de las personas cuyos datos se tratan.",
+          "Teselar no responde de los fallos, cortes o cambios de condiciones de servicios de terceros que no controla (Meta/WhatsApp, Google, el alojamiento). Si uno de ellos cambia o corta el servicio, Teselar avisará en cuanto lo sepa y propondrá una alternativa razonable. Si no la hay, cualquiera de las dos partes puede terminar el servicio afectado sin penalización."
+        ]
+      },
+      {
+        "titulo": "12. Cómo se contrata y qué se guarda",
+        "puntos": [
+          "Pasos: Teselar envía al cliente un enlace personal a su propuesta. El cliente la lee, abre «Aceptar propuesta», revisa en ese mismo diálogo las condiciones de la propuesta y el enlace a estas condiciones generales, rellena sus datos, marca las casillas y confirma.",
+          "Corregir errores: hasta que pulsa «Confirmar aceptación», el cliente puede revisar y cambiar todo lo que ha escrito. Si después ve un error en sus datos, basta con escribir a info@teselarsoftware.com. Si lo que quiere cambiar es la propuesta, se hace una versión nueva (cláusula 8).",
+          "Archivo: Teselar guarda la versión aceptada, su huella SHA-256, la fecha y la hora del servidor, las casillas marcadas, la versión de estas condiciones y los datos declarados. Al aceptar, el cliente recibe por correo un PDF con la propuesta aceptada, estas condiciones y el anexo de encargo del tratamiento; ese correo es además el acuse de recibo de la aceptación.",
+          "Lenguas: el contrato se puede formalizar en castellano o en catalán. Estas condiciones están disponibles en los dos idiomas, en ejemplares separados.",
+          "Aceptar así es una forma válida de contratar y de dejar constancia del consentimiento."
+        ]
+      },
+      {
+        "titulo": "13. Duración y terminación",
+        "puntos": [
+          "El contrato dura lo que dure el servicio descrito en la propuesta y, si hay cuota mensual, hasta que una de las partes la dé de baja según la cláusula 5.",
+          "Incumplimiento: si una parte no cumple, la otra puede exigir que cumpla o resolver el contrato y, en los dos casos, pedir la indemnización que corresponda. Antes de resolver, avisará por escrito y dará 15 días naturales para corregirlo.",
+          "Si el cliente termina sin causa: paga las entregas ya aceptadas y, como compensación por el trabajo hecho, la parte proporcional de la entrega en curso, según el tiempo transcurrido sobre el previsto para ella en la propuesta. La señal no se devuelve. Lo desarrollado sigue siendo de Teselar (cláusula 9); si el cliente lo quiere, puede adquirirlo pagando lo que falte del proyecto. Sus datos se le devuelven y se borran como dice el anexo.",
+          "Si Teselar termina por impago: después del aviso de 10 días y la suspensión de la cláusula 4. El cliente paga lo entregado y aceptado, y la cesión de la cláusula 9 no se produce hasta que lo haya pagado todo."
+        ]
+      },
+      {
+        "titulo": "14. Ley aplicable y desacuerdos",
+        "puntos": [
+          "El contrato se rige por la ley española, sin perjuicio del derecho civil catalán cuando sea aplicable.",
+          "Antes de acudir a los tribunales, las partes intentarán resolver el desacuerdo hablándolo directamente, a petición por escrito de cualquiera de ellas, durante 30 días."
+        ]
+      },
+      {
+        "titulo": "15. Qué documento manda",
+        "puntos": [
+          "Si hay contradicción, manda la propuesta aceptada, después las condiciones particulares del producto y después estas condiciones generales. Lo aceptado no lo cambia ninguna de las partes por su cuenta."
+        ]
+      }
+    ],
+    "anexo": {
+      "titulo": "Anexo. Encargo del tratamiento de datos (art. 28 del RGPD)",
+      "puntos": [
+        "Objeto y duración: Teselar trata los datos personales que el cliente le confía solo para prestar el servicio de la propuesta aceptada, mientras dure el servicio.",
+        "Datos e interesados: los que el servicio necesita según la propuesta (por ejemplo, nombre, teléfono, dirección, citas o trabajos de los clientes del negocio). Si un producto trata categorías especiales de datos, lo dicen sus condiciones particulares.",
+        "Instrucciones: Teselar trata los datos solo siguiendo las instrucciones documentadas del cliente. El contrato y la configuración del servicio son esas instrucciones.",
+        "Confidencialidad: quien trate los datos por parte de Teselar se compromete por escrito a mantenerlos en secreto.",
+        "Seguridad: Teselar aplica medidas adecuadas al riesgo: cifrado en las comunicaciones, acceso con usuario y contraseña y copias de seguridad diarias desde que se trabaja con datos reales. La propuesta o las condiciones particulares pueden añadir otras.",
+        "Subencargados: el cliente autoriza a Teselar a usar los proveedores que indiquen la propuesta o las condiciones particulares del producto. Los servicios contratados a nombre del cliente son proveedores suyos, no de Teselar. Teselar avisará antes de añadir o cambiar uno, y el cliente podrá oponerse.",
+        "Derechos de los interesados: Teselar exportará o borrará los datos de una persona cuando el cliente se lo pida.",
+        "Brechas y evaluaciones de impacto: Teselar ayudará al cliente a cumplir sus obligaciones de seguridad y avisará de cualquier brecha sin dilación indebida y, en todo caso, en 48 horas desde que la conozca.",
+        "Al terminar: el cliente elige recibir sus datos (en un formato de hoja de cálculo) y después se borran. Las copias de seguridad se borran solas en 30 días.",
+        "Comprobaciones: Teselar dará la documentación que el cliente le pida para demostrar que cumple. Si el cliente quiere una visita, con 30 días de aviso y a su cargo."
+      ]
+    }
+  },
+  "ca": {
+    "titulo": "Condicions generals de contractació de Teselar Software",
+    "intro": [
+      "Aquestes condicions s'apliquen a tots els serveis que Teselar Software presta a negocis (autònoms i societats) que els contracten per a la seva activitat. Juntament amb la proposta acceptada i, si n'hi ha, les condicions particulars del producte, formen el contracte."
+    ],
+    "clausulas": [
+      {
+        "titulo": "1. Parts",
+        "puntos": [
+          "Prestador: Rubén Reyes Agüera, amb NIF 47897952-S, que actua amb el nom comercial Teselar Software, amb domicili a Lloret de Mar (Girona). Contacte: info@teselarsoftware.com.",
+          "Client: qui accepta la proposta, amb les dades que declara en acceptar-la: nom complet, DNI o NIE i domicili i, si és una societat, la seva raó social, el seu NIF i el càrrec de qui accepta.",
+          "Qui accepta en nom d'una societat declara que té prou poders per fer-ho i respon d'aquesta declaració. Si no consta com a administrador al Registre Mercantil, Teselar li podrà demanar l'escriptura de poders abans de començar."
+        ]
+      },
+      {
+        "titulo": "2. Objecte",
+        "puntos": [
+          "El servei és el que descriu la proposta acceptada: abast, lliuraments, exclusions i calendari, tal com van quedar en la versió que el client va acceptar. El que no estigui a l'abast es pressuposta a part."
+        ]
+      },
+      {
+        "titulo": "3. Preu i impostos",
+        "puntos": [
+          "Els imports són els de la proposta acceptada, més l'IVA que correspongui.",
+          "La proposta es pot acceptar durant el termini de vigència que indica, que és de 30 dies si no diu una altra cosa."
+        ]
+      },
+      {
+        "titulo": "4. Forma de pagament",
+        "puntos": [
+          "Senyal: el 10 % del projecte, amb un mínim de 150 €, en acceptar. Reserva el lloc al calendari i no paga feina. Si abans hi va haver una auditoria de processos, els seus 150 € es descompten del senyal.",
+          "La resta, en les quotes que indica la proposta. Cada quota es paga contra un lliurament, no contra una data.",
+          "Només per transferència bancària.",
+          "Cada quota es factura quan el seu lliurament queda acceptat (clàusula 6) i es paga en els 15 dies naturals següents a la factura.",
+          "Retards: una factura no pagada a temps meritarà l'interès de demora legal i la indemnització de 40 € per costos de cobrament que fixa la Llei 3/2004.",
+          "Impagament: Teselar avisarà per escrit i, si en 10 dies naturals no s'ha pagat, podrà suspendre la feina i el servei sense que això sigui un incompliment seu. Si l'impagament continua, s'aplica la clàusula 13."
+        ]
+      },
+      {
+        "titulo": "5. Quotes mensuals, canvis de preu i baixes",
+        "puntos": [
+          "Res no es renova sol. Teselar avisa un mes abans que s'acabi el que inclou el preu.",
+          "Sense permanència. El client es pot donar de baixa d'una quota mensual avisant amb 15 dies per escrit a info@teselarsoftware.com. La baixa té efecte al final del període ja pagat, i Teselar confirma per escrit que l'ha rebuda i la data en què té efecte.",
+          "En donar-se de baixa, el que és del client es queda amb ell. El que necessita la quota per funcionar s'atura, amb 15 dies d'avís.",
+          "Teselar no canvia la quota pel seu compte. Si un tercer de qui depèn el servei apuja els seus preus (Meta, el proveïdor del model, l'allotjament), Teselar avisarà amb 30 dies i el client es podrà donar de baixa sense cost."
+        ]
+      },
+      {
+        "titulo": "6. Acceptació dels lliuraments",
+        "puntos": [
+          "Cada lliurament és una cosa que el client pot comprovar per si mateix. Té 7 dies naturals per revisar-lo; si en aquest termini no comunica per escrit una objecció concreta, el lliurament queda acceptat.",
+          "Una objecció ha d'assenyalar en què no compleix el lliurament el que diu la proposta acceptada. El que es demani de més és un canvi d'abast (clàusula 8).",
+          "Teselar corregeix el que s'ha objectat i l'hi mostra al client, en persona, per videotrucada o per escrit amb captures. Si la correcció resol el que deia l'objecció, el lliurament queda acceptat en aquell moment. Si el client considera que no ho resol, s'aplica la clàusula 14."
+        ]
+      },
+      {
+        "titulo": "7. Obligacions de cada part",
+        "puntos": [
+          "Teselar fa el que diu l'abast, en els terminis que depenen de Teselar, i avisa dels que depenen d'altres.",
+          "El client aporta el que la proposta indica a «El que necessito de tu».",
+          "Si el client no aporta alguna cosa a temps, els terminis afectats es desplacen tant com duri el retard, i no compta com a retard de Teselar. Si el retard passa de 30 dies, Teselar pot proposar un calendari nou per al que queda, segons la seva disponibilitat."
+        ]
+      },
+      {
+        "titulo": "8. Canvis d'abast",
+        "puntos": [
+          "Un canvi comercial és una versió nova de la proposta, que el client ha de tornar a acceptar."
+        ]
+      },
+      {
+        "titulo": "9. Propietat intel·lectual",
+        "puntos": [
+          "Quan el client hagi pagat tots els imports del projecte, Teselar li cedeix, sense exclusiva, els drets d'explotació sobre el que s'ha creat per a ell (disseny, codi font i codi objecte, configuració i documentació): de reproducció, transformació (inclosa la modificació i l'ampliació del codi), distribució i comunicació pública, per a tot el món i durant tot el temps que durin aquests drets. Se li lliura el codi font en un repositori al seu nom o en una còpia completa. Fins a aquest pagament, el client només pot fer servir el que s'ha lliurat per revisar-ho.",
+          "Teselar conserva els seus drets i pot reutilitzar el codi en altres projectes, però mai les dades del client ni dels seus clients, la seva marca, els seus textos, els seus continguts ni la informació confidencial del seu negoci.",
+          "Les plantilles, components i eines que Teselar ja tenia continuen sent de Teselar. El client rep una llicència gratuïta, per a tot el món i sense límit de temps, per fer-les servir com a part del que s'ha lliurat.",
+          "Teselar consent que el client transmeti aquests drets a qui adquireixi o continuï el seu negoci.",
+          "Si el client vol l'exclusiva sobre el que s'ha creat per a ell, es pacta i es pressuposta a la seva proposta.",
+          "Els productes que Teselar ofereix com a servei amb quota (per exemple, el de cites) són de Teselar, i el client els fa servir mentre paga la quota. Les seves dades i continguts són sempre seus.",
+          "Si una part del que s'ha lliurat no estigués protegida per la propietat intel·lectual, les parts acorden que el que diu aquesta clàusula s'hi aplica igualment com a obligació del contracte.",
+          "Portfoli: Teselar pot citar el client (nom i logotip) i mostrar la feina sense dades personals de ningú; en clients del sector salut, només amb dades inventades. El client pot retirar aquest permís d'aquí endavant."
+        ]
+      },
+      {
+        "titulo": "10. Protecció de dades",
+        "puntos": [
+          "Quan Teselar tracta dades dels clients del client per prestar el servei, ho fa com a encarregat del tractament, per compte del client i segons l'annex d'encàrrec del tractament, que forma part d'aquestes condicions.",
+          "Les dades de qui accepta la proposta les tracta Teselar com a responsable, per registrar l'acceptació i gestionar el contracte, tal com explica la política de privadesa de teselarsoftware.com."
+        ]
+      },
+      {
+        "titulo": "11. Garanties i responsabilitat",
+        "puntos": [
+          "Només es garanteix el que digui la secció de garantia de la proposta o de les condicions particulars.",
+          "La responsabilitat de Teselar per qualsevol dany derivat del servei es limita a l'import que el client hagi pagat pel servei que l'ha causat en els 12 mesos anteriors al dany. No respon del lucre cessant ni de danys indirectes. Aquesta limitació no s'aplica als danys causats amb dol o culpa greu, ni limita els drets de les persones les dades de les quals es tracten.",
+          "Teselar no respon de les fallades, talls o canvis de condicions de serveis de tercers que no controla (Meta/WhatsApp, Google, l'allotjament). Si un d'ells canvia o talla el servei, Teselar avisarà tan aviat com ho sàpiga i proposarà una alternativa raonable. Si no n'hi ha, qualsevol de les dues parts pot acabar el servei afectat sense penalització."
+        ]
+      },
+      {
+        "titulo": "12. Com es contracta i què es guarda",
+        "puntos": [
+          "Passos: Teselar envia al client un enllaç personal a la seva proposta. El client la llegeix, obre «Acceptar la proposta», revisa en aquell mateix diàleg les condicions de la proposta i l'enllaç a aquestes condicions generals, omple les seves dades, marca les caselles i confirma.",
+          "Corregir errors: fins que prem «Confirmar l'acceptació», el client pot revisar i canviar tot el que ha escrit. Si després veu un error a les seves dades, n'hi ha prou d'escriure a info@teselarsoftware.com. Si el que vol canviar és la proposta, se'n fa una versió nova (clàusula 8).",
+          "Arxiu: Teselar guarda la versió acceptada, la seva empremta SHA-256, la data i l'hora del servidor, les caselles marcades, la versió d'aquestes condicions i les dades declarades. En acceptar, el client rep per correu un PDF amb la proposta acceptada, aquestes condicions i l'annex d'encàrrec del tractament; aquest correu és també la confirmació de recepció de l'acceptació.",
+          "Llengües: el contracte es pot formalitzar en castellà o en català. Aquestes condicions estan disponibles en les dues llengües, en exemplars separats.",
+          "Acceptar així és una forma vàlida de contractar i de deixar constància del consentiment."
+        ]
+      },
+      {
+        "titulo": "13. Durada i terminació",
+        "puntos": [
+          "El contracte dura el que duri el servei descrit a la proposta i, si hi ha quota mensual, fins que una de les parts la doni de baixa segons la clàusula 5.",
+          "Incompliment: si una part no compleix, l'altra pot exigir-ne el compliment o resoldre el contracte i, en tots dos casos, demanar la indemnització que correspongui. Abans de resoldre, avisarà per escrit i donarà 15 dies naturals per corregir-ho.",
+          "Si el client acaba sense causa: paga els lliuraments ja acceptats i, com a compensació per la feina feta, la part proporcional del lliurament en curs, segons el temps transcorregut sobre el previst per a aquest lliurament a la proposta. El senyal no es retorna. El que s'ha desenvolupat continua sent de Teselar (clàusula 9); si el client ho vol, ho pot adquirir pagant el que falti del projecte. Les seves dades se li retornen i s'esborren com diu l'annex.",
+          "Si Teselar acaba per impagament: després de l'avís de 10 dies i la suspensió de la clàusula 4. El client paga el que s'ha lliurat i acceptat, i la cessió de la clàusula 9 no es produeix fins que ho hagi pagat tot."
+        ]
+      },
+      {
+        "titulo": "14. Llei aplicable i desacords",
+        "puntos": [
+          "El contracte es regeix per la llei espanyola, sense perjudici del dret civil català quan sigui aplicable.",
+          "Abans d'anar als tribunals, les parts intentaran resoldre el desacord parlant-ne directament, a petició per escrit de qualsevol d'elles, durant 30 dies."
+        ]
+      },
+      {
+        "titulo": "15. Quin document mana",
+        "puntos": [
+          "Si hi ha contradicció, mana la proposta acceptada, després les condicions particulars del producte i després aquestes condicions generals. El que s'ha acceptat no ho canvia cap de les parts pel seu compte."
+        ]
+      }
+    ],
+    "anexo": {
+      "titulo": "Annex. Encàrrec del tractament de dades (art. 28 del RGPD)",
+      "puntos": [
+        "Objecte i durada: Teselar tracta les dades personals que el client li confia només per prestar el servei de la proposta acceptada, mentre duri el servei.",
+        "Dades i interessats: les que el servei necessita segons la proposta (per exemple, nom, telèfon, adreça, cites o feines dels clients del negoci). Si un producte tracta categories especials de dades, ho diuen les seves condicions particulars.",
+        "Instruccions: Teselar tracta les dades només seguint les instruccions documentades del client. El contracte i la configuració del servei són aquestes instruccions.",
+        "Confidencialitat: qui tracti les dades per part de Teselar es compromet per escrit a mantenir-les en secret.",
+        "Seguretat: Teselar aplica mesures adequades al risc: xifratge en les comunicacions, accés amb usuari i contrasenya i còpies de seguretat diàries des que es treballa amb dades reals. La proposta o les condicions particulars en poden afegir d'altres.",
+        "Subencarregats: el client autoritza Teselar a fer servir els proveïdors que indiquin la proposta o les condicions particulars del producte. Els serveis contractats a nom del client són proveïdors seus, no de Teselar. Teselar avisarà abans d'afegir-ne o canviar-ne un, i el client s'hi podrà oposar.",
+        "Drets dels interessats: Teselar exportarà o esborrarà les dades d'una persona quan el client li ho demani.",
+        "Bretxes i avaluacions d'impacte: Teselar ajudarà el client a complir les seves obligacions de seguretat i l'avisarà de qualsevol bretxa sense dilació indeguda i, en tot cas, en 48 hores des que la conegui.",
+        "En acabar: el client tria rebre les seves dades (en un format de full de càlcul) i després s'esborren. Les còpies de seguretat s'esborren soles en 30 dies.",
+        "Comprovacions: Teselar donarà la documentació que el client li demani per demostrar que compleix. Si el client vol una visita, amb 30 dies d'avís i a càrrec seu."
+      ]
+    }
+  }
+}
