@@ -74,7 +74,7 @@
   },
   "impuestos": {
     "precios_mas_iva": true,
-    "nota": "El régimen concreto lo confirma la gestoría."
+    "nota": null
   },
   "pagos": {
     "hitos": [
