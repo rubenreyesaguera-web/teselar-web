@@ -31,3 +31,10 @@ export function relativo(aaaammdd: string, ahora = new Date()): string {
   if (n === -1) return 'ayer';
   return n > 0 ? `en ${n} días` : `hace ${-n} días`;
 }
+
+/** Suma (o resta) dias a un dia AAAA-MM-DD. */
+export function sumarDias(aaaammdd: string, n: number): string {
+  const d = new Date(`${aaaammdd}T12:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + n);
+  return d.toISOString().slice(0, 10);
+}
