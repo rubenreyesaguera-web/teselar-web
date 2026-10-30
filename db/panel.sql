@@ -55,3 +55,35 @@ ALTER TABLE evento ADD CONSTRAINT evento_tipo_check CHECK (tipo IN (
   'creada', 'sustituida', 'invalidada', 'aceptada', 'aviso_fallido', 'error_aceptacion', 'hito_cumplido', 'hito_deshecho',
   'acuse_enviado', 'acuse_fallido',
   'cobro_apuntado', 'cobro_deshecho'));
+
+-- ——— Fase 2 (decidida el 30/10 por la tarde, 07_Pendientes punto 7) ———
+
+-- Comision del colaborador (decision 2): el porcentaje va en cada contacto, no en el colaborador, para poder pasar del
+-- 10 % al 20 % en un proyecto concreto. «Saldado el…» con deshacer (se vacian las cuatro columnas). Si se paga con un
+-- canje o un descuento, el valor acordado en euros (LIVA art. 79.Uno; doc 31 de la boveda). Es un apunte, no una factura.
+ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision text NOT NULL DEFAULT 'ninguna'
+  CHECK (comision IN ('ninguna', 'puente', 'acompana'));
+ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision_saldada date;
+ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision_forma text
+  CHECK (comision_forma IN ('transferencia', 'canje', 'descuento'));
+ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision_valor_centimos integer CHECK (comision_valor_centimos >= 0);
+ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision_nota text CHECK (length(comision_nota) <= 500);
+
+-- El contador de toda la web: una fila por pagina vista. A proposito sin columna para IP, navegador, cookie ni la
+-- direccion completa de la web de origen: solo el dominio, la etiqueta ?origen= (letras, numeros y guiones), el pais de
+-- la cabecera de Vercel y el tipo de dispositivo. `entrada`: la primera pagina de quien llega (de fuera o sin origen);
+-- las «visitas» son las entradas y las «paginas vistas», todas las filas. Cuenta visitas, no personas.
+-- Conservacion (guia de la AEPD de medicion de audiencia, enero de 2024): la hora exacta solo 48 horas, despues el dia;
+-- todo se borra a los 25 meses. Lo hace `limpiarVisitas` (src/lib/panel/estadisticas.ts) al abrir el panel.
+CREATE TABLE IF NOT EXISTS visita (
+  id           bigint      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  creado       timestamptz NOT NULL DEFAULT now(),
+  ruta         text        NOT NULL CHECK (ruta ~ '^/(es|ca|en)(/[a-z0-9/-]*)?$' AND length(ruta) <= 200),
+  entrada      boolean     NOT NULL,
+  dominio      text        CHECK (dominio ~ '^[a-z0-9.-]{1,100}$'),
+  origen       text        CHECK (origen ~ '^[a-z0-9-]{1,30}$'),
+  pais         text        CHECK (pais ~ '^[A-Z]{2}$'),
+  dispositivo  text        NOT NULL CHECK (dispositivo IN ('movil', 'escritorio', 'tableta'))
+);
+
+CREATE INDEX IF NOT EXISTS visita_creado ON visita (creado);

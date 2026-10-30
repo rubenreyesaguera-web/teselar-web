@@ -1,9 +1,10 @@
 // «Hoy»: lo que pide hacer algo (decision del 29/10, orden 1): propuestas que vencen en 7 dias, PDF no entregados,
-// contactos con el paso vencido o para hoy, e hitos cumplidos sin cobrar. Antes de pintar, borra los contactos que
+// contactos con el paso vencido o para hoy, e hitos cumplidos sin cobrar. Antes de pintar, limpia el contador y borra los contactos que
 // han cumplido el plazo de la politica (apartado 8) y los ensena una sola vez; y avisa de los que se borran en 30 dias.
 import Link from 'next/link';
 import { exigirSesion } from '@/lib/panel/acceso';
 import { borrarCaducados, leerContactos, leerPropuestas } from '@/lib/panel/datos';
+import { limpiarVisitas } from '@/lib/panel/estadisticas';
 import { dia, relativo } from '@/lib/panel/formato';
 import { euros } from '@/lib/propuestas/formato';
 import { AVISO_DIAS, PLAZO_MESES, hoyEnMadrid, resumenHoy } from '@/lib/panel/resumen';
@@ -15,7 +16,7 @@ const FECHA_HOY = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'nume
 
 export default async function Hoy() {
   await exigirSesion();
-  const borrados = await borrarCaducados();
+  const [borrados] = await Promise.all([borrarCaducados(), limpiarVisitas()]);
   const [propuestas, contactos] = await Promise.all([leerPropuestas(), leerContactos(true)]);
   const hoy = resumenHoy(propuestas, contactos);
   const nada = !hoy.vencen.length && !hoy.sinPdf.length && !hoy.pasos.length && !hoy.sinCobrar.length && !hoy.seBorran.length;

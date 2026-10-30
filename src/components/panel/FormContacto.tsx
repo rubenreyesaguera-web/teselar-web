@@ -1,9 +1,10 @@
 'use client';
-// Alta y edicion de un contacto (decision 3): los campos de la hoja de leads mas propuesta y colaborador.
+// Alta y edicion de un contacto (decision 3): los campos de la hoja de leads mas propuesta, colaborador y su comision
+// (fase 2, decision 2).
 import Link from 'next/link';
 import { useActionState } from 'react';
 import { guardarContacto, type Estado } from '@/app/panel/acciones';
-import { ESTADOS_CONTACTO, NOMBRE_ESTADO, type Contacto } from '@/lib/panel/resumen';
+import { COMISIONES, ESTADOS_CONTACTO, NOMBRE_COMISION, NOMBRE_ESTADO, type Contacto } from '@/lib/panel/resumen';
 
 interface Props {
   contacto?: Contacto;
@@ -80,6 +81,17 @@ export default function FormContacto({ contacto: c, propuestas, colaboradores }:
               <option key={n} value={n} />
             ))}
           </datalist>
+        </label>
+        <label className="campo">
+          Comisión del colaborador
+          <select name="comision" defaultValue={c?.comision ?? 'ninguna'}>
+            {COMISIONES.map((k) => (
+              <option key={k} value={k}>
+                {NOMBRE_COMISION[k]}
+              </option>
+            ))}
+          </select>
+          <small>Sobre el setup de su propuesta, cuando la acepte. Se puede cambiar si al final acompaña la venta.</small>
         </label>
         <label className="campo ancho">
           Notas
