@@ -1,0 +1,116 @@
+import { describe, expect, test } from 'bun:test';
+import { estadoAcuse, hoyEnMadrid, plegarHitos, resumenHoy, validarContacto, type Contacto, type PropuestaPanel } from './resumen';
+
+const AHORA = new Date('2026-10-30T22:30:00Z'); // 23:30 en Lloret, todavia dia 30
+
+function propuesta(p: Partial<PropuestaPanel>): PropuestaPanel {
+  return {
+    referencia: 'P-2026-001', version: 1, estado: 'vigente', negocio: 'Negocio', cliente: 'Cliente',
+    creada: '2026-10-01T10:00:00Z', vence: '2026-11-30T23:00:00Z', venceDia: '2026-11-30', aceptada: null,
+    aceptante: null, acuse: null, hitos: [], aperturas: null, contacto: null, ...p,
+  };
+}
+
+function contacto(c: Partial<Contacto>): Contacto {
+  return {
+    id: 1, negocio: 'Bar', persona: null, telefono: null, correo: null, origen: null, estado: 'en_conversacion',
+    siguiente_accion: null, fecha: null, notas: null, propuesta: null, colaborador: null, actualizado: '2026-10-30T10:00:00Z', ...c,
+  };
+}
+
+describe('hitos y cobros', () => {
+  test('lo último que se dijo de cada hito gana, y cumplido y cobrado van por separado', () => {
+    const e = (tipo: string, hito: number, fecha: string | null = null) => ({ tipo, hito, fecha, created_at: `2026-10-${10 + hito}T10:00:00.000Z` });
+    const r = plegarHitos([
+      e('hito_cumplido', 1), e('cobro_apuntado', 1, '2026-10-12'),
+      e('hito_cumplido', 2), e('hito_deshecho', 2),
+      e('cobro_apuntado', 3, '2026-10-20'), e('cobro_deshecho', 3),
+      e('acuse_enviado', 1),
+    ]);
+    expect(r.cumplidos).toEqual({ 1: '2026-10-11T10:00:00.000Z' });
+    expect(r.cobrados).toEqual({ 1: '2026-10-12' });
+  });
+
+  test('el acuse: el último evento manda; aceptada sin ninguno, pendiente', () => {
+    expect(estadoAcuse(false, [])).toBeNull();
+    expect(estadoAcuse(true, [])).toBe('pendiente');
+    expect(estadoAcuse(true, ['acuse_fallido', 'acuse_enviado'])).toBe('enviado');
+    expect(estadoAcuse(true, ['acuse_enviado', 'acuse_fallido'])).toBe('fallido');
+  });
+});
+
+describe('«Hoy»', () => {
+  test('la fecha de hoy es la de Lloret, no la de UTC', () => {
+    expect(hoyEnMadrid(new Date('2026-10-30T23:30:00Z'))).toBe('2026-10-31');
+    expect(hoyEnMadrid(AHORA)).toBe('2026-10-30');
+  });
+
+  test('propuestas vigentes cuyo último día cae en 7 días de calendario o menos, de la más próxima a la más lejana', () => {
+    const r = resumenHoy(
+      [
+        propuesta({ referencia: 'P-2026-001', venceDia: '2026-11-06' }),
+        propuesta({ referencia: 'P-2026-002', venceDia: '2026-11-02' }),
+        propuesta({ referencia: 'P-2026-003', venceDia: '2026-11-07' }),
+        propuesta({ referencia: 'P-2026-004', venceDia: '2026-11-01', estado: 'aceptada' }),
+      ],
+      [],
+      AHORA,
+    );
+    expect(r.vencen.map((p) => p.referencia)).toEqual(['P-2026-002', 'P-2026-001']);
+  });
+
+  test('PDF sin entregar: el que falló, y el pendiente solo pasado un margen', () => {
+    const r = resumenHoy(
+      [
+        propuesta({ referencia: 'P-2026-001', estado: 'aceptada', acuse: 'fallido', aceptada: '2026-10-30T22:29:00Z' }),
+        propuesta({ referencia: 'P-2026-002', estado: 'aceptada', acuse: 'pendiente', aceptada: '2026-10-30T22:25:00Z' }),
+        propuesta({ referencia: 'P-2026-003', estado: 'aceptada', acuse: 'pendiente', aceptada: '2026-10-30T20:00:00Z' }),
+        propuesta({ referencia: 'P-2026-004', estado: 'aceptada', acuse: 'enviado', aceptada: '2026-10-29T20:00:00Z' }),
+      ],
+      [],
+      AHORA,
+    );
+    expect(r.sinPdf.map((p) => p.referencia)).toEqual(['P-2026-001', 'P-2026-003']);
+  });
+
+  test('contactos abiertos con el paso para hoy o vencido; los cerrados y los de mañana no', () => {
+    const r = resumenHoy(
+      [],
+      [
+        contacto({ id: 1, fecha: '2026-10-30' }),
+        contacto({ id: 2, fecha: '2026-10-28' }),
+        contacto({ id: 3, fecha: '2026-10-31' }),
+        contacto({ id: 4, fecha: '2026-10-01', estado: 'perdido' }),
+        contacto({ id: 5, fecha: null }),
+      ],
+      AHORA,
+    );
+    expect(r.pasos.map((p) => [p.contacto.id, p.vencido])).toEqual([[2, true], [1, false]]);
+  });
+
+  test('hitos cumplidos sin cobrar', () => {
+    const h = (n: number, cumplido: string | null, cobrado: string | null) => ({ n, hito: `H${n}`, importe_centimos: 100, cuando: '', cumplido, cobrado });
+    const r = resumenHoy(
+      [propuesta({ estado: 'aceptada', hitos: [h(1, '2026-10-10T10:00:00Z', '2026-10-11'), h(2, '2026-10-20T10:00:00Z', null), h(3, null, null)] })],
+      [],
+      AHORA,
+    );
+    expect(r.sinCobrar.map((x) => x.hito.n)).toEqual([2]);
+  });
+});
+
+describe('validar un contacto', () => {
+  test('lo vacío es null, la referencia se pasa a mayúsculas y el estado por defecto es «en conversación»', () => {
+    const r = validarContacto({ negocio: '  Bar Pepe ', persona: '', propuesta: 'p-2026-001', fecha: '2026-11-03' });
+    expect(r).toMatchObject({ negocio: 'Bar Pepe', persona: null, propuesta: 'P-2026-001', estado: 'en_conversacion', fecha: '2026-11-03' });
+  });
+
+  test('errores con su mensaje', () => {
+    expect(validarContacto({ negocio: ' ' })).toBe('Falta el negocio');
+    expect(validarContacto({ negocio: 'x', estado: 'borrado' })).toBe('Estado no válido');
+    expect(validarContacto({ negocio: 'x', fecha: '30/10/2026' })).toBe('Fecha no válida');
+    expect(validarContacto({ negocio: 'x', correo: 'sin-arroba' })).toBe('Correo no válido');
+    expect(validarContacto({ negocio: 'x', propuesta: 'P-26-1' })).toBe('La propuesta va como P-2026-001');
+    expect(validarContacto({ negocio: 'x'.repeat(201) })).toContain('demasiado largo');
+  });
+});
