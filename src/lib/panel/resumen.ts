@@ -22,6 +22,24 @@ export const NOMBRE_ESTADO: Record<EstadoContacto, string> = {
   perdido: 'Perdido',
 };
 
+/** Comision del colaborador, por contacto (fase 2, decision 2): 10 % del setup si hace de puente, 20 % si acompana. */
+export const COMISIONES = ['ninguna', 'puente', 'acompana'] as const;
+export type Comision = (typeof COMISIONES)[number];
+export const PORCENTAJE: Record<Comision, number> = { ninguna: 0, puente: 10, acompana: 20 };
+export const NOMBRE_COMISION: Record<Comision, string> = {
+  ninguna: 'Sin comisión',
+  puente: '10 % · puente',
+  acompana: '20 % · acompaña la venta',
+};
+
+export const FORMAS_PAGO = ['transferencia', 'canje', 'descuento'] as const;
+export type FormaPago = (typeof FORMAS_PAGO)[number];
+export const NOMBRE_FORMA: Record<FormaPago, string> = {
+  transferencia: 'Transferencia',
+  canje: 'Canje por mantenimiento u otro servicio',
+  descuento: 'Descuento en un producto suyo',
+};
+
 /** Ganados y perdidos se ocultan de «en curso», no se borran (decision 3). */
 export const cerrado = (e: EstadoContacto) => e === 'ganado' || e === 'perdido';
 
@@ -39,6 +57,13 @@ export interface Contacto {
   notas: string | null;
   propuesta: string | null;
   colaborador: string | null;
+  comision: Comision;
+  /** «Saldado el…» (AAAA-MM-DD), o null. Solo lo ve Ruben, como los cobros. */
+  comision_saldada: string | null;
+  comision_forma: FormaPago | null;
+  /** Si se pago con un canje o un descuento: lo que se acordo que vale, en centimos (LIVA art. 79.Uno). */
+  comision_valor_centimos: number | null;
+  comision_nota: string | null;
   actualizado: string;
 }
 
@@ -72,6 +97,8 @@ export interface PropuestaPanel {
   aceptante: { nombre: string; correo: string; razon_social: string | null; cargo: string | null } | null;
   acuse: Acuse | null;
   hitos: HitoPanel[];
+  /** La puesta en marcha: la suma de los conceptos de pago unico. Sobre esto va la comision. */
+  setup_centimos: number;
   aperturas: { primera: string; ultima: string; veces: number } | null;
   /** El contacto que la enlaza; de ahi hereda el colaborador (decision 5). */
   contacto: { id: number; negocio: string; colaborador: string | null } | null;
@@ -116,7 +143,7 @@ const DIA_MS = 24 * 60 * 60 * 1000;
 /** El acuse sale justo despues de responder al cliente; si en 15 minutos no consta, algo ha fallado. */
 const MARGEN_ACUSE_MS = 15 * 60 * 1000;
 
-/** Politica de privacidad, apartado 8: sin contrato, se borran a los 12 meses del ultimo contacto (Ruben, 31/10). */
+/** Politica de privacidad, apartado 8: sin contrato, se borran a los 12 meses del ultimo contacto (Ruben, 30/10). */
 export const PLAZO_MESES = 12;
 /** «Hoy» avisa de los que se borran en 30 dias o menos, para que de tiempo a escribirles. */
 export const AVISO_DIAS = 30;
@@ -133,7 +160,7 @@ export function sumarMeses(aaaammdd: string, meses: number): string {
 
 /**
  * El dia en que se borra un contacto, o null si no se borra (ganado: hay contrato). El ultimo contacto es lo mas
- * reciente entre la ultima vez que se guardo la ficha y la fecha del siguiente paso (Ruben, 31/10, opcion C): a quien
+ * reciente entre la ultima vez que se guardo la ficha y la fecha del siguiente paso (Ruben, 30/10, opcion C): a quien
  * se le dijo «hablamos en primavera» el plazo le cuenta desde la primavera.
  */
 export function diaDeBorrado(c: Contacto): string | null {
@@ -199,9 +226,10 @@ export interface CamposContacto {
   notas: string | null;
   propuesta: string | null;
   colaborador: string | null;
+  comision: Comision;
 }
 
-const LIMITES: Record<Exclude<keyof CamposContacto, 'estado'>, number> = {
+const LIMITES: Record<Exclude<keyof CamposContacto, 'estado' | 'comision'>, number> = {
   negocio: 200,
   persona: 200,
   telefono: 40,
@@ -227,6 +255,9 @@ export function validarContacto(form: Record<string, unknown>): string | CamposC
     campos[k] = v;
   }
   if (!campos.negocio) return 'Falta el negocio';
+  const comision = t('comision') ?? 'ninguna';
+  if (!(COMISIONES as readonly string[]).includes(comision)) return 'Comisión no válida';
+  if (comision !== 'ninguna' && !campos.colaborador) return 'La comisión necesita un colaborador';
   const estado = t('estado') ?? 'en_conversacion';
   if (!(ESTADOS_CONTACTO as readonly string[]).includes(estado)) return 'Estado no válido';
   if (campos.fecha && (!/^\d{4}-\d{2}-\d{2}$/.test(campos.fecha) || Number.isNaN(Date.parse(campos.fecha)))) return 'Fecha no válida';
@@ -235,5 +266,96 @@ export function validarContacto(form: Record<string, unknown>): string | CamposC
     campos.propuesta = campos.propuesta.toUpperCase();
     if (!/^P-\d{4}-\d{3}$/.test(campos.propuesta)) return 'La propuesta va como P-2026-001';
   }
-  return { ...(campos as Omit<CamposContacto, 'estado'> & { negocio: string }), estado: estado as EstadoContacto };
+  return {
+    ...(campos as Omit<CamposContacto, 'estado' | 'comision'> & { negocio: string }),
+    estado: estado as EstadoContacto,
+    comision: comision as Comision,
+  };
+}
+
+// ——— Colaboradores (fase 2) ———
+
+/** Lo que se le debe a un colaborador por un contacto: el % sobre el setup, solo si su propuesta esta aceptada. */
+export function comisionDe(c: Contacto, p: PropuestaPanel | undefined): number {
+  if (!p || p.estado !== 'aceptada') return 0;
+  return Math.round((p.setup_centimos * PORCENTAJE[c.comision]) / 100);
+}
+
+export interface LineaColaborador {
+  contacto: Contacto;
+  propuesta: PropuestaPanel | null;
+  /** Lo que le corresponde, en centimos (0 si no hay comision o la propuesta no esta aceptada). */
+  importe: number;
+}
+
+export interface ResumenColaborador {
+  nombre: string;
+  /** El de su pagina /c/[slug], si la tiene. */
+  slug: string | null;
+  visitas: number;
+  visitas30: number;
+  contactos: number;
+  firmados: number;
+  setupFirmado: number;
+  debido: number;
+  saldado: number;
+  lineas: LineaColaborador[];
+}
+
+const normal = (s: string) => s.normalize('NFC').trim().toLowerCase();
+
+/**
+ * Un resumen por colaborador: los que tienen pagina (aunque no hayan traido a nadie) y cualquier otro nombre que salga
+ * en un contacto. El colaborador del contacto se compara sin mayusculas ni espacios de mas.
+ */
+export function resumenColaboradores(
+  conPagina: { slug: string; nombre: string }[],
+  contactos: Contacto[],
+  propuestas: PropuestaPanel[],
+  visitas: Record<string, { total: number; ultimos30: number }>,
+): ResumenColaborador[] {
+  const por = new Map<string, ResumenColaborador>();
+  const nuevo = (nombre: string, slug: string | null): ResumenColaborador => ({
+    nombre, slug, visitas: slug ? visitas[slug]?.total ?? 0 : 0, visitas30: slug ? visitas[slug]?.ultimos30 ?? 0 : 0,
+    contactos: 0, firmados: 0, setupFirmado: 0, debido: 0, saldado: 0, lineas: [],
+  });
+  for (const c of conPagina) por.set(normal(c.nombre), nuevo(c.nombre, c.slug));
+  for (const c of contactos) {
+    if (!c.colaborador) continue;
+    const k = normal(c.colaborador);
+    if (!por.has(k)) por.set(k, nuevo(c.colaborador.trim(), null));
+    const r = por.get(k) as ResumenColaborador;
+    const p = c.propuesta ? propuestas.find((x) => x.referencia === c.propuesta) ?? null : null;
+    const importe = comisionDe(c, p ?? undefined);
+    r.contactos += 1;
+    if (p?.estado === 'aceptada') {
+      r.firmados += 1;
+      r.setupFirmado += p.setup_centimos;
+    }
+    r.debido += importe;
+    if (c.comision_saldada) r.saldado += importe;
+    r.lineas.push({ contacto: c, propuesta: p, importe });
+  }
+  return [...por.values()].sort((a, b) => b.debido - a.debido || b.contactos - a.contactos || a.nombre.localeCompare(b.nombre));
+}
+
+/** Del formulario de «Saldado el…» a lo que se guarda, o el mensaje del fallo. */
+export function validarSaldo(form: Record<string, unknown>):
+  | string
+  | { fecha: string; forma: FormaPago; valor_centimos: number | null; nota: string | null } {
+  const t = (k: string) => (typeof form[k] === 'string' ? (form[k] as string).trim() : '');
+  const fecha = t('fecha');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha) || Number.isNaN(Date.parse(fecha))) return 'Fecha no válida';
+  const forma = t('forma');
+  if (!(FORMAS_PAGO as readonly string[]).includes(forma)) return 'Forma de pago no válida';
+  const nota = t('nota') || null;
+  if (nota && nota.length > 500) return 'La nota es demasiado larga (máximo 500)';
+  let valor_centimos: number | null = null;
+  if (forma !== 'transferencia') {
+    const v = t('valor').replace(/\s|€/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.');
+    const n = Number(v);
+    if (!v || !Number.isFinite(n) || n < 0) return 'Con un canje o un descuento, pon lo que acordasteis que vale, en euros';
+    valor_centimos = Math.round(n * 100);
+  }
+  return { fecha, forma: forma as FormaPago, valor_centimos, nota };
 }

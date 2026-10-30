@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'bun:test';
 import {
-  caducados, diaDeBorrado, estadoAcuse, hoyEnMadrid, plegarHitos, resumenHoy, sumarMeses, validarContacto, type Contacto, type PropuestaPanel,
+  caducados, comisionDe, diaDeBorrado, estadoAcuse, hoyEnMadrid, plegarHitos, resumenColaboradores, resumenHoy, sumarMeses, validarContacto,
+  validarSaldo, type Contacto, type PropuestaPanel,
 } from './resumen';
 
 const AHORA = new Date('2026-10-30T22:30:00Z'); // 23:30 en Lloret, todavia dia 30
@@ -9,14 +10,15 @@ function propuesta(p: Partial<PropuestaPanel>): PropuestaPanel {
   return {
     referencia: 'P-2026-001', version: 1, estado: 'vigente', negocio: 'Negocio', cliente: 'Cliente',
     creada: '2026-10-01T10:00:00Z', vence: '2026-11-30T23:00:00Z', venceDia: '2026-11-30', aceptada: null,
-    aceptante: null, acuse: null, hitos: [], aperturas: null, contacto: null, ...p,
+    aceptante: null, acuse: null, hitos: [], setup_centimos: 0, aperturas: null, contacto: null, ...p,
   };
 }
 
 function contacto(c: Partial<Contacto>): Contacto {
   return {
     id: 1, negocio: 'Bar', persona: null, telefono: null, correo: null, origen: null, estado: 'en_conversacion',
-    siguiente_accion: null, fecha: null, notas: null, propuesta: null, colaborador: null, actualizado: '2026-10-30T10:00:00Z', ...c,
+    siguiente_accion: null, fecha: null, notas: null, propuesta: null, colaborador: null, comision: 'ninguna',
+    comision_saldada: null, comision_forma: null, comision_valor_centimos: null, comision_nota: null, actualizado: '2026-10-30T10:00:00Z', ...c,
   };
 }
 
@@ -161,5 +163,52 @@ describe('borrado a los 12 meses (politica, apartado 8)', () => {
       AHORA,
     );
     expect(r.seBorran.map((x) => [x.contacto.id, x.dia])).toEqual([[3, '2026-11-05'], [1, '2026-11-29']]);
+  });
+});
+
+describe('colaboradores y comision (fase 2)', () => {
+  const firmada = propuesta({ referencia: 'P-2026-002', estado: 'aceptada', setup_centimos: 150000 });
+  const vigente = propuesta({ referencia: 'P-2026-003', estado: 'vigente', setup_centimos: 90000 });
+
+  test('10 % o 20 % del setup, solo con la propuesta aceptada', () => {
+    expect(comisionDe(contacto({ colaborador: 'Betty', comision: 'puente' }), firmada)).toBe(15000);
+    expect(comisionDe(contacto({ colaborador: 'Betty', comision: 'acompana' }), firmada)).toBe(30000);
+    expect(comisionDe(contacto({ colaborador: 'Gis', comision: 'ninguna' }), firmada)).toBe(0);
+    expect(comisionDe(contacto({ colaborador: 'Betty', comision: 'puente' }), vigente)).toBe(0);
+    expect(comisionDe(contacto({ colaborador: 'Betty', comision: 'puente' }), undefined)).toBe(0);
+  });
+
+  test('resumen: los que tienen pagina aunque no traigan a nadie, el nombre sin mayusculas, y lo saldado aparte', () => {
+    const r = resumenColaboradores(
+      [{ slug: 'gis', nombre: 'Gis' }],
+      [
+        contacto({ id: 1, colaborador: 'betty ', comision: 'puente', propuesta: 'P-2026-002', comision_saldada: '2026-11-10' }),
+        contacto({ id: 2, colaborador: 'Betty', comision: 'acompana', propuesta: 'P-2026-003' }),
+        contacto({ id: 3, colaborador: null }),
+      ],
+      [firmada, vigente],
+      { gis: { total: 12, ultimos30: 4 } },
+    );
+    expect(r.map((x) => [x.nombre, x.slug, x.contactos, x.firmados, x.setupFirmado, x.debido, x.saldado, x.visitas30])).toEqual([
+      ['betty', null, 2, 1, 150000, 15000, 15000, 0],
+      ['Gis', 'gis', 0, 0, 0, 0, 0, 4],
+    ]);
+  });
+
+  test('la comision necesita colaborador; por defecto, sin comision', () => {
+    expect(validarContacto({ negocio: 'x', comision: 'puente' })).toBe('La comisión necesita un colaborador');
+    expect(validarContacto({ negocio: 'x', colaborador: 'Betty', comision: 'mucha' })).toBe('Comisión no válida');
+    expect(validarContacto({ negocio: 'x' })).toMatchObject({ comision: 'ninguna' });
+  });
+
+  test('saldar: con canje o descuento hace falta el valor acordado en euros', () => {
+    expect(validarSaldo({ fecha: '2026-11-10', forma: 'transferencia' })).toEqual({ fecha: '2026-11-10', forma: 'transferencia', valor_centimos: null, nota: null });
+    expect(validarSaldo({ fecha: '2026-11-10', forma: 'canje', valor: '' })).toContain('acordasteis');
+    expect(validarSaldo({ fecha: '2026-11-10', forma: 'canje', valor: '1.250,50 €', nota: '3 meses' })).toEqual({
+      fecha: '2026-11-10', forma: 'canje', valor_centimos: 125050, nota: '3 meses',
+    });
+    expect(validarSaldo({ fecha: '2026-11-10', forma: 'descuento', valor: '300' })).toMatchObject({ valor_centimos: 30000 });
+    expect(validarSaldo({ fecha: 'ayer', forma: 'canje', valor: '1' })).toBe('Fecha no válida');
+    expect(validarSaldo({ fecha: '2026-11-10', forma: 'bizum' })).toBe('Forma de pago no válida');
   });
 });

@@ -4,8 +4,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { exigirSesion } from '@/lib/panel/acceso';
-import { actualizarContacto, apuntarCobro, crearContacto, guardarAcceso, leerAcceso, marcarHito } from '@/lib/panel/datos';
-import { validarContacto } from '@/lib/panel/resumen';
+import { actualizarContacto, apuntarCobro, crearContacto, guardarAcceso, leerAcceso, marcarHito, saldarComision } from '@/lib/panel/datos';
+import { validarContacto, validarSaldo } from '@/lib/panel/resumen';
 import { bloqueado, claveValida, COOKIE, nuevaSesion, tras } from '@/lib/panel/sesion';
 
 export interface Estado {
@@ -81,4 +81,20 @@ export async function cambiarCobro(_: Estado, form: FormData): Promise<Estado> {
   const r = await apuntarCobro(ref, n, fecha);
   revalidatePath('/panel', 'layout');
   return r.ok ? { ok: true, mensaje: r.texto } : { mensaje: r.error };
+}
+
+/** «Saldado el…» de la comision de un contacto (fase 2), con deshacer. Solo lo ve Ruben; es un apunte, no una factura. */
+export async function cambiarSaldo(_: Estado, form: FormData): Promise<Estado> {
+  await exigirSesion();
+  const id = Number(form.get('id'));
+  if (form.get('deshacer') === '1') {
+    if (!(await saldarComision(id, null))) return { mensaje: 'Ese contacto ya no existe.' };
+    revalidatePath('/panel', 'layout');
+    return { ok: true, mensaje: 'Pago deshecho.' };
+  }
+  const saldo = validarSaldo(Object.fromEntries(form));
+  if (typeof saldo === 'string') return { mensaje: saldo };
+  if (!(await saldarComision(id, saldo))) return { mensaje: 'Ese contacto ya no existe o no tiene comisión.' };
+  revalidatePath('/panel', 'layout');
+  return { ok: true, mensaje: 'Pago apuntado.' };
 }

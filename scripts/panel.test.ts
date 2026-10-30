@@ -12,8 +12,10 @@ import { CONDICIONES, huellaCondiciones } from '../src/lib/propuestas/condicione
 import { leerPropuesta } from '../src/lib/propuestas/leer';
 import {
   actualizarContacto, apuntarCobro, borrarCaducados, crearContacto, guardarAcceso, leerAcceso, leerContacto, leerContactos, leerPropuestas,
-  marcarHito, registrarApertura,
+  marcarHito, registrarApertura, saldarComision, visitasColaboradores,
 } from '../src/lib/panel/datos';
+import { leerEstadisticas } from '../src/lib/panel/estadisticas';
+import { guardarVisita, validarVisita } from '../src/lib/estadisticas/visita';
 import { validarContacto, type CamposContacto } from '../src/lib/panel/resumen';
 import ejemplo from './propuesta.ejemplo.json';
 import { conectar, crear, migrar, urlDeConexion, type Publicada } from './propuesta';
@@ -35,12 +37,13 @@ describe.skipIf(!hayBase)(`panel contra la base ${BASE}`, () => {
     db = await conectar(url);
     const { rows } = await db.query('SELECT current_database() AS b');
     if (rows[0].b !== BASE) throw new Error(`Conectado a ${rows[0].b}, no a ${BASE}: no se borra nada`);
-    await db.query('DROP TABLE IF EXISTS aceptacion_identidad, aceptacion, evento, propuesta_version, contacto, propuesta_apertura, panel_acceso CASCADE');
+    await db.query('DROP TABLE IF EXISTS aceptacion_identidad, aceptacion, evento, propuesta_version, contacto, propuesta_apertura, panel_acceso, visita, demo_evento CASCADE');
     const panel = readFileSync(join(import.meta.dir, '..', 'db', 'panel.sql'), 'utf8');
     await migrar(db);
     await db.query(panel);
     await migrar(db); // idempotentes, y en cualquier orden: la de propuestas no tumba los tipos de cobro
     await db.query(panel);
+    await db.query(readFileSync(join(import.meta.dir, '..', 'db', 'demo.sql'), 'utf8'));
     sql = neon(url);
 
     aceptada = await crear(db, ejemplo, { fecha: '2099-01-01' });
@@ -147,6 +150,59 @@ describe.skipIf(!hayBase)(`panel contra la base ${BASE}`, () => {
     expect(quedan).toEqual(expect.arrayContaining(['Viejo ganado', 'Viejo con paso', 'Reciente']));
     expect(quedan).not.toContain('Viejo');
     expect(await borrarCaducados(new Date(), sql)).toEqual([]);
+  });
+
+  test('visitas: se guardan las que pasan la validacion, y la base rechaza lo que no tiene forma', async () => {
+    const url = process.env.DATABASE_URL as string;
+    const movil = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Mobile/15E148 Safari/604.1';
+    const v = (c: object) => validarVisita(c, movil, 'ES');
+    await guardarVisita(url, v({ ruta: '/es', primera: true, referente: 'https://www.google.com/', origen: 'bio' })!);
+    await guardarVisita(url, v({ ruta: '/es/demo', primera: false })!);
+    await guardarVisita(url, v({ ruta: '/ca/c/gis', primera: true, referente: '' })!);
+    await guardarVisita(url, v({ ruta: '/ca/c/gis/tarjeta', primera: false })!);
+    await db.query(`INSERT INTO demo_evento (paso, lng) VALUES ('abrir', 'es'), ('panel', 'es'), ('reservar', 'es')`);
+    for (const malo of [
+      `INSERT INTO visita (ruta, entrada, dispositivo) VALUES ('/panel', true, 'movil')`,
+      `INSERT INTO visita (ruta, entrada, origen, dispositivo) VALUES ('/es', true, 'Bar Pepe', 'movil')`,
+      `INSERT INTO visita (ruta, entrada, dominio, dispositivo) VALUES ('/es', true, 'https://google.com/search?q=x', 'movil')`,
+      `INSERT INTO visita (ruta, entrada, dispositivo) VALUES ('/es', true, 'Mozilla/5.0')`,
+    ]) {
+      expect(db.query(malo)).rejects.toThrow();
+    }
+
+    const e = await leerEstadisticas('7', new Date(), sql);
+    expect(e.totales).toEqual({ visitas: 2, vistas: 4, reservas: 1 });
+    expect(e.totalesAntes).toEqual({ visitas: 0, vistas: 0, reservas: 0 });
+    expect(e.serie).toHaveLength(7);
+    expect(e.serie.at(-1)?.n).toBe(2);
+    expect(e.ahora).toEqual({ visitas: 2, vistas: 4 });
+    expect(e.fuentes).toEqual([{ clave: 'google.com', n: 1 }, { clave: 'Directo', n: 1 }]);
+    expect(e.campanas).toEqual([{ clave: 'bio', n: 1 }]);
+    expect(e.paises).toEqual([{ clave: 'ES', n: 2 }]);
+    expect(e.dispositivos).toEqual([{ clave: 'movil', n: 2 }]);
+    expect(e.paginas).toHaveLength(4);
+    expect(e.embudo).toEqual({ abrir: 1, panel: 1, reservar: 1 });
+    // La pagina del colaborador cuenta; su tarjeta, no
+    expect(await visitasColaboradores(sql)).toEqual({ gis: { total: 1, ultimos30: 1 } });
+  });
+
+  test('comision: se guarda con el contacto, se salda con canje y valor, se deshace, y saldar no reinicia el plazo de borrado', async () => {
+    const campos = validarContacto({ negocio: 'Bar Comision', colaborador: 'Betty', comision: 'puente', propuesta: aceptada.referencia }) as CamposContacto;
+    const id = await crearContacto(campos, sql);
+    const antes = (await leerContacto(id, sql))!;
+    expect(antes.comision).toBe('puente');
+    const [p] = await leerPropuestas(aceptada.referencia, sql);
+    expect(p.setup_centimos).toBeGreaterThan(0);
+    expect(await saldarComision(id, { fecha: '2026-11-10', forma: 'canje', valor_centimos: 30000, nota: '3 meses' }, sql)).toBe(true);
+    const saldado = (await leerContacto(id, sql))!;
+    expect(saldado).toMatchObject({ comision_saldada: '2026-11-10', comision_forma: 'canje', comision_valor_centimos: 30000, comision_nota: '3 meses' });
+    expect(saldado.actualizado).toBe(antes.actualizado);
+    expect(await saldarComision(id, null, sql)).toBe(true);
+    expect(await leerContacto(id, sql)).toMatchObject({ comision_saldada: null, comision_forma: null, comision_valor_centimos: null });
+    // Sin comision no se puede saldar
+    const sin = await crearContacto(validarContacto({ negocio: 'Bar Sin' }) as CamposContacto, sql);
+    expect(await saldarComision(sin, { fecha: '2026-11-10', forma: 'transferencia', valor_centimos: null, nota: null }, sql)).toBe(false);
+    expect(db.query(`UPDATE contacto SET comision_forma = 'bizum' WHERE id = $1`, [id])).rejects.toThrow();
   });
 
   test('la base rechaza un estado de contacto fuera de la lista', async () => {

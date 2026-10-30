@@ -7,6 +7,8 @@ const SECCIONES = [
   { href: '/panel', texto: 'Hoy' },
   { href: '/panel/contactos', texto: 'Contactos' },
   { href: '/panel/propuestas', texto: 'Propuestas' },
+  { href: '/panel/colaboradores', texto: 'Colaboradores' },
+  { href: '/panel/estadisticas', texto: 'Estadísticas' },
 ];
 
 export default function Nav() {

@@ -86,6 +86,7 @@ export function componerPropuesta(f: FilaPropuesta, eventos: FilaEvento[], enlac
       cumplido: cumplidos[i + 1] ?? null,
       cobrado: cobrados[i + 1] ?? null,
     })),
+    setup_centimos: f.snapshot.precio.conceptos.filter((c) => c.periodicidad === 'unico').reduce((t, c) => t + c.importe_centimos, 0),
     aperturas: f.primera && f.ultima && f.veces ? { primera: iso(f.primera), ultima: iso(f.ultima), veces: f.veces } : null,
     contacto: enlace ? { id: Number(enlace.id), negocio: enlace.negocio, colaborador: enlace.colaborador } : null,
   };
@@ -191,7 +192,8 @@ const deFila = (f: FilaContacto): Contacto => ({ ...f, id: Number(f.id), actuali
 export async function leerContactos(incluirCerrados = false, sql: Sql = conexion()): Promise<Contacto[]> {
   const filas = (await sql`
     SELECT id, negocio, persona, telefono, correo, origen, estado, siguiente_accion, to_char(fecha, 'YYYY-MM-DD') AS fecha,
-           notas, propuesta, colaborador, actualizado
+           notas, propuesta, colaborador, comision, to_char(comision_saldada, 'YYYY-MM-DD') AS comision_saldada, comision_forma,
+           comision_valor_centimos, comision_nota, actualizado
       FROM contacto
      WHERE ${incluirCerrados} OR estado NOT IN ('ganado', 'perdido')
      ORDER BY fecha ASC NULLS LAST, actualizado DESC`) as FilaContacto[];
@@ -202,16 +204,18 @@ export async function leerContacto(id: number, sql: Sql = conexion()): Promise<C
   if (!Number.isSafeInteger(id) || id < 1) return null;
   const filas = (await sql`
     SELECT id, negocio, persona, telefono, correo, origen, estado, siguiente_accion, to_char(fecha, 'YYYY-MM-DD') AS fecha,
-           notas, propuesta, colaborador, actualizado
+           notas, propuesta, colaborador, comision, to_char(comision_saldada, 'YYYY-MM-DD') AS comision_saldada, comision_forma,
+           comision_valor_centimos, comision_nota, actualizado
       FROM contacto WHERE id = ${id}`) as FilaContacto[];
   return filas.length ? deFila(filas[0]) : null;
 }
 
 export async function crearContacto(c: CamposContacto, sql: Sql = conexion()): Promise<number> {
   const filas = (await sql`
-    INSERT INTO contacto (negocio, persona, telefono, correo, origen, estado, siguiente_accion, fecha, notas, propuesta, colaborador)
+    INSERT INTO contacto (negocio, persona, telefono, correo, origen, estado, siguiente_accion, fecha, notas, propuesta, colaborador,
+                          comision)
     VALUES (${c.negocio}, ${c.persona}, ${c.telefono}, ${c.correo}, ${c.origen}, ${c.estado}, ${c.siguiente_accion},
-            ${c.fecha}::date, ${c.notas}, ${c.propuesta}, ${c.colaborador})
+            ${c.fecha}::date, ${c.notas}, ${c.propuesta}, ${c.colaborador}, ${c.comision})
     RETURNING id`) as { id: number }[];
   return Number(filas[0].id);
 }
@@ -220,14 +224,15 @@ export async function actualizarContacto(id: number, c: CamposContacto, sql: Sql
   const filas = (await sql`
     UPDATE contacto SET negocio = ${c.negocio}, persona = ${c.persona}, telefono = ${c.telefono}, correo = ${c.correo},
            origen = ${c.origen}, estado = ${c.estado}, siguiente_accion = ${c.siguiente_accion}, fecha = ${c.fecha}::date,
-           notas = ${c.notas}, propuesta = ${c.propuesta}, colaborador = ${c.colaborador}, actualizado = now()
+           notas = ${c.notas}, propuesta = ${c.propuesta}, colaborador = ${c.colaborador}, comision = ${c.comision},
+           actualizado = now()
      WHERE id = ${id} RETURNING id`) as { id: number }[];
   return filas.length > 0;
 }
 
 /**
  * Borra los contactos que han llegado a su dia de borrado (politica, apartado 8) y devuelve sus negocios para
- * ensenarlos una vez en «Hoy». No queda copia de lo borrado en ningun sitio, ni de los nombres (Ruben, 31/10).
+ * ensenarlos una vez en «Hoy». No queda copia de lo borrado en ningun sitio, ni de los nombres (Ruben, 30/10).
  * La regla esta en `caducados`; el `actualizado` de la condicion (a milisegundos, como sale de
  * `leerContactos`) evita borrar uno que se haya guardado entre medias.
  */
@@ -241,6 +246,36 @@ export async function borrarCaducados(ahora = new Date(), sql: Sql = conexion())
      WHERE c.id = v.id AND date_trunc('milliseconds', c.actualizado) = v.actualizado AND c.estado <> 'ganado'
     RETURNING c.negocio`) as { negocio: string }[];
   return filas.map((f) => f.negocio);
+}
+
+/**
+ * «Saldado el…» de la comision de un contacto, o deshacerlo con null. No toca `actualizado`: apuntar un pago no es
+ * hablar con el contacto, y no debe reiniciar el plazo de borrado.
+ */
+export async function saldarComision(
+  id: number,
+  saldo: { fecha: string; forma: string; valor_centimos: number | null; nota: string | null } | null,
+  sql: Sql = conexion(),
+): Promise<boolean> {
+  if (!Number.isSafeInteger(id) || id < 1) return false;
+  const filas = (saldo
+    ? await sql`
+        UPDATE contacto SET comision_saldada = ${saldo.fecha}::date, comision_forma = ${saldo.forma},
+               comision_valor_centimos = ${saldo.valor_centimos}, comision_nota = ${saldo.nota}
+         WHERE id = ${id} AND comision <> 'ninguna' RETURNING id`
+    : await sql`
+        UPDATE contacto SET comision_saldada = NULL, comision_forma = NULL, comision_valor_centimos = NULL, comision_nota = NULL
+         WHERE id = ${id} RETURNING id`) as { id: number }[];
+  return filas.length > 0;
+}
+
+/** Visitas a la pagina de cada colaborador (/[lng]/c/[slug]; la tarjeta no cuenta): todas y las de los ultimos 30 dias. */
+export async function visitasColaboradores(sql: Sql = conexion()): Promise<Record<string, { total: number; ultimos30: number }>> {
+  const filas = (await sql`
+    SELECT substring(ruta from '^/(?:es|ca|en)/c/([a-z0-9-]+)$') AS slug, count(*)::int AS total,
+           count(*) FILTER (WHERE creado > now() - interval '30 days')::int AS ultimos30
+      FROM visita WHERE ruta ~ '^/(es|ca|en)/c/[a-z0-9-]+$' GROUP BY 1`) as { slug: string; total: number; ultimos30: number }[];
+  return Object.fromEntries(filas.map((f) => [f.slug, { total: f.total, ultimos30: f.ultimos30 }]));
 }
 
 // ——— Entrada ———
