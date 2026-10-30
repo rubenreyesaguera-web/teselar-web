@@ -1,7 +1,7 @@
 'use client';
 // «Saldado el…» de la comision de un contacto (fase 2, decision 2): fecha, forma de pago, valor acordado si no es dinero
 // (LIVA art. 79.Uno) y una nota. Con deshacer. Solo lo ve Ruben; es un apunte, no una factura.
-import { useActionState, useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { cambiarSaldo, type Estado } from '@/app/panel/acciones';
 import { dia } from '@/lib/panel/formato';
 import { FORMAS_PAGO, NOMBRE_FORMA, type Contacto, type FormaPago } from '@/lib/panel/resumen';
@@ -10,6 +10,9 @@ import { euros } from '@/lib/propuestas/formato';
 export default function ControlesSaldo({ c, hoy }: { c: Contacto; hoy: string }) {
   const [estado, accion, enviando] = useActionState<Estado, FormData>(cambiarSaldo, {});
   const [forma, setForma] = useState<FormaPago>('transferencia');
+  // Al apuntar o deshacer, el formulario se vacia (React) o se cambia por otro: la forma vuelve a la de por defecto con el,
+  // para que el selector y el campo del valor no se desacompasen.
+  useEffect(() => setForma('transferencia'), [c.comision_saldada]);
   const mensaje = estado.mensaje ? (
     <p className={`mensaje ${estado.ok ? 'ok' : 'error'}`} role="status">
       {estado.mensaje}
@@ -40,7 +43,7 @@ export default function ControlesSaldo({ c, hoy }: { c: Contacto; hoy: string })
 
   return (
     <>
-      <form action={accion} className="saldo">
+      <form action={accion} className="saldo" onReset={() => setForma('transferencia')}>
         <input type="hidden" name="id" value={c.id} />
         <label className="campo">
           <span className="sub">Saldado el</span>

@@ -180,10 +180,10 @@ h3 {
 
 @media (max-width: 560px) {
   .nav {
-    margin-left: 0;
-    width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
+    margin-left: -10px;
+    width: calc(100% + 10px);
+    flex-wrap: wrap;
+    gap: 0 2px;
   }
 
   .nav a,
@@ -558,6 +558,11 @@ input[type='date'] {
 }
 
 /* ---------- Fase 2: estadisticas y colaboradores ---------- */
+.encabezado {
+  display: grid;
+  gap: 8px;
+}
+
 .rangos {
   display: flex;
   gap: 2px;
@@ -777,6 +782,10 @@ input[type='date'] {
   gap: 24px 16px;
 }
 
+.rejilla-tablas > .bloque {
+  align-content: start;
+}
+
 .tabla {
   background: var(--papel);
   border: 1px solid var(--linea);
@@ -842,7 +851,7 @@ input[type='date'] {
 
 .cifras dd {
   margin: 0;
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -877,4 +886,14 @@ input[type='date'] {
 
 .saldo .campo {
   gap: 2px;
+}
+
+/* La lista de contactos de cada colaborador va dentro de su ficha: sin caja propia, solo separadores. */
+.ficha .lista {
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--linea);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 -16px -16px;
 }

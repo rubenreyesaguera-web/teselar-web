@@ -35,8 +35,9 @@ function Tarjeta({ titulo, valor, antes }: { titulo: string; valor: number; ante
   );
 }
 
-function Tabla({ titulo, columna, filas, nombre = (k) => k, vacio }: {
+function Tabla({ titulo, clave, columna, filas, nombre = (k) => k, vacio }: {
   titulo: string;
+  clave: string;
   columna: string;
   filas: Fila[];
   nombre?: (k: string) => string;
@@ -50,7 +51,7 @@ function Tabla({ titulo, columna, filas, nombre = (k) => k, vacio }: {
         <table className="tabla">
           <thead>
             <tr>
-              <th scope="col">{titulo}</th>
+              <th scope="col">{clave}</th>
               <th scope="col">{columna}</th>
             </tr>
           </thead>
@@ -83,21 +84,23 @@ export default async function Estadisticas({ searchParams }: { searchParams: Pro
   const pct = (n: number) => (abrir ? `${Math.round((n / abrir) * 100)} %` : '—');
   return (
     <>
-      <div className="cabeza">
-        <h1>Estadísticas</h1>
-        <nav className="rangos" aria-label="Periodo">
-          {RANGOS.map((x) => (
-            <Link key={x} href={`/panel/estadisticas?rango=${x}`} aria-current={x === rango ? 'page' : undefined}>
-              {NOMBRE_RANGO[x]}
-            </Link>
-          ))}
-        </nav>
+      <div className="encabezado">
+        <div className="cabeza">
+          <h1>Estadísticas</h1>
+          <nav className="rangos" aria-label="Periodo">
+            {RANGOS.map((x) => (
+              <Link key={x} href={`/panel/estadisticas?rango=${x}`} aria-current={x === rango ? 'page' : undefined}>
+                {NOMBRE_RANGO[x]}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <p className="sub">
+          Del {dia(e.periodo.desde)} al {dia(e.periodo.hasta)}
+          {e.periodo.anterior && `, frente al ${dia(e.periodo.anterior.desde)}–${dia(e.periodo.anterior.hasta)}`}. Son visitas, no
+          personas: sin cookies no se reconoce a nadie.
+        </p>
       </div>
-      <p className="sub">
-        Del {dia(e.periodo.desde)} al {dia(e.periodo.hasta)}
-        {e.periodo.anterior && `, frente al ${dia(e.periodo.anterior.desde)}–${dia(e.periodo.anterior.hasta)}`}. Son visitas, no
-        personas: sin cookies no se reconoce a nadie.
-      </p>
 
       <div className="tarjetas">
         <Tarjeta titulo="Visitas" valor={e.totales.visitas} antes={antes?.visitas ?? null} />
@@ -115,17 +118,19 @@ export default async function Estadisticas({ searchParams }: { searchParams: Pro
       <GraficoVisitas serie={e.serie} antes={e.serieAntes} />
 
       <div className="rejilla-tablas">
-        <Tabla titulo="Páginas" columna="Vistas" filas={e.paginas} vacio="Aún no hay páginas vistas en este periodo." />
-        <Tabla titulo="Fuentes" columna="Visitas" filas={e.fuentes} vacio="Aún no hay visitas en este periodo." />
+        <Tabla titulo="Páginas" clave="Ruta" columna="Vistas" filas={e.paginas} vacio="Aún no hay páginas vistas en este periodo." />
+        <Tabla titulo="Fuentes" clave="Web de origen" columna="Visitas" filas={e.fuentes} vacio="Aún no hay visitas en este periodo." />
         <Tabla
           titulo="Campañas"
+          clave="Etiqueta ?origen="
           columna="Visitas"
           filas={e.campanas}
           vacio="Ninguna visita con etiqueta. Se etiqueta un enlace añadiendo ?origen=bio (o qr, betty…)."
         />
-        <Tabla titulo="Países" columna="Visitas" filas={e.paises} nombre={pais} vacio="Aún no hay visitas en este periodo." />
+        <Tabla titulo="Países" clave="País" columna="Visitas" filas={e.paises} nombre={pais} vacio="Aún no hay visitas en este periodo." />
         <Tabla
           titulo="Dispositivos"
+          clave="Tipo"
           columna="Visitas"
           filas={e.dispositivos}
           nombre={(k) => NOMBRE_DISPOSITIVO[k] ?? k}

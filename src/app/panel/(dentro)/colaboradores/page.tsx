@@ -78,6 +78,8 @@ export default async function Colaboradores() {
                             {' · '}
                             <Link href={`/panel/propuestas/${p.referencia}`}>{p.referencia}</Link> <EtiquetaPropuesta p={p} />
                           </>
+                        ) : c.propuesta ? (
+                          ` · ${c.propuesta} (no está en la base)`
                         ) : (
                           ' · sin propuesta'
                         )}

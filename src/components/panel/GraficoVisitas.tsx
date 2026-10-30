@@ -3,14 +3,14 @@
 // el raton, una guia vertical y el dato del dia y del dia equivalente del periodo anterior. Colores validados con el
 // script de la skill dataviz: el actual es el acento de marca y el anterior un gris de menos peso (rebajado a proposito;
 // en claro no llega a 3:1, por eso la linea es discontinua y la tabla de abajo da las cifras).
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 interface Punto {
   dia: string;
   n: number;
 }
 
-const ANCHO = 640;
+// Se dibuja al ancho real de la caja (no se escala): asi los rotulos miden lo mismo en el movil que en el escritorio.
 const ALTO = 200;
 const M = { arriba: 12, derecha: 12, abajo: 28, izquierda: 32 };
 const DIA = new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'short', timeZone: 'UTC' });
@@ -25,7 +25,18 @@ function marcas(max: number): number[] {
 
 export default function GraficoVisitas({ serie, antes }: { serie: Punto[]; antes: Punto[] | null }) {
   const [activo, setActivo] = useState<number | null>(null);
+  const [ANCHO, setAncho] = useState(640);
   const svg = useRef<SVGSVGElement>(null);
+  const lienzo = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = lienzo.current;
+    if (!el) return;
+    const medir = () => setAncho(Math.max(280, Math.round(el.clientWidth)));
+    medir();
+    const ro = new ResizeObserver(medir);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   const id = useId();
   const ejes = marcas(Math.max(1, ...serie.map((p) => p.n), ...(antes ?? []).map((p) => p.n)));
   const tope = ejes[ejes.length - 1];
@@ -34,7 +45,7 @@ export default function GraficoVisitas({ serie, antes }: { serie: Punto[]; antes
   const x = (i: number) => M.izquierda + (serie.length <= 1 ? w / 2 : (i * w) / (serie.length - 1));
   const y = (n: number) => M.arriba + h - (n / tope) * h;
   const linea = (pts: Punto[]) => pts.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.n).toFixed(1)}`).join('');
-  const cada = Math.max(1, Math.ceil(serie.length / 6));
+  const cada = Math.max(1, Math.ceil(serie.length / Math.max(2, Math.floor(ANCHO / 110))));
 
   function mover(clientX: number) {
     const r = svg.current?.getBoundingClientRect();
@@ -60,7 +71,7 @@ export default function GraficoVisitas({ serie, antes }: { serie: Punto[]; antes
           )}
         </span>
       </figcaption>
-      <div className="grafico-lienzo">
+      <div className="grafico-lienzo" ref={lienzo}>
         <svg
           ref={svg}
           viewBox={`0 0 ${ANCHO} ${ALTO}`}
@@ -79,7 +90,7 @@ export default function GraficoVisitas({ serie, antes }: { serie: Punto[]; antes
             </g>
           ))}
           {serie.map((p, i) =>
-            i % cada === 0 || i === serie.length - 1 ? (
+            (i % cada === 0 && serie.length - 1 - i >= cada * 0.6) || i === serie.length - 1 ? (
               <text key={p.dia} className="eje" x={x(i)} y={ALTO - 8} textAnchor={i === 0 ? 'start' : i === serie.length - 1 ? 'end' : 'middle'}>
                 {fecha(p.dia)}
               </text>
