@@ -84,8 +84,19 @@ export function ProveedorAceptacion({
 
   useEffect(() => {
     const c = window.location.hash.slice(1);
-    setCapacidad(FORMA_CAPACIDAD.test(c) ? c : null);
-  }, []);
+    const valida = FORMA_CAPACIDAD.test(c);
+    setCapacidad(valida ? c : null);
+    // Apertura con el enlace del cliente (decision 4 del panel, 30/10): solo la referencia y la hora. Si falla, no
+    // pasa nada; el servidor no la cuenta si quien abre es Ruben con el panel abierto.
+    if (valida) {
+      fetch('/api/propuestas/apertura', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Propuesta-Capacidad': c },
+        body: JSON.stringify({ referencia: instantanea.referencia }),
+        keepalive: true,
+      }).catch(() => {});
+    }
+  }, [instantanea.referencia]);
 
   const abrir = useCallback(() => {
     if (estado !== 'vigente') return;
