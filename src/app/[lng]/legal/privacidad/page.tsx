@@ -28,9 +28,13 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Conservación de los Datos',
       sec4_text: 'Los datos personales se conservarán durante el tiempo estrictamente necesario para cumplir con la finalidad para la que fueron recabados, o hasta que el usuario ejerza su derecho de supresión u oposición, en cuyo caso serán bloqueados para la atención de posibles responsabilidades legales.',
       sec5_title: '5. Derechos del Usuario',
-      sec5_text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com.',
+      sec5_text: 'El usuario puede ejercitar en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición de sus datos de carácter personal dirigiéndose mediante correo electrónico al Responsable del Tratamiento: info@teselarsoftware.com. También puede presentar una reclamación ante la Agencia Española de Protección de Datos (aepd.es).',
       sec6_title: '6. Demo de gestión',
-      sec6_text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y solo llega a Teselar Software si reservas el diagnóstico, dentro de la reserva de Calendly. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
+      sec6_text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y solo llega a Teselar Software si reservas el diagnóstico, dentro de la reserva de Calendly. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.',
+      sec7_title: '7. Propuestas',
+      sec7_text: 'Si Teselar Software te envía una propuesta con tu enlace personal, al abrirla con ese enlace se apuntan la fecha y la hora de la primera y de la última vez que la abres y cuántas veces lo has hecho, para saber si te ha llegado y hacer el seguimiento. No se guarda tu IP ni tu navegador, y no se usan cookies. La base jurídica es el interés legítimo en hacer el seguimiento de una propuesta que has pedido (art. 6.1.f del RGPD). Se conserva mientras la propuesta esté abierta y, si la aceptas, lo que duren el contrato y sus obligaciones legales. Puedes oponerte escribiendo a info@teselarsoftware.com.',
+      sec8_title: '8. Contactos que no llegan por la web',
+      sec8_text: 'Si contactas con Teselar Software por WhatsApp, por teléfono o en persona, o si un colaborador nos pasa tus datos para que te contactemos, se guardan el nombre del negocio, el de la persona de contacto, el teléfono, el correo, cómo llegó el contacto y, si fue a través de un colaborador, de parte de quién, el estado de la conversación, la siguiente acción con su fecha y notas de lo hablado. Se usan solo para atender lo que pediste y hacer el seguimiento. La base jurídica es el interés legítimo en mantener el contacto con negocios y profesionales (art. 6.1.f del RGPD y art. 19 de la LOPDGDD). Si no se firma un contrato, se borran a los 12 meses del último contacto. Puedes ejercer tus derechos como se indica en el apartado 5 y reclamar ante la Agencia Española de Protección de Datos (aepd.es).',
     },
     ca: {
       title: 'Política de Privacitat',
@@ -43,9 +47,13 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Conservació de les Dades',
       sec4_text: 'Les dades personals es conservaran durant el temps estrictament necessari per complir amb la finalitat per a la qual van ser recollides, o fins que l\'usuari exerceixi el seu dret de supressió o oposició, cas en el qual seran bloquejades per a l\'atenció de possibles responsabilitats legals.',
       sec5_title: '5. Drets de l\'Usuari',
-      sec5_text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com.',
+      sec5_text: 'L\'usuari pot exercitar en qualsevol moment els seus drets d\'accés, rectificació, supressió, limitació del tractament, portabilitat i oposició de les seves dades de caràcter personal adreçant-se mitjançant correu electrònic al Responsable del Tractament: info@teselarsoftware.com. També pot presentar una reclamació davant l\'Agència Espanyola de Protecció de Dades (aepd.es).',
       sec6_title: '6. Demo de gestió',
-      sec6_text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i només arriba a Teselar Software si reserves el diagnòstic, dins de la reserva de Calendly. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
+      sec6_text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i només arriba a Teselar Software si reserves el diagnòstic, dins de la reserva de Calendly. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.',
+      sec7_title: '7. Propostes',
+      sec7_text: 'Si Teselar Software t’envia una proposta amb el teu enllaç personal, quan l’obres amb aquest enllaç s’apunten la data i l’hora de la primera i de l’última vegada que l’obres i quantes vegades ho has fet, per saber si t’ha arribat i fer-ne el seguiment. No es desa la teva IP ni el teu navegador, i no es fan servir galetes. La base jurídica és l’interès legítim a fer el seguiment d’una proposta que has demanat (art. 6.1.f del RGPD). Es conserva mentre la proposta estigui oberta i, si l’acceptes, el que durin el contracte i les seves obligacions legals. Pots oposar-t’hi escrivint a info@teselarsoftware.com.',
+      sec8_title: '8. Contactes que no arriben pel web',
+      sec8_text: 'Si contactes amb Teselar Software per WhatsApp, per telèfon o en persona, o si un col·laborador ens passa les teves dades perquè et contactem, es desen el nom del negoci, el de la persona de contacte, el telèfon, el correu, com va arribar el contacte i, si va ser a través d’un col·laborador, de part de qui, l’estat de la conversa, la següent acció amb la seva data i notes del que s’ha parlat. Només es fan servir per atendre el que vas demanar i fer-ne el seguiment. La base jurídica és l’interès legítim a mantenir el contacte amb negocis i professionals (art. 6.1.f del RGPD i art. 19 de la LOPDGDD). Si no se signa cap contracte, s’esborren als 12 mesos de l’últim contacte. Pots exercir els teus drets com s’indica a l’apartat 5 i reclamar davant l’Agència Espanyola de Protecció de Dades (aepd.es).',
     },
     en: {
       title: 'Privacy Policy',
@@ -58,9 +66,13 @@ export default function PrivacyPolicyPage({ params }: Props) {
       sec4_title: '4. Data Retention',
       sec4_text: 'Personal data will be kept for the time strictly necessary to fulfill the purpose for which they were collected, or until the user exercises their right of deletion or opposition, in which case they will be blocked to address potential legal liabilities.',
       sec5_title: '5. Rights of the User',
-      sec5_text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com.',
+      sec5_text: 'The user can exercise at any time their rights of access, rectification, deletion, limitation of processing, portability, and opposition of their personal data by contacting the Data Controller via email: info@teselarsoftware.com. They can also lodge a complaint with the Spanish Data Protection Agency (aepd.es).',
       sec6_title: '6. Management demo',
-      sec6_text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and only reaches Teselar Software if you book the diagnosis, inside the Calendly booking. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
+      sec6_text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and only reaches Teselar Software if you book the diagnosis, inside the Calendly booking. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.',
+      sec7_title: '7. Proposals',
+      sec7_text: 'If Teselar Software sends you a proposal with your personal link, opening it with that link records the date and time of the first and the last time you open it and how many times you have done so, to know it reached you and to follow up. Your IP address and browser are not stored, and no cookies are used. The legal basis is the legitimate interest in following up a proposal you asked for (Art. 6(1)(f) GDPR). It is kept while the proposal is open and, if you accept it, for as long as the contract and its legal obligations last. You can object by writing to info@teselarsoftware.com.',
+      sec8_title: '8. Contacts that do not come through the website',
+      sec8_text: 'If you contact Teselar Software by WhatsApp, by phone or in person, or if a partner passes us your details so that we can contact you, we keep the business name, the contact person’s name, the phone number, the email address, how the contact came in and, if it was through a partner, on whose behalf, the status of the conversation, the next step with its date and notes on what was discussed. They are used only to deal with what you asked for and to follow up. The legal basis is the legitimate interest in keeping in touch with businesses and professionals (Art. 6(1)(f) GDPR and Art. 19 of the Spanish LOPDGDD). If no contract is signed, they are deleted 12 months after the last contact. You can exercise your rights as set out in section 5 and lodge a complaint with the Spanish Data Protection Agency (aepd.es).',
     }
   };
 
@@ -110,6 +122,14 @@ export default function PrivacyPolicyPage({ params }: Props) {
             <div className="border-t border-claridad/10 pt-6">
               <h2 className="text-xl font-bold text-claridad mb-3">{t.sec6_title}</h2>
               <p>{t.sec6_text}</p>
+            </div>
+            <div className="border-t border-claridad/10 pt-6">
+              <h2 className="text-xl font-bold text-claridad mb-3">{t.sec7_title}</h2>
+              <p>{t.sec7_text}</p>
+            </div>
+            <div className="border-t border-claridad/10 pt-6">
+              <h2 className="text-xl font-bold text-claridad mb-3">{t.sec8_title}</h2>
+              <p>{t.sec8_text}</p>
             </div>
           </div>
         </div>

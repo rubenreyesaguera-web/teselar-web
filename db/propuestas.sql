@@ -104,7 +104,10 @@ ALTER TABLE evento DROP CONSTRAINT IF EXISTS evento_tipo_check;
 ALTER TABLE evento ADD CONSTRAINT evento_tipo_check CHECK (tipo IN (
   'creada', 'sustituida', 'invalidada', 'aceptada', 'aviso_fallido', 'error_aceptacion', 'hito_cumplido', 'hito_deshecho',
   -- 29/10 (ADR-117): el correo al cliente con el PDF, que es tambien el acuse de la LSSI (art. 28).
-  'acuse_enviado', 'acuse_fallido'));
+  'acuse_enviado', 'acuse_fallido',
+  -- 30/10: los cobros que apunta Ruben desde el panel (db/panel.sql). Aqui tambien, para que volver a pasar esta
+  -- migracion no tumbe los eventos que ya existan.
+  'cobro_apuntado', 'cobro_deshecho'));
 
 -- 1. La version: solo cambian `status` (hacia delante) e `intentos_fallidos`; no se borra.
 CREATE OR REPLACE FUNCTION propuesta_version_inmutable() RETURNS trigger

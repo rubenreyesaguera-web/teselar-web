@@ -5,21 +5,13 @@ import { after, NextResponse, type NextRequest } from 'next/server';
 import { aceptarPropuesta, registrarEvento } from '@/lib/propuestas/aceptar';
 import { enviarAcuse, enviarAviso, textoAceptacion, textoAcuse } from '@/lib/propuestas/aviso';
 import { leerPropuesta } from '@/lib/propuestas/leer';
+import { origenPermitido } from '@/lib/propuestas/origen';
 import { generarPdf } from '@/lib/propuestas/pdf';
 
 /** El domicilio completo del prestador va solo en el PDF de quien firma; vive en el entorno, no en el codigo. */
 const DOMICILIO = process.env.TESELAR_DOMICILIO ?? 'Lloret de Mar (Girona)';
 
 export const dynamic = 'force-dynamic';
-
-const ORIGENES = ['https://www.teselarsoftware.com', 'https://teselarsoftware.com'];
-
-/** Lista exacta; PROPUESTAS_ORIGENES (separados por comas) solo para probar en local o en una vista previa. */
-function origenPermitido(origen: string | null): boolean {
-  if (!origen || origen === 'null') return false;
-  const extra = (process.env.PROPUESTAS_ORIGENES ?? '').split(',').map((s) => s.trim()).filter(Boolean);
-  return [...ORIGENES, ...extra].includes(origen);
-}
 
 const noStore = { 'Cache-Control': 'no-store' };
 
