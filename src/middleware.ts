@@ -43,6 +43,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // El panel privado (/panel) no tiene idioma: es solo para Ruben y va en castellano.
+  if (pathname === '/panel' || pathname.startsWith('/panel/')) return NextResponse.next();
+
   // Check if pathname has a supported locale prefix
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`

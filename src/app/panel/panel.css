@@ -1,0 +1,542 @@
+/* Panel privado (07_Pendientes, punto 7). Herramienta de trabajo de Ruben, sobre todo desde el movil: el mismo mundo
+   que las propuestas (/p: tinta, azul de marca, acento verde agua, Space Grotesk) en modo «Operate» de Impeccable
+   (denso, familiar, sin decoracion). Claro u oscuro segun el movil, porque se mira a cualquier hora. */
+:root {
+  color-scheme: light dark;
+  --tinta: #0f2533;
+  --tinta-suave: #4a5d6a;
+  --marca: #083c58;
+  --marca-hover: #0b4d70;
+  --sobre-marca: #ffffff;
+  --acento: #00a58e;
+  --papel: #ffffff;
+  --fondo: #f4f7f9;
+  --linea: #dbe3e8;
+  --ok-fondo: #e6f7f3;
+  --ok-tinta: #0b5c4f;
+  --alerta-fondo: #fdf3e2;
+  --alerta-tinta: #7a4a06;
+  --error-fondo: #fdecec;
+  --error-tinta: #8a1c1c;
+  --sombra: 0 1px 2px rgba(8, 60, 88, 0.06), 0 6px 18px rgba(8, 60, 88, 0.07);
+  --radio: 10px;
+  --ancho: 1040px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tinta: #e4edf2;
+    --tinta-suave: #9fb2bf;
+    --marca: #7cc4e8;
+    --marca-hover: #a3d6ef;
+    --sobre-marca: #04202f;
+    --acento: #2ed3b7;
+    --papel: #0f1c25;
+    --fondo: #0a141b;
+    --linea: #22343f;
+    --ok-fondo: #0d3029;
+    --ok-tinta: #8ce6d2;
+    --alerta-fondo: #3a2a0c;
+    --alerta-tinta: #f5cf8a;
+    --error-fondo: #3b1414;
+    --error-tinta: #f6a9a9;
+    --sombra: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--fuente), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--acento);
+  color: var(--sobre-marca);
+}
+
+a {
+  color: var(--marca);
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+/* ---------- Barra ---------- */
+.barra {
+  background: var(--papel);
+  border-bottom: 1px solid var(--linea);
+}
+
+.barra-dentro {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.marca {
+  font-weight: 700;
+  color: var(--tinta);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marca span {
+  color: var(--tinta-suave);
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.nav a,
+.nav button {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+
+.nav a:hover,
+.nav button:hover {
+  background: var(--fondo);
+  color: var(--tinta);
+}
+
+.nav a[aria-current='page'] {
+  color: var(--marca);
+  background: var(--fondo);
+  font-weight: 700;
+}
+
+@media (max-width: 560px) {
+  .nav {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* ---------- Pagina ---------- */
+.pagina {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  display: grid;
+  gap: 32px;
+}
+
+.cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.sub {
+  color: var(--tinta-suave);
+  font-size: 14px;
+}
+
+.bloque {
+  display: grid;
+  gap: 12px;
+}
+
+.bloque > h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cuenta {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--tinta-suave);
+}
+
+/* ---------- Listas ---------- */
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.lista > li + li {
+  border-top: 1px solid var(--linea);
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 16px;
+  padding: 12px 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.fila:hover {
+  background: var(--fondo);
+}
+
+.fila-titulo {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.fila-dato {
+  color: var(--tinta-suave);
+  font-size: 14px;
+  grid-column: 1 / -1;
+  overflow-wrap: anywhere;
+}
+
+.fila-lado {
+  text-align: right;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.vacio {
+  margin: 0;
+  padding: 16px;
+  background: var(--papel);
+  border: 1px dashed var(--linea);
+  border-radius: var(--radio);
+  color: var(--tinta-suave);
+  font-size: 15px;
+}
+
+/* ---------- Etiquetas de estado ---------- */
+.etiqueta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--tinta-suave);
+  white-space: nowrap;
+}
+
+.etiqueta.ok {
+  background: var(--ok-fondo);
+  color: var(--ok-tinta);
+}
+
+.etiqueta.alerta {
+  background: var(--alerta-fondo);
+  color: var(--alerta-tinta);
+}
+
+.etiqueta.error {
+  background: var(--error-fondo);
+  color: var(--error-tinta);
+}
+
+/* ---------- Ficha (detalle) ---------- */
+.ficha {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.datos dt {
+  color: var(--tinta-suave);
+}
+
+.datos dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .datos {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .datos dd + dt {
+    margin-top: 10px;
+  }
+}
+
+/* ---------- Hitos ---------- */
+.hito {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+}
+
+.hito-cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.hito-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.aviso-cliente {
+  margin: 0;
+  font-size: 14px;
+  color: var(--alerta-tinta);
+}
+
+/* ---------- Formularios ---------- */
+.formulario {
+  display: grid;
+  gap: 16px;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 16px;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.campo {
+  display: grid;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.campo.ancho {
+  grid-column: 1 / -1;
+}
+
+.campo small {
+  font-weight: 400;
+  color: var(--tinta-suave);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  font-size: 16px;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 44px;
+  width: 100%;
+  caret-color: var(--acento);
+  transition: border-color 0.15s ease-out;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: var(--tinta-suave);
+}
+
+textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+input[type='date'] {
+  width: auto;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out, transform 0.1s ease-out;
+}
+
+.boton:active {
+  transform: scale(0.97);
+}
+
+.boton:disabled {
+  opacity: 0.55;
+  cursor: progress;
+  transform: none;
+}
+
+.boton-principal {
+  background: var(--marca);
+  color: var(--sobre-marca);
+}
+
+.boton-principal:hover {
+  background: var(--marca-hover);
+}
+
+.boton-secundario {
+  background: var(--papel);
+  color: var(--marca);
+  border-color: var(--linea);
+}
+
+.boton-secundario:hover {
+  border-color: var(--marca);
+}
+
+.boton-peque {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 14px;
+}
+
+.mensaje {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.mensaje.ok {
+  background: var(--ok-fondo);
+  color: var(--ok-tinta);
+}
+
+.mensaje.error {
+  background: var(--error-fondo);
+  color: var(--error-tinta);
+}
+
+/* ---------- Entrada ---------- */
+.entrada {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.entrada .formulario {
+  width: min(100%, 380px);
+}
+
+.entrada h1 {
+  font-size: 1.25rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+.nav form {
+  display: contents;
+}
+
+/* «Cobrado el» y su boton en la misma linea de base que la fecha. */
+.hito-acciones form.hito-acciones {
+  align-items: flex-end;
+}
+
+.hito-acciones .campo {
+  gap: 2px;
+}
