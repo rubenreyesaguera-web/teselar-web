@@ -3,6 +3,7 @@ import '../../index.css';
 import type { Metadata } from 'next';
 import { dictionaries } from '../../i18n/dictionaries';
 import { Space_Grotesk } from 'next/font/google';
+import Contador from '../../components/estadisticas/Contador';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -223,6 +224,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="min-h-screen bg-teselar-dark text-claridad font-sans antialiased selection:bg-innovacion selection:text-teselar-dark">
         {children}
+        <Contador />
       </body>
     </html>
   );
