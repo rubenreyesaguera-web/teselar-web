@@ -3,7 +3,7 @@
 // embudo de la demo. Cuenta visitas, no personas.
 import Link from 'next/link';
 import { exigirSesion } from '@/lib/panel/acceso';
-import { esRango, leerEstadisticas, RANGOS, variacion, type Fila, type Rango } from '@/lib/panel/estadisticas';
+import { esRango, leerEstadisticas, limpiarVisitas, RANGOS, variacion, type Fila, type Rango } from '@/lib/panel/estadisticas';
 import { dia } from '@/lib/panel/formato';
 import GraficoVisitas from '@/components/panel/GraficoVisitas';
 
@@ -78,6 +78,7 @@ export default async function Estadisticas({ searchParams }: { searchParams: Pro
   await exigirSesion();
   const r = (await searchParams).rango;
   const rango: Rango = esRango(r) ? r : '30';
+  await limpiarVisitas();
   const e = await leerEstadisticas(rango);
   const antes = e.totalesAntes;
   const { abrir, panel, reservar } = e.embudo;

@@ -14,7 +14,7 @@ import {
   actualizarContacto, apuntarCobro, borrarCaducados, crearContacto, guardarAcceso, leerAcceso, leerContacto, leerContactos, leerPropuestas,
   marcarHito, registrarApertura, saldarComision, visitasColaboradores,
 } from '../src/lib/panel/datos';
-import { leerEstadisticas } from '../src/lib/panel/estadisticas';
+import { leerEstadisticas, limpiarVisitas } from '../src/lib/panel/estadisticas';
 import { guardarVisita, validarVisita } from '../src/lib/estadisticas/visita';
 import { validarContacto, type CamposContacto } from '../src/lib/panel/resumen';
 import ejemplo from './propuesta.ejemplo.json';
@@ -184,6 +184,29 @@ describe.skipIf(!hayBase)(`panel contra la base ${BASE}`, () => {
     expect(e.embudo).toEqual({ abrir: 1, panel: 1, reservar: 1 });
     // La pagina del colaborador cuenta; su tarjeta, no
     expect(await visitasColaboradores(sql)).toEqual({ gis: { total: 1, ultimos30: 1 } });
+  });
+
+  test('limpieza del contador: a los 25 meses se borra y pasadas 48 horas se queda en el dia de Lloret', async () => {
+    const { rows } = await db.query(
+      `INSERT INTO visita (creado, ruta, entrada, dispositivo) VALUES
+         (now() - interval '26 months', '/es/recursos/vieja', true, 'movil'),
+         (now() - interval '3 days', '/es/recursos/de-hace-dias', true, 'movil'),
+         (now() - interval '1 hour', '/es/recursos/reciente', true, 'movil')
+       RETURNING id, ruta, creado`,
+    );
+    const recienteAntes = rows.find((r) => r.ruta.endsWith('reciente')).creado.getTime();
+    const r = await limpiarVisitas(sql);
+    expect(r.borradas).toBe(1);
+    expect(r.sinHora).toBeGreaterThanOrEqual(1);
+    const { rows: quedan } = await db.query(
+      `SELECT ruta, creado, to_char(creado AT TIME ZONE 'Europe/Madrid', 'HH24:MI:SS.US') AS hora FROM visita
+        WHERE ruta LIKE '/es/recursos/%' ORDER BY ruta`,
+    );
+    expect(quedan.map((q) => q.ruta)).toEqual(['/es/recursos/de-hace-dias', '/es/recursos/reciente']);
+    expect(quedan[0].hora).toBe('00:00:00.000000');
+    expect(quedan[1].creado.getTime()).toBe(recienteAntes);
+    expect(await limpiarVisitas(sql)).toEqual({ borradas: 0, sinHora: 0 });
+    await db.query(`DELETE FROM visita WHERE ruta LIKE '/es/recursos/%'`);
   });
 
   test('comision: se guarda con el contacto, se salda con canje y valor, se deshace, y saldar no reinicia el plazo de borrado', async () => {

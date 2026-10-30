@@ -136,6 +136,21 @@ async function embudoDe(sql: Sql, p: { desde: string; hasta: string }): Promise<
   return r;
 }
 
+/**
+ * La limpieza del contador (guia de la AEPD de medicion de audiencia, enero de 2024; Ruben, 30/10): lo de mas de 25 meses
+ * se borra, y a lo de mas de 48 horas se le quita la hora y se queda en el dia (medianoche de Lloret). La hora exacta solo
+ * hace falta para «Ahora mismo»; lo que se conserva es el resumen por dia que describe la guia.
+ */
+export async function limpiarVisitas(sql: Sql = conexion()): Promise<{ borradas: number; sinHora: number }> {
+  const borradas = (await sql`DELETE FROM visita WHERE creado < now() - interval '25 months' RETURNING id`) as unknown[];
+  const sinHora = (await sql`
+    UPDATE visita SET creado = date_trunc('day', creado AT TIME ZONE 'Europe/Madrid') AT TIME ZONE 'Europe/Madrid'
+     WHERE creado < now() - interval '48 hours'
+       AND creado <> date_trunc('day', creado AT TIME ZONE 'Europe/Madrid') AT TIME ZONE 'Europe/Madrid'
+    RETURNING id`) as unknown[];
+  return { borradas: borradas.length, sinHora: sinHora.length };
+}
+
 export async function leerEstadisticas(rango: Rango, ahora = new Date(), sql: Sql = conexion()): Promise<Estadisticas> {
   const [primero] = (await sql`
     SELECT to_char((min(creado) AT TIME ZONE 'Europe/Madrid')::date, 'YYYY-MM-DD') AS dia FROM visita`) as { dia: string | null }[];

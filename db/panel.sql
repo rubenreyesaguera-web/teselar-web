@@ -73,6 +73,8 @@ ALTER TABLE contacto ADD COLUMN IF NOT EXISTS comision_nota text CHECK (length(c
 -- direccion completa de la web de origen: solo el dominio, la etiqueta ?origen= (letras, numeros y guiones), el pais de
 -- la cabecera de Vercel y el tipo de dispositivo. `entrada`: la primera pagina de quien llega (de fuera o sin origen);
 -- las «visitas» son las entradas y las «paginas vistas», todas las filas. Cuenta visitas, no personas.
+-- Conservacion (guia de la AEPD de medicion de audiencia, enero de 2024): la hora exacta solo 48 horas, despues el dia;
+-- todo se borra a los 25 meses. Lo hace `limpiarVisitas` (src/lib/panel/estadisticas.ts) al abrir el panel.
 CREATE TABLE IF NOT EXISTS visita (
   id           bigint      GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   creado       timestamptz NOT NULL DEFAULT now(),
