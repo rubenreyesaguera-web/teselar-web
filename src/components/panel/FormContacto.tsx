@@ -16,10 +16,6 @@ export default function FormContacto({ contacto: c, propuestas, colaboradores }:
   return (
     <form className="formulario" action={accion}>
       {c && <input type="hidden" name="id" value={c.id} />}
-      <p className="sub">
-        Solo lo que el negocio te dio para que le contestes. Mientras no esté resuelto cómo se informa a quien no llegó por
-        la web (RGPD, art. 14), nada más.
-      </p>
       <div className="campos">
         <label className="campo">
           Negocio
