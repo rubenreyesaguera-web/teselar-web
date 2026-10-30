@@ -8,7 +8,7 @@ import { capacidadValida } from '../propuestas/canonico';
 import type { InstantaneaV1 } from '../propuestas/instantanea';
 import { FORMA_REFERENCIA, type Estado } from '../propuestas/leer';
 import type { EstadoAcceso } from './sesion';
-import { estadoAcuse, plegarHitos, type CamposContacto, type Contacto, type EventoHito, type PropuestaPanel } from './resumen';
+import { caducados, estadoAcuse, plegarHitos, type CamposContacto, type Contacto, type EventoHito, type PropuestaPanel } from './resumen';
 
 type Sql = NeonQueryFunction<false, false>;
 
@@ -223,6 +223,24 @@ export async function actualizarContacto(id: number, c: CamposContacto, sql: Sql
            notas = ${c.notas}, propuesta = ${c.propuesta}, colaborador = ${c.colaborador}, actualizado = now()
      WHERE id = ${id} RETURNING id`) as { id: number }[];
   return filas.length > 0;
+}
+
+/**
+ * Borra los contactos que han llegado a su dia de borrado (politica, apartado 8) y devuelve sus negocios para
+ * ensenarlos una vez en «Hoy». No queda copia de lo borrado en ningun sitio, ni de los nombres (Ruben, 31/10).
+ * La regla esta en `caducados`; el `actualizado` de la condicion (a milisegundos, como sale de
+ * `leerContactos`) evita borrar uno que se haya guardado entre medias.
+ */
+export async function borrarCaducados(ahora = new Date(), sql: Sql = conexion()): Promise<string[]> {
+  const vencidos = caducados(await leerContactos(true, sql), ahora);
+  if (!vencidos.length) return [];
+  const ids = vencidos.map((c) => c.id);
+  const fechas = vencidos.map((c) => c.actualizado);
+  const filas = (await sql`
+    DELETE FROM contacto c USING unnest(${ids}::bigint[], ${fechas}::timestamptz[]) AS v(id, actualizado)
+     WHERE c.id = v.id AND date_trunc('milliseconds', c.actualizado) = v.actualizado AND c.estado <> 'ganado'
+    RETURNING c.negocio`) as { negocio: string }[];
+  return filas.map((f) => f.negocio);
 }
 
 // ——— Entrada ———

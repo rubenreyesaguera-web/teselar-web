@@ -1,11 +1,12 @@
 // «Hoy»: lo que pide hacer algo (decision del 29/10, orden 1): propuestas que vencen en 7 dias, PDF no entregados,
-// contactos con el paso vencido o para hoy, e hitos cumplidos sin cobrar.
+// contactos con el paso vencido o para hoy, e hitos cumplidos sin cobrar. Antes de pintar, borra los contactos que
+// han cumplido el plazo de la politica (apartado 8) y los ensena una sola vez; y avisa de los que se borran en 30 dias.
 import Link from 'next/link';
 import { exigirSesion } from '@/lib/panel/acceso';
-import { leerContactos, leerPropuestas } from '@/lib/panel/datos';
+import { borrarCaducados, leerContactos, leerPropuestas } from '@/lib/panel/datos';
 import { dia, relativo } from '@/lib/panel/formato';
 import { euros } from '@/lib/propuestas/formato';
-import { hoyEnMadrid, resumenHoy } from '@/lib/panel/resumen';
+import { AVISO_DIAS, PLAZO_MESES, hoyEnMadrid, resumenHoy } from '@/lib/panel/resumen';
 import { FilaContacto, FilaPropuesta, Vacio } from '@/components/panel/Piezas';
 
 export const dynamic = 'force-dynamic';
@@ -14,15 +15,35 @@ const FECHA_HOY = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'nume
 
 export default async function Hoy() {
   await exigirSesion();
-  const [propuestas, contactos] = await Promise.all([leerPropuestas(), leerContactos()]);
+  const borrados = await borrarCaducados();
+  const [propuestas, contactos] = await Promise.all([leerPropuestas(), leerContactos(true)]);
   const hoy = resumenHoy(propuestas, contactos);
-  const nada = !hoy.vencen.length && !hoy.sinPdf.length && !hoy.pasos.length && !hoy.sinCobrar.length;
+  const nada = !hoy.vencen.length && !hoy.sinPdf.length && !hoy.pasos.length && !hoy.sinCobrar.length && !hoy.seBorran.length;
   return (
     <>
       <div className="cabeza">
         <h1>Hoy</h1>
         <span className="sub">{FECHA_HOY.format(new Date())}</span>
       </div>
+
+      {borrados.length > 0 && (
+        <section className="bloque">
+          <h2>
+            Borrados por plazo <span className="cuenta">{borrados.length}</span>
+          </h2>
+          <p className="sub">
+            {PLAZO_MESES} meses sin contacto y sin contrato, como dice la política de privacidad. No queda copia: este aviso
+            no vuelve a salir.
+          </p>
+          <ul className="lista">
+            {borrados.map((negocio, i) => (
+              <li key={i} className="fila">
+                <span className="fila-titulo">{negocio}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {nada && <Vacio>Nada pendiente. Los contactos con fecha de hoy o vencida, las propuestas a punto de vencer y los cobros por apuntar aparecen aquí.</Vacio>}
 
@@ -66,6 +87,29 @@ export default async function Hoy() {
             {hoy.vencen.map((p) => (
               <li key={p.referencia}>
                 <FilaPropuesta p={p} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {hoy.seBorran.length > 0 && (
+        <section className="bloque">
+          <h2>
+            Se borran en {AVISO_DIAS} días o menos <span className="cuenta">{hoy.seBorran.length}</span>
+          </h2>
+          <p className="sub">
+            Llevan casi {PLAZO_MESES} meses sin contacto. Si sigues hablando con alguno, guarda su ficha y el plazo vuelve a
+            empezar.
+          </p>
+          <ul className="lista">
+            {hoy.seBorran.map(({ contacto: c, dia: d }) => (
+              <li key={c.id}>
+                <Link className="fila" href={`/panel/contactos/${c.id}`}>
+                  <span className="fila-titulo">{c.negocio}</span>
+                  <span className="fila-lado">{relativo(d)}</span>
+                  <span className="fila-dato">se borra el {dia(d)}</span>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,5 +1,7 @@
 import { describe, expect, test } from 'bun:test';
-import { estadoAcuse, hoyEnMadrid, plegarHitos, resumenHoy, validarContacto, type Contacto, type PropuestaPanel } from './resumen';
+import {
+  caducados, diaDeBorrado, estadoAcuse, hoyEnMadrid, plegarHitos, resumenHoy, sumarMeses, validarContacto, type Contacto, type PropuestaPanel,
+} from './resumen';
 
 const AHORA = new Date('2026-10-30T22:30:00Z'); // 23:30 en Lloret, todavia dia 30
 
@@ -112,5 +114,52 @@ describe('validar un contacto', () => {
     expect(validarContacto({ negocio: 'x', correo: 'sin-arroba' })).toBe('Correo no válido');
     expect(validarContacto({ negocio: 'x', propuesta: 'P-26-1' })).toBe('La propuesta va como P-2026-001');
     expect(validarContacto({ negocio: 'x'.repeat(201) })).toContain('demasiado largo');
+  });
+});
+
+describe('borrado a los 12 meses (politica, apartado 8)', () => {
+  test('sumar meses: fin de mes y cambio de año', () => {
+    expect(sumarMeses('2026-10-30', 12)).toBe('2027-10-30');
+    expect(sumarMeses('2028-02-29', 12)).toBe('2029-02-28');
+    expect(sumarMeses('2026-01-31', 1)).toBe('2026-02-28');
+    expect(sumarMeses('2026-12-15', 1)).toBe('2027-01-15');
+  });
+
+  test('cuenta desde lo más reciente entre guardar la ficha y el siguiente paso; los ganados no se borran', () => {
+    expect(diaDeBorrado(contacto({ actualizado: '2026-10-30T10:00:00Z' }))).toBe('2027-10-30');
+    expect(diaDeBorrado(contacto({ actualizado: '2026-10-30T10:00:00Z', fecha: '2027-03-15' }))).toBe('2028-03-15');
+    expect(diaDeBorrado(contacto({ actualizado: '2026-10-30T10:00:00Z', fecha: '2026-09-01' }))).toBe('2027-10-30');
+    // Guardada a las 00:30 de Lloret del dia 31: el dia es el 31, no el 30 de UTC
+    expect(diaDeBorrado(contacto({ actualizado: '2026-10-30T23:30:00Z' }))).toBe('2027-10-31');
+    expect(diaDeBorrado(contacto({ estado: 'ganado', actualizado: '2020-01-01T10:00:00Z' }))).toBeNull();
+  });
+
+  test('se borran el mismo día que vencen, también los perdidos; los ganados nunca', () => {
+    const r = caducados(
+      [
+        contacto({ id: 1, actualizado: '2025-10-30T10:00:00Z' }),
+        contacto({ id: 2, actualizado: '2025-10-31T10:00:00Z' }),
+        contacto({ id: 3, actualizado: '2025-01-01T10:00:00Z', estado: 'perdido' }),
+        contacto({ id: 4, actualizado: '2020-01-01T10:00:00Z', estado: 'ganado' }),
+        contacto({ id: 5, actualizado: '2025-01-01T10:00:00Z', fecha: '2026-01-10' }),
+      ],
+      AHORA,
+    );
+    expect(r.map((c) => c.id)).toEqual([1, 3]);
+  });
+
+  test('«Hoy» avisa de los que se borran en 30 días o menos, del más próximo al más lejano', () => {
+    const r = resumenHoy(
+      [],
+      [
+        contacto({ id: 1, actualizado: '2025-11-29T10:00:00Z' }), // 29/11: en 30 dias
+        contacto({ id: 2, actualizado: '2025-11-30T10:00:00Z' }), // en 31 dias: todavia no
+        contacto({ id: 3, actualizado: '2025-11-05T10:00:00Z', estado: 'perdido' }),
+        contacto({ id: 4, actualizado: '2025-10-30T10:00:00Z' }), // vence hoy: se borra, no se avisa
+        contacto({ id: 5, actualizado: '2025-11-05T10:00:00Z', estado: 'ganado' }),
+      ],
+      AHORA,
+    );
+    expect(r.seBorran.map((x) => [x.contacto.id, x.dia])).toEqual([[3, '2026-11-05'], [1, '2026-11-29']]);
   });
 });

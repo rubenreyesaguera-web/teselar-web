@@ -11,7 +11,7 @@ import type { Client, NeonQueryFunction } from '@neondatabase/serverless';
 import { CONDICIONES, huellaCondiciones } from '../src/lib/propuestas/condiciones';
 import { leerPropuesta } from '../src/lib/propuestas/leer';
 import {
-  actualizarContacto, apuntarCobro, crearContacto, guardarAcceso, leerAcceso, leerContacto, leerContactos, leerPropuestas,
+  actualizarContacto, apuntarCobro, borrarCaducados, crearContacto, guardarAcceso, leerAcceso, leerContacto, leerContactos, leerPropuestas,
   marcarHito, registrarApertura,
 } from '../src/lib/panel/datos';
 import { validarContacto, type CamposContacto } from '../src/lib/panel/resumen';
@@ -127,6 +127,26 @@ describe.skipIf(!hayBase)(`panel contra la base ${BASE}`, () => {
     expect((await leerContactos(true, sql)).map((c) => c.id)).toContain(id);
     expect((await leerContacto(id, sql))?.fecha).toBe('2099-01-10');
     expect(await actualizarContacto(999999, campos, sql)).toBe(false);
+  });
+
+  test('borrado a los 12 meses: se lleva los vencidos (también perdidos) y devuelve sus negocios; ganados y recientes se quedan', async () => {
+    // now() - 13 meses lleva microsegundos: comprueba que la condicion de `actualizado` casa con lo que lee el panel
+    const { rows } = await db.query(
+      `INSERT INTO contacto (negocio, estado, actualizado) VALUES
+         ('Viejo', 'en_conversacion', now() - interval '13 months'),
+         ('Viejo perdido', 'perdido', now() - interval '13 months'),
+         ('Viejo ganado', 'ganado', now() - interval '13 months'),
+         ('Viejo con paso', 'en_conversacion', now() - interval '13 months'),
+         ('Reciente', 'en_conversacion', now() - interval '11 months')
+       RETURNING id, negocio`,
+    );
+    const ids = Object.fromEntries(rows.map((r) => [r.negocio, Number(r.id)]));
+    await db.query(`UPDATE contacto SET fecha = (now() + interval '1 month')::date WHERE id = $1`, [ids['Viejo con paso']]);
+    expect((await borrarCaducados(new Date(), sql)).sort()).toEqual(['Viejo', 'Viejo perdido']);
+    const quedan = (await leerContactos(true, sql)).map((c) => c.negocio);
+    expect(quedan).toEqual(expect.arrayContaining(['Viejo ganado', 'Viejo con paso', 'Reciente']));
+    expect(quedan).not.toContain('Viejo');
+    expect(await borrarCaducados(new Date(), sql)).toEqual([]);
   });
 
   test('la base rechaza un estado de contacto fuera de la lista', async () => {

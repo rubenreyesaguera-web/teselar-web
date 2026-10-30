@@ -116,6 +116,42 @@ const DIA_MS = 24 * 60 * 60 * 1000;
 /** El acuse sale justo despues de responder al cliente; si en 15 minutos no consta, algo ha fallado. */
 const MARGEN_ACUSE_MS = 15 * 60 * 1000;
 
+/** Politica de privacidad, apartado 8: sin contrato, se borran a los 12 meses del ultimo contacto (Ruben, 31/10). */
+export const PLAZO_MESES = 12;
+/** «Hoy» avisa de los que se borran en 30 dias o menos, para que de tiempo a escribirles. */
+export const AVISO_DIAS = 30;
+
+/** Suma meses de calendario a un dia AAAA-MM-DD; si el dia no existe en ese mes, el ultimo del mes (29 feb → 28 feb). */
+export function sumarMeses(aaaammdd: string, meses: number): string {
+  const [a, m, d] = aaaammdd.split('-').map(Number);
+  const total = a * 12 + (m - 1) + meses;
+  const anio = Math.floor(total / 12);
+  const mes = (total % 12) + 1;
+  const ultimo = new Date(Date.UTC(anio, mes, 0)).getUTCDate();
+  return `${anio}-${String(mes).padStart(2, '0')}-${String(Math.min(d, ultimo)).padStart(2, '0')}`;
+}
+
+/**
+ * El dia en que se borra un contacto, o null si no se borra (ganado: hay contrato). El ultimo contacto es lo mas
+ * reciente entre la ultima vez que se guardo la ficha y la fecha del siguiente paso (Ruben, 31/10, opcion C): a quien
+ * se le dijo «hablamos en primavera» el plazo le cuenta desde la primavera.
+ */
+export function diaDeBorrado(c: Contacto): string | null {
+  if (c.estado === 'ganado') return null;
+  const guardado = hoyEnMadrid(new Date(c.actualizado));
+  const ultimo = c.fecha && c.fecha > guardado ? c.fecha : guardado;
+  return sumarMeses(ultimo, PLAZO_MESES);
+}
+
+/** Los que ya han llegado a su dia de borrado. */
+export function caducados(contactos: Contacto[], ahora = new Date()): Contacto[] {
+  const hoy = hoyEnMadrid(ahora);
+  return contactos.filter((c) => {
+    const d = diaDeBorrado(c);
+    return d !== null && d <= hoy;
+  });
+}
+
 export interface Hoy {
   /** Vigentes cuyo ultimo dia es dentro de 7 dias de calendario o menos. */
   vencen: PropuestaPanel[];
@@ -125,6 +161,8 @@ export interface Hoy {
   pasos: { contacto: Contacto; vencido: boolean }[];
   /** Hitos cumplidos (el cliente ya los ve) sin «Cobrado el…». */
   sinCobrar: { propuesta: PropuestaPanel; hito: HitoPanel }[];
+  /** Contactos que se borran en AVISO_DIAS dias o menos, del mas proximo al mas lejano. */
+  seBorran: { contacto: Contacto; dia: string }[];
 }
 
 export function resumenHoy(propuestas: PropuestaPanel[], contactos: Contacto[], ahora = new Date()): Hoy {
@@ -142,6 +180,10 @@ export function resumenHoy(propuestas: PropuestaPanel[], contactos: Contacto[], 
       .sort((a, b) => (a.fecha ?? '').localeCompare(b.fecha ?? ''))
       .map((c) => ({ contacto: c, vencido: (c.fecha ?? '') < hoy })),
     sinCobrar: propuestas.flatMap((p) => p.hitos.filter((h) => h.cumplido && !h.cobrado).map((hito) => ({ propuesta: p, hito }))),
+    seBorran: contactos
+      .map((contacto) => ({ contacto, dia: diaDeBorrado(contacto) }))
+      .filter((x): x is { contacto: Contacto; dia: string } => x.dia !== null && x.dia > hoy && (Date.parse(x.dia) - Date.parse(hoy)) / DIA_MS <= AVISO_DIAS)
+      .sort((a, b) => a.dia.localeCompare(b.dia)),
   };
 }
 
