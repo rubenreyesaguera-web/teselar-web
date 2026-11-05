@@ -12,6 +12,7 @@ import { RUBEN } from '../../lib/colaboradores/enlaces';
 import { contextoDemo, enlaceCalendly } from '../../lib/demo/calendly';
 import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
+import { hayPersona } from '../../lib/estadisticas/persona';
 
 export type TextosDemo = (typeof dictionaries)['es']['demo'];
 
@@ -23,12 +24,15 @@ interface Props {
 
 function contar(paso: Paso, datos: { lng: string; sector: Sector | null; partes: Parte[]; como: Como[]; desdeEnlace: boolean }) {
   try {
-    void fetch('/api/demo/evento', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paso, ...datos }),
-      keepalive: true,
-    }).catch(() => {});
+    // Como las visitas, solo con alguien delante (5/11): «abrir» se cuenta al cargar y lo contaban los robots.
+    void hayPersona().then(() =>
+      fetch('/api/demo/evento', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paso, ...datos }),
+        keepalive: true,
+      }).catch(() => {}),
+    );
   } catch {
     // Contar nunca puede romper la demo.
   }

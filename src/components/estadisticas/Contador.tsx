@@ -1,8 +1,10 @@
 'use client';
 // Cuenta cada pagina vista de la web publica (fase 2 del panel, 30/10). Sin cookies ni almacenamiento: manda la ruta y,
 // solo en la primera pagina, de donde se llego y la etiqueta ?origen=. Contar nunca puede romper la pagina.
+// Desde el 5/11, solo cuando hay alguien delante (src/lib/estadisticas/persona.ts).
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { hayPersona } from '@/lib/estadisticas/persona';
 
 export default function Contador() {
   const ruta = usePathname();
@@ -11,15 +13,18 @@ export default function Contador() {
     const esPrimera = primera.current;
     primera.current = false;
     try {
+      // El origen se lee ya: cuando llegue la señal, la direccion puede ser otra.
       const cuerpo = esPrimera
         ? { ruta, primera: true, referente: document.referrer, origen: new URLSearchParams(location.search).get('origen') }
         : { ruta, primera: false };
-      void fetch('/api/visita', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cuerpo),
-        keepalive: true,
-      }).catch(() => {});
+      void hayPersona().then(() =>
+        fetch('/api/visita', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cuerpo),
+          keepalive: true,
+        }).catch(() => {}),
+      );
     } catch {
       // nada
     }
