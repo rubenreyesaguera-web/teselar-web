@@ -54,8 +54,11 @@ describe('contador de la demo: donde se guarda', () => {
     expect(columnas).toEqual(['id', 'creado', 'paso', 'lng', 'sector', 'partes', 'como', 'desde_enlace']);
   });
 
-  test('la ruta no lee la IP ni cookies', () => {
+  // Desde el 5/11 lee la cookie del panel, solo para no contar a Ruben (como /api/visita); ninguna otra.
+  test('la ruta no lee la IP ni mas cookie que la del panel', () => {
     const ruta = readFileSync(join(RAIZ, 'src', 'app', 'api', 'demo', 'evento', 'route.ts'), 'utf8');
-    expect(ruta).not.toMatch(/x-forwarded-for|x-real-ip|req\.ip|cookies\(|\.cookies/i);
+    expect(ruta).toContain('req.cookies.get(COOKIE)?.value');
+    const sinLaDelPanel = ruta.replaceAll('req.cookies.get(COOKIE)?.value', '');
+    expect(sinLaDelPanel).not.toMatch(/x-forwarded-for|x-real-ip|req\.ip|cookies\(|\.cookies/i);
   });
 });

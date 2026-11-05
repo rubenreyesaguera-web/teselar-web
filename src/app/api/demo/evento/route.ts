@@ -1,7 +1,11 @@
-// POST /api/demo/evento: el contador de la demo de gestion (ADR-113, doc 31). Solo cuenta pasos; no lee la IP, ni
-// cookies, ni nada del cuerpo que no este en la lista de validarEvento.
+// POST /api/demo/evento: el contador de la demo de gestion (ADR-113, doc 31). Solo cuenta pasos; no lee la IP ni nada
+// del cuerpo que no este en la lista de validarEvento. Desde el 5/11, como el contador de visitas, no cuenta robots ni a
+// Ruben con el panel abierto: de las 20 aperturas de octubre, 16 eran pruebas nuestras del 22 al 24/10 y dos, de
+// madrugada. La cookie del panel solo se mira para no contar; el navegador, solo para descartar robots.
 import { NextResponse, type NextRequest } from 'next/server';
 import { guardarEvento, validarEvento } from '@/lib/demo/evento';
+import { esRobot } from '@/lib/estadisticas/visita';
+import { COOKIE, sesionValida } from '@/lib/panel/sesion';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +37,10 @@ export async function POST(req: NextRequest) {
   }
   const evento = validarEvento(entrada);
   if (!evento) return new NextResponse(null, { status: 400, headers: noStore });
+  // Robots y Ruben: 204 igualmente, la respuesta no dice si se ha contado.
+  if (esRobot(req.headers.get('user-agent')) || sesionValida(req.cookies.get(COOKIE)?.value, process.env.PANEL_SECRETO)) {
+    return new NextResponse(null, { status: 204, headers: noStore });
+  }
 
   const url = process.env.DATABASE_URL;
   if (!url) return new NextResponse(null, { status: 503, headers: noStore });
