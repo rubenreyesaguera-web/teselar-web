@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage({ params }: Props) {
             {t.title}
           </h1>
 
-          <div className="space-y-6 text-sm md:text-base text-claridad/85 leading-relaxed">
+          <div className="max-w-[58ch] space-y-6 text-sm md:text-base text-claridad/85 leading-relaxed [&_p]:[text-wrap:pretty] [&_h2]:[text-wrap:balance]">
             <div>
               <h2 className="text-xl font-bold text-claridad mb-3">{t.sec1_title}</h2>
               <p className="whitespace-pre-line">{t.sec1_text}</p>
