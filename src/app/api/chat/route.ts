@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { origenDelLead } from '@/lib/chat/origen';
 
 export const maxDuration = 30;
 
@@ -134,7 +135,7 @@ async function intentarOpenAICompatible(url: string, apiKey: string, model: stri
 //
 // Ahora va al mismo webhook de Make que los demas leads, que los escribe en la hoja
 // ANTES de intentar avisar de nada. Server-to-server, sin Cloudflare de por medio.
-async function enviarLead(marcador: string, tipo: string): Promise<boolean> {
+async function enviarLead(marcador: string, tipo: string, origen: string): Promise<boolean> {
   const webhookUrl = process.env.MAKE_LEADS_WEBHOOK_URL;
   if (!webhookUrl) {
     console.error(`[LEAD PERDIDO] MAKE_LEADS_WEBHOOK_URL sin configurar - lead: ${marcador}`);
@@ -147,7 +148,7 @@ async function enviarLead(marcador: string, tipo: string): Promise<boolean> {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         tipo: 'lead',
-        origen: 'tess',
+        origen,
         nombre,
         telefono,
         email: '',
@@ -262,7 +263,7 @@ const SIN_ENTREGA: Record<string, string> = {
 };
 
 export async function POST(req: Request) {
-  const { messages = [], newMsgText, leadCaptured = false, lng = 'es' } = await req.json();
+  const { messages = [], newMsgText, leadCaptured = false, lng = 'es', origen } = await req.json();
   if (!newMsgText) return NextResponse.json({ error: 'Falta el mensaje' }, { status: 400 });
 
   const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || 'desconocida';
@@ -297,7 +298,7 @@ export async function POST(req: Request) {
   const match = botResponse.match(/\[LEAD_(CLOSED|UPDATED):([^\]]+)\]/);
   if (match) {
     leadClosed = match[1] === 'CLOSED';
-    const entregado = await enviarLead(match[2], match[1]);
+    const entregado = await enviarLead(match[2], match[1], origenDelLead(origen));
     botResponse = botResponse.replace(/\[LEAD_(CLOSED|UPDATED):[^\]]+\]/g, '').trim();
     // Si no se entregó, TesS no puede quedarse diciendo "Rubén te llamará": nadie
     // tiene esos datos. Se le da la vía directa, que no depende de ningún proveedor.

@@ -38,6 +38,14 @@ const TEXTOS: Record<string, { titulo: string; badge: string; saludo: string; pl
   }
 };
 
+function leerOrigen(): string | null {
+  try {
+    return sessionStorage.getItem('teselar_origen');
+  } catch {
+    return null;
+  }
+}
+
 export function ChatWidget({ lng }: { lng: string }) {
   const t = TEXTOS[lng] || TEXTOS.es;
   const [abierto, setAbierto] = useState(false);
@@ -58,6 +66,17 @@ export function ChatWidget({ lng }: { lng: string }) {
     if (sessionStorage.getItem('chat_teaser_visto')) return;
     const t = setTimeout(() => setTeaser(true), 30000);
     return () => clearTimeout(t);
+  }, []);
+
+  // La etiqueta de la campaña (`?origen=meta-tess`) se guarda al llegar: si va a otra página y vuelve, la URL ya no la
+  // lleva. Solo dura lo que la pestaña; la limpia el servidor.
+  useEffect(() => {
+    try {
+      const o = new URLSearchParams(location.search).get('origen');
+      if (o) sessionStorage.setItem('teselar_origen', o);
+    } catch {
+      // nada
+    }
   }, []);
 
   const cerrarTeaser = () => {
@@ -81,7 +100,7 @@ export function ChatWidget({ lng }: { lng: string }) {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: historial, newMsgText: texto, leadCaptured, lng })
+        body: JSON.stringify({ messages: historial, newMsgText: texto, leadCaptured, lng, origen: leerOrigen() })
       });
       const data = await res.json();
       if (!res.ok || !data.response) throw new Error('sin respuesta');
