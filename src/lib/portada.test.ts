@@ -117,8 +117,12 @@ describe('textos de la tercera pasada', () => {
     expect(PORTADA).toContain('t.services.s8.paso');
   });
 
-  test('la agenda nombra Google Calendar y Outlook', () => {
-    for (const lng of LNGS) expect(dictionaries[lng].services.s9.f2).toMatch(/Google Calendar.*Outlook/);
+  // ADR-120 (addenda del 11/11): Google Calendar en los dos sentidos desde el principio; Outlook, solo cuando un cliente lo pida.
+  test('la agenda nombra Google Calendar y no promete Outlook', () => {
+    for (const lng of LNGS) {
+      expect(dictionaries[lng].services.s9.f2).toMatch(/Google Calendar/);
+      expect(dictionaries[lng].services.s9.f2).not.toMatch(/Outlook/);
+    }
   });
 
   // 52 semanas para el año y el mes = año / 12: con 4,33 el año daba 20.784 € frente a 1.040 h (52 semanas).
@@ -140,11 +144,11 @@ describe('textos de la cuarta pasada', () => {
     for (const lng of LNGS) expect(dictionaries[lng].pricing.basic.desc).not.toMatch(/Sistemas a Medida|Sistemes a Mida|Custom Systems|^(Tu web vigilada|La teva web vigilada|Your website watched)/);
   });
 
-  // Doc 04: el tope de conversaciones se dice de frente, y el 03 son dos planes.
-  test('el 03 dice sus dos planes y la cuota su tope', () => {
+  // ADR-120: citas son dos versiones (sin y con WhatsApp), 8 € por agenda más, y el tope crece 250 por agenda.
+  test('citas dice sus dos versiones y la cuota su tope', () => {
     for (const lng of LNGS) {
-      expect(dictionaries[lng].services.s9.planes).toMatch(/700-900€.*150€.*1[.,]500-1[.,]800€.*250€/);
-      expect(dictionaries[lng].pricing.citas.tope).toMatch(/500.*1[.,]500/);
+      expect(dictionaries[lng].services.s9.planes).toMatch(/150€.*29€.*450€.*59€.*8€/);
+      expect(dictionaries[lng].pricing.citas.tope).toMatch(/500.*250/);
     }
     expect(PORTADA).toContain('t.services.s9.planes');
     expect(PORTADA).toContain('t.pricing.citas.tope');
@@ -156,10 +160,10 @@ describe('textos de la cuarta pasada', () => {
       const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
       for (const t of [dictionaries[lng].faq.q14.a, datos]) {
         expect(t).toMatch(/\(05\)/);
-        expect(t).toMatch(/agenda|calendar/);
+        expect(t).toMatch(/agenda|[Cc]alendar/);
       }
     }
-    for (const t of [TESS, LLMS]) expect(t).toMatch(/su agenda/);
+    for (const t of [TESS, LLMS]) expect(t).toMatch(/su Google Calendar/);
   });
 
   test('el bloque de WhatsApp va despues de las tarjetas', () => {
@@ -213,7 +217,7 @@ describe('textos de la sexta pasada', () => {
       const d = dictionaries[lng];
       const textos = [d.pricing.basic.desc, d.services.s2.f8, d.services.s4.f7, d.faq.q6.a, d.faq.q13.a].join(' ');
       expect(textos).not.toMatch(/obligatori|required|mandatory|se para\.|s’atura\.|the automation stops/);
-      expect(d.faq.q13.a).toMatch(/Citas por WhatsApp: se paran|Cites per WhatsApp: s’aturen|WhatsApp Appointments: it stops/);
+      expect(d.faq.q13.a).toMatch(/producto de citas: se para|producte de cites: s’atura|booking product: it stops/);
     }
     for (const t of [TESS, LLMS]) expect(t).not.toMatch(/NO es opcional|cuota mensual del asistente,\s+obligatoria|se detienen si se cancela la cuota -/);
   });

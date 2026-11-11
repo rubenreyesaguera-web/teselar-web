@@ -19,7 +19,7 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
    reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
 2. **Auditoría de Procesos — 150€**, solo si lo que necesita va a medida (si del diagnóstico sale un
-   producto cerrado —Citas por WhatsApp, Web Esencial o una automatización sencilla— se pasa directo a la
+   producto cerrado —las citas, Web Esencial o una automatización sencilla— se pasa directo a la
    propuesta, sin auditoría), descontables del proyecto si acepta la propuesta en los 30
    días siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante (antes
    se le dice qué tiene que traer, que es poco y depende del negocio), y un informe escrito de 2-3
@@ -37,28 +37,27 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   automatizar y en qué orden, e informe escrito de 2-3 páginas. La propuesta con precio se envía
   junto con el informe; si no hay nada que le compense, se le dice y no hay propuesta. El
   repaso de la web y las redes va incluido y por separado es gratuito.
+- **Citas que se reservan solas** (servicio 02) — un solo producto en dos versiones, sin permanencia:
+  **sin WhatsApp, 150€ de puesta en marcha + 29€/mes; con WhatsApp, 450€ + 59€/mes.** La cuota incluye
+  una agenda; cada agenda más (otra persona o cabina que atiende a la vez) suma 8€/mes en las dos.
+  **Con WhatsApp**, un asistente atiende el WhatsApp del negocio 24 horas al día: consulta los huecos
+  libres, reserva la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar.
+  Requiere la app WhatsApp Business; enlazar el número con el sistema depende de una aprobación de
+  Meta, cuyo plazo no controla Teselar. **Sin WhatsApp no es lo mismo más barato:** no hay asistente
+  que converse; el cliente del negocio reserva en su página de citas (desde su web, su ficha de
+  Google, su Instagram o el enlace que le mandan por WhatsApp) y la confirmación y el recordatorio le
+  llegan por email. A cambio, no se conecta al número ni depende de Meta. Criterio para elegir: si sus
+  clientes ya le escriben por WhatsApp, la de WhatsApp; si no, la otra basta. En las dos, la agenda se
+  conecta con Google Calendar en los dos sentidos (lo que se apunta ahí también cuenta) y la petición
+  automática de reseñas en Google va **incluida en la cuota**. El plazo para tenerlo funcionando se da
+  por escrito en la propuesta. **Garantía, en las dos versiones:** si en los tres primeros meses no
+  entra ni una sola cita fuera del horario de atención, se devuelve el importe de la puesta en marcha;
+  lo cuenta el propio sistema y el cliente ve el número en su panel.
 - **Automatizaciones Específicas** — 700€–1.800€ + 60€/mes. Presupuestos/facturas automáticas, chatbots de
   WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
   El Plan Básico de mantenimiento (60€/mes) es recomendado mientras esté en marcha (sin él sigue
   funcionando, pero sin vigilancia): cubre vigilarla y arreglarla cuando cambie una API o caduque una credencial, y no cubre funciones
   nuevas ni cambios del proceso, que se presupuestan aparte.
-- **Citas por WhatsApp** — Esencial 700€–900€ + 150€/mes · Completo 1.500€–1.800€ + 250€/mes. Un
-  asistente que atiende el WhatsApp del negocio 24 horas al día: consulta los huecos libres, reserva
-  la cita, la confirma y manda el recordatorio, sin que nadie tenga que contestar. El plan lo decide
-  cuántas personas atienden a la vez: si atiende una sola persona, el Esencial; si en algún momento
-  atienden dos o más al mismo tiempo, el Completo. La agenda va en Google Calendar u Outlook (si se
-  lleva en papel o Excel, se pasa ahí al empezar). Complemento de petición automática
-  de reseñas: +200€ sobre el proyecto (no se vende suelto). Requiere la app WhatsApp Business; enlazar
-  el número con el sistema depende de una aprobación de Meta, cuyo plazo no controla Teselar y se da
-  por escrito en la propuesta. **Garantía:** si en los tres
-  primeros meses no entra ni una sola cita fuera del horario de atención, se devuelve el importe de
-  la puesta en marcha; lo cuenta el propio sistema y el cliente ve el número en su panel.
-- **Citas sin WhatsApp API** — 400€–700€ + 90€/mes. **No es el servicio de arriba más barato.** Aquí
-  **no hay asistente que converse**: el cliente del negocio escribe al WhatsApp de siempre, recibe un
-  enlace y **reserva en una página web**; la confirmación y el recordatorio le llegan por email,
-  no por WhatsApp. A cambio, no se conecta al número del negocio, no depende de los plazos de Meta y no paga
-  mensajes. Lo que pierde es la conversación 24 h dentro de WhatsApp. Criterio para elegir: si sus
-  clientes ya le escriben por WhatsApp, el de arriba; si no, con este basta.
 - **Web Esencial** — 1.200€–1.600€. Página única o 3-4 secciones, 1 idioma incluido (+150€/idioma
   adicional), formulario y WhatsApp, SEO técnico básico (React + Vite + Tailwind CSS).
 - **Integración de Inteligencia Artificial** — 1.600€–6.000€ + cuota mensual del asistente,
@@ -87,14 +86,15 @@ Los tres "hablan" y la gente los mezcla, así que conviene distinguirlos:
 - **Asistente de IA** (Integración de IA): entiende el lenguaje normal y responde con la información
   del negocio. Informa, orienta y recoge el contacto, pero **no gestiona ninguna agenda**. TesS, el
   chat de la web, es exactamente esto.
-- **Citas por WhatsApp**: un asistente de IA que además **actúa** — consulta los huecos reales de la
+- **Citas que se reservan solas**, con WhatsApp: un asistente de IA que además **actúa** — consulta los huecos reales de la
   agenda, reserva la cita, la confirma y envía el recordatorio.
 
 Los dos primeros cuentan cosas; el tercero hace el trabajo. La pregunta para elegir: ¿lo que se
 pierde son consultas sin responder, o citas sin coger?
 
-**Por qué el que más hace es el más barato:** Citas por WhatsApp (700€–1.800€) cuesta menos que una
-Integración de IA (1.600€–6.000€) porque **ya está construido y probado** y el trabajo es configurarlo
+**Por qué el que más hace es el más barato:** las citas con WhatsApp (450€ + 59€/mes) cuestan menos que
+una Integración de IA (1.600€–6.000€ + 90-250€/mes) porque **es un producto, el mismo para todos los
+negocios**, y el trabajo es configurarlo
 con los servicios, los horarios y la agenda del negocio. La Integración de IA se fabrica desde cero
 sobre la documentación, los canales y los sistemas de cada cliente, y no hay dos iguales. Se paga la
 fabricación, no el número de funciones.
@@ -121,26 +121,26 @@ cifras verificadas y no se inventan.
   corrección de errores, 1h/mes de cambios, respuesta en 48h laborables como máximo (siempre intentando antes),
   informe trimestral.
   Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
-  Integración de IA (90-250€/mes) y las Citas por WhatsApp (150-250€/mes).
+  Integración de IA (90-250€/mes) y las citas (29-59€/mes).
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
   acumulables), vigilancia de pasarelas de pago, respuesta el mismo día, también en fines de semana, festivos y vacaciones
   (4h en incidencia crítica), informe mensual. El Básico cubre lo normal; el Plus es para quien no puede esperar.
 
 ## Dónde quedan los datos
 
-Todo lo del cliente va en cuentas a su nombre (dominio, hosting, base de datos, su agenda y su número de WhatsApp),
-con los datos en servidores de la Unión Europea. Lo único que va en la cuenta de Teselar es la
-inteligencia artificial del asistente de citas: Google Cloud, en la UE, con el acuerdo de protección de datos
-de Google y sin que Google use las conversaciones para entrenar nada; por eso su coste entra en la cuota.
-Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un fallo que corregir o si el
-cliente se lo pide; en la Integración de IA (05), revisarlas cada mes es parte del servicio. Y
-siempre se firma el contrato de protección de datos que pide la ley.
-
-Lo hecho a medida (web, programa o automatización) es del cliente cuando lo ha pagado entero, con su
-código, que se le entrega. El producto de citas es distinto: ya está hecho y probado, por eso cuesta menos, y se usa mientras se
-paga la cuota; los clientes y las citas del negocio son siempre suyos (las citas ya están en su
-agenda y la lista de clientes se le da en un Excel). Si el negocio trata datos de salud,
-el contrato lo recoge y se ve antes de empezar. Si preguntan qué pasa si Rubén no está: todo va a nombre del cliente, lo que monta funciona solo
+Lo hecho a medida (web, programa o automatización) va en cuentas a nombre del cliente (dominio, hosting,
+base de datos y su número de WhatsApp), con los datos en servidores de la Unión Europea, y es del
+cliente con su código cuando lo ha pagado entero: se le entrega. El producto de citas es distinto: es
+el mismo para todos los negocios que lo usan y funciona en los servidores de Teselar, también en la
+UE, con los datos de cada negocio separados de los demás; por eso cuesta menos. Se usa mientras se paga
+la cuota, y los clientes y las citas del negocio son siempre suyos: las citas las tiene también en su
+Google Calendar, y si lo deja se le dan en un Excel la lista de clientes y todas sus citas. La
+inteligencia artificial del asistente de citas va en la cuenta de Google Cloud de Teselar, en la UE,
+con el acuerdo de protección de datos de Google y sin que Google use las conversaciones para entrenar
+nada. Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un fallo que corregir
+o si el cliente se lo pide; en la Integración de IA (05), revisarlas cada mes es parte del servicio. Y
+siempre se firma el contrato de protección de datos que pide la ley. Si el negocio trata datos de
+salud, el contrato lo recoge y se ve antes de empezar. Si preguntan qué pasa si Rubén no está: lo hecho a medida va a nombre del cliente, lo que monta funciona solo
 y lo vigila a todas horas; con el Plan Plus, también fines de semana y vacaciones.
 
 ## Qué pasa si no se paga el mantenimiento o no se renueva
@@ -157,10 +157,10 @@ Y a partir de ahí:
   y la reparación se presupuesta aparte.
 - **Lo mismo con las Automatizaciones Específicas y el asistente de la Integración de IA:** siguen
   funcionando en las cuentas del cliente, sin vigilancia ni revisión.
-- **La única excepción son las Citas por WhatsApp:** se detienen si se cancela la cuota, con aviso previo
-  de 15 días, porque la inteligencia artificial que las mueve va en la cuenta de Teselar y la paga Teselar.
-  Sus clientes y sus citas son siempre suyos: las citas ya están en su agenda y la lista de clientes se
-  le da en un Excel.
+- **La única excepción es el producto de citas:** se detiene si se cancela la cuota, con aviso previo
+  de 15 días, porque funciona en los servidores de Teselar y la inteligencia artificial va en su cuenta.
+  Sus clientes y sus citas son siempre suyos: las tiene también en su Google Calendar y se le dan en un
+  Excel la lista de clientes y todas sus citas.
 - **Volver es posible.** Si se dio de baja y más adelante quiere retomarlo, se revisa en qué estado
   quedó y la puesta al día se presupuesta aparte.
 
@@ -177,14 +177,14 @@ No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting,
 correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana profesional o jurada
 (la traducción con IA revisada sí va incluida), publicidad de pago y redes sociales. En el producto
 de citas, el coste del modelo de IA SÍ va incluido en la cuota mensual (uso normal: hasta 500
-conversaciones al mes en el plan Esencial y 1.500 en el Completo; si un mes se pasa, no se corta: se mira
+conversaciones al mes con una agenda y 250 más por cada agenda más, para todo el negocio; si un mes se pasa, no se corta: se mira
 con el cliente y, si se repite, se ajusta la cuota), y el cliente no tiene que darse de
 alta en ningún servicio de IA. Lo que no se incluye son los mensajes de WhatsApp: desde el 1 de octubre de 2026 Meta cobra los mensajes
 enviados y los factura directamente al cliente, porque la cuenta de WhatsApp es suya. Sale entre 1,7
 y 3,3 céntimos por cita reservada (unos 2-3€/mes en un negocio de 100 reservas), calculado con la
 tarifa oficial de Meta en vigor desde ese día: las respuestas del asistente entran en los 1.000
 mensajes de servicio gratis al mes que da Meta por número, que cubren hasta unas 250 citas al mes, y
-lo que se paga es el recordatorio y la confirmación (0,0166€ cada uno en España). Los mensajes que
+lo que se paga es el recordatorio, la confirmación y la petición de reseña, que son plantillas de pago. Los mensajes que
 escriben sus clientes son gratis siempre.
 
 ## Enlaces
@@ -207,9 +207,10 @@ diagnosis call** (booked at https://calendly.com/teselarsoftware-info/diagnostic
 plus a written report on which processes cost time or money and what can be automated, sent together
 with a priced proposal — deducted from the project if that proposal is accepted within 30 days, and it includes the
 digital pre-diagnosis of the website and social media, which on its own is free.
-Services: process audit (150€), specific automations
-(700€–1,800€ + 60€/mo required maintenance), WhatsApp appointment booking (700€–900€ + 150€/mo, or 1,500€–1,800€ + 250€/mo, with a
-three-month guarantee), essential websites (1,200€–1,600€),
+Services: process audit (150€), appointments that book themselves (one product in two versions, no
+lock-in: without WhatsApp 150€ + 29€/mo, with WhatsApp 450€ + 59€/mo, +8€/mo per extra calendar,
+Google Calendar sync and Google review requests included, with a three-month guarantee), specific
+automations (700€–1,800€ + 60€/mo recommended maintenance), essential websites (1,200€–1,600€),
 AI integrations/chatbots (1,600€–6,000€ + a 90-250€/mo assistant fee, depending on complexity), complete
 websites (from 3,000€), e-commerce (from 4,000€), real-estate websites with Kyero/Idealista sync
 (from 6,000€), and custom management software for customers, invoices and field technicians (8,000€–12,000€). No-lock-in maintenance plans
