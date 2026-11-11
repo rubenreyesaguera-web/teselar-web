@@ -319,16 +319,7 @@ export default function Page({ params }: PageProps) {
       icon: Search,
       features: [t.services.s1.f1, t.services.s1.f2, t.services.s1.f3, t.services.s1.f4, t.services.s1.f5, t.services.s1.f6, t.services.s1.f7]
     },
-    {
-      id: 's2',
-      category: 'automation',
-      title: t.services.s2.title,
-      ideal: t.services.s2.ideal,
-      price: t.services.s2.price,
-      tag: t.services.s2.tag,
-      icon: Zap,
-      features: [t.services.s2.f1, t.services.s2.f2, t.services.s2.f3, t.services.s2.f4, t.services.s2.f5, t.services.s2.f6, t.services.s2.f7, t.services.s2.f8]
-    },
+    // Citas va justo detrás de la auditoría: son las dos puertas de entrada (ADR-120, addenda del 11/11).
     {
       id: 's9',
       category: 'automation',
@@ -338,6 +329,16 @@ export default function Page({ params }: PageProps) {
       tag: t.services.s9.tag,
       icon: Calendar,
       features: [t.services.s9.f1, t.services.s9.f2, t.services.s9.f3, t.services.s9.f4, t.services.s9.f5, t.services.s9.f6, t.services.s9.f7, t.services.s9.f8]
+    },
+    {
+      id: 's2',
+      category: 'automation',
+      title: t.services.s2.title,
+      ideal: t.services.s2.ideal,
+      price: t.services.s2.price,
+      tag: t.services.s2.tag,
+      icon: Zap,
+      features: [t.services.s2.f1, t.services.s2.f2, t.services.s2.f3, t.services.s2.f4, t.services.s2.f5, t.services.s2.f6, t.services.s2.f7, t.services.s2.f8]
     },
     {
       id: 's3',
@@ -725,7 +726,7 @@ export default function Page({ params }: PageProps) {
                       {service.id === 's8' && <span className="text-sm text-claridad/70">{t.demo.portada_nota}</span>}
                       {/* La auditoria antes del 09 (ADR-086), dicha aqui y no descubierta en la reunion (25/10). */}
                       {service.id === 's8' && <span className="text-sm text-claridad/70 max-w-[62ch] [text-wrap:pretty]">{t.services.s8.paso}</span>}
-                      {/* Los dos planes de citas (doc 04): «700 € — 1.800 €» se leia como un solo producto (25/10). */}
+                      {/* Las dos versiones de citas (ADR-120): una horquilla sola se leia como un solo producto (25/10). */}
                       {service.id === 's9' && <span className="text-sm text-claridad/70 max-w-[62ch] [text-wrap:pretty]">{t.services.s9.planes}</span>}
                     </div>
                     <div className="lg:col-span-3 flex lg:flex-col lg:items-end justify-between lg:justify-start gap-1">
