@@ -351,6 +351,16 @@ export default function Page({ params }: PageProps) {
       features: [t.services.s3.f1, t.services.s3.f2, t.services.s3.f3, t.services.s3.f4, t.services.s3.f5, t.services.s3.f6, t.services.s3.f7, t.services.s3.f8]
     },
     {
+      id: 's6',
+      category: 'web',
+      title: t.services.s6.title,
+      ideal: t.services.s6.ideal,
+      price: t.services.s6.price,
+      tag: t.services.s6.tag,
+      icon: ShoppingCart,
+      features: [t.services.s6.hereda, t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
+    },
+    {
       id: 's4',
       category: 'automation',
       title: t.services.s4.title,
@@ -369,16 +379,6 @@ export default function Page({ params }: PageProps) {
       tag: t.services.s5.tag,
       icon: Briefcase,
       features: [t.services.s5.hereda, t.services.s5.f1, t.services.s5.f2, t.services.s5.f3, t.services.s5.f4, t.services.s5.f5, t.services.s5.f6, t.services.s5.f7]
-    },
-    {
-      id: 's6',
-      category: 'web',
-      title: t.services.s6.title,
-      ideal: t.services.s6.ideal,
-      price: t.services.s6.price,
-      tag: t.services.s6.tag,
-      icon: ShoppingCart,
-      features: [t.services.s6.hereda, t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
     },
     {
       id: 's7',

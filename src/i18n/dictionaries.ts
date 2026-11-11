@@ -47,7 +47,7 @@ export const dictionaries = {
         title: 'Tres servicios hablan por WhatsApp y no son lo mismo',
         c1_title: 'Chatbot guiado · dentro del 03',
         c1_desc: 'Sigue un guion de botones y respuestas previstas. Barato y suficiente si las preguntas son siempre las mismas; en cuanto se salen del guion, se atasca.',
-        c2_title: 'Asistente de IA · el 05',
+        c2_title: 'Asistente de IA · el 06',
         c2_desc: 'Entiende lo que le escriben con palabras normales y responde con la información de tu negocio. Informa y orienta, pero no toca tu agenda. Se construye a medida sobre tu documentación, tus canales y tus sistemas: por eso el rango es amplio. Es el chat que tienes en la esquina de esta web: TesS. Pregúntale lo que quieras.',
         c3_title: 'Citas que se reservan solas · el 02',
         c3_desc: 'Un asistente de IA que además actúa: mira los huecos que tienes libres de verdad, reserva la cita, la confirma y manda el recordatorio. Es un producto, el mismo para todos los negocios: se configura con tus servicios y tus horarios, y por eso es más barato que un desarrollo a medida y puede llevar garantía.',
@@ -101,7 +101,7 @@ export const dictionaries = {
         f8: '3 meses de mantenimiento (Plan Básico) incluidos; al acabar el segundo te aviso y decides si sigues, sin permanencia'
       },
       s4: {
-        title: '05. Integración de Inteligencia Artificial',
+        title: '06. Integración de Inteligencia Artificial',
         ideal: 'Negocios que reciben muchas preguntas repetidas y las contestan a mano: horarios, precios, cómo funciona algo, si haces tal cosa. El asistente responde por ti con la información de tu negocio, pero no gestiona tu agenda — si lo que se te escapan son citas, el servicio es el 03. El precio final depende de la complejidad: un chatbot sencillo de un solo canal se sitúa en la parte baja del rango; un asistente avanzado con múltiples integraciones y canales (web, WhatsApp, Telegram), en la parte alta.',
         price: '1.600€ — 6.000€ + 90-250€/mes',
         tag: 'OpenAI / Anthropic APIs',
@@ -114,7 +114,7 @@ export const dictionaries = {
         f7: 'Cuota mensual del asistente, recomendada y en tres tramos: 90€/mes si atiende un solo canal, 150€/mes si son varios o lleva integraciones, y 250€/mes si es multicanal y además se integra con tus sistemas. Incluye revisar las conversaciones, corregir lo que se conteste mal y mantener al día la información con la que responde; sin ella el asistente sigue funcionando, pero nadie lo revisa. El consumo de las APIs de IA va en tu propia cuenta, a tu nombre'
       },
       s5: {
-        title: '06. Web Completa',
+        title: '07. Web Completa',
         ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
         price: '2.490€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
@@ -128,7 +128,7 @@ export const dictionaries = {
         f7: '1 semana de ajustes en vivo y formación de uso'
       },
       s6: {
-        title: '07. Tienda Online / E-commerce',
+        title: '05. Tienda Online / E-commerce',
         ideal: 'Comercios locales o marcas que quieren vender en línea sin montar ni mantener una plataforma propia.',
         price: '1.490€',
         tag: 'Shopify',
@@ -339,7 +339,7 @@ export const dictionaries = {
       },
       q14: {
         q: '¿Dónde quedan los datos de mis clientes o pacientes?',
-        a: 'Lo que te hago a medida (web, programa o automatización) va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea, y es tuyo con su código cuando lo has pagado entero: te lo entrego. El producto de citas es distinto: es el mismo para todos los negocios que lo usan y funciona en mis servidores, también en la Unión Europea, con los datos de cada negocio separados de los demás. Por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas las tienes también en tu Google Calendar, y si lo dejas te doy en un Excel la lista de clientes y todas sus citas. La inteligencia artificial del asistente va en mi cuenta de Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Las conversaciones del asistente solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.'
+        a: 'Lo que te hago a medida (web, programa o automatización) va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea, y es tuyo con su código cuando lo has pagado entero: te lo entrego. El producto de citas es distinto: es el mismo para todos los negocios que lo usan y funciona en mis servidores, también en la Unión Europea, con los datos de cada negocio separados de los demás. Por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas las tienes también en tu Google Calendar, y si lo dejas te doy en un Excel la lista de clientes y todas sus citas. La inteligencia artificial del asistente va en mi cuenta de Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Las conversaciones del asistente solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (06), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.'
       },
       q15: {
         q: '¿Y si trabajas solo y un día no estás?',
@@ -492,7 +492,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: '¿Cómo entra sola una cita por WhatsApp?', r: 'Si quieres, un asistente con inteligencia artificial atiende el WhatsApp de tu negocio: mira los huecos libres, reserva la cita y la confirma. Tú ves en la agenda lo que ha entrado.' },
         { p: '¿Quién me atiende si algo falla?', r: 'Yo, directamente: hablas siempre con quien lo ha hecho. Funciona solo y lo vigilo a todas horas, así que si algo falla me entero antes que tú. También cubro fines de semana y vacaciones, si los necesitas. Y no te quedas atado: todo va a tu nombre y el código de lo hecho a medida es tuyo.' },
         { p: '¿Es un programa hecho o a medida?', r: 'A medida y por partes: empezamos por lo que más te pesa.' },
-        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Lo que te hago a medida (web, programa o automatización) va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea, y es tuyo con su código cuando lo has pagado entero: te lo entrego. El producto de citas es distinto: es el mismo para todos los negocios que lo usan y funciona en mis servidores, también en la Unión Europea, con los datos de cada negocio separados de los demás. Por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas las tienes también en tu Google Calendar, y si lo dejas te doy en un Excel la lista de clientes y todas sus citas. La inteligencia artificial del asistente va en mi cuenta de Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Las conversaciones del asistente solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (05), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.' },
+        { id: 'datos', p: '¿Dónde se guardan mis datos?', r: 'Lo que te hago a medida (web, programa o automatización) va en cuentas a tu nombre: dominio, hosting, base de datos y tu número de WhatsApp, con los datos en servidores de la Unión Europea, y es tuyo con su código cuando lo has pagado entero: te lo entrego. El producto de citas es distinto: es el mismo para todos los negocios que lo usan y funciona en mis servidores, también en la Unión Europea, con los datos de cada negocio separados de los demás. Por eso cuesta menos. Lo usas mientras pagas la cuota, y tus clientes y tus citas son siempre tuyos: las citas las tienes también en tu Google Calendar, y si lo dejas te doy en un Excel la lista de clientes y todas sus citas. La inteligencia artificial del asistente va en mi cuenta de Google Cloud, en la UE, con su acuerdo de protección de datos y sin que Google use las conversaciones para entrenar nada. Las conversaciones del asistente solo las veo yo, y solo si hay un fallo que corregir o si tú me lo pides. En el asistente a medida (06), revisarlas cada mes es parte del servicio, para corregir lo que conteste mal. Y siempre firmamos el contrato de protección de datos que pide la ley. Si tu negocio trata datos de salud, el contrato lo recoge y lo vemos antes de empezar.' },
       ],
       otro_prefijo: 'Otro',
       portada_pregunta: '¿Quieres verlo antes de hablar?',
@@ -568,7 +568,7 @@ export const dictionaries = {
         title: 'Tres serveis parlen per WhatsApp i no són el mateix',
         c1_title: 'Xatbot guiat · dins del 03',
         c1_desc: 'Segueix un guió de botons i respostes previstes. Barat i suficient si les preguntes són sempre les mateixes; així que se surten del guió, s\'encalla.',
-        c2_title: 'Assistent d\'IA · el 05',
+        c2_title: 'Assistent d\'IA · el 06',
         c2_desc: 'Entén el que li escriuen amb paraules normals i respon amb la informació del teu negoci. Informa i orienta, però no toca la teva agenda. Es construeix a mida sobre la teva documentació, els teus canals i els teus sistemes: per això el rang és ampli. És el xat que tens a la cantonada d’aquest web: la TesS. Pregunta-li el que vulguis.',
         c3_title: 'Cites que es reserven soles · el 02',
         c3_desc: 'Un assistent d\'IA que a més actua: mira els forats que tens lliures de debò, reserva la cita, la confirma i envia el recordatori. És un producte, el mateix per a tots els negocis: es configura amb els teus serveis i els teus horaris, i per això és més barat que un desenvolupament a mida i pot portar garantia.',
@@ -622,7 +622,7 @@ export const dictionaries = {
         f8: '3 mesos de manteniment (Pla Bàsic) inclosos; quan s’acaba el segon t’aviso i decideixes si continues, sense permanència'
       },
       s4: {
-        title: '05. Integració d\'Intel·ligència Artificial',
+        title: '06. Integració d\'Intel·ligència Artificial',
         ideal: 'Negocis que reben moltes preguntes repetides i les contesten a mà: horaris, preus, com funciona una cosa, si fas tal servei. L\'assistent respon per tu amb la informació del teu negoci, però no gestiona la teva agenda — si el que se t\'escapa són cites, el servei és el 03. El preu final depèn de la complexitat: un xatbot senzill d\'un sol canal se situa en la part baixa del rang; un assistent avançat amb múltiples integracions i canals (web, WhatsApp, Telegram), en la part alta.',
         price: '1.600€ — 6.000€ + 90-250€/mes',
         tag: 'OpenAI / Anthropic APIs',
@@ -635,7 +635,7 @@ export const dictionaries = {
         f7: 'Quota mensual de l\'assistent, recomanada i en tres trams: 90€/mes si atén un sol canal, 150€/mes si en són diversos o porta integracions, i 250€/mes si és multicanal i a més s\'integra amb els teus sistemes. Inclou revisar les converses, corregir el que es respongui malament i mantenir al dia la informació amb què respon. El consum de les APIs d\'IA va al teu propi compte, al teu nom'
       },
       s5: {
-        title: '06. Web Completa',
+        title: '07. Web Completa',
         ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
         price: '2.490€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
@@ -649,7 +649,7 @@ export const dictionaries = {
         f7: '1 setmana d\'ajustaments en viu i formació d\'ús inclosa'
       },
       s6: {
-        title: '07. Botiga Online / E-commerce',
+        title: '05. Botiga Online / E-commerce',
         ideal: 'Comerços locals o marques que volen vendre en línia sense muntar ni mantenir una plataforma pròpia.',
         price: '1.490€',
         tag: 'Shopify',
@@ -860,7 +860,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'On queden les dades dels meus clients o pacients?',
-        a: 'El que et faig a mida (web, programa o automatització) va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea, i és teu amb el seu codi quan l’has pagat sencer: te l’entrego. El producte de cites és diferent: és el mateix per a tots els negocis que el fan servir i funciona als meus servidors, també a la Unió Europea, amb les dades de cada negoci separades de les dels altres. Per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites també les tens al teu Google Calendar, i si ho deixes et dono en un Excel la llista de clients i totes les seves cites. La intel·ligència artificial de l’assistent va al meu compte de Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Les converses de l’assistent només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.'
+        a: 'El que et faig a mida (web, programa o automatització) va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea, i és teu amb el seu codi quan l’has pagat sencer: te l’entrego. El producte de cites és diferent: és el mateix per a tots els negocis que el fan servir i funciona als meus servidors, també a la Unió Europea, amb les dades de cada negoci separades de les dels altres. Per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites també les tens al teu Google Calendar, i si ho deixes et dono en un Excel la llista de clients i totes les seves cites. La intel·ligència artificial de l’assistent va al meu compte de Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Les converses de l’assistent només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (06), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.'
       },
       q15: {
         q: 'I si treballes sol i un dia no hi ets?',
@@ -1002,7 +1002,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'Com entra sola una cita per WhatsApp?', r: 'Si vols, un assistent amb intel·ligència artificial atén el WhatsApp del teu negoci: mira els forats lliures, reserva la cita i la confirma. Tu veus a l’agenda el que ha entrat.' },
         { p: 'Qui m’atén si alguna cosa falla?', r: 'Jo, directament: parles sempre amb qui ho ha fet. Funciona sol i ho vigilo a totes hores, així que si alguna cosa falla me n’assabento abans que tu. També cobreixo caps de setmana i vacances, si els necessites. I no et quedes lligat: tot va a nom teu i el codi del que es fa a mida és teu.' },
         { p: 'És un programa fet o a mida?', r: 'A mida i per parts: comencem pel que més et pesa.' },
-        { id: 'datos', p: 'On es guarden les meves dades?', r: 'El que et faig a mida (web, programa o automatització) va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea, i és teu amb el seu codi quan l’has pagat sencer: te l’entrego. El producte de cites és diferent: és el mateix per a tots els negocis que el fan servir i funciona als meus servidors, també a la Unió Europea, amb les dades de cada negoci separades de les dels altres. Per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites també les tens al teu Google Calendar, i si ho deixes et dono en un Excel la llista de clients i totes les seves cites. La intel·ligència artificial de l’assistent va al meu compte de Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Les converses de l’assistent només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (05), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.' },
+        { id: 'datos', p: 'On es guarden les meves dades?', r: 'El que et faig a mida (web, programa o automatització) va en comptes a nom teu: domini, hosting, base de dades i el teu número de WhatsApp, amb les dades en servidors de la Unió Europea, i és teu amb el seu codi quan l’has pagat sencer: te l’entrego. El producte de cites és diferent: és el mateix per a tots els negocis que el fan servir i funciona als meus servidors, també a la Unió Europea, amb les dades de cada negoci separades de les dels altres. Per això costa menys. El fas servir mentre pagues la quota, i els teus clients i les teves cites són sempre teus: les cites també les tens al teu Google Calendar, i si ho deixes et dono en un Excel la llista de clients i totes les seves cites. La intel·ligència artificial de l’assistent va al meu compte de Google Cloud, a la UE, amb el seu acord de protecció de dades i sense que Google faci servir les converses per entrenar res. Les converses de l’assistent només les veig jo, i només si hi ha una errada per corregir o si tu m’ho demanes. A l’assistent a mida (06), revisar-les cada mes forma part del servei, per corregir el que respongui malament. I sempre signem el contracte de protecció de dades que demana la llei. Si el teu negoci tracta dades de salut, el contracte ho recull i ho mirem abans de començar.' },
       ],
       otro_prefijo: 'Un altre',
       portada_pregunta: 'Ho vols veure abans de parlar?',
@@ -1073,7 +1073,7 @@ export const dictionaries = {
         title: 'Three services talk over WhatsApp, and they are not the same thing',
         c1_title: 'Guided chatbot · part of 03',
         c1_desc: 'Follows a script of buttons and pre-written answers. Cheap and enough when the questions are always the same; step off the script and it gets stuck.',
-        c2_title: 'AI assistant · service 05',
+        c2_title: 'AI assistant · service 06',
         c2_desc: 'Understands plain wording and answers with your business information. It informs and guides, but it does not touch your calendar. It is built from scratch around your documentation, your channels and your systems, which is why the range is wide. It is the chat in the corner of this website: TesS. Ask it anything.',
         c3_title: 'Appointments that book themselves · service 02',
         c3_desc: 'An AI assistant that also acts: it checks the slots you actually have free, books the appointment, confirms it and sends the reminder. It is a product, the same for every business: it gets configured with your services and opening hours, which is why it costs less than bespoke work and can carry a guarantee.',
@@ -1127,7 +1127,7 @@ export const dictionaries = {
         f8: '3 months of maintenance (Basic Plan) included; at the end of the second I let you know and you decide whether to carry on, no lock-in'
       },
       s4: {
-        title: '05. Artificial Intelligence Integration',
+        title: '06. Artificial Intelligence Integration',
         ideal: 'Businesses fielding the same questions over and over by hand: opening hours, prices, how something works, whether you offer a given service. The assistant answers for you using your business information, but it does not manage your calendar — if what you are losing is bookings, the service you want is 03. Final price depends on complexity: a simple single-channel chatbot sits at the low end of the range; an advanced assistant with multiple integrations and channels (web, WhatsApp, Telegram) sits at the high end.',
         price: '1,600€ — 6,000€ + 90-250€/mo',
         tag: 'OpenAI / Anthropic APIs',
@@ -1140,7 +1140,7 @@ export const dictionaries = {
         f7: 'Monthly assistant fee, recommended, in three tiers: 90€/mo for a single channel, 150€/mo for several channels or with integrations, and 250€/mo when it is multichannel and also wired into your systems. It covers reviewing the conversations, correcting whatever gets answered wrong, and keeping the information it answers with up to date; without it the assistant keeps working, but nobody reviews it. AI API usage is billed to your own account, in your name'
       },
       s5: {
-        title: '06. Complete Web',
+        title: '07. Complete Web',
         ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
         price: '2,490€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
@@ -1154,7 +1154,7 @@ export const dictionaries = {
         f7: '1 week of live support and comprehensive training included'
       },
       s6: {
-        title: '07. E-commerce / Online Store',
+        title: '05. E-commerce / Online Store',
         ideal: 'Local shops or brands that want to sell online without building or maintaining a platform of their own.',
         price: '1,490€',
         tag: 'Shopify',
@@ -1365,7 +1365,7 @@ export const dictionaries = {
       },
       q14: {
         q: 'Where does my customers’ or patients’ data stay?',
-        a: 'What I build for you (website, software or automation) goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union, and it is yours with its source code once you have paid for it in full: I hand it over. The booking product is different: it is the same for every business that uses it and runs on my servers, also in the European Union, with each business’s data kept separate from the others. That is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: you also have the appointments in your Google Calendar, and if you leave I give you the customer list and all their appointments in an Excel file. The booking assistant’s artificial intelligence runs in my Google Cloud account, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. Only I see the assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. If your business handles health data, the agreement covers it and we go over it before we start.'
+        a: 'What I build for you (website, software or automation) goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union, and it is yours with its source code once you have paid for it in full: I hand it over. The booking product is different: it is the same for every business that uses it and runs on my servers, also in the European Union, with each business’s data kept separate from the others. That is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: you also have the appointments in your Google Calendar, and if you leave I give you the customer list and all their appointments in an Excel file. The booking assistant’s artificial intelligence runs in my Google Cloud account, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. Only I see the assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (06), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. If your business handles health data, the agreement covers it and we go over it before we start.'
       },
       q15: {
         q: 'What if you work alone and one day you are not around?',
@@ -1507,7 +1507,7 @@ export const dictionaries = {
         { id: 'whatsapp', p: 'How does a WhatsApp booking go in on its own?', r: 'If you want, an AI assistant handles your business WhatsApp: it checks free slots, books the appointment and confirms it. You see in the diary what has come in.' },
         { p: 'Who helps me if something goes wrong?', r: 'Me, directly: you always talk to the person who built it. It runs on its own and I keep an eye on it around the clock, so if something goes wrong I know before you do. I also cover weekends and holidays, if you need them. And you’re never tied to me: everything is in your name and the code for anything made to measure is yours.' },
         { p: 'Is it off-the-shelf software or made to measure?', r: 'Made to measure and in stages: we start with what weighs on you most.' },
-        { id: 'datos', p: 'Where is my data stored?', r: 'What I build for you (website, software or automation) goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union, and it is yours with its source code once you have paid for it in full: I hand it over. The booking product is different: it is the same for every business that uses it and runs on my servers, also in the European Union, with each business’s data kept separate from the others. That is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: you also have the appointments in your Google Calendar, and if you leave I give you the customer list and all their appointments in an Excel file. The booking assistant’s artificial intelligence runs in my Google Cloud account, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. Only I see the assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (05), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. If your business handles health data, the agreement covers it and we go over it before we start.' },
+        { id: 'datos', p: 'Where is my data stored?', r: 'What I build for you (website, software or automation) goes in accounts in your name: domain, hosting, database and your WhatsApp number, with the data on servers in the European Union, and it is yours with its source code once you have paid for it in full: I hand it over. The booking product is different: it is the same for every business that uses it and runs on my servers, also in the European Union, with each business’s data kept separate from the others. That is why it costs less. You use it while you pay the fee, and your customers and your appointments are always yours: you also have the appointments in your Google Calendar, and if you leave I give you the customer list and all their appointments in an Excel file. The booking assistant’s artificial intelligence runs in my Google Cloud account, in the EU, under Google’s data protection agreement and without Google using the conversations to train anything. Only I see the assistant’s conversations, and only if there is a fault to fix or you ask me to. With the custom assistant (06), reviewing them every month is part of the service, to fix what it answers badly. And we always sign the data protection agreement the law requires. If your business handles health data, the agreement covers it and we go over it before we start.' },
       ],
       otro_prefijo: 'Other',
       portada_pregunta: 'Want to see it before we talk?',

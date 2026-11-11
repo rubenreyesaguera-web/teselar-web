@@ -62,6 +62,15 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   adicional), formulario y WhatsApp, SEO técnico básico, enlazada con su ficha de Google y su Instagram, textos
   legales, sin cookies de seguimiento (sin banner), 1 semana de ajustes y 3 meses de mantenimiento incluidos (aviso al
   acabar el segundo, sin permanencia). Sin auditoría: se cierra en la charla gratis.
+- **Tienda Online** — 1.490€ sobre **Shopify**, en una cuenta a nombre del comercio: diseño a su marca, hasta 50
+  productos cargados (cada 50 más, +90€ si los carga Teselar; gratis si los carga el comercio desde la plantilla), tarjeta
+  y Bizum, envíos, impuestos, textos legales de venta y facturas con Verifactu mediante una app de Shopify, 1 idioma
+  (+150€ cada uno con los 50 productos; +90€ por idioma cada 50 productos más), 1 semana de ajustes y 3 meses de
+  mantenimiento. Shopify se encarga de que esté en línea, la seguridad, el cobro y las actualizaciones; la app emite y
+  envía las facturas; Teselar elige y configura la app, el diseño, el catálogo y la configuración, y vigila. La cuota de
+  Shopify (desde 24€/mes), la de la app de facturas (unos 10€/mes) y las comisiones las paga el comercio directamente.
+  La conexión con lo que ya usa (stock de la tienda física, facturación, TPV) se presupuesta aparte; cobrar también en el
+  mostrador con Shopify viene incluido en su cuota y comparte el stock.
 - **Integración de Inteligencia Artificial** — 1.600€–6.000€ + cuota mensual del asistente,
   recomendada (sin ella sigue funcionando, sin revisión) y en tres tramos: 90€/mes con un solo canal, 150€/mes multicanal o con integraciones,
   y 250€/mes multicanal e integrado con los sistemas del cliente. El precio depende de la complejidad (canales, integraciones). Asistentes/chatbots con IA
@@ -72,15 +81,6 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   formación, 1 semana de ajustes y 3 meses de mantenimiento. Sin auditoría; lo que se salga del alcance (una
   integración, una zona privada) se presupuesta aparte. El idioma de más cuesta distinto en cada web porque se paga
   traducir y revisar el texto; lo que el cliente escriba después en el blog no va incluido.
-- **Tienda Online** — 1.490€ sobre **Shopify**, en una cuenta a nombre del comercio: diseño a su marca, hasta 50
-  productos cargados (cada 50 más, +90€ si los carga Teselar; gratis si los carga el comercio desde la plantilla), tarjeta
-  y Bizum, envíos, impuestos, textos legales de venta y facturas con Verifactu mediante una app de Shopify, 1 idioma
-  (+150€ cada uno con los 50 productos; +90€ por idioma cada 50 productos más), 1 semana de ajustes y 3 meses de
-  mantenimiento. Shopify se encarga de que esté en línea, la seguridad, el cobro y las actualizaciones; la app emite y
-  envía las facturas; Teselar elige y configura la app, el diseño, el catálogo y la configuración, y vigila. La cuota de
-  Shopify (desde 24€/mes), la de la app de facturas (unos 10€/mes) y las comisiones las paga el comercio directamente.
-  La conexión con lo que ya usa (stock de la tienda física, facturación, TPV) se presupuesta aparte; cobrar también en el
-  mostrador con Shopify viene incluido en su cuota y comparte el stock.
 - **Web Inmobiliaria** — 2.990€, precio cerrado, para inmobiliarias que ya usan un programa de gestión
   (Inmovilla, Witei, Mobilia…): la web se conecta a su programa y se actualiza sola; los portales (Idealista,
   Fotocasa, Habitaclia) los sigue llevando su programa, sin pagar dos veces. Buscador con filtros, fichas con galería
@@ -161,7 +161,7 @@ Google Calendar, y si lo deja se le dan en un Excel la lista de clientes y todas
 inteligencia artificial del asistente de citas va en la cuenta de Google Cloud de Teselar, en la UE,
 con el acuerdo de protección de datos de Google y sin que Google use las conversaciones para entrenar
 nada. Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un fallo que corregir
-o si el cliente se lo pide; en la Integración de IA (05), revisarlas cada mes es parte del servicio. Y
+o si el cliente se lo pide; en la Integración de IA (06), revisarlas cada mes es parte del servicio. Y
 siempre se firma el contrato de protección de datos que pide la ley. Si el negocio trata datos de
 salud, el contrato lo recoge y se ve antes de empezar. Si preguntan qué pasa si Rubén no está: lo hecho a medida va a nombre del cliente, lo que monta funciona solo
 y lo vigila a todas horas; con el Plan Plus, también fines de semana y vacaciones.

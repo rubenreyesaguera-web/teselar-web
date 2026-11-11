@@ -110,7 +110,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const websiteId = `${baseUrl}/#website`;
   const localBusinessId = `${baseUrl}/#localbusiness`;
 
-  const serviceIds = ['s1', 's9', 's2', 's3', 's4', 's5', 's6', 's7', 's8'] as const;
+  const serviceIds = ['s1', 's9', 's2', 's3', 's6', 's4', 's5', 's7', 's8'] as const;
   const faqIds = ['q1', 'q2', 'q3', 'q16', 'q17', 'q18', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15'] as const;
 
   // Grafo de datos estructurados (GEO/AEO): sustituye al único ProfessionalService previo.

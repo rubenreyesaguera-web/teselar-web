@@ -159,7 +159,7 @@ describe('textos de la cuarta pasada', () => {
     for (const lng of LNGS) {
       const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
       for (const t of [dictionaries[lng].faq.q14.a, datos]) {
-        expect(t).toMatch(/\(05\)/);
+        expect(t).toMatch(/\(06\)/);
         expect(t).toMatch(/agenda|[Cc]alendar/);
       }
     }
