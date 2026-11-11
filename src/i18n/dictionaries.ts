@@ -61,7 +61,7 @@ export const dictionaries = {
       vat: '+ IVA',
       s1: {
         title: '01. Auditoría de Procesos',
-        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas por WhatsApp, una web sencilla o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes: cuentan como parte de la señal.',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas, una web, una tienda online o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes: cuentan como parte de la señal.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Procesos y costes',
         f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante. Antes te digo qué tienes que traer, que es poco y depende de tu negocio',
@@ -89,15 +89,16 @@ export const dictionaries = {
       s3: {
         title: '04. Web Esencial',
         ideal: 'Freelancers, pequeñas empresas, profesionales independientes y nuevos emprendedores.',
-        price: '1.200€ — 1.600€',
+        price: '990€',
         tag: 'React + Vite + Tailwind CSS',
-        f1: 'Página única de alto impacto o 3-4 secciones estructuradas',
+        f1: 'Página única de alto impacto o hasta 4 secciones',
         f2: 'Diseño web moderno, responsive y optimizado para móvil',
         f3: 'Formulario de contacto y botón de WhatsApp con notificación automática',
-        f4: '1 idioma incluido — cada idioma adicional +150€',
-        f5: 'SEO técnico básico (meta tags, estructura HTML limpia)',
-        f6: 'Optimización extrema de velocidad de carga y rendimiento',
-        f7: '1 semana de ajustes en vivo durante el despliegue'
+        f4: '1 idioma incluido — cada idioma adicional +90€',
+        f5: 'SEO técnico básico (meta tags, estructura HTML limpia) y enlazada con tu ficha de Google y tu Instagram',
+        f6: 'Optimización extrema de velocidad de carga y rendimiento, y sin cookies de seguimiento: no necesitas banner de cookies',
+        f7: 'Textos legales (aviso legal y privacidad) y 1 semana de ajustes en vivo durante el despliegue',
+        f8: '3 meses de mantenimiento (Plan Básico) incluidos; al acabar el segundo te aviso y decides si sigues, sin permanencia'
       },
       s4: {
         title: '05. Integración de Inteligencia Artificial',
@@ -115,60 +116,61 @@ export const dictionaries = {
       s5: {
         title: '06. Web Completa',
         ideal: 'Pymes que necesitan la web de verdad de su negocio: catálogo o portfolio, blog y preparada para clientes extranjeros.',
-        price: 'Desde 3.000€ (2 idiomas incluidos)',
+        price: '2.490€ (2 idiomas incluidos)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Incluye todo lo de la Web Esencial (04): diseño responsive, formulario y botón de WhatsApp, SEO básico y 1 semana de ajustes en vivo',
-        f1: 'Estructura modular de 5 a 8 secciones bien definidas',
+        hereda: 'Incluye todo lo de la Web Esencial (04): diseño responsive, formulario y botón de WhatsApp, SEO básico, textos legales, sin cookies de seguimiento, 1 semana de ajustes en vivo y 3 meses de mantenimiento incluidos',
+        f1: 'Hasta 8 secciones, que dejamos cerradas por escrito en la propuesta',
         f2: 'Galería de proyectos o portfolio interactivo con filtros dinámicos',
         f3: 'Sección autogestionable de blog, artículos o noticias',
         f4: 'Panel de administración intuitivo para gestionar contenidos',
-        f5: '2 idiomas incluidos con detección automática — cada idioma adicional +250€',
+        f5: '2 idiomas incluidos con detección automática — cada idioma adicional +150€',
         f6: 'SEO técnico completo (sitemap, hreflang, Google Search Console)',
         f7: '1 semana de ajustes en vivo y formación de uso'
       },
       s6: {
         title: '07. Tienda Online / E-commerce',
-        ideal: 'Comercios locales o marcas que venden productos o servicios directamente online.',
-        price: 'Desde 4.000€',
-        tag: 'React + BD + Pasarelas de Pago',
-        hereda: 'Incluye todo lo de la Web Completa (06): hasta 8 secciones, blog autogestionable, panel de administración, 2 idiomas y SEO completo',
-        f1: 'Carrito de compra interactivo, fluido y de carga ultrarrápida',
-        f2: 'Proceso de checkout seguro y simplificado (One-Step)',
-        f3: 'Integración completa con Stripe, PayPal y Bizum',
-        f4: 'Gestión de productos y stock desde el panel de administración',
-        f5: 'Notificaciones automáticas de pedidos al email de clientes y gestor',
-        f6: 'Módulo de cupones de descuento, impuestos y costes de envío',
-        f7: 'Historial de transacciones de clientes y facturación básica',
-        f8: 'Plan Básico de mantenimiento incluido el primer año; después, 60€/mes sin permanencia (o Plan Plus si el volumen de pedidos lo pide)'
+        ideal: 'Comercios locales o marcas que quieren vender en línea sin montar ni mantener una plataforma propia.',
+        price: '1.490€',
+        tag: 'Shopify',
+        hereda: 'Sobre Shopify, en una cuenta a tu nombre: Shopify se encarga de que esté en línea, la seguridad, los pagos y las actualizaciones (su cuota, desde 24€/mes, la de la app de facturas y sus comisiones las pagas tú directamente). Yo, del diseño, el catálogo, la configuración, las facturas con Verifactu y de vigilar que todo siga entrando.',
+        f1: 'Diseño a tu marca sobre una plantilla de Shopify, rápida y adaptada al móvil',
+        f2: 'Hasta 50 productos cargados. Cada 50 más, +90€ si los cargo yo, o gratis si los cargas tú desde la plantilla, que te enseño a usar',
+        f3: 'Cobro con tarjeta y Bizum, configurado y probado',
+        f4: 'Facturas con Verifactu desde el primer pedido: las emite una app de Shopify (su cuota, unos 10€/mes, la pagas tú) y yo la dejo configurada y vigilo que funcione',
+        f5: 'Envíos, impuestos y textos legales de venta (condiciones y devoluciones)',
+        f6: '1 idioma incluido — cada idioma adicional +150€, con los 50 productos; cada 50 productos más, +90€ por idioma',
+        f7: 'Conectada con lo que ya usas (el stock de tu tienda física, tu facturación o tu TPV), presupuestado aparte',
+        f8: '1 semana de ajustes y 3 meses de mantenimiento incluidos: vigilo que los pagos y las facturas sigan entrando. Después, 60€/mes sin permanencia (o el Plan Plus si el volumen de pedidos lo pide)'
       },
       s7: {
         title: '08. Web Inmobiliaria',
-        ideal: 'Inmobiliarias que quieren destacar propiedades, captar compradores extranjeros y sincronizar con los portales.',
-        price: 'Desde 6.000€',
-        tag: 'React + BD + Kyero XML',
+        ideal: 'Inmobiliarias que ya trabajan con un programa de gestión (Inmovilla, Witei, Mobilia…) y quieren una web propia a la altura, para captar compradores extranjeros.',
+        price: '2.990€ (2 idiomas incluidos)',
+        tag: 'Web + conexión con tu programa',
         f1: 'Buscador de propiedades con filtros (zona, precio, tipo, habitaciones)',
         f2: 'Fichas de propiedad con galería, mapa y sistema de destacados',
-        f3: 'Panel de control para publicar y gestionar propiedades sin tocar código',
-        f4: '2 idiomas incluidos para compradores extranjeros — adicional +250€',
-        f5: 'Exportación XML (formato Kyero) para sincronizar con Idealista, Habitaclia, Fotocasa y portales internacionales',
+        f3: 'Conectada al programa que ya usas: cuando subes, cambias o vendes un piso, la web se actualiza sola',
+        f4: '2 idiomas incluidos para compradores extranjeros — cada idioma adicional +150€',
+        f5: 'Sin pagar dos veces: los portales (Idealista, Fotocasa, Habitaclia…) los sigue llevando tu programa, como hasta ahora',
         f6: 'Formulario de contacto por propiedad y botón de WhatsApp',
-        f7: 'SEO local y mantenimiento incluido el primer año, con la vigilancia del feed a los portales'
+        f7: 'SEO local, textos legales, sin cookies de seguimiento, 1 semana de ajustes y 3 meses de mantenimiento incluidos. Después te lo recomiendo: es lo que vigila que la conexión con tu programa no se rompa; sin él sigue funcionando, pero si se rompe te enteras tú',
+        f8: 'Antes de la propuesta compruebo que tu programa deja conectar la web; si no lo deja, te lo digo y no hay propuesta'
       },
       s8: {
-        title: '09. Programa de gestión a medida: clientes, facturas y técnicos',
-        paso: 'La charla de 30 minutos es gratis. Después, un programa a medida pide mirar tus números con calma: es la auditoría (150 €), te queda por escrito sigas o no, y si sigues adelante se descuentan.',
-        ideal: 'Negocios que quieren digitalizar un proceso clave (facturación, clientes, proyectos, o los avisos y el trabajo de sus técnicos) con una herramienta hecha exactamente a su medida.',
-        price: '8.000€ — 12.000€',
-        tag: 'Electron + React + Base de Datos',
-        f1: 'Funciona en el móvil, la tablet y el ordenador. En el móvil, también sin cobertura: guarda lo que se apunta y lo envía al volver la señal.',
-        f2: 'Dashboard interactivo con gráficos financieros y métricas en vivo',
-        f3: 'Módulo integral de gestión de clientes (CRM) y base de contactos',
-        f4: 'Generación automática y descarga directa de facturas y presupuestos en PDF',
-        f5: 'Planificador interno de proyectos, tareas de equipo y control de tiempos',
-        f6: 'Roles de usuario avanzados con niveles de acceso seguros',
-        f7: 'Formación de tu equipo en persona + 1 semana de ajustes en vivo',
-        f8: 'Plan Básico de mantenimiento incluido el primer año; después, 60€/mes sin permanencia',
-        f9: 'Si tu equipo trabaja fuera: avisos, asignación de técnicos, fichajes y partes desde el móvil'
+        title: '09. Programas de gestión a medida',
+        paso: 'Tres piezas que se combinan: 5.900€ cada una; dos juntas, 10.915€; las tres, 15.930€. Sin pagar por usuario. Empieza por la auditoría (150 €, se descuentan): en ella confirmamos que te sirve y vemos qué hay que añadir para tu negocio, que se presupuesta aparte. Si no veo nada que te compense, te lo digo y no hay propuesta.',
+        ideal: 'Negocios que quieren llevar en un solo sitio lo que hoy tienen repartido entre Excel, papel y WhatsApp: sus clientes y lo que tiene contratado cada uno, el trabajo de sus técnicos o sus facturas y su stock.',
+        price: '5.900€ por pieza',
+        tag: 'Clientes · Técnicos · Facturación',
+        f1: 'Clientes y contratos: historial, documentos y lo que tiene contratado cada uno, con vencimientos y avisos de renovación o revisión',
+        f2: 'Técnicos y avisos: asignación, horas y materiales por obra, partes con fotos y firma del cliente, y fichajes',
+        f3: 'Facturación y stock: presupuestos y facturas que salen de lo hecho, lo que te deben, y tu stock con aviso antes de que se acabe. Las facturas, en PDF hasta que Verifactu sea obligatorio para ti; llegas cumpliendo sin pagar más: con mi módulo o, si no está a tiempo, con un programa que cumpla, conectado',
+        f4: 'Sin límite de usuarios, en cuentas a tu nombre (la base de datos, unos 25$/mes, la pagas tú directamente)',
+        f5: 'Funciona en el móvil, la tablet y el ordenador. En el móvil, también sin cobertura: guarda lo que se apunta y lo envía al volver la señal.',
+        f6: 'Panel con las cifras del negocio, agenda, tareas y roles: cada uno ve lo que le toca',
+        f7: 'El programa es tuyo con su código cuando lo has pagado entero',
+        f8: 'Pagas por partes, contra lo que ves funcionando: señal del 10% y 4 cuotas, cuando apruebas el diseño, cuando pruebas el núcleo, cuando tu equipo ya trabaja con él y tras unas semanas de uso real',
+        f9: 'Formación de tu equipo en persona, 1 semana de ajustes en vivo y el primer año de mantenimiento incluido; después, 60€/mes sin permanencia'
       },
       s9: {
         title: '02. Citas que se reservan solas',
@@ -193,7 +195,7 @@ export const dictionaries = {
         title: 'Plan Básico',
         price: '60€',
         period: '/ mes',
-        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido el primer año en E-commerce, Web Inmobiliaria y el programa de gestión a medida (09), y recomendado si tienes una automatización: sin él sigue funcionando, pero nadie la vigila. Los dos servicios con IA llevan cuota propia, aparte de esta.',
+        desc: 'Tu web o tu programa, vigilados y al día, sin permanencia. Incluido los 3 primeros meses en las webs y la tienda online, y el primer año en los programas de gestión a medida (09); recomendado si tienes una automatización o una web inmobiliaria conectada a tu programa: sin él siguen funcionando, pero nadie las vigila. Los dos servicios con IA llevan cuota propia, aparte de esta.',
         f1: 'Monitorización automática 24/7 y copias de seguridad semanales',
         f2: 'Actualizaciones de seguridad y corrección de errores',
         f3: '1h/mes de cambios de contenido y ajustes menores',
@@ -285,7 +287,7 @@ export const dictionaries = {
       subtitle: 'Lo que más me preguntan antes de empezar un proyecto. Si tienes otra duda, escríbeme.',
       q1: {
         q: '¿Cuánto cuesta una página web?',
-        a: 'Depende del alcance: una Web Esencial (página única o 3-4 secciones) cuesta 1.200€-1.600€, y una Web Completa (blog, panel de gestión, portfolio) desde 3.000€. Ambas incluyen 1 semana de ajustes en vivo tras el lanzamiento. En la Web Esencial te doy un precio cerrado tras la primera conversación, sin sorpresas; la Completa, como todo lo que va a medida, pasa antes por la auditoría.'
+        a: 'Las dos tienen precio cerrado. Una Web Esencial (página única o hasta 4 secciones) cuesta 990€, y una Web Completa (blog, panel de gestión, portfolio y 2 idiomas) 2.490€. Las dos incluyen 1 semana de ajustes en vivo tras el lanzamiento y 3 meses de mantenimiento. Lo que entra se ve en la charla gratis y queda escrito en la propuesta; lo que se salga de ahí, como una integración o una zona privada, se presupuesta aparte.'
       },
       q2: {
         q: '¿Trabajas solo en Lloret de Mar o también fuera?',
@@ -293,7 +295,7 @@ export const dictionaries = {
       },
       q3: {
         q: '¿Haces páginas web para inmobiliarias?',
-        a: 'Sí, es uno de mis nichos: Web Inmobiliaria desde 6.000€, con buscador de propiedades con filtros, panel de gestión sin tocar código y exportación XML en formato Kyero para sincronizar automáticamente con Idealista, Habitaclia y Fotocasa.'
+        a: 'Sí, es uno de mis nichos. Si ya trabajas con un programa como Inmovilla, Witei o Mobilia, te hago la web conectada a él: cuando subes, cambias o vendes un piso, la web se actualiza sola, y los portales los sigue llevando tu programa, sin pagar dos veces. Buscador con filtros, fichas con galería y mapa, 2 idiomas para compradores extranjeros y SEO local, por 2.990€ con 3 meses de mantenimiento. Antes de la propuesta compruebo que tu programa deja conectar la web.'
       },
       q4: {
         q: '¿Puedo tener un chatbot con inteligencia artificial en mi web, como el tuyo?',
@@ -301,7 +303,7 @@ export const dictionaries = {
       },
       q5: {
         q: '¿En qué idiomas haces las webs?',
-        a: 'Me comunico y trabajo en español, català e inglés, pero tu proyecto puede entregarse en cualquier idioma que necesites gracias a traducción asistida por IA — no estoy limitado a esos tres. La Web Esencial incluye 1 idioma (+150€ cada idioma adicional) y la Web Completa y la Web Inmobiliaria incluyen 2 idiomas (+250€ cada adicional). La traducción con IA revisada va incluida; la traducción humana profesional o jurada corre aparte.'
+        a: 'Me comunico y trabajo en español, català e inglés, pero tu proyecto puede entregarse en cualquier idioma que necesites gracias a traducción asistida por IA — no estoy limitado a esos tres. La Web Esencial incluye 1 idioma (+90€ cada idioma adicional), la Web Completa y la Web Inmobiliaria incluyen 2 (+150€ cada adicional), y en la tienda online cada idioma son +150€ con sus primeros 50 productos. El idioma de más no cuesta lo mismo en todas las webs porque lo que se paga es traducir y revisar el texto, y depende de cuánto hay. La traducción incluye todo lo que hay en la web el día que te la entrego; lo que escribas después en el blog no va incluido: o lo traduces tú, o me lo pasas y te lo traduzco dentro de la hora de cambios al mes del mantenimiento. La traducción con IA revisada va incluida; la traducción humana profesional o jurada corre aparte.'
       },
       q6: {
         q: '¿Qué incluye el mantenimiento mensual?',
@@ -309,7 +311,7 @@ export const dictionaries = {
       },
       q7: {
         q: '¿Cómo se paga un proyecto?',
-        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos y aceptas en los 30 días siguientes, esos 150€ se descuentan de la señal: en un proyecto de 8.000€ la señal son 800€, así que pagarías 650€. Se paga por transferencia bancaria.'
+        a: 'Una señal del 10% para contratar, con un mínimo de 150€, y el resto en 3 o 4 cuotas sin intereses. Lo importante: cada cuota se paga contra una entrega —el diseño y el alcance, el núcleo funcionando, el despliegue y la aceptación—, no contra una fecha. Así no pagas por adelantado un trabajo que todavía no has visto. Y si ya pagaste la Auditoría de Procesos y aceptas en los 30 días siguientes, esos 150€ se descuentan de la señal: en un proyecto de 5.900€ la señal son 590€, así que pagarías 440€. Se paga por transferencia bancaria.'
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
@@ -333,7 +335,7 @@ export const dictionaries = {
       },
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
-        a: 'Nada se renueva solo: en los servicios que llevan el Plan Básico incluido el primer año (tienda online, inmobiliaria y programa de gestión a medida) te aviso un mes antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: lo que te hice sigue siendo tuyo y, si es una web o un programa, sigue funcionando, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. Lo mismo con las Automatizaciones Específicas y el asistente de la Integración de IA: siguen funcionando en tus cuentas, pero sin nadie que los vigile ni los revise. La única excepción es el producto de citas: se para si cancelas la cuota, avisándote 15 días antes, porque funciona en mis servidores y la inteligencia artificial va en mi cuenta. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
+        a: 'Nada se renueva solo: donde el mantenimiento va incluido (los 3 primeros meses en las webs y la tienda online, y el primer año en los programas de gestión) te aviso antes de que acabe para que decidas tú, y no hay permanencia en ningún caso. A partir de ahí depende de lo que sea. Lo que es tuyo se queda: lo que te hice sigue siendo tuyo y, si es una web o un programa, sigue funcionando, con o sin mantenimiento; lo que pierdes es la red de seguridad — monitorización, copias, actualizaciones, corrección de errores y la hora de cambios al mes —, así que si un día se rompe algo te enteras tú y arreglarlo se presupuesta aparte. Lo mismo con las Automatizaciones Específicas y el asistente de la Integración de IA: siguen funcionando en tus cuentas, pero sin nadie que los vigile ni los revise. La única excepción es el producto de citas: se para si cancelas la cuota, avisándote 15 días antes, porque funciona en mis servidores y la inteligencia artificial va en mi cuenta. Y si más adelante quieres retomarlo, se mira en qué estado quedó y la puesta al día se presupuesta aparte.'
       },
       q14: {
         q: '¿Dónde quedan los datos de mis clientes o pacientes?',
@@ -342,6 +344,18 @@ export const dictionaries = {
       q15: {
         q: '¿Y si trabajas solo y un día no estás?',
         a: 'Hablas siempre con quien lo ha hecho, sin centralitas. Lo que monto funciona solo y lo vigilo a todas horas: si algo falla, me entero antes que tú. Y no te quedas atado: todo va a tu nombre y lo que te hago a medida es tuyo, con su código, cuando lo has pagado. Y si te hace falta que te atienda también en fines de semana y vacaciones, está el Plan Plus.'
+      },
+      q16: {
+        q: '¿Por qué una web tuya si mi programa inmobiliario ya me da una?',
+        a: 'Si la que te da tu programa te basta, quédate con ella: no te voy a vender lo contrario. La diferencia está en tres cosas. La primera, que sea tuya de verdad: la del programa suele salir de su catálogo de plantillas, con la misma base que usan otras agencias, y esta se hace para ti, con tu marca, tus zonas y cómo quieres que el comprador extranjero vea tus pisos. La segunda, que no dependa del programa: si un día cambias de programa, tu web se queda y solo hay que conectarla al nuevo; con la del programa, si te vas, te quedas sin web. Y la tercera, que te encuentren por tu zona y en cada idioma: el SEO y los idiomas se hacen a mano para la Costa Brava, para que te busquen a ti y no solo te vean en un portal al lado de todas las demás. He medido en el móvil las webs que dan los programas a dos agencias de Lloret: tardan entre 8 y 16 segundos en enseñar lo principal, y Google considera bueno menos de 2,5. La tuya se hace para que cargue rápido, y te enseño la medida antes de que pagues la última parte.'
+      },
+      q17: {
+        q: '¿Por qué la tienda va sobre Shopify si tus webs las haces a mano?',
+        a: 'Porque en una tienda lo difícil no es el diseño: son los pagos, el stock, los impuestos, los envíos, las devoluciones y las facturas con Verifactu, y Shopify ya lo resuelve bien. Así queda el reparto. Shopify se encarga de que la tienda esté siempre en línea, de la seguridad y los datos de las tarjetas, de las actualizaciones, del carrito y el cobro (tarjeta y Bizum), y del panel y la app del móvil donde ves pedidos, clientes y stock; su cuota (desde 24€/mes) y sus comisiones las pagas tú, directamente a Shopify. Yo me encargo de tu diseño, de cargar tu catálogo, de dejar configurados los pagos, los envíos, los impuestos y los textos legales, y de elegir y configurar la app que emite tus facturas con Verifactu (su cuota la pagas tú, como la de Shopify); de enseñarte a usarla y, con el mantenimiento, de vigilar que los pagos y las facturas sigan entrando y hacer los cambios que me pidas. Si falla una app, lo detecto y lo resuelvo con quien la hace. Y lo que es tuyo: la cuenta de Shopify va a tu nombre, con tu tarjeta, y tus productos, pedidos y clientes son tuyos. Si un día dejas de trabajar conmigo, tu tienda sigue funcionando igual.'
+      },
+      q18: {
+        q: '¿Por qué contigo y no me la monto yo en Shopify?',
+        a: 'Si tienes tiempo y te apetece, móntatela: Shopify está pensado para eso y no te voy a decir lo contrario. Lo que yo te ahorro es lo que suele salir mal o quedarse a medias. La configuración que tiene consecuencias: los impuestos, los envíos, Bizum, los textos legales de venta y, sobre todo, las facturas con Verifactu, que si fallan son un problema con Hacienda. Una tienda con tu marca, y no la plantilla tal cual. Y alguien de aquí que vigila que los pagos y las facturas sigan entrando. Si lo necesitas, también la conecto con lo que ya usas (el stock de tu tienda física, tu facturación o tu TPV); eso se presupuesta aparte, porque depende de qué uses. Si aún no tienes TPV o te planteas cambiarlo, hay una forma sin conexión: cobrar también en el mostrador con Shopify, que viene incluido en su cuota, y así el stock de la tienda y el de la web es el mismo. La cuenta sigue siendo tuya: si un día quieres llevarla tú solo, puedes.'
       }
     },
     contact: {
@@ -568,7 +582,7 @@ export const dictionaries = {
       vat: '+ IVA',
       s1: {
         title: '01. Auditoria de Processos',
-        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites per WhatsApp, una web senzilla o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten del projecte si acceptes la proposta en els 30 dies següents: compten com a part del senyal.',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites, un web, una botiga en línia o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten del projecte si acceptes la proposta en els 30 dies següents: compten com a part del senyal.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Processos i costos',
         f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant. Abans et dic què has de portar, que és poc i depèn del teu negoci',
@@ -596,15 +610,16 @@ export const dictionaries = {
       s3: {
         title: '04. Web Essencial',
         ideal: 'Freelancers, petites empreses, professionals independents i nous emprenedors.',
-        price: '1.200€ — 1.600€',
+        price: '990€',
         tag: 'React + Vite + Tailwind CSS',
-        f1: 'Pàgina única d\'alt impacte o 3-4 seccions ben estructurades',
+        f1: 'Pàgina única d’alt impacte o fins a 4 seccions',
         f2: 'Disseny web modern, responsive i optimizat per a mòbil',
         f3: 'Formulari de contacte i botó de WhatsApp amb notificació automàtica',
-        f4: '1 idioma inclòs — cada idioma addicional +150€',
-        f5: 'SEO tècnic bàsic (etiquetes meta, estructura HTML neta)',
-        f6: 'Optimització extrema de la velocitat de càrrega i rendiment',
-        f7: '1 setmana d\'ajustaments en viu durant el desplegament'
+        f4: '1 idioma inclòs — cada idioma addicional +90€',
+        f5: 'SEO tècnic bàsic (meta tags, estructura HTML neta) i enllaçat amb la teva fitxa de Google i el teu Instagram',
+        f6: 'Optimització extrema de velocitat de càrrega i rendiment, i sense galetes de seguiment: no necessites bàner de galetes',
+        f7: 'Textos legals (avís legal i privacitat) i 1 setmana d’ajustaments en viu durant el desplegament',
+        f8: '3 mesos de manteniment (Pla Bàsic) inclosos; quan s’acaba el segon t’aviso i decideixes si continues, sense permanència'
       },
       s4: {
         title: '05. Integració d\'Intel·ligència Artificial',
@@ -622,60 +637,61 @@ export const dictionaries = {
       s5: {
         title: '06. Web Completa',
         ideal: 'Pimes que necessiten la web de veritat del seu negoci: catàleg o portfoli, blog i preparada per a clients estrangers.',
-        price: 'Des de 3.000€ (2 idiomes inclosos)',
+        price: '2.490€ (2 idiomes inclosos)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Inclou tot el de la Web Essencial (04): disseny responsive, formulari i botó de WhatsApp, SEO bàsic i 1 setmana d\'ajustaments en viu',
-        f1: 'Estructura modular de 5 a 8 seccions ben definides',
+        hereda: 'Inclou tot el del Web Essencial (04): disseny responsive, formulari i botó de WhatsApp, SEO bàsic, textos legals, sense galetes de seguiment, 1 setmana d’ajustaments en viu i 3 mesos de manteniment inclosos',
+        f1: 'Fins a 8 seccions, que deixem tancades per escrit a la proposta',
         f2: 'Galeria de projectes o portfoli interactiu amb filtres dinàmics',
         f3: 'Secció autogestionable de blog, articles o notícies',
         f4: 'Panell d\'administració intuïtiu per gestionar continguts',
-        f5: '2 idiomes inclosos amb detecció automàtica — cada idioma addicional +250€',
+        f5: '2 idiomes inclosos amb detecció automàtica — cada idioma addicional +150€',
         f6: 'SEO tècnic complet (sitemap, hreflang, Google Search Console)',
         f7: '1 setmana d\'ajustaments en viu i formació d\'ús inclosa'
       },
       s6: {
         title: '07. Botiga Online / E-commerce',
-        ideal: 'Comerços locals o marques que volen vendre productes o serveis directament online.',
-        price: 'Des de 4.000€',
-        tag: 'React + BD + Passarel·les de Pagament',
-        hereda: 'Inclou tot el de la Web Completa (06): fins a 8 seccions, blog autogestionable, panell d\'administració, 2 idiomes i SEO complet',
-        f1: 'Carret de compra interactiu, fluid i de càrrega ultraràpida',
-        f2: 'Procés de checkout segur i simplificat (One-Step)',
-        f3: 'Integració completa amb Stripe, PayPal i Bizum',
-        f4: 'Gestió integral de productes i existències des de panell d\'admin',
-        f5: 'Notificacions automàtiques de comandes al client i gestor',
-        f6: 'Mòdul de cupons de descompte, impostos i despeses d\'enviament',
-        f7: 'Historial de transaccions de clients i facturació bàsica',
-        f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència (o Pla Plus si el volum de comandes ho demana)'
+        ideal: 'Comerços locals o marques que volen vendre en línia sense muntar ni mantenir una plataforma pròpia.',
+        price: '1.490€',
+        tag: 'Shopify',
+        hereda: 'Sobre Shopify, en un compte a nom teu: Shopify s’encarrega que estigui en línia, de la seguretat, els pagaments i les actualitzacions (la seva quota, des de 24€/mes, la de l’app de factures i les seves comissions les pagues tu directament). Jo, del disseny, el catàleg, la configuració, les factures amb Verifactu i de vigilar que tot continuï entrant.',
+        f1: 'Disseny amb la teva marca sobre una plantilla de Shopify, ràpida i adaptada al mòbil',
+        f2: 'Fins a 50 productes carregats. Cada 50 més, +90€ si els carrego jo, o gratis si els carregues tu des de la plantilla, que t’ensenyo a fer servir',
+        f3: 'Cobrament amb targeta i Bizum, configurat i provat',
+        f4: 'Factures amb Verifactu des de la primera comanda: les emet una app de Shopify (la seva quota, uns 10€/mes, la pagues tu) i jo la deixo configurada i vigilo que funcioni',
+        f5: 'Enviaments, impostos i textos legals de venda (condicions i devolucions)',
+        f6: '1 idioma inclòs — cada idioma addicional +150€, amb els 50 productes; cada 50 productes més, +90€ per idioma',
+        f7: 'Connectada amb el que ja fas servir (l’estoc de la teva botiga física, la teva facturació o el teu TPV), pressupostat a part',
+        f8: '1 setmana d’ajustaments i 3 mesos de manteniment inclosos: vigilo que els pagaments i les factures continuïn entrant. Després, 60€/mes sense permanència (o el Pla Plus si el volum de comandes ho demana)'
       },
       s7: {
         title: '08. Web Immobiliària',
-        ideal: 'Immobiliàries que volen destacar propietats, captar compradors estrangers i sincronitzar amb els portals.',
-        price: 'Des de 6.000€',
-        tag: 'React + BD + Kyero XML',
+        ideal: 'Immobiliàries que ja treballen amb un programa de gestió (Inmovilla, Witei, Mobilia…) i volen un web propi a l’altura, per captar compradors estrangers.',
+        price: '2.990€ (2 idiomes inclosos)',
+        tag: 'Web + connexió amb el teu programa',
         f1: 'Cercador de propietats amb filtres (zona, preu, tipus, habitacions)',
         f2: 'Fitxes de propietat amb galeria, mapa i sistema de destacats',
-        f3: 'Panell de control per publicar i gestionar propietats sense tocar codi',
-        f4: '2 idiomes inclosos per a compradors estrangers — addicional +250€',
-        f5: 'Exportació XML (format Kyero) per sincronitzar amb Idealista, Habitaclia, Fotocasa i portals internacionals',
+        f3: 'Connectat al programa que ja fas servir: quan puges, canvies o vens un pis, el web s’actualitza sol',
+        f4: '2 idiomes inclosos per a compradors estrangers — cada idioma addicional +150€',
+        f5: 'Sense pagar dues vegades: els portals (Idealista, Fotocasa, Habitaclia…) els continua portant el teu programa, com fins ara',
         f6: 'Formulari de contacte per propietat i botó de WhatsApp',
-        f7: 'SEO local i manteniment inclòs el primer any, amb la vigilància del feed als portals'
+        f7: 'SEO local, textos legals, sense galetes de seguiment, 1 setmana d’ajustaments i 3 mesos de manteniment inclosos. Després te’l recomano: és el que vigila que la connexió amb el teu programa no es trenqui; sense ell continua funcionant, però si es trenca te n’assabentes tu',
+        f8: 'Abans de la proposta comprovo que el teu programa deixa connectar el web; si no ho deixa, t’ho dic i no hi ha proposta'
       },
       s8: {
-        title: '09. Programa de gestió a mida: clients, factures i tècnics',
-        paso: 'La xerrada de 30 minuts és gratis. Després, un programa a mida demana mirar els teus números amb calma: és l’auditoria (150 €), et queda per escrit tant si continues com si no, i si tires endavant es descompten.',
-        ideal: 'Negocis que volen digitalitzar un procés clau (facturació, clients, projectes, o els avisos i la feina dels seus tècnics) amb una eina feta exactament a mida.',
-        price: '8.000€ — 12.000€',
-        tag: 'Electron + React + Base de Dades',
-        f1: 'Funciona al mòbil, la tauleta i l’ordinador. Al mòbil, també sense cobertura: desa el que s’apunta i ho envia quan torna el senyal.',
-        f2: 'Dashboard interactiu amb gràfics financers i mètriques en viu',
-        f3: 'Mòdul integral de gestió de clients (CRM) i base de contactes',
-        f4: 'Generació automàtica i descàrrega directa de factures i pressupostos en PDF',
-        f5: 'Planificador intern de projectes, tasques d\'equip i control de temps',
-        f6: 'Rols d\'usuari avançats amb nivells d\'accés segurs',
-        f7: 'Formació del teu equip en persona + 1 setmana d’ajustos en viu',
-        f8: 'Pla Bàsic de manteniment inclòs el primer any; després, 60€/mes sense permanència',
-        f9: 'Si el teu equip treballa fora: avisos, assignació de tècnics, fitxatges i parts de treball des del mòbil'
+        title: '09. Programes de gestió a mida',
+        paso: 'Tres peces que es combinen: 5.900€ cadascuna; dues juntes, 10.915€; les tres, 15.930€. Sense pagar per usuari. Comença per l’auditoria (150 €, es descompten): hi confirmem que et serveix i veiem què cal afegir per al teu negoci, que es pressuposta a part. Si no veig res que et compensi, t’ho dic i no hi ha proposta.',
+        ideal: 'Negocis que volen portar en un sol lloc el que avui tenen repartit entre Excel, paper i WhatsApp: els seus clients i el que té contractat cadascun, la feina dels seus tècnics o les seves factures i el seu estoc.',
+        price: '5.900€ per peça',
+        tag: 'Clients · Tècnics · Facturació',
+        f1: 'Clients i contractes: historial, documents i el que té contractat cadascun, amb venciments i avisos de renovació o revisió',
+        f2: 'Tècnics i avisos: assignació, hores i materials per obra, parts amb fotos i signatura del client, i fitxatges',
+        f3: 'Facturació i estoc: pressupostos i factures que surten de la feina feta, el que et deuen, i el teu estoc amb avís abans que s’acabi. Les factures, en PDF fins que Verifactu sigui obligatori per a tu; hi arribes complint sense pagar més: amb el meu mòdul o, si no és a temps, amb un programa que compleixi, connectat',
+        f4: 'Sense límit d’usuaris, en comptes a nom teu (la base de dades, uns 25$/mes, la pagues tu directament)',
+        f5: 'Funciona al mòbil, la tauleta i l’ordinador. Al mòbil, també sense cobertura: desa el que s’apunta i ho envia quan torna el senyal.',
+        f6: 'Panell amb les xifres del negoci, agenda, tasques i rols: cadascú veu el que li toca',
+        f7: 'El programa és teu amb el seu codi quan l’has pagat sencer',
+        f8: 'Pagues per parts, contra el que veus funcionant: senyal del 10% i 4 quotes, quan aproves el disseny, quan proves el nucli, quan el teu equip ja hi treballa i després d’unes setmanes d’ús real',
+        f9: 'Formació del teu equip en persona, 1 setmana d’ajustaments en viu i el primer any de manteniment inclòs; després, 60€/mes sense permanència'
       },
       s9: {
         title: '02. Cites que es reserven soles',
@@ -700,7 +716,7 @@ export const dictionaries = {
         title: 'Plan Bàsic',
         price: '60€',
         period: '/ mes',
-        desc: 'La teva web o el teu programa, vigilats i al dia, sense permanència. Inclòs el primer any en E-commerce, Web Immobiliària i el programa de gestió a mida (09), i recomanat si tens una automatització: sense ell continua funcionant, però ningú no la vigila. Els dos serveis amb IA porten quota pròpia, a part d\'aquesta.',
+        desc: 'El teu web o el teu programa, vigilats i al dia, sense permanència. Inclòs els 3 primers mesos als webs i la botiga en línia, i el primer any als programes de gestió a mida (09); recomanat si tens una automatització o un web immobiliari connectat al teu programa: sense ell continuen funcionant, però ningú no els vigila. Els dos serveis amb IA porten quota pròpia, a part d’aquesta.',
         f1: 'Monitorització automàtica 24/7 i còpies de seguretat setmanals',
         f2: 'Actualitzacions de seguretat i correcció d\'errors',
         f3: '1h/mes de canvis de contingut i ajustos menors',
@@ -792,7 +808,7 @@ export const dictionaries = {
       subtitle: 'El que més em pregunten abans de començar un projecte. Si tens un altre dubte, escriu-me.',
       q1: {
         q: 'Quant costa una pàgina web?',
-        a: 'Depèn de l\'abast: una Web Essencial (pàgina única o 3-4 seccions) costa 1.200€-1.600€, i una Web Completa (blog, panell de gestió, portfoli) des de 3.000€. Totes dues inclouen 1 setmana d\'ajustaments en viu després del llançament. A la Web Essencial et dono un preu tancat després de la primera conversa, sense sorpreses; la Completa, com tot el que va a mida, passa abans per l’auditoria.'
+        a: 'Tots dos tenen preu tancat. Un Web Essencial (pàgina única o fins a 4 seccions) costa 990€, i un Web Completa (blog, panell de gestió, portfoli i 2 idiomes) 2.490€. Tots dos inclouen 1 setmana d’ajustaments en viu després del llançament i 3 mesos de manteniment. El que hi entra es mira a la xerrada gratuïta i queda escrit a la proposta; el que en surti, com una integració o una zona privada, es pressuposta a part.'
       },
       q2: {
         q: 'Treballes només a Lloret de Mar o també fora?',
@@ -800,7 +816,7 @@ export const dictionaries = {
       },
       q3: {
         q: 'Fas pàgines web per a immobiliàries?',
-        a: 'Sí, és un dels meus nínxols: Web Immobiliària des de 6.000€, amb cercador de propietats amb filtres, panell de gestió sense tocar codi i exportació XML en format Kyero per sincronitzar automàticament amb Idealista, Habitaclia i Fotocasa.'
+        a: 'Sí, és un dels meus nínxols. Si ja treballes amb un programa com Inmovilla, Witei o Mobilia, et faig el web connectat a ell: quan puges, canvies o vens un pis, el web s’actualitza sol, i els portals els continua portant el teu programa, sense pagar dues vegades. Cercador amb filtres, fitxes amb galeria i mapa, 2 idiomes per a compradors estrangers i SEO local, per 2.990€ amb 3 mesos de manteniment. Abans de la proposta comprovo que el teu programa deixa connectar el web.'
       },
       q4: {
         q: 'Puc tenir un xatbot amb intel·ligència artificial a la meva web, com el teu?',
@@ -808,7 +824,7 @@ export const dictionaries = {
       },
       q5: {
         q: 'En quins idiomes fas les webs?',
-        a: 'Em comunico i treballo en español, català i anglès, però el teu projecte es pot lliurar en qualsevol idioma que necessitis gràcies a la traducció assistida per IA — no estic limitat a aquests tres. La Web Essencial inclou 1 idioma (+150€ cada idioma addicional) i la Web Completa i la Web Immobiliària inclouen 2 idiomes (+250€ cada addicional). La traducció amb IA revisada va inclosa; la traducció humana professional o jurada va a part.'
+        a: 'Em comunico i treballo en español, català i anglès, però el teu projecte es pot lliurar en qualsevol idioma que necessitis gràcies a la traducció assistida per IA — no estic limitat a aquests tres. El Web Essencial inclou 1 idioma (+90€ cada idioma addicional), el Web Completa i el Web Immobiliària n’inclouen 2 (+150€ cada addicional), i a la botiga en línia cada idioma són +150€ amb els seus primers 50 productes. L’idioma de més no costa el mateix a tots els webs perquè el que es paga és traduir i revisar el text, i depèn de quant n’hi ha. La traducció inclou tot el que hi ha al web el dia que te’l lliuro; el que escriguis després al blog no hi va inclòs: o ho tradueixes tu, o m’ho passes i t’ho tradueixo dins de l’hora de canvis al mes del manteniment. La traducció amb IA revisada hi va inclosa; la traducció humana professional o jurada va a part.'
       },
       q6: {
         q: 'Què inclou el manteniment mensual?',
@@ -816,7 +832,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'Com es paga un projecte?',
-        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos i acceptes en els 30 dies següents, aquests 150€ es descompten del senyal: en un projecte de 8.000€ el senyal són 800€, així que pagaries 650€. Es paga per transferència bancària.'
+        a: 'Un senyal del 10% per contractar, amb un mínim de 150€, i la resta en 3 o 4 quotes sense interessos. El que importa: cada quota es paga contra una entrega —el disseny i l\'abast, el nucli funcionant, el desplegament i l\'acceptació—, no contra una data. Així no pagues per avançat una feina que encara no has vist. I si ja vas pagar l\'Auditoria de Processos i acceptes en els 30 dies següents, aquests 150€ es descompten del senyal: en un projecte de 5.900€ el senyal són 590€, així que pagaries 440€. Es paga per transferència bancària.'
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
@@ -840,7 +856,7 @@ export const dictionaries = {
       },
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
-        a: 'Res no es renova sol: en els serveis que porten el Pla Bàsic inclòs el primer any (botiga en línia, immobiliària i programa de gestió a mida) t\'aviso un mes abans que s\'acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el que et vaig fer continua sent teu i, si és un web o un programa, continua funcionant, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. El mateix amb les Automatitzacions Específiques i l’assistent de la Integració d’IA: continuen funcionant als teus comptes, però sense ningú que els vigili ni els revisi. L’única excepció és el producte de cites: s’atura si canceles la quota, avisant-te 15 dies abans, perquè funciona als meus servidors i la intel·ligència artificial va al meu compte. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
+        a: 'Res no es renova sol: on el manteniment hi va inclòs (els 3 primers mesos als webs i la botiga en línia, i el primer any als programes de gestió) t’aviso abans que s’acabi perquè decideixis tu, i no hi ha permanència en cap cas. A partir d\'aquí depèn de què sigui. El que és teu es queda: el que et vaig fer continua sent teu i, si és un web o un programa, continua funcionant, amb manteniment o sense; el que perds és la xarxa de seguretat — monitorització, còpies, actualitzacions, correcció d\'errors i l\'hora de canvis al mes —, així que si un dia es trenca alguna cosa te n\'assabentes tu i arreglar-ho es pressuposta a part. El mateix amb les Automatitzacions Específiques i l’assistent de la Integració d’IA: continuen funcionant als teus comptes, però sense ningú que els vigili ni els revisi. L’única excepció és el producte de cites: s’atura si canceles la quota, avisant-te 15 dies abans, perquè funciona als meus servidors i la intel·ligència artificial va al meu compte. I si més endavant vols reprendre-ho, es mira en quin estat va quedar i la posada al dia es pressuposta a part.'
       },
       q14: {
         q: 'On queden les dades dels meus clients o pacients?',
@@ -849,6 +865,18 @@ export const dictionaries = {
       q15: {
         q: 'I si treballes sol i un dia no hi ets?',
         a: 'Parles sempre amb qui ho ha fet, sense centraletes. El que munto funciona sol i ho vigilo a totes hores: si alguna cosa falla, me n’assabento abans que tu. I no et quedes lligat: tot va a nom teu i el que et faig a mida és teu, amb el seu codi, quan l’has pagat. I si et cal que t’atengui també els caps de setmana i en vacances, hi ha el Pla Plus.'
+      },
+      q16: {
+        q: 'Per què un web teu si el meu programa immobiliari ja me’n dona un?',
+        a: 'Si el que et dona el teu programa et basta, queda-te’l: no et vendré el contrari. La diferència és en tres coses. La primera, que sigui teu de debò: el del programa sol sortir del seu catàleg de plantilles, amb la mateixa base que fan servir altres agències, i aquest es fa per a tu, amb la teva marca, les teves zones i com vols que el comprador estranger vegi els teus pisos. La segona, que no depengui del programa: si un dia canvies de programa, el teu web es queda i només cal connectar-lo al nou; amb el del programa, si te’n vas, et quedes sense web. I la tercera, que et trobin per la teva zona i en cada idioma: el SEO i els idiomes es fan a mà per a la Costa Brava, perquè et busquin a tu i no només et vegin en un portal al costat de totes les altres. He mesurat al mòbil els webs que donen els programes a dues agències de Lloret: triguen entre 8 i 16 segons a ensenyar el principal, i Google considera bo menys de 2,5. El teu es fa perquè carregui ràpid, i t’ensenyo la mesura abans que paguis l’última part.'
+      },
+      q17: {
+        q: 'Per què la botiga va sobre Shopify si els teus webs els fas a mà?',
+        a: 'Perquè en una botiga el difícil no és el disseny: són els pagaments, l’estoc, els impostos, els enviaments, les devolucions i les factures amb Verifactu, i Shopify ja ho resol bé. Així queda el repartiment. Shopify s’encarrega que la botiga sigui sempre en línia, de la seguretat i les dades de les targetes, de les actualitzacions, del carretó i el cobrament (targeta i Bizum), i del panell i l’app del mòbil on veus comandes, clients i estoc; la seva quota (des de 24€/mes) i les seves comissions les pagues tu, directament a Shopify. Jo m’encarrego del teu disseny, de carregar el teu catàleg, de deixar configurats els pagaments, els enviaments, els impostos i els textos legals, i de triar i configurar l’app que emet les teves factures amb Verifactu (la seva quota la pagues tu, com la de Shopify); d’ensenyar-te a fer-la servir i, amb el manteniment, de vigilar que els pagaments i les factures continuïn entrant i fer els canvis que em demanis. Si falla una app, ho detecto i ho resolc amb qui la fa. I el que és teu: el compte de Shopify va a nom teu, amb la teva targeta, i els teus productes, comandes i clients són teus. Si un dia deixes de treballar amb mi, la teva botiga continua funcionant igual.'
+      },
+      q18: {
+        q: 'Per què amb tu i no me la munto jo a Shopify?',
+        a: 'Si tens temps i et ve de gust, munta-te-la: Shopify està pensat per a això i no et diré el contrari. El que jo t’estalvio és el que sol sortir malament o quedar-se a mitges. La configuració que té conseqüències: els impostos, els enviaments, Bizum, els textos legals de venda i, sobretot, les factures amb Verifactu, que si fallen són un problema amb Hisenda. Una botiga amb la teva marca, i no la plantilla tal qual. I algú d’aquí que vigila que els pagaments i les factures continuïn entrant. Si ho necessites, també la connecto amb el que ja fas servir (l’estoc de la teva botiga física, la teva facturació o el teu TPV); això es pressuposta a part, perquè depèn de què facis servir. Si encara no tens TPV o et plantejes canviar-lo, hi ha una manera sense connexió: cobrar també al taulell amb Shopify, que ve inclòs a la seva quota, i així l’estoc de la botiga i el del web és el mateix. El compte continua sent teu: si un dia la vols portar tu sol, pots.'
       }
     },
     contact: {
@@ -1059,7 +1087,7 @@ export const dictionaries = {
       vat: '+ VAT',
       s1: {
         title: '01. Process Audit',
-        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —WhatsApp appointments, a simple website or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted from the project if you accept the proposal within the following 30 days: they count as part of the deposit.',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —appointments, a website, an online shop or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted from the project if you accept the proposal within the following 30 days: they count as part of the deposit.',
         price: '150€ (Deducted from your first project)',
         tag: 'Processes and costs',
         f1: '60-90 minute session going through your operations with your own figures in front of us. Beforehand I tell you what to bring, which is not much and depends on your business',
@@ -1087,15 +1115,16 @@ export const dictionaries = {
       s3: {
         title: '04. Essential Web',
         ideal: 'Freelancers, small businesses, independent professionals, and new entrepreneurs.',
-        price: '1,200€ — 1,600€',
+        price: '990€',
         tag: 'React + Vite + Tailwind CSS',
-        f1: 'High-impact single landing page or 3-4 structured sections',
+        f1: 'High-impact single page or up to 4 sections',
         f2: 'Modern, responsive, and mobile-first web design',
         f3: 'Functional contact form and WhatsApp button with automated notification',
-        f4: '1 language included — each additional language +150€',
-        f5: 'Basic technical SEO (optimized meta tags, clean HTML structure)',
-        f6: 'Extreme load speed and performance optimization',
-        f7: '1 week of live adjustments during deployment'
+        f4: '1 language included — each additional language +90€',
+        f5: 'Basic technical SEO (meta tags, clean HTML structure) and linked to your Google profile and your Instagram',
+        f6: 'Extreme loading speed and performance optimisation, and no tracking cookies: you do not need a cookie banner',
+        f7: 'Legal texts (legal notice and privacy) and 1 week of live adjustments during deployment',
+        f8: '3 months of maintenance (Basic Plan) included; at the end of the second I let you know and you decide whether to carry on, no lock-in'
       },
       s4: {
         title: '05. Artificial Intelligence Integration',
@@ -1113,60 +1142,61 @@ export const dictionaries = {
       s5: {
         title: '06. Complete Web',
         ideal: 'SMEs that need their business\'s real website: catalog or portfolio, blog, and ready for foreign customers.',
-        price: 'From 3,000€ (2 languages included)',
+        price: '2,490€ (2 languages included)',
         tag: 'React + Vite + Headless CMS',
-        hereda: 'Includes everything in the Essential Website (04): responsive design, contact form and WhatsApp button, basic SEO and 1 week of live adjustments',
-        f1: 'Modular structure with 5 to 8 well-defined sections',
+        hereda: 'Includes everything in the Essential Website (04): responsive design, contact form and WhatsApp button, basic SEO, legal texts, no tracking cookies, 1 week of live adjustments and 3 months of maintenance included',
+        f1: 'Up to 8 sections, closed in writing in the proposal',
         f2: 'Project gallery or interactive portfolio with dynamic filters',
         f3: 'Self-managed section for blog, articles, or news',
         f4: 'Intuitive admin panel to manage all contents easily',
-        f5: '2 languages included with auto-detection — each additional language +250€',
+        f5: '2 languages included with automatic detection — each additional language +150€',
         f6: 'Complete technical SEO (sitemap, hreflang, Google Search Console)',
         f7: '1 week of live support and comprehensive training included'
       },
       s6: {
         title: '07. E-commerce / Online Store',
-        ideal: 'Local businesses or brands that want to sell products or services directly online.',
-        price: 'From 4,000€',
-        tag: 'React + DB + Payment Gateways',
-        hereda: 'Includes everything in the Complete Website (06): up to 8 sections, self-managed blog, admin panel, 2 languages and full SEO',
-        f1: 'Interactive, fluid, and ultra-fast loading shopping cart',
-        f2: 'Secure and simplified one-step checkout process',
-        f3: 'Full integration with Stripe, PayPal, and credit cards',
-        f4: 'Complete product and stock management from an admin panel',
-        f5: 'Automated email notifications to clients and the store administrator',
-        f6: 'Discount coupon module, tax config, and shipping rules',
-        f7: 'Client order history and basic automated billing',
-        f8: 'Basic maintenance plan included for the first year; after that, 60€/mo with no lock-in (or the Plus Plan if your order volume calls for it)'
+        ideal: 'Local shops or brands that want to sell online without building or maintaining a platform of their own.',
+        price: '1,490€',
+        tag: 'Shopify',
+        hereda: 'On Shopify, in an account in your name: Shopify takes care of keeping it online, security, payments and updates (its fee, from 24€/month, the invoicing app’s fee and its commissions are paid by you directly). I take care of the design, the catalogue, the set-up, invoicing with Verifactu and watching that everything keeps coming in.',
+        f1: 'Design with your brand on a Shopify theme, fast and mobile-ready',
+        f2: 'Up to 50 products loaded. Each 50 more, +90€ if I load them, or free if you load them yourself from the template, which I show you how to use',
+        f3: 'Card and Bizum payments, set up and tested',
+        f4: 'Verifactu invoices from the first order: a Shopify app issues them (its fee, about 10€/month, is paid by you) and I set it up and watch that it works',
+        f5: 'Shipping, taxes and legal sales texts (terms and returns)',
+        f6: '1 language included — each additional language +150€, with the 50 products; each 50 more products, +90€ per language',
+        f7: 'Connected to what you already use (your physical shop’s stock, your invoicing or your till), quoted separately',
+        f8: '1 week of adjustments and 3 months of maintenance included: I watch that payments and invoices keep coming in. After that, 60€/month with no lock-in (or the Plus Plan if your order volume calls for it)'
       },
       s7: {
         title: '08. Real Estate Website',
-        ideal: 'Real estate agencies that want to showcase properties, reach foreign buyers, and sync with property portals.',
-        price: 'From 6,000€',
-        tag: 'React + DB + Kyero XML',
+        ideal: 'Estate agencies that already work with a property management program (Inmovilla, Witei, Mobilia…) and want a website of their own that lives up to it, to attract foreign buyers.',
+        price: '2,990€ (2 languages included)',
+        tag: 'Website + connection to your program',
         f1: 'Property search engine with filters (area, price, type, bedrooms)',
         f2: 'Property pages with gallery, map, and featured listings system',
-        f3: 'Control panel to publish and manage properties without touching code',
-        f4: '2 languages included for foreign buyers — each additional +250€',
-        f5: 'XML export (Kyero format) to sync with Idealista, Habitaclia, Fotocasa, and international portals',
+        f3: 'Connected to the program you already use: when you add, change or sell a property, the website updates itself',
+        f4: '2 languages included for foreign buyers — each additional language +150€',
+        f5: 'No paying twice: the portals (Idealista, Fotocasa, Habitaclia…) are still handled by your program, as they are now',
         f6: 'Per-property contact form and WhatsApp button',
-        f7: 'Local SEO and maintenance included for the first year, including monitoring of the feed to the portals'
+        f7: 'Local SEO, legal texts, no tracking cookies, 1 week of adjustments and 3 months of maintenance included. After that I recommend it: it is what watches that the connection to your program does not break; without it the site keeps working, but if it breaks you find out yourself',
+        f8: 'Before the proposal I check that your program allows the website to connect; if it does not, I tell you and there is no proposal'
       },
       s8: {
-        title: '09. Custom management software: customers, invoices and technicians',
-        paso: 'The 30-minute chat is free. After that, custom software needs a calm look at your numbers: that is the audit (150 €), you keep it in writing whether you go ahead or not, and if you do, it is deducted.',
-        ideal: 'Businesses that want to digitalize a key process (billing, clients, projects, or their technicians\' call-outs and field work) with a tool built exactly for them.',
-        price: '8,000€ — 12,000€',
-        tag: 'Electron + React + Database',
-        f1: 'Works on mobile, tablet and computer. On mobile it also works without signal: it saves what you enter and sends it when the signal is back.',
-        f2: 'Interactive dashboard with financial charts and live metrics',
-        f3: 'Complete client management (CRM) and contact database module',
-        f4: 'Automated generation and direct PDF download of quotes and invoices',
-        f5: 'Internal planner for projects, team tasks, and time-tracking',
-        f6: 'Advanced user roles with secure permission levels',
-        f7: 'In-person training for your team + 1 week of live adjustments',
-        f8: 'Basic maintenance plan included for the first year; after that, 60€/mo with no lock-in',
-        f9: 'If your team works on site: call-outs, technician assignment, clock-ins and job reports from their phone'
+        title: '09. Custom management software',
+        paso: 'Three pieces that combine: 5,900€ each; two together, 10,915€; all three, 15,930€. No paying per user. It starts with the audit (150 €, deducted): there we confirm it suits you and see what needs adding for your business, which is quoted separately. If I see nothing worth it for you, I tell you and there is no proposal.',
+        ideal: 'Businesses that want to keep in one place what is now spread across Excel, paper and WhatsApp: their customers and what each one has contracted, the work of their technicians, or their invoices and stock.',
+        price: '5,900€ per piece',
+        tag: 'Customers · Technicians · Invoicing',
+        f1: 'Customers and contracts: history, documents and what each one has contracted, with expiry dates and renewal or service reminders',
+        f2: 'Technicians and jobs: assignment, hours and materials per job, job sheets with photos and customer signature, and clock-ins',
+        f3: 'Invoicing and stock: quotes and invoices generated from the work done, what you are owed, and your stock with a warning before it runs out. Invoices in PDF until Verifactu becomes mandatory for you; you get there compliant at no extra cost: with my module or, if it is not ready in time, with a compliant program, connected',
+        f4: 'No user limit, in accounts in your name (the database, about 25$/month, is paid by you directly)',
+        f5: 'Works on phone, tablet and computer. On the phone, even with no signal: it keeps what you record and sends it when the signal comes back.',
+        f6: 'Dashboard with the business figures, calendar, tasks and roles: everyone sees what concerns them',
+        f7: 'The software is yours, source code included, once you have paid for it in full',
+        f8: 'You pay in stages, against what you see working: a 10% deposit and 4 instalments, when you approve the design, when you test the core, when your team is already working with it and after a few weeks of real use',
+        f9: 'In-person training for your team, 1 week of live adjustments and the first year of maintenance included; after that, 60€/month with no lock-in'
       },
       s9: {
         title: '02. Appointments that book themselves',
@@ -1191,7 +1221,7 @@ export const dictionaries = {
         title: 'Basic Plan',
         price: '60€',
         period: '/ month',
-        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first year with E-commerce, Real Estate Websites and the custom management software (09), and recommended if you have an automation: without it the automation keeps working, but nobody watches it. The two AI services carry their own fee, separate from this one.',
+        desc: 'Your website or your software, watched and up to date, no lock-in. Included for the first 3 months with the websites and the online shop, and for the first year with custom management software (09); recommended if you have an automation or a real estate website connected to your program: without it they keep working, but nobody watches them. The two AI services carry their own fee, separate from this one.',
         f1: 'Automatic 24/7 monitoring and weekly backups',
         f2: 'Security updates and error fixing',
         f3: '1h/month of content changes and minor tweaks',
@@ -1283,7 +1313,7 @@ export const dictionaries = {
       subtitle: 'What people ask me most before starting a project. Got another question? Just write to me.',
       q1: {
         q: 'How much does a website cost?',
-        a: 'It depends on scope: an Essential Website (single page or 3-4 sections) costs 1,200€-1,600€, and a Complete Website (blog, admin panel, portfolio) starts at 3,000€. Both include 1 week of live adjustments after launch. For the Essential Website I give you a closed price after the first conversation, no surprises; the Complete one, like everything custom, goes through the audit first.'
+        a: 'Both have a closed price. An Essential Website (single page or up to 4 sections) costs 990€, and a Complete Website (blog, admin panel, portfolio and 2 languages) 2,490€. Both include 1 week of live adjustments after launch and 3 months of maintenance. What goes in is agreed in the free call and written into the proposal; anything beyond it, such as an integration or a private area, is quoted separately.'
       },
       q2: {
         q: 'Do you only work in Lloret de Mar, or also further afield?',
@@ -1291,7 +1321,7 @@ export const dictionaries = {
       },
       q3: {
         q: 'Do you build websites for real estate agencies?',
-        a: 'Yes, it is one of my specialties: Real Estate Websites from 6,000€, with a property search engine with filters, a management panel with no coding required, and XML export in Kyero format to automatically sync with Idealista, Habitaclia, and Fotocasa.'
+        a: 'Yes, it is one of my niches. If you already work with a program such as Inmovilla, Witei or Mobilia, I build your website connected to it: when you add, change or sell a property, the website updates itself, and the portals are still handled by your program, with no paying twice. Search with filters, listings with gallery and map, 2 languages for foreign buyers and local SEO, for 2,990€ with 3 months of maintenance. Before the proposal I check that your program allows the website to connect.'
       },
       q4: {
         q: 'Can I get an AI chatbot on my website, like yours?',
@@ -1299,7 +1329,7 @@ export const dictionaries = {
       },
       q5: {
         q: 'What languages do you build websites in?',
-        a: 'I communicate and work in Spanish, Catalan, and English, but your project can be delivered in any language you need thanks to AI-assisted translation — I am not limited to those three. The Essential Website includes 1 language (+150€ per extra language), and the Complete Website and Real Estate Website include 2 languages (+250€ per extra one). Reviewed AI translation is included; professional or sworn human translation is billed separately.'
+        a: 'I communicate and work in Spanish, Catalan and English, but your project can be delivered in any language you need thanks to AI-assisted translation — I am not limited to those three. The Essential Website includes 1 language (+90€ for each additional one), the Complete Website and the Real Estate Website include 2 (+150€ each additional), and in the online shop each language is +150€ with its first 50 products. An extra language does not cost the same on every site because what you pay for is translating and reviewing the text, and that depends on how much there is. Translation covers everything on the site on the day I hand it over; what you write later on the blog is not included: either you translate it, or you send it to me and I translate it within the monthly hour of changes in the maintenance plan. Reviewed AI translation is included; professional or sworn human translation is extra.'
       },
       q6: {
         q: 'What does the monthly maintenance plan include?',
@@ -1307,7 +1337,7 @@ export const dictionaries = {
       },
       q7: {
         q: 'How do I pay for a project?',
-        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit and accept within the following 30 days, those 150€ come off the deposit: on an 8,000€ project the deposit is 800€, so you would pay 650€. Payment is by bank transfer.'
+        a: 'A 10% deposit to start, with a minimum of 150€, and the rest in 3 or 4 interest-free instalments. What matters: each instalment is paid against a delivery —the design and scope, the working core, the deployment and the acceptance—, not against a date. So you never pay in advance for work you have not seen. And if you already paid for the Process Audit and accept within the following 30 days, those 150€ come off the deposit: on a 5,900€ project the deposit is 590€, so you would pay 440€. Payment is by bank transfer.'
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',
@@ -1331,7 +1361,7 @@ export const dictionaries = {
       },
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
-        a: 'Nothing renews on its own: for the services that include the Basic Plan for the first year (online shop, real estate and custom management software) I tell you a month before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: what I built for you remains yours and, if it is a website or software, it keeps working, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. The same goes for Specific Automations and the AI Integration assistant: they keep working in your accounts, but with nobody watching or reviewing them. The only exception is the booking product: it stops if you cancel the fee, with 15 days notice, because it runs on my servers and the artificial intelligence is in my account. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
+        a: 'Nothing renews on its own: where maintenance is included (the first 3 months with the websites and the online shop, and the first year with management software) I tell you before it ends so you decide, and there is never a lock-in. From there it depends on what it is. What is yours stays yours: what I built for you remains yours and, if it is a website or software, it keeps working, with or without maintenance; what you lose is the safety net — monitoring, backups, updates, bug fixing and the monthly hour of changes — so if something breaks one day, you find out yourself and fixing it is quoted separately. The same goes for Specific Automations and the AI Integration assistant: they keep working in your accounts, but with nobody watching or reviewing them. The only exception is the booking product: it stops if you cancel the fee, with 15 days notice, because it runs on my servers and the artificial intelligence is in my account. And if you want to pick it up later, we look at the state it was left in and the catch-up is quoted separately.'
       },
       q14: {
         q: 'Where does my customers’ or patients’ data stay?',
@@ -1340,6 +1370,18 @@ export const dictionaries = {
       q15: {
         q: 'What if you work alone and one day you are not around?',
         a: 'You always talk to the person who built it, no call centres. What I set up runs on its own and I monitor it around the clock: if something fails, I know before you do. And you are not tied to me: everything is in your name, and what I build for you is yours, source code included, once you have paid for it. And if you need me to answer at weekends and during holidays too, there is the Plus Plan.'
+      },
+      q16: {
+        q: 'Why a website from you if my property program already gives me one?',
+        a: 'If the one your program gives you is enough, keep it: I will not sell you otherwise. The difference comes down to three things. First, that it is really yours: the program’s one usually comes from its template catalogue, on the same base other agencies use, while this one is built for you, with your brand, your areas and how you want foreign buyers to see your properties. Second, that it does not depend on the program: if one day you switch programs, your website stays and only needs connecting to the new one; with the program’s one, if you leave, you are left without a website. And third, that people find you by your area and in every language: SEO and languages are done by hand for the Costa Brava, so they search for you and do not just see you on a portal next to everyone else. I measured on mobile the websites that the programs give two agencies in Lloret: they take between 8 and 16 seconds to show the main content, and Google considers under 2.5 good. Yours is built to load fast, and I show you the measurement before you pay the last instalment.'
+      },
+      q17: {
+        q: 'Why is the shop on Shopify if you build your websites by hand?',
+        a: 'Because in a shop the hard part is not the design: it is payments, stock, taxes, shipping, returns and Verifactu invoices, and Shopify already handles them well. This is how the work splits. Shopify takes care of keeping the shop online, security and card data, updates, the cart and checkout (card and Bizum), and the dashboard and phone app where you see orders, customers and stock; its fee (from 24€/month) and its commissions are paid by you, directly to Shopify. I take care of your design, loading your catalogue, setting up payments, shipping, taxes and legal texts, and choosing and setting up the app that issues your Verifactu invoices (its fee is paid by you, like Shopify’s); of showing you how to use it and, with maintenance, of watching that payments and invoices keep coming in and making the changes you ask for. If an app fails, I spot it and sort it out with its maker. And what is yours: the Shopify account is in your name, with your card, and your products, orders and customers are yours. If one day you stop working with me, your shop keeps working just the same.'
+      },
+      q18: {
+        q: 'Why with you and not set it up myself on Shopify?',
+        a: 'If you have the time and feel like it, set it up yourself: Shopify is made for that and I will not tell you otherwise. What I save you is what usually goes wrong or gets left half-done. The set-up that has consequences: taxes, shipping, Bizum, legal sales texts and, above all, Verifactu invoices, which become a problem with the tax office if they fail. A shop with your brand, not the theme as it comes. And someone local who watches that payments and invoices keep coming in. If you need it, I also connect it to what you already use (your physical shop’s stock, your invoicing or your till); that is quoted separately, because it depends on what you use. If you do not have a till yet or are thinking of changing it, there is a way with no connection: take payments at the counter with Shopify too, which is included in its fee, so the shop’s stock and the website’s are the same. The account is still yours: if one day you want to run it on your own, you can.'
       }
     },
     contact: {

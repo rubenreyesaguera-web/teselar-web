@@ -348,7 +348,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s3.price,
       tag: t.services.s3.tag,
       icon: Laptop,
-      features: [t.services.s3.f1, t.services.s3.f2, t.services.s3.f3, t.services.s3.f4, t.services.s3.f5, t.services.s3.f6, t.services.s3.f7]
+      features: [t.services.s3.f1, t.services.s3.f2, t.services.s3.f3, t.services.s3.f4, t.services.s3.f5, t.services.s3.f6, t.services.s3.f7, t.services.s3.f8]
     },
     {
       id: 's4',
@@ -388,7 +388,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s7.price,
       tag: t.services.s7.tag,
       icon: Building2,
-      features: [t.services.s7.f1, t.services.s7.f2, t.services.s7.f3, t.services.s7.f4, t.services.s7.f5, t.services.s7.f6, t.services.s7.f7]
+      features: [t.services.s7.f1, t.services.s7.f2, t.services.s7.f3, t.services.s7.f4, t.services.s7.f5, t.services.s7.f6, t.services.s7.f7, t.services.s7.f8]
     },
     {
       id: 's8',
@@ -409,7 +409,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13, t.faq.q14, t.faq.q15
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q16, t.faq.q17, t.faq.q18, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13, t.faq.q14, t.faq.q15
   ];
 
   return (

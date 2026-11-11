@@ -275,3 +275,42 @@ describe('aviso de TesS', () => {
     expect(CHAT).not.toMatch(/Te respondo precios|Et responc preus|I answer pricing/);
   });
 });
+
+// ADR-121 (11/11): repaso de precios del catálogo frente al mercado. Si alguien vuelve a los precios
+// de antes o deja que TesS dé cifra de lo que se añade a la gestión, esto falla.
+describe('precios del ADR-121', () => {
+  test('webs, tienda e inmobiliaria con precio cerrado y sin los rangos antiguos', () => {
+    for (const lng of LNGS) {
+      const sv = dictionaries[lng].services;
+      expect(sv.s3.price).toBe('990€');
+      expect(sv.s5.price).toMatch(/^2[.,]490€/);
+      expect(sv.s6.price).toMatch(/^1[.,]490€/);
+      expect(sv.s7.price).toMatch(/^2[.,]990€/);
+      expect(sv.s8.price).toMatch(/^5[.,]900€/);
+      expect(sv.s8.f8).toMatch(/4 (cuotas|quotes|instalments)/);
+      expect(JSON.stringify(sv)).not.toMatch(/Desde [346][.,]000|8[.,]000€ — 12[.,]000€|\+250€/);
+    }
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/desde [346][.,]000€|8[.,]000€.12[.,]000€/);
+  });
+
+  test('la inmobiliaria ya no exporta a portales y la tienda va sobre Shopify', () => {
+    for (const lng of LNGS) {
+      const sv = dictionaries[lng].services;
+      expect(sv.s7.f5).not.toMatch(/Kyero|XML/);
+      expect(sv.s6.hereda).toMatch(/Shopify/);
+    }
+  });
+
+  test('las tres preguntas nuevas se pintan y van al SEO', () => {
+    for (const id of ['q16', 'q17', 'q18']) {
+      expect(PORTADA).toContain(`t.faq.${id}`);
+      expect(LAYOUT).toContain(`'${id}'`);
+      for (const lng of LNGS) expect((dictionaries[lng].faq as unknown as Record<string, { q: string }>)[id].q.length).toBeGreaterThan(10);
+    }
+  });
+
+  test('TesS no da cifra de lo que se añade a la gestión ni dice que ya cumple Verifactu', () => {
+    expect(TESS).toMatch(/NUNCA des cifra ni horquilla de eso/);
+    expect(TESS).toMatch(/NO digas que el programa ya cumple Verifactu/);
+  });
+});
