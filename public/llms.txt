@@ -53,11 +53,12 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   por escrito en la propuesta. **Garantía, en las dos versiones:** si en los tres primeros meses no
   entra ni una sola cita fuera del horario de atención, se devuelve el importe de la puesta en marcha;
   lo cuenta el propio sistema y el cliente ve el número en su panel.
-- **Automatizaciones Específicas** — 700€–1.800€ + 60€/mes. Presupuestos/facturas automáticas, chatbots de
-  WhatsApp/Telegram, sincronización de datos, reportes automáticos (Apps Script + APIs + Make).
-  El Plan Básico de mantenimiento (60€/mes) es recomendado mientras esté en marcha (sin él sigue
-  funcionando, pero sin vigilancia): cubre vigilarla y arreglarla cuando cambie una API o caduque una credencial, y no cubre funciones
-  nuevas ni cambios del proceso, que se presupuestan aparte.
+- **Automatizaciones** — dos escalones. **Sencilla: 690€, precio cerrado y sin auditoría**: un flujo entre
+  herramientas que ya se conectan entre sí (presupuesto en PDF desde un formulario, facturas por correo, correos a una
+  hoja de cálculo, recordatorios, avisos e informes, o un chatbot guiado **sin IA** para su web o Telegram, con
+  respuestas fijas). Varias juntas, con descuento. **A medida, tras la auditoría**: leer documentos, conectar un programa
+  que no se conecta, que dos programas se pasen los datos en los dos sentidos o un chatbot en WhatsApp. 3 meses de
+  mantenimiento incluidos; después, un solo Plan Básico por cliente cubre todo lo que tenga con Teselar.
 - **Web Esencial** — 990€, precio cerrado. Página única o hasta 4 secciones, 1 idioma incluido (+90€/idioma
   adicional), formulario y WhatsApp, SEO técnico básico, enlazada con su ficha de Google y su Instagram, textos
   legales, sin cookies de seguimiento (sin banner), 1 semana de ajustes y 3 meses de mantenimiento incluidos (aviso al
@@ -71,11 +72,6 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   Shopify (desde 24€/mes), la de la app de facturas (unos 10€/mes) y las comisiones las paga el comercio directamente.
   La conexión con lo que ya usa (stock de la tienda física, facturación, TPV) se presupuesta aparte; cobrar también en el
   mostrador con Shopify viene incluido en su cuota y comparte el stock.
-- **Integración de Inteligencia Artificial** — 1.600€–6.000€ + cuota mensual del asistente,
-  recomendada (sin ella sigue funcionando, sin revisión) y en tres tramos: 90€/mes con un solo canal, 150€/mes multicanal o con integraciones,
-  y 250€/mes multicanal e integrado con los sistemas del cliente. El precio depende de la complejidad (canales, integraciones). Asistentes/chatbots con IA
-  (OpenAI/Anthropic), las claves de API son del cliente. Ejemplo en vivo: el propio chatbot de esta
-  web, "TesS".
 - **Web Completa** — 2.490€, precio cerrado, 2 idiomas incluidos (+150€/idioma adicional). Hasta 8 secciones
   cerradas por escrito en la propuesta, blog con panel de gestión de contenidos, portfolio, SEO técnico completo,
   formación, 1 semana de ajustes y 3 meses de mantenimiento. Sin auditoría; lo que se salga del alcance (una
@@ -99,28 +95,26 @@ Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida
   año de mantenimiento incluidos. Las facturas salen en PDF hasta que Verifactu sea obligatorio para ese cliente (anunciado
   para octubre de 2028, sin publicar aún en el BOE) y llegan cumpliendo sin pagar más: con el módulo de Teselar o con un
   programa que cumpla, conectado.
+- **IA en tu empresa** (servicio 09) — a medida, siempre tras la auditoría. Asistentes a medida en sus canales y
+  conectados a sus programas; implantar herramientas de IA en su equipo (ChatGPT, Claude, Copilot…) con su información,
+  permisos y normas de uso; tareas que la IA prepara y una persona revisa; formación. Las licencias de las herramientas
+  del equipo van a nombre del cliente y las paga él; los asistentes que construye Teselar llevan una cuota con la IA
+  incluida, calculada en la propuesta. **Acompañamiento de IA: 150€/mes, 5 horas al mes** (con el Plan Plus, sus 5 horas
+  valen también para esto). **Excepción con precio cerrado y sin auditoría: un asistente para su web como TesS, 990€ +
+  49€/mes con la IA incluida**, también para webs que no ha hecho Teselar.
 
-## Tres servicios que se confunden entre sí
+## Tres formas de atender a los clientes, según cuánta IA se quiera
 
-Los tres "hablan" y la gente los mezcla, así que conviene distinguirlos:
+- **Sin IA — chatbot guiado** (automatización sencilla, 690€, sin cuota): respuestas fijas con botones y menús; fuera
+  del guion, ofrece el contacto. Para web o Telegram.
+- **Con IA que responde — asistente para la web** (990€ + 49€/mes, IA incluida): entiende el lenguaje normal y responde
+  con la información del negocio; informa y recoge el contacto, pero **no gestiona ninguna agenda**. TesS, el chat de
+  esta web, es exactamente esto.
+- **Con IA que además reserva — Citas que se reservan solas**: consulta los huecos reales de la agenda, reserva la cita,
+  la confirma y envía el recordatorio.
 
-- **Chatbot guiado** (dentro de Automatizaciones Específicas): sigue un guion de botones y respuestas
-  previstas. Basta cuando las preguntas son siempre las mismas; fuera del guion se atasca.
-- **Asistente de IA** (Integración de IA): entiende el lenguaje normal y responde con la información
-  del negocio. Informa, orienta y recoge el contacto, pero **no gestiona ninguna agenda**. TesS, el
-  chat de la web, es exactamente esto.
-- **Citas que se reservan solas**, con WhatsApp: un asistente de IA que además **actúa** — consulta los huecos reales de la
-  agenda, reserva la cita, la confirma y envía el recordatorio.
-
-Los dos primeros cuentan cosas; el tercero hace el trabajo. La pregunta para elegir: ¿lo que se
-pierde son consultas sin responder, o citas sin coger?
-
-**Por qué el que más hace es el más barato:** las citas con WhatsApp (450€ + 59€/mes) cuestan menos que
-una Integración de IA (1.600€–6.000€ + 90-250€/mes) porque **es un producto, el mismo para todos los
-negocios**, y el trabajo es configurarlo
-con los servicios, los horarios y la agenda del negocio. La Integración de IA se fabrica desde cero
-sobre la documentación, los canales y los sistemas de cada cliente, y no hay dos iguales. Se paga la
-fabricación, no el número de funciones.
+La pregunta para elegir: ¿lo que se pierde son consultas sin responder, o citas sin coger? Y si no se quiere IA, el
+chatbot guiado.
 
 ## Por qué a medida y no WordPress
 
@@ -143,8 +137,9 @@ cifras verificadas y no se inventan.
 - **Plan Básico — 60€/mes**: monitorización 24/7, copias de seguridad semanales, actualizaciones y
   corrección de errores, 1h/mes de cambios, respuesta en 48h laborables como máximo (siempre intentando antes),
   informe trimestral.
-  Los dos servicios con IA llevan cuota propia y aparte de este mantenimiento: el asistente de la
-  Integración de IA (90-250€/mes) y las citas (29-59€/mes).
+  Las horas son del cliente, no de un producto: la del Básico y las 5 del Plus valen para su web, sus
+  automatizaciones, su gestión o su IA; no se acumulan. Los asistentes de IA (49€/mes el de la web) y las citas
+  (29-59€/mes) llevan cuota propia, aparte de este mantenimiento.
 - **Plan Plus — 150€/mes**: todo lo del Básico con copias diarias, 5h/mes de desarrollo (no
   acumulables), vigilancia de pasarelas de pago, respuesta el mismo día, también en fines de semana, festivos y vacaciones
   (4h en incidencia crítica), informe mensual. El Básico cubre lo normal; el Plus es para quien no puede esperar.
@@ -161,7 +156,7 @@ Google Calendar, y si lo deja se le dan en un Excel la lista de clientes y todas
 inteligencia artificial del asistente de citas va en la cuenta de Google Cloud de Teselar, en la UE,
 con el acuerdo de protección de datos de Google y sin que Google use las conversaciones para entrenar
 nada. Las conversaciones del asistente de citas solo las ve Rubén, y solo si hay un fallo que corregir
-o si el cliente se lo pide; en la Integración de IA (06), revisarlas cada mes es parte del servicio. Y
+o si el cliente se lo pide; en los asistentes de IA, revisarlas cada mes es parte del servicio. Y
 siempre se firma el contrato de protección de datos que pide la ley. Si el negocio trata datos de
 salud, el contrato lo recoge y se ve antes de empezar. Si preguntan qué pasa si Rubén no está: lo hecho a medida va a nombre del cliente, lo que monta funciona solo
 y lo vigila a todas horas; con el Plan Plus, también fines de semana y vacaciones.
@@ -197,7 +192,7 @@ aceptación. Se paga por transferencia bancaria. 1 semana de ajustes en
 vivo gratis tras el lanzamiento. Proyecto combinado (varios servicios a la vez): el de mayor importe
 va al 100% y cada adicional lleva un 15% de descuento (la auditoría queda excluida de este descuento).
 No incluido (gestionado por Teselar pero a cargo del cliente): dominio, hosting, comisiones de pago,
-correo empresarial, APIs de IA, redacción de textos/fotos, traducción humana profesional o jurada
+correo empresarial, licencias de herramientas de IA para su equipo (la IA de los asistentes que construye Teselar y la de citas sí va en su cuota), redacción de textos/fotos, traducción humana profesional o jurada
 (la traducción con IA revisada sí va incluida), publicidad de pago y redes sociales. En el producto
 de citas, el coste del modelo de IA SÍ va incluido en la cuota mensual (uso normal: hasta 500
 conversaciones al mes con una agenda y 250 más por cada agenda más, para todo el negocio; si un mes se pasa, no se corta: se mira
@@ -232,11 +227,11 @@ with a priced proposal — deducted from the project if that proposal is accepte
 digital pre-diagnosis of the website and social media, which on its own is free.
 Services: process audit (150€), appointments that book themselves (one product in two versions, no
 lock-in: without WhatsApp 150€ + 29€/mo, with WhatsApp 450€ + 59€/mo, +8€/mo per extra calendar,
-Google Calendar sync and Google review requests included, with a three-month guarantee), specific
-automations (700€–1,800€ + 60€/mo recommended maintenance), essential websites (990€),
-AI integrations/chatbots (1,600€–6,000€ + a 90-250€/mo assistant fee, depending on complexity), complete
+Google Calendar sync and Google review requests included, with a three-month guarantee), simple
+automations (690€ each; custom ones after the audit), essential websites (990€), complete
 websites (2,490€), online shops on Shopify (1,490€), real-estate websites connected to the agency's property program
 (2,990€), and custom management software in three pieces (customers and contracts, technicians and jobs, invoicing and
-stock) at 5,900€ each (two 10,915€, three 15,930€), always starting with the audit. No-lock-in maintenance plans
+stock) at 5,900€ each (two 10,915€, three 15,930€), always starting with the audit, and AI in your business (custom, after the
+audit; a website assistant like TesS, 990€ + 49€/mo with AI included; AI support 150€/mo for 5 hours). No-lock-in maintenance plans
 from 60€/mo. Contact:
 info@teselarsoftware.com, WhatsApp +34 653 232 735.
