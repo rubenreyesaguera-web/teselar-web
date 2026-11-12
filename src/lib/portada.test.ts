@@ -159,7 +159,7 @@ describe('textos de la cuarta pasada', () => {
     for (const lng of LNGS) {
       const datos = dictionaries[lng].demo.faq.find((f) => 'id' in f && f.id === 'datos')!.r;
       for (const t of [dictionaries[lng].faq.q14.a, datos]) {
-        expect(t).toMatch(/\(05\)/);
+        expect(t).toMatch(/\(09\)/);
         expect(t).toMatch(/agenda|[Cc]alendar/);
       }
     }
@@ -273,5 +273,66 @@ describe('aviso de TesS', () => {
     expect(CHAT).toContain('setTeaser(true), 30000)');
     expect(CHAT).toMatch(/ejemplo en vivo/);
     expect(CHAT).not.toMatch(/Te respondo precios|Et responc preus|I answer pricing/);
+  });
+});
+
+// ADR-121 (11/11): repaso de precios del catálogo frente al mercado. Si alguien vuelve a los precios
+// de antes o deja que TesS dé cifra de lo que se añade a la gestión, esto falla.
+describe('precios del ADR-121', () => {
+  test('webs, tienda e inmobiliaria con precio cerrado y sin los rangos antiguos', () => {
+    for (const lng of LNGS) {
+      const sv = dictionaries[lng].services;
+      expect(sv.s3.price).toBe('990€');
+      expect(sv.s5.price).toMatch(/^2[.,]490€/);
+      expect(sv.s6.price).toMatch(/^1[.,]490€/);
+      expect(sv.s7.price).toMatch(/^2[.,]990€/);
+      expect(sv.s8.price).toMatch(/^5[.,]900€/);
+      expect(sv.s8.f8).toMatch(/4 (cuotas|quotes|instalments)/);
+      expect(JSON.stringify(sv)).not.toMatch(/Desde [346][.,]000|8[.,]000€ — 12[.,]000€|\+250€/);
+    }
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/desde [346][.,]000€|8[.,]000€.12[.,]000€/);
+  });
+
+  test('la inmobiliaria ya no exporta a portales y la tienda va sobre Shopify', () => {
+    for (const lng of LNGS) {
+      const sv = dictionaries[lng].services;
+      expect(sv.s7.f5).not.toMatch(/Kyero|XML/);
+      expect(sv.s6.hereda).toMatch(/Shopify/);
+    }
+  });
+
+  test('las tres preguntas nuevas se pintan y van al SEO', () => {
+    for (const id of ['q16', 'q17', 'q18']) {
+      expect(PORTADA).toContain(`t.faq.${id}`);
+      expect(LAYOUT).toContain(`'${id}'`);
+      for (const lng of LNGS) expect((dictionaries[lng].faq as unknown as Record<string, { q: string }>)[id].q.length).toBeGreaterThan(10);
+    }
+  });
+
+  test('TesS no da cifra de lo que se añade a la gestión ni dice que ya cumple Verifactu', () => {
+    expect(TESS).toMatch(/NUNCA des cifra ni horquilla de eso/);
+    expect(TESS).toMatch(/NO digas que el programa ya cumple Verifactu/);
+  });
+});
+
+// ADR-121 (12/11): automatizaciones en dos escalones e IA en dos caminos.
+describe('automatizaciones e IA del ADR-121', () => {
+  test('automatización sencilla a 690 € y la IA como servicio al final', () => {
+    for (const lng of LNGS) {
+      const sv = dictionaries[lng].services;
+      expect(sv.s2.price).toMatch(/^690€/);
+      expect(sv.s4.title).toMatch(/^09\./);
+      expect(sv.s4.f7).toMatch(/990€ \+ 49€/);
+      expect(JSON.stringify(sv)).not.toMatch(/1[.,]600€ — 6[.,]000€|700€ — 1[.,]800€/);
+    }
+  });
+
+  test('los tramos de 90-250 € ya no se publican y la IA va incluida en los asistentes', () => {
+    for (const lng of LNGS) expect(JSON.stringify(dictionaries[lng])).not.toMatch(/90[-–]250€|90€ — 250€/);
+    for (const t of [TESS, LLMS]) expect(t).not.toMatch(/90[-–]250€|1[.,]600€.6[.,]000€/);
+  });
+
+  test('el orden por precio deja la IA la última', () => {
+    expect(LAYOUT).toContain("['s1', 's9', 's2', 's3', 's6', 's5', 's7', 's8', 's4']");
   });
 });

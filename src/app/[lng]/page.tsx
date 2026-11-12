@@ -348,27 +348,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s3.price,
       tag: t.services.s3.tag,
       icon: Laptop,
-      features: [t.services.s3.f1, t.services.s3.f2, t.services.s3.f3, t.services.s3.f4, t.services.s3.f5, t.services.s3.f6, t.services.s3.f7]
-    },
-    {
-      id: 's4',
-      category: 'automation',
-      title: t.services.s4.title,
-      ideal: t.services.s4.ideal,
-      price: t.services.s4.price,
-      tag: t.services.s4.tag,
-      icon: Brain,
-      features: [t.services.s4.f1, t.services.s4.f2, t.services.s4.f3, t.services.s4.f4, t.services.s4.f5, t.services.s4.f6, t.services.s4.f7]
-    },
-    {
-      id: 's5',
-      category: 'web',
-      title: t.services.s5.title,
-      ideal: t.services.s5.ideal,
-      price: t.services.s5.price,
-      tag: t.services.s5.tag,
-      icon: Briefcase,
-      features: [t.services.s5.hereda, t.services.s5.f1, t.services.s5.f2, t.services.s5.f3, t.services.s5.f4, t.services.s5.f5, t.services.s5.f6, t.services.s5.f7]
+      features: [t.services.s3.f1, t.services.s3.f2, t.services.s3.f3, t.services.s3.f4, t.services.s3.f5, t.services.s3.f6, t.services.s3.f7, t.services.s3.f8, t.services.s3.f9]
     },
     {
       id: 's6',
@@ -381,6 +361,16 @@ export default function Page({ params }: PageProps) {
       features: [t.services.s6.hereda, t.services.s6.f1, t.services.s6.f2, t.services.s6.f3, t.services.s6.f4, t.services.s6.f5, t.services.s6.f6, t.services.s6.f7, t.services.s6.f8]
     },
     {
+      id: 's5',
+      category: 'web',
+      title: t.services.s5.title,
+      ideal: t.services.s5.ideal,
+      price: t.services.s5.price,
+      tag: t.services.s5.tag,
+      icon: Briefcase,
+      features: [t.services.s5.hereda, t.services.s5.f1, t.services.s5.f2, t.services.s5.f3, t.services.s5.f4, t.services.s5.f5, t.services.s5.f6, t.services.s5.f7, t.services.s5.f8]
+    },
+    {
       id: 's7',
       category: 'web',
       title: t.services.s7.title,
@@ -388,7 +378,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s7.price,
       tag: t.services.s7.tag,
       icon: Building2,
-      features: [t.services.s7.f1, t.services.s7.f2, t.services.s7.f3, t.services.s7.f4, t.services.s7.f5, t.services.s7.f6, t.services.s7.f7]
+      features: [t.services.s7.f1, t.services.s7.f2, t.services.s7.f3, t.services.s7.f4, t.services.s7.f5, t.services.s7.f6, t.services.s7.f7, t.services.s7.f8]
     },
     {
       id: 's8',
@@ -398,7 +388,17 @@ export default function Page({ params }: PageProps) {
       price: t.services.s8.price,
       tag: t.services.s8.tag,
       icon: Monitor,
-      features: [t.services.s8.f1, t.services.s8.f9, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8]
+      features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8, t.services.s8.f9]
+    },
+    {
+      id: 's4',
+      category: 'automation',
+      title: t.services.s4.title,
+      ideal: t.services.s4.ideal,
+      price: t.services.s4.price,
+      tag: t.services.s4.tag,
+      icon: Brain,
+      features: [t.services.s4.f1, t.services.s4.f2, t.services.s4.f3, t.services.s4.f4, t.services.s4.f5, t.services.s4.f6, t.services.s4.f7]
     }
   ];
 
@@ -409,7 +409,7 @@ export default function Page({ params }: PageProps) {
   // Build the list of FAQ entries mapping to dictionary entries (used for the visible
   // accordion AND to feed the FAQPage JSON-LD generated in the layout)
   const faqList = [
-    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13, t.faq.q14, t.faq.q15
+    t.faq.q1, t.faq.q2, t.faq.q3, t.faq.q16, t.faq.q17, t.faq.q18, t.faq.q19, t.faq.q4, t.faq.q5, t.faq.q6, t.faq.q7, t.faq.q8, t.faq.q9, t.faq.q10, t.faq.q11, t.faq.q12, t.faq.q13, t.faq.q14, t.faq.q15
   ];
 
   return (
@@ -760,8 +760,22 @@ export default function Page({ params }: PageProps) {
                   >
                     <div className="overflow-hidden" inert={!abierto}>
                       <div className="pb-8 flex flex-col gap-4">
+                        {/* Las tres piezas de la gestión (ADR-121): juntas y con su nombre en cian, encima del resto (Rubén, 12/11). */}
+                        {service.id === 's8' && (
+                          <ul className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-3 pb-4 border-b border-claridad/10">
+                            {service.features.slice(0, 3).map((pieza, pIndex) => {
+                              const corte = pieza.indexOf(': ');
+                              return (
+                                <li key={pIndex} className="text-base text-claridad/85 leading-relaxed [text-wrap:pretty]">
+                                  <span className="block font-semibold text-innovacion">{corte > 0 ? pieza.slice(0, corte) : pieza}</span>
+                                  {corte > 0 && <span>{pieza.charAt(corte + 2).toUpperCase() + pieza.slice(corte + 3)}</span>}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
-                          {service.features.map((feature, fIndex) => (
+                          {(service.id === 's8' ? service.features.slice(3) : service.features).map((feature, fIndex) => (
                             <li key={fIndex} className="flex items-start gap-3 text-base text-claridad/85 leading-relaxed">
                               <CheckCircle2 size={17} aria-hidden="true" className="text-innovacion flex-shrink-0 mt-1" />
                               <span>{feature}</span>
