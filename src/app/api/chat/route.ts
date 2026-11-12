@@ -59,7 +59,7 @@ REGLA 4: SOLO si el cliente revela información crítica nueva (presupuesto exac
 `;
   } else {
     s += `
-REGLA 2: NINGÚN CALLEJÓN SIN SALIDA, Y SIEMPRE HACIA UNA VENTA. Todas tus respuestas terminan con una pregunta suave, y esa pregunta acerca a una venta, no solo saca información. Puede hacer una de tres cosas: comprobar si le encaja un producto concreto, nombrándolo con su precio («¿Te encajaría la Web Esencial, por 990 €?»); hacerle ver lo que pierde hoy y qué lo resuelve; o proponerle el siguiente paso, que es el diagnóstico gratuito. Pregunta por su negocio solo cuando te haga falta para recomendarle algo, y dile para qué lo preguntas. Vender no es presionar: si no lo necesita o le sirve algo más barato, díselo y no insistas.
+REGLA 2: NINGÚN CALLEJÓN SIN SALIDA, HACIA UNA VENTA SIN PRESIONAR. Acaba con una pregunta suave que acerque a una venta: si le encaja un producto concreto con su precio, lo que pierde hoy y qué lo resuelve, o el diagnóstico gratuito. Pero no ofrezcas un producto hasta saber a qué se dedica y qué le falta, y ofrece el que encaje con eso (a un restaurante que no coge reservas no le ofrezcas citas). Si dice que no le interesa, que solo quería información, que está contento así o que no tiene negocio: contesta lo que pregunte, dile que aquí estás si algún día lo necesita y NO vuelvas a ofrecer nada en esa conversación, ni siquiera el diagnóstico. Si el problema es el dinero, ofrece lo más barato que le sirva, o dile que con lo que tiene le basta. NO te inventes cuentas de rentabilidad («se paga solo con una cita al mes»). Y habla siempre de Rubén en singular: nada de «agendemos» ni «lo organizamos».
 REGLA 3: EL EMBUDO. En las primeras 2 interacciones, entiende qué necesita (tipo de negocio, qué le falta online, cómo coge hoy las citas si trabaja con cita previa). En la 3ª interacción haz la transición al cierre: ofrece el diagnóstico gratuito de 30 minutos con Rubén, sin compromiso, y pide nombre y teléfono para que le llame. Si prefiere reservar él mismo, dale el enlace del Calendly.
 REGLA 4: Cuando tengas nombre y teléfono, agradece en el mismo idioma del usuario y añade obligatoriamente al final el marcador: [LEAD_CLOSED: Nombre | Servicio de interés | Teléfono]. Ejemplo: [LEAD_CLOSED: Marta | Web Inmobiliaria | 612345678]
 REGLA 5: Tras confirmar los datos, no hagas más preguntas.
@@ -78,15 +78,22 @@ REGLA FINAL DE IDIOMA, QUE MANDA SOBRE TODO LO ANTERIOR: el visitante esta viend
   );
 }
 
-async function intentarGemini(apiKey: string, system: string, messages: ChatMessage[], newMsgText: string): Promise<string | null> {
+// Todos gratuitos con la misma clave; cada uno tiene su propio limite por minuto (12/11).
+// gemini-2.5-flash ya no se da a proyectos nuevos: si la clave no lo tiene, falla al momento y se salta.
+const MODELOS_GEMINI = ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-2.5-flash'];
+const MODELO_OPENROUTER = 'google/gemma-4-31b-it:free';
+let turnoRueda = 0;
+
+async function intentarGemini(apiKey: string, modelo: string, system: string, messages: ChatMessage[], newMsgText: string, ms: number): Promise<string | null> {
   try {
     const history = messages
       .filter((msg, index) => !(index === 0 && msg.sender === 'bot'))
       .map(msg => ({ role: msg.sender === 'bot' ? 'model' : 'user', parts: [{ text: msg.text }] }));
     history.push({ role: 'user', parts: [{ text: newMsgText }] });
 
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent?key=${apiKey}`, {
       method: 'POST',
+      signal: AbortSignal.timeout(ms),
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         systemInstruction: { parts: [{ text: system }] },
@@ -94,16 +101,18 @@ async function intentarGemini(apiKey: string, system: string, messages: ChatMess
         generationConfig: { temperature: 0.7 }
       })
     });
-    if (!res.ok) throw new Error(`Gemini ${res.status}`);
+    if (!res.ok) throw new Error(`${modelo} ${res.status}`);
     const data = await res.json();
-    return data?.candidates?.[0]?.content?.parts?.[0]?.text || null;
+    // Los modelos que razonan devuelven antes una parte «thought»: esa no se enseña
+    const partes: { text?: string; thought?: boolean }[] = data?.candidates?.[0]?.content?.parts ?? [];
+    return partes.filter(p => !p.thought).map(p => p.text ?? '').join('').trim() || null;
   } catch (e) {
-    console.error('Gemini falló:', e);
+    console.error(`Gemini ${modelo} falló:`, e);
     return null;
   }
 }
 
-async function intentarOpenAICompatible(url: string, apiKey: string, model: string, system: string, messages: ChatMessage[], newMsgText: string, extraHeaders: Record<string, string> = {}): Promise<string | null> {
+async function intentarOpenAICompatible(url: string, apiKey: string, model: string, system: string, messages: ChatMessage[], newMsgText: string, ms: number, extraHeaders: Record<string, string> = {}): Promise<string | null> {
   try {
     const chatMessages = [
       { role: 'system', content: system },
@@ -114,6 +123,7 @@ async function intentarOpenAICompatible(url: string, apiKey: string, model: stri
     ];
     const res = await fetch(url, {
       method: 'POST',
+      signal: AbortSignal.timeout(ms),
       headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json', ...extraHeaders },
       body: JSON.stringify({ model, messages: chatMessages, temperature: 0.7 })
     });
@@ -282,10 +292,22 @@ export async function POST(req: Request) {
   const groqKey = process.env.GROQ_API_KEY || process.env.VITE_GROQ_API_KEY;
   const openRouterKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY;
 
+  // La rueda (Rubén, 12/11): el nivel gratuito de Google corta por minuto y por modelo, y a
+  // ratos un modelo se satura (503). Cada mensaje empieza por un modelo distinto y, si ese
+  // falla, pasa al siguiente; OpenRouter (modelo :free, 50 al dia) queda de ultima reserva.
+  // Todo dentro de los 30 s de la funcion.
+  const limite = Date.now() + 26_000;
+  const queda = (max: number) => Math.max(1_000, Math.min(max, limite - Date.now()));
   let botResponse: string | null = null;
-  if (geminiKey) botResponse = await intentarGemini(geminiKey, system, historial, textoUsuario);
-  if (!botResponse && groqKey) botResponse = await intentarOpenAICompatible('https://api.groq.com/openai/v1/chat/completions', groqKey, 'openai/gpt-oss-20b', system, historial, textoUsuario);
-  if (!botResponse && openRouterKey) botResponse = await intentarOpenAICompatible('https://openrouter.ai/api/v1/chat/completions', openRouterKey, 'openrouter/auto', system, historial, textoUsuario, { 'HTTP-Referer': 'https://www.teselarsoftware.com', 'X-Title': 'Teselar Software' });
+  if (geminiKey) {
+    const inicio = turnoRueda++ % MODELOS_GEMINI.length;
+    for (let k = 0; k < MODELOS_GEMINI.length && !botResponse && Date.now() < limite; k++) {
+      const modelo = MODELOS_GEMINI[(inicio + k) % MODELOS_GEMINI.length];
+      botResponse = await intentarGemini(geminiKey, modelo, system, historial, textoUsuario, queda(12_000));
+    }
+  }
+  if (!botResponse && groqKey && Date.now() < limite) botResponse = await intentarOpenAICompatible('https://api.groq.com/openai/v1/chat/completions', groqKey, 'openai/gpt-oss-20b', system, historial, textoUsuario, queda(10_000));
+  if (!botResponse && openRouterKey && Date.now() < limite) botResponse = await intentarOpenAICompatible('https://openrouter.ai/api/v1/chat/completions', openRouterKey, MODELO_OPENROUTER, system, historial, textoUsuario, queda(15_000), { 'HTTP-Referer': 'https://www.teselarsoftware.com', 'X-Title': 'Teselar Software' });
 
   if (!botResponse) {
     return NextResponse.json({ response: FALLBACK[lng] || FALLBACK.es, offline: true });
