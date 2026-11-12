@@ -82,7 +82,6 @@ REGLA FINAL DE IDIOMA, QUE MANDA SOBRE TODO LO ANTERIOR: el visitante esta viend
 // gemini-2.5-flash ya no se da a proyectos nuevos: si la clave no lo tiene, falla al momento y se salta.
 const MODELOS_GEMINI = ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-2.5-flash'];
 const MODELO_OPENROUTER = 'google/gemma-4-31b-it:free';
-let turnoRueda = 0;
 
 async function intentarGemini(apiKey: string, modelo: string, system: string, messages: ChatMessage[], newMsgText: string, ms: number): Promise<string | null> {
   try {
@@ -292,17 +291,16 @@ export async function POST(req: Request) {
   const groqKey = process.env.GROQ_API_KEY || process.env.VITE_GROQ_API_KEY;
   const openRouterKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY;
 
-  // La rueda (Rubén, 12/11): el nivel gratuito de Google corta por minuto y por modelo, y a
-  // ratos un modelo se satura (503). Cada mensaje empieza por un modelo distinto y, si ese
-  // falla, pasa al siguiente; OpenRouter (modelo :free, 50 al dia) queda de ultima reserva.
-  // Todo dentro de los 30 s de la funcion.
+  // La rueda (Rubén, 12/11): el nivel gratuito de Google corta por modelo, por minuto y por
+  // dia, y a ratos un modelo se satura (503). Orden fijo y no alterno: gemini-3.5-flash solo da
+  // 20 al dia (medido el 12/11), asi que se guarda para cuando falle el lite. Si uno falla, pasa
+  // al siguiente; OpenRouter (modelo :free, 50 al dia) queda de ultima reserva. Todo en 30 s.
   const limite = Date.now() + 26_000;
   const queda = (max: number) => Math.max(1_000, Math.min(max, limite - Date.now()));
   let botResponse: string | null = null;
   if (geminiKey) {
-    const inicio = turnoRueda++ % MODELOS_GEMINI.length;
-    for (let k = 0; k < MODELOS_GEMINI.length && !botResponse && Date.now() < limite; k++) {
-      const modelo = MODELOS_GEMINI[(inicio + k) % MODELOS_GEMINI.length];
+    for (const modelo of MODELOS_GEMINI) {
+      if (botResponse || Date.now() >= limite) break;
       botResponse = await intentarGemini(geminiKey, modelo, system, historial, textoUsuario, queda(12_000));
     }
   }
