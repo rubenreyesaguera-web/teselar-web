@@ -173,8 +173,9 @@ Y a partir de ahí:
   mantenimiento. Lo que pierde es la red de seguridad: monitorización, copias de seguridad,
   actualizaciones, corrección de errores y la hora de cambios al mes. Si algo se rompe, se entera él
   y la reparación se presupuesta aparte.
-- **Lo mismo con las Automatizaciones Específicas y el asistente de la Integración de IA:** siguen
-  funcionando en las cuentas del cliente, sin vigilancia ni revisión.
+- **Lo mismo con las automatizaciones:** siguen funcionando en las cuentas del cliente, sin vigilancia.
+- **Los asistentes de IA llevan la IA en la cuenta de Teselar:** si se cancela su cuota, se paran con aviso previo de 15
+  días; para recuperarlo, o se vuelve a pagar la cuota o se presupuesta pasarlo a una IA a nombre del cliente.
 - **La única excepción es el producto de citas:** se detiene si se cancela la cuota, con aviso previo
   de 15 días, porque funciona en los servidores de Teselar y la inteligencia artificial va en su cuenta.
   Sus clientes y sus citas son siempre suyos: las tiene también en su Google Calendar y se le dan en un
