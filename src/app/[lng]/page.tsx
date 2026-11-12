@@ -388,7 +388,7 @@ export default function Page({ params }: PageProps) {
       price: t.services.s8.price,
       tag: t.services.s8.tag,
       icon: Monitor,
-      features: [t.services.s8.f1, t.services.s8.f9, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8]
+      features: [t.services.s8.f1, t.services.s8.f2, t.services.s8.f3, t.services.s8.f4, t.services.s8.f5, t.services.s8.f6, t.services.s8.f7, t.services.s8.f8, t.services.s8.f9]
     },
     {
       id: 's4',
@@ -760,8 +760,22 @@ export default function Page({ params }: PageProps) {
                   >
                     <div className="overflow-hidden" inert={!abierto}>
                       <div className="pb-8 flex flex-col gap-4">
+                        {/* Las tres piezas de la gestión (ADR-121): juntas y con su nombre en cian, encima del resto (Rubén, 12/11). */}
+                        {service.id === 's8' && (
+                          <ul className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-3 pb-4 border-b border-claridad/10">
+                            {service.features.slice(0, 3).map((pieza, pIndex) => {
+                              const corte = pieza.indexOf(': ');
+                              return (
+                                <li key={pIndex} className="text-base text-claridad/85 leading-relaxed [text-wrap:pretty]">
+                                  <span className="block font-semibold text-innovacion">{corte > 0 ? pieza.slice(0, corte) : pieza}</span>
+                                  {corte > 0 && <span>{pieza.charAt(corte + 2).toUpperCase() + pieza.slice(corte + 3)}</span>}
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3">
-                          {service.features.map((feature, fIndex) => (
+                          {(service.id === 's8' ? service.features.slice(3) : service.features).map((feature, fIndex) => (
                             <li key={fIndex} className="flex items-start gap-3 text-base text-claridad/85 leading-relaxed">
                               <CheckCircle2 size={17} aria-hidden="true" className="text-innovacion flex-shrink-0 mt-1" />
                               <span>{feature}</span>
