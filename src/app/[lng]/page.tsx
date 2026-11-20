@@ -18,8 +18,10 @@ interface PageProps {
   params: Promise<{ lng: string }>;
 }
 
-// First step of the ladder: the free 30-minute diagnosis. The 150€ audit is the second one.
-const CALENDLY_URL = 'https://calendly.com/teselarsoftware-info/diagnostico30min';
+// First step of the ladder: the free 30-minute diagnosis, booked on Teselar's own booking page (Teselar Citas).
+// The demo and the partner cards still go to Calendly: they pass context the booking page cannot keep yet.
+// The 150€ audit is the second step.
+const RESERVA_URL = 'https://reservas.teselarsoftware.com/teselarsoftware?o=web';
 const WHATSAPP_NUM = '34653232735';
 
 // Tres acciones para tres momentos, y solo tres (2026-09-10): TesS para quien mira y
@@ -492,7 +494,7 @@ export default function Page({ params }: PageProps) {
             
             <div className="flex flex-col gap-4 mt-4">
               <a
-                href={CALENDLY_URL}
+                href={RESERVA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
@@ -534,7 +536,7 @@ export default function Page({ params }: PageProps) {
             <div className="flex flex-col gap-5">
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                 <a
-                  href={CALENDLY_URL}
+                  href={RESERVA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-innovacion text-teselar-dark text-center font-bold text-base px-8 py-4 rounded-md hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center justify-center gap-2"
@@ -862,7 +864,7 @@ export default function Page({ params }: PageProps) {
             </p>
           </div>
           <a
-            href={CALENDLY_URL}
+            href={RESERVA_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-innovacion text-teselar-dark font-bold text-base px-6 py-3.5 rounded-md hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer whitespace-nowrap flex items-center gap-2"
@@ -1265,7 +1267,7 @@ export default function Page({ params }: PageProps) {
                   <p className="text-base text-claridad/80 leading-relaxed [text-wrap:pretty]">{paso.desc}</p>
                   {primero && (
                     <a
-                      href={CALENDLY_URL}
+                      href={RESERVA_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="self-start mt-2 bg-innovacion text-teselar-dark text-base font-bold px-5 py-3 rounded-md hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] flex items-center gap-2"
@@ -1361,7 +1363,7 @@ export default function Page({ params }: PageProps) {
                 <h3 className="text-xl md:text-2xl font-bold text-claridad leading-tight [text-wrap:balance]">{t.contact.calendly_title}</h3>
                 <p className="text-base text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.contact.calendly_desc}</p>
                 <a
-                  href={CALENDLY_URL}
+                  href={RESERVA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="self-start bg-innovacion text-teselar-dark font-bold text-base px-6 py-3.5 rounded-md hover:bg-[#2fd4bc] active:scale-[0.97] transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-pointer flex items-center gap-2"
@@ -1571,7 +1573,7 @@ export default function Page({ params }: PageProps) {
                 <Instagram size={17} aria-hidden="true" />
               </a>
               <a
-                href={CALENDLY_URL}
+                href={RESERVA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t.hero.cta_alt}
@@ -1729,7 +1731,7 @@ export default function Page({ params }: PageProps) {
           >
             <div className="max-w-sm mx-auto pointer-events-auto">
               <a
-                href={CALENDLY_URL}
+                href={RESERVA_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full bg-innovacion text-teselar-dark font-bold text-base py-4 rounded-xl sticky-cta-bar flex items-center justify-center gap-2 active:scale-[0.97] transition-transform duration-150"
