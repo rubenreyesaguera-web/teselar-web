@@ -3,13 +3,13 @@
 // Demo de gestion (ADR-113, doc 31). Pagina fija: sin IA y sin servidor salvo el contador de pasos, que no guarda ni el
 // nombre de la empresa ni el texto de «Otro». Recibe del servidor solo sus textos y los ejemplos de su idioma, para que
 // al navegador no llegue el diccionario entero.
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { dictionaries } from '../../i18n/dictionaries';
 import { COMO, ORDEN_INICIAL, ORDEN_PARTES, PARTES, type Caja as CajaExplicada, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
 import { RUBEN } from '../../lib/colaboradores/enlaces';
-import { contextoDemo, enlaceCalendly } from '../../lib/demo/calendly';
+import { RESERVA_DIAGNOSTICO } from '../../lib/reserva';
 import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
 import { hayPersona } from '../../lib/estadisticas/persona';
@@ -126,22 +126,12 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const llevaTexto = marcadas.map(etiqueta).join(', ');
   // WhatsApp lo usan casi todos ademas de otra cosa (Ruben, 24/10): por eso «como» admite varias, igual que las partes.
   const comoMarcado = COMO.filter((c) => como.includes(c));
-  const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
   // La pregunta de las citas por WhatsApp va primera solo si ha marcado citas; si no, al final: al que no lleva agenda
   // le parecia que «la pagina no me ha escuchado» (septima pasada, 24/10).
   const esWhatsapp = (f: (typeof t.faq)[number]) => 'id' in f && f.id === 'whatsapp';
   const faqOrdenadas = marcadas.includes('cit') ? t.faq : [...t.faq.filter((f) => !esWhatsapp(f)), ...t.faq.filter(esWhatsapp)];
   // En mitad de la nota, en minuscula salvo los nombres propios («papel y libreta, WhatsApp y memoria»).
   const comoEnFrase = comoMarcado.map((c) => t.como[c]).map((x) => (/^(Excel|WhatsApp)/.test(x) ? x : x[0].toLowerCase() + x.slice(1))).join(', ');
-
-  const calendly = useMemo(
-    () =>
-      enlaceCalendly(
-        empresa.trim(),
-        contextoDemo({ sector: sectorTexto, lleva: llevaTexto, como: comoTexto }, t.calendly_etiquetas),
-      ),
-    [empresa, sectorTexto, llevaTexto, comoTexto, t],
-  );
 
   const datos = { lng, sector, partes: marcadas, como: comoMarcado, desdeEnlace };
   const contarUnaVez = (paso: Paso) => {
@@ -341,7 +331,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 <span className="text-[13px] text-[#D9E4EA] [text-wrap:pretty]">{doc2 ? t.doc2_texto : t.cta_texto}</span>
               </div>
               <a
-                href={doc2 ? enlaceWhatsApp(t.wa_con_empresa, t.wa_sin_empresa, empresa) : calendly}
+                href={doc2 ? enlaceWhatsApp(t.wa_con_empresa, t.wa_sin_empresa, empresa) : RESERVA_DIAGNOSTICO}
                 target="_blank"
                 rel="noopener"
                 onClick={() => contarUnaVez('reservar')}
