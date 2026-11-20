@@ -1,6 +1,5 @@
-// Los enlaces de la tarjeta de colaborador (fase 4 del doc 31). Todos llevan a Ruben: el Calendly, su WhatsApp y su
+// Los enlaces de la tarjeta de colaborador (fase 4 del doc 31). Todos llevan a Ruben: la reserva, su WhatsApp y su
 // contacto. El nombre del colaborador solo viaja como «de parte de», para saber quien lo presento.
-import { enlaceCalendly } from '@/lib/demo/calendly';
 import { WHATSAPP_RUBEN } from '@/lib/demo/enlace';
 
 export const BASE = 'https://www.teselarsoftware.com';
@@ -18,11 +17,6 @@ export const RUBEN = {
 /** La pagina que ve el cliente al escanear. */
 export function enlaceColaborador(lng: 'es' | 'ca', slug: string): string {
   return `${BASE}/${lng}/c/${slug}`;
-}
-
-/** El Calendly con la pregunta 4, «Lo que ya me has contado», rellena con «De parte de ...» en su idioma. */
-export function calendlyDeParteDe(deParteDe: string): string {
-  return enlaceCalendly('', deParteDe);
 }
 
 export function whatsappARuben(texto: string): string {

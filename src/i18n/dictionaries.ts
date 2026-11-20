@@ -479,7 +479,7 @@ export const dictionaries = {
       cta_titulo: '¿Lo vemos con tu caso?',
       cta_texto: 'Es una charla de 30 minutos, gratis, normalmente por videollamada. Si tu negocio está a menos de media hora de Lloret de Mar, también puede ser en persona; si estás algo más lejos, pregúntame. Después te llevas por escrito lo que vimos. Si reservas, me llega lo que has marcado aquí, para no preguntártelo otra vez.',
       // En la demo no se dice «diagnostico» (segunda pasada del ensayo, 24/10): a una peluqueria le sonaba a medico, a
-      // un taller a algo que se cobra y a otros a gancho comercial. En el resto de la web y en el Calendly sigue el nombre.
+      // un taller a algo que se cobra y a otros a gancho comercial. En el resto de la web y en la página de reservas sigue el nombre.
       cta_btn: 'Reservar una charla gratis',
       cta_sub: 'En mi calendario · 30 minutos, sin compromiso',
       // Lo que ya tienen solo se promete mirarlo; pasarlo se presupuesta aparte. Hasta la segunda pasada del ensayo
@@ -514,8 +514,6 @@ export const dictionaries = {
       // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Desde el 24/10 cada sector lleva los suyos
       // (src/data/demo.ts, `explica`); estos comunes solo los usa «Otro».
       // Sin cifras: no hay nada medido que las respalde (ADR-025).
-      // La linea que va a la pregunta 4 del Calendly, «Lo que ya me has contado».
-      calendly_etiquetas: { sector: 'Sector', lleva: 'Llevo', como: 'Hoy' },
       como_label: 'Cómo funciona',
       ahorro_label: 'Te ahorras',
       explica: {
@@ -1026,7 +1024,6 @@ export const dictionaries = {
       doc2_sub: 'Et contesto jo',
       wa_con_empresa: 'Hola Rubén, he vist la demo que em vas preparar per a {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he vist la demo que em vas preparar.',
-      calendly_etiquetas: { sector: 'Sector', lleva: 'Porto', como: 'Avui' },
       como_label: 'Com funciona',
       ahorro_label: 'T’estalvies',
       explica: {
@@ -1537,7 +1534,6 @@ export const dictionaries = {
       doc2_sub: 'I’ll reply myself',
       wa_con_empresa: 'Hi Rubén, I’ve seen the demo you prepared for {empresa}.',
       wa_sin_empresa: 'Hi Rubén, I’ve seen the demo you prepared.',
-      calendly_etiquetas: { sector: 'Sector', lleva: 'I handle', como: 'Today' },
       como_label: 'How it works',
       ahorro_label: 'What it saves you',
       explica: {

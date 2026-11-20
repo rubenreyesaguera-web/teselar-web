@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import { ChatWidget } from '../../components/ChatWidget';
 import { dictionaries } from '../../i18n/dictionaries';
 import { RUBEN } from '../../lib/colaboradores/enlaces';
+import { RESERVA_DIAGNOSTICO } from '../../lib/reserva';
 import {
   Search, Zap, Laptop, Brain, Briefcase, ShoppingCart, Languages, Monitor, Building2,
   ArrowRight, CheckCircle2, AlertCircle, Info, Menu, X, Mail, Phone, MapPin,
@@ -19,13 +20,12 @@ interface PageProps {
 }
 
 // First step of the ladder: the free 30-minute diagnosis, booked on Teselar's own booking page (Teselar Citas).
-// The demo and the partner cards still go to Calendly: they pass context the booking page cannot keep yet.
 // The 150€ audit is the second step.
-const RESERVA_URL = 'https://reservas.teselarsoftware.com/teselarsoftware?o=web';
+const RESERVA_URL = RESERVA_DIAGNOSTICO;
 const WHATSAPP_NUM = '34653232735';
 
 // Tres acciones para tres momentos, y solo tres (2026-09-10): TesS para quien mira y
-// tiene una duda, WhatsApp para quien ya sabe y quiere una persona, y el Calendly de
+// tiene una duda, WhatsApp para quien ya sabe y quiere una persona, y la página de reservas de
 // 30 minutos como puerta de la escalera de ADR-021. El formulario deja de ser un boton
 // suelto en cada seccion y vuelve a ser el sitio donde se cuenta el caso con calma.
 // El mensaje previo dice de que seccion viene, para saberlo sin preguntarlo.
@@ -1351,7 +1351,7 @@ export default function Page({ params }: PageProps) {
             <p className="text-lg md:text-xl text-claridad/85 leading-relaxed [text-wrap:pretty]">{t.contact.subtitle}</p>
           </div>
 
-          {/* Contacto en dos columnas (20/10): a la izquierda las vias rapidas (Calendly, WhatsApp y
+          {/* Contacto en dos columnas (20/10): a la izquierda las vias rapidas (reserva, WhatsApp y
               correo), a la derecha el formulario para contar el caso con calma. Presupuesto y
               urgencia siguen, pero opcionales dentro de "Anadir mas detalles": se envian en el lead
               y el simulador rellena el presupuesto (y abre el desplegable). */}
@@ -1934,7 +1934,7 @@ const legalTexts = {
         },
         {
           title: '6. Demo de gestión',
-          text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y solo llega a Teselar Software si reservas el diagnóstico, dentro de la reserva de Calendly. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
+          text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y no llega a Teselar Software. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
         }
       ]
     },
@@ -2003,7 +2003,7 @@ const legalTexts = {
         },
         {
           title: '6. Demo de gestió',
-          text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i només arriba a Teselar Software si reserves el diagnòstic, dins de la reserva de Calendly. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
+          text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i no arriba a Teselar Software. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
         }
       ]
     },
@@ -2072,7 +2072,7 @@ const legalTexts = {
         },
         {
           title: '6. Management demo',
-          text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and only reaches Teselar Software if you book the diagnosis, inside the Calendly booking. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
+          text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and does not reach Teselar Software. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
         }
       ]
     },
