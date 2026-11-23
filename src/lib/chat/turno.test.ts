@@ -68,7 +68,8 @@ describe('orden del turno de TesS', () => {
     expect(tipoDeTurno(h, 'Uf, me parece caro para lo que facturo.')).toBe('caro');
     const orden = ordenDelTurno(h, 'Uf, me parece caro para lo que facturo.')!;
     expect(orden).toContain('NO repitas el precio');
-    expect(orden).toContain('Te paso el enlace para elegir hora, o si prefieres te llama él');
+    expect(orden).toContain('Rubén lo mira contigo en una charla gratuita de 30 minutos. ¿Te paso el enlace para elegir hora, o prefieres que te llame él?');
+    expect(orden).toContain('sin ninguna otra pregunta delante');
   });
 
   test('una conversación normal, sin llamada ofrecida, no lleva orden', () => {
