@@ -27,6 +27,19 @@ describe('orden del turno de TesS', () => {
     expect(ordenDelTurno(h, '¿Y eso cuánto me costaría?')).toContain('NO lo vuelvas a ofrecer');
   });
 
+  // Desde el 23/11 el diagnóstico se llama «charla gratuita» (D129): ofrecerla también cuenta, en los tres idiomas.
+  test('si la respuesta anterior ofrecía la charla gratuita, no se repite', () => {
+    const ofertas = [
+      '¿Te apetece una charla gratuita de 30 minutos con Rubén?',
+      'Vols una xerrada gratuïta de 30 minuts amb el Rubén?',
+      'Would you like a free 30-minute intro call with Rubén?',
+    ];
+    for (const oferta of ofertas) {
+      const h = [saludo, u('Tengo una peluquería en Lloret.'), b(oferta)];
+      expect(tipoDeTurno(h, '¿Y eso cuánto me costaría?')).toBe('tras_llamada');
+    }
+  });
+
   test('si dice que sí a la llamada, no hay orden: TesS sigue y pide los datos', () => {
     const h = [saludo, u('Tengo un taller.'), b('¿Cuántas citas pierdes?'), u('Unas cinco.'), b('¿Quieres que Rubén te llame?')];
     expect(tipoDeTurno(h, 'Sí, por favor')).toBe('libre');

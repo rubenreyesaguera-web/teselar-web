@@ -39,15 +39,17 @@ const CARO = [
   /\b(expensive|too much|can'?t afford|no budget|out of my budget)/,
 ];
 
-// Lo que TesS dice cuando ofrece la llamada o el diagnóstico.
+// Lo que TesS dice cuando ofrece la llamada o la charla (antes «diagnóstico»: se sigue mirando por si aún lo dice).
 const OFRECE_LLAMADA = [
   /\bte (llame|llama|llamara)\b/,
   /\bllamarte\b/,
   /\bdiagnostico\b/,
+  /\bcharla\b/,
   /\benlace para (reservar|elegir)/,
   /\bet (truqui|truca|trucara)\b/,
   /\bdiagnostic\b/,
-  /\b(call you|give you a call|diagnosis)\b/,
+  /\bxerrada\b/,
+  /\b(call you|give you a call|diagnosis|intro call)\b/,
 ];
 
 // Un sí corto a lo que se le ofreció: entonces TesS tiene que seguir (pedir los datos o pasar el enlace), sin orden.
@@ -79,15 +81,15 @@ export function tipoDeTurno(historial: Mensaje[], nuevo: string): Turno {
 export function ordenDelTurno(historial: Mensaje[], nuevo: string): string | null {
   switch (tipoDeTurno(historial, nuevo)) {
     case 'no_compra':
-      return 'El cliente ha dicho que no va a comprar o que solo quiere información. Contesta lo que pregunte y NO ofrezcas nada: ni productos, ni precios que no pida, ni la llamada, ni el diagnóstico, ni el enlace. No le hagas preguntas sobre su negocio. Como mucho, dile que aquí estás si algún día lo necesita.';
+      return 'El cliente ha dicho que no va a comprar o que solo quiere información. Contesta lo que pregunte y NO ofrezcas nada: ni productos, ni precios que no pida, ni la llamada, ni la charla, ni el enlace. No le hagas preguntas sobre su negocio. Como mucho, dile que aquí estás si algún día lo necesita.';
     case 'caro':
-      return 'Le parece caro o no tiene presupuesto. NO repitas el precio que ya le diste. Baja un escalón (citas con WhatsApp → sin WhatsApp; la tienda → la Web Esencial con botón de WhatsApp), o dile que con lo que tiene le basta o que lo puede hacer él. Acaba ofreciendo el diagnóstico gratuito para que Rubén estudie su caso y dejándole elegir, con esta idea: «¿Quieres que Rubén estudie tu caso? Te paso el enlace para elegir hora, o si prefieres te llama él.» No ofrezcas solo la llamada.';
+      return 'Le parece caro o no tiene presupuesto. NO repitas el precio que ya le diste. Baja un escalón (citas con WhatsApp → sin WhatsApp; la tienda → la Web Esencial con botón de WhatsApp), o dile que con lo que tiene le basta o que lo puede hacer él. Acaba ofreciendo la charla gratuita para que Rubén estudie su caso y dejándole elegir, con esta idea: «¿Quieres que Rubén estudie tu caso? Te paso el enlace para elegir hora, o si prefieres te llama él.» No ofrezcas solo la llamada.';
     case 'primera':
       return PREGUNTA_PRECIO.test(plano(nuevo))
-        ? 'Es tu primera respuesta y pregunta el precio: dáselo, con + IVA. En esta respuesta NO ofrezcas la llamada, ni el diagnóstico, ni el enlace. Acaba con UNA pregunta sobre su negocio o lo que pierde hoy.'
-        : 'Es tu primera respuesta. Contesta lo que pregunte y acaba con UNA pregunta sobre su negocio o lo que pierde hoy. En esta respuesta NO ofrezcas la llamada, ni el diagnóstico, ni el enlace, y NO des precios: todavía no sabes qué le falta.';
+        ? 'Es tu primera respuesta y pregunta el precio: dáselo, con + IVA. En esta respuesta NO ofrezcas la llamada, ni la charla, ni el enlace. Acaba con UNA pregunta sobre su negocio o lo que pierde hoy.'
+        : 'Es tu primera respuesta. Contesta lo que pregunte y acaba con UNA pregunta sobre su negocio o lo que pierde hoy. En esta respuesta NO ofrezcas la llamada, ni la charla, ni el enlace, y NO des precios: todavía no sabes qué le falta.';
     case 'tras_llamada':
-      return 'En tu respuesta anterior ya ofreciste la llamada o el diagnóstico y no ha dicho que sí. En esta NO lo vuelvas a ofrecer: contesta lo que pregunte y acaba con una pregunta sobre lo que le falta o lo que pierde hoy.';
+      return 'En tu respuesta anterior ya ofreciste la llamada o la charla y no ha dicho que sí. En esta NO lo vuelvas a ofrecer: contesta lo que pregunte y acaba con una pregunta sobre lo que le falta o lo que pierde hoy.';
     default:
       return null;
   }

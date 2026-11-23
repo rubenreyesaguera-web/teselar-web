@@ -15,10 +15,10 @@ humana profesional o jurada se presupuesta aparte.
 
 Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida:
 
-1. **Diagnóstico gratuito — 30 minutos, sin coste ni compromiso.** Es la puerta de entrada. Antes de
+1. **Charla gratuita — 30 minutos, sin coste ni compromiso.** Es la puerta de entrada. Antes de
    la llamada se revisa el negocio por fuera (web, ficha de Google, cómo se contacta y cómo se
-   reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Se reserva en https://calendly.com/teselarsoftware-info/diagnostico30min
-2. **Auditoría de Procesos — 150€**, solo si lo que necesita va a medida (si del diagnóstico sale un
+   reservan hoy sus citas), así que es una conversación preparada, no una llamada comercial. Se reserva en https://reservas.teselarsoftware.com/teselarsoftware
+2. **Auditoría de Procesos — 150€**, solo si lo que necesita va a medida (si de la charla sale un
    producto cerrado —las citas, Web Esencial o una automatización sencilla— se pasa directo a la
    propuesta, sin auditoría), descontables del proyecto si acepta la propuesta en los 30
    días siguientes. Una sesión de 60-90 minutos revisando su operativa con sus datos delante (antes
@@ -122,7 +122,7 @@ Las webs se escriben a mano (React/Next.js y Tailwind), no se montan sobre plant
 terceros. El criterio que se le da al cliente es honesto y conviene citarlo entero:
 
 - **Si solo necesita un sitio de tres páginas que va a tocar poco, WordPress le sirve**, y habrá quien
-  se lo haga por menos. Teselar lo dice en el diagnóstico en vez de venderle lo contrario.
+  se lo haga por menos. Teselar lo dice en la charla en vez de venderle lo contrario.
 - **La diferencia pesa cuando la web tiene que hacer algo** además de estar bonita: hablar con la
   agenda, con el programa de gestión o con WhatsApp, o automatizar algo que hoy se hace a mano. Ahí
   la plantilla se resuelve apilando plugins, y cada plugin es una actualización que puede romper otra
@@ -221,7 +221,7 @@ Teselar Software builds AI assistants, automations and custom software, based in
 serving the Costa Brava area and remote clients across Spain. It is run by one person, Rubén, who communicates in Spanish,
 Catalan and English, but delivered projects can be built in any language via AI-assisted translation
 (sworn/professional human translation quoted separately). The entry point is a **free 30-minute
-diagnosis call** (booked at https://calendly.com/teselarsoftware-info/diagnostico30min); the 150€
+intro call** (booked at https://reservas.teselarsoftware.com/teselarsoftware); the 150€
 **process audit** is the second step: a 60-90 minute session on how the business actually operates,
 plus a written report on which processes cost time or money and what can be automated, sent together
 with a priced proposal — deducted from the project if that proposal is accepted within 30 days, and it includes the
