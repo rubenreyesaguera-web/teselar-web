@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { origenDelLead } from '@/lib/chat/origen';
 import { ordenDelTurno } from '@/lib/chat/turno';
 import { hablaEnPlural } from '@/lib/chat/voz';
+import { prometeWhatsAppAlCorreo } from '@/lib/chat/promesas';
 
 export const maxDuration = 30;
 
@@ -317,11 +318,18 @@ export async function POST(req: Request) {
   };
   let botResponse = await generar(system);
 
-  // Teselar es Rubén solo: el plural («hacemos», «somos», «nuestro») se cuela aunque el prompt lo prohíba (batería del
-  // 20/11). Se pide UNA vez que lo reescriba en singular; si la segunda también falla o no llega, se queda la primera.
-  if (botResponse && hablaEnPlural(botResponse) && Date.now() < limite - 3_000) {
-    const corregida = await generar(`${system}\nCORRECCIÓN: ibas a contestar esto: «${botResponse}». Habla en plural de Teselar, y Teselar es Rubén solo. Reescríbelo igual pero hablando de Rubén en singular («Rubén hace», «lo monta él»), sin «hacemos», «somos», «nuestro» ni «nosotros».\n`);
-    if (corregida && !hablaEnPlural(corregida)) botResponse = corregida;
+  // Dos cosas que el prompt prohíbe y aun así se cuelan (baterías del 20 y el 23/11, ADR-122): hablar de Teselar en plural
+  // («hacemos», «somos», «nuestro»; Teselar es Rubén solo) y prometer que los avisos de WhatsApp pasan al correo o a una hoja
+  // (la automatización de 690 € no lee su WhatsApp). Se pide UNA vez que lo reescriba; si la segunda también falla o no
+  // llega, se queda la primera.
+  const fallos = (t: string) => [
+    hablaEnPlural(t) && 'Habla en plural de Teselar, y Teselar es Rubén solo: habla de Rubén en singular («Rubén hace», «lo monta él»), sin «hacemos», «somos», «nuestro» ni «nosotros».',
+    prometeWhatsAppAlCorreo(t) && 'Dice que los mensajes o avisos de WhatsApp pasan al correo, a una hoja o a otro sitio, y eso no lo hace: la automatización sencilla es un formulario en su web que le llega a su correo y a una hoja, y lo que le escriban por WhatsApp lo sigue teniendo en su WhatsApp. No digas que lee su WhatsApp ni que mueve sus mensajes.',
+  ].filter(Boolean);
+  const aCorregir = botResponse ? fallos(botResponse) : [];
+  if (aCorregir.length && Date.now() < limite - 3_000) {
+    const corregida = await generar(`${system}\nCORRECCIÓN: ibas a contestar esto: «${botResponse}». ${aCorregir.join(' ')} Reescríbelo igual corrigiendo solo eso.\n`);
+    if (corregida && fallos(corregida).length === 0) botResponse = corregida;
   }
 
   if (!botResponse) {
