@@ -339,6 +339,19 @@ export function resumenColaboradores(
   return [...por.values()].sort((a, b) => b.debido - a.debido || b.contactos - a.contactos || a.nombre.localeCompare(b.nombre));
 }
 
+/**
+ * La cifra «Reservas» de la tarjeta de un colaborador (D132): «—» si no tiene página o citas no contestó (nunca 0 por
+ * un fallo) y, si hay anuladas, «2 · 1 anulada» (las anuladas van dentro del total).
+ */
+export function textoReservas(
+  datos: Record<string, { reservas: number; anuladas: number }> | null,
+  slug: string | null,
+): { cifra: string; anuladas: string | null } {
+  if (!slug || !datos) return { cifra: '—', anuladas: null };
+  const r = datos[slug] ?? { reservas: 0, anuladas: 0 };
+  return { cifra: String(r.reservas), anuladas: r.anuladas ? `${r.anuladas} ${r.anuladas === 1 ? 'anulada' : 'anuladas'}` : null };
+}
+
 /** Del formulario de «Saldado el…» a lo que se guarda, o el mensaje del fallo. */
 export function validarSaldo(form: Record<string, unknown>):
   | string

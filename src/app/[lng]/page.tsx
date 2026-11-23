@@ -1934,7 +1934,7 @@ const legalTexts = {
         },
         {
           title: '6. Demo de gestión',
-          text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que escribas en ella (el nombre de tu empresa o a qué os dedicáis) se queda en tu navegador y no llega a Teselar Software. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
+          text: 'La demo de gestión (/demo) no usa cookies ni guarda datos personales. Lo que marques o escribas en ella se queda en tu navegador y no llega a Teselar Software, salvo si reservas la charla desde ella: entonces, con la reserva, llega una línea con el nombre de tu empresa, tu sector (o lo que hayas escrito en «Otro»), lo que llevas y cómo lo llevas hoy, para preparar la charla. La ves antes de confirmar. Para saber cómo se usa la demo se cuentan, sin identificar a nadie, los pasos que se dan en ella, el sector elegido y las opciones marcadas.'
         }
       ]
     },
@@ -2003,7 +2003,7 @@ const legalTexts = {
         },
         {
           title: '6. Demo de gestió',
-          text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi escriguis (el nom de la teva empresa o a què us dediqueu) es queda al teu navegador i no arriba a Teselar Software. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
+          text: 'La demo de gestió (/demo) no fa servir galetes ni desa dades personals. El que hi marquis o hi escriguis es queda al teu navegador i no arriba a Teselar Software, tret que hi reservis la xerrada: aleshores, amb la reserva, arriba una línia amb el nom de la teva empresa, el teu sector (o el que hagis escrit a «Un altre»), què portes i com ho portes avui, per preparar la xerrada. La veus abans de confirmar. Per saber com es fa servir la demo es compten, sense identificar ningú, els passos que s\'hi fan, el sector triat i les opcions marcades.'
         }
       ]
     },
@@ -2072,7 +2072,7 @@ const legalTexts = {
         },
         {
           title: '6. Management demo',
-          text: 'The management demo (/demo) uses no cookies and stores no personal data. What you type in it (your business name or what you do) stays in your browser and does not reach Teselar Software. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
+          text: 'The management demo (/demo) uses no cookies and stores no personal data. What you tick or type in it stays in your browser and does not reach Teselar Software, unless you book the call from it: then a line with your business name, your sector (or what you typed under «Other»), what you handle and how you handle it today comes with the booking, so the call can be prepared. You see it before confirming. To understand how the demo is used, the steps taken in it, the sector chosen and the options picked are counted without identifying anyone.'
         }
       ]
     },
