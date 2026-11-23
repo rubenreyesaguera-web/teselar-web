@@ -278,6 +278,35 @@ export async function visitasColaboradores(sql: Sql = conexion()): Promise<Recor
   return Object.fromEntries(filas.map((f) => [f.slug, { total: f.total, ultimos30: f.ultimos30 }]));
 }
 
+export type ReservasColaborador = Record<string, { reservas: number; anuladas: number }>;
+
+/**
+ * Cuántas reservas trajo cada colaborador (D132): las cuenta Teselar Citas, sin datos personales ni las de prueba.
+ * null si no se pueden leer (sin secreto, citas caída o respuesta rara): la tarjeta dice «—», nunca 0.
+ */
+export async function reservasColaboradores(
+  secreto = process.env.SECRETO_COLABORADORES,
+  pedir: typeof fetch = fetch,
+): Promise<ReservasColaborador | null> {
+  if (!secreto) return null;
+  try {
+    const r = await pedir('https://reservas.teselarsoftware.com/api/colaboradores?negocio=teselarsoftware', {
+      headers: { authorization: `Bearer ${secreto}` },
+      cache: 'no-store',
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!r.ok) return null;
+    const datos: unknown = await r.json();
+    if (!datos || typeof datos !== 'object' || Array.isArray(datos)) return null;
+    const bien = Object.values(datos).every(
+      (v) => v && typeof v === 'object' && Number.isInteger((v as { reservas: unknown }).reservas) && Number.isInteger((v as { anuladas: unknown }).anuladas),
+    );
+    return bien ? (datos as ReservasColaborador) : null;
+  } catch {
+    return null;
+  }
+}
+
 // ——— Entrada ———
 
 export async function leerAcceso(sql: Sql = conexion()): Promise<EstadoAcceso> {

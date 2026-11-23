@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { COLABORADORES } from '../../../../data/colaboradores';
 import { RUBEN, whatsappARuben } from '../../../../lib/colaboradores/enlaces';
-import { RESERVA_DIAGNOSTICO } from '../../../../lib/reserva';
+import { reservaColaborador } from '../../../../lib/reserva';
 import { textos, type IdiomaColaborador } from '../../../../lib/colaboradores/textos';
 import { CabeceraIdioma } from '../../../../components/colaboradores/CabeceraIdioma';
 
@@ -64,7 +64,7 @@ export default async function PaginaColaborador({ params }: { params: Params }) 
         </section>
 
         <div className="flex flex-col gap-2.5 p-4">
-          <a href={RESERVA_DIAGNOSTICO} target="_blank" rel="noopener" className={`${boton} bg-[#00BFA5] text-[#031622]`}>
+          <a href={reservaColaborador(slug)} target="_blank" rel="noopener" className={`${boton} bg-[#00BFA5] text-[#031622]`}>
             <span className="flex flex-col">
               <span className="text-[15px]">{t.reservar}</span>
               <span className="text-xs font-normal">{t.reservar_sub}</span>

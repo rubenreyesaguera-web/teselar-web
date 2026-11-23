@@ -1,9 +1,10 @@
-// Colaboradores (fase 2, 30/10): de la visita a su pagina a la reserva «De parte de…» (los contactos con su nombre, que
-// Ruben da de alta a mano) y al proyecto firmado, con la comision que toca y si esta saldada. Solo lo ve Ruben.
+// Colaboradores (fase 2, 30/10): de la visita a su pagina a la reserva (la cuenta Teselar Citas por su enlace, D132),
+// a los contactos con su nombre (Ruben los da de alta a mano) y al proyecto firmado, con la comision que toca y si esta
+// saldada. Solo lo ve Ruben.
 import Link from 'next/link';
 import { exigirSesion } from '@/lib/panel/acceso';
-import { leerContactos, leerPropuestas, visitasColaboradores } from '@/lib/panel/datos';
-import { hoyEnMadrid, NOMBRE_COMISION, NOMBRE_ESTADO, resumenColaboradores } from '@/lib/panel/resumen';
+import { leerContactos, leerPropuestas, reservasColaboradores, visitasColaboradores } from '@/lib/panel/datos';
+import { hoyEnMadrid, NOMBRE_COMISION, NOMBRE_ESTADO, resumenColaboradores, textoReservas } from '@/lib/panel/resumen';
 import { euros } from '@/lib/propuestas/formato';
 import { COLABORADORES } from '@/data/colaboradores';
 import { EtiquetaPropuesta, Vacio } from '@/components/panel/Piezas';
@@ -13,10 +14,16 @@ export const dynamic = 'force-dynamic';
 
 export default async function Colaboradores() {
   await exigirSesion();
-  const [contactos, propuestas, visitas] = await Promise.all([leerContactos(true), leerPropuestas(), visitasColaboradores()]);
+  const [contactos, propuestas, visitas, reservas] = await Promise.all([
+    leerContactos(true),
+    leerPropuestas(),
+    visitasColaboradores(),
+    reservasColaboradores(),
+  ]);
   const conPagina = Object.entries(COLABORADORES).map(([slug, c]) => ({ slug, nombre: c.nombre }));
   const resumen = resumenColaboradores(conPagina, contactos, propuestas, visitas);
   const hoy = hoyEnMadrid();
+  const reservasDe = (slug: string | null) => textoReservas(reservas, slug);
   return (
     <>
       <div className="cabeza">
@@ -39,6 +46,13 @@ export default async function Colaboradores() {
                 <dd>
                   {r.slug ? r.visitas30 : '—'}
                   {r.slug && <small> en 30 días · {r.visitas} en total</small>}
+                </dd>
+              </div>
+              <div>
+                <dt>Reservas</dt>
+                <dd>
+                  {reservasDe(r.slug).cifra}
+                  {reservasDe(r.slug).anuladas && <small> · {reservasDe(r.slug).anuladas}</small>}
                 </dd>
               </div>
               <div>

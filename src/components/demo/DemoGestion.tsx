@@ -9,7 +9,7 @@ import Link from 'next/link';
 import type { dictionaries } from '../../i18n/dictionaries';
 import { COMO, ORDEN_INICIAL, ORDEN_PARTES, PARTES, type Caja as CajaExplicada, type Como, type EjemploSector, type Parte, type Sector, SECTORES } from '../../data/demo';
 import { RUBEN } from '../../lib/colaboradores/enlaces';
-import { RESERVA_DIAGNOSTICO } from '../../lib/reserva';
+import { contextoDemo, reservaDemo } from '../../lib/reserva';
 import { MAXIMO_EMPRESA, enlaceWhatsApp, leerEnlace } from '../../lib/demo/enlace';
 import type { Paso } from '../../lib/demo/evento';
 import { hayPersona } from '../../lib/estadisticas/persona';
@@ -132,6 +132,10 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
   const faqOrdenadas = marcadas.includes('cit') ? t.faq : [...t.faq.filter((f) => !esWhatsapp(f)), ...t.faq.filter(esWhatsapp)];
   // En mitad de la nota, en minuscula salvo los nombres propios («papel y libreta, WhatsApp y memoria»).
   const comoEnFrase = comoMarcado.map((c) => t.como[c]).map((x) => (/^(Excel|WhatsApp)/.test(x) ? x : x[0].toLowerCase() + x.slice(1))).join(', ');
+
+  // Lo que contó, en una línea, viaja con la reserva (D133): solo lo ven Rubén y quien reserva (D134).
+  const comoTexto = comoMarcado.map((c) => t.como[c]).join(', ');
+  const reserva = reservaDemo(contextoDemo({ empresa: empresa.trim(), sector: sectorTexto, lleva: llevaTexto, como: comoTexto }, t.reserva_etiquetas));
 
   const datos = { lng, sector, partes: marcadas, como: comoMarcado, desdeEnlace };
   const contarUnaVez = (paso: Paso) => {
@@ -331,7 +335,7 @@ export function DemoGestion({ lng, t, ejemplos }: Props) {
                 <span className="text-[13px] text-[#D9E4EA] [text-wrap:pretty]">{doc2 ? t.doc2_texto : t.cta_texto}</span>
               </div>
               <a
-                href={doc2 ? enlaceWhatsApp(t.wa_con_empresa, t.wa_sin_empresa, empresa) : RESERVA_DIAGNOSTICO}
+                href={doc2 ? enlaceWhatsApp(t.wa_con_empresa, t.wa_sin_empresa, empresa) : reserva}
                 target="_blank"
                 rel="noopener"
                 onClick={() => contarUnaVez('reservar')}

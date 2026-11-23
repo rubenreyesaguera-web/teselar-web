@@ -514,6 +514,8 @@ export const dictionaries = {
       // Debajo de cada parte del panel: como funcionaria y que deja de pasar. Desde el 24/10 cada sector lleva los suyos
       // (src/data/demo.ts, `explica`); estos comunes solo los usa «Otro».
       // Sin cifras: no hay nada medido que las respalde (ADR-025).
+      // La línea que viaja con la reserva desde la demo (D133): «Empresa: … · Sector: … · Llevo: … · Hoy: …».
+      reserva_etiquetas: { empresa: 'Empresa', sector: 'Sector', lleva: 'Llevo', como: 'Hoy' },
       como_label: 'Cómo funciona',
       ahorro_label: 'Te ahorras',
       explica: {
@@ -1024,6 +1026,7 @@ export const dictionaries = {
       doc2_sub: 'Et contesto jo',
       wa_con_empresa: 'Hola Rubén, he vist la demo que em vas preparar per a {empresa}.',
       wa_sin_empresa: 'Hola Rubén, he vist la demo que em vas preparar.',
+      reserva_etiquetas: { empresa: 'Empresa', sector: 'Sector', lleva: 'Porto', como: 'Avui' },
       como_label: 'Com funciona',
       ahorro_label: 'T’estalvies',
       explica: {
@@ -1534,6 +1537,7 @@ export const dictionaries = {
       doc2_sub: 'I’ll reply myself',
       wa_con_empresa: 'Hi Rubén, I’ve seen the demo you prepared for {empresa}.',
       wa_sin_empresa: 'Hi Rubén, I’ve seen the demo you prepared.',
+      reserva_etiquetas: { empresa: 'Business', sector: 'Sector', lleva: 'I handle', como: 'Today' },
       como_label: 'How it works',
       ahorro_label: 'What it saves you',
       explica: {
