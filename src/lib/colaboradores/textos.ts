@@ -12,7 +12,7 @@ export function textos(lng: IdiomaColaborador, c: Colaborador) {
       te_presenta: `Et presenta ${c.nombre}`,
       oficio: 'Programari a mida · Lloret de Mar',
       quien: 'Ordeno els clients, els avisos i els tècnics d’empreses de la zona. Ho munto jo, en persona.',
-      reservar: 'Reservar diagnòstic gratuït',
+      reservar: 'Reservar xerrada gratuïta',
       reservar_sub: '30 minuts, sense compromís',
       whatsapp: 'Escriure al Rubén per WhatsApp',
       whatsapp_sub: `Ja va escrit: «Vinc de part de ${c.nombre}»`,
@@ -25,10 +25,10 @@ export function textos(lng: IdiomaColaborador, c: Colaborador) {
       tarjeta_titulo: `${c.nombre} · ${f ? 'col·laboradora' : 'col·laborador'} de Teselar`,
       etiqueta: f ? 'COL·LABORADORA DE TESELAR' : 'COL·LABORADOR DE TESELAR',
       escanea: 'Escaneja i et presento el Rubén',
-      tarjeta_texto: 'Organitza els clients, els avisos i els tècnics d’empreses de la zona. El diagnòstic és gratuït.',
+      tarjeta_texto: 'Organitza els clients, els avisos i els tècnics d’empreses de la zona. La primera xerrada és gratuïta.',
       reenviar: 'Enviar per WhatsApp',
       reenviar_sub: 'Per a qui no tinguis davant',
-      reenviar_texto: (url: string) => `T'envio el contacte del Rubén, de Teselar Software. Fa programes a mida per a empreses de la zona i el diagnòstic és gratuït: ${url}`,
+      reenviar_texto: (url: string) => `T'envio el contacte del Rubén, de Teselar Software. Fa programes a mida per a empreses de la zona i la primera xerrada és gratuïta: ${url}`,
       qr_alt: `Codi QR a la pàgina del Rubén de part de ${c.nombre}`,
     };
   }
@@ -37,7 +37,7 @@ export function textos(lng: IdiomaColaborador, c: Colaborador) {
     te_presenta: `Te presenta ${c.nombre}`,
     oficio: 'Software a medida · Lloret de Mar',
     quien: 'Ordeno los clientes, los avisos y los técnicos de empresas de la zona. Lo monto yo, en persona.',
-    reservar: 'Reservar diagnóstico gratis',
+    reservar: 'Reservar charla gratis',
     reservar_sub: '30 minutos, sin compromiso',
     whatsapp: 'Escribir a Rubén por WhatsApp',
     whatsapp_sub: `Ya va escrito: «Vengo de parte de ${c.nombre}»`,
@@ -49,10 +49,10 @@ export function textos(lng: IdiomaColaborador, c: Colaborador) {
     tarjeta_titulo: `${c.nombre} · ${f ? 'colaboradora' : 'colaborador'} de Teselar`,
     etiqueta: f ? 'COLABORADORA DE TESELAR' : 'COLABORADOR DE TESELAR',
     escanea: 'Escanea y te presento a Rubén',
-    tarjeta_texto: 'Organiza los clientes, los avisos y los técnicos de empresas de la zona. El diagnóstico es gratis.',
+    tarjeta_texto: 'Organiza los clientes, los avisos y los técnicos de empresas de la zona. La primera charla es gratis.',
     reenviar: 'Enviar por WhatsApp',
     reenviar_sub: 'Para quien no tengas delante',
-    reenviar_texto: (url: string) => `Te paso el contacto de Rubén, de Teselar Software. Hace programas a medida para empresas de la zona y el diagnóstico es gratis: ${url}`,
+    reenviar_texto: (url: string) => `Te paso el contacto de Rubén, de Teselar Software. Hace programas a medida para empresas de la zona y la primera charla es gratis: ${url}`,
     qr_alt: `Código QR a la página de Rubén de parte de ${c.nombre}`,
   };
 }

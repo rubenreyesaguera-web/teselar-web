@@ -22,7 +22,7 @@ export const dictionaries = {
       subtitle: 'Programas para llevar clientes, presupuestos, facturas y técnicos en un solo sitio, asistentes que atienden tu WhatsApp y webs hechas a mano. Para instaladores, reformas, talleres, clínicas, peluquerías, inmobiliarias y gestorías. Los hago yo, aquí en Lloret de Mar.',
       meta_description: 'Asistentes con inteligencia artificial, automatizaciones y programas a medida para negocios de Lloret de Mar y la Costa Brava. Los hago yo, de principio a fin.',
       cta: 'Solicitar información',
-      cta_alt: 'Diagnóstico gratis · 30 min',
+      cta_alt: 'Charla gratis · 30 min',
       cta_note: 'Gratis y sin compromiso. Antes de hablar miro tu web, tu ficha de Google y cómo te contactan tus clientes, para no empezar de cero.',
       quien: 'Soy Rubén Reyes, de Teselar Software. Te atiendo yo.',
       piezas: ['Clientes', 'Facturas', 'Agenda', 'Web', 'WhatsApp', 'Equipo'],
@@ -61,7 +61,7 @@ export const dictionaries = {
       vat: '+ IVA',
       s1: {
         title: '01. Auditoría de Procesos',
-        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es el diagnóstico gratuito de 30 minutos, y si de ahí sale algo cerrado —las citas, una web, una tienda online o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes: cuentan como parte de la señal.',
+        ideal: 'Negocios que sospechan que pierden tiempo o dinero en su operativa y quieren saber dónde, por escrito, antes de invertir. Es el segundo paso cuando lo que necesitas va a medida: la puerta de entrada es la charla gratuita de 30 minutos, y si de ahí sale algo cerrado —las citas, una web, una tienda online o una automatización pequeña— pasas directamente a la propuesta, sin auditoría. Estos 150€ se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes: cuentan como parte de la señal.',
         price: '150€ (Descontable de tu proyecto)',
         tag: 'Procesos y costes',
         f1: 'Sesión de 60-90 minutos revisando tu operativa con tus datos delante. Antes te digo qué tienes que traer, que es poco y depende de tu negocio',
@@ -317,7 +317,7 @@ export const dictionaries = {
       },
       q8: {
         q: '¿Qué es la Auditoría de Procesos y para qué sirve?',
-        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante —antes te digo qué tienes que traer, que es poco y depende de tu negocio—, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, cuánto, y qué se puede automatizar y en qué orden. Con el informe te mando la propuesta con el precio de lo que saldría de ahí, y tú decides si la aceptas; si no veo nada que te compense, te lo digo y no hay propuesta. Cuesta 150€ y se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes. Incluye también un repaso de tu web y tus redes. Antes de la auditoría está el diagnóstico gratuito de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
+        a: 'Es una sesión de 60-90 minutos revisando tu operativa contigo y con tus datos delante —antes te digo qué tienes que traer, que es poco y depende de tu negocio—, y un informe escrito de 2-3 páginas: qué procesos te están costando tiempo o dinero, cuánto, y qué se puede automatizar y en qué orden. Con el informe te mando la propuesta con el precio de lo que saldría de ahí, y tú decides si la aceptas; si no veo nada que te compense, te lo digo y no hay propuesta. Cuesta 150€ y se descuentan del proyecto si aceptas la propuesta en los 30 días siguientes. Incluye también un repaso de tu web y tus redes. Antes de la auditoría está la charla gratuita de 30 minutos: si de momento solo quieres la conversación, no tienes que pagar nada.'
       },
       q9: {
         q: '¿Qué NO está incluido en el precio de un proyecto?',
@@ -333,7 +333,7 @@ export const dictionaries = {
       },
       q12: {
         q: '¿Por qué no me haces la web en WordPress, que sale más barata?',
-        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Lo hago a medida y de cero, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en el diagnóstico y no te cobro por descubrirlo.'
+        a: 'Porque no siempre te conviene, y prefiero decírtelo antes de cobrarte. Si lo que necesitas es una web de tres páginas que vas a mirar poco, WordPress te sirve y habrá quien te la haga por menos que yo: no te voy a vender lo contrario. Donde la cosa cambia es cuando la web tiene que hacer algo además de estar bonita — hablar con tu agenda, con tu programa de gestión o con tu WhatsApp, o quitarte de encima algo que hoy haces a mano. Ahí una web de plantilla se resuelve añadiendo plugins de terceros, y cada plugin es una actualización que puede romper otra cosa, a veces una licencia anual, y siempre alguien a quien llamar que no eres tú. Lo hago a medida y de cero, así que no hay veinte piezas de veinte autores distintos que tengan que llevarse bien. Y el mantenimiento lo hago yo, que es la diferencia que de verdad se nota al segundo año. Si aun así WordPress es lo que te encaja, te lo digo en la charla y no te cobro por descubrirlo.'
       },
       q13: {
         q: '¿Y si no pago el mantenimiento, o no lo renuevo cuando acabe el año incluido?',
@@ -367,7 +367,7 @@ export const dictionaries = {
     contact: {
       title: '¿Hacemos encajar las piezas?',
       subtitle: 'Escríbeme sobre tu proyecto para agendar una cita o pedir información técnica, sin compromiso.',
-      calendly_title: 'Reserva el diagnóstico gratuito de 30 minutos',
+      calendly_title: 'Reserva la charla gratuita de 30 minutos',
       calendly_desc: 'Es la forma más rápida: eliges hueco y hablamos. Sin coste, sin compromiso y con tu negocio ya mirado por delante. Si prefieres escribir primero, tienes el formulario aquí mismo.',
       calendly_btn: 'Elegir hueco en el calendario',
       name: 'Nombre o Empresa',
@@ -405,7 +405,7 @@ export const dictionaries = {
       result_monthly: 'Coste mensual estimado',
       result_yearly: 'Coste anual estimado',
       result_hours: 'Tiempo anual en estas tareas',
-      rec_texto: 'Esto es lo que se te va. En el diagnóstico vemos qué pieza lo recupera, y si no compensa, te lo digo.',
+      rec_texto: 'Esto es lo que se te va. En la charla vemos qué pieza lo recupera, y si no compensa, te lo digo.',
       btn_apply: 'Llevar estos números al formulario',
       notif_linked: '¡Simulación vinculada con éxito en el formulario!'
     },
@@ -547,7 +547,7 @@ export const dictionaries = {
       subtitle: 'Programes per portar clients, pressupostos, factures i tècnics en un sol lloc, assistents que atenen el teu WhatsApp i webs fetes a mà. Per a instal·ladors, reformes, tallers, clíniques, perruqueries, immobiliàries i gestories. Els faig jo, aquí a Lloret de Mar.',
       meta_description: 'Assistents amb intel·ligència artificial, automatitzacions i programes a mida per a negocis de Lloret de Mar i la Costa Brava. Els faig jo, de principi a fi.',
       cta: 'Sol·licitar informació',
-      cta_alt: 'Diagnòstic gratis · 30 min',
+      cta_alt: 'Xerrada gratis · 30 min',
       cta_note: 'Gratis i sense compromís. Abans de parlar miro el teu web, la teva fitxa de Google i com et contacten els teus clients, per no començar de zero.',
       quien: 'Sóc Rubén Reyes, de Teselar Software. T’atenc jo.',
       piezas: ['Clients', 'Factures', 'Agenda', 'Web', 'WhatsApp', 'Equip'],
@@ -586,7 +586,7 @@ export const dictionaries = {
       vat: '+ IVA',
       s1: {
         title: '01. Auditoria de Processos',
-        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és el diagnòstic gratuït de 30 minuts, i si d\'allà en surt una cosa tancada —les cites, un web, una botiga en línia o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten del projecte si acceptes la proposta en els 30 dies següents: compten com a part del senyal.',
+        ideal: 'Negocis que sospiten que perden temps o diners en la seva operativa i volen saber on, per escrit, abans d\'invertir. És el segon pas quan el que necessites va a mida: la porta d\'entrada és la xerrada gratuïta de 30 minuts, i si d\'allà en surt una cosa tancada —les cites, un web, una botiga en línia o una automatització petita— passes directament a la proposta, sense auditoria. Aquests 150€ es descompten del projecte si acceptes la proposta en els 30 dies següents: compten com a part del senyal.',
         price: '150€ (Descomptable del teu projecte)',
         tag: 'Processos i costos',
         f1: 'Sessió de 60-90 minuts revisant la teva operativa amb les teves dades al davant. Abans et dic què has de portar, que és poc i depèn del teu negoci',
@@ -842,7 +842,7 @@ export const dictionaries = {
       },
       q8: {
         q: 'Què és l\'Auditoria de Processos i per a què serveix?',
-        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant —abans et dic què has de portar, que és poc i depèn del teu negoci—, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, quant, i què es pot automatitzar i en quin ordre. Amb l\'informe t\'envio la proposta amb el preu del que en sortiria, i tu decideixes si l\'acceptes; si no veig res que et compensi, t\'ho dic i no hi ha proposta. Costa 150€ i es descompten del projecte si acceptes la proposta en els 30 dies següents. Inclou també un repàs del teu web i les teves xarxes. Abans de l\'auditoria hi ha el diagnòstic gratuït de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
+        a: 'És una sessió de 60-90 minuts revisant la teva operativa amb tu i amb les teves dades al davant —abans et dic què has de portar, que és poc i depèn del teu negoci—, i un informe escrit de 2-3 pàgines: quins processos et costen temps o diners, quant, i què es pot automatitzar i en quin ordre. Amb l\'informe t\'envio la proposta amb el preu del que en sortiria, i tu decideixes si l\'acceptes; si no veig res que et compensi, t\'ho dic i no hi ha proposta. Costa 150€ i es descompten del projecte si acceptes la proposta en els 30 dies següents. Inclou també un repàs del teu web i les teves xarxes. Abans de l\'auditoria hi ha la xerrada gratuïta de 30 minuts: si de moment només vols la conversa, no has de pagar res.'
       },
       q9: {
         q: 'Què NO està inclòs en el preu d\'un projecte?',
@@ -858,7 +858,7 @@ export const dictionaries = {
       },
       q12: {
         q: 'Per què no em fas el web en WordPress, que surt més barat?',
-        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Ho faig a mida i de zero, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic al diagnòstic i no et cobro per descobrir-ho.'
+        a: 'Perquè no sempre et convé, i prefereixo dir-t\'ho abans de cobrar-te. Si el que necessites és un web de tres pàgines que miraràs poc, WordPress et serveix i hi haurà qui te\'l faci per menys que jo: no et vendré el contrari. On la cosa canvia és quan el web ha de fer alguna cosa a més d\'estar bonic — parlar amb la teva agenda, amb el teu programa de gestió o amb el teu WhatsApp, o treure\'t de sobre alguna cosa que avui fas a mà. Allà un web de plantilla es resol afegint plugins de tercers, i cada plugin és una actualització que pot trencar una altra cosa, de vegades una llicència anual, i sempre algú a qui trucar que no ets tu. Ho faig a mida i de zero, així que no hi ha vint peces de vint autors diferents que s\'hagin d\'entendre. I el manteniment el faig jo, que és la diferència que de debò es nota el segon any. Si tot i així WordPress és el que t\'encaixa, t\'ho dic a la xerrada i no et cobro per descobrir-ho.'
       },
       q13: {
         q: 'I si no pago el manteniment, o no el renovo quan acabi l\'any inclòs?',
@@ -892,7 +892,7 @@ export const dictionaries = {
     contact: {
       title: 'Fem encaixar les peces?',
       subtitle: 'Escriu-me sobre el teu projecte per agendar una cita o demanar informació tècnica, sense compromís.',
-      calendly_title: 'Reserva el diagnòstic gratuït de 30 minuts',
+      calendly_title: 'Reserva la xerrada gratuïta de 30 minuts',
       calendly_desc: 'És la manera més ràpida: tries forat i parlem. Sense cost, sense compromís i amb el teu negoci ja mirat per endavant. Si prefereixes escriure primer, tens el formulari aquí mateix.',
       calendly_btn: 'Triar forat al calendari',
       name: 'Nom o Empresa',
@@ -930,7 +930,7 @@ export const dictionaries = {
       result_monthly: 'Cost mensual estimat',
       result_yearly: 'Cost anual estimat',
       result_hours: 'Temps anual en aquestes tasques',
-      rec_texto: 'Això és el que se t’escapa. Al diagnòstic veiem quina peça ho recupera, i si no compensa, t’ho dic.',
+      rec_texto: 'Això és el que se t’escapa. A la xerrada veiem quina peça ho recupera, i si no compensa, t’ho dic.',
       btn_apply: 'Portar aquests números al formulari',
       notif_linked: '¡Simulació vinculada amb èxit al formulari!'
     },
@@ -1057,7 +1057,7 @@ export const dictionaries = {
       subtitle: 'Software to keep your customers, quotes, invoices and technicians in one place, assistants that answer your WhatsApp, and hand-built websites. For installers, renovation firms, garages, clinics, salons, estate agents and accountancy firms. I build them myself, here in Lloret de Mar.',
       meta_description: 'AI assistants, automations and custom software for businesses in Lloret de Mar and the Costa Brava. I build them myself, end to end.',
       cta: 'Request information',
-      cta_alt: 'Free 30-min diagnosis',
+      cta_alt: 'Free 30-min intro call',
       cta_note: 'Free and with no strings attached. Before we talk I look at your website, your Google profile and how your customers reach you, so we do not start from scratch.',
       quien: 'I am Rubén Reyes, from Teselar Software. You deal with me.',
       piezas: ['Clients', 'Invoices', 'Schedule', 'Website', 'WhatsApp', 'Team'],
@@ -1096,7 +1096,7 @@ export const dictionaries = {
       vat: '+ VAT',
       s1: {
         title: '01. Process Audit',
-        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute diagnosis, and if what comes out of it is a closed product —appointments, a website, an online shop or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted from the project if you accept the proposal within the following 30 days: they count as part of the deposit.',
+        ideal: 'Businesses that suspect they are losing time or money in their day-to-day operations and want to know where, in writing, before investing. It is the second step when what you need is custom-built: the way in is the free 30-minute intro call, and if what comes out of it is a closed product —appointments, a website, an online shop or a small automation— you go straight to the proposal, with no audit. These 150€ are deducted from the project if you accept the proposal within the following 30 days: they count as part of the deposit.',
         price: '150€ (Deducted from your first project)',
         tag: 'Processes and costs',
         f1: '60-90 minute session going through your operations with your own figures in front of us. Beforehand I tell you what to bring, which is not much and depends on your business',
@@ -1303,7 +1303,7 @@ export const dictionaries = {
       title: 'My Working Method',
       subtitle: 'A clear roadmap to shape your digital solution from start to finish.',
       p1: {
-        title: '01. Free chat',
+        title: '01. Free intro call',
         desc: '30 minutes to see how you work and what eats up your time. If what you need is custom, the audit comes next.'
       },
       p2: {
@@ -1352,7 +1352,7 @@ export const dictionaries = {
       },
       q8: {
         q: 'What is the Process Audit and what is it for?',
-        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us —beforehand I tell you what to bring, which is not much and depends on your business—, plus a written 2-3 page report: which processes are costing you time or money, how much, and what can be automated and in what order. With the report I send you the proposal with the price of what would come out of it, and you decide whether to accept it; if I see nothing worth your while, I tell you so and there is no proposal. It costs 150€, deducted from the project if you accept the proposal within the following 30 days. It also includes a look over your website and social media. Before the audit there is the free 30-minute diagnosis: if for now you only want the conversation, you do not have to pay anything.'
+        a: 'It is a 60-90 minute session going through your operations with you and your own figures in front of us —beforehand I tell you what to bring, which is not much and depends on your business—, plus a written 2-3 page report: which processes are costing you time or money, how much, and what can be automated and in what order. With the report I send you the proposal with the price of what would come out of it, and you decide whether to accept it; if I see nothing worth your while, I tell you so and there is no proposal. It costs 150€, deducted from the project if you accept the proposal within the following 30 days. It also includes a look over your website and social media. Before the audit there is the free 30-minute intro call: if for now you only want the conversation, you do not have to pay anything.'
       },
       q9: {
         q: 'What is NOT included in a project price?',
@@ -1368,7 +1368,7 @@ export const dictionaries = {
       },
       q12: {
         q: 'Why not build my site in WordPress? It is cheaper.',
-        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I build it to measure from scratch, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the diagnosis and I will not charge you for finding out.'
+        a: 'Because it is not always the right call for you, and I would rather say so before charging you. If what you need is a three-page site you will barely touch, WordPress will do the job and someone will build it for less than I will: I am not going to pretend otherwise. What changes things is when the site has to do something besides look good — talk to your calendar, your management software or your WhatsApp, or take over something you do by hand today. On a template site that gets solved by adding third-party plugins, and every plugin is an update that can break something else, sometimes a yearly licence, and always someone to call who is not you. I build it to measure from scratch, so there are no twenty pieces from twenty different authors that have to get along. And I do the maintenance, which is the difference you actually notice in year two. If WordPress still turns out to be your best fit, I will tell you so in the intro call and I will not charge you for finding out.'
       },
       q13: {
         q: 'What if I stop paying for maintenance, or do not renew it when the included year ends?',
@@ -1402,7 +1402,7 @@ export const dictionaries = {
     contact: {
       title: 'Shall we fit the pieces?',
       subtitle: 'Tell me about your project to book a meeting or ask for technical details, with no strings attached.',
-      calendly_title: 'Book the free 30-minute diagnosis',
+      calendly_title: 'Book the free 30-minute intro call',
       calendly_desc: 'It is the fastest way: pick a slot and we talk. No cost, no strings attached, and with your business already looked at beforehand. If you would rather write first, the form is right here.',
       calendly_btn: 'Pick a slot in the calendar',
       name: 'Name or Company Name',
@@ -1440,7 +1440,7 @@ export const dictionaries = {
       result_monthly: 'Estimated monthly cost',
       result_yearly: 'Estimated yearly cost',
       result_hours: 'Yearly time on these tasks',
-      rec_texto: 'This is what is slipping away. In the diagnosis we look at which piece recovers it, and if it is not worth it, I will tell you.',
+      rec_texto: 'This is what is slipping away. In the intro call we look at which piece recovers it, and if it is not worth it, I will tell you.',
       btn_apply: 'Take these numbers to the form',
       notif_linked: 'Simulation successfully linked to the form!'
     },
@@ -1513,7 +1513,7 @@ export const dictionaries = {
       panel_vacio: 'Pick what you handle in your business above and it will show up here.',
       cta_titulo: 'Shall we look at your case?',
       cta_texto: 'It’s a free 30-minute chat, usually by video call. If your business is less than half an hour from Lloret de Mar, it can also be in person; if you’re a bit further away, just ask. Afterwards you get what we saw in writing. If you book, I receive what you’ve ticked here, so I don’t have to ask you again.',
-      cta_btn: 'Book a free chat',
+      cta_btn: 'Book a free intro call',
       cta_sub: 'In my calendar · 30 minutes, no commitment',
       nota: 'In the chat you tell me how you handle it today ({como}) and we see what moves across and how. You don’t need to show me any customer data.',
       nota_como: 'Excel, paper, WhatsApp or your current software',

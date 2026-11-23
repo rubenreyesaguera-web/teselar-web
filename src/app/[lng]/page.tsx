@@ -1169,10 +1169,10 @@ export default function Page({ params }: PageProps) {
                   
                   // 2. Autofill details into the textarea
                   const customizedText = lng === 'es'
-                    ? `Hola, Rubén: he usado el simulador de tu web y me salen unos ${fmt(yearlyVal)}€ al año en tareas que se repiten (${fmt(yearlyHours)} h al año). Me gustaría ver en el diagnóstico qué parte se puede recuperar.`
+                    ? `Hola, Rubén: he usado el simulador de tu web y me salen unos ${fmt(yearlyVal)}€ al año en tareas que se repiten (${fmt(yearlyHours)} h al año). Me gustaría ver en la charla qué parte se puede recuperar.`
                     : lng === 'ca'
-                      ? `Hola, Rubén: he fet servir el simulador del teu web i em surten uns ${fmt(yearlyVal)}€ l’any en tasques que es repeteixen (${fmt(yearlyHours)} h l’any). M’agradaria veure al diagnòstic quina part es pot recuperar.`
-                      : `Hi Rubén, I used the simulator on your website and it comes to about ${fmt(yearlyVal)}€ a year on tasks that repeat (${fmt(yearlyHours)} h a year). I would like to see in the diagnosis which part can be recovered.`;
+                      ? `Hola, Rubén: he fet servir el simulador del teu web i em surten uns ${fmt(yearlyVal)}€ l’any en tasques que es repeteixen (${fmt(yearlyHours)} h l’any). M’agradaria veure a la xerrada quina part es pot recuperar.`
+                      : `Hi Rubén, I used the simulator on your website and it comes to about ${fmt(yearlyVal)}€ a year on tasks that repeat (${fmt(yearlyHours)} h a year). I would like to see in the intro call which part can be recovered.`;
                   
                   setContactMessage(customizedText);
 
