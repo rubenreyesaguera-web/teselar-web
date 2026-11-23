@@ -83,7 +83,7 @@ export function ordenDelTurno(historial: Mensaje[], nuevo: string): string | nul
     case 'no_compra':
       return 'El cliente ha dicho que no va a comprar o que solo quiere información. Contesta lo que pregunte y NO ofrezcas nada: ni productos, ni precios que no pida, ni la llamada, ni la charla, ni el enlace. No le hagas preguntas sobre su negocio. Como mucho, dile que aquí estás si algún día lo necesita.';
     case 'caro':
-      return 'Le parece caro o no tiene presupuesto. NO repitas el precio que ya le diste. Baja un escalón (citas con WhatsApp → sin WhatsApp; la tienda → la Web Esencial con botón de WhatsApp), o dile que con lo que tiene le basta o que lo puede hacer él. Acaba ofreciendo la charla gratuita para que Rubén estudie su caso y dejándole elegir, con esta idea: «¿Quieres que Rubén estudie tu caso? Te paso el enlace para elegir hora, o si prefieres te llama él.» No ofrezcas solo la llamada.';
+      return 'Le parece caro o no tiene presupuesto. NO repitas el precio que ya le diste. Baja un escalón (citas con WhatsApp → sin WhatsApp; la tienda → la Web Esencial con botón de WhatsApp), o dile que con lo que tiene le basta o que lo puede hacer él. Acaba con estas dos frases, tal cual y sin ninguna otra pregunta delante (nada de «¿quieres que Rubén te llame?»): «Si quieres, Rubén lo mira contigo en una charla gratuita de 30 minutos. ¿Te paso el enlace para elegir hora, o prefieres que te llame él?» No ofrezcas solo la llamada.';
     case 'primera':
       return PREGUNTA_PRECIO.test(plano(nuevo))
         ? 'Es tu primera respuesta y pregunta el precio: dáselo, con + IVA. En esta respuesta NO ofrezcas la llamada, ni la charla, ni el enlace. Acaba con UNA pregunta sobre su negocio o lo que pierde hoy.'
