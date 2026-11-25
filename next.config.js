@@ -16,6 +16,11 @@ const nextConfig = {
   // Las propuestas (ADR-091): nunca indexadas ni archivadas, sin enviar la URL a otros sitios y sin que
   // nadie pueda meterlas en un marco. Va en cabecera ademas de en la meta, porque la cabecera tambien
   // cubre el 404 y cualquier respuesta que no sea HTML.
+  // Enlace corto para el perfil personal de Ruben en Instagram (bio e historias; doc 11, 25/11): lo que entre por ahi
+  // llega con la etiqueta ?origen=ig-ruben y sale en Estadisticas del panel. Temporal (307), por si cambia el destino.
+  async redirects() {
+    return [{ source: '/ruben', destination: '/es?origen=ig-ruben', permanent: false }];
+  },
   async headers() {
     return [
       {
