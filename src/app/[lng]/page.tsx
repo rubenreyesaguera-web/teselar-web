@@ -440,7 +440,9 @@ export default function Page({ params }: PageProps) {
           <div className="flex items-center gap-4">
             {/* Quick Language Selector */}
             <div className="relative group">
-              <button aria-label={t.a11y.cambiar_idioma} aria-haspopup="menu" className="glass-panel text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 hover:border-innovacion hover:text-innovacion transition-all duration-300">
+              {/* El nombre accesible empieza por lo que se ve («ES»): con «Cambiar idioma» solo, Lighthouse daba label-content-name-mismatch
+                  y el control por voz no encuentra el botón al decir lo que lee (26/11) */}
+              <button aria-label={`${currentLng.toUpperCase()} · ${t.a11y.cambiar_idioma}`} aria-haspopup="menu" className="glass-panel text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1 hover:border-innovacion hover:text-innovacion transition-all duration-300">
                 <Languages size={13} aria-hidden="true" />
                 <span className="uppercase">{currentLng}</span>
               </button>
