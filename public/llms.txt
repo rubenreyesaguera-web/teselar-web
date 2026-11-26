@@ -11,6 +11,13 @@ Idiomas de comunicación y de la web: español, català, English. Los proyectos 
 cualquier idioma mediante traducción asistida por IA (revisada, incluida en el precio); la traducción
 humana profesional o jurada se presupuesta aparte.
 
+## Páginas
+
+- [Inicio](https://www.teselarsoftware.com/es): qué hace Teselar, los servicios con sus precios y cómo se empieza. También en [català](https://www.teselarsoftware.com/ca) y en [English](https://www.teselarsoftware.com/en).
+- [Demo](https://www.teselarsoftware.com/es/demo): un programa de gestión de ejemplo para verlo funcionando.
+- [Reservar la charla gratuita](https://reservas.teselarsoftware.com/teselarsoftware): 30 minutos, sin coste ni compromiso.
+- [Aviso legal](https://www.teselarsoftware.com/es/legal/aviso-legal), [privacidad](https://www.teselarsoftware.com/es/legal/privacidad), [cookies](https://www.teselarsoftware.com/es/legal/cookies) y [condiciones](https://www.teselarsoftware.com/es/legal/condiciones).
+
 ## Cómo se empieza
 
 Tres peldaños, en este orden, aunque el segundo solo es para lo que va a medida:
