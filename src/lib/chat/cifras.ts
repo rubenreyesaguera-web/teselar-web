@@ -7,10 +7,12 @@
 // pudo inventarlo.
 const plano = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-const CUENTAS = /^(clientes?|citas?|llamadas?|reservas?|ventas?|pedidos?|visitas?|pacientes?|clients?|cites?|trucades?|vendes?|comandes?|visites?|appointments?|calls?|bookings?|sales|orders?|customers?|patients?)$/;
+const CUENTAS = /^(clientes?|citas?|llamadas?|reservas?|ventas?|pedidos?|visitas?|pacientes?|coches?|vehiculos?|motos?|personas?|trabajos?|encargos?|presupuestos?|alumnos?|comensales|oportunidades|cotxes|persones|feines|cars?|vehicles?|people|jobs?|clients?|cites?|trucades?|vendes?|comandes?|visites?|appointments?|calls?|bookings?|sales|orders?|customers?|patients?)$/;
 const DINERO = /^(€|eur|euros?|centimos?|cents?|centims?)$/;
 const HORAS = /^(h|horas?|hores|hours?|hrs?)$/;
 const PORCENTAJE = /^(%|por|per|percent)$/;
+
+const FRECUENCIA = /^(?:[a-z]+ ){0,2}(?:al|a la|a|por|cada|per|each|every|a|an|per) ?(?:la )?(mes|meses|semana|semanas|dia|dias|ano|anos|setmana|setmanes|any|month|week|day|year)\b/;
 
 const PALABRAS: Record<string, number> = {
   dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, once: 11, doce: 12, quince: 15,
@@ -58,6 +60,9 @@ function cifrasConTipo(texto: string): { valor: number[]; tipo: Tipo; tal: strin
       if (CUENTAS.test(d)) { tipo = 'cuenta'; break; }
     }
     if (!tipo && f[i - 1] === '€') tipo = 'dinero';
+    // Una cifra por semana, mes, día o año es una cantidad, diga lo que diga el sustantivo (27/11, la 8.ª de diez: «son veinte
+    // coches al mes»): «N [algo] al mes», «N a la semana», «N per setmana», «N a month»
+    if (!tipo && FRECUENCIA.test(f.slice(i + 1, i + 6).join(' '))) tipo = 'cuenta';
     if (!tipo && f.slice(Math.max(0, i - 4), i).some(d => CUENTAS.test(d))) tipo = 'cuenta';
     // Las palabras («dos», «diez») solo cuentan si van pegadas a su unidad: «las dos versiones» no es una cifra
     if (!tipo || (!/^\d/.test(x) && !detras.slice(0, 2).some(d => CUENTAS.test(d) || DINERO.test(d)))) return;

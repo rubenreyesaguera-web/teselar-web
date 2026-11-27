@@ -13,6 +13,9 @@ describe('TesS no inventa cifras de clientes ni de dinero', () => {
     expect(cifrasInventadas('Eso son unos 600 € al mes que se te escapan.', PROMPT, [TALLER])).toEqual(['600']);
     expect(cifrasInventadas('Un 30% de esas llamadas acaban en otro taller.', PROMPT, [TALLER])).toEqual(['30']);
     expect(cifrasInventadas('Te ahorrarías 7 horas a la semana.', PROMPT, [TALLER])).toEqual(['7']);
+    // La 8.ª de las diez pasadas del 27/11 en producción, que se coló porque «coches» no estaba entre las cuentas
+    expect(cifrasInventadas('Si cada semana dejas de coger diez llamadas y la mitad se van a otro sitio, son veinte coches al mes que entran en el taller de al lado.', PROMPT, [TALLER])).toEqual(['veinte']);
+    expect(cifrasInventadas('Pueden ser 25 al mes.', PROMPT, [TALLER])).toEqual(['25']);
   });
 
   test('en catalán y en inglés también', () => {
@@ -29,6 +32,8 @@ describe('TesS no inventa cifras de clientes ni de dinero', () => {
     expect(cifrasInventadas('Dos piezas juntas son 10.915€ y las tres, 15.930€.', PROMPT, [])).toEqual([]);
     expect(cifrasInventadas('La señal es del 10% con un mínimo de 150 euros.', PROMPT, [])).toEqual([]);
     expect(cifrasInventadas('Respuesta en 48h laborables como máximo.', PROMPT, [])).toEqual([]);
+    expect(cifrasInventadas('Con 10 llamadas a la semana, la libreta se llena rápido.', PROMPT, [TALLER])).toEqual([]);
+    expect(cifrasInventadas('El mantenimiento son 60€ al mes, con 1h al mes de cambios.', PROMPT, [])).toEqual([]);
   });
 
   test('las cifras sin unidad no se miran', () => {
