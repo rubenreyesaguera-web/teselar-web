@@ -3,6 +3,7 @@ import { origenDelLead } from '@/lib/chat/origen';
 import { ordenDelTurno } from '@/lib/chat/turno';
 import { hablaEnPlural } from '@/lib/chat/voz';
 import { prometeWhatsAppAlCorreo } from '@/lib/chat/promesas';
+import { cifrasInventadas } from '@/lib/chat/cifras';
 
 export const maxDuration = 30;
 
@@ -318,11 +319,15 @@ export async function POST(req: Request) {
   };
   let botResponse = await generar(system);
 
-  // Dos cosas que el prompt prohíbe y aun así se cuelan (baterías del 20 y el 23/11, ADR-122): hablar de Teselar en plural
+  // Cosas que el prompt prohíbe y aun así se cuelan (baterías del 20 y el 23/11, ADR-122): hablar de Teselar en plural
   // («hacemos», «somos», «nuestro»; Teselar es Rubén solo) y prometer que los avisos de WhatsApp pasan al correo o a una hoja
   // (la automatización de 690 € no lee su WhatsApp). Se pide UNA vez que lo reescriba; si la segunda también falla o no
   // llega, se queda la primera.
+  // Y desde el 27/11 (P8, ADR-122): cifras de clientes, citas o dinero que no salen ni del catálogo ni de lo que ha dicho el
+  // usuario (al taller del 12/11, «más de 40 clientes al mes que puedes estar perdiendo», cuando él había dicho 10 llamadas).
+  const delUsuario = [...historial.filter((m: ChatMessage) => m.sender === 'user').map((m: ChatMessage) => String(m.text)), textoUsuario];
   const fallos = (t: string) => [
+    cifrasInventadas(t, system, delUsuario).length > 0 && `Da cifras que no salen ni del catálogo ni de lo que ha dicho el usuario (${cifrasInventadas(t, system, delUsuario).join(', ')}). No inventes cifras de clientes, citas, llamadas, ventas, dinero, horas ni porcentajes: usa solo las del catálogo y las que te ha dado él. Si pregunta cuántos clientes o cuánto dinero pierde, dile que es imposible saber el número exacto y no des ninguna cifra.`,
     hablaEnPlural(t) && 'Habla en plural de Teselar, y Teselar es Rubén solo: habla de Rubén en singular («Rubén hace», «lo monta él»), sin «hacemos», «somos», «nuestro» ni «nosotros».',
     prometeWhatsAppAlCorreo(t) && 'Dice que los mensajes o avisos de WhatsApp pasan al correo, a una hoja o a otro sitio, y eso no lo hace: la automatización sencilla es un formulario en su web que le llega a su correo y a una hoja, y lo que le escriban por WhatsApp lo sigue teniendo en su WhatsApp. No digas que lee su WhatsApp ni que mueve sus mensajes.',
   ].filter(Boolean);
